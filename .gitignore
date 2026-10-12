@@ -1,0 +1,12 @@
+# Footage and renders are large and live outside git (source of truth: Google Drive / local disk).
+projects/*/source/
+projects/*/work/
+projects/*/renders/
+*.mp4
+*.mov
+*.mxf
+*.wav
+*_qa/
+node_modules/
+__pycache__/
+.venv/

@@ -1,0 +1,8 @@
+{
+  "name": "YYYY-MM-DD_short-slug",
+  "source": { "drive_file_id": "", "filename": "", "sha256": "" },
+  "delivery": { "platform": "instagram_reel", "width": 1080, "height": 1920, "fps": 30, "lufs": -14, "true_peak": -1.0 },
+  "language": "ar-EG",
+  "captions": true,
+  "status": "intake"
+}
