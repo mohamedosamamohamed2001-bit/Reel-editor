@@ -10,3 +10,6 @@ projects/*/renders/
 node_modules/
 __pycache__/
 .venv/
+studio/public/media/
+studio/out/
+projects/*/renders/
