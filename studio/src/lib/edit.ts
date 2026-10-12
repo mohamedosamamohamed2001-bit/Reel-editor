@@ -17,6 +17,8 @@ export type Clip = {
   orig?: { in: number; out: number };
   /** set when src is a JPEG image-sequence plate (folder of 00001.jpg…): frame count and its fps */
   frames?: { count: number; fps: number };
+  /** punch "settle": start at this scale (e.g. 1.04) and ease to 1 over 10 frames, like camera inertia */
+  settle?: number;
 };
 
 const span = (c: Clip) => c.orig ?? { in: c.in, out: c.out };
@@ -31,7 +33,7 @@ export type Overlay =
   | { type: "callout"; at: number; dur: number; text?: string; number?: string; unit?: string; earned?: boolean; position?: "top" | "center" }
   | { type: "insetCard"; at: number; dur: number; src: string; in: number; eyebrow?: string; volume?: number }
   | { type: "split"; at: number; dur: number; top: { src: string; in: number }; bottom: { src: string; in: number } }
-  | { type: "endCard"; at: number; dur: number; cta: string; signature?: boolean }
+  | { type: "endCard"; at: number; dur: number; cta: string; signature?: boolean; reveal?: "fade" | "wipe" }
   | {
       type: "screenCard"; at: number; dur: number; src: string; segments: ScreenSegment[];
       /** visible part of the recording, as fractions of its width/height (crop out status bar / keyboard) */
@@ -45,6 +47,10 @@ export type Overlay =
       taps?: { at: number; x: number; y: number }[];
       /** outline + dim the rest; at/dur = seconds from the card's start, box = fractions of the visible region */
       highlights?: { at: number; dur: number; box: { x: number; y: number; w: number; h: number } }[];
+      /** "tilt" = 2.5D entrance/exit (rises with an X-tilt, lifts away); default flat */
+      entrance?: "flat" | "tilt";
+      /** draw a check mark on the active highlight */
+      checks?: boolean;
     };
 
 export type Edit = {
@@ -55,6 +61,8 @@ export type Edit = {
   clips: Clip[];
   captions?: {
     words: Word[]; keywords?: string[]; maxWords?: number; maxChars?: number;
+    /** word-synced captions: upcoming words dimmed, each lights up on its spoken start; keyword underline on its word */
+    karaoke?: boolean;
     /** exact-word replacements applied when loading the transcript (spelling fixes, English terms) */
     replace?: Record<string, string>;
     /** "plate" = Night plate behind the text (use over bright or white areas); default soft shadow */
@@ -87,7 +95,8 @@ export const sourceToOutput = (clips: Clip[], t: number): number | null => {
   return null;
 };
 
-export type CaptionGroup = { words: string[]; start: number; end: number };
+/** times[i] = output start of words[i] (for word-synced captions) */
+export type CaptionGroup = { words: string[]; start: number; end: number; times: number[] };
 
 /**
  * Group words into short on-screen phrases (the reference reels show 1–3 words at a time).
@@ -126,9 +135,10 @@ export const groupCaptions = (words: Word[], clips: Clip[], maxWords = 3, maxCha
     const crossesBreak = !!cur && breaks.some((b) => b > cur!.start + EPS && b <= w.start + EPS);
     if (!cur || crossesBreak || gap > 0.35 || (!keepLatinRun && (cur.words.length >= maxWords || chars > maxChars))) {
       if (cur) groups.push(cur);
-      cur = { words: [w.w], start: w.start, end: w.end };
+      cur = { words: [w.w], start: w.start, end: w.end, times: [w.start] };
     } else {
       cur.words.push(w.w);
+      cur.times.push(w.start);
       cur.end = w.end;
     }
     if (/[.!?،؟]$/.test(w.w)) {
@@ -146,6 +156,7 @@ export const groupCaptions = (words: Word[], clips: Clip[], maxWords = 3, maxCha
     if (g.end - g.start < 0.35 && sameSentence && !separated && g.start - p.end <= 0.35 &&
         [...p.words, ...g.words].join(" ").length <= maxChars + 6) {
       p.words.push(...g.words);
+      p.times.push(...g.times);
       p.end = g.end;
       groups.splice(i, 1);
     }

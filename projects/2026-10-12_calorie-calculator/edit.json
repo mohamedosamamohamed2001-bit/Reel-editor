@@ -1,5 +1,5 @@
 {
-  "title": "OSM — Try it first: free week + Calorie Calculator (v2)",
+  "title": "OSM — Try it first: free week + Calorie Calculator (v3: motion + sound design)",
   "fps": 29.97,
   "width": 1080,
   "height": 1920,
@@ -25,7 +25,8 @@
       "out": 6.06,
       "zoom": 1.0,
       "focusX": 0.48,
-      "focusY": 0.5
+      "focusY": 0.5,
+      "settle": 1.04
     },
     {
       "src": "main",
@@ -33,7 +34,8 @@
       "out": 13.37,
       "zoom": 1.18,
       "focusX": 0.505,
-      "focusY": 0.36
+      "focusY": 0.36,
+      "settle": 1.04
     },
     {
       "src": "main",
@@ -80,7 +82,8 @@
       "وزنك": "وزنك.",
       "قرر": "قرر.",
       "هتساعدك": "هتساعدك."
-    }
+    },
+    "karaoke": true
   },
   "overlays": [
     {
@@ -157,18 +160,186 @@
             "h": 0.252
           }
         }
-      ]
+      ],
+      "entrance": "tilt",
+      "checks": true
     },
     {
       "type": "endCard",
-      "at": 21.18,
-      "dur": 2.5,
-      "cta": "ابدأ مع OSM"
+      "at": 21.1545,
+      "dur": 2.5359,
+      "cta": "ابدأ مع OSM",
+      "reveal": "wipe"
     }
   ],
   "tail": 2.5,
   "plates": {
     "grade": "colorbalance=rs=-0.02:bs=0.025:rm=-0.05:bm=0.015:rh=0.02:gh=0.005:bh=-0.025,curves=all='0/0 0.25/0.235 0.5/0.5 0.75/0.765 1/1'",
     "sharpen": "cas=strength=0.4"
+  },
+  "sfx": {
+    "cues": [
+      {
+        "at": 0.0,
+        "sound": "thump",
+        "gain_db": -23,
+        "note": "hook: soft sub open on frame 0"
+      },
+      {
+        "at": 0.8342,
+        "sound": "key",
+        "gain_db": -29,
+        "note": "'OSM' word (0.85 s)"
+      },
+      {
+        "at": 2.636,
+        "sound": "air",
+        "gain_db": -21,
+        "note": "punch-out cut, peak on cut frame"
+      },
+      {
+        "at": 6.0394,
+        "sound": "air",
+        "gain_db": -24,
+        "lo": 2400,
+        "hi": 700,
+        "note": "punch-in cut (falling air)"
+      },
+      {
+        "at": 6.4731,
+        "sound": "accent",
+        "gain_db": -21,
+        "note": "'Method' word start (6.47 s), underline draws"
+      },
+      {
+        "at": 8.8422,
+        "sound": "swell",
+        "gain_db": -16,
+        "note": "swell resolves on the card's first frame"
+      },
+      {
+        "at": 9.3093,
+        "sound": "whoosh_in",
+        "gain_db": -14,
+        "note": "whoosh peak on card arrival"
+      },
+      {
+        "at": 9.3093,
+        "sound": "thump",
+        "gain_db": -22,
+        "note": "weight under the landing"
+      },
+      {
+        "at": 9.5762,
+        "sound": "click",
+        "gain_db": -20,
+        "note": "tap ripple frame"
+      },
+      {
+        "at": 9.7097,
+        "sound": "air",
+        "gain_db": -26,
+        "dur": 0.28,
+        "lo": 1200,
+        "hi": 3200,
+        "note": "page change to calculator"
+      },
+      {
+        "at": 11.095,
+        "sound": "key",
+        "gain_db": -26,
+        "note": "keystroke"
+      },
+      {
+        "at": 11.16,
+        "sound": "key",
+        "gain_db": -26,
+        "note": "keystroke"
+      },
+      {
+        "at": 11.585,
+        "sound": "key",
+        "gain_db": -26,
+        "note": "keystroke"
+      },
+      {
+        "at": 11.649,
+        "sound": "key",
+        "gain_db": -26,
+        "note": "keystroke"
+      },
+      {
+        "at": 11.708,
+        "sound": "key",
+        "gain_db": -26,
+        "note": "keystroke"
+      },
+      {
+        "at": 12.595,
+        "sound": "key",
+        "gain_db": -26,
+        "note": "keystroke"
+      },
+      {
+        "at": 12.66,
+        "sound": "key",
+        "gain_db": -26,
+        "note": "keystroke"
+      },
+      {
+        "at": 12.693,
+        "sound": "chime",
+        "gain_db": -20,
+        "note": "results appear (same frame as last digit +1)"
+      },
+      {
+        "at": 14.5479,
+        "sound": "blip",
+        "gain_db": -16,
+        "freq": 783.99,
+        "note": "highlight Lean Bulk ('تزيد')"
+      },
+      {
+        "at": 15.1485,
+        "sound": "blip",
+        "gain_db": -16,
+        "freq": 880.0,
+        "note": "highlight Shred ('تخس')"
+      },
+      {
+        "at": 15.9826,
+        "sound": "blip",
+        "gain_db": -16,
+        "freq": 987.77,
+        "note": "highlight Maintain ('تحافظ')"
+      },
+      {
+        "at": 16.8502,
+        "sound": "whoosh_out",
+        "gain_db": -21,
+        "note": "card lifts away"
+      },
+      {
+        "at": 21.1545,
+        "sound": "swell",
+        "gain_db": -23,
+        "dur": 0.5,
+        "root": 146.83,
+        "note": "after 'قرر', resolves on end card"
+      },
+      {
+        "at": 21.2212,
+        "sound": "impact",
+        "gain_db": -13,
+        "note": "logo wipe arrival (end card frame +2): the strongest beat"
+      },
+      {
+        "at": 21.7551,
+        "sound": "click",
+        "gain_db": -26,
+        "freq": 1800,
+        "note": "CTA lands"
+      }
+    ]
   }
 }

@@ -11,6 +11,8 @@ type Props = {
   taps?: { at: number; x: number; y: number }[];
   highlights?: { at: number; dur: number; box: Box }[];
   frames?: { count: number; fps: number };
+  entrance?: "flat" | "tilt";
+  checks?: boolean;
 };
 
 const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
@@ -22,13 +24,22 @@ const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
  */
 export const ScreenCard: React.FC<Props> = ({
   src, dur, segments, region = { x: 0, y: 0, w: 1, h: 1 }, width = 920, top = 300, srcW = 1080, srcH = 1920,
-  taps = [], highlights = [], frames,
+  taps = [], highlights = [], frames, entrance = "flat", checks = false,
 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const durF = Math.round(dur * fps);
   const p = presence(frame, durF, 12, 8);
   const enter = interpolate(frame, [0, 14], [0, 1], { ...clamp, easing: Easing.out(Easing.cubic) });
+  const tilt = entrance === "tilt";
+  // 2.5D: the card rises with a 10° X-tilt and a controlled 1.5% overshoot in scale, then lifts away on exit
+  const enterScale = tilt ? interpolate(frame, [0, 16], [0, 1], { ...clamp, easing: Easing.bezier(0.2, 1.18, 0.35, 1) }) : enter;
+  const exitP = tilt ? interpolate(frame, [durF - 9, durF], [0, 1], { ...clamp, easing: Easing.in(Easing.cubic) }) : 0;
+  const blurK = enter * (1 - exitP);
+  const cardOpacity = Math.min(
+    interpolate(frame, [0, 5], [0, 1], { ...clamp, easing: Easing.out(Easing.quad) }),
+    interpolate(frame, [durF - 6, durF], [1, 0], { ...clamp, easing: Easing.in(Easing.quad) }),
+  );
   const cardH = Math.round((width * (region.h * srcH)) / (region.w * srcW));
   const scale = width / (region.w * srcW);
   const url = staticFile(src);
@@ -80,23 +91,30 @@ export const ScreenCard: React.FC<Props> = ({
   const dim = Math.min(dimIn, dimOut);
 
   return (
-    <AbsoluteFill style={{ opacity: p }}>
+    <AbsoluteFill>
+      <AbsoluteFill style={{ opacity: p }}>
       {/* blurs whatever is underneath (the speaker keeps talking behind the card); blur deepens as the card arrives */}
       <AbsoluteFill
         style={{
-          backdropFilter: `blur(${34 * enter}px) brightness(${1 - 0.62 * enter}) saturate(0.85)`,
-          WebkitBackdropFilter: `blur(${34 * enter}px) brightness(${1 - 0.62 * enter}) saturate(0.85)`,
-          background: `rgba(10,15,22,${0.35 * enter})`,
+          backdropFilter: `blur(${34 * blurK}px) brightness(${1 - 0.62 * blurK}) saturate(0.85)`,
+          WebkitBackdropFilter: `blur(${34 * blurK}px) brightness(${1 - 0.62 * blurK}) saturate(0.85)`,
+          background: `rgba(10,15,22,${0.35 * blurK})`,
         }}
       />
       <Hairlines />
+      </AbsoluteFill>
+      <div style={{ position: "absolute", inset: 0, opacity: tilt ? cardOpacity : p, perspective: tilt ? 1800 : undefined, perspectiveOrigin: "50% 30%" }}>
       <div
         style={{
           position: "absolute", left: (1080 - width) / 2, top, width, height: cardH,
           borderRadius: 52, overflow: "hidden", border: `2px solid ${color.line}`,
-          boxShadow: "0 40px 90px rgba(0,0,0,0.55)",
+          // shadow deepens as the card arrives (reads as distance from the backdrop)
+          boxShadow: `0 ${20 + 30 * enter}px ${50 + 50 * enter}px rgba(0,0,0,${0.35 + 0.25 * enter})`,
           // slow 2% push across the card's life keeps held frames (e.g. a frozen result screen) alive
-          transform: `translateY(${70 * (1 - enter)}px) scale(${(0.94 + 0.06 * enter) * (1 + 0.02 * (frame / durF))})`,
+          transform: tilt
+            ? `translateY(${80 * (1 - enter) - 60 * exitP}px) rotateX(${10 * (1 - enter) - 7 * exitP}deg) scale(${(0.94 + 0.06 * enterScale - 0.03 * exitP) * (1 + 0.02 * (frame / durF))})`
+            : `translateY(${70 * (1 - enter)}px) scale(${(0.94 + 0.06 * enter) * (1 + 0.02 * (frame / durF))})`,
+          transformOrigin: "50% 100%",
         }}
       >
         {seqs}
@@ -128,7 +146,27 @@ export const ScreenCard: React.FC<Props> = ({
             </div>
           );
         })}
+        {checks && active ? <Check box={active.box} width={width} cardH={cardH} t={t} at={active.at} fps={fps} /> : null}
+      </div>
       </div>
     </AbsoluteFill>
+  );
+};
+
+/** Check mark drawn on the active highlight's right side: Core Blue disc pops, white stroke draws. */
+const Check: React.FC<{ box: Box; width: number; cardH: number; t: number; at: number; fps: number }> = ({ box, width, cardH, t, at, fps }) => {
+  const pop = interpolate(t, [at + 2 / fps, at + 8 / fps], [0, 1], { ...clamp, easing: Easing.bezier(0.2, 1.4, 0.4, 1) });
+  const draw = interpolate(t, [at + 5 / fps, at + 12 / fps], [0, 1], { ...clamp, easing: Easing.out(Easing.cubic) });
+  const size = 64;
+  const len = 40; // path length of the check stroke below
+  return (
+    <svg
+      width={size} height={size} viewBox="0 0 64 64"
+      style={{ position: "absolute", left: (box.x + box.w) * width - size - 34, top: (box.y + box.h / 2) * cardH - size / 2, transform: `scale(${pop})`, opacity: pop > 0 ? 1 : 0 }}
+    >
+      <circle cx="32" cy="32" r="30" fill={color.coreBlue} />
+      <path d="M19 33 L28 42 L46 23" fill="none" stroke={color.night} strokeWidth="6" strokeLinecap="round" strokeLinejoin="round"
+        strokeDasharray={len} strokeDashoffset={len * (1 - draw)} />
+    </svg>
   );
 };

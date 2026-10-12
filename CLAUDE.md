@@ -52,6 +52,12 @@ projects/<name>/  one folder per video: project.json, edit.json, analysis/, docu
   with `region` crop, re-timed `segments`, `plate: true`, `taps` and speech-synced `highlights`. Caption options:
   `style: "plate"`, `zones` (move captions), `replace` (exact-word fixes, English terms).
   Speed: 4K source, 24 s reel: preview about 3 min, full 1080×1920 about 6–7 min on 4 CPUs.
+- `tools/sfx.py` is the in-house sound kit (numpy only, no samples, no licences): air, whoosh_in/out, swell, thump, impact, click,
+  key, blip, chime, accent. Each sound has a "hit" sample that lands on the cue time. `edit.json` `sfx.cues` = [{at, sound,
+  gain_db, …kwargs}]. Cue times snap to frames. render_edit mixes the bus (HPF 40 Hz, −4 dB @ 2.5 kHz, sidechain-ducked 2:1
+  by dialogue) before mastering. `python3 tools/sfx.py DIR` writes every sound for auditioning.
+- v3 motion options (all opt-in): `captions.karaoke`, `clip.settle`, `screenCard.entrance:"tilt"` + `checks`, `endCard.reveal:"wipe"`
+  (= fade + scale settle, never a mask on the logo).
 - `tools/qa_render.py VIDEO [--expect WxH --fps N --lufs -14 --tp -1]` reports specs, black and frozen frames, loudness,
   true peak, clipping and silences, and makes a contact sheet. Writes `<video>_qa/qa.json`. Exit code 1 on a hard failure.
   Tested against a synthetic clip with planted black, frozen and silent sections (all detected).
@@ -91,6 +97,11 @@ projects/<name>/  one folder per video: project.json, edit.json, analysis/, docu
   Remotion frames are PNG (JPEG q80 softened text). Caption timing maps through `clip.orig` (source in/out) when plated.
 - English terms in Arabic captions stay English (`captions.replace`, e.g. الميثود → Method, الوركاوت → Workout), are set in Inter,
   and each English run is one isolated LTR span (per-word LTR spans reversed "Calories Calculator").
+- 2026-10-12 (v3): SFX levels were set by measuring voice-vs-SFX momentary loudness at each cue (not by guessing). Targets
+  during speech: minor 22–28 dB under the voice, medium 15–22, major 10–16. Cues >30 dB under are inaudible. A 2:1 sidechain is enough.
+- Overlay `at` times must be frame-exact against the clip total: clip lengths round per clip (here 634 frames ≠ 21.18 s × fps),
+  and an end card placed at 21.18 s left one bare frame. Put the end card at the first frame after the last clip.
+- Never animate a mask/crop over the logo (brand: no cropped letters). Use opacity + uniform scale.
 - Grade used on the first studio set (bright, cool-lit, white shirt): `colorbalance=rs=-0.02:bs=0.025:rm=-0.05:bm=0.015:rh=0.02:gh=0.005:bh=-0.025`
   + gentle S-curve + `cas=strength=0.4`. Warming highlights fixes the shirt. Pulling midtone red keeps the skin from going pink.
 

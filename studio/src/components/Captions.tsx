@@ -1,4 +1,4 @@
-import { AbsoluteFill, interpolate, useCurrentFrame, useVideoConfig } from "remotion";
+import { AbsoluteFill, Easing, interpolate, useCurrentFrame, useVideoConfig } from "remotion";
 import { CaptionGroup } from "../lib/edit";
 import { presence } from "../lib/motion";
 import { color, font, isArabic } from "../lib/theme";
@@ -7,13 +7,15 @@ type Zone = { at: number; dur: number; top: number };
 
 const isLatin = (w: string) => /^[A-Za-z0-9]/.test(w);
 
-/** Split a phrase into runs of consecutive English / Arabic words. */
+/** Split a phrase into runs of consecutive English / Arabic words (keeping each word's index in the phrase). */
 const runs = (words: string[]) =>
-  words.reduce<{ latin: boolean; words: string[] }[]>((acc, w) => {
+  words.reduce<{ latin: boolean; words: string[]; idx: number[] }[]>((acc, w, i) => {
     const latin = isLatin(w);
     const last = acc[acc.length - 1];
-    if (last && last.latin === latin) last.words.push(w);
-    else acc.push({ latin, words: [w] });
+    if (last && last.latin === latin) {
+      last.words.push(w);
+      last.idx.push(i);
+    } else acc.push({ latin, words: [w], idx: [i] });
     return acc;
   }, []);
 
@@ -23,8 +25,8 @@ const runs = (words: string[]) =>
  * drawn as it appears (one keyword per phrase, max). English words inside Arabic phrases are set in
  * Inter (the brand Latin face) instead of the Arabic font's Latin glyphs.
  */
-export const Captions: React.FC<{ groups: CaptionGroup[]; keywords?: string[]; style?: "shadow" | "plate"; zones?: Zone[] }> = ({
-  groups, keywords = [], style = "shadow", zones = [],
+export const Captions: React.FC<{ groups: CaptionGroup[]; keywords?: string[]; style?: "shadow" | "plate"; zones?: Zone[]; karaoke?: boolean }> = ({
+  groups, keywords = [], style = "shadow", zones = [], karaoke = false,
 }) => {
   const frame = useCurrentFrame();
   const { fps, height } = useVideoConfig();
@@ -71,18 +73,24 @@ export const Captions: React.FC<{ groups: CaptionGroup[]; keywords?: string[]; s
         }}
       >
         {runs(g.words).map((run, ri, all) => {
-          const words = run.words.map((w) => {
+          const words = run.words.map((w, wi) => {
             const clean = w.replace(/[.,!?،؟]/g, "");
             const isKw = !blueUsed && kw.has(clean.toLowerCase());
             if (isKw) blueUsed = true;
+            // word-synced: each word eases from 45% to full on its own spoken start (3 frames)
+            const wStart = g.times?.[run.idx[wi]] ?? g.start;
+            const lit = karaoke ? interpolate(t, [wStart - 1 / fps, wStart + 2 / fps], [0.45, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }) : 1;
+            const wBar = karaoke
+              ? interpolate(t, [wStart, wStart + 8 / fps], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.out(Easing.cubic) })
+              : bar;
             return (
-              <span key={w} style={{ position: "relative", display: "inline-block", color: isKw ? color.coreBlue : undefined }}>
+              <span key={w + wi} style={{ position: "relative", display: "inline-block", color: isKw ? color.coreBlue : undefined, opacity: lit }}>
                 {w.replace(/[.،,]+$/, "")}
                 {isKw ? (
                   <span
                     style={{
                       position: "absolute", left: 0, right: 0, bottom: rtl && !run.latin ? 8 : -2, height: 6, borderRadius: 3,
-                      background: color.coreBlue, transformOrigin: rtl ? "right" : "left", transform: `scaleX(${bar})`,
+                      background: color.coreBlue, transformOrigin: rtl ? "right" : "left", transform: `scaleX(${wBar})`,
                     }}
                   />
                 ) : null}

@@ -25,9 +25,9 @@ const renderOverlay = (o: Overlay) => {
     case "split":
       return <SplitStack top={o.top} bottom={o.bottom} dur={o.dur} />;
     case "endCard":
-      return <EndCard dur={o.dur} cta={o.cta} signature={o.signature} />;
+      return <EndCard dur={o.dur} cta={o.cta} signature={o.signature} reveal={o.reveal} />;
     case "screenCard":
-      return <ScreenCard src={o.src} dur={o.dur} segments={o.segments} region={o.region} width={o.width} top={o.top} srcW={o.srcW} srcH={o.srcH} taps={o.taps} highlights={o.highlights} frames={o.frames} />;
+      return <ScreenCard src={o.src} dur={o.dur} segments={o.segments} region={o.region} width={o.width} top={o.top} srcW={o.srcW} srcH={o.srcH} taps={o.taps} highlights={o.highlights} frames={o.frames} entrance={o.entrance} checks={o.checks} />;
   }
 };
 
@@ -69,7 +69,7 @@ export const ReelEdit: React.FC<{ edit: Edit }> = ({ edit }) => {
     <AbsoluteFill style={{ background: color.night }}>
       {clipSeqs}
       {byLayer(1)}
-      {edit.captions ? <Captions groups={groups} keywords={edit.captions.keywords} style={edit.captions.style} zones={edit.captions.zones} /> : null}
+      {edit.captions ? <Captions groups={groups} keywords={edit.captions.keywords} style={edit.captions.style} zones={edit.captions.zones} karaoke={edit.captions.karaoke} /> : null}
       {byLayer(3)}
       {byLayer(4)}
     </AbsoluteFill>

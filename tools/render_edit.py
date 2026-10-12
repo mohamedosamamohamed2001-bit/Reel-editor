@@ -219,6 +219,26 @@ def build_dialogue(clips, total, dst):
                     "-c:a", "pcm_s24le", str(dst)], check=True)
 
 
+def build_mix(dialogue, cues, total, fps, dst):
+    """Dialogue + synthesised SFX bus (tools/sfx.py). The voice always wins:
+    SFX bus is high-passed at 40 Hz, dipped -4 dB around 2.5 kHz (speech presence), and sidechain-ducked
+    by the dialogue before the two are summed. Returns the cue placements (frame-snapped times)."""
+    sys.path.insert(0, str(ROOT / "tools"))
+    import sfx as sfxkit
+    bus, placed = sfxkit.render_cues(cues, total, fps)
+    sfx_wav = Path(dst).with_suffix(".sfx.wav")
+    sfxkit.write_wav(sfx_wav, bus)
+    graph = ("[1:a]aresample=48000,aformat=channel_layouts=stereo,highpass=f=40,"
+             "equalizer=f=2500:t=q:w=1.2:g=-4[s];"
+             "[0:a]asplit=2[d][dk];"
+             "[s][dk]sidechaincompress=threshold=0.03:ratio=2:attack=10:release=180[sd];"
+             "[d][sd]amix=inputs=2:normalize=0:duration=first[out]")
+    subprocess.run(["ffmpeg", "-y", "-v", "error", "-i", str(dialogue), "-i", str(sfx_wav), "-filter_complex", graph,
+                    "-map", "[out]", "-c:a", "pcm_s24le", str(dst)], check=True)
+    sfx_wav.unlink()
+    return placed
+
+
 def measure(path):
     """Integrated loudness (LUFS) and true peak (dBTP) of the first audio stream, via ebur128."""
     err = subprocess.run(["ffmpeg", "-hide_banner", "-nostats", "-i", str(path), "-map", "0:a:0",
@@ -270,6 +290,7 @@ def main():
     audio_clips = [{"path": str((proj / edit["media"][c["src"]]).resolve()), "in": c["in"], "out": c["out"],
                     "volume": c.get("volume", 1)} for c in edit["clips"]]
     make_plates(edit, proj)
+    edit_sfx = edit.pop("sfx", None)
     edit = resolve(edit, proj, name)
     renders = proj / "renders"
     renders.mkdir(exist_ok=True)
@@ -294,6 +315,14 @@ def main():
         print("note: --frames renders a range; dialogue is built for the full cut list", flush=True)
     dialogue = renders / f"{name}{suffix}_dialogue.wav"
     build_dialogue(audio_clips, total, dialogue)
+    cues = (edit_sfx or {}).get("cues", [])
+    if cues:
+        mixed = renders / f"{name}{suffix}_mix.wav"
+        placed = build_mix(dialogue, cues, total, edit["fps"], mixed)
+        print(f"sfx: {len(placed)} cues placed on frame times", flush=True)
+        (renders / "_sfx_placed.json").write_text(json.dumps(placed))
+        dialogue.unlink()
+        dialogue = mixed
     if a.no_master:
         subprocess.run(["ffmpeg", "-y", "-v", "error", "-i", str(raw), "-i", str(dialogue), "-map", "0:v:0", "-map", "1:a:0",
                         "-c:v", "copy", "-c:a", "aac", "-b:a", "256k", "-movflags", "+faststart", str(final)], check=True)

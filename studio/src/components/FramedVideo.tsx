@@ -1,4 +1,4 @@
-import { Img, OffthreadVideo, interpolate, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
+import { Easing, Img, OffthreadVideo, interpolate, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
 import { Clip } from "../lib/edit";
 
 /**
@@ -22,11 +22,15 @@ export const FramedVideo: React.FC<{ clip: Clip; durationInFrames: number; start
   const dh = clip.srcH * s;
   const left = Math.min(0, Math.max(W - dw, W / 2 - (clip.focusX ?? 0.5) * dw));
   const top = Math.min(0, Math.max(H - dh, H / 2 - (clip.focusY ?? 0.5) * dh));
+  // punch "settle": the cut lands slightly over-scaled and eases to rest, like a camera finding its frame
+  const settle = clip.settle
+    ? interpolate(frame, [0, 10], [clip.settle, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.out(Easing.cubic) })
+    : 1;
   if (clip.frames) {
     // image-sequence plate: shown 1:1 (OffthreadVideo extraction measured ~7x softer)
     const idx = Math.min(clip.frames.count, Math.max(1, startFrom + frame + 1));
     return (
-      <div style={{ position: "absolute", inset: 0, overflow: "hidden" }}>
+      <div style={{ position: "absolute", inset: 0, overflow: "hidden", transform: settle !== 1 ? `scale(${settle})` : undefined }}>
         <Img src={staticFile(`${clip.src}/${String(idx).padStart(5, "0")}.jpg`)} style={{ position: "absolute", left, top, width: dw, height: dh, maxWidth: "none" }} />
       </div>
     );
