@@ -33,9 +33,18 @@ Cut points sit in measured silences (6.00–6.22 s and 10.48–10.68 s), so no s
   Inter for the English words ("Calories Calculator", "for free"). One Core Blue keyword per phrase.
 - **Audio:** original dialogue only. Gain to −14 LUFS + peak limiter, verified by re-measurement. **No music or SFX**: no licensed library is
   available in this environment. Add a track from Instagram's built-in music library at upload, at a low level under the voice.
-- **Colour:** source kept as is. It's a clean, bright studio look with natural skin. The brand's low-key grade would fight this set, so it wasn't forced.
+- **Colour (v1):** source kept as is. **v2:** gentle grade (see "v2 refinements"); still natural, not the brand's low-key look, which would fight this bright set.
 - **Safe areas:** captions at 60% height (75% under the card), all text between 14% and 86% of the height, max width 80%.
 
 ## Known limitations
 - Captions need a by-ear check (see `main_footage_analysis.md`).
 - There's no second camera angle, so variety comes from punch-ins (max 1.27×, so the 4K source is never visibly upscaled) and the app card.
+
+## v2 refinements (2026-10-12)
+- **Spelling:** "Method" and "Workout" are always in English (`captions.replace`). English runs are set in Inter and isolated LTR inside Arabic captions.
+- **Image:** every clip is pre-framed by FFmpeg (grade → Lanczos → CAS 0.4) into JPEG frame sequences, shown 1:1.
+  The screen recording is Lanczos-scaled to the card width (UI text stays crisp).
+- **Graphics with a job:** "Method" underline draw (brand title-bar motif); tap ripple where the viewer should tap; result-card
+  highlight synced to his three goals (Lean Bulk on "تزيد", Shred on "تخس", Maintain on "تحافظ") with the rest dimmed;
+  blur-in card entrance; a slow card push so the held results screen never looks frozen.
+- **Unchanged on purpose:** cut points, hook, narrative, timing, end card, audio.

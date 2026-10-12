@@ -12,7 +12,14 @@
 export type Clip = {
   src: string; in: number; out: number; volume?: number;
   zoom?: number | [number, number]; focusX?: number; focusY?: number; srcW?: number; srcH?: number;
+  /** original SOURCE in/out when the clip was replaced by a pre-framed plate (tools/render_edit.py);
+   *  caption timing always maps through these, never through the plate's own 0-based times */
+  orig?: { in: number; out: number };
+  /** set when src is a JPEG image-sequence plate (folder of 00001.jpg…): frame count and its fps */
+  frames?: { count: number; fps: number };
 };
+
+const span = (c: Clip) => c.orig ?? { in: c.in, out: c.out };
 
 /** One piece of a screen recording inside a ScreenCard: plays from `in` at `rate` for `dur` output seconds. */
 export type ScreenSegment = { in: number; rate?: number; dur: number };
@@ -30,6 +37,14 @@ export type Overlay =
       /** visible part of the recording, as fractions of its width/height (crop out status bar / keyboard) */
       region?: { x: number; y: number; w: number; h: number };
       width?: number; top?: number; srcW?: number; srcH?: number;
+      /** Lanczos-prescale the recording to the card width (tools/render_edit.py) */
+      plate?: boolean;
+      /** set by tools/render_edit.py when src became an image sequence */
+      frames?: { count: number; fps: number };
+      /** tap ripple; at = seconds from the card's start, x/y = fractions of the visible region */
+      taps?: { at: number; x: number; y: number }[];
+      /** outline + dim the rest; at/dur = seconds from the card's start, box = fractions of the visible region */
+      highlights?: { at: number; dur: number; box: { x: number; y: number; w: number; h: number } }[];
     };
 
 export type Edit = {
@@ -40,6 +55,8 @@ export type Edit = {
   clips: Clip[];
   captions?: {
     words: Word[]; keywords?: string[]; maxWords?: number; maxChars?: number;
+    /** exact-word replacements applied when loading the transcript (spelling fixes, English terms) */
+    replace?: Record<string, string>;
     /** "plate" = Night plate behind the text (use over bright or white areas); default soft shadow */
     style?: "shadow" | "plate";
     /** move captions for a stretch of the OUTPUT timeline, e.g. below a screen card. top = fraction of height */
@@ -63,8 +80,9 @@ export const editDuration = (e: Edit) => {
 export const sourceToOutput = (clips: Clip[], t: number): number | null => {
   let offset = 0;
   for (const c of clips) {
-    if (t >= c.in && t < c.out) return offset + (t - c.in);
-    offset += c.out - c.in;
+    const { in: a, out: b } = span(c);
+    if (t >= a && t < b) return offset + (t - a);
+    offset += b - a;
   }
   return null;
 };
@@ -90,7 +108,7 @@ export const groupCaptions = (words: Word[], clips: Clip[], maxWords = 3, maxCha
   const mapped = words
     .map((w) => {
       const mid = (w.start + w.end) / 2;
-      const clip = clips.find((c) => mid >= c.in && mid < c.out);
+      const clip = clips.map(span).find((c) => mid >= c.in && mid < c.out);
       if (!clip) return null;
       const s = sourceToOutput(clips, Math.max(w.start, clip.in))!;
       const e = sourceToOutput(clips, Math.min(w.end, clip.out - 0.001)) ?? s + 0.2;

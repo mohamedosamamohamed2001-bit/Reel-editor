@@ -1,4 +1,4 @@
-import { OffthreadVideo, interpolate, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
+import { Img, OffthreadVideo, interpolate, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
 import { Clip } from "../lib/edit";
 
 /**
@@ -22,6 +22,15 @@ export const FramedVideo: React.FC<{ clip: Clip; durationInFrames: number; start
   const dh = clip.srcH * s;
   const left = Math.min(0, Math.max(W - dw, W / 2 - (clip.focusX ?? 0.5) * dw));
   const top = Math.min(0, Math.max(H - dh, H / 2 - (clip.focusY ?? 0.5) * dh));
+  if (clip.frames) {
+    // image-sequence plate: shown 1:1 (OffthreadVideo extraction measured ~7x softer)
+    const idx = Math.min(clip.frames.count, Math.max(1, startFrom + frame + 1));
+    return (
+      <div style={{ position: "absolute", inset: 0, overflow: "hidden" }}>
+        <Img src={staticFile(`${clip.src}/${String(idx).padStart(5, "0")}.jpg`)} style={{ position: "absolute", left, top, width: dw, height: dh, maxWidth: "none" }} />
+      </div>
+    );
+  }
   return (
     <div style={{ position: "absolute", inset: 0, overflow: "hidden" }}>
       <OffthreadVideo src={url} startFrom={startFrom} volume={volume} style={{ position: "absolute", left, top, width: dw, height: dh, maxWidth: "none" }} />

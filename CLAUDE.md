@@ -47,8 +47,10 @@ projects/<name>/  one folder per video: project.json, edit.json, analysis/, docu
   Edit format: `projects/_template/edit.example.json` and `studio/src/lib/edit.ts`.
   **Audio is not rendered by Remotion** (`--muted`): the dialogue is cut from the sources with FFmpeg (sample-accurate,
   8 ms fades only at real cuts), gained to −14 LUFS with a peak limiter, re-measured, and muxed once as AAC.
-  Clip options: `zoom` (number or [from,to] slow push), `focusX/focusY` (0–1). Overlay `screenCard` shows an app
-  screen recording with `region` crop + re-timed `segments`. Caption options: `style: "plate"`, `zones` (move captions).
+  Clip options: `zoom` (number or [from,to] slow push), `focusX/focusY` (0–1). Top-level `plates` {grade, sharpen}
+  pre-frames footage with FFmpeg (always use it for camera footage). Overlay `screenCard` shows an app screen recording
+  with `region` crop, re-timed `segments`, `plate: true`, `taps` and speech-synced `highlights`. Caption options:
+  `style: "plate"`, `zones` (move captions), `replace` (exact-word fixes, English terms).
   Speed: 4K source, 24 s reel: preview about 3 min, full 1080×1920 about 6–7 min on 4 CPUs.
 - `tools/qa_render.py VIDEO [--expect WxH --fps N --lufs -14 --tp -1]` reports specs, black and frozen frames, loudness,
   true peak, clipping and silences, and makes a contact sheet. Writes `<video>_qa/qa.json`. Exit code 1 on a hard failure.
@@ -82,6 +84,15 @@ projects/<name>/  one folder per video: project.json, edit.json, analysis/, docu
 - Use the `large-v3` model with `--prompt` vocabulary for final captions (medium misheard "OSM" as "usm").
 - A white shirt or bright background needs `captions.style: "plate"` (Night plate). Shadow-only captions are unreadable there.
 - No licensed music/SFX library is available. Recommend adding music from Instagram's library at upload.
+- 2026-10-12 (v2): **never show footage through `<OffthreadVideo>`.** Its frame extraction measured ~7x softer
+  (face Laplacian variance 311 → 44 on the same frame; `<Video>` 151, `<Img>` 343). Footage goes through `plates`:
+  FFmpeg crop → grade → Lanczos → CAS into JPEG q1 4:4:4 frame sequences, shown with `<Img>` (FramedVideo/ScreenCard
+  handle `frames`). Plates start on the exact source frame (`-ss (first-0.25)/fps`, `-frames:v`). A plain `-ss` was 1 frame late.
+  Remotion frames are PNG (JPEG q80 softened text). Caption timing maps through `clip.orig` (source in/out) when plated.
+- English terms in Arabic captions stay English (`captions.replace`, e.g. الميثود → Method, الوركاوت → Workout), are set in Inter,
+  and each English run is one isolated LTR span (per-word LTR spans reversed "Calories Calculator").
+- Grade used on the first studio set (bright, cool-lit, white shirt): `colorbalance=rs=-0.02:bs=0.025:rm=-0.05:bm=0.015:rh=0.02:gh=0.005:bh=-0.025`
+  + gentle S-curve + `cas=strength=0.4`. Warming highlights fixes the shirt. Pulling midtone red keeps the skin from going pink.
 
 ## Setup in a fresh container
 `python3 -m venv .venv && .venv/bin/pip install -r requirements.txt` and `cd studio && npm ci`.

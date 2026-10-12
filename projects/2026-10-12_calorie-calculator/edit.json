@@ -1,5 +1,5 @@
 {
-  "title": "OSM — Try it first: free week + Calorie Calculator",
+  "title": "OSM — Try it first: free week + Calorie Calculator (v2)",
   "fps": 29.97,
   "width": 1080,
   "height": 1920,
@@ -56,10 +56,10 @@
     }
   ],
   "captions": {
-    "wordsFile": "work/captions.words.json",
+    "wordsFile": "work/large/main.words.json",
     "keywords": [
       "OSM",
-      "الميثود"
+      "Method"
     ],
     "maxWords": 3,
     "maxChars": 20,
@@ -70,7 +70,17 @@
         "dur": 8.28,
         "top": 0.75
       }
-    ]
+    ],
+    "replace": {
+      "الميثود": "Method",
+      "الوركاوت": "Workout",
+      "تتحافظ": "تحافظ",
+      "واجرب": "وجرب",
+      "بنفسك": "بنفسك.",
+      "وزنك": "وزنك.",
+      "قرر": "قرر.",
+      "هتساعدك": "هتساعدك."
+    }
   },
   "overlays": [
     {
@@ -103,9 +113,49 @@
           "dur": 1.18
         },
         {
-          "in": 11.55,
-          "rate": 0.06,
+          "in": 11.56,
+          "rate": 0.003,
           "dur": 3.0
+        }
+      ],
+      "plate": true,
+      "taps": [
+        {
+          "at": 0.72,
+          "x": 0.617,
+          "y": 0.838
+        }
+      ],
+      "highlights": [
+        {
+          "at": 5.68,
+          "dur": 0.62,
+          "box": {
+            "x": 0.038,
+            "y": 0.664,
+            "w": 0.924,
+            "h": 0.252
+          }
+        },
+        {
+          "at": 6.3,
+          "dur": 0.82,
+          "box": {
+            "x": 0.038,
+            "y": 0.0965,
+            "w": 0.924,
+            "h": 0.253
+          }
+        },
+        {
+          "at": 7.12,
+          "dur": 1.0,
+          "box": {
+            "x": 0.038,
+            "y": 0.382,
+            "w": 0.924,
+            "h": 0.252
+          }
         }
       ]
     },
@@ -116,5 +166,9 @@
       "cta": "ابدأ مع OSM"
     }
   ],
-  "tail": 2.5
+  "tail": 2.5,
+  "plates": {
+    "grade": "colorbalance=rs=-0.02:bs=0.025:rm=-0.05:bm=0.015:rh=0.02:gh=0.005:bh=-0.025,curves=all='0/0 0.25/0.235 0.5/0.5 0.75/0.765 1/1'",
+    "sharpen": "cas=strength=0.4"
+  }
 }

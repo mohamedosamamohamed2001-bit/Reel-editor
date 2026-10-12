@@ -27,7 +27,7 @@ const renderOverlay = (o: Overlay) => {
     case "endCard":
       return <EndCard dur={o.dur} cta={o.cta} signature={o.signature} />;
     case "screenCard":
-      return <ScreenCard src={o.src} dur={o.dur} segments={o.segments} region={o.region} width={o.width} top={o.top} srcW={o.srcW} srcH={o.srcH} />;
+      return <ScreenCard src={o.src} dur={o.dur} segments={o.segments} region={o.region} width={o.width} top={o.top} srcW={o.srcW} srcH={o.srcH} taps={o.taps} highlights={o.highlights} frames={o.frames} />;
   }
 };
 
