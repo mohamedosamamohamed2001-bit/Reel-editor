@@ -14,8 +14,8 @@ brand/            logo files (raster, from the brand book), OFL fonts, tokens.js
 docs/             brand video system + checklist; reference analysis, implementation plan/report
 studio/           Remotion compositor: src/components (brand overlays), src/lib (tokens, fonts, edit schema)
 tools/            transcribe, suggest_callouts, render_edit (render+master+QA), qa_render
-projects/<name>/  one folder per video: project.json, blueprint.md, transcript, edit source
-  source/ work/ renders/   ← git-ignored (footage and renders never go in git)
+projects/<name>/  one folder per video: project.json, edit.json, analysis/, documentation/
+  source/ work/ renders/ exports/   ← git-ignored (footage, transcripts' audio and renders never go in git)
 ```
 
 ## Environment facts (verified 2026-10-12, cloud container)
@@ -45,7 +45,11 @@ projects/<name>/  one folder per video: project.json, blueprint.md, transcript, 
 - `python3 tools/render_edit.py projects/<p> [--preview] [--frames A-B]` links media into `studio/public/media/<p>`
   (hard link, source untouched), renders `ReelEdit`, masters audio to −14 LUFS / −1 dBTP (two-pass loudnorm, video copied), then runs QA.
   Edit format: `projects/_template/edit.example.json` and `studio/src/lib/edit.ts`.
-  Speed: about 2 min for a 32 s preview (540×960) on 4 CPUs.
+  **Audio is not rendered by Remotion** (`--muted`): the dialogue is cut from the sources with FFmpeg (sample-accurate,
+  8 ms fades only at real cuts), gained to −14 LUFS with a peak limiter, re-measured, and muxed once as AAC.
+  Clip options: `zoom` (number or [from,to] slow push), `focusX/focusY` (0–1). Overlay `screenCard` shows an app
+  screen recording with `region` crop + re-timed `segments`. Caption options: `style: "plate"`, `zones` (move captions).
+  Speed: 4K source, 24 s reel: preview about 3 min, full 1080×1920 about 6–7 min on 4 CPUs.
 - `tools/qa_render.py VIDEO [--expect WxH --fps N --lufs -14 --tp -1]` reports specs, black and frozen frames, loudness,
   true peak, clipping and silences, and makes a contact sheet. Writes `<video>_qa/qa.json`. Exit code 1 on a hard failure.
   Tested against a synthetic clip with planted black, frozen and silent sections (all detected).
@@ -70,6 +74,14 @@ projects/<name>/  one folder per video: project.json, blueprint.md, transcript, 
 - Remotion does not follow file symlinks in `public/`, so media is hard-linked. (The `public/brand` *directory* symlink works.)
 - QA "frozen frames" over a static end card is expected. Treat it as INFO when it starts at the end card.
 - Deferred until real footage: colour-grade preset, dialogue cleanup chain, beat-synced montage cutting.
+- 2026-10-12 (first real edit, `projects/2026-10-12_calorie-calculator`): found and fixed in the pipeline:
+  Remotion ignores the AAC priming edit list, so dialogue was ~42 ms late → audio now built with FFmpeg (−5 ms measured).
+  loudnorm linear mode under-delivered (−15.2 LUFS) → measured gain + limiter loop. `-shortest` with video copy dropped
+  4 frames → removed. Caption words are mapped by midpoint (word edges drift past cut points), phrases <0.35 s are merged,
+  consecutive English words stay together, and phrases break at caption-zone edges.
+- Use the `large-v3` model with `--prompt` vocabulary for final captions (medium misheard "OSM" as "usm").
+- A white shirt or bright background needs `captions.style: "plate"` (Night plate). Shadow-only captions are unreadable there.
+- No licensed music/SFX library is available. Recommend adding music from Instagram's library at upload.
 
 ## Setup in a fresh container
 `python3 -m venv .venv && .venv/bin/pip install -r requirements.txt` and `cd studio && npm ci`.

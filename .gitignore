@@ -13,3 +13,4 @@ __pycache__/
 studio/public/media/
 studio/out/
 projects/*/renders/
+projects/*/exports/

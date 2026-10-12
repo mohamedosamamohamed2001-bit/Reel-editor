@@ -1,0 +1,120 @@
+{
+  "title": "OSM — Try it first: free week + Calorie Calculator",
+  "fps": 29.97,
+  "width": 1080,
+  "height": 1920,
+  "media": {
+    "main": "source/main.mp4",
+    "screen": "source/screen.mp4"
+  },
+  "clips": [
+    {
+      "src": "main",
+      "in": 0.0,
+      "out": 2.65,
+      "zoom": [
+        1.2,
+        1.27
+      ],
+      "focusX": 0.505,
+      "focusY": 0.34
+    },
+    {
+      "src": "main",
+      "in": 2.65,
+      "out": 6.06,
+      "zoom": 1.0,
+      "focusX": 0.48,
+      "focusY": 0.5
+    },
+    {
+      "src": "main",
+      "in": 10.58,
+      "out": 13.37,
+      "zoom": 1.18,
+      "focusX": 0.505,
+      "focusY": 0.36
+    },
+    {
+      "src": "main",
+      "in": 13.37,
+      "out": 21.65,
+      "zoom": 1.0,
+      "focusX": 0.48,
+      "focusY": 0.5
+    },
+    {
+      "src": "main",
+      "in": 21.65,
+      "out": 25.7,
+      "zoom": [
+        1.0,
+        1.08
+      ],
+      "focusX": 0.49,
+      "focusY": 0.42
+    }
+  ],
+  "captions": {
+    "wordsFile": "work/captions.words.json",
+    "keywords": [
+      "OSM",
+      "الميثود"
+    ],
+    "maxWords": 3,
+    "maxChars": 20,
+    "style": "plate",
+    "zones": [
+      {
+        "at": 8.85,
+        "dur": 8.28,
+        "top": 0.75
+      }
+    ]
+  },
+  "overlays": [
+    {
+      "type": "screenCard",
+      "at": 8.85,
+      "dur": 8.28,
+      "src": "screen",
+      "region": {
+        "x": 0,
+        "y": 0.055,
+        "w": 1,
+        "h": 0.545
+      },
+      "width": 920,
+      "top": 300,
+      "segments": [
+        {
+          "in": 0.5,
+          "rate": 1,
+          "dur": 2.1
+        },
+        {
+          "in": 3.9,
+          "rate": 3.1,
+          "dur": 2.0
+        },
+        {
+          "in": 10.3,
+          "rate": 1,
+          "dur": 1.18
+        },
+        {
+          "in": 11.55,
+          "rate": 0.06,
+          "dur": 3.0
+        }
+      ]
+    },
+    {
+      "type": "endCard",
+      "at": 21.18,
+      "dur": 2.5,
+      "cta": "ابدأ مع OSM"
+    }
+  ],
+  "tail": 2.5
+}

@@ -1,0 +1,11 @@
+{
+  "name": "2026-10-12_calorie-calculator",
+  "source": {
+    "main":   { "filename": "v3.mp4", "sha256": "ec5cf4def79dd4ce8f6f5e17587259c780a7e0476ccdb107c301475517f4a82a" },
+    "screen": { "filename": "ScreenRecording_10-10-2026_07-21-14_1.MP4", "sha256": "407b6cf8b8a638b101a12ad37a94e6a33bf55df7e7ccbb599a786f45e0aab340" }
+  },
+  "delivery": { "platform": "instagram_reel", "width": 1080, "height": 1920, "fps": 29.97, "lufs": -14, "true_peak": -1.0 },
+  "language": "ar-EG",
+  "captions": true,
+  "status": "delivered — captions pending Coach Osama's by-ear check"
+}

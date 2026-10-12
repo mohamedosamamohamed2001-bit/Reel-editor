@@ -2,7 +2,7 @@
 """Word-level transcription with faster-whisper (local, CPU, no paid API).
 
 Usage:
-    .venv/bin/python tools/transcribe.py VIDEO [--out DIR] [--model medium] [--lang ar]
+    .venv/bin/python tools/transcribe.py VIDEO [--out DIR] [--model medium] [--lang ar] [--prompt "OSM, ..."]
 
 Writes DIR/<stem>.words.json (segments + per-word start/end/probability) and DIR/<stem>.srt.
 The transcript is a draft: words with low probability are flagged and must be checked by
@@ -40,6 +40,7 @@ def main():
     ap.add_argument("--out", default=None)
     ap.add_argument("--model", default="medium")
     ap.add_argument("--lang", default=None, help="e.g. ar, en; omit to auto-detect")
+    ap.add_argument("--prompt", default=None, help="vocabulary hint, e.g. 'OSM, Calories Calculator, وزنك'")
     a = ap.parse_args()
 
     video = Path(a.video)
@@ -48,7 +49,7 @@ def main():
 
     model = WhisperModel(a.model, device="cpu", compute_type="int8")
     segments, info = model.transcribe(load_audio(video), language=a.lang, word_timestamps=True,
-                                      vad_filter=True, beam_size=5)
+                                      vad_filter=True, beam_size=5, initial_prompt=a.prompt)
     data = {"language": info.language, "language_probability": round(info.language_probability, 3),
             "model": a.model, "segments": []}
     for s in segments:

@@ -1,16 +1,18 @@
 import { useMemo } from "react";
-import { AbsoluteFill, OffthreadVideo, Sequence, staticFile, useVideoConfig } from "remotion";
+import { AbsoluteFill, Sequence, useVideoConfig } from "remotion";
 import { Callout } from "./components/Callout";
 import { Captions } from "./components/Captions";
 import { EndCard } from "./components/EndCard";
 import { ExerciseTitle } from "./components/ExerciseTitle";
+import { FramedVideo } from "./components/FramedVideo";
 import { InsetCard } from "./components/InsetCard";
+import { ScreenCard } from "./components/ScreenCard";
 import { SplitStack } from "./components/SplitStack";
 import { Edit, Overlay, groupCaptions } from "./lib/edit";
 import { useBrandFonts } from "./lib/fonts";
 import { color } from "./lib/theme";
 
-const layer: Record<Overlay["type"], number> = { split: 1, insetCard: 1, exerciseTitle: 3, callout: 3, endCard: 4 };
+const layer: Record<Overlay["type"], number> = { split: 1, insetCard: 1, screenCard: 1, exerciseTitle: 3, callout: 3, endCard: 4 };
 
 const renderOverlay = (o: Overlay) => {
   switch (o.type) {
@@ -24,6 +26,8 @@ const renderOverlay = (o: Overlay) => {
       return <SplitStack top={o.top} bottom={o.bottom} dur={o.dur} />;
     case "endCard":
       return <EndCard dur={o.dur} cta={o.cta} signature={o.signature} />;
+    case "screenCard":
+      return <ScreenCard src={o.src} dur={o.dur} segments={o.segments} region={o.region} width={o.width} top={o.top} srcW={o.srcW} srcH={o.srcH} />;
   }
 };
 
@@ -33,7 +37,12 @@ export const ReelEdit: React.FC<{ edit: Edit }> = ({ edit }) => {
   const f = (s: number) => Math.round(s * fps);
 
   const groups = useMemo(
-    () => (edit.captions ? groupCaptions(edit.captions.words, edit.clips, edit.captions.maxWords, edit.captions.maxChars) : []),
+    () => {
+      if (!edit.captions) return [];
+      // caption position changes at zone edges, and captions must not straddle a card's entrance
+      const breaks = (edit.captions.zones ?? []).flatMap((z) => [z.at, z.at + z.dur]);
+      return groupCaptions(edit.captions.words, edit.clips, edit.captions.maxWords, edit.captions.maxChars, breaks);
+    },
     [edit],
   );
 
@@ -44,7 +53,7 @@ export const ReelEdit: React.FC<{ edit: Edit }> = ({ edit }) => {
     cursor += len;
     return (
       <Sequence key={`clip${i}`} from={from} durationInFrames={len} name={`clip ${i + 1}`}>
-        <OffthreadVideo src={staticFile(c.src)} startFrom={f(c.in)} volume={c.volume ?? 1} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+        <FramedVideo clip={c} durationInFrames={len} startFrom={f(c.in)} />
       </Sequence>
     );
   });
@@ -60,7 +69,7 @@ export const ReelEdit: React.FC<{ edit: Edit }> = ({ edit }) => {
     <AbsoluteFill style={{ background: color.night }}>
       {clipSeqs}
       {byLayer(1)}
-      {edit.captions ? <Captions groups={groups} keywords={edit.captions.keywords} /> : null}
+      {edit.captions ? <Captions groups={groups} keywords={edit.captions.keywords} style={edit.captions.style} zones={edit.captions.zones} /> : null}
       {byLayer(3)}
       {byLayer(4)}
     </AbsoluteFill>
