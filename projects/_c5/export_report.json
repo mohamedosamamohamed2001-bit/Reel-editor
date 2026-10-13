@@ -1,0 +1,105 @@
+[
+ {
+  "file": "projects/2026-10-13_c5-comeback/exports/OSM_01_back-to-training.mp4",
+  "frames": 693,
+  "expected_frames": 693,
+  "trimmed": false,
+  "video": "h264 1080x1920 30/1",
+  "audio": "aac 48000 Hz",
+  "duration": 23.1,
+  "size_mb": 19.5,
+  "decodes": true
+ },
+ {
+  "file": "projects/2026-10-13_c5-comeback/exports/OSM_01_back-to-training_no-music.mp4",
+  "frames": 693,
+  "expected_frames": 693,
+  "trimmed": false,
+  "video": "h264 1080x1920 30/1",
+  "audio": "aac 48000 Hz",
+  "duration": 23.1,
+  "size_mb": 19.5,
+  "decodes": true
+ },
+ {
+  "file": "projects/2026-10-13_c5-stretch/exports/OSM_02_stretch-right.mp4",
+  "frames": 804,
+  "expected_frames": 804,
+  "trimmed": false,
+  "video": "h264 1080x1920 30/1",
+  "audio": "aac 48000 Hz",
+  "duration": 26.8,
+  "size_mb": 22.5,
+  "decodes": true
+ },
+ {
+  "file": "projects/2026-10-13_c5-stretch/exports/OSM_02_stretch-right_no-music.mp4",
+  "frames": 804,
+  "expected_frames": 804,
+  "trimmed": false,
+  "video": "h264 1080x1920 30/1",
+  "audio": "aac 48000 Hz",
+  "duration": 26.8,
+  "size_mb": 22.5,
+  "decodes": true
+ },
+ {
+  "file": "projects/2026-10-13_c5-whey/exports/OSM_03_whey-protein.mp4",
+  "frames": 1001,
+  "expected_frames": 1001,
+  "trimmed": false,
+  "video": "h264 1080x1920 30/1",
+  "audio": "aac 48000 Hz",
+  "duration": 33.367,
+  "size_mb": 22.3,
+  "decodes": true
+ },
+ {
+  "file": "projects/2026-10-13_c5-whey/exports/OSM_03_whey-protein_no-music.mp4",
+  "frames": 1001,
+  "expected_frames": 1001,
+  "trimmed": false,
+  "video": "h264 1080x1920 30/1",
+  "audio": "aac 48000 Hz",
+  "duration": 33.367,
+  "size_mb": 22.3,
+  "decodes": true
+ },
+ {
+  "file": "projects/2026-10-13_c5-crossfit/exports/OSM_04_crossfit-or-gym.mp4",
+  "frames": 1202,
+  "expected_frames": 1202,
+  "trimmed": false,
+  "video": "h264 1080x1920 30/1",
+  "audio": "aac 48000 Hz",
+  "duration": 40.067,
+  "size_mb": 40.4,
+  "decodes": true,
+  "send_copy": "projects/2026-10-13_c5-crossfit/exports/OSM_04_crossfit-or-gym_send.mp4",
+  "send_mb": 28.1
+ },
+ {
+  "file": "projects/2026-10-13_c5-crossfit/exports/OSM_04_crossfit-or-gym_no-music.mp4",
+  "frames": 1202,
+  "expected_frames": 1202,
+  "trimmed": false,
+  "video": "h264 1080x1920 30/1",
+  "audio": "aac 48000 Hz",
+  "duration": 40.067,
+  "size_mb": 40.4,
+  "decodes": true,
+  "send_copy": "projects/2026-10-13_c5-crossfit/exports/OSM_04_crossfit-or-gym_no-music_send.mp4",
+  "send_mb": 28.1
+ },
+ {
+  "file": "projects/2026-10-13_c5-legday/exports/OSM_05_leg-day.mp4",
+  "frames": 960,
+  "expected_frames": 960,
+  "trimmed": false,
+  "video": "h264 1080x1920 30/1",
+  "audio": "aac 48000 Hz",
+  "duration": 32.0,
+  "size_mb": 27.9,
+  "decodes": true
+ }
+]

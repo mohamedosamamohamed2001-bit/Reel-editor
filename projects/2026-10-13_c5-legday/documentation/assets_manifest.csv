@@ -1,0 +1,6 @@
+asset,source,creator,license,attribution_required,usage
+source/original.mp4 (sha256 48e88135d15f…),Google Drive 1GlQUI3mNHO9bjNO2i4AlYemKpPtq2xnx (LegDay 2.MP4),OSM / Coach Osama,owned by user,no,picture + voice (separated)
+music (work/music/music.wav),tools/music.py (synthesised in-house),OSM studio,no third-party material,no,soundtrack
+sound effects,tools/sfx.py (synthesised in-house),OSM studio,no third-party material,no,transitions and accents
+UVR-MDX-NET-Voc_FT.onnx,github.com/TRvlvr/model_repo,Ultimate Vocal Remover project,MIT,no,voice separation (processing only; nothing of it is in the video)
+brand/logo + brand/fonts,OSM brand book / google fonts,OSM; IBM; Rasmus Andersson; Jeremy Tribby,owned / SIL OFL 1.1,no,end card; type
