@@ -47,21 +47,22 @@ def _even(x):
     return max(2, int(round(x / 2)) * 2)
 
 
-def _plate(src, dst_dir, vf, extra_in, extra_out, fps):
+def _plate(src, dst_dir, vf, extra_in, extra_out, fps, complex_=False):
     """Write one plate as a JPEG image sequence (cached by a hash of source + filters + trim + fps).
 
     Image frames, not video: Remotion's <OffthreadVideo> frame extraction softened footage ~7x
     (face Laplacian variance 311 -> 44 on the same frame) while <Img> keeps it (JPEG q1 4:4:4).
     """
-    key = hashlib.sha1(json.dumps([str(src), os.path.getmtime(src), vf, extra_in, extra_out, fps, "jpg-q1-444"]).encode()).hexdigest()[:12]
+    key = hashlib.sha1(json.dumps([str(src), os.path.getmtime(src), vf, extra_in, extra_out, fps, "jpg-q1-444", complex_]).encode()).hexdigest()[:12]
     dst = dst_dir / f"{Path(src).stem}_{key}"
     done = dst / ".done"
     if not done.exists():
         if dst.exists():
             shutil.rmtree(dst)
         dst.mkdir(parents=True)
+        flt = ["-filter_complex", f"{vf},fps={fps},format=yuvj444p"] if complex_ else ["-vf", f"{vf},fps={fps},format=yuvj444p"]
         subprocess.run(["ffmpeg", "-y", "-v", "error", *extra_in, "-i", str(src), *extra_out, "-an",
-                        "-vf", f"{vf},fps={fps},format=yuvj444p", "-q:v", "1", "-qmin", "1",
+                        *flt, "-q:v", "1", "-qmin", "1",
                         str(dst / "%05d.jpg")], check=True)
         done.write_text("ok")
     return dst
@@ -71,8 +72,48 @@ def _count(d):
     return len(list(Path(d).glob("*.jpg")))
 
 
+def _cover_chain(covers, sw, sh, seek, idx):
+    """FFmpeg filter steps that bake cover plates over burned-in text (source pixel space, before the crop).
+
+    Each cover is a rounded Night plate over a heavily blurred copy of that region (frosted glass), so old text is
+    gone in every frame of the plate, including frames that later move through a whip/zoom transition.
+    kind "plate": rounded rect, Night 86 %. kind "fade": full-width band whose opacity ramps in from its top edge.
+    """
+    if not covers:
+        return "", ""
+    pre = f"[{idx}:v]split={len(covers) + 1}[cb0]" + "".join(f"[cp{i}]" for i in range(len(covers))) + ";"
+    steps = []
+    last = "cb0"
+    for i, cv in enumerate(covers):
+        x0, y0, x1, y1 = cv["box"]
+        X, Y = _even(x0 * sw), _even(y0 * sh)
+        Wd, Hd = _even((x1 - x0) * sw), _even((y1 - y0) * sh)
+        a, b = cv["at"] - seek, cv["at"] + cv["dur"] - seek
+        sigma = max(6, round(Hd * 0.18))
+        if cv.get("kind") == "fade":
+            alpha = f"255*clip(Y/(H*0.45),0,1)"
+            tint = 0.9
+        else:
+            r = max(6, round(min(Hd, Wd) * 0.28))
+            alpha = (f"255*clip({r}+0.5-hypot(max(max({r}-X,X-(W-1-{r})),0),max(max({r}-Y,Y-(H-1-{r})),0)),0,1)")
+            tint = cv.get("tint", 0.86)
+        steps.append(f"[cp{i}]crop={Wd}:{Hd}:{X}:{Y},gblur=sigma={sigma}:steps=2,"
+                     f"drawbox=x=0:y=0:w=iw:h=ih:color=0x0A0F16@{tint}:t=fill,format=yuva444p,"
+                     f"geq=lum='lum(X,Y)':cb='cb(X,Y)':cr='cr(X,Y)':a='{alpha}'[cv{i}];"
+                     f"[{last}][cv{i}]overlay={X}:{Y}:enable='between(t,{a:.3f},{b:.3f})'[co{i}]")
+        last = f"co{i}"
+    return pre + ";".join(steps), last
+
+
 def make_plates(edit, proj):
-    """Pre-frame every clip (and opted-in screen cards) with FFmpeg into image sequences. Mutates edit."""
+    """Pre-frame every clip (and opted-in screen cards) with FFmpeg into image sequences. Mutates edit.
+
+    Per clip (all optional): "speed" (2 = twice as fast; >1 blends source frames = natural motion blur, <1 blends
+    neighbours, never motion-interpolates, so nobody's body is warped), "freeze": true (hold the frame at `in`
+    for out-in seconds). Top-level "covers": [{"src", "at", "dur", "box": [x0,y0,x1,y1], "kind"}] in SOURCE time and
+    source-frame fractions are baked into the plates; captions.anchors (output time + output-frame box) are derived
+    so the new captions sit on the cover plates.
+    """
     cfg = edit.get("plates")
     if not cfg:
         return
@@ -82,6 +123,10 @@ def make_plates(edit, proj):
     grade = cfg.get("grade")
     sharpen = cfg.get("sharpen")
     scale = f"scale={W}:{H}:flags=lanczos+accurate_rnd+full_chroma_int"
+    fps = edit["fps"]
+    covers = edit.pop("covers", [])
+    anchors = []
+    out_frame = 0
     for i, c in enumerate(edit["clips"]):
         src = (proj / media[c["src"]]).resolve()
         sw, sh = dims(src)
@@ -92,19 +137,53 @@ def make_plates(edit, proj):
         cw, ch = _even(W / s), _even(H / s)
         x = min(max(c.get("focusX", 0.5) * sw - cw / 2, 0), sw - cw)
         y = min(max(c.get("focusY", 0.5) * sh - ch / 2, 0), sh - ch)
-        vf = ",".join(f for f in [f"crop={cw}:{ch}:{_even(x)}:{_even(y)}", grade, scale, sharpen] if f)
+        speed = c.get("speed", 1)
+        freeze = c.get("freeze", False)
+        span = c["out"] - c["in"]
+        n_out = round(span * fps) if speed == 1 or freeze else round(span / speed * fps)
         # frame-exact trim: start ON the frame the timeline shows at `in` (floor), not the next one
-        # (a plain -ss picks the first frame AFTER `in`: measured 1 frame late after the cut), and take
-        # exactly as many frames as the clip lasts on the timeline
-        fps = edit["fps"]
-        first = int(c["in"] * fps + 1e-6)
-        n = round((c["out"] - c["in"]) * fps) + 1
-        plate = _plate(src, out_dir, vf, ["-ss", f"{(first - 0.25) / fps:.5f}" if first else "0"], ["-frames:v", str(n)], fps)
+        # (a plain -ss picks the first frame AFTER `in`: measured 1 frame late after the cut)
+        hold = c.get("hold")  # show the still frame at `hold` (source s) for this clip while its dialogue plays on
+        first = int((hold if hold is not None else c["in"]) * fps + 1e-6)
+        seek = (first - 0.25) / fps if first else 0
+        if hold is not None:
+            mine = [cv for cv in covers if cv["src"] == c["src"] and cv["at"] <= hold < cv["at"] + cv["dur"]]
+        else:
+            mine = [cv for cv in covers if cv["src"] == c["src"] and cv["at"] < c["out"] and cv["at"] + cv["dur"] > c["in"]]
+        pre, last = _cover_chain(mine, sw, sh, seek, 0)
+        motion = []
+        if freeze or hold is not None:
+            motion = ["trim=end_frame=1", f"loop=loop={n_out + 1}:size=1:start=0", f"setpts=N/{fps}/TB"]
+        elif speed > 1:
+            k = max(2, min(6, round(speed)))
+            motion = [f"tmix=frames={k}", f"setpts=(PTS-STARTPTS)/{speed}"]
+        elif speed < 1:
+            motion = [f"setpts=(PTS-STARTPTS)/{speed}", f"framerate=fps={fps}:interp_start=0:interp_end=255:scene=100"]
+        chain = ",".join(f for f in [f"crop={cw}:{ch}:{_even(x)}:{_even(y)}", grade, *motion, f"fps={fps}", scale, sharpen] if f)
+        vf = (pre + f";[{last}]" + chain) if pre else chain
+        plate = _plate(src, out_dir, vf, ["-ss", f"{seek:.5f}"] if first else [], ["-frames:v", str(n_out + 1)], fps,
+                       complex_=bool(pre))
         key = f"plate{i}"
         media[key] = str(plate.relative_to(proj))
+        # caption anchors: cover boxes mapped into the output frame (zoom ramp taken at the clip's midpoint)
+        zm = (1 + z1 / z0) / 2 if z1 != z0 else 1
+        for cv in mine:
+            bx = [((cv["box"][0] * sw - x) / cw - 0.5) * zm + 0.5, ((cv["box"][1] * sh - y) / ch - 0.5) * zm + 0.5,
+                  ((cv["box"][2] * sw - x) / cw - 0.5) * zm + 0.5, ((cv["box"][3] * sh - y) / ch - 0.5) * zm + 0.5]
+            t0 = 0 if hold is not None else max(cv["at"], c["in"]) - c["in"]
+            t1 = span if hold is not None else min(cv["at"] + cv["dur"], c["out"]) - c["in"]
+            if speed != 1 and not freeze:
+                t0, t1 = t0 / speed, t1 / speed
+            anchors.append({"at": round(out_frame / fps + t0, 4), "dur": round(t1 - t0, 4), "box": [round(v, 4) for v in bx]})
+        out_frame += n_out
         c.update({"orig": {"in": c["in"], "out": c["out"]},
-                  "src": key, "in": 0, "out": round(c["out"] - c["in"], 3), "focusX": 0.5, "focusY": 0.5,
+                  "src": key, "in": 0, "out": round(span, 3), "focusX": 0.5, "focusY": 0.5,
                   "zoom": [1, round(z1 / z0, 4)] if z1 != z0 else 1})
+        if freeze:
+            c["speed"] = 1
+        c.pop("hold", None)
+    if anchors and edit.get("captions") is not None:
+        edit["captions"]["anchors"] = anchors
     for j, o in enumerate(edit.get("overlays", [])):
         if o.get("type") == "screenCard" and o.get("plate"):
             src = (proj / media[o["src"]]).resolve()
@@ -213,7 +292,7 @@ def resolve(edit, proj, name):
     return edit
 
 
-def build_dialogue(clips, total, dst):
+def build_dialogue(clips, total, dst, fx=None, lufs=None):
     """Cut the dialogue straight from the sources with FFmpeg (sample-accurate, honours the AAC edit list).
 
     Remotion's audio path ignores the source's AAC priming edit list, which put the dialogue ~42 ms behind the
@@ -225,7 +304,8 @@ def build_dialogue(clips, total, dst):
     merged = []
     for c in clips:
         m = merged[-1] if merged else None
-        if m and m["path"] == c["path"] and abs(m["out"] - c["in"]) < 1e-6 and m["volume"] == c["volume"]:
+        if (m and m["path"] == c["path"] and abs(m["out"] - c["in"]) < 1e-6 and m["volume"] == c["volume"]
+                and m.get("silent") == c.get("silent") and not c.get("silent")):
             m["out"] = c["out"]
         else:
             merged.append(dict(c))
@@ -236,16 +316,28 @@ def build_dialogue(clips, total, dst):
         inputs += ["-i", p]
     for i, c in enumerate(clips):
         d = c["out"] - c["in"]
+        if c.get("silent"):  # speed-ramped or frozen picture: no dialogue there (music + SFX carry it)
+            parts.append(f"anullsrc=r=48000:cl=stereo,atrim=duration={c['len']:.5f}[a{i}]")
+            continue
         parts.append(f"[{paths.index(c['path'])}:a:0]atrim=start={c['in']}:end={c['out']},asetpts=PTS-STARTPTS,"
                      f"aresample=48000,aformat=channel_layouts=stereo,volume={c['volume']},"
                      f"afade=t=in:d=0.008,afade=t=out:st={max(0, d - 0.008):.3f}:d=0.008[a{i}]")
     graph = ";".join(parts) + ";" + "".join(f"[a{i}]" for i in range(len(clips))) + \
-        f"concat=n={len(clips)}:v=0:a=1,apad=whole_dur={total:.3f}[out]"
+        f"concat=n={len(clips)}:v=0:a=1{',' + fx if fx else ''},apad=whole_dur={total:.3f}[out]"
     subprocess.run(["ffmpeg", "-y", "-v", "error", *inputs, "-filter_complex", graph, "-map", "[out]",
                     "-c:a", "pcm_s24le", str(dst)], check=True)
+    if lufs is not None:
+        # dialogue to a fixed loudness BEFORE the mix, so music/SFX gains mean the same thing in every video
+        # (voice stems separated from different finished mixes came out between -10 and -17 LUFS)
+        i, _ = measure(dst)
+        if i > -50:
+            tmp = Path(dst).with_suffix(".norm.wav")
+            subprocess.run(["ffmpeg", "-y", "-v", "error", "-i", str(dst), "-af", f"volume={lufs - i:.2f}dB",
+                            "-c:a", "pcm_s24le", str(tmp)], check=True)
+            tmp.replace(dst)
 
 
-def build_mix(dialogue, cues, total, fps, dst):
+def build_mix(dialogue, cues, total, fps, dst, music=None):
     """Dialogue + synthesised SFX bus (tools/sfx.py). The voice always wins:
     SFX bus is high-passed at 40 Hz, dipped -4 dB around 2.5 kHz (speech presence), and sidechain-ducked
     by the dialogue before the two are summed. Returns the cue placements (frame-snapped times)."""
@@ -254,12 +346,26 @@ def build_mix(dialogue, cues, total, fps, dst):
     bus, placed = sfxkit.render_cues(cues, total, fps)
     sfx_wav = Path(dst).with_suffix(".sfx.wav")
     sfxkit.write_wav(sfx_wav, bus)
+    inputs = ["-i", str(dialogue), "-i", str(sfx_wav)]
     graph = ("[1:a]aresample=48000,aformat=channel_layouts=stereo,highpass=f=40,"
-             "equalizer=f=2500:t=q:w=1.2:g=-4[s];"
-             "[0:a]asplit=2[d][dk];"
-             "[s][dk]sidechaincompress=threshold=0.03:ratio=2:attack=10:release=180[sd];"
-             "[d][sd]amix=inputs=2:normalize=0:duration=first[out]")
-    subprocess.run(["ffmpeg", "-y", "-v", "error", "-i", str(dialogue), "-i", str(sfx_wav), "-filter_complex", graph,
+             "equalizer=f=2500:t=q:w=1.2:g=-4[s];")
+    if music:
+        # music bed (tools/music.py): voice-band dip, then ducked hard by the dialogue (4:1) so the voice always
+        # wins; between lines it comes back up. Gain is the bed level relative to the -14 LUFS master.
+        inputs += ["-i", str(music["path"])]
+        graph += ("[0:a]asplit=3[d][dk][dk2];"
+                  f"[2:a]aresample=48000,aformat=channel_layouts=stereo,atrim=duration={total:.3f},apad=whole_dur={total:.3f},"
+                  f"highpass=f=30,equalizer=f=2200:t=q:w=1.0:g={music.get('voice_dip_db', -4)},"
+                  f"volume={music.get('gain_db', -8)}dB[m];"
+                  f"[m][dk2]sidechaincompress=threshold={music.get('duck_threshold', 0.02)}:ratio={music.get('duck_ratio', 4)}:"
+                  "attack=15:release=320:knee=4[md];"
+                  "[s][dk]sidechaincompress=threshold=0.03:ratio=2:attack=10:release=180[sd];"
+                  "[d][sd][md]amix=inputs=3:normalize=0:duration=first[out]")
+    else:
+        graph += ("[0:a]asplit=2[d][dk];"
+                  "[s][dk]sidechaincompress=threshold=0.03:ratio=2:attack=10:release=180[sd];"
+                  "[d][sd]amix=inputs=2:normalize=0:duration=first[out]")
+    subprocess.run(["ffmpeg", "-y", "-v", "error", *inputs, "-filter_complex", graph,
                     "-map", "[out]", "-c:a", "pcm_s24le", str(dst)], check=True)
     sfx_wav.unlink()
     return placed
@@ -310,14 +416,31 @@ def main():
     ap.add_argument("--no-master", action="store_true")
     ap.add_argument("--lufs", type=float, default=-14.0)
     ap.add_argument("--tp", type=float, default=-1.0)
+    ap.add_argument("--alt-nomusic", action="store_true", help="also write <name>_nomusic.mp4 (dialogue + SFX only)")
     a = ap.parse_args()
 
     proj = Path(a.project).resolve()
     name = proj.name
     edit = json.loads((proj / "edit.json").read_text())
     # dialogue always comes from the ORIGINAL sources and cut points, before any plate rewriting
-    audio_clips = [{"path": str((proj / edit["media"][c["src"]]).resolve()), "in": c["in"], "out": c["out"],
-                    "volume": c.get("volume", 1)} for c in edit["clips"]]
+    # "audio": {"main": "work/stems/x.vocals.wav"} swaps a media key's sound for another file (e.g. the dialogue
+    # stem separated from a finished mix by tools/separate.py)
+    amap = edit.pop("audio", {})
+    fps = edit["fps"]
+    audio_clips = []
+    for c in edit["clips"]:
+        sp = c.get("speed", 1)
+        silent = c.get("freeze", False) or sp != 1
+        ln = (c["out"] - c["in"]) if c.get("freeze") else (c["out"] - c["in"]) / sp
+        audio_clips.append({"path": str((proj / amap.get(c["src"], edit["media"][c["src"]])).resolve()), "in": c["in"],
+                            "out": c["out"], "volume": c.get("volume", 1), "silent": silent,
+                            # exact timeline length in frames, so audio and picture can't drift apart
+                            "len": (round(ln * fps) if sp != 1 and not c.get("freeze") else round(c["out"] * fps) - round(c["in"] * fps)) / fps})
+    dialogue_fx = edit.pop("dialogueFx", None)
+    dialogue_lufs = edit.pop("dialogueLufs", None)
+    music = edit.pop("music", None)
+    if music:
+        music["path"] = str((proj / music["src"]).resolve())
     make_plates(edit, proj)
     edit_sfx = edit.pop("sfx", None)
     edit = resolve(edit, proj, name)
@@ -343,15 +466,22 @@ def main():
     if a.frames:
         print("note: --frames renders a range; dialogue is built for the full cut list", flush=True)
     dialogue = renders / f"{name}{suffix}_dialogue.wav"
-    build_dialogue(audio_clips, total, dialogue)
+    build_dialogue(audio_clips, total, dialogue, dialogue_fx, dialogue_lufs)
     cues = (edit_sfx or {}).get("cues", [])
-    if cues:
+    alt = None
+    if a.alt_nomusic and music:
+        alt = renders / f"{name}{suffix}_nomusic_mix.wav"
+        build_mix(dialogue, cues, total, edit["fps"], alt)
+    if cues or music:
         mixed = renders / f"{name}{suffix}_mix.wav"
-        placed = build_mix(dialogue, cues, total, edit["fps"], mixed)
-        print(f"sfx: {len(placed)} cues placed on frame times", flush=True)
+        placed = build_mix(dialogue, cues, total, edit["fps"], mixed, music)
+        print(f"sfx: {len(placed)} cues placed on frame times" + (", music bed mixed" if music else ""), flush=True)
         (renders / "_sfx_placed.json").write_text(json.dumps(placed))
         dialogue.unlink()
         dialogue = mixed
+    if alt:
+        master_audio(alt, renders / f"{name}{suffix}_nomusic.mp4", a.lufs, a.tp, video=raw)
+        alt.unlink()
     if a.no_master:
         subprocess.run(["ffmpeg", "-y", "-v", "error", "-i", str(raw), "-i", str(dialogue), "-map", "0:v:0", "-map", "1:a:0",
                         "-c:v", "copy", "-c:a", "aac", "-b:a", "256k", "-movflags", "+faststart", str(final)], check=True)

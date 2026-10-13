@@ -1,0 +1,621 @@
+{
+ "title": "OSM: whey protein, worth it?",
+ "fps": 30,
+ "width": 1080,
+ "height": 1920,
+ "media": {
+  "main": "source/original.mp4"
+ },
+ "audio": {
+  "main": "work/stems/original.vocals.wav"
+ },
+ "dialogueFx": "highpass=f=70,acompressor=threshold=0.1:ratio=2.5:attack=8:release=120:makeup=1.5",
+ "dialogueLufs": -16.0,
+ "plates": {
+  "grade": "eq=contrast=1.05:saturation=0.95:gamma=0.99,colorbalance=rs=-0.015:bs=0.02:rm=-0.01:bm=0.005:rh=0.012:gh=0.004:bh=-0.012,curves=master='0/0 0.22/0.2 0.78/0.8 1/1',vignette=angle=PI/7",
+  "sharpen": "cas=strength=0.22"
+ },
+ "covers": [
+  {
+   "src": "main",
+   "at": 0,
+   "dur": 0.98,
+   "box": [
+    0.1511,
+    0.6025,
+    0.8517,
+    0.7303
+   ]
+  },
+  {
+   "src": "main",
+   "at": 0.98,
+   "dur": 0.64,
+   "box": [
+    0.1639,
+    0.6198,
+    0.8639,
+    0.7318
+   ]
+  },
+  {
+   "src": "main",
+   "at": 1.48,
+   "dur": 0.44,
+   "box": [
+    0.1403,
+    0.6711,
+    0.8403,
+    0.7351
+   ]
+  },
+  {
+   "src": "main",
+   "at": 1.78,
+   "dur": 1.0,
+   "box": [
+    0.1122,
+    0.6245,
+    0.8822,
+    0.7365
+   ]
+  },
+  {
+   "src": "main",
+   "at": 2.78,
+   "dur": 0.44,
+   "box": [
+    0.1122,
+    0.6245,
+    0.8822,
+    0.7365
+   ]
+  },
+  {
+   "src": "main",
+   "at": 3.29,
+   "dur": 27.92,
+   "box": [
+    0.07,
+    0.668,
+    0.93,
+    0.744
+   ]
+  },
+  {
+   "src": "main",
+   "at": 13.08,
+   "dur": 2.56,
+   "box": [
+    0.02,
+    0.728,
+    0.98,
+    0.878
+   ]
+  }
+ ],
+ "clips": [
+  {
+   "src": "main",
+   "in": 0.0,
+   "out": 2.97,
+   "zoom": [
+    1.0,
+    1.06
+   ],
+   "focusY": 0.4
+  },
+  {
+   "src": "main",
+   "in": 2.97,
+   "out": 3.55,
+   "zoom": 1.0
+  },
+  {
+   "src": "main",
+   "in": 3.55,
+   "out": 10.2,
+   "zoom": [
+    1.0,
+    1.04
+   ],
+   "settle": 1.08
+  },
+  {
+   "src": "main",
+   "in": 10.2,
+   "out": 18.17,
+   "zoom": [
+    1.1,
+    1.14
+   ],
+   "focusY": 1.0,
+   "tin": {
+    "type": "whip",
+    "dir": "right"
+   }
+  },
+  {
+   "src": "main",
+   "in": 18.17,
+   "out": 19.5,
+   "zoom": 1.2,
+   "focusY": 0.36,
+   "tin": {
+    "type": "zoom",
+    "flash": true
+   }
+  },
+  {
+   "src": "main",
+   "in": 19.5,
+   "out": 23.18,
+   "zoom": [
+    1.0,
+    1.04
+   ],
+   "settle": 1.06
+  },
+  {
+   "src": "main",
+   "in": 23.18,
+   "out": 27.3,
+   "zoom": [
+    1.12,
+    1.16
+   ],
+   "focusY": 0.42,
+   "settle": 1.06
+  },
+  {
+   "src": "main",
+   "in": 27.3,
+   "out": 30.95,
+   "zoom": [
+    1.0,
+    1.06
+   ],
+   "tin": {
+    "type": "zoom",
+    "flash": true
+   }
+  }
+ ],
+ "captions": {
+  "wordsFile": "work/tx/aligned.words.json",
+  "style": "plate",
+  "karaoke": true,
+  "maxWords": 3,
+  "maxChars": 22,
+  "keywords": [
+   "فلوسك",
+   "البروتين",
+   "العضلات",
+   "supplement",
+   "ضيق",
+   "الكومنت"
+  ]
+ },
+ "overlays": [
+  {
+   "type": "kineticTitle",
+   "at": 0.05,
+   "dur": 2.916666666666667,
+   "eyebrow": "OSM · SUPPLEMENTS",
+   "lines": [
+    {
+     "text": "WORTH YOUR"
+    },
+    {
+     "text": "MONEY?",
+     "accent": true
+    }
+   ],
+   "top": 0.33,
+   "tilt": true
+  },
+  {
+   "type": "kineticTitle",
+   "at": 2.966666666666667,
+   "dur": 0.5666666666666664,
+   "backdrop": true,
+   "eyebrow": "OSM · NUTRITION",
+   "lines": [
+    {
+     "text": "WHEY"
+    },
+    {
+     "text": "PROTEIN",
+     "accent": true,
+     "size": 180
+    }
+   ],
+   "top": 0.3
+  },
+  {
+   "type": "trackedLabel",
+   "at": 3.983,
+   "dur": 2.6,
+   "text": "WHEY PROTEIN",
+   "sub": "SUPPLEMENT",
+   "keys": [
+    {
+     "t": 0.0,
+     "x": 0.5368,
+     "y": 0.8707
+    },
+    {
+     "t": 0.1,
+     "x": 0.5368,
+     "y": 0.8707
+    },
+    {
+     "t": 0.2,
+     "x": 0.5368,
+     "y": 0.8707
+    },
+    {
+     "t": 0.3,
+     "x": 0.5368,
+     "y": 0.8707
+    },
+    {
+     "t": 0.4,
+     "x": 0.5368,
+     "y": 0.8707
+    },
+    {
+     "t": 0.5,
+     "x": 0.5368,
+     "y": 0.8707
+    },
+    {
+     "t": 0.6,
+     "x": 0.5368,
+     "y": 0.8707
+    },
+    {
+     "t": 0.7,
+     "x": 0.5368,
+     "y": 0.8707
+    },
+    {
+     "t": 0.8,
+     "x": 0.5368,
+     "y": 0.8707
+    },
+    {
+     "t": 0.9,
+     "x": 0.5368,
+     "y": 0.8707
+    },
+    {
+     "t": 1.0,
+     "x": 0.5368,
+     "y": 0.8707
+    },
+    {
+     "t": 1.1,
+     "x": 0.5368,
+     "y": 0.8707
+    },
+    {
+     "t": 1.2,
+     "x": 0.5368,
+     "y": 0.8707
+    },
+    {
+     "t": 1.3,
+     "x": 0.5368,
+     "y": 0.8707
+    },
+    {
+     "t": 1.4,
+     "x": 0.5368,
+     "y": 0.8707
+    },
+    {
+     "t": 1.5,
+     "x": 0.5368,
+     "y": 0.8707
+    },
+    {
+     "t": 1.6,
+     "x": 0.5368,
+     "y": 0.8707
+    },
+    {
+     "t": 1.7,
+     "x": 0.5368,
+     "y": 0.8707
+    },
+    {
+     "t": 1.8,
+     "x": 0.5368,
+     "y": 0.8707
+    },
+    {
+     "t": 1.9,
+     "x": 0.5368,
+     "y": 0.8707
+    },
+    {
+     "t": 2.0,
+     "x": 0.5368,
+     "y": 0.8707
+    },
+    {
+     "t": 2.1,
+     "x": 0.5368,
+     "y": 0.8707
+    },
+    {
+     "t": 2.2,
+     "x": 0.5368,
+     "y": 0.8707
+    },
+    {
+     "t": 2.3,
+     "x": 0.5368,
+     "y": 0.8707
+    },
+    {
+     "t": 2.4,
+     "x": 0.5368,
+     "y": 0.8707
+    },
+    {
+     "t": 2.5,
+     "x": 0.5368,
+     "y": 0.8707
+    },
+    {
+     "t": 2.6,
+     "x": 0.5368,
+     "y": 0.8707
+    }
+   ],
+   "side": "right"
+  },
+  {
+   "type": "checklist",
+   "at": 7.983333333333333,
+   "dur": 2.216666666666666,
+   "top": 0.2,
+   "items": [
+    {
+     "at": 0.040000000000000036,
+     "text": "كتلة العضلات"
+    },
+    {
+     "at": 1.7000000000000002,
+     "text": "الاستشفاء"
+    }
+   ]
+  },
+  {
+   "type": "checklist",
+   "at": 12.92,
+   "dur": 2.6999999999999997,
+   "top": 0.755,
+   "row": true,
+   "items": [
+    {
+     "at": 0.1,
+     "text": "البيض"
+    },
+    {
+     "at": 0.68,
+     "text": "اللحمة"
+    },
+    {
+     "at": 1.3200000000000007,
+     "text": "السمك"
+    }
+   ]
+  },
+  {
+   "type": "trackedLabel",
+   "at": 16.72,
+   "dur": 1.38,
+   "text": "SUPPLEMENT",
+   "sub": null,
+   "keys": [
+    {
+     "t": 0.0,
+     "x": 0.5536,
+     "y": 0.845
+    },
+    {
+     "t": 1.38,
+     "x": 0.5536,
+     "y": 0.845
+    }
+   ],
+   "side": "right"
+  },
+  {
+   "type": "kineticTitle",
+   "at": 18.166666666666668,
+   "dur": 1.3333333333333321,
+   "eyebrow": "من الآخر",
+   "lines": [
+    {
+     "text": "BUY IT"
+    },
+    {
+     "text": "OR NOT?",
+     "accent": true
+    }
+   ],
+   "top": 0.14
+  },
+  {
+   "type": "stepBadge",
+   "at": 19.55,
+   "dur": 3.616666666666668,
+   "mark": "1",
+   "label": "من الأكل؟",
+   "sub": "ما تشتريهوش",
+   "top": 0.15
+  },
+  {
+   "type": "stepBadge",
+   "at": 23.21666666666667,
+   "dur": 4.083333333333333,
+   "mark": "2",
+   "label": "وقتك ضيق؟",
+   "sub": "فده هيفيدك",
+   "top": 0.15
+  },
+  {
+   "type": "endCard",
+   "at": 30.9333,
+   "dur": 2.4,
+   "cta": "OSM Coach Osama",
+   "reveal": "wipe"
+  }
+ ],
+ "shakes": [
+  {
+   "at": 0.0,
+   "amp": 0.5
+  },
+  {
+   "at": 2.966666666666667,
+   "amp": 0.8
+  },
+  {
+   "at": 18.166666666666668,
+   "amp": 0.9
+  },
+  {
+   "at": 30.933333333333334,
+   "amp": 0.6
+  }
+ ],
+ "sfx": {
+  "cues": [
+   {
+    "at": 0.0,
+    "sound": "boom",
+    "gain_db": -9
+   },
+   {
+    "at": 0.1,
+    "sound": "slam",
+    "gain_db": -15
+   },
+   {
+    "at": 2.9667,
+    "sound": "boom",
+    "gain_db": -9
+   },
+   {
+    "at": 2.9667,
+    "sound": "slam",
+    "gain_db": -13
+   },
+   {
+    "at": 3.5333,
+    "sound": "whip",
+    "gain_db": -13,
+    "dir": -1.0
+   },
+   {
+    "at": 4.0333,
+    "sound": "mech",
+    "gain_db": -18
+   },
+   {
+    "at": 10.2,
+    "sound": "whip",
+    "gain_db": -11,
+    "dir": 1.0
+   },
+   {
+    "at": 10.2,
+    "sound": "bass_drop",
+    "gain_db": -18
+   },
+   {
+    "at": 13.02,
+    "sound": "click",
+    "gain_db": -19
+   },
+   {
+    "at": 13.6,
+    "sound": "click",
+    "gain_db": -19
+   },
+   {
+    "at": 14.24,
+    "sound": "click",
+    "gain_db": -19
+   },
+   {
+    "at": 16.77,
+    "sound": "mech",
+    "gain_db": -18
+   },
+   {
+    "at": 17.5667,
+    "sound": "riser",
+    "gain_db": -18,
+    "dur": 0.6
+   },
+   {
+    "at": 18.1667,
+    "sound": "boom",
+    "gain_db": -9
+   },
+   {
+    "at": 18.2467,
+    "sound": "slam",
+    "gain_db": -14
+   },
+   {
+    "at": 19.5,
+    "sound": "slam",
+    "gain_db": -16
+   },
+   {
+    "at": 23.1667,
+    "sound": "slam",
+    "gain_db": -16
+   },
+   {
+    "at": 26.8,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.5
+   },
+   {
+    "at": 27.3,
+    "sound": "boom",
+    "gain_db": -11
+   },
+   {
+    "at": 30.9333,
+    "sound": "reverse_hit",
+    "gain_db": -12,
+    "dur": 0.7
+   },
+   {
+    "at": 30.9333,
+    "sound": "boom",
+    "gain_db": -7
+   },
+   {
+    "at": 31.4333,
+    "sound": "click",
+    "gain_db": -17
+   }
+  ]
+ },
+ "music": {
+  "src": "work/music/music.wav",
+  "gain_db": -7
+ },
+ "tail": 2.4
+}

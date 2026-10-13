@@ -1,0 +1,614 @@
+{
+ "title": "OSM: leg day",
+ "fps": 30,
+ "width": 1080,
+ "height": 1920,
+ "media": {
+  "main": "source/original.mp4"
+ },
+ "audio": {
+  "main": "work/stems/original.silence.wav"
+ },
+ "plates": {
+  "grade": "eq=contrast=1.05:saturation=0.95:gamma=0.99,colorbalance=rs=-0.015:bs=0.02:rm=-0.01:bm=0.005:rh=0.012:gh=0.004:bh=-0.012,curves=master='0/0 0.22/0.2 0.78/0.8 1/1',vignette=angle=PI/7",
+  "sharpen": "cas=strength=0.22"
+ },
+ "covers": [
+  {
+   "src": "main",
+   "at": 5.4,
+   "dur": 40.6,
+   "box": [
+    0.0,
+    0.78,
+    1.0,
+    1.0
+   ],
+   "kind": "fade"
+  }
+ ],
+ "clips": [
+  {
+   "src": "main",
+   "in": 3.05,
+   "out": 5.55,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "focusY": 0.45
+  },
+  {
+   "src": "main",
+   "in": 5.62,
+   "out": 7.1,
+   "zoom": 1.0,
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  },
+  {
+   "src": "main",
+   "in": 7.15,
+   "out": 8.9,
+   "zoom": [
+    1.0,
+    1.04
+   ],
+   "settle": 1.06
+  },
+  {
+   "src": "main",
+   "in": 10.42,
+   "out": 11.84,
+   "zoom": [
+    1.0,
+    1.04
+   ],
+   "tin": {
+    "type": "zoom",
+    "flash": true
+   }
+  },
+  {
+   "src": "main",
+   "in": 13.55,
+   "out": 14.75,
+   "zoom": 1.0,
+   "settle": 1.05
+  },
+  {
+   "src": "main",
+   "in": 14.75,
+   "out": 15.55,
+   "freeze": true,
+   "zoom": [
+    1.0,
+    1.08
+   ]
+  },
+  {
+   "src": "main",
+   "in": 17.05,
+   "out": 18.85,
+   "zoom": [
+    1.0,
+    1.04
+   ],
+   "tin": {
+    "type": "whip",
+    "dir": "up"
+   }
+  },
+  {
+   "src": "main",
+   "in": 20.85,
+   "out": 22.25,
+   "zoom": 1.02,
+   "settle": 1.05
+  },
+  {
+   "src": "main",
+   "in": 22.45,
+   "out": 23.7,
+   "zoom": 1.0,
+   "tin": {
+    "type": "zoom",
+    "flash": true
+   }
+  },
+  {
+   "src": "main",
+   "in": 23.7,
+   "out": 25.7,
+   "zoom": 1.0,
+   "speed": 2
+  },
+  {
+   "src": "main",
+   "in": 25.7,
+   "out": 26.8,
+   "zoom": [
+    1.0,
+    1.04
+   ]
+  },
+  {
+   "src": "main",
+   "in": 26.86,
+   "out": 28.4,
+   "zoom": 1.0,
+   "tin": {
+    "type": "whip",
+    "dir": "right"
+   }
+  },
+  {
+   "src": "main",
+   "in": 28.4,
+   "out": 30.4,
+   "zoom": 1.0,
+   "speed": 2
+  },
+  {
+   "src": "main",
+   "in": 30.4,
+   "out": 31.3,
+   "zoom": [
+    1.0,
+    1.04
+   ]
+  },
+  {
+   "src": "main",
+   "in": 31.86,
+   "out": 33.4,
+   "zoom": 1.0,
+   "tin": {
+    "type": "whip",
+    "dir": "down"
+   }
+  },
+  {
+   "src": "main",
+   "in": 33.4,
+   "out": 35.4,
+   "zoom": 1.0,
+   "speed": 2
+  },
+  {
+   "src": "main",
+   "in": 35.4,
+   "out": 36.4,
+   "zoom": [
+    1.0,
+    1.04
+   ]
+  },
+  {
+   "src": "main",
+   "in": 37.45,
+   "out": 39.95,
+   "zoom": [
+    1.0,
+    1.05
+   ],
+   "tin": {
+    "type": "zoom",
+    "flash": true
+   }
+  },
+  {
+   "src": "main",
+   "in": 40.0,
+   "out": 40.95,
+   "zoom": 1.0,
+   "settle": 1.05
+  },
+  {
+   "src": "main",
+   "in": 41.05,
+   "out": 44.6,
+   "zoom": [
+    1.0,
+    1.06
+   ],
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  }
+ ],
+ "overlays": [
+  {
+   "type": "kineticTitle",
+   "at": 0.05,
+   "dur": 1.5,
+   "eyebrow": "OSM · GYM VLOG",
+   "lines": [
+    {
+     "text": "LEG"
+    },
+    {
+     "text": "DAY",
+     "accent": true,
+     "size": 220
+    }
+   ],
+   "top": 0.3,
+   "tilt": true
+  },
+  {
+   "type": "stepBadge",
+   "at": 1.55,
+   "dur": 0.9166666666666667,
+   "mark": "8",
+   "label": "EXERCISES",
+   "sub": "3 × 15",
+   "top": 0.3,
+   "side": "left"
+  },
+  {
+   "type": "lowerLabel",
+   "at": 2.587,
+   "dur": 3.033,
+   "eyebrow": "EXERCISE 01",
+   "title": "BULGARIAN SQUAT",
+   "sets": "3 × 15"
+  },
+  {
+   "type": "lowerLabel",
+   "at": 5.82,
+   "dur": 2.4,
+   "eyebrow": "EXERCISE 02",
+   "title": "DEADLIFT",
+   "sets": "3 × 15"
+  },
+  {
+   "type": "lowerLabel",
+   "at": 9.22,
+   "dur": 3.0,
+   "eyebrow": "EXERCISE 03",
+   "title": "SQUAT",
+   "sets": "3 × 15"
+  },
+  {
+   "type": "lowerLabel",
+   "at": 12.42,
+   "dur": 3.133,
+   "eyebrow": "EXERCISE 04",
+   "title": "LEG EXTENSION",
+   "sets": "3 × 15"
+  },
+  {
+   "type": "lowerLabel",
+   "at": 15.753,
+   "dur": 3.233,
+   "eyebrow": "EXERCISE 05",
+   "title": "LEG CURL",
+   "sets": "3 × 15"
+  },
+  {
+   "type": "lowerLabel",
+   "at": 19.187,
+   "dur": 3.333,
+   "eyebrow": "EXERCISE 06",
+   "title": "ADDUCTION",
+   "sets": "3 × 15"
+  },
+  {
+   "type": "lowerLabel",
+   "at": 22.72,
+   "dur": 3.2,
+   "eyebrow": "EXERCISE 07",
+   "title": "SEATED CALF RAISES",
+   "sets": "3 × 15"
+  },
+  {
+   "type": "lowerLabel",
+   "at": 26.12,
+   "dur": 3.333,
+   "eyebrow": "EXERCISE 08",
+   "title": "MACHINE CALF RAISES",
+   "sets": "3 × 15"
+  },
+  {
+   "type": "kineticTitle",
+   "at": 8.3,
+   "dur": 0.8,
+   "eyebrow": "EXERCISE 02 · 3 × 15",
+   "lines": [
+    {
+     "text": "DEADLIFT",
+     "accent": true,
+     "size": 190
+    }
+   ],
+   "top": 0.58
+  },
+  {
+   "type": "endCard",
+   "at": 29.5333,
+   "dur": 2.4,
+   "cta": "OSM Coach Osama",
+   "reveal": "wipe"
+  }
+ ],
+ "shakes": [
+  {
+   "at": 0.0,
+   "amp": 0.6
+  },
+  {
+   "at": 2.466666666666667,
+   "amp": 0.6
+  },
+  {
+   "at": 8.3,
+   "amp": 1.0
+  },
+  {
+   "at": 12.3,
+   "amp": 0.7
+  },
+  {
+   "at": 26.0,
+   "amp": 0.5
+  },
+  {
+   "at": 29.533333333333335,
+   "amp": 0.6
+  }
+ ],
+ "sfx": {
+  "cues": [
+   {
+    "at": 0.0,
+    "sound": "boom",
+    "gain_db": -8
+   },
+   {
+    "at": 0.1,
+    "sound": "slam",
+    "gain_db": -12
+   },
+   {
+    "at": 1.55,
+    "sound": "slam",
+    "gain_db": -15
+   },
+   {
+    "at": 1.75,
+    "sound": "mech",
+    "gain_db": -16
+   },
+   {
+    "at": 2.4667,
+    "sound": "whip",
+    "gain_db": -9,
+    "dir": -1.0
+   },
+   {
+    "at": 2.4667,
+    "sound": "bass_drop",
+    "gain_db": -14
+   },
+   {
+    "at": 2.7667,
+    "sound": "click",
+    "gain_db": -17
+   },
+   {
+    "at": 3.9333,
+    "sound": "slam",
+    "gain_db": -16
+   },
+   {
+    "at": 5.1,
+    "sound": "riser",
+    "gain_db": -15,
+    "dur": 0.6
+   },
+   {
+    "at": 5.7,
+    "sound": "boom",
+    "gain_db": -9
+   },
+   {
+    "at": 6.0,
+    "sound": "click",
+    "gain_db": -17
+   },
+   {
+    "at": 7.1,
+    "sound": "slam",
+    "gain_db": -16
+   },
+   {
+    "at": 9.1,
+    "sound": "whip",
+    "gain_db": -9,
+    "dir": 1.0
+   },
+   {
+    "at": 9.1,
+    "sound": "bass_drop",
+    "gain_db": -14
+   },
+   {
+    "at": 9.4,
+    "sound": "click",
+    "gain_db": -17
+   },
+   {
+    "at": 10.9,
+    "sound": "slam",
+    "gain_db": -16
+   },
+   {
+    "at": 11.7,
+    "sound": "riser",
+    "gain_db": -15,
+    "dur": 0.6
+   },
+   {
+    "at": 12.3,
+    "sound": "boom",
+    "gain_db": -9
+   },
+   {
+    "at": 12.6,
+    "sound": "click",
+    "gain_db": -17
+   },
+   {
+    "at": 13.5333,
+    "sound": "whip",
+    "gain_db": -14,
+    "dur": 0.45,
+    "dir": 1.0
+   },
+   {
+    "at": 14.5333,
+    "sound": "slam",
+    "gain_db": -15
+   },
+   {
+    "at": 15.6333,
+    "sound": "whip",
+    "gain_db": -9,
+    "dir": 1.0
+   },
+   {
+    "at": 15.6333,
+    "sound": "bass_drop",
+    "gain_db": -14
+   },
+   {
+    "at": 15.9333,
+    "sound": "click",
+    "gain_db": -17
+   },
+   {
+    "at": 17.1667,
+    "sound": "whip",
+    "gain_db": -14,
+    "dur": 0.45,
+    "dir": 1.0
+   },
+   {
+    "at": 18.1667,
+    "sound": "slam",
+    "gain_db": -15
+   },
+   {
+    "at": 19.0667,
+    "sound": "whip",
+    "gain_db": -9,
+    "dir": 1.0
+   },
+   {
+    "at": 19.0667,
+    "sound": "bass_drop",
+    "gain_db": -14
+   },
+   {
+    "at": 19.3667,
+    "sound": "click",
+    "gain_db": -17
+   },
+   {
+    "at": 20.6,
+    "sound": "whip",
+    "gain_db": -14,
+    "dur": 0.45,
+    "dir": 1.0
+   },
+   {
+    "at": 21.6,
+    "sound": "slam",
+    "gain_db": -15
+   },
+   {
+    "at": 22.0,
+    "sound": "riser",
+    "gain_db": -15,
+    "dur": 0.6
+   },
+   {
+    "at": 22.6,
+    "sound": "boom",
+    "gain_db": -9
+   },
+   {
+    "at": 22.9,
+    "sound": "click",
+    "gain_db": -17
+   },
+   {
+    "at": 25.0667,
+    "sound": "slam",
+    "gain_db": -16
+   },
+   {
+    "at": 26.0,
+    "sound": "whip",
+    "gain_db": -9,
+    "dir": -1.0
+   },
+   {
+    "at": 26.0,
+    "sound": "bass_drop",
+    "gain_db": -14
+   },
+   {
+    "at": 26.3,
+    "sound": "click",
+    "gain_db": -17
+   },
+   {
+    "at": 7.8,
+    "sound": "reverse_hit",
+    "gain_db": -13,
+    "dur": 0.5
+   },
+   {
+    "at": 8.3,
+    "sound": "boom",
+    "gain_db": -7
+   },
+   {
+    "at": 8.35,
+    "sound": "slam",
+    "gain_db": -11
+   },
+   {
+    "at": 8.5,
+    "sound": "mech",
+    "gain_db": -15
+   },
+   {
+    "at": 29.5333,
+    "sound": "reverse_hit",
+    "gain_db": -12,
+    "dur": 0.7
+   },
+   {
+    "at": 29.5333,
+    "sound": "boom",
+    "gain_db": -7
+   },
+   {
+    "at": 30.0333,
+    "sound": "click",
+    "gain_db": -17
+   }
+  ]
+ },
+ "music": {
+  "src": "work/music/music.wav",
+  "gain_db": -3
+ },
+ "tail": 2.4
+}

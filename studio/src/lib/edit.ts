@@ -19,7 +19,26 @@ export type Clip = {
   frames?: { count: number; fps: number };
   /** punch "settle": start at this scale (e.g. 1.04) and ease to 1 over 10 frames, like camera inertia */
   settle?: number;
+  /** playback speed (plates only): 2 = twice as fast (frames blended = motion blur); timeline length = (out-in)/speed */
+  speed?: number;
+  /** hold the frame at `in` for out-in seconds, silent (plates only). (A clip with "hold": t in edit.json shows the
+   *  still frame at source time t while its dialogue plays; render_edit.py bakes it into the plate.) */
+  freeze?: boolean;
+  /** transition INTO this clip from the previous one (the previous clip plays the matching exit) */
+  tin?: Transition;
 };
+
+/**
+ * whip: directional move with real motion blur and mirrored edges (outgoing accelerates out, incoming decelerates in)
+ * zoom: punch through (outgoing scales up, incoming lands from over-scale), zoom blur + exposure bloom
+ * flash: hard cut under a short bright flash
+ * frames = frames on EACH side of the cut (default 4 whip / 5 zoom / 3 flash)
+ */
+export type Transition = { type: "whip" | "zoom" | "flash"; dir?: "left" | "right" | "up" | "down"; frames?: number; flash?: boolean };
+
+/** output length of a clip in frames (speed-aware; at speed 1 identical to the original per-edge rounding) */
+export const clipFrames = (c: Clip, fps: number) =>
+  (c.speed ?? 1) === 1 ? Math.round(c.out * fps) - Math.round(c.in * fps) : Math.round(((c.out - c.in) / (c.speed ?? 1)) * fps);
 
 const span = (c: Clip) => c.orig ?? { in: c.in, out: c.out };
 
@@ -30,11 +49,15 @@ export type Word = { w: string; start: number; end: number };
 
 export type Overlay =
   | { type: "exerciseTitle"; at: number; dur: number; title: string; eyebrow?: string }
+  | { type: "kineticTitle"; at: number; dur: number; lines: { text: string; accent?: boolean; size?: number }[]; eyebrow?: string; top?: number; tilt?: boolean; backdrop?: boolean }
+  | { type: "stepBadge"; at: number; dur: number; mark: string; label: string; sub?: string; top?: number; side?: "left" | "right" }
+  | { type: "lowerLabel"; at: number; dur: number; title: string; sets?: string; eyebrow?: string; top?: number }
+  | { type: "trackedLabel"; at: number; dur: number; text: string; sub?: string; keys: { t: number; x: number; y: number }[]; side?: "left" | "right" }
   | { type: "callout"; at: number; dur: number; text?: string; number?: string; unit?: string; earned?: boolean; position?: "top" | "center" }
   | { type: "insetCard"; at: number; dur: number; src: string; in: number; eyebrow?: string; volume?: number }
   | { type: "split"; at: number; dur: number; top: { src: string; in: number }; bottom: { src: string; in: number } }
   | { type: "endCard"; at: number; dur: number; cta: string; signature?: boolean; reveal?: "fade" | "wipe"; sub?: string }
-  | { type: "checklist"; at: number; dur: number; items: { at: number; text: string }[]; top?: number }
+  | { type: "checklist"; at: number; dur: number; items: { at: number; text: string }[]; top?: number; row?: boolean }
   | {
       type: "screenCard"; at: number; dur: number; src: string; segments: ScreenSegment[];
       /** visible part of the recording, as fractions of its width/height (crop out status bar / keyboard) */
@@ -72,12 +95,16 @@ export type Edit = {
     style?: "shadow" | "plate";
     /** move captions for a stretch of the OUTPUT timeline, e.g. below a screen card. top = fraction of height */
     zones?: { at: number; dur: number; top: number }[];
+    /** cover plates baked into the footage (tools/render_edit.py): captions sit centred on them, without a plate of their own */
+    anchors?: { at: number; dur: number; box: number[] }[];
   };
   overlays: Overlay[];
   tail?: number; // seconds after the last clip (e.g. for an end card on its own)
+  /** camera-shake hits (output seconds): a short decaying jolt of the whole frame on big impacts */
+  shakes?: { at: number; amp?: number }[];
 };
 
-export const clipsDuration = (clips: Clip[]) => clips.reduce((t, c) => t + (c.out - c.in), 0);
+export const clipsDuration = (clips: Clip[]) => clips.reduce((t, c) => t + (c.out - c.in) / (c.freeze ? 1 : c.speed ?? 1), 0);
 
 export const editDuration = (e: Edit) => {
   const overlaysEnd = Math.max(0, ...e.overlays.map((o) => o.at + o.dur));
@@ -92,8 +119,9 @@ export const sourceToOutput = (clips: Clip[], t: number): number | null => {
   let offset = 0;
   for (const c of clips) {
     const { in: a, out: b } = span(c);
-    if (t >= a && t < b) return offset + (t - a);
-    offset += b - a;
+    const silent = c.freeze || (c.speed ?? 1) !== 1; // no dialogue on frozen / speed-ramped picture
+    if (!silent && t >= a && t < b) return offset + (t - a);
+    offset += c.freeze ? b - a : (b - a) / (c.speed ?? 1);
   }
   return null;
 };
@@ -120,7 +148,7 @@ export const groupCaptions = (words: Word[], clips: Clip[], maxWords = 3, maxCha
   const mapped = words
     .map((w) => {
       const mid = (w.start + w.end) / 2;
-      const clip = clips.map(span).find((c) => mid >= c.in && mid < c.out);
+      const clip = clips.filter((c) => !c.freeze && (c.speed ?? 1) === 1).map(span).find((c) => mid >= c.in && mid < c.out);
       if (!clip) return null;
       const s = sourceToOutput(clips, Math.max(w.start, clip.in))!;
       const e = sourceToOutput(clips, Math.min(w.end, clip.out - 0.001)) ?? s + 0.2;

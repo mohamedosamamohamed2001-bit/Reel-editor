@@ -223,9 +223,110 @@ def accent(freq=523.25):
     return _norm(_reverb(y * 0.8 + sub, seconds=0.6, damp=5000, wet=0.2)), 0
 
 
+
+# ---------- v4: power transitions (the collection upgrade: "transitions must sound powerful") ----------
+def whip(dur=0.3, dir=1.0, bright=6500):
+    """Punchy whip-pan whoosh: fast band sweep up then down, peak at 55 %, panned across with the motion (dir = +1
+    left->right, -1 right->left), a low thwump on the peak so it has weight on phones too. Hit = the peak."""
+    n = int(dur * SR)
+    t = _t(n)
+    pk = 0.55 * dur
+    u = np.clip(t / pk, 0, 1)
+    v = np.clip((t - pk) / (dur - pk), 0, 1)
+    centre = lambda tt: 500 * (bright / 500) ** min(1, tt / pk) if tt < pk else bright * (1400 / bright) ** min(1, (tt - pk) / (dur - pk))
+    body = _stft_filter(RNG.standard_normal(n), lambda tt, f: _band(f, centre(tt), 1.8) * _highpass(f, 150), n_fft=512, hop=128)
+    e = np.where(t < pk, u ** 3.0, np.exp(-(t - pk) / (0.18 * (dur - pk) + 1e-3)))
+    thw = np.sin(2 * np.pi * np.cumsum(90 + 60 * np.exp(-np.abs(t - pk) / 0.02)) / SR) * np.exp(-np.abs(t - pk) / 0.035) * 0.45
+    y = body * e + thw
+    pan = np.clip(-dir + 2 * dir * t / dur, -1, 1)  # sweeps across the stereo field
+    a = (pan + 1) * np.pi / 4
+    return _norm(np.stack([y * np.cos(a), y * np.sin(a)], axis=1)), int(pk * SR)
+
+
+def boom(dur=2.4, freq=42.0, drive=3.5):
+    """Deep cinematic impact: pitch-dropping sub (120 -> 42 Hz) saturated for audible harmonics on small speakers,
+    a sharp crack, a noise burst and a long dark tail. The biggest sound in the kit (hooks, drops, end card). Hit at 0."""
+    n = int(dur * SR)
+    t = _t(n)
+    f = freq + 80 * np.exp(-t / 0.05)
+    sub = np.tanh(np.sin(2 * np.pi * np.cumsum(f) / SR) * np.exp(-t / 0.55) * drive) / np.tanh(drive)
+    crack = _stft_filter(RNG.standard_normal(n), lambda tt, fr: _lowpass(fr, 7000) * _highpass(fr, 700), n_fft=512, hop=128) * np.exp(-t / 0.008)
+    burst = _stft_filter(RNG.standard_normal(n), lambda tt, fr: _lowpass(fr, 2500 * np.exp(-tt / 0.25) + 200)) * np.exp(-t / 0.16)
+    # knock: the 120-250 Hz body that a phone speaker actually reproduces (the sub alone vanishes on phones)
+    knock = np.tanh(np.sin(2 * np.pi * np.cumsum(150 + 90 * np.exp(-t / 0.02)) / SR) * np.exp(-t / 0.09) * 2.5)
+    dry = sub * 1.0 + knock * 0.55 + crack * 0.8 + burst * 0.35
+    dry[:24] *= np.linspace(0, 1, 24)
+    y = _reverb(dry, seconds=1.8, damp=2500, wet=0.3)
+    return _norm(y), 0
+
+
+def riser(dur=1.0, lo=400, hi=9000):
+    """Short tension riser into a hit: noise band sweeping up, two rising tones a fifth apart, tremolo speeding up.
+    Hit = the last sample (stops dead on the cut/drop)."""
+    n = int(dur * SR)
+    t = _t(n)
+    u = t / dur
+    nz = _stft_filter(RNG.standard_normal(n), lambda tt, fr: _band(fr, lo * (hi / lo) ** min(1, tt / dur), 1.2))
+    f1 = 220 * 2 ** (u * 1.5)
+    tone = np.sin(2 * np.pi * np.cumsum(f1) / SR) + 0.6 * np.sin(2 * np.pi * np.cumsum(f1 * 1.5) / SR)
+    trem = 0.6 + 0.4 * np.sin(2 * np.pi * np.cumsum(4 + 26 * u ** 2) / SR)
+    y = (nz * 0.8 + tone * 0.18) * u ** 2.2 * trem
+    y[-int(0.003 * SR):] *= np.linspace(1, 0, int(0.003 * SR))
+    return _norm(_stereo(y, width_ms=0.8)), n - 1
+
+
+def slam(dur=0.5, freq=120.0):
+    """Text slam: a hard transient, a mid punch (120 Hz falling), a snare-ish noise snap and a tight room. Hit at 0."""
+    n = int(dur * SR)
+    t = _t(n)
+    punch = np.tanh(np.sin(2 * np.pi * np.cumsum(freq * (1 + 0.8 * np.exp(-t / 0.015))) / SR) * np.exp(-t / 0.09) * 2.0)
+    snap = _stft_filter(RNG.standard_normal(n), lambda tt, fr: _band(fr, 2500, 2.2)) * np.exp(-t / 0.035)
+    tick = _stft_filter(RNG.standard_normal(n), lambda tt, fr: _highpass(fr, 3000)) * np.exp(-t / 0.003)
+    dry = punch * 0.9 + snap * 0.45 + tick * 0.4
+    dry[:16] *= np.linspace(0, 1, 16)
+    return _norm(_reverb(dry, seconds=0.5, damp=5000, wet=0.15)), 0
+
+
+def mech(dur=0.42):
+    """Futuristic mechanical lock: three servo clicks 45 ms apart over a short rising filtered whir. Hit at 0."""
+    n = int(dur * SR)
+    t = _t(n)
+    y = np.zeros(n)
+    for k, off in enumerate((0.0, 0.045, 0.09)):
+        s = int(off * SR)
+        m = int(0.012 * SR)
+        c = _stft_filter(RNG.standard_normal(m), lambda tt, fr: _band(fr, 3200 + 900 * k, 1.0), n_fft=256, hop=64) * np.exp(-_t(m) / 0.0025)
+        y[s:s + m] += c * (1.0 - 0.15 * k)
+    ph = np.cumsum(300 + 700 * np.clip(t / 0.25, 0, 1)) / SR
+    saw = 2 * (ph % 1) - 1
+    whir = _stft_filter(saw, lambda tt, fr: _band(fr, 1200, 1.5), n_fft=512, hop=128) * np.exp(-((t - 0.12) / 0.08) ** 2) * 0.35
+    return _norm(_stereo(y + whir, width_ms=0.5)), 0
+
+
+def bass_drop(dur=1.3, f0=95.0, f1=38.0):
+    """808 drop: sine gliding f0 -> f1, saturated (harmonics reach phone speakers), long decay. Hit at 0."""
+    n = int(dur * SR)
+    t = _t(n)
+    f = f1 + (f0 - f1) * np.exp(-t / 0.18)
+    y = np.tanh(np.sin(2 * np.pi * np.cumsum(f) / SR) * 2.5) * np.exp(-t / 0.5)
+    y[:48] *= np.linspace(0, 1, 48)
+    return _norm(_stereo(y)), 0
+
+
+def reverse_hit(dur=0.7):
+    """Reversed impact tail sucking into the cut (pre-drop). Hit = the last sample."""
+    s, _ = impact(dur=1.6)
+    k = int(dur * SR)
+    y = s[:k][::-1].copy()
+    y *= (np.linspace(0, 1, k) ** 1.5)[:, None]
+    y[-int(0.003 * SR):] *= np.linspace(1, 0, int(0.003 * SR))[:, None]
+    return _norm(y), k - 1
+
+
 SOUNDS = {
     "air": air, "whoosh_in": whoosh_in, "whoosh_out": whoosh_out, "swell": swell, "thump": thump, "impact": impact,
     "click": click, "key": key_tick, "blip": blip, "chime": chime, "accent": accent,
+    "whip": whip, "boom": boom, "riser": riser, "slam": slam, "mech": mech, "bass_drop": bass_drop, "reverse_hit": reverse_hit,
 }
 
 

@@ -1,0 +1,667 @@
+{
+ "source": "projects/2026-10-13_c5-crossfit/work/tx/original.vocals.words.json",
+ "reference": "projects/_c5/refs/crossfit.txt",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 38.9,
+   "words": [
+    {
+     "w": "لو",
+     "start": 0.0,
+     "end": 0.08,
+     "matched": true
+    },
+    {
+     "w": "انت",
+     "start": 0.08,
+     "end": 0.26,
+     "matched": true
+    },
+    {
+     "w": "عايز",
+     "start": 0.26,
+     "end": 0.4,
+     "matched": true
+    },
+    {
+     "w": "تخس،",
+     "start": 0.4,
+     "end": 0.78,
+     "matched": true
+    },
+    {
+     "w": "تلعب",
+     "start": 0.78,
+     "end": 1.46,
+     "matched": true
+    },
+    {
+     "w": "CrossFit",
+     "start": 1.46,
+     "end": 1.92,
+     "matched": true
+    },
+    {
+     "w": "ولا",
+     "start": 1.92,
+     "end": 2.48,
+     "matched": true
+    },
+    {
+     "w": "جيم؟",
+     "start": 2.48,
+     "end": 2.9,
+     "matched": true
+    },
+    {
+     "w": "طب",
+     "start": 2.9,
+     "end": 3.32,
+     "matched": true
+    },
+    {
+     "w": "هو",
+     "start": 3.32,
+     "end": 3.42,
+     "matched": true
+    },
+    {
+     "w": "يعني",
+     "start": 3.42,
+     "end": 3.7,
+     "matched": true
+    },
+    {
+     "w": "ايه",
+     "start": 3.7,
+     "end": 3.84,
+     "matched": true
+    },
+    {
+     "w": "اصلا",
+     "start": 3.84,
+     "end": 4.12,
+     "matched": true
+    },
+    {
+     "w": "CrossFit؟",
+     "start": 4.12,
+     "end": 4.68,
+     "matched": true
+    },
+    {
+     "w": "CrossFit",
+     "start": 4.68,
+     "end": 5.42,
+     "matched": true
+    },
+    {
+     "w": "احنا",
+     "start": 5.42,
+     "end": 5.74,
+     "matched": true
+    },
+    {
+     "w": "ممكن",
+     "start": 5.74,
+     "end": 5.96,
+     "matched": true
+    },
+    {
+     "w": "نعمل",
+     "start": 5.96,
+     "end": 6.22,
+     "matched": true
+    },
+    {
+     "w": "تمارين",
+     "start": 6.22,
+     "end": 6.66,
+     "matched": true
+    },
+    {
+     "w": "بمقاومة،",
+     "start": 6.66,
+     "end": 7.48,
+     "matched": true
+    },
+    {
+     "w": "ممكن",
+     "start": 7.48,
+     "end": 7.76,
+     "matched": true
+    },
+    {
+     "w": "نعمل",
+     "start": 7.76,
+     "end": 7.98,
+     "matched": true
+    },
+    {
+     "w": "تمارين",
+     "start": 7.98,
+     "end": 8.28,
+     "matched": true
+    },
+    {
+     "w": "بوزن",
+     "start": 8.28,
+     "end": 8.56,
+     "matched": true
+    },
+    {
+     "w": "الجسم،",
+     "start": 8.56,
+     "end": 8.94,
+     "matched": true
+    },
+    {
+     "w": "ممكن",
+     "start": 8.94,
+     "end": 9.3,
+     "matched": true
+    },
+    {
+     "w": "نعمل",
+     "start": 9.3,
+     "end": 9.56,
+     "matched": true
+    },
+    {
+     "w": "تمارين",
+     "start": 9.56,
+     "end": 9.84,
+     "matched": true
+    },
+    {
+     "w": "Cardio،",
+     "start": 9.84,
+     "end": 10.24,
+     "matched": true
+    },
+    {
+     "w": "زي",
+     "start": 10.24,
+     "end": 10.38,
+     "matched": true
+    },
+    {
+     "w": "مثلا",
+     "start": 10.38,
+     "end": 10.72,
+     "matched": true
+    },
+    {
+     "w": "اننا",
+     "start": 10.66,
+     "end": 10.78,
+     "matched": false
+    },
+    {
+     "w": "نجري",
+     "start": 10.72,
+     "end": 11.44,
+     "matched": true
+    },
+    {
+     "w": "او",
+     "start": 11.44,
+     "end": 11.78,
+     "matched": true
+    },
+    {
+     "w": "Jump.",
+     "start": 11.78,
+     "end": 12.04,
+     "matched": true
+    },
+    {
+     "w": "طب",
+     "start": 12.16,
+     "end": 12.32,
+     "matched": true
+    },
+    {
+     "w": "ايه",
+     "start": 12.32,
+     "end": 12.52,
+     "matched": true
+    },
+    {
+     "w": "طريقة",
+     "start": 12.52,
+     "end": 12.84,
+     "matched": true
+    },
+    {
+     "w": "التدريب",
+     "start": 12.84,
+     "end": 13.26,
+     "matched": true
+    },
+    {
+     "w": "بتاعها؟",
+     "start": 13.26,
+     "end": 13.66,
+     "matched": true
+    },
+    {
+     "w": "هي",
+     "start": 13.6,
+     "end": 13.72,
+     "matched": false
+    },
+    {
+     "w": "بتبقى",
+     "start": 13.66,
+     "end": 14.02,
+     "matched": true
+    },
+    {
+     "w": "عبارة",
+     "start": 14.02,
+     "end": 14.24,
+     "matched": true
+    },
+    {
+     "w": "عن",
+     "start": 14.24,
+     "end": 14.38,
+     "matched": true
+    },
+    {
+     "w": "سيركل",
+     "start": 14.38,
+     "end": 14.58,
+     "matched": true
+    },
+    {
+     "w": "من",
+     "start": 14.58,
+     "end": 14.9,
+     "matched": true
+    },
+    {
+     "w": "التمارين.",
+     "start": 14.9,
+     "end": 15.38,
+     "matched": true
+    },
+    {
+     "w": "يعني",
+     "start": 15.38,
+     "end": 15.86,
+     "matched": true
+    },
+    {
+     "w": "ايه",
+     "start": 15.86,
+     "end": 16.0,
+     "matched": true
+    },
+    {
+     "w": "السيركل",
+     "start": 16.0,
+     "end": 16.3,
+     "matched": true
+    },
+    {
+     "w": "دي؟",
+     "start": 16.3,
+     "end": 16.5,
+     "matched": true
+    },
+    {
+     "w": "بتبقى",
+     "start": 16.5,
+     "end": 16.7,
+     "matched": true
+    },
+    {
+     "w": "مجموعة",
+     "start": 16.7,
+     "end": 16.98,
+     "matched": true
+    },
+    {
+     "w": "من",
+     "start": 16.98,
+     "end": 17.08,
+     "matched": true
+    },
+    {
+     "w": "التمارين",
+     "start": 17.08,
+     "end": 17.5,
+     "matched": true
+    },
+    {
+     "w": "احنا",
+     "start": 17.5,
+     "end": 17.68,
+     "matched": true
+    },
+    {
+     "w": "بنكررها",
+     "start": 17.68,
+     "end": 18.16,
+     "matched": true
+    },
+    {
+     "w": "ورا",
+     "start": 18.16,
+     "end": 18.4,
+     "matched": true
+    },
+    {
+     "w": "بعض،",
+     "start": 18.4,
+     "end": 18.66,
+     "matched": true
+    },
+    {
+     "w": "طبعا",
+     "start": 18.66,
+     "end": 19.12,
+     "matched": true
+    },
+    {
+     "w": "بتبقى",
+     "start": 19.12,
+     "end": 19.4,
+     "matched": true
+    },
+    {
+     "w": "مربوطة",
+     "start": 19.4,
+     "end": 19.84,
+     "matched": true
+    },
+    {
+     "w": "بالعدات",
+     "start": 19.84,
+     "end": 20.38,
+     "matched": true
+    },
+    {
+     "w": "والاوزان",
+     "start": 20.38,
+     "end": 20.96,
+     "matched": true
+    },
+    {
+     "w": "والمجموعات.",
+     "start": 20.96,
+     "end": 22.4,
+     "matched": true
+    },
+    {
+     "w": "CrossFit",
+     "start": 22.4,
+     "end": 23.0,
+     "matched": true
+    },
+    {
+     "w": "بيكون",
+     "start": 23.0,
+     "end": 23.32,
+     "matched": true
+    },
+    {
+     "w": "ليه",
+     "start": 23.32,
+     "end": 23.52,
+     "matched": true
+    },
+    {
+     "w": "مميزات",
+     "start": 23.52,
+     "end": 24.06,
+     "matched": true
+    },
+    {
+     "w": "ويبقى",
+     "start": 24.06,
+     "end": 24.54,
+     "matched": true
+    },
+    {
+     "w": "ليه",
+     "start": 24.54,
+     "end": 24.64,
+     "matched": true
+    },
+    {
+     "w": "عيوب.",
+     "start": 24.64,
+     "end": 24.96,
+     "matched": true
+    },
+    {
+     "w": "مميزاته",
+     "start": 24.96,
+     "end": 25.96,
+     "matched": true
+    },
+    {
+     "w": "انت",
+     "start": 25.96,
+     "end": 26.12,
+     "matched": true
+    },
+    {
+     "w": "بتحرق",
+     "start": 26.12,
+     "end": 26.48,
+     "matched": true
+    },
+    {
+     "w": "Calories",
+     "start": 26.48,
+     "end": 26.82,
+     "matched": true
+    },
+    {
+     "w": "كتير",
+     "start": 26.82,
+     "end": 27.08,
+     "matched": true
+    },
+    {
+     "w": "جدا،",
+     "start": 27.08,
+     "end": 27.42,
+     "matched": true
+    },
+    {
+     "w": "وطبعا",
+     "start": 27.42,
+     "end": 28.22,
+     "matched": true
+    },
+    {
+     "w": "بيقوي",
+     "start": 28.22,
+     "end": 28.44,
+     "matched": true
+    },
+    {
+     "w": "الجسم",
+     "start": 28.44,
+     "end": 28.72,
+     "matched": true
+    },
+    {
+     "w": "كله.",
+     "start": 28.72,
+     "end": 29.04,
+     "matched": true
+    },
+    {
+     "w": "وعيوبه",
+     "start": 29.04,
+     "end": 30.88,
+     "matched": true
+    },
+    {
+     "w": "طبعا",
+     "start": 30.88,
+     "end": 31.4,
+     "matched": true
+    },
+    {
+     "w": "لو",
+     "start": 31.4,
+     "end": 31.5,
+     "matched": true
+    },
+    {
+     "w": "انت",
+     "start": 31.5,
+     "end": 31.74,
+     "matched": true
+    },
+    {
+     "w": "اتمرنت",
+     "start": 31.74,
+     "end": 32.08,
+     "matched": true
+    },
+    {
+     "w": "بوزن",
+     "start": 32.08,
+     "end": 32.4,
+     "matched": true
+    },
+    {
+     "w": "تقيل",
+     "start": 32.4,
+     "end": 32.78,
+     "matched": true
+    },
+    {
+     "w": "وبتكنيك",
+     "start": 32.78,
+     "end": 33.3,
+     "matched": true
+    },
+    {
+     "w": "غلط،",
+     "start": 33.3,
+     "end": 33.68,
+     "matched": true
+    },
+    {
+     "w": "هيدمرلك",
+     "start": 33.68,
+     "end": 34.66,
+     "matched": true
+    },
+    {
+     "w": "مفاصلك.",
+     "start": 34.66,
+     "end": 35.04,
+     "matched": true
+    },
+    {
+     "w": "وبكده",
+     "start": 35.14,
+     "end": 35.78,
+     "matched": true
+    },
+    {
+     "w": "يكون",
+     "start": 35.78,
+     "end": 35.94,
+     "matched": true
+    },
+    {
+     "w": "عرفت",
+     "start": 35.94,
+     "end": 36.24,
+     "matched": true
+    },
+    {
+     "w": "ايه",
+     "start": 36.24,
+     "end": 36.44,
+     "matched": true
+    },
+    {
+     "w": "هو",
+     "start": 36.44,
+     "end": 36.54,
+     "matched": true
+    },
+    {
+     "w": "CrossFit.",
+     "start": 36.54,
+     "end": 37.08,
+     "matched": true
+    },
+    {
+     "w": "تابعني",
+     "start": 37.08,
+     "end": 37.86,
+     "matched": true
+    },
+    {
+     "w": "عشان",
+     "start": 37.86,
+     "end": 38.08,
+     "matched": true
+    },
+    {
+     "w": "يوصلك",
+     "start": 38.08,
+     "end": 38.48,
+     "matched": true
+    },
+    {
+     "w": "كل",
+     "start": 38.48,
+     "end": 38.6,
+     "matched": true
+    },
+    {
+     "w": "جديد.",
+     "start": 38.6,
+     "end": 38.9,
+     "matched": true
+    }
+   ]
+  }
+ ],
+ "report": [
+  "  2.90  طيب  ->  طب",
+  "  4.68  الـ  ->  (start of next word)",
+  "  8.28  بوضن  ->  بوزن",
+  "  9.84  كارديو  ->  Cardio،",
+  "   ---  (missing)  ->  اننا",
+  " 10.72  اجري  ->  نجري",
+  " 12.16  طيب  ->  طب",
+  " 13.26  بتاعك؟  ->  بتاعها؟",
+  "   ---  (missing)  ->  هي",
+  " 13.66  هيبتبقى  ->  بتبقى",
+  " 14.02  وارعة  ->  عبارة",
+  " 14.58  تلعب  ->  من",
+  " 18.16  وراء  ->  ورا",
+  " 22.40  الـ  ->  (start of next word)",
+  " 24.06  وبقى  ->  ويبقى",
+  " 26.48  كالوريز  ->  Calories",
+  " 26.82  الجيل  ->  كتير",
+  " 28.22  بيقاو  ->  بيقوي",
+  " 32.40  تقيد  ->  تقيل",
+  " 32.78  وبتكنل  ->  وبتكنيك",
+  " 33.68  هيضمر  ->  هيدمرلك",
+  " 34.42  لك  ->  (part of هيدمرلك)",
+  " 34.66  محاصلة.  ->  مفاصلك.",
+  " 35.94  عليك  ->  عرفت",
+  " 36.54  الـ  ->  (start of next word)",
+  " 37.08  تبيني  ->  تابعني",
+  " 38.08  يوصل  ->  يوصلك",
+  " 38.32  لك  ->  (part of يوصلك)",
+  " 38.60  الجيل.  ->  جديد."
+ ]
+}

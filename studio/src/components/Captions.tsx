@@ -25,14 +25,23 @@ const runs = (words: string[]) =>
  * drawn as it appears (one keyword per phrase, max). English words inside Arabic phrases are set in
  * Inter (the brand Latin face) instead of the Arabic font's Latin glyphs.
  */
-export const Captions: React.FC<{ groups: CaptionGroup[]; keywords?: string[]; style?: "shadow" | "plate"; zones?: Zone[]; karaoke?: boolean }> = ({
-  groups, keywords = [], style = "shadow", zones = [], karaoke = false,
-}) => {
+export const Captions: React.FC<{
+  groups: CaptionGroup[]; keywords?: string[]; style?: "shadow" | "plate"; zones?: Zone[]; karaoke?: boolean;
+  anchors?: { at: number; dur: number; box: number[] }[]; cuts?: { f: number; n: number }[];
+}> = ({ groups, keywords = [], style = "shadow", zones = [], karaoke = false, anchors = [], cuts = [] }) => {
   const frame = useCurrentFrame();
-  const { fps, height } = useVideoConfig();
+  const { fps, height, width } = useVideoConfig();
   const t = frame / fps;
   const g = groups.find((x) => t >= x.start && t < x.end);
   if (!g) return null;
+  // while the picture whips/zooms through a cut, the caption steps aside (it would otherwise float over a moving frame)
+  const cutFade = cuts.reduce((m, c) => {
+    const d = frame - c.f;
+    if (d < -c.n - 1 || d > c.n + 1) return m;
+    return Math.min(m, Math.min(1, Math.abs(d + 0.5) / (c.n + 1)) ** 2);
+  }, 1);
+  // a baked cover plate (old burned-in text hidden in the footage) under this moment: sit centred on it, no own plate
+  const anchor = anchors.find((a) => t >= a.at && t < a.at + a.dur);
 
   const local = Math.round((t - g.start) * fps);
   const dur = Math.max(1, Math.round((g.end - g.start) * fps));
@@ -41,7 +50,7 @@ export const Captions: React.FC<{ groups: CaptionGroup[]; keywords?: string[]; s
   const rtl = isArabic(g.words.join(" "));
   // 5 ms tolerance: zone edges are float sums (8.85 + 8.28 = 17.130000000000003)
   const zone = zones.find((z) => g.start >= z.at - 0.005 && g.start < z.at + z.dur - 0.005);
-  const plate = style === "plate";
+  const plate = style === "plate" && !anchor;
   const kw = new Set(keywords.map((k) => k.toLowerCase()));
   let blueUsed = false;
 
@@ -52,8 +61,10 @@ export const Captions: React.FC<{ groups: CaptionGroup[]; keywords?: string[]; s
         style={{
           position: "absolute",
           // default sits above the exercise-title zone (bottom 14% safe area + title block)
-          top: height * (zone ? zone.top : 0.6),
+          top: anchor ? height * ((anchor.box[1] + anchor.box[3]) / 2) : height * (zone ? zone.top : 0.6),
+          left: anchor ? width * ((anchor.box[0] + anchor.box[2]) / 2) : undefined,
           maxWidth: "80%",
+          whiteSpace: anchor ? "nowrap" : undefined,
           textAlign: "center",
           fontFamily: rtl ? font.arabic : font.latin,
           fontWeight: 700,
@@ -61,9 +72,9 @@ export const Captions: React.FC<{ groups: CaptionGroup[]; keywords?: string[]; s
           fontSize: rtl ? 66 : 62,
           lineHeight: rtl ? 1.7 : 1.25,
           color: color.text,
-          opacity: p,
-          transform: `translateY(${10 * (1 - p)}px) scale(${0.95 + 0.05 * p})`,
-          textShadow: plate ? "none" : "0 4px 22px rgba(10,15,22,0.9), 0 1px 3px rgba(10,15,22,0.9)",
+          opacity: p * cutFade,
+          transform: `${anchor ? "translate(-50%, -50%) " : ""}translateY(${10 * (1 - p)}px) scale(${0.95 + 0.05 * p})`,
+          textShadow: plate ? "none" : anchor ? "0 2px 8px rgba(10,15,22,0.6)" : "0 4px 22px rgba(10,15,22,0.9), 0 1px 3px rgba(10,15,22,0.9)",
           // Book: Night plate ~80% opacity, card radius, for legibility over bright areas (e.g. a white shirt)
           background: plate ? "rgba(10,15,22,0.82)" : undefined,
           border: plate ? `1px solid rgba(38,50,68,0.9)` : undefined,

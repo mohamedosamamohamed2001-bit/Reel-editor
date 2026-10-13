@@ -69,6 +69,8 @@ projects/<name>/  one folder per video: project.json, edit.json, analysis/, docu
 | Inter, Barlow Condensed, IBM Plex Sans Arabic (`brand/fonts`, OFL) | brand typography | downloaded from google/fonts, verified files |
 | Remotion 4.0.525 + React 18.3.1 (`studio/`, pinned) | animated overlays, Arabic text shaping via Chromium | verified: smoke still, typecheck, end-to-end render. Licence: free for individuals / companies ≤3 people |
 | faster-whisper 1.2.1 (`.venv`, `requirements.txt`) | word-timed transcripts for captions | verified on 5 videos. Audio decoded via FFmpeg because PyAV in this env rejects faster-whisper's `metadata_errors` argument |
+| onnxruntime 1.31 (`.venv`) + UVR-MDX-NET-Voc_FT.onnx (github.com/TRvlvr/model_repo, cached in ~/.cache/osm-models, sha256 534b2070…e111) | `tools/separate.py`: split a finished mix into voice + music bed | verified on 5 videos (clean spectrograms). Demucs weights host (dl.fbaipublicfiles.com) is blocked here (403) |
+| scipy 1.18 (`.venv`) | filters for `tools/music.py` | verified |
 
 ## Decisions log
 - 2026-10-12: Brand book v1.0 analysed into `docs/BRAND_VIDEO_SYSTEM.md`. The logo files are raster crops from the PDF
@@ -104,6 +106,24 @@ projects/<name>/  one folder per video: project.json, edit.json, analysis/, docu
 - Never animate a mask/crop over the logo (brand: no cropped letters). Use opacity + uniform scale.
 - Grade used on the first studio set (bright, cool-lit, white shirt): `colorbalance=rs=-0.02:bs=0.025:rm=-0.05:bm=0.015:rh=0.02:gh=0.005:bh=-0.025`
   + gentle S-curve + `cas=strength=0.4`. Warming highlights fixes the shirt. Pulling midtone red keeps the skin from going pink.
+
+- 2026-10-13 (collection upgrade, `projects/2026-10-13_c5-*`, `docs/collection_2026-10-13.md`): re-editing FINISHED exports.
+  New tools: `separate.py` (voice/music split), `burned_text.py` (find burned-in captions per frame) + `caption_strips.py`
+  (read them), `align_words.py` (put the client's approved caption text onto Whisper word times; Whisper large-v3 drifts
+  to Standard Arabic and hallucinates outros like "اشتركوا في القناة"; a LONG --prompt made it hallucinate, keep prompts
+  to one short dialect sentence), `music.py` (original 120 bpm tracks, sections end exactly on cut times), `track.py`
+  (template-matching tracker), `mix_report.py` (voice / ducked music / SFX levels per window, before rendering).
+  New edit options: clip `speed` (tmix blur, no interpolation), `freeze`, `hold` (still frame while the dialogue plays,
+  hides old light-leak frames), `tin` transitions (whip with sub-frame motion blur + mirrored edges, zoom, flash),
+  top-level `covers` (frosted Night plates baked into the plates over old captions; captions anchor onto them),
+  `audio` (dialogue from another file), `dialogueFx`, `dialogueLufs` (normalise voice before the mix; separated stems
+  ranged −10…−17 LUFS), `music`, `shakes`; overlays `kineticTitle` (+`backdrop` full-frame card under the captions),
+  `stepBadge`, `lowerLabel`, `trackedLabel`, `checklist.row`; `--alt-nomusic` writes a voice+SFX version.
+  Mix targets that worked: music ≈13 dB under the voice while talking (4:1 duck), SFX transitions −9…−11 dB gain.
+- Burned-text detection fails where white garment details sit in the caption band (whey: jacket stripes): use
+  speech-span plates of fixed size there. Restrict `--band` when false lines stack above the caption.
+- `reverse_hit`/`riser` hit = LAST sample: cue them AT the cut, never before it.
+- `pkill -f <pattern>` inside a Bash call can match that call's own command line and kill it: use `pgrep` + `kill PID`.
 
 ## Setup in a fresh container
 `python3 -m venv .venv && .venv/bin/pip install -r requirements.txt` and `cd studio && npm ci`.

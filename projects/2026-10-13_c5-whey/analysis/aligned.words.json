@@ -1,0 +1,619 @@
+{
+ "source": "projects/2026-10-13_c5-whey/work/tx/original.vocals.words.json",
+ "reference": "projects/_c5/refs/whey.txt",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 30.86,
+   "words": [
+    {
+     "w": "هل",
+     "start": 0.0,
+     "end": 0.22,
+     "matched": true
+    },
+    {
+     "w": "Whey",
+     "start": 0.22,
+     "end": 0.42,
+     "matched": true
+    },
+    {
+     "w": "Protein",
+     "start": 0.42,
+     "end": 0.7,
+     "matched": true
+    },
+    {
+     "w": "كـ",
+     "start": 0.7,
+     "end": 0.9,
+     "matched": true
+    },
+    {
+     "w": "Supplement",
+     "start": 0.9,
+     "end": 1.14,
+     "matched": true
+    },
+    {
+     "w": "بيستاهل",
+     "start": 1.14,
+     "end": 1.92,
+     "matched": true
+    },
+    {
+     "w": "فلوسك",
+     "start": 1.92,
+     "end": 2.4,
+     "matched": true
+    },
+    {
+     "w": "ولا",
+     "start": 2.4,
+     "end": 2.84,
+     "matched": true
+    },
+    {
+     "w": "لا؟",
+     "start": 2.84,
+     "end": 3.1,
+     "matched": true
+    },
+    {
+     "w": "وظيفة",
+     "start": 3.1,
+     "end": 3.54,
+     "matched": true
+    },
+    {
+     "w": "Whey",
+     "start": 3.54,
+     "end": 3.78,
+     "matched": true
+    },
+    {
+     "w": "Protein",
+     "start": 3.78,
+     "end": 4.06,
+     "matched": true
+    },
+    {
+     "w": "ان",
+     "start": 4.06,
+     "end": 4.34,
+     "matched": true
+    },
+    {
+     "w": "هو",
+     "start": 4.28,
+     "end": 4.4,
+     "matched": false
+    },
+    {
+     "w": "بيساعدك",
+     "start": 4.34,
+     "end": 4.96,
+     "matched": true
+    },
+    {
+     "w": "ان",
+     "start": 4.96,
+     "end": 5.02,
+     "matched": true
+    },
+    {
+     "w": "انت",
+     "start": 4.96,
+     "end": 5.08,
+     "matched": false
+    },
+    {
+     "w": "تكمل",
+     "start": 5.02,
+     "end": 5.52,
+     "matched": true
+    },
+    {
+     "w": "احتياجك",
+     "start": 5.52,
+     "end": 6.06,
+     "matched": true
+    },
+    {
+     "w": "من",
+     "start": 6.06,
+     "end": 6.22,
+     "matched": true
+    },
+    {
+     "w": "البروتين.",
+     "start": 6.22,
+     "end": 6.72,
+     "matched": true
+    },
+    {
+     "w": "البروتين",
+     "start": 6.72,
+     "end": 7.24,
+     "matched": true
+    },
+    {
+     "w": "اساسي",
+     "start": 7.24,
+     "end": 7.68,
+     "matched": true
+    },
+    {
+     "w": "لزيادة",
+     "start": 7.68,
+     "end": 8.04,
+     "matched": true
+    },
+    {
+     "w": "كتلة",
+     "start": 8.04,
+     "end": 8.26,
+     "matched": true
+    },
+    {
+     "w": "العضلات،",
+     "start": 8.26,
+     "end": 8.78,
+     "matched": true
+    },
+    {
+     "w": "وطبعا",
+     "start": 8.78,
+     "end": 9.12,
+     "matched": true
+    },
+    {
+     "w": "بيساعدك",
+     "start": 9.12,
+     "end": 9.6,
+     "matched": true
+    },
+    {
+     "w": "على",
+     "start": 9.6,
+     "end": 9.7,
+     "matched": true
+    },
+    {
+     "w": "الاستشفاء.",
+     "start": 9.7,
+     "end": 10.1,
+     "matched": true
+    },
+    {
+     "w": "انت",
+     "start": 10.1,
+     "end": 10.28,
+     "matched": true
+    },
+    {
+     "w": "ممكن",
+     "start": 10.28,
+     "end": 10.54,
+     "matched": true
+    },
+    {
+     "w": "تدخل",
+     "start": 10.54,
+     "end": 11.02,
+     "matched": true
+    },
+    {
+     "w": "احتياجك",
+     "start": 11.02,
+     "end": 11.56,
+     "matched": true
+    },
+    {
+     "w": "من",
+     "start": 11.56,
+     "end": 11.68,
+     "matched": true
+    },
+    {
+     "w": "البروتين",
+     "start": 11.68,
+     "end": 11.98,
+     "matched": true
+    },
+    {
+     "w": "من",
+     "start": 11.98,
+     "end": 12.08,
+     "matched": true
+    },
+    {
+     "w": "الاكل،",
+     "start": 12.08,
+     "end": 12.46,
+     "matched": true
+    },
+    {
+     "w": "زي",
+     "start": 12.46,
+     "end": 12.78,
+     "matched": true
+    },
+    {
+     "w": "مثلا",
+     "start": 12.78,
+     "end": 13.02,
+     "matched": true
+    },
+    {
+     "w": "البيض",
+     "start": 13.02,
+     "end": 13.42,
+     "matched": true
+    },
+    {
+     "w": "او",
+     "start": 13.42,
+     "end": 13.6,
+     "matched": true
+    },
+    {
+     "w": "اللحمة",
+     "start": 13.6,
+     "end": 14.14,
+     "matched": true
+    },
+    {
+     "w": "او",
+     "start": 14.14,
+     "end": 14.24,
+     "matched": true
+    },
+    {
+     "w": "السمك،",
+     "start": 14.24,
+     "end": 14.62,
+     "matched": true
+    },
+    {
+     "w": "اي",
+     "start": 14.62,
+     "end": 14.84,
+     "matched": true
+    },
+    {
+     "w": "مصدر",
+     "start": 14.84,
+     "end": 15.18,
+     "matched": true
+    },
+    {
+     "w": "بروتين،",
+     "start": 15.18,
+     "end": 15.6,
+     "matched": true
+    },
+    {
+     "w": "وممكن",
+     "start": 15.6,
+     "end": 16.2,
+     "matched": true
+    },
+    {
+     "w": "تبدله",
+     "start": 16.2,
+     "end": 16.92,
+     "matched": true
+    },
+    {
+     "w": "بـ",
+     "start": 16.86,
+     "end": 16.98,
+     "matched": false
+    },
+    {
+     "w": "Supplement",
+     "start": 16.92,
+     "end": 17.42,
+     "matched": true
+    },
+    {
+     "w": "زي",
+     "start": 17.42,
+     "end": 17.76,
+     "matched": true
+    },
+    {
+     "w": "ده.",
+     "start": 17.76,
+     "end": 17.92,
+     "matched": true
+    },
+    {
+     "w": "من",
+     "start": 17.92,
+     "end": 18.08,
+     "matched": true
+    },
+    {
+     "w": "الاخر",
+     "start": 18.08,
+     "end": 18.38,
+     "matched": true
+    },
+    {
+     "w": "بقى،",
+     "start": 18.38,
+     "end": 18.64,
+     "matched": true
+    },
+    {
+     "w": "اشتريه",
+     "start": 18.64,
+     "end": 19.12,
+     "matched": true
+    },
+    {
+     "w": "ولا",
+     "start": 19.12,
+     "end": 19.24,
+     "matched": true
+    },
+    {
+     "w": "لا؟",
+     "start": 19.24,
+     "end": 19.54,
+     "matched": true
+    },
+    {
+     "w": "لو",
+     "start": 19.54,
+     "end": 19.62,
+     "matched": true
+    },
+    {
+     "w": "انت",
+     "start": 19.62,
+     "end": 19.86,
+     "matched": true
+    },
+    {
+     "w": "هتقدر",
+     "start": 19.86,
+     "end": 20.28,
+     "matched": true
+    },
+    {
+     "w": "تكمل",
+     "start": 20.28,
+     "end": 20.66,
+     "matched": true
+    },
+    {
+     "w": "احتياجك",
+     "start": 20.66,
+     "end": 21.12,
+     "matched": true
+    },
+    {
+     "w": "من",
+     "start": 21.12,
+     "end": 21.26,
+     "matched": true
+    },
+    {
+     "w": "البروتين",
+     "start": 21.26,
+     "end": 21.72,
+     "matched": true
+    },
+    {
+     "w": "من",
+     "start": 21.72,
+     "end": 21.88,
+     "matched": true
+    },
+    {
+     "w": "الاكل،",
+     "start": 21.88,
+     "end": 22.34,
+     "matched": true
+    },
+    {
+     "w": "ما",
+     "start": 22.34,
+     "end": 22.7,
+     "matched": true
+    },
+    {
+     "w": "تشتريهوش.",
+     "start": 22.7,
+     "end": 23.2,
+     "matched": true
+    },
+    {
+     "w": "انما",
+     "start": 23.2,
+     "end": 23.48,
+     "matched": true
+    },
+    {
+     "w": "لو",
+     "start": 23.48,
+     "end": 23.64,
+     "matched": true
+    },
+    {
+     "w": "انت",
+     "start": 23.64,
+     "end": 23.9,
+     "matched": true
+    },
+    {
+     "w": "وقتك",
+     "start": 23.9,
+     "end": 24.22,
+     "matched": true
+    },
+    {
+     "w": "ضيق",
+     "start": 24.22,
+     "end": 24.54,
+     "matched": true
+    },
+    {
+     "w": "ومش",
+     "start": 24.54,
+     "end": 24.8,
+     "matched": true
+    },
+    {
+     "w": "قادر",
+     "start": 24.8,
+     "end": 25.24,
+     "matched": true
+    },
+    {
+     "w": "تدخل",
+     "start": 25.24,
+     "end": 25.98,
+     "matched": true
+    },
+    {
+     "w": "الوجبات",
+     "start": 25.98,
+     "end": 26.26,
+     "matched": true
+    },
+    {
+     "w": "بتاعتك،",
+     "start": 26.26,
+     "end": 26.64,
+     "matched": true
+    },
+    {
+     "w": "فده",
+     "start": 26.64,
+     "end": 26.96,
+     "matched": true
+    },
+    {
+     "w": "هيفيدك.",
+     "start": 26.96,
+     "end": 27.36,
+     "matched": true
+    },
+    {
+     "w": "اكتبولي",
+     "start": 27.36,
+     "end": 27.62,
+     "matched": true
+    },
+    {
+     "w": "في",
+     "start": 27.62,
+     "end": 27.7,
+     "matched": true
+    },
+    {
+     "w": "الكومنت",
+     "start": 27.7,
+     "end": 28.1,
+     "matched": true
+    },
+    {
+     "w": "ايه",
+     "start": 28.1,
+     "end": 28.32,
+     "matched": true
+    },
+    {
+     "w": "نوع",
+     "start": 28.32,
+     "end": 28.52,
+     "matched": true
+    },
+    {
+     "w": "Supplement",
+     "start": 28.52,
+     "end": 28.72,
+     "matched": true
+    },
+    {
+     "w": "اللي",
+     "start": 28.66,
+     "end": 28.78,
+     "matched": false
+    },
+    {
+     "w": "انتو",
+     "start": 28.72,
+     "end": 29.04,
+     "matched": true
+    },
+    {
+     "w": "عايزين",
+     "start": 29.04,
+     "end": 29.34,
+     "matched": true
+    },
+    {
+     "w": "اتكلم",
+     "start": 29.34,
+     "end": 29.68,
+     "matched": true
+    },
+    {
+     "w": "عنه",
+     "start": 29.68,
+     "end": 30.02,
+     "matched": true
+    },
+    {
+     "w": "في",
+     "start": 30.02,
+     "end": 30.12,
+     "matched": true
+    },
+    {
+     "w": "الفيديوز",
+     "start": 30.12,
+     "end": 30.46,
+     "matched": true
+    },
+    {
+     "w": "اللي",
+     "start": 30.46,
+     "end": 30.66,
+     "matched": true
+    },
+    {
+     "w": "جاي.",
+     "start": 30.66,
+     "end": 30.86,
+     "matched": true
+    }
+   ]
+  }
+ ],
+ "report": [
+  "  0.22  ال  ->  (start of next word)",
+  "  3.10  وضبط  ->  وظيفة",
+  "  3.54  ال  ->  (start of next word)",
+  "  4.06  أنه  ->  ان",
+  "   ---  (missing)  ->  هو",
+  "   ---  (missing)  ->  انت",
+  "  5.02  تتكمل  ->  تكمل",
+  "  7.24  الأساسي  ->  اساسي",
+  "  8.04  قدرة  ->  كتلة",
+  "  9.70  التشفاء  ->  الاستشفاء.",
+  "   ---  (missing)  ->  بـ",
+  " 16.92  بسبلمين  ->  Supplement",
+  " 22.70  تشترهوش  ->  تشتريهوش.",
+  " 27.36  تبولي  ->  اكتبولي",
+  " 28.44  من  ->  (part of نوع)",
+  " 28.52  السبلم  ->  Supplement",
+  "   ---  (missing)  ->  اللي"
+ ]
+}

@@ -1,0 +1,476 @@
+{
+ "title": "OSM: back to training (3 rules)",
+ "fps": 30,
+ "width": 1080,
+ "height": 1920,
+ "media": {
+  "main": "source/original.mp4"
+ },
+ "audio": {
+  "main": "work/stems/original.vocals.wav"
+ },
+ "dialogueFx": "highpass=f=70,acompressor=threshold=0.1:ratio=2.5:attack=8:release=120:makeup=1.5",
+ "dialogueLufs": -16.0,
+ "plates": {
+  "grade": "eq=contrast=1.05:saturation=0.95:gamma=0.99,colorbalance=rs=-0.015:bs=0.02:rm=-0.01:bm=0.005:rh=0.012:gh=0.004:bh=-0.012,curves=master='0/0 0.22/0.2 0.78/0.8 1/1',vignette=angle=PI/7",
+  "sharpen": "cas=strength=0.22"
+ },
+ "covers": [
+  {
+   "src": "main",
+   "at": 0.0,
+   "dur": 0.92,
+   "box": [
+    0.1372,
+    0.5837,
+    0.86,
+    0.6477
+   ]
+  },
+  {
+   "src": "main",
+   "at": 0.78,
+   "dur": 1.3,
+   "box": [
+    0.1372,
+    0.5815,
+    0.8822,
+    0.6935
+   ]
+  },
+  {
+   "src": "main",
+   "at": 2.08,
+   "dur": 0.54,
+   "box": [
+    0.1872,
+    0.5867,
+    0.9433,
+    0.6507
+   ]
+  },
+  {
+   "src": "main",
+   "at": 2.58,
+   "dur": 1.2,
+   "box": [
+    0.0567,
+    0.586,
+    0.9433,
+    0.65
+   ]
+  },
+  {
+   "src": "main",
+   "at": 3.78,
+   "dur": 0.6,
+   "box": [
+    0.0567,
+    0.5823,
+    0.9433,
+    0.6943
+   ]
+  },
+  {
+   "src": "main",
+   "at": 4.38,
+   "dur": 0.7,
+   "box": [
+    0.15,
+    0.607,
+    0.85,
+    0.6711
+   ]
+  },
+  {
+   "src": "main",
+   "at": 5.08,
+   "dur": 2.5,
+   "box": [
+    0.0789,
+    0.5759,
+    0.9211,
+    0.7084
+   ]
+  },
+  {
+   "src": "main",
+   "at": 7.58,
+   "dur": 3.5,
+   "box": [
+    0.0706,
+    0.6055,
+    0.785,
+    0.6695
+   ]
+  },
+  {
+   "src": "main",
+   "at": 11.08,
+   "dur": 4.74,
+   "box": [
+    0.0761,
+    0.5846,
+    0.9461,
+    0.6966
+   ]
+  },
+  {
+   "src": "main",
+   "at": 19.08,
+   "dur": 2.24,
+   "box": [
+    0.0844,
+    0.5666,
+    0.91,
+    0.6786
+   ]
+  }
+ ],
+ "clips": [
+  {
+   "src": "main",
+   "in": 0.0,
+   "out": 1.84,
+   "zoom": [
+    1.0,
+    1.04
+   ],
+   "focusY": 0.42
+  },
+  {
+   "src": "main",
+   "in": 1.84,
+   "out": 4.33,
+   "zoom": 1.12,
+   "focusY": 0.36,
+   "settle": 1.06
+  },
+  {
+   "src": "main",
+   "in": 4.33,
+   "out": 4.47,
+   "zoom": 1.0,
+   "hold": 4.5,
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  },
+  {
+   "src": "main",
+   "in": 4.47,
+   "out": 7.4,
+   "zoom": [
+    1.0,
+    1.05
+   ]
+  },
+  {
+   "src": "main",
+   "in": 7.4,
+   "out": 10.87,
+   "zoom": [
+    1.02,
+    1.0
+   ],
+   "tin": {
+    "type": "whip",
+    "dir": "up"
+   }
+  },
+  {
+   "src": "main",
+   "in": 10.87,
+   "out": 15.86,
+   "zoom": [
+    1.0,
+    1.06
+   ],
+   "tin": {
+    "type": "zoom",
+    "flash": true
+   }
+  },
+  {
+   "src": "main",
+   "in": 15.86,
+   "out": 16.4,
+   "zoom": 1.04
+  },
+  {
+   "src": "main",
+   "in": 16.4,
+   "out": 17.9,
+   "zoom": 1.04,
+   "speed": 2
+  },
+  {
+   "src": "main",
+   "in": 17.9,
+   "out": 18.93,
+   "zoom": [
+    1.04,
+    1.08
+   ]
+  },
+  {
+   "src": "main",
+   "in": 18.93,
+   "out": 21.43,
+   "zoom": [
+    1.0,
+    1.05
+   ],
+   "focusY": 0.42,
+   "tin": {
+    "type": "zoom",
+    "flash": true
+   }
+  }
+ ],
+ "captions": {
+  "wordsFile": "work/tx/aligned.words.json",
+  "style": "plate",
+  "karaoke": true,
+  "maxWords": 3,
+  "maxChars": 22,
+  "keywords": [
+   "إصابة",
+   "3",
+   "خفيفة",
+   "stretch",
+   "مضبوط",
+   "كامل",
+   "الكومنت"
+  ]
+ },
+ "overlays": [
+  {
+   "type": "kineticTitle",
+   "at": 0.1,
+   "dur": 1.75,
+   "eyebrow": "OSM · COMEBACK",
+   "lines": [
+    {
+     "text": "BACK TO"
+    },
+    {
+     "text": "TRAINING",
+     "accent": true
+    }
+   ],
+   "top": 0.33,
+   "tilt": true
+  },
+  {
+   "type": "stepBadge",
+   "at": 2.5300000000000002,
+   "dur": 1.803333333333333,
+   "mark": "3",
+   "label": "حاجات",
+   "sub": "لازم تركز عليهم",
+   "top": 0.15
+  },
+  {
+   "type": "stepBadge",
+   "at": 4.333333333333333,
+   "dur": 3.0666666666666673,
+   "mark": "01",
+   "label": "أوزان خفيفة",
+   "sub": "ونعلى بالتدريج",
+   "top": 0.15
+  },
+  {
+   "type": "stepBadge",
+   "at": 7.4,
+   "dur": 3.466666666666667,
+   "mark": "02",
+   "label": "Stretch",
+   "sub": "قبل وبعد التمرين",
+   "top": 0.15
+  },
+  {
+   "type": "stepBadge",
+   "at": 10.866666666666667,
+   "dur": 5.0,
+   "mark": "03",
+   "label": "أداء مضبوط",
+   "sub": "FULL RANGE OF MOTION",
+   "top": 0.15
+  },
+  {
+   "type": "kineticTitle",
+   "at": 15.866666666666667,
+   "dur": 2.2000000000000006,
+   "eyebrow": "03",
+   "lines": [
+    {
+     "text": "FULL RANGE"
+    },
+    {
+     "text": "OF MOTION",
+     "accent": true
+    }
+   ],
+   "top": 0.15
+  },
+  {
+   "type": "endCard",
+   "at": 20.6667,
+   "dur": 2.4,
+   "cta": "OSM Coach Osama",
+   "reveal": "wipe"
+  }
+ ],
+ "shakes": [
+  {
+   "at": 0.0,
+   "amp": 0.5
+  },
+  {
+   "at": 10.866666666666667,
+   "amp": 0.7
+  },
+  {
+   "at": 15.866666666666667,
+   "amp": 1.0
+  },
+  {
+   "at": 20.666666666666668,
+   "amp": 0.6
+  }
+ ],
+ "sfx": {
+  "cues": [
+   {
+    "at": 0.0,
+    "sound": "boom",
+    "gain_db": -9
+   },
+   {
+    "at": 0.12,
+    "sound": "slam",
+    "gain_db": -15
+   },
+   {
+    "at": 1.84,
+    "sound": "air",
+    "gain_db": -24
+   },
+   {
+    "at": 2.58,
+    "sound": "slam",
+    "gain_db": -17
+   },
+   {
+    "at": 2.58,
+    "sound": "bass_drop",
+    "gain_db": -19
+   },
+   {
+    "at": 4.3333,
+    "sound": "whip",
+    "gain_db": -11,
+    "dir": -1.0
+   },
+   {
+    "at": 4.3333,
+    "sound": "bass_drop",
+    "gain_db": -18
+   },
+   {
+    "at": 7.4,
+    "sound": "whip",
+    "gain_db": -11,
+    "dir": 1.0,
+    "bright": 7500
+   },
+   {
+    "at": 10.2667,
+    "sound": "riser",
+    "gain_db": -19,
+    "dur": 0.6
+   },
+   {
+    "at": 10.8667,
+    "sound": "boom",
+    "gain_db": -10
+   },
+   {
+    "at": 10.9167,
+    "sound": "slam",
+    "gain_db": -16
+   },
+   {
+    "at": 15.8667,
+    "sound": "boom",
+    "gain_db": -8
+   },
+   {
+    "at": 15.9467,
+    "sound": "slam",
+    "gain_db": -13
+   },
+   {
+    "at": 16.4,
+    "sound": "whip",
+    "gain_db": -14,
+    "dur": 0.45,
+    "dir": 1.0
+   },
+   {
+    "at": 17.1333,
+    "sound": "slam",
+    "gain_db": -14
+   },
+   {
+    "at": 18.1667,
+    "sound": "reverse_hit",
+    "gain_db": -15,
+    "dur": 0.5
+   },
+   {
+    "at": 18.1667,
+    "sound": "boom",
+    "gain_db": -11
+   },
+   {
+    "at": 20.6667,
+    "sound": "reverse_hit",
+    "gain_db": -12,
+    "dur": 0.7
+   },
+   {
+    "at": 20.6667,
+    "sound": "boom",
+    "gain_db": -7
+   },
+   {
+    "at": 21.1667,
+    "sound": "click",
+    "gain_db": -17
+   },
+   {
+    "at": 4.5633,
+    "sound": "mech",
+    "gain_db": -21
+   },
+   {
+    "at": 7.63,
+    "sound": "mech",
+    "gain_db": -21
+   },
+   {
+    "at": 11.0967,
+    "sound": "mech",
+    "gain_db": -21
+   }
+  ]
+ },
+ "music": {
+  "src": "work/music/music.wav",
+  "gain_db": -9
+ },
+ "tail": 2.4
+}

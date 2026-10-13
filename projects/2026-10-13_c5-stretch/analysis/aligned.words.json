@@ -1,0 +1,489 @@
+{
+ "source": "projects/2026-10-13_c5-stretch/work/tx/original.vocals.words.json",
+ "reference": "projects/_c5/refs/stretch.txt",
+ "segments": [
+  {
+   "start": 1.84,
+   "end": 26.6,
+   "words": [
+    {
+     "w": "طب",
+     "start": 1.84,
+     "end": 2.14,
+     "matched": false
+    },
+    {
+     "w": "بقولك",
+     "start": 2.14,
+     "end": 2.66,
+     "matched": true
+    },
+    {
+     "w": "بقى",
+     "start": 2.66,
+     "end": 2.86,
+     "matched": true
+    },
+    {
+     "w": "على",
+     "start": 2.86,
+     "end": 2.92,
+     "matched": true
+    },
+    {
+     "w": "حاجة،",
+     "start": 2.92,
+     "end": 3.22,
+     "matched": true
+    },
+    {
+     "w": "انت",
+     "start": 3.22,
+     "end": 3.44,
+     "matched": true
+    },
+    {
+     "w": "بتعمل",
+     "start": 3.44,
+     "end": 3.68,
+     "matched": true
+    },
+    {
+     "w": "استرتش",
+     "start": 3.68,
+     "end": 3.94,
+     "matched": true
+    },
+    {
+     "w": "غلط.",
+     "start": 3.94,
+     "end": 4.2,
+     "matched": true
+    },
+    {
+     "w": "تعالى",
+     "start": 4.26,
+     "end": 4.42,
+     "matched": true
+    },
+    {
+     "w": "اعلمك",
+     "start": 4.42,
+     "end": 4.74,
+     "matched": true
+    },
+    {
+     "w": "ازاي",
+     "start": 4.74,
+     "end": 4.9,
+     "matched": true
+    },
+    {
+     "w": "تعمل",
+     "start": 4.9,
+     "end": 5.24,
+     "matched": true
+    },
+    {
+     "w": "استرتش",
+     "start": 5.24,
+     "end": 5.6,
+     "matched": true
+    },
+    {
+     "w": "لاي",
+     "start": 5.6,
+     "end": 5.82,
+     "matched": true
+    },
+    {
+     "w": "عضلة.",
+     "start": 5.82,
+     "end": 6.16,
+     "matched": true
+    },
+    {
+     "w": "اي",
+     "start": 6.2,
+     "end": 6.36,
+     "matched": true
+    },
+    {
+     "w": "عضلة",
+     "start": 6.36,
+     "end": 6.62,
+     "matched": true
+    },
+    {
+     "w": "بيحصل",
+     "start": 6.62,
+     "end": 6.92,
+     "matched": true
+    },
+    {
+     "w": "ليها",
+     "start": 6.92,
+     "end": 7.12,
+     "matched": true
+    },
+    {
+     "w": "Concentric",
+     "start": 7.12,
+     "end": 7.68,
+     "matched": true
+    },
+    {
+     "w": "و",
+     "start": 7.68,
+     "end": 7.9,
+     "matched": true
+    },
+    {
+     "w": "Eccentric،",
+     "start": 7.9,
+     "end": 8.44,
+     "matched": true
+    },
+    {
+     "w": "وده",
+     "start": 8.52,
+     "end": 8.88,
+     "matched": true
+    },
+    {
+     "w": "اللي",
+     "start": 8.88,
+     "end": 9.0,
+     "matched": true
+    },
+    {
+     "w": "هو",
+     "start": 9.0,
+     "end": 9.08,
+     "matched": true
+    },
+    {
+     "w": "الانقباض",
+     "start": 9.08,
+     "end": 9.62,
+     "matched": true
+    },
+    {
+     "w": "والانبساط",
+     "start": 9.62,
+     "end": 10.12,
+     "matched": true
+    },
+    {
+     "w": "العضلي.",
+     "start": 10.12,
+     "end": 10.6,
+     "matched": true
+    },
+    {
+     "w": "يعني",
+     "start": 10.64,
+     "end": 10.8,
+     "matched": true
+    },
+    {
+     "w": "انا",
+     "start": 10.8,
+     "end": 10.94,
+     "matched": true
+    },
+    {
+     "w": "مثلا",
+     "start": 10.94,
+     "end": 11.2,
+     "matched": true
+    },
+    {
+     "w": "لما",
+     "start": 11.2,
+     "end": 11.36,
+     "matched": true
+    },
+    {
+     "w": "اجي",
+     "start": 11.36,
+     "end": 11.52,
+     "matched": true
+    },
+    {
+     "w": "امرن",
+     "start": 11.52,
+     "end": 11.74,
+     "matched": true
+    },
+    {
+     "w": "عضلة",
+     "start": 11.74,
+     "end": 12.04,
+     "matched": true
+    },
+    {
+     "w": "Chest",
+     "start": 12.04,
+     "end": 12.3,
+     "matched": true
+    },
+    {
+     "w": "فبمرنها",
+     "start": 12.3,
+     "end": 13.7,
+     "matched": true
+    },
+    {
+     "w": "بالشكل",
+     "start": 13.7,
+     "end": 14.16,
+     "matched": true
+    },
+    {
+     "w": "ده،",
+     "start": 14.16,
+     "end": 14.38,
+     "matched": true
+    },
+    {
+     "w": "فالاسترتش",
+     "start": 14.38,
+     "end": 14.88,
+     "matched": true
+    },
+    {
+     "w": "بتاعها",
+     "start": 14.88,
+     "end": 15.22,
+     "matched": true
+    },
+    {
+     "w": "هيكون",
+     "start": 15.22,
+     "end": 15.4,
+     "matched": true
+    },
+    {
+     "w": "بالشكل",
+     "start": 15.4,
+     "end": 15.82,
+     "matched": true
+    },
+    {
+     "w": "ده.",
+     "start": 15.82,
+     "end": 16.06,
+     "matched": true
+    },
+    {
+     "w": "لو",
+     "start": 16.06,
+     "end": 16.46,
+     "matched": true
+    },
+    {
+     "w": "انا",
+     "start": 16.46,
+     "end": 16.68,
+     "matched": true
+    },
+    {
+     "w": "بمرن",
+     "start": 16.68,
+     "end": 16.98,
+     "matched": true
+    },
+    {
+     "w": "عضلة",
+     "start": 16.98,
+     "end": 17.32,
+     "matched": true
+    },
+    {
+     "w": "Triceps",
+     "start": 17.32,
+     "end": 17.56,
+     "matched": true
+    },
+    {
+     "w": "فانا",
+     "start": 17.56,
+     "end": 18.1,
+     "matched": true
+    },
+    {
+     "w": "بمرنها",
+     "start": 18.1,
+     "end": 18.52,
+     "matched": true
+    },
+    {
+     "w": "بالشكل",
+     "start": 18.52,
+     "end": 18.92,
+     "matched": true
+    },
+    {
+     "w": "ده،",
+     "start": 18.92,
+     "end": 19.18,
+     "matched": true
+    },
+    {
+     "w": "فالاسترتش",
+     "start": 19.18,
+     "end": 19.8,
+     "matched": true
+    },
+    {
+     "w": "بتاعها",
+     "start": 19.8,
+     "end": 20.1,
+     "matched": true
+    },
+    {
+     "w": "بيكون",
+     "start": 20.1,
+     "end": 20.3,
+     "matched": true
+    },
+    {
+     "w": "بالشكل",
+     "start": 20.3,
+     "end": 20.62,
+     "matched": true
+    },
+    {
+     "w": "ده",
+     "start": 20.62,
+     "end": 20.84,
+     "matched": true
+    },
+    {
+     "w": "وبنزل",
+     "start": 20.84,
+     "end": 21.56,
+     "matched": true
+    },
+    {
+     "w": "لتحت.",
+     "start": 21.56,
+     "end": 22.08,
+     "matched": true
+    },
+    {
+     "w": "اهم",
+     "start": 22.14,
+     "end": 22.42,
+     "matched": true
+    },
+    {
+     "w": "حاجة،",
+     "start": 22.42,
+     "end": 22.76,
+     "matched": true
+    },
+    {
+     "w": "السؤال",
+     "start": 22.78,
+     "end": 23.24,
+     "matched": true
+    },
+    {
+     "w": "ده",
+     "start": 23.24,
+     "end": 23.38,
+     "matched": true
+    },
+    {
+     "w": "ليك",
+     "start": 23.38,
+     "end": 23.58,
+     "matched": true
+    },
+    {
+     "w": "انت:",
+     "start": 23.58,
+     "end": 23.9,
+     "matched": true
+    },
+    {
+     "w": "لو",
+     "start": 23.9,
+     "end": 24.2,
+     "matched": true
+    },
+    {
+     "w": "انا",
+     "start": 24.2,
+     "end": 24.36,
+     "matched": true
+    },
+    {
+     "w": "هامرن",
+     "start": 24.36,
+     "end": 24.64,
+     "matched": true
+    },
+    {
+     "w": "العضلة",
+     "start": 24.64,
+     "end": 25.06,
+     "matched": true
+    },
+    {
+     "w": "الامامية",
+     "start": 25.06,
+     "end": 25.46,
+     "matched": true
+    },
+    {
+     "w": "ازاي",
+     "start": 25.46,
+     "end": 25.86,
+     "matched": true
+    },
+    {
+     "w": "اعملها",
+     "start": 25.86,
+     "end": 26.24,
+     "matched": true
+    },
+    {
+     "w": "استرتش؟",
+     "start": 26.24,
+     "end": 26.6,
+     "matched": true
+    }
+   ]
+  }
+ ],
+ "report": [
+  "   ---  (missing)  ->  طب",
+  "  3.68  استريتش  ->  استرتش",
+  "  5.24  استريتش  ->  استرتش",
+  "  8.52  و  ->  (start of next word)",
+  "  8.70  ده  ->  وده",
+  "  9.08  الانكباض  ->  الانقباض",
+  "  9.62  و  ->  (start of next word)",
+  "  9.78  الانبساط  ->  والانبساط",
+  " 14.38  فالاستريتش  ->  فالاسترتش",
+  " 14.88  بتاعي  ->  بتاعها",
+  " 15.22  يكون  ->  هيكون",
+  " 16.68  بامرن  ->  بمرن",
+  " 17.32  Try  ->  Triceps",
+  " 18.10  بامرنها  ->  بمرنها",
+  " 19.18  فالاستريتش  ->  فالاسترتش",
+  " 19.80  بتاعي  ->  بتاعها",
+  " 20.84  و  ->  (start of next word)",
+  " 21.00  بنزل  ->  وبنزل",
+  " 25.06  امامية  ->  الامامية",
+  " 25.86  اعمل  ->  اعملها",
+  " 26.12  لها  ->  (part of اعملها)",
+  " 26.24  استريتش  ->  استرتش؟",
+  " 26.60  اشتركوا  ->  (dropped)",
+  " 26.90  في  ->  (dropped)",
+  " 27.48  القناة  ->  (dropped)"
+ ]
+}

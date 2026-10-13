@@ -1,0 +1,630 @@
+{
+ "title": "OSM: CrossFit or gym?",
+ "fps": 30,
+ "width": 1080,
+ "height": 1920,
+ "media": {
+  "main": "source/original.mp4"
+ },
+ "audio": {
+  "main": "work/stems/original.vocals.wav"
+ },
+ "dialogueFx": "highpass=f=70,acompressor=threshold=0.1:ratio=2.5:attack=8:release=120:makeup=1.5",
+ "dialogueLufs": -16.0,
+ "plates": {
+  "grade": "eq=contrast=1.05:saturation=0.95:gamma=0.99,colorbalance=rs=-0.015:bs=0.02:rm=-0.01:bm=0.005:rh=0.012:gh=0.004:bh=-0.012,curves=master='0/0 0.22/0.2 0.78/0.8 1/1',vignette=angle=PI/7",
+  "sharpen": "cas=strength=0.22"
+ },
+ "covers": [
+  {
+   "src": "main",
+   "at": 0,
+   "dur": 3.94,
+   "box": [
+    0.1094,
+    0.6492,
+    0.8989,
+    0.7132
+   ]
+  },
+  {
+   "src": "main",
+   "at": 3.78,
+   "dur": 1.34,
+   "box": [
+    0.0872,
+    0.6237,
+    0.9128,
+    0.7357
+   ]
+  },
+  {
+   "src": "main",
+   "at": 5.08,
+   "dur": 7.5,
+   "box": [
+    0.04,
+    0.6245,
+    0.9211,
+    0.7365
+   ]
+  },
+  {
+   "src": "main",
+   "at": 12.58,
+   "dur": 0.64,
+   "box": [
+    0.2778,
+    0.6289,
+    0.9778,
+    0.6929
+   ]
+  },
+  {
+   "src": "main",
+   "at": 13.18,
+   "dur": 0.54,
+   "box": [
+    0.1028,
+    0.6298,
+    0.8028,
+    0.6938
+   ]
+  },
+  {
+   "src": "main",
+   "at": 13.58,
+   "dur": 7.64,
+   "box": [
+    0.02,
+    0.6252,
+    0.98,
+    0.7373
+   ]
+  },
+  {
+   "src": "main",
+   "at": 21.68,
+   "dur": 3.7,
+   "box": [
+    0.02,
+    0.6268,
+    0.98,
+    0.7389
+   ]
+  },
+  {
+   "src": "main",
+   "at": 25.38,
+   "dur": 3.84,
+   "box": [
+    0.0706,
+    0.6492,
+    0.9239,
+    0.7132
+   ]
+  },
+  {
+   "src": "main",
+   "at": 30.18,
+   "dur": 8.74,
+   "box": [
+    0.02,
+    0.626,
+    0.98,
+    0.7381
+   ]
+  }
+ ],
+ "clips": [
+  {
+   "src": "main",
+   "in": 0.0,
+   "out": 3.0,
+   "zoom": [
+    1.0,
+    1.06
+   ],
+   "focusY": 0.35
+  },
+  {
+   "src": "main",
+   "in": 3.0,
+   "out": 4.87,
+   "zoom": 1.0,
+   "tin": {
+    "type": "whip",
+    "dir": "right"
+   }
+  },
+  {
+   "src": "main",
+   "in": 4.87,
+   "out": 12.2,
+   "zoom": [
+    1.0,
+    1.05
+   ],
+   "tin": {
+    "type": "zoom",
+    "flash": true
+   }
+  },
+  {
+   "src": "main",
+   "in": 12.2,
+   "out": 12.37,
+   "zoom": 1.04,
+   "hold": 12.4,
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  },
+  {
+   "src": "main",
+   "in": 12.37,
+   "out": 13.43,
+   "zoom": [
+    1.04,
+    1.08
+   ]
+  },
+  {
+   "src": "main",
+   "in": 13.43,
+   "out": 13.8,
+   "zoom": 1.0
+  },
+  {
+   "src": "main",
+   "in": 13.8,
+   "out": 21.1,
+   "zoom": [
+    1.0,
+    1.06
+   ],
+   "settle": 1.08
+  },
+  {
+   "src": "main",
+   "in": 22.4,
+   "out": 22.56,
+   "zoom": 1.0,
+   "hold": 22.6,
+   "tin": {
+    "type": "whip",
+    "dir": "up"
+   }
+  },
+  {
+   "src": "main",
+   "in": 22.56,
+   "out": 25.47,
+   "zoom": [
+    1.0,
+    1.05
+   ]
+  },
+  {
+   "src": "main",
+   "in": 25.47,
+   "out": 29.33,
+   "zoom": [
+    1.04,
+    1.08
+   ],
+   "tin": {
+    "type": "zoom"
+   }
+  },
+  {
+   "src": "main",
+   "in": 29.33,
+   "out": 35.07,
+   "zoom": [
+    1.0,
+    1.05
+   ],
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  },
+  {
+   "src": "main",
+   "in": 35.07,
+   "out": 38.7,
+   "zoom": [
+    1.0,
+    1.06
+   ],
+   "tin": {
+    "type": "zoom",
+    "flash": true
+   }
+  },
+  {
+   "src": "main",
+   "in": 38.7,
+   "out": 38.95,
+   "zoom": 1.06,
+   "hold": 38.68
+  }
+ ],
+ "captions": {
+  "wordsFile": "work/tx/aligned.words.json",
+  "style": "plate",
+  "karaoke": true,
+  "maxWords": 3,
+  "maxChars": 22,
+  "keywords": [
+   "تخس",
+   "crossfit",
+   "سيركل",
+   "مميزات",
+   "عيوب",
+   "calories",
+   "مفاصلك"
+  ]
+ },
+ "overlays": [
+  {
+   "type": "kineticTitle",
+   "at": 0.05,
+   "dur": 2.95,
+   "eyebrow": "OSM · TRAINING",
+   "lines": [
+    {
+     "text": "CROSSFIT"
+    },
+    {
+     "text": "OR GYM?",
+     "accent": true
+    }
+   ],
+   "top": 0.36,
+   "tilt": true
+  },
+  {
+   "type": "checklist",
+   "at": 6.397,
+   "dur": 5.803,
+   "top": 0.36,
+   "row": false,
+   "items": [
+    {
+     "at": 0.26,
+     "text": "تمارين بمقاومة"
+    },
+    {
+     "at": 1.88,
+     "text": "بوزن الجسم"
+    },
+    {
+     "at": 3.44,
+     "text": "Cardio"
+    }
+   ]
+  },
+  {
+   "type": "kineticTitle",
+   "at": 13.433333333333334,
+   "dur": 0.36666666666666714,
+   "backdrop": true,
+   "eyebrow": "OSM · CROSSFIT",
+   "lines": [
+    {
+     "text": "HOW IT"
+    },
+    {
+     "text": "WORKS",
+     "accent": true,
+     "size": 190
+    }
+   ],
+   "top": 0.3
+  },
+  {
+   "type": "checklist",
+   "at": 19.6,
+   "dur": 1.5,
+   "top": 0.4,
+   "row": true,
+   "items": [
+    {
+     "at": 0.24,
+     "text": "العدات"
+    },
+    {
+     "at": 0.78,
+     "text": "الأوزان"
+    },
+    {
+     "at": 1.36,
+     "text": "المجموعات"
+    }
+   ]
+  },
+  {
+   "type": "stepBadge",
+   "at": 24.166666666666668,
+   "dur": 3.866666666666667,
+   "mark": "+",
+   "label": "مميزات",
+   "top": 0.15
+  },
+  {
+   "type": "checklist",
+   "at": 24.997,
+   "dur": 3.037,
+   "top": 0.4,
+   "row": false,
+   "items": [
+    {
+     "at": 0.18,
+     "text": "بتحرق Calories"
+    },
+    {
+     "at": 1.92,
+     "text": "بيقوي الجسم كله"
+    }
+   ]
+  },
+  {
+   "type": "stepBadge",
+   "at": 28.033333333333335,
+   "dur": 5.733333333333331,
+   "mark": "–",
+   "label": "عيوب",
+   "top": 0.15
+  },
+  {
+   "type": "checklist",
+   "at": 30.603,
+   "dur": 3.163,
+   "top": 0.4,
+   "row": false,
+   "items": [
+    {
+     "at": 0.5,
+     "text": "وزن تقيل"
+    },
+    {
+     "at": 0.88,
+     "text": "تكنيك غلط"
+    },
+    {
+     "at": 1.78,
+     "text": "هيدمرلك مفاصلك"
+    }
+   ]
+  },
+  {
+   "type": "endCard",
+   "at": 37.6333,
+   "dur": 2.4,
+   "cta": "OSM Coach Osama",
+   "reveal": "wipe"
+  }
+ ],
+ "shakes": [
+  {
+   "at": 0.0,
+   "amp": 0.5
+  },
+  {
+   "at": 4.866666666666666,
+   "amp": 0.6
+  },
+  {
+   "at": 13.433333333333334,
+   "amp": 0.8
+  },
+  {
+   "at": 24.166666666666668,
+   "amp": 0.6
+  },
+  {
+   "at": 32.38333333333334,
+   "amp": 0.5
+  },
+  {
+   "at": 33.766666666666666,
+   "amp": 0.6
+  },
+  {
+   "at": 37.63333333333333,
+   "amp": 0.6
+  }
+ ],
+ "sfx": {
+  "cues": [
+   {
+    "at": 0.0,
+    "sound": "boom",
+    "gain_db": -9
+   },
+   {
+    "at": 0.1,
+    "sound": "slam",
+    "gain_db": -15
+   },
+   {
+    "at": 3.0,
+    "sound": "whip",
+    "gain_db": -11,
+    "dir": 1.0
+   },
+   {
+    "at": 4.2667,
+    "sound": "riser",
+    "gain_db": -19,
+    "dur": 0.6
+   },
+   {
+    "at": 4.8667,
+    "sound": "boom",
+    "gain_db": -10
+   },
+   {
+    "at": 12.2,
+    "sound": "whip",
+    "gain_db": -11,
+    "dir": -1.0
+   },
+   {
+    "at": 13.4333,
+    "sound": "boom",
+    "gain_db": -9
+   },
+   {
+    "at": 13.4333,
+    "sound": "slam",
+    "gain_db": -13
+   },
+   {
+    "at": 13.8,
+    "sound": "whip",
+    "gain_db": -13,
+    "dir": 1.0
+   },
+   {
+    "at": 21.1,
+    "sound": "whip",
+    "gain_db": -11,
+    "dir": 1.0,
+    "bright": 7500
+   },
+   {
+    "at": 21.1,
+    "sound": "bass_drop",
+    "gain_db": -17
+   },
+   {
+    "at": 23.6667,
+    "sound": "reverse_hit",
+    "gain_db": -17,
+    "dur": 0.5
+   },
+   {
+    "at": 24.1667,
+    "sound": "slam",
+    "gain_db": -13
+   },
+   {
+    "at": 24.3867,
+    "sound": "mech",
+    "gain_db": -20
+   },
+   {
+    "at": 28.0333,
+    "sound": "whip",
+    "gain_db": -11,
+    "dir": -1.0
+   },
+   {
+    "at": 28.0333,
+    "sound": "bass_drop",
+    "gain_db": -16
+   },
+   {
+    "at": 28.2533,
+    "sound": "mech",
+    "gain_db": -20
+   },
+   {
+    "at": 32.3833,
+    "sound": "slam",
+    "gain_db": -17
+   },
+   {
+    "at": 33.1667,
+    "sound": "riser",
+    "gain_db": -19,
+    "dur": 0.6
+   },
+   {
+    "at": 33.7667,
+    "sound": "boom",
+    "gain_db": -10
+   },
+   {
+    "at": 37.6333,
+    "sound": "reverse_hit",
+    "gain_db": -12,
+    "dur": 0.7
+   },
+   {
+    "at": 37.6333,
+    "sound": "boom",
+    "gain_db": -7
+   },
+   {
+    "at": 38.1333,
+    "sound": "click",
+    "gain_db": -17
+   },
+   {
+    "at": 6.657,
+    "sound": "click",
+    "gain_db": -21
+   },
+   {
+    "at": 8.277,
+    "sound": "click",
+    "gain_db": -21
+   },
+   {
+    "at": 9.837,
+    "sound": "click",
+    "gain_db": -21
+   },
+   {
+    "at": 19.84,
+    "sound": "click",
+    "gain_db": -21
+   },
+   {
+    "at": 20.38,
+    "sound": "click",
+    "gain_db": -21
+   },
+   {
+    "at": 20.96,
+    "sound": "click",
+    "gain_db": -21
+   },
+   {
+    "at": 25.177,
+    "sound": "click",
+    "gain_db": -21
+   },
+   {
+    "at": 26.917,
+    "sound": "click",
+    "gain_db": -21
+   },
+   {
+    "at": 31.103,
+    "sound": "click",
+    "gain_db": -21
+   },
+   {
+    "at": 31.483,
+    "sound": "click",
+    "gain_db": -21
+   },
+   {
+    "at": 32.383,
+    "sound": "click",
+    "gain_db": -21
+   }
+  ]
+ },
+ "music": {
+  "src": "work/music/music.wav",
+  "gain_db": -10
+ },
+ "tail": 2.4
+}
