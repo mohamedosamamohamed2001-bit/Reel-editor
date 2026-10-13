@@ -47,7 +47,7 @@ overlays = [
     end_card(T),
 ]
 
-covers = covers_from_detection(P / "work/text/original.text.json")
+covers = covers_from_detection(P / "work/text/original.text.json", cuts=tl.cuts(), min_w=0.9)  # words slide in from the right edge (to x 0.88)
 covers[0]["dur"] = round(covers[0]["dur"] + covers[0]["at"], 3); covers[0]["at"] = 0.0  # "كا" typing in on frame 1
 
 cues = [

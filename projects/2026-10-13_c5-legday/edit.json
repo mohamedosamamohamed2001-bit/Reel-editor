@@ -242,7 +242,7 @@
   {
    "type": "stepBadge",
    "at": 1.55,
-   "dur": 0.9166666666666667,
+   "dur": 0.95,
    "mark": "8",
    "label": "EXERCISES",
    "sub": "3 × 15",
@@ -251,8 +251,8 @@
   },
   {
    "type": "lowerLabel",
-   "at": 2.587,
-   "dur": 3.033,
+   "at": 2.62,
+   "dur": 3.0,
    "eyebrow": "EXERCISE 01",
    "title": "BULGARIAN SQUAT",
    "sets": "3 × 15"
@@ -300,14 +300,14 @@
   {
    "type": "lowerLabel",
    "at": 22.72,
-   "dur": 3.2,
+   "dur": 3.267,
    "eyebrow": "EXERCISE 07",
    "title": "SEATED CALF RAISES",
    "sets": "3 × 15"
   },
   {
    "type": "lowerLabel",
-   "at": 26.12,
+   "at": 26.187,
    "dur": 3.333,
    "eyebrow": "EXERCISE 08",
    "title": "MACHINE CALF RAISES",
@@ -329,7 +329,7 @@
   },
   {
    "type": "endCard",
-   "at": 29.5333,
+   "at": 29.6,
    "dur": 2.4,
    "cta": "OSM Coach Osama",
    "reveal": "wipe"
@@ -341,7 +341,7 @@
    "amp": 0.6
   },
   {
-   "at": 2.466666666666667,
+   "at": 2.5,
    "amp": 0.6
   },
   {
@@ -353,11 +353,11 @@
    "amp": 0.7
   },
   {
-   "at": 26.0,
+   "at": 26.066666666666666,
    "amp": 0.5
   },
   {
-   "at": 29.533333333333335,
+   "at": 29.6,
    "amp": 0.6
   }
  ],
@@ -384,23 +384,23 @@
     "gain_db": -16
    },
    {
-    "at": 2.4667,
+    "at": 2.5,
     "sound": "whip",
     "gain_db": -9,
     "dir": -1.0
    },
    {
-    "at": 2.4667,
+    "at": 2.5,
     "sound": "bass_drop",
     "gain_db": -14
    },
    {
-    "at": 2.7667,
+    "at": 2.8,
     "sound": "click",
     "gain_db": -17
    },
    {
-    "at": 3.9333,
+    "at": 3.9667,
     "sound": "slam",
     "gain_db": -16
    },
@@ -547,23 +547,23 @@
     "gain_db": -17
    },
    {
-    "at": 25.0667,
+    "at": 25.1,
     "sound": "slam",
     "gain_db": -16
    },
    {
-    "at": 26.0,
+    "at": 26.0667,
     "sound": "whip",
     "gain_db": -9,
     "dir": -1.0
    },
    {
-    "at": 26.0,
+    "at": 26.0667,
     "sound": "bass_drop",
     "gain_db": -14
    },
    {
-    "at": 26.3,
+    "at": 26.3667,
     "sound": "click",
     "gain_db": -17
    },
@@ -589,18 +589,18 @@
     "gain_db": -15
    },
    {
-    "at": 29.5333,
+    "at": 29.6,
     "sound": "reverse_hit",
     "gain_db": -12,
     "dur": 0.7
    },
    {
-    "at": 29.5333,
+    "at": 29.6,
     "sound": "boom",
     "gain_db": -7
    },
    {
-    "at": 30.0333,
+    "at": 30.1,
     "sound": "click",
     "gain_db": -17
    }

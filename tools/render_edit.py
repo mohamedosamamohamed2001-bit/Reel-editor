@@ -43,6 +43,26 @@ def dims(path):
     return (h, w) if rot in (90, 270) else (w, h)
 
 
+def jsround(x):
+    """Math.round (halves up), to match the studio's frame maths exactly (Python's round() rounds halves to even)."""
+    import math
+    return int(math.floor(x + 0.5))
+
+
+def first_frame(c, fps):
+    """Source frame a clip starts on: round(in * fps). Contiguous clips telescope (next first = this first + frames)."""
+    return jsround(c["in"] * fps)
+
+
+def plate_frames(c, fps):
+    """Output frames of a clip, as the studio plays it: round(out*fps) - round(in*fps) at speed 1 (and frozen/held),
+    round((out - in) / speed * fps) for speed ramps. make_plates writes the plate's out so edit.ts clipFrames agrees."""
+    sp = c.get("speed", 1)
+    if sp == 1 or c.get("freeze"):
+        return jsround(c["out"] * fps) - jsround(c["in"] * fps)
+    return jsround((c["out"] - c["in"]) / sp * fps)
+
+
 def _even(x):
     return max(2, int(round(x / 2)) * 2)
 
@@ -140,11 +160,11 @@ def make_plates(edit, proj):
         speed = c.get("speed", 1)
         freeze = c.get("freeze", False)
         span = c["out"] - c["in"]
-        n_out = round(span * fps) if speed == 1 or freeze else round(span / speed * fps)
+        n_out = plate_frames(c, fps)
         # frame-exact trim: start ON the frame the timeline shows at `in` (floor), not the next one
         # (a plain -ss picks the first frame AFTER `in`: measured 1 frame late after the cut)
         hold = c.get("hold")  # show the still frame at `hold` (source s) for this clip while its dialogue plays on
-        first = int((hold if hold is not None else c["in"]) * fps + 1e-6)
+        first = jsround(hold * fps) if hold is not None else first_frame(c, fps)
         seek = (first - 0.25) / fps if first else 0
         if hold is not None:
             mine = [cv for cv in covers if cv["src"] == c["src"] and cv["at"] <= hold < cv["at"] + cv["dur"]]
@@ -168,6 +188,8 @@ def make_plates(edit, proj):
         # caption anchors: cover boxes mapped into the output frame (zoom ramp taken at the clip's midpoint)
         zm = (1 + z1 / z0) / 2 if z1 != z0 else 1
         for cv in mine:
+            if not cv.get("anchor", True):  # a plate over something other than old captions: captions don't sit on it
+                continue
             bx = [((cv["box"][0] * sw - x) / cw - 0.5) * zm + 0.5, ((cv["box"][1] * sh - y) / ch - 0.5) * zm + 0.5,
                   ((cv["box"][2] * sw - x) / cw - 0.5) * zm + 0.5, ((cv["box"][3] * sh - y) / ch - 0.5) * zm + 0.5]
             t0 = 0 if hold is not None else max(cv["at"], c["in"]) - c["in"]
@@ -176,8 +198,12 @@ def make_plates(edit, proj):
                 t0, t1 = t0 / speed, t1 / speed
             anchors.append({"at": round(out_frame / fps + t0, 4), "dur": round(t1 - t0, 4), "box": [round(v, 4) for v in bx]})
         out_frame += n_out
-        c.update({"orig": {"in": c["in"], "out": c["out"]},
-                  "src": key, "in": 0, "out": round(span, 3), "focusX": 0.5, "focusY": 0.5,
+        # caption timing maps through orig: the same start frame and frame-exact length as picture and audio
+        o_in = first_frame(c, fps) / fps
+        c.update({"orig": {"in": o_in, "out": o_in + n_out / fps} if not freeze and speed == 1 else {"in": c["in"], "out": c["out"]},
+                  # out chosen so edit.ts clipFrames gives exactly n_out frames
+                  "src": key, "in": 0, "out": round(n_out / fps if (speed == 1 or freeze) else n_out * speed / fps, 6),
+                  "focusX": 0.5, "focusY": 0.5,
                   "zoom": [1, round(z1 / z0, 4)] if z1 != z0 else 1})
         if freeze:
             c["speed"] = 1
@@ -307,6 +333,7 @@ def build_dialogue(clips, total, dst, fx=None, lufs=None):
         if (m and m["path"] == c["path"] and abs(m["out"] - c["in"]) < 1e-6 and m["volume"] == c["volume"]
                 and m.get("silent") == c.get("silent") and not c.get("silent")):
             m["out"] = c["out"]
+            m["len"] = m["len"] + c["len"]
         else:
             merged.append(dict(c))
     clips = merged
@@ -319,7 +346,10 @@ def build_dialogue(clips, total, dst, fx=None, lufs=None):
         if c.get("silent"):  # speed-ramped or frozen picture: no dialogue there (music + SFX carry it)
             parts.append(f"anullsrc=r=48000:cl=stereo,atrim=duration={c['len']:.5f}[a{i}]")
             continue
-        parts.append(f"[{paths.index(c['path'])}:a:0]atrim=start={c['in']}:end={c['out']},asetpts=PTS-STARTPTS,"
+        # start on the same source frame as the picture, and last exactly the clip's frame count, so sub-frame
+        # differences can't accumulate into A/V drift across jump cuts
+        d = c["len"]
+        parts.append(f"[{paths.index(c['path'])}:a:0]atrim=start={c['start']:.6f}:duration={d:.6f},asetpts=PTS-STARTPTS,"
                      f"aresample=48000,aformat=channel_layouts=stereo,volume={c['volume']},"
                      f"afade=t=in:d=0.008,afade=t=out:st={max(0, d - 0.008):.3f}:d=0.008[a{i}]")
     graph = ";".join(parts) + ";" + "".join(f"[a{i}]" for i in range(len(clips))) + \
@@ -428,14 +458,17 @@ def main():
     amap = edit.pop("audio", {})
     fps = edit["fps"]
     audio_clips = []
+    plated = bool(edit.get("plates"))
     for c in edit["clips"]:
         sp = c.get("speed", 1)
         silent = c.get("freeze", False) or sp != 1
-        ln = (c["out"] - c["in"]) if c.get("freeze") else (c["out"] - c["in"]) / sp
+        n = plate_frames(c, fps) if plated else jsround(c["out"] * fps) - jsround(c["in"] * fps)
         audio_clips.append({"path": str((proj / amap.get(c["src"], edit["media"][c["src"]])).resolve()), "in": c["in"],
                             "out": c["out"], "volume": c.get("volume", 1), "silent": silent,
+                            # the picture starts on source frame round(in * fps): the audio starts there too
+                            "start": first_frame(c, fps) / fps if plated else c["in"],
                             # exact timeline length in frames, so audio and picture can't drift apart
-                            "len": (round(ln * fps) if sp != 1 and not c.get("freeze") else round(c["out"] * fps) - round(c["in"] * fps)) / fps})
+                            "len": n / fps})
     dialogue_fx = edit.pop("dialogueFx", None)
     dialogue_lufs = edit.pop("dialogueLufs", None)
     music = edit.pop("music", None)

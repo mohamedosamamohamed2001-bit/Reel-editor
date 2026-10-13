@@ -19,13 +19,15 @@ track = json.load(open(P / "analysis/track_tub.json"))  # tools/track.py, tub ce
 
 tl = Timeline()
 tl.add("main", 0.0, 2.97, zoom=[1.0, 1.06], focusY=0.4)                          # standing intro, the question
-iCard = len(tl.clips); tl.add("main", 2.97, 3.55, zoom=1.0)                       # under the title card (old leak)
-iA = len(tl.clips); tl.add("main", 3.55, 10.20, zoom=[1.0, 1.04], settle=1.08)    # what whey does, protein basics
+iCard = len(tl.clips); tl.add("main", 2.97, 3.62, zoom=1.0)                       # under the title card (old leak)
+iA = len(tl.clips); tl.add("main", 3.62, 10.20, zoom=[1.0, 1.04], settle=1.08)    # what whey does, protein basics
 iB = len(tl.clips); tl.add("main", 10.20, 18.17, zoom=[1.1, 1.14], focusY=1.0, tin={"type": "whip", "dir": "right"})  # bottom-anchored: the tub stays in frame
 iQ = len(tl.clips); tl.add("main", 18.17, 19.50, zoom=1.2, focusY=0.36, tin={"type": "zoom", "flash": True})
 i1 = len(tl.clips); tl.add("main", 19.50, 23.18, zoom=[1.0, 1.04], settle=1.06)   # case 1
 i2 = len(tl.clips); tl.add("main", 23.18, 27.30, zoom=[1.12, 1.16], focusY=0.42, settle=1.06)  # case 2
-iE = len(tl.clips); tl.add("main", 27.30, 30.95, zoom=[1.0, 1.06], tin={"type": "zoom", "flash": True})  # CTA
+# CTA: the old leak runs 27.30-27.63 (two bursts): a clean held frame rides the zoom + flash, then the shot plays
+iE = len(tl.clips); tl.add("main", 27.30, 27.74, zoom=1.0, hold=27.77, tin={"type": "zoom", "flash": True})
+tl.add("main", 27.74, 30.95, zoom=[1.0, 1.06])
 T = tl.total()
 o = tl.out
 tCard, tA, tB, tQ, t1, t2, tE = (tl.start_of(i) for i in (iCard, iA, iB, iQ, i1, i2, iE))
@@ -70,7 +72,7 @@ overlays.insert(5, tracked(tSwap - 0.2, o(18.1), "SUPPLEMENT", z=1.135, fy=1.0))
 
 # old burned-in captions + the old stock food photos (eggs / meat / fish, 13.15-15.57 s) under one wide plate
 # captions are always centred at y 0.62-0.76 here; the window frame by his arm and the tub label are not text
-covers = [c for c in covers_from_detection(P / "work/text/original.text.json", band=(0.6, 0.77), center_tol=0.12) if c["at"] < 3.3]
+covers = [c for c in covers_from_detection(P / "work/text/original.text.json", band=(0.6, 0.77), center_tol=0.12, cuts=tl.cuts()) if c["at"] < 3.3]
 # seated (3.55 s on): the jacket's white stripes sit in the caption band and defeat the text detector, but the old
 # caption there is always ONE centred line at y 0.69-0.72 shown while he speaks -> fixed plates on the speech spans
 spans = []
@@ -83,7 +85,7 @@ for w in words:
         spans.append([w["start"], w["end"]])
 for a, b in spans:
     covers.append({"src": "main", "at": round(a - 0.25, 3), "dur": round(b - a + 0.6, 3), "box": [0.07, 0.668, 0.93, 0.744]})
-covers.append({"src": "main", "at": 13.08, "dur": 2.56, "box": [0.02, 0.728, 0.98, 0.878]})
+covers.append({"src": "main", "at": 13.08, "dur": 2.56, "box": [0.02, 0.728, 0.98, 0.878], "anchor": False})
 
 cues = [
     cue(0.0, "boom", -9), cue(0.1, "slam", -15),

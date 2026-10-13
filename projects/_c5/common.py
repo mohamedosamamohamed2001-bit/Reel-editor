@@ -40,10 +40,12 @@ class Timeline:
 
     @staticmethod
     def frames(c):
+        """Exactly tools/render_edit.plate_frames (Math.round halves up; contiguous clips telescope)."""
+        js = lambda x: int(math.floor(x + 0.5))
         sp = c.get("speed", 1)
         if c.get("freeze") or sp == 1:
-            return fr(c["out"]) - fr(c["in"])
-        return round((c["out"] - c["in"]) / sp * FPS)
+            return js(c["out"] * FPS) - js(c["in"] * FPS)
+        return js((c["out"] - c["in"]) / sp * FPS)
 
     def add(self, src, a, b, **kw):
         c = {"src": src, "in": a, "out": b, **kw}
@@ -57,16 +59,25 @@ class Timeline:
     def total(self):
         return self.total_frames() / FPS
 
+    def cuts(self):
+        """Source times where the picture really changes (a transition or a jump in the source), for splitting
+        cover plates. Same-shot splits (punch-ins, speed-ramp segments, held frames) are not cuts."""
+        out = {self.clips[0]["in"], self.clips[-1]["out"]}
+        for p, c in zip(self.clips, self.clips[1:]):
+            if c.get("tin") or abs(c["in"] - p["out"]) > 1e-6:
+                out |= {p["out"], c["in"]}
+        return sorted(out)
+
     def start_of(self, i):
         return self.starts[i] / FPS
 
     def out(self, t, src="main"):
-        """Source time -> output time (first non-silent clip containing it)."""
+        """Source time -> output time (first non-silent clip containing it; the picture starts on frame floor(in*fps))."""
         for c, s in zip(self.clips, self.starts):
             if c["src"] != src or c.get("freeze") or c.get("speed", 1) != 1:
                 continue
             if c["in"] <= t < c["out"]:
-                return s / FPS + (t - c["in"])
+                return s / FPS + (t - math.floor(c["in"] * FPS + 0.5) / FPS)
         raise ValueError(f"source time {t} is not on the timeline")
 
 
@@ -85,15 +96,18 @@ def word_time(words, text, near=None, nth=0):
     return hits[nth]["start"]
 
 
-def covers_from_detection(text_json, band=(0.45, 0.86), min_w=0.70, pad_x=0.035, hold=0.12, gap=0.35,
-                          skip=(), line_h=0.064, two_line_h=0.112, center_tol=None):
+def covers_from_detection(text_json, band=(0.45, 0.86), min_w=0.82, pad_x=0.035, lead=0.25, tail=0.45, gap=0.6,
+                          skip=(), center_tol=None, cuts=()):
     """Cover plates over the old burned-in captions, from tools/burned_text.py detections (10 fps).
 
-    One cover per contiguous run of detected text at one position; boxes are normalised so the plates read as one
-    consistent caption bar: centred on the old text, at least `min_w` wide, and snapped to a 1-line or 2-line height.
-    `hold` widens each cover in time (detection runs at 10 fps; text pops in between samples).
+    Robust over pretty: detection flickers (a 2nd line over a bright shirt has no dark edge to find), so one plate
+    covers EVERYTHING detected in a run, a run being continuous text inside one shot: it is split only by a real pause
+    (> `gap` s without text) or a cut in `cuts` (source s), where a size change is natural. Each plate starts `lead`
+    early and holds `tail` after the last detection (old captions linger over bright backgrounds, measured 0.3 s).
+    Width >= `min_w`, centred on the old text; height = the run's full extent + margin.
     """
     d = json.load(open(text_json))
+    cuts = sorted(cuts)
     runs = []
     for f in d["frames"]:
         t = f["t"]
@@ -105,14 +119,12 @@ def covers_from_detection(text_json, band=(0.45, 0.86), min_w=0.70, pad_x=0.035,
             continue
         u = [min(b[0] for b in bs), min(b[1] for b in bs), max(b[2] for b in bs), max(b[3] for b in bs)]
         last = runs[-1] if runs else None
-        # same caption block while it keeps its place and size (a new line count = a new plate size)
-        if last and t - last["t1"] <= gap and abs(u[1] - last["u"][1]) < 0.03 and abs(u[3] - last["u"][3]) < 0.03:
+        crosses = last is not None and any(last["t1"] < c <= t for c in cuts)
+        if last and t - last["t1"] <= gap and not crosses:
             last["t1"] = t
             last["u"] = [min(last["u"][0], u[0]), min(last["u"][1], u[1]), max(last["u"][2], u[2]), max(last["u"][3], u[3])]
         else:
             runs.append({"t0": t, "t1": t, "u": u})
-    for r in runs:  # line count from the block's full extent, not its first frame
-        r["two"] = (r["u"][3] - r["u"][1]) > 0.048
     covers = []
     for r in runs:
         if r["t1"] - r["t0"] < 0.15:  # a single stray detection is noise
@@ -120,14 +132,18 @@ def covers_from_detection(text_json, band=(0.45, 0.86), min_w=0.70, pad_x=0.035,
         u = r["u"]
         cx = (u[0] + u[2]) / 2
         w = min(0.96, max(min_w, u[2] - u[0] + 2 * pad_x))
-        h = max(two_line_h if r["two"] else line_h, u[3] - u[1] + 0.02)
+        h = u[3] - u[1] + 0.03
         cy = (u[1] + u[3]) / 2
         x0 = min(max(0.02, cx - w / 2), 0.98 - w)
-        covers.append({"src": "main", "at": round(max(0, r["t0"] - hold), 3), "dur": round(r["t1"] - r["t0"] + 2 * hold, 3),
+        # clip the lead/tail at the neighbouring cuts so a plate never shows on the other shot
+        pc = max([c for c in cuts if c <= r["t0"]], default=0.0)
+        nc = min([c for c in cuts if c > r["t1"]], default=1e9)
+        # text that starts/ends within half a second of a cut is taken to run from/to that cut
+        t0 = pc if r["t0"] - pc < 0.5 else max(r["t0"] - lead, pc)
+        t1 = nc if nc - r["t1"] < 0.6 else min(r["t1"] + tail, nc)
+        covers.append({"src": "main", "at": round(t0, 3), "dur": round(t1 - t0, 3),
                        "box": [round(x0, 4), round(cy - h / 2, 4), round(x0 + w, 4), round(cy + h / 2, 4)]})
-    # bridge short gaps so the bar doesn't blink between phrases: the earlier plate holds until the next one starts
-    # (sizes are not merged: one tall 3-line moment must not make every plate tall)
-    for p, c in zip(covers, covers[1:]):
+    for p, c in zip(covers, covers[1:]):  # no 1-3 frame blink between plates
         if 0 < c["at"] - (p["at"] + p["dur"]) < 0.3:
             p["dur"] = round(c["at"] - p["at"], 3)
     return covers

@@ -23,18 +23,18 @@ export const Checklist: React.FC<{ dur: number; items: { at: number; text: strin
               key={i}
               dir={rtl ? "rtl" : "ltr"}
               style={{
-                display: "flex", alignItems: "center", gap: row ? 12 : 20, padding: row ? "10px 22px 12px" : "16px 34px 18px",
+                display: "flex", alignItems: "center", gap: row ? 14 : 20, padding: row ? "12px 26px 14px" : "16px 34px 18px",
                 background: "rgba(10,15,22,0.86)", border: `1px solid ${color.line}`, borderRadius: 22,
                 boxShadow: "0 14px 34px rgba(10,15,22,0.35)",
                 opacity: p, transform: `translateY(${24 * (1 - p)}px) scale(${0.96 + 0.04 * p})`,
               }}
             >
-              <svg width={row ? 34 : 44} height={row ? 34 : 44} viewBox="0 0 44 44">
+              <svg width={row ? 40 : 44} height={row ? 40 : 44} viewBox="0 0 44 44">
                 <circle cx="22" cy="22" r="20" fill={color.coreBlue} />
                 <path d="M13 22.5 L19.5 29 L31 16" fill="none" stroke={color.night} strokeWidth="4.5" strokeLinecap="round" strokeLinejoin="round"
                   strokeDasharray={28} strokeDashoffset={28 * (1 - draw)} />
               </svg>
-              <span style={{ fontFamily: rtl ? font.arabic : font.latin, fontWeight: 700, fontSize: row ? 44 : 52, lineHeight: 1.5, color: color.text }}>{it.text}</span>
+              <span style={{ fontFamily: rtl ? font.arabic : font.latin, fontWeight: 700, fontSize: row ? 56 : 52, lineHeight: 1.5, color: color.text }}>{it.text}</span>
             </div>
           );
         })}

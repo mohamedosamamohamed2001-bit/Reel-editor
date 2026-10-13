@@ -50,9 +50,10 @@ def main():
     for c in edit["clips"]:
         sp = c.get("speed", 1)
         silent = c.get("freeze", False) or sp != 1
-        n = (round((c["out"] - c["in"]) / sp * fps) if sp != 1 and not c.get("freeze") else round(c["out"] * fps) - round(c["in"] * fps))
+        n = R.plate_frames(c, fps) if edit.get("plates") else R.jsround(c["out"] * fps) - R.jsround(c["in"] * fps)
         clips.append({"path": str((proj / amap.get(c["src"], edit["media"][c["src"]])).resolve()), "in": c["in"], "out": c["out"],
-                      "volume": c.get("volume", 1), "silent": silent, "len": n / fps})
+                      "volume": c.get("volume", 1), "silent": silent, "len": n / fps,
+                      "start": R.first_frame(c, fps) / fps if edit.get("plates") else c["in"]})
         total += n / fps
     total += edit.get("tail", 0)
     tmp = Path(tempfile.mkdtemp())

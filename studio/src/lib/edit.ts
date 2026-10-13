@@ -108,7 +108,10 @@ export const clipsDuration = (clips: Clip[]) => clips.reduce((t, c) => t + (c.ou
 
 export const editDuration = (e: Edit) => {
   const overlaysEnd = Math.max(0, ...e.overlays.map((o) => o.at + o.dur));
-  return Math.max(clipsDuration(e.clips) + (e.tail ?? 0), overlaysEnd);
+  // frame-exact: the clips play for their ROUNDED frame counts (clipFrames); summing float durations made the
+  // composition a few frames longer than the picture on speed-ramped edits (black frames after the end card)
+  const clipsSec = e.clips.reduce((n, c) => n + clipFrames(c, e.fps), 0) / e.fps;
+  return Math.max(clipsSec + (e.tail ?? 0), overlaysEnd);
 };
 
 /**
