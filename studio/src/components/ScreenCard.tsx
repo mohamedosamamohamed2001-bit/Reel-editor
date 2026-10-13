@@ -13,6 +13,7 @@ type Props = {
   frames?: { count: number; fps: number };
   entrance?: "flat" | "tilt";
   checks?: boolean;
+  masks?: { at: number; dur: number; box: Box }[];
 };
 
 const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
@@ -24,7 +25,7 @@ const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
  */
 export const ScreenCard: React.FC<Props> = ({
   src, dur, segments, region = { x: 0, y: 0, w: 1, h: 1 }, width = 920, top = 300, srcW = 1080, srcH = 1920,
-  taps = [], highlights = [], frames, entrance = "flat", checks = false,
+  taps = [], highlights = [], frames, entrance = "flat", checks = false, masks = [],
 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -118,6 +119,13 @@ export const ScreenCard: React.FC<Props> = ({
         }}
       >
         {seqs}
+        {/* privacy masks (account numbers, emails): heavy blur + Night tint over exactly that area */}
+        {masks.filter((m) => t >= m.at && t < m.at + m.dur).map((m, i) => (
+          <div key={`m${i}`} style={{
+            position: "absolute", left: m.box.x * width, top: m.box.y * cardH, width: m.box.w * width, height: m.box.h * cardH,
+            backdropFilter: "blur(14px)", WebkitBackdropFilter: "blur(14px)", background: "rgba(20,27,38,0.55)", borderRadius: 8,
+          }} />
+        ))}
         {/* dim everything except the highlighted element */}
         {box && dim > 0 ? (
           <div

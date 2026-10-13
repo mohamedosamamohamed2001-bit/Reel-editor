@@ -2,6 +2,7 @@ import { useMemo } from "react";
 import { AbsoluteFill, Sequence, useVideoConfig } from "remotion";
 import { Callout } from "./components/Callout";
 import { Captions } from "./components/Captions";
+import { Checklist } from "./components/Checklist";
 import { EndCard } from "./components/EndCard";
 import { ExerciseTitle } from "./components/ExerciseTitle";
 import { FramedVideo } from "./components/FramedVideo";
@@ -12,7 +13,7 @@ import { Edit, Overlay, groupCaptions } from "./lib/edit";
 import { useBrandFonts } from "./lib/fonts";
 import { color } from "./lib/theme";
 
-const layer: Record<Overlay["type"], number> = { split: 1, insetCard: 1, screenCard: 1, exerciseTitle: 3, callout: 3, endCard: 4 };
+const layer: Record<Overlay["type"], number> = { split: 1, insetCard: 1, screenCard: 1, exerciseTitle: 3, callout: 3, checklist: 3, endCard: 4 };
 
 const renderOverlay = (o: Overlay) => {
   switch (o.type) {
@@ -25,9 +26,11 @@ const renderOverlay = (o: Overlay) => {
     case "split":
       return <SplitStack top={o.top} bottom={o.bottom} dur={o.dur} />;
     case "endCard":
-      return <EndCard dur={o.dur} cta={o.cta} signature={o.signature} reveal={o.reveal} />;
+      return <EndCard dur={o.dur} cta={o.cta} signature={o.signature} reveal={o.reveal} sub={o.sub} />;
+    case "checklist":
+      return <Checklist dur={o.dur} items={o.items} top={o.top} />;
     case "screenCard":
-      return <ScreenCard src={o.src} dur={o.dur} segments={o.segments} region={o.region} width={o.width} top={o.top} srcW={o.srcW} srcH={o.srcH} taps={o.taps} highlights={o.highlights} frames={o.frames} entrance={o.entrance} checks={o.checks} />;
+      return <ScreenCard src={o.src} dur={o.dur} segments={o.segments} region={o.region} width={o.width} top={o.top} srcW={o.srcW} srcH={o.srcH} taps={o.taps} highlights={o.highlights} frames={o.frames} entrance={o.entrance} checks={o.checks} masks={o.masks} />;
   }
 };
 

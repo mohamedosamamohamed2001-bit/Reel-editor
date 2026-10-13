@@ -85,7 +85,7 @@ export const Captions: React.FC<{ groups: CaptionGroup[]; keywords?: string[]; s
               : bar;
             return (
               <span key={w + wi} style={{ position: "relative", display: "inline-block", color: isKw ? color.coreBlue : undefined, opacity: lit }}>
-                {w.replace(/[.،,]+$/, "")}
+                {run.latin && rtl ? w.replace(/[.،,؟]+$/, "") : w.replace(/[.،,]+$/, "")}
                 {isKw ? (
                   <span
                     style={{
@@ -100,10 +100,14 @@ export const Captions: React.FC<{ groups: CaptionGroup[]; keywords?: string[]; s
           return (
             <span key={ri}>
               {run.latin ? (
-                // one isolated LTR run per English phrase, so "Calories Calculator" never flips inside RTL text
-                <span dir="ltr" style={{ unicodeBidi: "isolate", fontFamily: font.latin, fontSize: rtl ? "0.92em" : undefined }}>
-                  {words.flatMap((el, i) => (i ? [" ", el] : [el]))}
-                </span>
+                // one isolated LTR run per English phrase, so "Calories Calculator" never flips inside RTL text;
+                // an Arabic "؟" ending the run is moved outside it so it sits at the RTL sentence end
+                <>
+                  <span dir="ltr" style={{ unicodeBidi: "isolate", fontFamily: font.latin, fontSize: rtl ? "0.92em" : undefined }}>
+                    {words.flatMap((el, i) => (i ? [" ", el] : [el]))}
+                  </span>
+                  {rtl && /؟$/.test(run.words[run.words.length - 1]) ? "؟" : null}
+                </>
               ) : (
                 words.flatMap((el, i) => (i ? [" ", el] : [el]))
               )}

@@ -1,0 +1,663 @@
+{
+  "title": "OSM — Full Access: how to upgrade (payment on the website)",
+  "fps": 29.97,
+  "width": 1080,
+  "height": 1920,
+  "media": {
+    "main": "source/v6.mp4",
+    "rec1": "source/screen_215516.mp4",
+    "rec2": "source/screen_215700.mp4"
+  },
+  "plates": {
+    "grade": "colorbalance=rs=-0.02:bs=0.025:rm=-0.05:bm=0.015:rh=0.02:gh=0.005:bh=-0.025,curves=all='0/0 0.25/0.235 0.5/0.5 0.75/0.765 1/1'",
+    "sharpen": "cas=strength=0.4"
+  },
+  "clips": [
+    {
+      "src": "main",
+      "in": 0.0,
+      "out": 3.4,
+      "zoom": [
+        1.18,
+        1.24
+      ],
+      "focusX": 0.505,
+      "focusY": 0.34
+    },
+    {
+      "src": "main",
+      "in": 3.4,
+      "out": 4.94,
+      "zoom": 1.32,
+      "focusX": 0.505,
+      "focusY": 0.32,
+      "settle": 1.04
+    },
+    {
+      "src": "main",
+      "in": 4.94,
+      "out": 10.4,
+      "zoom": 1.0,
+      "focusX": 0.48,
+      "focusY": 0.5,
+      "settle": 1.04
+    },
+    {
+      "src": "main",
+      "in": 10.7,
+      "out": 16.38,
+      "zoom": 1.0,
+      "focusX": 0.48,
+      "focusY": 0.5
+    },
+    {
+      "src": "main",
+      "in": 16.38,
+      "out": 18.66,
+      "zoom": 1.32,
+      "focusX": 0.505,
+      "focusY": 0.32,
+      "settle": 1.04
+    },
+    {
+      "src": "main",
+      "in": 18.66,
+      "out": 26.02,
+      "zoom": 1.1,
+      "focusX": 0.49,
+      "focusY": 0.42,
+      "settle": 1.04
+    },
+    {
+      "src": "main",
+      "in": 26.4,
+      "out": 28.82,
+      "zoom": 1.1,
+      "focusX": 0.49,
+      "focusY": 0.42
+    },
+    {
+      "src": "main",
+      "in": 28.82,
+      "out": 30.76,
+      "zoom": 1.32,
+      "focusX": 0.505,
+      "focusY": 0.32,
+      "settle": 1.04
+    },
+    {
+      "src": "main",
+      "in": 30.76,
+      "out": 34.62,
+      "zoom": 1.1,
+      "focusX": 0.49,
+      "focusY": 0.42
+    },
+    {
+      "src": "main",
+      "in": 34.9,
+      "out": 35.72,
+      "zoom": 1.32,
+      "focusX": 0.505,
+      "focusY": 0.32,
+      "settle": 1.04
+    },
+    {
+      "src": "main",
+      "in": 35.72,
+      "out": 36.62,
+      "zoom": [
+        1.0,
+        1.05
+      ],
+      "focusX": 0.48,
+      "focusY": 0.5,
+      "settle": 1.03
+    }
+  ],
+  "captions": {
+    "wordsFile": "work/large/v6.words.json",
+    "karaoke": true,
+    "style": "plate",
+    "maxWords": 3,
+    "maxChars": 23,
+    "keywords": [
+      "full access",
+      "upgrade",
+      "payment",
+      "osm.sotech.website"
+    ],
+    "replaceSeq": [
+      {
+        "from": [
+          "واس",
+          "ام",
+          "دوت",
+          "سوتيك",
+          "دوت",
+          "ويب",
+          "سايت"
+        ],
+        "to": "osm.sotech.website."
+      },
+      {
+        "from": [
+          "الفول",
+          "اكسس؟"
+        ],
+        "to": "Full Access؟"
+      },
+      {
+        "from": [
+          "فول",
+          "اكسس؟"
+        ],
+        "to": "Full Access؟"
+      },
+      {
+        "from": [
+          "الويب",
+          "سايت"
+        ],
+        "to": "Website"
+      }
+    ],
+    "replaceAt": [
+      {
+        "at": 10.24,
+        "start": 10.77
+      },
+      {
+        "at": 25.84,
+        "start": 26.44
+      },
+      {
+        "at": 34.5,
+        "start": 35.17
+      },
+      {
+        "at": 21.1,
+        "to": "App."
+      }
+    ],
+    "replace": {
+      "الاب": "App",
+      "لتشالنجز": "Challenges،",
+      "البوينتز": "Points،",
+      "الاكسس": "Access",
+      "اوبجريد": "Upgrade",
+      "البيمنت": "Payment",
+      "الباكتج": "Package",
+      "الفري": "Free،",
+      "أطول": "أطول."
+    },
+    "zones": [
+      {
+        "at": 10.3604,
+        "dur": 5.6723,
+        "top": 0.8
+      },
+      {
+        "at": 21.0377,
+        "dur": 7.0738,
+        "top": 0.77
+      },
+      {
+        "at": 30.0467,
+        "dur": 3.8706,
+        "top": 0.78
+      }
+    ]
+  },
+  "overlays": [
+    {
+      "type": "exerciseTitle",
+      "at": 3.4034,
+      "dur": 1.5349,
+      "title": "Full Access",
+      "eyebrow": "OSM"
+    },
+    {
+      "type": "checklist",
+      "at": 8.2416,
+      "dur": 2.1688,
+      "items": [
+        {
+          "at": 0,
+          "text": "نظام التمرين"
+        },
+        {
+          "at": 0.737,
+          "text": "نظام التغذية"
+        }
+      ]
+    },
+    {
+      "type": "screenCard",
+      "at": 10.4104,
+      "dur": 5.6723,
+      "src": "rec2",
+      "plate": true,
+      "entrance": "tilt",
+      "checks": true,
+      "width": 820,
+      "top": 290,
+      "region": {
+        "x": 0,
+        "y": 0.05,
+        "w": 1,
+        "h": 0.68
+      },
+      "segments": [
+        {
+          "in": 0.45,
+          "rate": 1,
+          "dur": 1.3
+        },
+        {
+          "in": 8.45,
+          "rate": 0.45,
+          "dur": 4.372
+        }
+      ],
+      "highlights": [
+        {
+          "at": 0.76,
+          "dur": 0.54,
+          "box": {
+            "x": 0.03,
+            "y": 0.112,
+            "w": 0.94,
+            "h": 0.57
+          }
+        },
+        {
+          "at": 1.84,
+          "dur": 1.8,
+          "box": {
+            "x": 0.03,
+            "y": 0.118,
+            "w": 0.94,
+            "h": 0.25
+          }
+        }
+      ]
+    },
+    {
+      "type": "screenCard",
+      "at": 21.0877,
+      "dur": 7.0738,
+      "src": "rec1",
+      "plate": true,
+      "entrance": "tilt",
+      "checks": true,
+      "width": 860,
+      "top": 290,
+      "region": {
+        "x": 0,
+        "y": 0.06,
+        "w": 1,
+        "h": 0.6
+      },
+      "segments": [
+        {
+          "in": 2.9,
+          "rate": 0.5,
+          "dur": 3.0
+        },
+        {
+          "in": 4.4,
+          "rate": 0.03,
+          "dur": 1.638
+        },
+        {
+          "in": 16.4,
+          "rate": 0.3,
+          "dur": 2.436
+        }
+      ],
+      "highlights": [
+        {
+          "at": 5.958,
+          "dur": 1.066,
+          "box": {
+            "x": 0.03,
+            "y": 0.29,
+            "w": 0.94,
+            "h": 0.445
+          }
+        }
+      ],
+      "masks": [
+        {
+          "at": 4.638,
+          "dur": 2.436,
+          "box": {
+            "x": 0.05,
+            "y": 0.888,
+            "w": 0.32,
+            "h": 0.05
+          }
+        }
+      ]
+    },
+    {
+      "type": "screenCard",
+      "at": 30.0967,
+      "dur": 3.8706,
+      "src": "rec1",
+      "plate": true,
+      "entrance": "tilt",
+      "checks": true,
+      "width": 860,
+      "top": 290,
+      "region": {
+        "x": 0,
+        "y": 0.185,
+        "w": 1,
+        "h": 0.62
+      },
+      "segments": [
+        {
+          "in": 16.6,
+          "rate": 0.2,
+          "dur": 1.64
+        },
+        {
+          "in": 19.2,
+          "rate": 0.02,
+          "dur": 2.231
+        }
+      ],
+      "highlights": [
+        {
+          "at": 0.44,
+          "dur": 1.2,
+          "box": {
+            "x": 0.03,
+            "y": 0.081,
+            "w": 0.94,
+            "h": 0.427
+          }
+        },
+        {
+          "at": 1.64,
+          "dur": 1.02,
+          "box": {
+            "x": 0.03,
+            "y": 0.548,
+            "w": 0.94,
+            "h": 0.2
+          }
+        },
+        {
+          "at": 2.66,
+          "dur": 1.161,
+          "box": {
+            "x": 0.03,
+            "y": 0.768,
+            "w": 0.94,
+            "h": 0.065
+          }
+        }
+      ],
+      "masks": [
+        {
+          "at": 0,
+          "dur": 1.64,
+          "box": {
+            "x": 0.05,
+            "y": 0.655,
+            "w": 0.32,
+            "h": 0.05
+          }
+        },
+        {
+          "at": 0,
+          "dur": 1.64,
+          "box": {
+            "x": 0.05,
+            "y": 0.825,
+            "w": 0.32,
+            "h": 0.05
+          }
+        },
+        {
+          "at": 1.64,
+          "dur": 2.231,
+          "box": {
+            "x": 0.05,
+            "y": 0.112,
+            "w": 0.42,
+            "h": 0.05
+          }
+        },
+        {
+          "at": 1.64,
+          "dur": 2.231,
+          "box": {
+            "x": 0.05,
+            "y": 0.283,
+            "w": 0.42,
+            "h": 0.05
+          }
+        },
+        {
+          "at": 1.64,
+          "dur": 2.231,
+          "box": {
+            "x": 0.05,
+            "y": 0.45,
+            "w": 0.42,
+            "h": 0.05
+          }
+        }
+      ]
+    },
+    {
+      "type": "endCard",
+      "at": 35.7023,
+      "dur": 2.5,
+      "cta": "ابدأ مع OSM",
+      "sub": "osm.sotech.website",
+      "reveal": "wipe"
+    }
+  ],
+  "tail": 2.5,
+  "sfx": {
+    "cues": [
+      {
+        "at": 0,
+        "sound": "thump",
+        "gain_db": -23
+      },
+      {
+        "at": 3.4034,
+        "sound": "air",
+        "gain_db": -24,
+        "lo": 2400,
+        "hi": 700
+      },
+      {
+        "at": 3.5035,
+        "sound": "accent",
+        "gain_db": -22
+      },
+      {
+        "at": 4.9383,
+        "sound": "air",
+        "gain_db": -25
+      },
+      {
+        "at": 8.2416,
+        "sound": "blip",
+        "gain_db": -18,
+        "freq": 783.99
+      },
+      {
+        "at": 8.9786,
+        "sound": "blip",
+        "gain_db": -18,
+        "freq": 987.77
+      },
+      {
+        "at": 10.4104,
+        "sound": "swell",
+        "gain_db": -17
+      },
+      {
+        "at": 10.8775,
+        "sound": "whoosh_in",
+        "gain_db": -14
+      },
+      {
+        "at": 10.8775,
+        "sound": "thump",
+        "gain_db": -22
+      },
+      {
+        "at": 11.1704,
+        "sound": "blip",
+        "gain_db": -16,
+        "freq": 783.99
+      },
+      {
+        "at": 12.2504,
+        "sound": "blip",
+        "gain_db": -16,
+        "freq": 880.0
+      },
+      {
+        "at": 15.7824,
+        "sound": "whoosh_out",
+        "gain_db": -21
+      },
+      {
+        "at": 16.0827,
+        "sound": "air",
+        "gain_db": -24,
+        "lo": 2400,
+        "hi": 700
+      },
+      {
+        "at": 18.3517,
+        "sound": "air",
+        "gain_db": -25
+      },
+      {
+        "at": 21.0877,
+        "sound": "swell",
+        "gain_db": -17
+      },
+      {
+        "at": 21.5548,
+        "sound": "whoosh_in",
+        "gain_db": -14
+      },
+      {
+        "at": 21.5548,
+        "sound": "thump",
+        "gain_db": -22
+      },
+      {
+        "at": 25.7257,
+        "sound": "air",
+        "gain_db": -26,
+        "dur": 0.28,
+        "lo": 1200,
+        "hi": 3200
+      },
+      {
+        "at": 27.0457,
+        "sound": "blip",
+        "gain_db": -16,
+        "freq": 783.99
+      },
+      {
+        "at": 27.8612,
+        "sound": "whoosh_out",
+        "gain_db": -21
+      },
+      {
+        "at": 28.1615,
+        "sound": "air",
+        "gain_db": -24,
+        "lo": 2400,
+        "hi": 700
+      },
+      {
+        "at": 30.0967,
+        "sound": "swell",
+        "gain_db": -17
+      },
+      {
+        "at": 30.5367,
+        "sound": "blip",
+        "gain_db": -16,
+        "freq": 783.99
+      },
+      {
+        "at": 30.5638,
+        "sound": "whoosh_in",
+        "gain_db": -14
+      },
+      {
+        "at": 30.5638,
+        "sound": "thump",
+        "gain_db": -22
+      },
+      {
+        "at": 31.7367,
+        "sound": "blip",
+        "gain_db": -16,
+        "freq": 880.0
+      },
+      {
+        "at": 32.7567,
+        "sound": "blip",
+        "gain_db": -16,
+        "freq": 987.77
+      },
+      {
+        "at": 32.7867,
+        "sound": "chime",
+        "gain_db": -20
+      },
+      {
+        "at": 33.667,
+        "sound": "whoosh_out",
+        "gain_db": -21
+      },
+      {
+        "at": 33.9673,
+        "sound": "air",
+        "gain_db": -24,
+        "lo": 2400,
+        "hi": 700
+      },
+      {
+        "at": 34.8014,
+        "sound": "air",
+        "gain_db": -25
+      },
+      {
+        "at": 35.7023,
+        "sound": "swell",
+        "gain_db": -23,
+        "dur": 0.5,
+        "root": 146.83
+      },
+      {
+        "at": 35.769,
+        "sound": "impact",
+        "gain_db": -13
+      },
+      {
+        "at": 36.3029,
+        "sound": "click",
+        "gain_db": -26,
+        "freq": 1800
+      }
+    ]
+  }
+}

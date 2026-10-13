@@ -33,7 +33,8 @@ export type Overlay =
   | { type: "callout"; at: number; dur: number; text?: string; number?: string; unit?: string; earned?: boolean; position?: "top" | "center" }
   | { type: "insetCard"; at: number; dur: number; src: string; in: number; eyebrow?: string; volume?: number }
   | { type: "split"; at: number; dur: number; top: { src: string; in: number }; bottom: { src: string; in: number } }
-  | { type: "endCard"; at: number; dur: number; cta: string; signature?: boolean; reveal?: "fade" | "wipe" }
+  | { type: "endCard"; at: number; dur: number; cta: string; signature?: boolean; reveal?: "fade" | "wipe"; sub?: string }
+  | { type: "checklist"; at: number; dur: number; items: { at: number; text: string }[]; top?: number }
   | {
       type: "screenCard"; at: number; dur: number; src: string; segments: ScreenSegment[];
       /** visible part of the recording, as fractions of its width/height (crop out status bar / keyboard) */
@@ -51,6 +52,8 @@ export type Overlay =
       entrance?: "flat" | "tilt";
       /** draw a check mark on the active highlight */
       checks?: boolean;
+      /** privacy blur over parts of the recording; at/dur = seconds from the card's start, box = fractions of the visible region */
+      masks?: { at: number; dur: number; box: { x: number; y: number; w: number; h: number } }[];
     };
 
 export type Edit = {

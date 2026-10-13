@@ -8,7 +8,7 @@ import { Hairlines } from "./Hairlines";
  * width 640px so clear space (½ "O" height) is respected on all sides.
  * `signature` shows "TRAIN WITH A METHOD." — pending approval in the brand book, so it is opt-in.
  */
-export const EndCard: React.FC<{ dur: number; cta: string; signature?: boolean; reveal?: "fade" | "wipe" }> = ({ dur, cta, signature, reveal = "fade" }) => {
+export const EndCard: React.FC<{ dur: number; cta: string; signature?: boolean; reveal?: "fade" | "wipe"; sub?: string }> = ({ dur, cta, signature, reveal = "fade", sub }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const wipe = reveal === "wipe";
@@ -46,6 +46,9 @@ export const EndCard: React.FC<{ dur: number; cta: string; signature?: boolean; 
         >
           {cta}
         </div>
+        {sub ? (
+          <div style={{ opacity: ctaP, fontFamily: font.latin, fontWeight: 600, fontSize: 38, letterSpacing: "0.02em", color: color.text, marginTop: -30 }}>{sub}</div>
+        ) : null}
       </div>
     </AbsoluteFill>
   );

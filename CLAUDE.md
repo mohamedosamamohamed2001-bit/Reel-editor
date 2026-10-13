@@ -115,3 +115,10 @@ projects/<name>/  one folder per video: project.json, edit.json, analysis/, docu
 4. Write `blueprint.md`: creative direction, and why it suits this video.
 5. Write `edit.json` (cuts + overlays), render with `--preview`, inspect the contact sheet and stills, fix, then do the final render (QA runs automatically).
 6. Deliver the final file plus a QA summary. Update this file only if the studio itself changed.
+- 2026-10-13 (video 2, `projects/2026-10-13_video2`): Drive files shared "anyone with link" download directly with
+  `curl -L "https://drive.usercontent.google.com/download?id=ID&export=download&confirm=t"` (the MCP download returns base64,
+  unusable for large video). New edit options: `captions.replaceSeq` (merge multi-word phrases, e.g. a spoken URL),
+  `captions.replaceAt` (fix/retime ONE word by start time ±0.06 s; use measured audio onsets when whisper drops a word's start),
+  `screenCard.masks` (privacy blur, e.g. account numbers), overlay `checklist`, `endCard.sub`.
+  Caption zones start 0.05 s before the card so no 1-frame fragment appears. The master limiter now runs at 4× oversampling
+  (true peak was −0.3 dBTP at 48 kHz). Blur payment account numbers, emails and personal greetings in screen recordings.

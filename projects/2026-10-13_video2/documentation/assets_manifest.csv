@@ -1,0 +1,7 @@
+asset,source,creator,license,attribution_required,usage,where_in_edit
+source/v6.mp4 (sha256 71ffe9a1…3a76),Google Drive id 1v-GQgwTf_AupnSMMq1YuEAq4FbPs2W_G,OSM / Coach Osama,owned by user,no,main footage (talking head),0.00-35.70 s
+source/screen_215516.mp4 (sha256 628780…6a64),Google Drive id 12Zgwm9GlaSh1mjhzRuDnNAMoHhDptFnW,OSM website screen recording,owned by user (OSM product UI),no,B-roll cards W and P (website / payment),21.09-28.16 s; 30.10-33.97 s
+source/screen_215700.mp4 (sha256 2b27c9…5490),Google Drive id 1kMmsSp6zW4hb8S0UEFr_33p7QmhpzNEY,OSM app screen recording,owned by user (OSM product UI),no,B-roll card D (Challenges / Points),10.41-16.08 s
+brand/logo/osm-wordmark-780x264.jpg,OSM Brand Guidelines v1.0 PDF,OSM,owned by user (brand asset),no,end card wordmark,35.70-38.21 s
+brand/fonts (IBM Plex Sans Arabic / Inter / Barlow Condensed),github.com/google/fonts,IBM / Rasmus Andersson / Jeremy Tribby,SIL OFL 1.1,no,captions; titles; CTA,throughout
+tools/sfx.py sounds,synthesised in-house (numpy),OSM studio,no third-party material,no,34 SFX cues,throughout

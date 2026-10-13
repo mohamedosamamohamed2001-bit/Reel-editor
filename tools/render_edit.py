@@ -178,8 +178,34 @@ def resolve(edit, proj, name):
     if cap and "wordsFile" in cap:
         data = json.loads((proj / cap.pop("wordsFile")).read_text())
         rep = cap.pop("replace", {})
-        cap["words"] = [{"w": rep.get(w["w"], w["w"]), "start": w["start"], "end": w["end"]}
-                        for s in data["segments"] for w in s["words"]]
+        seqs = cap.pop("replaceSeq", [])  # [{"from": ["الويب", "سايت"], "to": "Website"}]: merges consecutive words
+        words = [{"w": w["w"], "start": w["start"], "end": w["end"]} for s in data["segments"] for w in s["words"]]
+        for sq in sorted(seqs, key=lambda q: -len(q["from"])):  # longest first
+            n, out, i, hits = len(sq["from"]), [], 0, 0
+            while i < len(words):
+                if [w["w"] for w in words[i:i + n]] == sq["from"]:
+                    out.append({"w": sq["to"], "start": words[i]["start"], "end": words[i + n - 1]["end"]})
+                    i += n
+                    hits += 1
+                else:
+                    out.append(words[i])
+                    i += 1
+            if not hits:
+                raise SystemExit(f"captions.replaceSeq not found in transcript: {sq['from']}")
+            words = out
+        # replaceAt: fix ONE occurrence, found by its transcript start time (±0.06 s): new text and/or a corrected
+        # start measured from the audio (transcript word edges can be off by 0.3–0.6 s around pauses)
+        for fix in cap.pop("replaceAt", []):
+            hit = [w for w in words if abs(w["start"] - fix["at"]) <= 0.06]
+            if len(hit) != 1:
+                raise SystemExit(f"captions.replaceAt matched {len(hit)} words at {fix['at']}s (need exactly 1)")
+            if "to" in fix:
+                hit[0]["w"] = fix["to"]
+                hit[0]["fixed"] = True
+            if "start" in fix:
+                hit[0]["start"] = fix["start"]
+        cap["words"] = [{"w": w["w"] if w.pop("fixed", False) else rep.get(w["w"], w["w"]), "start": w["start"], "end": w["end"]}
+                        for w in words]
         hits = {k: sum(w["w"] == k for s in data["segments"] for w in s["words"]) for k in rep}
         missing = [k for k, n in hits.items() if n == 0]
         if missing:
@@ -261,7 +287,10 @@ def master_audio(src, dst, lufs, tp, video=None):
     tmp = Path(dst).with_suffix(".master.wav")  # stay uncompressed until the final mux (AAC delay handled once)
     for _ in range(3):
         subprocess.run(["ffmpeg", "-y", "-v", "error", "-i", str(src), "-vn", "-af",
-                        f"volume={gain:.2f}dB,alimiter=limit={limit:.4f}:level=false:attack=5:release=50",
+                        # 4x oversampling around the limiter = true-peak limiting (a 48 kHz sample-peak limiter let
+                        # inter-sample overs through: -0.3 dBTP on the second video, which needed +8.9 dB of gain)
+                        f"aresample=192000,volume={gain:.2f}dB,alimiter=limit={limit:.4f}:level=false:attack=2:release=60,"
+                        "aresample=48000",
                         "-ar", "48000", "-c:a", "pcm_s24le", str(tmp)], check=True)
         i, peak = measure(tmp)
         if abs(i - lufs) <= 0.3 and peak <= tp:

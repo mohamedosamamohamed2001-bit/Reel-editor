@@ -1,0 +1,12 @@
+{
+  "name": "2026-10-13_video2",
+  "source": {
+    "main":  { "filename": "v6.MP4", "drive_id": "1v-GQgwTf_AupnSMMq1YuEAq4FbPs2W_G", "sha256": "71ffe9a1d30bb0328971b6330b8c8426eb7dee24a06fabb595a4f141e1cb3a76" },
+    "rec1":  { "filename": "ScreenRecording_10-13-2026 21-55-16_1.MP4", "drive_id": "12Zgwm9GlaSh1mjhzRuDnNAMoHhDptFnW", "sha256": "628780452a5e4b739bd8634e60b56b78884b9d7c06775c6bfd65acceee6b6a64" },
+    "rec2":  { "filename": "ScreenRecording_10-13-2026 21-57-00_1.MP4", "drive_id": "1kMmsSp6zW4hb8S0UEFr_33p7QmhpzNEY", "sha256": "2b27c93e76dde6fa6a1e029b5b3fb145fe883bc15656f9f15657023141bf5490" }
+  },
+  "drive_folder": "1ulIsRmnptWWFM44U2RMUYB7ZE0oRLzU4",
+  "delivery": { "platform": "instagram_reel", "width": 1080, "height": 1920, "fps": 29.97, "lufs": -14, "true_peak": -1.0 },
+  "language": "ar-EG",
+  "status": "in progress"
+}
