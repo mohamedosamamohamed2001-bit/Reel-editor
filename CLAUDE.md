@@ -7,6 +7,8 @@ The goal is publication-ready edits that follow the OSM brand, built by a reprod
 1. `docs/BRAND_VIDEO_SYSTEM.md`: the video design system, the brand compliance checklist, and the open brand conflicts.
 2. `brand/tokens.json`: exact colours, fonts, type scale, safe areas and logo rules.
 3. The `projects/<name>/project.json` of the video being worked on.
+4. `docs/OSM_FUTURE_EDITING_RULES.md`: Coach Osama's rules for NEW videos (smooth readable caption motion, selective
+   premium 3D type, behind-the-head occlusion, kinetic hierarchy). Additions only; never applied to delivered videos unless asked.
 
 ## Layout
 ```
