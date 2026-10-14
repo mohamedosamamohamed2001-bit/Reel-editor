@@ -189,7 +189,7 @@ def blur_covers(text_json, band=(0.45, 0.86), center_tol=None, cuts=(), win=0.3,
     d = json.load(open(text_json))
     frames = []
     for f in d["frames"]:
-        bs = [b for b in f["boxes"] if band[0] <= b[1] and b[3] <= band[1] and b[3] - b[1] <= 0.14 and b[2] - b[0] >= 0.05
+        bs = [b for b in f["boxes"] if band[0] <= b[1] and b[3] <= band[1] and b[3] - b[1] <= 0.22 and b[2] - b[0] >= 0.05
               and (center_tol is None or abs((b[0] + b[2]) / 2 - 0.5) <= center_tol)]
         if bs:
             frames.append((f["t"], [min(b[0] for b in bs), min(b[1] for b in bs), max(b[2] for b in bs), max(b[3] for b in bs)]))

@@ -78,4 +78,4 @@ finish(P, tl, {
     "captions": captions_block("work/tx/aligned.words.json", ["glutes", "hip", "dumbbells", "lower", "erector", "انقباض", "ينفعش"]),
     "overlays": overlays, "shakes": [{"at": 0.0, "amp": 0.5}, {"at": tB, "amp": 0.6}, {"at": tC, "amp": 0.6}, {"at": t_right - 0.2, "amp": 0.6}, {"at": T, "amp": 0.6}],
     "sfx": {"cues": cues}, "music": music, "tail": END_DUR,
-}, covers_for(P, words, band=(0.48, 0.86)))
+}, covers_for(P, words, band=(0.48, 0.93), full_width=True, grow_y=0.025))

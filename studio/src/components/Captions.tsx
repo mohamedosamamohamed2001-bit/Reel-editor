@@ -5,7 +5,7 @@ import { color, font, isArabic } from "../lib/theme";
 
 type Zone = { at: number; dur: number; top: number };
 
-const isLatin = (w: string) => /^[A-Za-z0-9]/.test(w);
+const isLatin = (w: string) => /^[A-Za-z0-9&]/.test(w);
 
 /** Split a phrase into runs of consecutive English / Arabic words (keeping each word's index in the phrase). */
 const runs = (words: string[]) =>
@@ -66,7 +66,8 @@ export const Captions: React.FC<{
         style={{
           position: "absolute",
           // default sits above the exercise-title zone (bottom 14% safe area + title block)
-          top: anchor ? height * ((anchor.box[1] + anchor.box[3]) / 2) : height * (zone ? zone.top : 0.6),
+          // anchored on an old caption's place, but never in the bottom safe zone (Reels UI)
+          top: anchor ? height * Math.min(0.8, (anchor.box[1] + anchor.box[3]) / 2) : height * (zone ? zone.top : 0.6),
           left: anchor ? width * ((anchor.box[0] + anchor.box[2]) / 2) : undefined,
           maxWidth: "80%",
           whiteSpace: anchor ? "nowrap" : undefined,

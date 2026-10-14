@@ -143,7 +143,7 @@ export type CaptionGroup = { words: string[]; start: number; end: number; times:
  * Group words into short on-screen phrases (the reference reels show 1–3 words at a time).
  * Breaks on pauses, on punctuation, and at maxWords/maxChars. Times are output times.
  */
-const latin = (w: string) => /^[A-Za-z0-9][A-Za-z0-9'’-]*$/.test(w.replace(/[.,!?،؟]+$/, ""));
+const latin = (w: string) => /^[A-Za-z0-9&][A-Za-z0-9&'’-]*$/.test(w.replace(/[.,!?،؟]+$/, ""));
 
 /**
  * Group words into short on-screen phrases (the reference reels show 1–3 words at a time).

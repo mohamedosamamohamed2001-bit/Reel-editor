@@ -50,7 +50,7 @@ def captions_block(words_file, keywords):
             "keywords": keywords}
 
 
-def finish(P, tl, edit, covers, blur_band=(0.40, 0.92)):
+def finish(P, tl, edit, covers, blur_band=(0.40, 1.0)):
     """Covers (for caption anchors) + the blur mask, then write edit.json."""
     src_fps = 60
     bm = make_blur_mask(P, covers, band=blur_band, fps=src_fps)
@@ -61,10 +61,13 @@ def finish(P, tl, edit, covers, blur_band=(0.40, 0.92)):
     write_edit(P, edit)
 
 
-def covers_for(P, words, band=(0.45, 0.86), center_tol=0.2):
+def covers_for(P, words, band=(0.45, 0.86), center_tol=0.2, full_width=False, grow_y=0.0):
     """Per-phrase blur covers: detections, plus held boxes wherever he speaks but detection missed the old text.
     Boxes above 0.5 (scene text) are ignored by the band."""
     cv = _blur_covers(Path(P) / "work/text/original.text.json", band=band, center_tol=center_tol, words=words, hold=1.5)
+    if full_width:  # a soft blur across the whole width: old text that slides in from the edges can't escape it
+        for c in cv:
+            c["box"] = [0.0, round(c["box"][1] - grow_y, 4), 1.0, round(min(1.0, c["box"][3] + grow_y), 4)]
     if cv and cv[0]["at"] < 1.2:  # the first caption is usually on from frame 1
         cv[0]["dur"] = round(cv[0]["dur"] + cv[0]["at"], 3)
         cv[0]["at"] = 0.0

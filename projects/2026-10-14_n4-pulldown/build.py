@@ -46,7 +46,7 @@ overlays = [
     {"type": "lowerLabel", "at": tD + 0.1, "dur": o(27.6) - tD - 0.1, "eyebrow": "GRIP 02", "title": "WIDE GRIP", "top": 0.14},
     {"type": "lowerLabel", "at": t_hab - 0.1, "dur": t_mid - t_hab, "eyebrow": "ELBOWS UP", "title": "HORIZONTAL ABDUCTION", "top": 0.14},
     # old anatomy images 34.1-36.1 s -> plate with the two muscles he names
-    visual(P, media, "v_midback", "a_back50.jpg", t_mid - 0.1, o(36.2) - t_mid + 0.1, mode="full", push=[1.05, 1.0], focusY=0.3,
+    visual(P, media, "v_midback", "a_back50.jpg", t_mid - 0.1, tG - t_mid + 0.1, mode="full", push=[1.05, 1.0], focusY=0.3,
            markers=[{"at": t_trap - t_mid + 0.1, "x": 0.6, "y": 0.25, "label": "MIDDLE TRAPEZIUS", "r": 0.08},
                     {"at": t_rh - t_mid + 0.1, "x": 0.37, "y": 0.31, "label": "RHOMBOIDS", "r": 0.07}]),
     # old row icons 38.7-40.6 s -> his own wide / close frames
@@ -82,4 +82,6 @@ finish(P, tl, {
     "captions": captions_block("work/tx/aligned.words.json", ["grip", "lats", "shoulder", "wide", "horizontal", "middle", "الفرق"]),
     "overlays": overlays, "shakes": [{"at": 0.0, "amp": 0.5}, {"at": tA, "amp": 0.6}, {"at": tE, "amp": 0.6}, {"at": tG, "amp": 0.6}, {"at": T, "amp": 0.6}],
     "sfx": {"cues": cues}, "music": music, "tail": END_DUR,
-}, covers_for(P, words, band=(0.50, 0.86)))
+}, covers_for(P, words, band=(0.50, 0.93), full_width=True, grow_y=0.025)
+   # back shot 26.96-30.79: a 2-line old caption, the upper line (white on his light-blue shirt) isn't detected
+   + [{"src": "main", "at": 26.96, "dur": 3.83, "box": [0.0, 0.70, 1.0, 0.95], "kind": "blur"}])

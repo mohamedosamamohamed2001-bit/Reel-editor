@@ -33,7 +33,7 @@ t_word = o(word_time(words, "كلمة"))
 overlays = [
     {"type": "kineticTitle", "at": 0.05, "dur": o(1.45) - 0.05, "eyebrow": "OSM · PROGRESS", "lines": [{"text": "الميزان", "size": 120}, {"text": "بس؟", "accent": True, "size": 120}], "top": 0.16, "tilt": True},
     # old scale icon 1.5-4.1 s -> real scale cutaway on "الميزان مش دايما بيحكي"
-    visual(P, media, "v_scale", "scale.jpg", o(1.45), o(4.15) - o(1.45), mode="full", push=[1.08, 1.0], focusY=0.45),
+    visual(P, media, "v_scale", "scale.jpg", o(1.45), o(4.5) - o(1.45), mode="full", push=[1.08, 1.0], focusY=0.45),
     {"type": "checklist", "at": t_fat - 0.1, "dur": tB - t_fat + 0.05, "top": 0.15,
      "items": [{"at": 0.1, "text": "بتنزل في الدهون"}, {"at": t_mus - t_fat + 0.1, "text": "بتزيد في العضلات"}, {"at": t_same - t_fat + 0.1, "text": "ميزانك ثابت"}]},
     {"type": "stepBadge", "at": t_frus - 0.1, "dur": tC - t_frus + 0.05, "mark": "✗", "label": "احباط", "sub": "واحيانا استعجال", "top": 0.15},
@@ -44,7 +44,7 @@ overlays = [
 ]
 cues = [
     cue(0.0, "boom", -9), cue(0.12, "slam", -15),
-    cue(o(1.45), "whip", -11, dir=1.0), cue(o(1.45), "bass_drop", -17), cue(tA, "whip", -14, dir=-1.0), cue(o(4.15), "whip", -13, dir=-1.0),
+    cue(o(1.45), "whip", -11, dir=1.0), cue(o(1.45), "bass_drop", -17), cue(tA, "whip", -14, dir=-1.0), cue(o(4.5), "whip", -13, dir=-1.0),
     cue(t_fat, "click", -19), cue(t_mus, "click", -19), cue(t_same, "slam", -16),
     cue(tB - 0.6, "riser", -19, dur=0.6), cue(tB, "boom", -10), cue(t_frus, "slam", -15),
     cue(tC, "whip", -11, dir=1.0, bright=7500), cue(t_meas - 0.2, "whip", -13, dir=-1.0), cue(t_ba - 0.1, "slam", -14), cue(t_ba, "bass_drop", -17),
@@ -53,7 +53,7 @@ cues = [
 ]
 music = make_music(P, {
     "bpm": 120, "key": "F", "mode": "minor", "style": "trap", "seed": 23,
-    "sections": [{"type": "intro", "until": o(1.45)}, {"type": "drop", "until": o(4.15)}, {"type": "groove", "until": tB},
+    "sections": [{"type": "intro", "until": o(1.45)}, {"type": "drop", "until": o(4.5)}, {"type": "groove", "until": tB},
                  {"type": "groove", "until": tC - 1.0}, {"type": "build", "until": tC, "stop": True}, {"type": "drop", "until": tD},
                  {"type": "groove", "until": T}, {"type": "outro", "until": T + END_DUR}],
     "duration": T + END_DUR}, gain_db=-9)
@@ -65,4 +65,4 @@ finish(P, tl, {
     "captions": captions_block("work/tx/aligned.words.json", ["بالميزان", "الحقيقة", "العضلات", "احباط", "مقاسات", "before", "تدريب"]),
     "overlays": overlays, "shakes": [{"at": 0.0, "amp": 0.5}, {"at": o(1.45), "amp": 0.6}, {"at": tB, "amp": 0.6}, {"at": T, "amp": 0.6}],
     "sfx": {"cues": cues}, "music": music, "tail": END_DUR,
-}, covers_for(P, words, band=(0.50, 0.86)))
+}, covers_for(P, words, band=(0.50, 0.93), full_width=True, grow_y=0.025))

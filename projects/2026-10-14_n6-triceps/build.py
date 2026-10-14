@@ -76,4 +76,6 @@ finish(P, tl, {
     "captions": captions_block("work/tx/aligned.words.json", ["triceps", "لحركتين", "lateral", "humerus", "long", "scapula", "هتفرق", "الزوايا"]),
     "overlays": overlays, "shakes": [{"at": 0.0, "amp": 0.5}, {"at": t_two - 0.3, "amp": 0.6}, {"at": tB, "amp": 0.6}, {"at": t_grips - 0.2, "amp": 0.6}, {"at": T, "amp": 0.6}],
     "sfx": {"cues": cues}, "music": music, "tail": END_DUR,
-}, covers_for(P, words, band=(0.48, 0.86)))
+}, [dict(c, box=[0.0, min(c["box"][1], 0.60), 1.0, 0.97]) for c in covers_for(P, words, band=(0.48, 0.995), full_width=True, grow_y=0.025)]
+   # this video's old captions sit anywhere in y 0.60-0.97 and the purple shirt hides lines from the detector
+   + [{"src": "main", "at": 0.0, "dur": 0.6, "box": [0.0, 0.42, 1.0, 0.97], "kind": "blur"}])
