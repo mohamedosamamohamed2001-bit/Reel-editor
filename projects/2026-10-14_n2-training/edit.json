@@ -211,7 +211,8 @@
    "at": 21.7,
    "dur": 2.4,
    "cta": "OSM Coach Osama",
-   "reveal": "wipe"
+   "reveal": "wipe",
+   "image": "brand/end/osm-end-photo.jpg"
   }
  ],
  "shakes": [
@@ -348,7 +349,7 @@
    "src": "main",
    "at": 0.0,
    "dur": 1.29,
-   "kind": "blur",
+   "kind": "anchor",
    "box": [
     0.0,
     0.6091,
@@ -360,7 +361,7 @@
    "src": "main",
    "at": 1.25,
    "dur": 0.34,
-   "kind": "blur",
+   "kind": "anchor",
    "box": [
     0.0,
     0.6122,
@@ -372,7 +373,7 @@
    "src": "main",
    "at": 1.55,
    "dur": 0.44,
-   "kind": "blur",
+   "kind": "anchor",
    "box": [
     0.0,
     0.6122,
@@ -384,7 +385,7 @@
    "src": "main",
    "at": 1.95,
    "dur": 0.54,
-   "kind": "blur",
+   "kind": "anchor",
    "box": [
     0.0,
     0.5903,
@@ -396,7 +397,7 @@
    "src": "main",
    "at": 2.45,
    "dur": 2.54,
-   "kind": "blur",
+   "kind": "anchor",
    "box": [
     0.0,
     0.5888,
@@ -408,7 +409,7 @@
    "src": "main",
    "at": 4.95,
    "dur": 0.14,
-   "kind": "blur",
+   "kind": "anchor",
    "box": [
     0.0,
     0.6106,
@@ -420,7 +421,7 @@
    "src": "main",
    "at": 5.05,
    "dur": 0.64,
-   "kind": "blur",
+   "kind": "anchor",
    "box": [
     0.0,
     0.6106,
@@ -432,7 +433,7 @@
    "src": "main",
    "at": 5.65,
    "dur": 0.64,
-   "kind": "blur",
+   "kind": "anchor",
    "box": [
     0.0,
     0.6106,
@@ -444,7 +445,7 @@
    "src": "main",
    "at": 6.25,
    "dur": 1.84,
-   "kind": "blur",
+   "kind": "anchor",
    "box": [
     0.0,
     0.5903,
@@ -456,7 +457,7 @@
    "src": "main",
    "at": 8.05,
    "dur": 1.44,
-   "kind": "blur",
+   "kind": "anchor",
    "box": [
     0.0,
     0.6091,
@@ -468,7 +469,7 @@
    "src": "main",
    "at": 9.45,
    "dur": 0.84,
-   "kind": "blur",
+   "kind": "anchor",
    "box": [
     0.0,
     0.6106,
@@ -480,7 +481,7 @@
    "src": "main",
    "at": 10.25,
    "dur": 3.14,
-   "kind": "blur",
+   "kind": "anchor",
    "box": [
     0.0,
     0.6091,
@@ -492,7 +493,7 @@
    "src": "main",
    "at": 13.35,
    "dur": 0.94,
-   "kind": "blur",
+   "kind": "anchor",
    "box": [
     0.0,
     0.6091,
@@ -504,7 +505,7 @@
    "src": "main",
    "at": 14.25,
    "dur": 1.04,
-   "kind": "blur",
+   "kind": "anchor",
    "box": [
     0.0,
     0.6091,
@@ -516,7 +517,7 @@
    "src": "main",
    "at": 15.25,
    "dur": 0.54,
-   "kind": "blur",
+   "kind": "anchor",
    "box": [
     0.0,
     0.6106,
@@ -528,7 +529,7 @@
    "src": "main",
    "at": 15.75,
    "dur": 0.64,
-   "kind": "blur",
+   "kind": "anchor",
    "box": [
     0.0,
     0.6075,
@@ -540,7 +541,7 @@
    "src": "main",
    "at": 16.35,
    "dur": 0.54,
-   "kind": "blur",
+   "kind": "anchor",
    "box": [
     0.0,
     0.6091,
@@ -552,7 +553,7 @@
    "src": "main",
    "at": 16.85,
    "dur": 0.64,
-   "kind": "blur",
+   "kind": "anchor",
    "box": [
     0.0,
     0.6075,
@@ -564,7 +565,7 @@
    "src": "main",
    "at": 17.45,
    "dur": 0.44,
-   "kind": "blur",
+   "kind": "anchor",
    "box": [
     0.0,
     0.6075,
@@ -576,7 +577,7 @@
    "src": "main",
    "at": 17.85,
    "dur": 0.24,
-   "kind": "blur",
+   "kind": "anchor",
    "box": [
     0.0,
     0.6075,
@@ -588,7 +589,7 @@
    "src": "main",
    "at": 18.05,
    "dur": 0.64,
-   "kind": "blur",
+   "kind": "anchor",
    "box": [
     0.0,
     0.6075,
@@ -600,7 +601,7 @@
    "src": "main",
    "at": 18.65,
    "dur": 0.54,
-   "kind": "blur",
+   "kind": "anchor",
    "box": [
     0.0,
     0.6075,
@@ -612,7 +613,7 @@
    "src": "main",
    "at": 19.15,
    "dur": 1.85,
-   "kind": "blur",
+   "kind": "anchor",
    "box": [
     0.0,
     0.6091,
@@ -621,14 +622,5 @@
    ]
   }
  ],
- "blurMask": {
-  "file": "work/blurmask.mkv",
-  "band": [
-   512,
-   768
-  ],
-  "sigma": 16,
-  "darken": 0.12
- },
  "textPlate": "#56A0FB"
 }

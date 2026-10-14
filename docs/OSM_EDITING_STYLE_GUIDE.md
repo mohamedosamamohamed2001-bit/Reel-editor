@@ -20,8 +20,12 @@ visuals). Brand rules come from `docs/BRAND_VIDEO_SYSTEM.md` and `brand/tokens.j
   English term (Stretch, Glutes, Triceps, Supplement …).
 - **Background: OSM blue #56A0FB, narrow** — the bar fits the words with clean padding (6/30/10 px), rounded 20 px.
   Keyword + underline in Night #0A0F16 (blue on blue would vanish).
-- Re-editing a finished video: old burned-in captions are hidden by a soft per-phrase blur (feathered mask), not by
-  a wide bar.
+- **No blur, no frosted glass, no extra box behind the text** (Coach Osama, 2026-10-14). The footage stays clear and
+  fully visible behind the captions; the only thing behind the words is the narrow blue bar above.
+- Re-editing a finished video: the old burned-in captions are detected only to *place* the new captions (covers of
+  kind `"anchor"`: position only, nothing drawn or blurred). The old text is not hidden. Don't use `blurMask` or
+  blur covers. `projects/_n6/common2.py` `NO_BLUR = True` does this. A project's `covers.pinned.json` freezes the
+  approved caption positions.
 
 ## 4. Motion graphics
 | Element | Use |
@@ -32,7 +36,7 @@ visuals). Brand rules come from `docs/BRAND_VIDEO_SYSTEM.md` and `brand/tokens.j
 | `checklist` | his listed words as chips (row or column) |
 | `trackedLabel` | label pinned to an object (`tools/track.py`) |
 | `visualCard` | supporting image: full-screen cutaway or picture-in-picture card, slam-in, slow push, anatomy markers (pulsing blue rings + labels) |
-| End card | OSM wordmark (fade + scale, never masked) + "OSM Coach Osama", 2.4 s |
+| End card | Coach Osama's end artwork `brand/end/osm-end-photo.jpg` (full width, unaltered, fade + scale, never masked) + "OSM Coach Osama" pill, 2.4 s. `endCard.image`; set by `common2.END_IMAGE` |
 
 ## 5. Transitions (powerful, never soft)
 - Whip (directional motion blur, mirrored edges), zoom punch + flash, settle punch-ins, speed ramps, freeze frames.

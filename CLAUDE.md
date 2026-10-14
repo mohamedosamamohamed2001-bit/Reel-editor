@@ -142,3 +142,8 @@ projects/<name>/  one folder per video: project.json, edit.json, analysis/, docu
   `screenCard.masks` (privacy blur, e.g. account numbers), overlay `checklist`, `endCard.sub`.
   Caption zones start 0.05 s before the card so no 1-frame fragment appears. The master limiter now runs at 4× oversampling
   (true peak was −0.3 dBTP at 48 kHz). Blur payment account numbers, emails and personal greetings in screen recordings.
+- 2026-10-14 (batch 2 v2, Coach Osama): **no blur / frosted background behind text, ever.** Covers kept as caption
+  positions only (`kind: "anchor"`, render_edit draws nothing for them); no `blurMask`. Captions, bars, positions and
+  timing unchanged. The end card shows his end artwork `brand/end/osm-end-photo.jpg` (sha256 ee0e9772…1676) via
+  `endCard.image` (1080 px wide, `lighten` blends its near-black background into Night) with the CTA pill below;
+  it replaces the wordmark file. Template: `projects/_n6/common2.py` (`NO_BLUR`, `END_IMAGE`).

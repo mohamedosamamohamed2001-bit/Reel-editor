@@ -59,7 +59,7 @@ export type Overlay =
   | { type: "callout"; at: number; dur: number; text?: string; number?: string; unit?: string; earned?: boolean; position?: "top" | "center" }
   | { type: "insetCard"; at: number; dur: number; src: string; in: number; eyebrow?: string; volume?: number }
   | { type: "split"; at: number; dur: number; top: { src: string; in: number }; bottom: { src: string; in: number } }
-  | { type: "endCard"; at: number; dur: number; cta: string; signature?: boolean; reveal?: "fade" | "wipe"; sub?: string }
+  | { type: "endCard"; at: number; dur: number; cta: string; signature?: boolean; reveal?: "fade" | "wipe"; sub?: string; image?: string }
   | { type: "checklist"; at: number; dur: number; items: { at: number; text: string }[]; top?: number; row?: boolean }
   | {
       type: "screenCard"; at: number; dur: number; src: string; segments: ScreenSegment[];

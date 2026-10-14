@@ -8,7 +8,7 @@ import { Hairlines } from "./Hairlines";
  * width 640px so clear space (½ "O" height) is respected on all sides.
  * `signature` shows "TRAIN WITH A METHOD." — pending approval in the brand book, so it is opt-in.
  */
-export const EndCard: React.FC<{ dur: number; cta: string; signature?: boolean; reveal?: "fade" | "wipe"; sub?: string }> = ({ dur, cta, signature, reveal = "fade", sub }) => {
+export const EndCard: React.FC<{ dur: number; cta: string; signature?: boolean; reveal?: "fade" | "wipe"; sub?: string; image?: string }> = ({ dur, cta, signature, reveal = "fade", sub, image }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const wipe = reveal === "wipe";
@@ -25,7 +25,10 @@ export const EndCard: React.FC<{ dur: number; cta: string; signature?: boolean; 
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 70 }}>
         {/* The JPEG has a black box baked in. "lighten" lets the Night background replace only the box's
             near-black pixels; every logo pixel brighter than Night stays exactly as drawn (no recolour). */}
-        <Img src={staticFile("brand/logo/osm-wordmark-780x264.jpg")} style={{ width: 640, height: "auto", mixBlendMode: "lighten", transform: wipe ? `scale(${settleK})` : `translateY(${20 * (1 - p)}px)`, opacity: arrive }} />
+        {/* `image`: Coach Osama's end artwork (brand/end/), shown whole and unaltered, full width. It already carries
+            the OSM wordmark, so it replaces the wordmark file. Its near-black background is darker than Night, so
+            "lighten" blends its edges into the card without touching the artwork. */}
+        <Img src={staticFile(image ?? "brand/logo/osm-wordmark-780x264.jpg")} style={{ width: image ? 1080 : 640, height: "auto", mixBlendMode: "lighten", transform: wipe ? `scale(${settleK})` : `translateY(${20 * (1 - p)}px)`, opacity: arrive, marginBottom: image ? -110 : 0 }} />
         {signature ? (
           <div style={{ fontFamily: font.latin, fontWeight: 700, fontSize: 30, letterSpacing: "0.3em", color: color.steel }}>TRAIN WITH A METHOD</div>
         ) : null}

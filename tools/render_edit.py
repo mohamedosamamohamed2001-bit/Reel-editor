@@ -211,7 +211,9 @@ def make_plates(edit, proj):
         else:
             mine = [cv for cv in covers if cv["src"] == c["src"] and cv["at"] < c["out"] and cv["at"] + cv["dur"] > c["in"]]
         text_plate = edit.get("textPlate")  # exact solid colour for the plates, drawn after the grade
-        solid = [cv for cv in mine if cv.get("kind") != "blur"] if text_plate else []
+        # kind "anchor": position-only covers (caption placement), nothing is drawn or blurred
+        drawn = [cv for cv in mine if cv.get("kind") != "anchor"]
+        solid = [cv for cv in drawn if cv.get("kind") != "blur"] if text_plate else []
         bm = edit.get("blurMask")
         more = []
         if bm and c["src"] == bm.get("src", "main"):
@@ -224,7 +226,7 @@ def make_plates(edit, proj):
                    f"colorchannelmixer=rr={1-dark}:gg={1-dark}:bb={1-dark},format=yuva444p[bmb];"
                    f"[1:v]format=gray,scale={sw}:{bh}[bmm];[bmb][bmm]alphamerge[bma];"
                    f"[bm0][bma]overlay=0:{y0b}:shortest=0:eof_action=pass[bmo]")
-            rest = [cv for cv in mine if cv not in solid and cv.get("kind") != "blur"]
+            rest = [cv for cv in drawn if cv not in solid and cv.get("kind") != "blur"]
             if rest:
                 p2, l2 = _cover_chain(rest, sw, sh, seek, 0)
                 pre = pre + ";" + p2.replace("[0:v]", "[bmo]", 1)
@@ -232,7 +234,7 @@ def make_plates(edit, proj):
             else:
                 last = "bmo"
         else:
-            pre, last = _cover_chain([cv for cv in mine if cv not in solid], sw, sh, seek, 0)
+            pre, last = _cover_chain([cv for cv in drawn if cv not in solid], sw, sh, seek, 0)
         motion = []
         if freeze or hold is not None:
             motion = ["trim=end_frame=1", f"loop=loop={n_out + 1}:size=1:start=0", f"setpts=N/{fps}/TB"]

@@ -34,7 +34,7 @@ const renderOverlay = (o: Overlay, plate?: string) => {
     case "split":
       return <SplitStack top={o.top} bottom={o.bottom} dur={o.dur} />;
     case "endCard":
-      return <EndCard dur={o.dur} cta={o.cta} signature={o.signature} reveal={o.reveal} sub={o.sub} />;
+      return <EndCard dur={o.dur} cta={o.cta} signature={o.signature} reveal={o.reveal} sub={o.sub} image={o.image} />;
     case "checklist":
       return <Checklist dur={o.dur} items={o.items} top={o.top} row={o.row} plate={plate} />;
     case "kineticTitle":

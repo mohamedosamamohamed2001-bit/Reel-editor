@@ -1,6 +1,7 @@
 """Batch 2 (the next six OSM videos, 2026-10-14): the approved collection style (projects/_c5/common.py) plus
   - narrow #56A0FB caption bars: each caption keeps its own tight plate (anchorPlate) instead of a wide cover bar,
-  - old burned-in captions hidden by a soft per-phrase blur (one band blur through a feathered mask video),
+  - old burned-in captions: NO blur since 2026-10-14 (covers are caption positions only, kind "anchor"),
+  - end card = Coach Osama's end artwork (END_IMAGE) + the "OSM Coach Osama" pill,
   - supporting visuals (visualCard) from openly licensed sources, credited in projects/_n6/assets/manifest.json.
 """
 import json
@@ -14,6 +15,8 @@ from common import (DIALOGUE_FX, END_DUR, FPS, GRADE, SHARPEN, TEXT_PLATE, Timel
                     end_card_sfx, load_words, make_blur_mask, make_music, word_time, write_edit)
 
 ASSETS = Path(__file__).resolve().parent / "assets"
+NO_BLUR = True  # Coach Osama 2026-10-14: remove the blurred background behind text in every video
+END_IMAGE = "brand/end/osm-end-photo.jpg"  # Coach Osama 2026-10-14: his end artwork, replaces the wordmark on the end card
 MANIFEST = json.loads((ASSETS / "manifest.json").read_text()) if (ASSETS / "manifest.json").exists() else []
 
 
@@ -52,11 +55,20 @@ def captions_block(words_file, keywords):
 
 def finish(P, tl, edit, covers, blur_band=(0.40, 1.0)):
     """Covers (for caption anchors) + the blur mask, then write edit.json."""
-    src_fps = 60
-    bm = make_blur_mask(P, covers, band=blur_band, fps=src_fps)
-    bm.update({"sigma": 16, "darken": 0.12})
-    edit["covers"] = covers
-    edit["blurMask"] = bm
+    pinned = Path(P) / "covers.pinned.json"
+    if pinned.exists():  # the covers of the delivered render: caption positions stay exactly as approved
+        covers = json.loads(pinned.read_text())
+    if NO_BLUR:
+        # approved 2026-10-14: no blur / frosted background behind text. Covers stay only as caption positions.
+        edit["covers"] = [dict(c, kind="anchor") for c in covers]
+    else:
+        bm = make_blur_mask(P, covers, band=blur_band, fps=60)
+        bm.update({"sigma": 16, "darken": 0.12})
+        edit["covers"] = covers
+        edit["blurMask"] = bm
+    for ov in edit["overlays"]:
+        if ov["type"] == "endCard" and END_IMAGE:
+            ov["image"] = END_IMAGE
     edit.setdefault("textPlate", TEXT_PLATE)
     write_edit(P, edit)
 
