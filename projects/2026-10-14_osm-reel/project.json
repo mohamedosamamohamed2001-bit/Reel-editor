@@ -1,0 +1,15 @@
+{
+  "name": "2026-10-14_osm-reel",
+  "drive_folder_id": "16zD7me8GjgoW1iiAbhll29OoWn34e0Rx",
+  "source": { "drive_file_id": "1-tAqHAray9M6o3roqKRx5yDEa1Gl-skZ", "filename": "v2.mp4", "local": "source/main.mp4",
+              "sha256": "2c007d6fb468f081bd52e1d609399aa5054ff23521ff9adeef333de0b729649a",
+              "probe": "hevc 1526x2160 29.97 fps, 18.15 s, aac" },
+  "broll": [{ "drive_file_id": "11F_hXcmcHEJQZ-qwftpgKAmQpIUHWEbr", "filename": "ScreenRecording_10-09-2026 19-23-15_1.MP4",
+              "local": "source/broll.mp4", "sha256": "4c26645606cd7349a3f4cd4cc4ed9387f05194e446d81fadd47628904df60414",
+              "probe": "hevc 1320x2868 (iPhone screen recording), 9.56 s, aac",
+              "privacy": "first ~1 s is the phone home screen (personal photo, notification badge): don't show" }],
+  "delivery": { "platform": "instagram_reel", "width": 1080, "height": 1920, "fps": 30, "lufs": -14, "true_peak": -1.0 },
+  "language": "ar-EG",
+  "captions": true,
+  "status": "intake: waiting for the rest of the brief (it was cut off at '2. CONVERT THE VIDEO')"
+}
