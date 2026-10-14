@@ -156,4 +156,10 @@ projects/<name>/  one folder per video: project.json, edit.json, analysis/, docu
   before or after (captions are static, clothing stripes move), then line-shaped clusters only (h 8–200 px,
   density 0.08–0.75), grown 4 px. Coloured words need `color_windows` from a colour scan. LaMa (big-lama ONNX) was
   tested and rejected: ~6 s/frame on this CPU (20+ h for a batch). Output is x264 CRF 10, same 60 fps frame count.
+- 2026-10-14 (`projects/2026-10-14_osm-reel`, first video under the future rules): `kineticTitle.motion: "smooth"`
+  (no slam: eased 14-frame settle, 4-frame stagger, soft exit), `depth` (extruded 3D face + cast shadow) and
+  `ink: "dark"` (Night text for light backgrounds). In 9:16 a centred talking head fills the top third: titles at top
+  0.13 covered his eyes, so titles go on the T-shirt (dark ink, top ~0.67) and cards below the captions
+  (`visualCard.top` is a FRACTION of the height). Screen-recording B-roll starts inside the app (never the home screen).
+  Behind-the-head occlusion not attempted yet (needs a tested person-matte step).
 

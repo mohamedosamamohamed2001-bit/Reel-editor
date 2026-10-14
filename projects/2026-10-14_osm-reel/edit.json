@@ -1,0 +1,286 @@
+{
+ "title": "OSM: every exercise explained on video",
+ "fps": 30,
+ "width": 1080,
+ "height": 1920,
+ "media": {
+  "main": "source/main.mp4",
+  "rec": "source/broll.mp4",
+  "v_phone": "work/visuals/phone1.jpg"
+ },
+ "audio": {
+  "main": "source/main.mp4"
+ },
+ "dialogueFx": "highpass=f=70,acompressor=threshold=0.1:ratio=2.5:attack=8:release=120:makeup=1.5",
+ "dialogueLufs": -16.0,
+ "plates": {
+  "grade": null,
+  "sharpen": "cas=strength=0.25"
+ },
+ "clips": [
+  {
+   "src": "main",
+   "in": 0.0,
+   "out": 5.0,
+   "zoom": [
+    1.0,
+    1.04
+   ],
+   "focusY": 0.36
+  },
+  {
+   "src": "main",
+   "in": 5.0,
+   "out": 11.9,
+   "zoom": [
+    1.04,
+    1.07
+   ],
+   "focusY": 0.36
+  },
+  {
+   "src": "main",
+   "in": 11.9,
+   "out": 14.36,
+   "zoom": [
+    1.12,
+    1.14
+   ],
+   "focusY": 0.33,
+   "settle": 1.16
+  },
+  {
+   "src": "main",
+   "in": 14.36,
+   "out": 17.6,
+   "zoom": [
+    1.0,
+    1.04
+   ],
+   "focusY": 0.36
+  }
+ ],
+ "captions": {
+  "wordsFile": "work/tx/main.words.json",
+  "style": "plate",
+  "karaoke": true,
+  "maxWords": 3,
+  "maxChars": 22,
+  "keywords": [
+   "غلط",
+   "osm",
+   "بالفيديو",
+   "بصوتي",
+   "لوحدك"
+  ],
+  "replace": {
+   "الأونلاين": "Online",
+   "كوتشنج": "Coaching",
+   "التبس": "Tips"
+  },
+  "zones": [
+   {
+    "at": 4.95,
+    "dur": 6.95,
+    "top": 0.8
+   }
+  ]
+ },
+ "overlays": [
+  {
+   "type": "visualCard",
+   "src": "v_phone",
+   "at": 1.3,
+   "dur": 1.98,
+   "mode": "card",
+   "width": 600,
+   "top": 0.66,
+   "srcW": 1024,
+   "srcH": 683
+  },
+  {
+   "type": "stepBadge",
+   "at": 3.42,
+   "dur": 1.42,
+   "mark": "✗",
+   "label": "التمرين غلط",
+   "top": 0.15
+  },
+  {
+   "type": "screenCard",
+   "at": 5.0,
+   "dur": 6.9,
+   "src": "rec",
+   "plate": true,
+   "entrance": "tilt",
+   "checks": true,
+   "width": 760,
+   "top": 250,
+   "region": {
+    "x": 0,
+    "y": 0.035,
+    "w": 1,
+    "h": 0.735
+   },
+   "segments": [
+    {
+     "in": 1.6,
+     "rate": 1,
+     "dur": 6.9
+    }
+   ],
+   "taps": [
+    {
+     "at": 1.3,
+     "x": 0.5,
+     "y": 0.619
+    }
+   ],
+   "highlights": [
+    {
+     "at": 3.43,
+     "dur": 1.7,
+     "box": {
+      "x": 0.07,
+      "y": 0.224,
+      "w": 0.86,
+      "h": 0.79
+     }
+    }
+   ]
+  },
+  {
+   "type": "kineticTitle",
+   "at": 11.95,
+   "dur": 2.367,
+   "eyebrow": "كل تمرين",
+   "lines": [
+    {
+     "text": "TIPS"
+    },
+    {
+     "text": "بصوتي",
+     "accent": true,
+     "size": 120
+    }
+   ],
+   "top": 0.67,
+   "motion": "smooth",
+   "ink": "dark"
+  },
+  {
+   "type": "kineticTitle",
+   "at": 14.417,
+   "dur": 3.183,
+   "eyebrow": "OSM COACHING",
+   "lines": [
+    {
+     "text": "مش هتكون بتتمرن"
+    },
+    {
+     "text": "لوحدك",
+     "accent": true,
+     "size": 130
+    }
+   ],
+   "top": 0.67,
+   "motion": "smooth",
+   "ink": "dark"
+  },
+  {
+   "type": "endCard",
+   "at": 17.6,
+   "dur": 2.4,
+   "cta": "OSM Coach Osama",
+   "reveal": "wipe",
+   "image": "brand/end/osm-end-photo.jpg"
+  }
+ ],
+ "sfx": {
+  "cues": [
+   {
+    "at": 0.0,
+    "sound": "swell",
+    "gain_db": -16
+   },
+   {
+    "at": 1.3,
+    "sound": "whoosh_in",
+    "gain_db": -18
+   },
+   {
+    "at": 3.42,
+    "sound": "thump",
+    "gain_db": -14
+   },
+   {
+    "at": 5.0,
+    "sound": "riser",
+    "gain_db": -18,
+    "dur": 0.35
+   },
+   {
+    "at": 5.0,
+    "sound": "whoosh_in",
+    "gain_db": -12
+   },
+   {
+    "at": 5.25,
+    "sound": "click",
+    "gain_db": -19
+   },
+   {
+    "at": 6.3,
+    "sound": "key",
+    "gain_db": -18
+   },
+   {
+    "at": 8.43,
+    "sound": "blip",
+    "gain_db": -19
+   },
+   {
+    "at": 11.85,
+    "sound": "whoosh_out",
+    "gain_db": -14
+   },
+   {
+    "at": 11.9,
+    "sound": "impact",
+    "gain_db": -15
+   },
+   {
+    "at": 13.86,
+    "sound": "chime",
+    "gain_db": -21
+   },
+   {
+    "at": 14.3667,
+    "sound": "whoosh_in",
+    "gain_db": -15
+   },
+   {
+    "at": 17.6,
+    "sound": "reverse_hit",
+    "gain_db": -12,
+    "dur": 0.7
+   },
+   {
+    "at": 17.6,
+    "sound": "boom",
+    "gain_db": -7
+   },
+   {
+    "at": 18.1,
+    "sound": "click",
+    "gain_db": -17
+   }
+  ]
+ },
+ "music": {
+  "src": "work/music/music.wav",
+  "gain_db": -12
+ },
+ "tail": 2.4,
+ "textPlate": "#56A0FB"
+}

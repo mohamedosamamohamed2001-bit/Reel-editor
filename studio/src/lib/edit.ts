@@ -52,7 +52,7 @@ export type Overlay =
   | { type: "visualCard"; at: number; dur: number; src: string; mode?: "card" | "full"; label?: string; sub?: string; credit?: string;
       srcW?: number; srcH?: number; width?: number; top?: number; markers?: { at: number; x: number; y: number; label?: string; r?: number }[];
       push?: [number, number]; focusY?: number }
-  | { type: "kineticTitle"; at: number; dur: number; lines: { text: string; accent?: boolean; size?: number }[]; eyebrow?: string; top?: number; tilt?: boolean; backdrop?: boolean }
+  | { type: "kineticTitle"; at: number; dur: number; lines: { text: string; accent?: boolean; size?: number }[]; eyebrow?: string; top?: number; tilt?: boolean; backdrop?: boolean; motion?: "slam" | "smooth"; depth?: boolean; ink?: "light" | "dark" }
   | { type: "stepBadge"; at: number; dur: number; mark: string; label: string; sub?: string; top?: number; side?: "left" | "right" }
   | { type: "lowerLabel"; at: number; dur: number; title: string; sets?: string; eyebrow?: string; top?: number }
   | { type: "trackedLabel"; at: number; dur: number; text: string; sub?: string; keys: { t: number; x: number; y: number }[]; side?: "left" | "right" }

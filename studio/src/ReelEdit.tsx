@@ -38,7 +38,7 @@ const renderOverlay = (o: Overlay, plate?: string) => {
     case "checklist":
       return <Checklist dur={o.dur} items={o.items} top={o.top} row={o.row} plate={plate} />;
     case "kineticTitle":
-      return <KineticTitle lines={o.lines} eyebrow={o.eyebrow} dur={o.dur} top={o.top} tilt={o.tilt} backdrop={o.backdrop} />;
+      return <KineticTitle lines={o.lines} eyebrow={o.eyebrow} dur={o.dur} top={o.top} tilt={o.tilt} backdrop={o.backdrop} motion={o.motion} depth={o.depth} ink={o.ink} />;
     case "stepBadge":
       return <StepBadge mark={o.mark} label={o.label} sub={o.sub} dur={o.dur} top={o.top} side={o.side} />;
     case "lowerLabel":
