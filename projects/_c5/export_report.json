@@ -29,7 +29,7 @@
   "video": "h264 1080x1920 30/1",
   "audio": "aac 48000 Hz",
   "duration": 26.8,
-  "size_mb": 22.5,
+  "size_mb": 22.2,
   "decodes": true
  },
  {
@@ -40,7 +40,7 @@
   "video": "h264 1080x1920 30/1",
   "audio": "aac 48000 Hz",
   "duration": 26.8,
-  "size_mb": 22.5,
+  "size_mb": 22.2,
   "decodes": true
  },
  {
@@ -51,7 +51,7 @@
   "video": "h264 1080x1920 30/1",
   "audio": "aac 48000 Hz",
   "duration": 33.367,
-  "size_mb": 22.3,
+  "size_mb": 22.2,
   "decodes": true
  },
  {
@@ -62,7 +62,7 @@
   "video": "h264 1080x1920 30/1",
   "audio": "aac 48000 Hz",
   "duration": 33.367,
-  "size_mb": 22.3,
+  "size_mb": 22.2,
   "decodes": true
  },
  {
@@ -99,7 +99,7 @@
   "video": "h264 1080x1920 30/1",
   "audio": "aac 48000 Hz",
   "duration": 32.0,
-  "size_mb": 27.9,
+  "size_mb": 27.7,
   "decodes": true
  }
 ]
