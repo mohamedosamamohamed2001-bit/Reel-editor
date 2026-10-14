@@ -171,7 +171,11 @@ def make_music(proj, spec, gain_db):
     return {"src": "work/music/music.wav", "gain_db": gain_db}
 
 
+TEXT_PLATE = "#56A0FB"  # brand blue behind all text (caption bar, chips, label cards), per Coach Osama 2026-10-14
+
+
 def write_edit(proj, edit):
+    edit.setdefault("textPlate", TEXT_PLATE)
     (proj / "edit.json").write_text(json.dumps(edit, ensure_ascii=False, indent=1))
     print(f"wrote {proj / 'edit.json'}: {len(edit['clips'])} clips, {len(edit['overlays'])} overlays, "
           f"{len(edit.get('covers', []))} covers, {len(edit.get('sfx', {}).get('cues', []))} sfx cues")

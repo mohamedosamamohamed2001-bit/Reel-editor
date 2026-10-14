@@ -7,8 +7,8 @@ const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
  * Motion-tracked label: a ring + leader line pinned to an object, following tracked keyframes (tools/track.py),
  * with the text card at the end of the leader. keys: t = seconds from the overlay start, x/y = output-frame fractions.
  */
-export const TrackedLabel: React.FC<{ text: string; sub?: string; keys: { t: number; x: number; y: number }[]; dur: number; side?: "left" | "right" }> = ({
-  text, sub, keys, dur, side = "right",
+export const TrackedLabel: React.FC<{ text: string; sub?: string; keys: { t: number; x: number; y: number }[]; dur: number; side?: "left" | "right"; plate?: string }> = ({
+  text, sub, keys, dur, side = "right", plate,
 }) => {
   const frame = useCurrentFrame();
   const { fps, width: W, height: H } = useVideoConfig();
@@ -38,13 +38,13 @@ export const TrackedLabel: React.FC<{ text: string; sub?: string; keys: { t: num
         style={{
           position: "absolute", top: ey - 60, [side === "right" ? "left" : "right"]: side === "right" ? ex + 14 : W - ex + 14,
           opacity: card, transform: `translateX(${s * 20 * (1 - card)}px)`,
-          background: "rgba(10,15,22,0.86)", border: `1px solid rgba(38,50,68,0.9)`, borderRadius: 18, padding: "10px 22px",
+          background: plate ?? "rgba(10,15,22,0.86)", border: `1px solid ${plate ?? "rgba(38,50,68,0.9)"}`, borderRadius: 18, padding: "10px 22px",
         }}
       >
         <div style={{ fontFamily: rtl ? font.arabic : font.numbers, fontWeight: 700, fontSize: rtl ? 50 : 60, lineHeight: rtl ? 1.4 : 1, color: color.text, textTransform: rtl ? undefined : "uppercase", whiteSpace: "nowrap" }}>
           {text}
         </div>
-        {sub ? <div style={{ fontFamily: isArabic(sub) ? font.arabic : font.latin, fontWeight: 700, fontSize: 26, color: color.cyan, letterSpacing: isArabic(sub) ? 0 : "0.16em", whiteSpace: "nowrap" }}>{sub}</div> : null}
+        {sub ? <div style={{ fontFamily: isArabic(sub) ? font.arabic : font.latin, fontWeight: 700, fontSize: 26, color: plate ? color.night : color.cyan, letterSpacing: isArabic(sub) ? 0 : "0.16em", whiteSpace: "nowrap" }}>{sub}</div> : null}
       </div>
     </AbsoluteFill>
   );

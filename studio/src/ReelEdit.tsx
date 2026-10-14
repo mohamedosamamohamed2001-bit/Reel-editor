@@ -22,7 +22,7 @@ const layer: Record<Overlay["type"], number> = {
   kineticTitle: 3, stepBadge: 3, lowerLabel: 3, trackedLabel: 3,
 };
 
-const renderOverlay = (o: Overlay) => {
+const renderOverlay = (o: Overlay, plate?: string) => {
   switch (o.type) {
     case "exerciseTitle":
       return <ExerciseTitle title={o.title} eyebrow={o.eyebrow} dur={o.dur} />;
@@ -35,7 +35,7 @@ const renderOverlay = (o: Overlay) => {
     case "endCard":
       return <EndCard dur={o.dur} cta={o.cta} signature={o.signature} reveal={o.reveal} sub={o.sub} />;
     case "checklist":
-      return <Checklist dur={o.dur} items={o.items} top={o.top} row={o.row} />;
+      return <Checklist dur={o.dur} items={o.items} top={o.top} row={o.row} plate={plate} />;
     case "kineticTitle":
       return <KineticTitle lines={o.lines} eyebrow={o.eyebrow} dur={o.dur} top={o.top} tilt={o.tilt} backdrop={o.backdrop} />;
     case "stepBadge":
@@ -43,7 +43,7 @@ const renderOverlay = (o: Overlay) => {
     case "lowerLabel":
       return <LowerLabel title={o.title} sets={o.sets} eyebrow={o.eyebrow} dur={o.dur} top={o.top} />;
     case "trackedLabel":
-      return <TrackedLabel text={o.text} sub={o.sub} keys={o.keys} dur={o.dur} side={o.side} />;
+      return <TrackedLabel text={o.text} sub={o.sub} keys={o.keys} dur={o.dur} side={o.side} plate={plate} />;
     case "screenCard":
       return <ScreenCard src={o.src} dur={o.dur} segments={o.segments} region={o.region} width={o.width} top={o.top} srcW={o.srcW} srcH={o.srcH} taps={o.taps} highlights={o.highlights} frames={o.frames} entrance={o.entrance} checks={o.checks} masks={o.masks} />;
   }
@@ -115,7 +115,7 @@ export const ReelEdit: React.FC<{ edit: Edit }> = ({ edit }) => {
 
   const seq = (o: Overlay, i: number) => (
     <Sequence key={`ov${i}`} from={f(o.at)} durationInFrames={Math.max(1, f(o.dur))} name={`${o.type} @${o.at}s`}>
-      {renderOverlay(o)}
+      {renderOverlay(o, edit.textPlate)}
     </Sequence>
   );
   // a full-frame title card sits under the captions (his words stay readable while it covers the picture)
@@ -129,7 +129,7 @@ export const ReelEdit: React.FC<{ edit: Edit }> = ({ edit }) => {
         {byLayer(1)}
         {edit.captions ? (
           <Captions groups={groups} keywords={edit.captions.keywords} style={edit.captions.style} zones={edit.captions.zones}
-            karaoke={edit.captions.karaoke} anchors={edit.captions.anchors} cuts={cuts} />
+            karaoke={edit.captions.karaoke} anchors={edit.captions.anchors} cuts={cuts} plateColor={edit.textPlate} />
         ) : null}
         {byLayer(3)}
       </AbsoluteFill>

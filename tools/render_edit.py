@@ -125,6 +125,37 @@ def _cover_chain(covers, sw, sh, seek, idx):
     return pre + ";".join(steps), last
 
 
+def _cover_chain_out(covers, crop, sw, sh, W, H, color, timing):
+    """Cover plates drawn AFTER crop / grade / scale / sharpen, in output pixels, in an exact solid colour (edit
+    "textPlate", e.g. the brand blue #56A0FB): drawn last so the grade can't shift the colour. Same rounded shapes,
+    positions and timings as the Night plates (_cover_chain); opaque, so the old text under them stays hidden.
+    timing(t_src) maps source seconds to the plate's own timestamps (None = always on, for held/frozen frames)."""
+    x, y, cw, ch = crop
+    sx, sy = W / cw, H / ch
+    steps, last = [], "pb"
+    hexc = color.lstrip("#")
+    for i, cv in enumerate(covers):
+        x0, y0, x1, y1 = cv["box"]
+        X0, Y0 = max(0, (x0 * sw - x) * sx), max(0, (y0 * sh - y) * sy)
+        X1, Y1 = min(W, (x1 * sw - x) * sx), min(H, (y1 * sh - y) * sy)
+        X, Y, Wd, Hd = _even(X0), _even(Y0), _even(X1 - X0), _even(Y1 - Y0)
+        if Wd < 4 or Hd < 4:
+            continue
+        if cv.get("kind") == "fade":
+            alpha = "255*clip(Y/(H*0.45),0,1)"
+        else:
+            # radius as before: 28 % of the plate's short side (measured in source px), scaled to output px
+            r = max(6, round(min((y1 - y0) * sh, (x1 - x0) * sw) * 0.28 * sx))
+            alpha = (f"255*clip({r}+0.5-hypot(max(max({r}-X,X-(W-1-{r})),0),max(max({r}-Y,Y-(H-1-{r})),0)),0,1)")
+        en = "" if timing is None else \
+            f":enable='between(t,{timing(cv['at']):.3f},{timing(cv['at'] + cv['dur']):.3f})'"
+        steps.append(f"color=c=0x{hexc}:s={Wd}x{Hd}:r=30,format=yuva444p,"
+                     f"geq=lum='lum(X,Y)':cb='cb(X,Y)':cr='cr(X,Y)':a='{alpha}'[pc{i}];"
+                     f"[{last}][pc{i}]overlay={X}:{Y}:shortest=0:repeatlast=1{en}[po{i}]")
+        last = f"po{i}"
+    return steps, last
+
+
 def make_plates(edit, proj):
     """Pre-frame every clip (and opted-in screen cards) with FFmpeg into image sequences. Mutates edit.
 
@@ -170,7 +201,8 @@ def make_plates(edit, proj):
             mine = [cv for cv in covers if cv["src"] == c["src"] and cv["at"] <= hold < cv["at"] + cv["dur"]]
         else:
             mine = [cv for cv in covers if cv["src"] == c["src"] and cv["at"] < c["out"] and cv["at"] + cv["dur"] > c["in"]]
-        pre, last = _cover_chain(mine, sw, sh, seek, 0)
+        text_plate = edit.get("textPlate")  # exact solid colour for the plates, drawn after the grade
+        pre, last = _cover_chain([] if text_plate else mine, sw, sh, seek, 0)
         motion = []
         if freeze or hold is not None:
             motion = ["trim=end_frame=1", f"loop=loop={n_out + 1}:size=1:start=0", f"setpts=N/{fps}/TB"]
@@ -181,6 +213,17 @@ def make_plates(edit, proj):
             motion = [f"setpts=(PTS-STARTPTS)/{speed}", f"framerate=fps={fps}:interp_start=0:interp_end=255:scene=100"]
         chain = ",".join(f for f in [f"crop={cw}:{ch}:{_even(x)}:{_even(y)}", grade, *motion, f"fps={fps}", scale, sharpen] if f)
         vf = (pre + f";[{last}]" + chain) if pre else chain
+        if text_plate and mine:
+            if freeze or hold is not None:
+                timing = None
+            elif speed != 1:
+                timing = lambda t: (t - seek) / speed
+            else:
+                timing = lambda t: t - seek
+            steps, plast = _cover_chain_out(mine, (_even(x), _even(y), cw, ch), sw, sh, W, H, text_plate, timing)
+            if steps:
+                vf = (f"[0:v]{chain}[pb];" if not pre else pre + f";[{last}]" + chain + "[pb];") + ";".join(steps) + f";[{plast}]null"
+                pre = "post"  # forces filter_complex below
         plate = _plate(src, out_dir, vf, ["-ss", f"{seek:.5f}"] if first else [], ["-frames:v", str(n_out + 1)], fps,
                        complex_=bool(pre))
         key = f"plate{i}"

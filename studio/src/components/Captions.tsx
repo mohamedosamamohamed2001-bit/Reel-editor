@@ -28,7 +28,9 @@ const runs = (words: string[]) =>
 export const Captions: React.FC<{
   groups: CaptionGroup[]; keywords?: string[]; style?: "shadow" | "plate"; zones?: Zone[]; karaoke?: boolean;
   anchors?: { at: number; dur: number; box: number[] }[]; cuts?: { f: number; n: number }[];
-}> = ({ groups, keywords = [], style = "shadow", zones = [], karaoke = false, anchors = [], cuts = [] }) => {
+  /** solid plate colour (brand blue): keywords switch to Night so they don't vanish into the plate */
+  plateColor?: string;
+}> = ({ groups, keywords = [], style = "shadow", zones = [], karaoke = false, anchors = [], cuts = [], plateColor }) => {
   const frame = useCurrentFrame();
   const { fps, height, width } = useVideoConfig();
   const t = frame / fps;
@@ -51,6 +53,8 @@ export const Captions: React.FC<{
   // 5 ms tolerance: zone edges are float sums (8.85 + 8.28 = 17.130000000000003)
   const zone = zones.find((z) => g.start >= z.at - 0.005 && g.start < z.at + z.dur - 0.005);
   const plate = style === "plate" && !anchor;
+  // on a brand-blue plate the blue keyword would disappear: Night keyword + underline instead
+  const kwColor = plateColor && (plate || anchor) ? color.night : color.coreBlue;
   const kw = new Set(keywords.map((k) => k.toLowerCase()));
   let blueUsed = false;
 
@@ -76,8 +80,8 @@ export const Captions: React.FC<{
           transform: `${anchor ? "translate(-50%, -50%) " : ""}translateY(${10 * (1 - p)}px) scale(${0.95 + 0.05 * p})`,
           textShadow: plate ? "none" : anchor ? "0 2px 8px rgba(10,15,22,0.6)" : "0 4px 22px rgba(10,15,22,0.9), 0 1px 3px rgba(10,15,22,0.9)",
           // Book: Night plate ~80% opacity, card radius, for legibility over bright areas (e.g. a white shirt)
-          background: plate ? "rgba(10,15,22,0.82)" : undefined,
-          border: plate ? `1px solid rgba(38,50,68,0.9)` : undefined,
+          background: plate ? plateColor ?? "rgba(10,15,22,0.82)" : undefined,
+          border: plate ? `1px solid ${plateColor ?? "rgba(38,50,68,0.9)"}` : undefined,
           boxShadow: plate ? "0 10px 30px rgba(10,15,22,0.35)" : undefined,
           padding: plate ? (rtl ? "6px 30px 10px" : "14px 30px") : undefined,
           borderRadius: plate ? 20 : undefined,
@@ -95,13 +99,13 @@ export const Captions: React.FC<{
               ? interpolate(t, [wStart, wStart + 8 / fps], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.out(Easing.cubic) })
               : bar;
             return (
-              <span key={w + wi} style={{ position: "relative", display: "inline-block", color: isKw ? color.coreBlue : undefined, opacity: lit }}>
+              <span key={w + wi} style={{ position: "relative", display: "inline-block", color: isKw ? kwColor : undefined, opacity: lit }}>
                 {run.latin && rtl ? w.replace(/[.،,؟]+$/, "") : w.replace(/[.،,]+$/, "")}
                 {isKw ? (
                   <span
                     style={{
                       position: "absolute", left: 0, right: 0, bottom: rtl && !run.latin ? 8 : -2, height: 6, borderRadius: 3,
-                      background: color.coreBlue, transformOrigin: rtl ? "right" : "left", transform: `scaleX(${wBar})`,
+                      background: kwColor, transformOrigin: rtl ? "right" : "left", transform: `scaleX(${wBar})`,
                     }}
                   />
                 ) : null}

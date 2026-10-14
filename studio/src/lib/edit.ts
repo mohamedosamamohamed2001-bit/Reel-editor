@@ -100,6 +100,8 @@ export type Edit = {
   };
   overlays: Overlay[];
   tail?: number; // seconds after the last clip (e.g. for an end card on its own)
+  /** solid colour for every plate behind text (caption bar, chips, label cards), e.g. "#56A0FB". Unset = Night glass */
+  textPlate?: string;
   /** camera-shake hits (output seconds): a short decaying jolt of the whole frame on big impacts */
   shakes?: { at: number; amp?: number }[];
 };

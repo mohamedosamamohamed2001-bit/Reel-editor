@@ -637,5 +637,6 @@
   "src": "work/music/music.wav",
   "gain_db": -10
  },
- "tail": 2.4
+ "tail": 2.4,
+ "textPlate": "#56A0FB"
 }
