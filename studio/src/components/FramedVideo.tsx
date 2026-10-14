@@ -45,11 +45,16 @@ const pose = (fr: number, len: number, W: number, H: number, tin?: Transition, t
  * Edges are clamped so the frame never shows outside the source. Without srcW/srcH it falls back to centre cover.
  * tin/tout: the transition into this clip and out of it (motion-blurred whip / zoom punch).
  */
-export const FramedVideo: React.FC<{ clip: Clip; durationInFrames: number; startFrom: number; tout?: Transition }> = ({
-  clip, durationInFrames, startFrom, tout,
+export const FramedVideo: React.FC<{ clip: Clip; durationInFrames: number; startFrom: number; tout?: Transition;
+  /** foreground pass (behind-the-head titles): only local frames [a, b), drawn from clip.fg (RGBA PNG cut-outs of the
+   * same plate frames), with the exact same geometry, settle and transitions as the picture under it */
+  fgWindow?: [number, number];
+}> = ({
+  clip, durationInFrames, startFrom, tout, fgWindow,
 }) => {
   const frame = useCurrentFrame();
   const { width: W, height: H } = useVideoConfig();
+  if (fgWindow && (frame < fgWindow[0] || frame >= fgWindow[1] || !clip.fg)) return null;
   const url = staticFile(clip.src);
   const volume = clip.volume ?? 1;
 
@@ -81,7 +86,7 @@ export const FramedVideo: React.FC<{ clip: Clip; durationInFrames: number; start
   }
   // image-sequence plate: shown 1:1 (OffthreadVideo extraction measured ~7x softer)
   const idx = Math.min(clip.frames.count, Math.max(1, startFrom + frame + 1));
-  const src = staticFile(`${clip.src}/${String(idx).padStart(5, "0")}.jpg`);
+  const src = fgWindow ? staticFile(`${clip.fg}/${String(idx).padStart(5, "0")}.png`) : staticFile(`${clip.src}/${String(idx).padStart(5, "0")}.jpg`);
   const now = pose(frame, durationInFrames, W, H, clip.tin, tout);
   const moving = now.dx !== 0 || now.dy !== 0 || now.s !== 1;
 

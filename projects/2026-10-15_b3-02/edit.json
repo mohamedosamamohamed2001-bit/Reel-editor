@@ -1,0 +1,214 @@
+{
+ "title": "OSM: 2021 throwback",
+ "fps": 30,
+ "width": 1080,
+ "height": 1920,
+ "media": {
+  "main": "work/clean/original.clean.mp4"
+ },
+ "audio": {
+  "main": "work/clean/original.clean.mp4"
+ },
+ "dialogueFx": "highpass=f=70,acompressor=threshold=0.1:ratio=2.5:attack=8:release=120:makeup=1.5",
+ "dialogueLufs": -26.0,
+ "plates": {
+  "grade": "eq=contrast=1.05:saturation=0.95:gamma=0.99,colorbalance=rs=-0.015:bs=0.02:rm=-0.01:bm=0.005:rh=0.012:gh=0.004:bh=-0.012,curves=master='0/0 0.22/0.2 0.78/0.8 1/1',vignette=angle=PI/7",
+  "sharpen": "cas=strength=0.22"
+ },
+ "clips": [
+  {
+   "src": "main",
+   "in": 0.0,
+   "out": 3.2,
+   "zoom": [
+    1.0,
+    1.03
+   ],
+   "focusY": 0.4
+  },
+  {
+   "src": "main",
+   "in": 3.2,
+   "out": 6.4,
+   "zoom": [
+    1.08,
+    1.11
+   ],
+   "focusY": 0.4,
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  },
+  {
+   "src": "main",
+   "in": 6.4,
+   "out": 9.45,
+   "zoom": [
+    1.14,
+    1.17
+   ],
+   "focusY": 0.4,
+   "tin": {
+    "type": "zoom",
+    "flash": true
+   }
+  }
+ ],
+ "captions": {
+  "wordsFile": "work/tx/aligned.words.json",
+  "style": "plate",
+  "karaoke": true,
+  "maxWords": 3,
+  "maxChars": 22,
+  "keywords": [],
+  "zones": [
+   {
+    "at": 0,
+    "dur": 9.477,
+    "top": 0.62
+   }
+  ]
+ },
+ "overlays": [
+  {
+   "type": "kineticTitle",
+   "at": 0.2,
+   "dur": 2.9,
+   "lines": [
+    {
+     "text": "2021",
+     "accent": true,
+     "size": 220
+    }
+   ],
+   "top": 0.06,
+   "motion": "smooth",
+   "depth": true,
+   "eyebrow": "OSM · THROWBACK"
+  },
+  {
+   "type": "kineticTitle",
+   "at": 3.3,
+   "dur": 3.0,
+   "lines": [
+    {
+     "text": "كل رحلة"
+    },
+    {
+     "text": "ليها بداية",
+     "accent": true,
+     "size": 120
+    }
+   ],
+   "top": 0.06,
+   "motion": "smooth",
+   "depth": true
+  },
+  {
+   "type": "iconPop",
+   "at": 6.5,
+   "dur": 2.967,
+   "items": [
+    {
+     "icon": "Dumbbell",
+     "label": "OSM"
+    }
+   ],
+   "top": 0.08,
+   "size": 195
+  },
+  {
+   "type": "endCard",
+   "at": 9.4667,
+   "dur": 2.4,
+   "cta": "OSM Coach Osama",
+   "reveal": "wipe",
+   "image": "brand/end/osm-end-photo.jpg"
+  }
+ ],
+ "shakes": [
+  {
+   "at": 6.4,
+   "amp": 0.5
+  },
+  {
+   "at": 9.467,
+   "amp": 0.6
+  }
+ ],
+ "sfx": {
+  "cues": [
+   {
+    "at": 0.2,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 0.25,
+    "sound": "impact",
+    "gain_db": -20
+   },
+   {
+    "at": 3.2,
+    "sound": "whip",
+    "gain_db": -11,
+    "dir": 1.0
+   },
+   {
+    "at": 3.22,
+    "sound": "air",
+    "gain_db": -20
+   },
+   {
+    "at": 3.3,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 3.35,
+    "sound": "impact",
+    "gain_db": -20
+   },
+   {
+    "at": 6.4,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 6.4,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 6.58,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 9.4667,
+    "sound": "reverse_hit",
+    "gain_db": -12,
+    "dur": 0.7
+   },
+   {
+    "at": 9.4667,
+    "sound": "boom",
+    "gain_db": -7
+   },
+   {
+    "at": 9.9667,
+    "sound": "click",
+    "gain_db": -17
+   }
+  ]
+ },
+ "music": {
+  "src": "work/music/music.wav",
+  "gain_db": -6
+ },
+ "tail": 2.4,
+ "textPlate": "#56A0FB"
+}

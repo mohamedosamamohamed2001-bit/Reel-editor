@@ -1,0 +1,543 @@
+{
+ "title": "OSM: cardio doesn't have to be in the gym",
+ "fps": 30,
+ "width": 1080,
+ "height": 1920,
+ "media": {
+  "main": "work/clean/original.clean.mp4",
+  "v_pingpong": "work/visuals/pingpong.jpg",
+  "v_padel": "work/visuals/padel.jpg"
+ },
+ "audio": {
+  "main": "work/stems/original.vocals.wav"
+ },
+ "dialogueFx": "highpass=f=70,acompressor=threshold=0.1:ratio=2.5:attack=8:release=120:makeup=1.5",
+ "dialogueLufs": -16.0,
+ "plates": {
+  "grade": "eq=contrast=1.05:saturation=0.95:gamma=0.99,colorbalance=rs=-0.015:bs=0.02:rm=-0.01:bm=0.005:rh=0.012:gh=0.004:bh=-0.012,curves=master='0/0 0.22/0.2 0.78/0.8 1/1',vignette=angle=PI/7",
+  "sharpen": "cas=strength=0.22"
+ },
+ "clips": [
+  {
+   "src": "main",
+   "in": 1.1,
+   "out": 1.53,
+   "zoom": [
+    1.0,
+    1.03
+   ],
+   "focusY": 0.35
+  },
+  {
+   "src": "main",
+   "in": 1.53,
+   "out": 3.18,
+   "zoom": [
+    1.06,
+    1.09
+   ],
+   "focusY": 0.35,
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  },
+  {
+   "src": "main",
+   "in": 3.18,
+   "out": 3.32,
+   "zoom": 1.0,
+   "hold": 3.35,
+   "focusY": 0.35,
+   "tin": {
+    "type": "zoom",
+    "flash": true
+   }
+  },
+  {
+   "src": "main",
+   "in": 3.32,
+   "out": 5.47,
+   "zoom": [
+    1.0,
+    1.03
+   ],
+   "focusY": 0.35
+  },
+  {
+   "src": "main",
+   "in": 5.47,
+   "out": 6.75,
+   "zoom": [
+    1.06,
+    1.09
+   ],
+   "focusY": 0.35,
+   "tin": {
+    "type": "whip",
+    "dir": "right"
+   }
+  },
+  {
+   "src": "main",
+   "in": 6.75,
+   "out": 7.25,
+   "zoom": 1.0,
+   "hold": 7.28,
+   "focusY": 0.35,
+   "tin": {
+    "type": "zoom"
+   }
+  },
+  {
+   "src": "main",
+   "in": 7.25,
+   "out": 9.03,
+   "zoom": [
+    1.0,
+    1.03
+   ],
+   "focusY": 0.35
+  },
+  {
+   "src": "main",
+   "in": 9.03,
+   "out": 12.780000000000001,
+   "zoom": [
+    1.06,
+    1.09
+   ],
+   "focusY": 0.35,
+   "tin": {
+    "type": "whip",
+    "dir": "up"
+   }
+  },
+  {
+   "src": "main",
+   "in": 12.780000000000001,
+   "out": 13.280000000000001,
+   "zoom": 1.0,
+   "hold": 13.31,
+   "focusY": 0.35,
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  },
+  {
+   "src": "main",
+   "in": 13.280000000000001,
+   "out": 15.1,
+   "zoom": [
+    1.0,
+    1.03
+   ],
+   "focusY": 0.35
+  },
+  {
+   "src": "main",
+   "in": 15.1,
+   "out": 16.91,
+   "zoom": [
+    1.06,
+    1.09
+   ],
+   "focusY": 0.35,
+   "tin": {
+    "type": "zoom",
+    "flash": true
+   }
+  },
+  {
+   "src": "main",
+   "in": 16.91,
+   "out": 17.05,
+   "zoom": 1.0,
+   "hold": 17.08,
+   "focusY": 0.35,
+   "tin": {
+    "type": "whip",
+    "dir": "right"
+   }
+  },
+  {
+   "src": "main",
+   "in": 17.05,
+   "out": 19.6,
+   "zoom": [
+    1.0,
+    1.03
+   ],
+   "focusY": 0.35
+  }
+ ],
+ "captions": {
+  "wordsFile": "work/tx/aligned.words.json",
+  "style": "plate",
+  "karaoke": true,
+  "maxWords": 3,
+  "maxChars": 22,
+  "keywords": [
+   "الكارديو",
+   "treadmill",
+   "bike",
+   "stairmaster",
+   "ping",
+   "padel",
+   "كورة",
+   "الكومنتس"
+  ],
+  "zones": [
+   {
+    "at": 0,
+    "dur": 18.51,
+    "top": 0.76
+   }
+  ]
+ },
+ "overlays": [
+  {
+   "type": "kineticTitle",
+   "at": 0.05,
+   "dur": 2.11,
+   "lines": [
+    {
+     "text": "CARDIO"
+    },
+    {
+     "text": "في الجيم؟",
+     "accent": true,
+     "size": 120
+    }
+   ],
+   "top": 0.04,
+   "motion": "smooth",
+   "depth": true,
+   "eyebrow": "ما لوش لازمة"
+  },
+  {
+   "type": "stepBadge",
+   "at": 2.69,
+   "dur": 1.52,
+   "mark": "✗",
+   "label": "Treadmill",
+   "top": 0.14,
+   "side": "right"
+  },
+  {
+   "type": "stepBadge",
+   "at": 4.93,
+   "dur": 0.8,
+   "mark": "✗",
+   "label": "Bike",
+   "top": 0.14,
+   "side": "right"
+  },
+  {
+   "type": "stepBadge",
+   "at": 6.55,
+   "dur": 1.26,
+   "mark": "✗",
+   "label": "Stairmaster",
+   "top": 0.14,
+   "side": "right"
+  },
+  {
+   "type": "visualCard",
+   "src": "v_pingpong",
+   "at": 8.33,
+   "dur": 0.71,
+   "mode": "full",
+   "push": [
+    1.0,
+    1.06
+   ]
+  },
+  {
+   "type": "visualCard",
+   "src": "v_padel",
+   "at": 8.99,
+   "dur": 0.42,
+   "mode": "full",
+   "push": [
+    1.05,
+    1.0
+   ]
+  },
+  {
+   "type": "iconPop",
+   "at": 9.41,
+   "dur": 0.78,
+   "items": [
+    {
+     "icon": "Volleyball",
+     "label": "كورة مع اصحابك"
+    }
+   ],
+   "top": 0.14,
+   "size": 195
+  },
+  {
+   "type": "iconPop",
+   "at": 10.19,
+   "dur": 1.54,
+   "items": [
+    {
+     "icon": "HeartPulse",
+     "mark": "check",
+     "label": "الكارديو اليومي"
+    }
+   ],
+   "top": 0.14,
+   "size": 195
+  },
+  {
+   "type": "kineticTitle",
+   "at": 13.85,
+   "dur": 1.86,
+   "lines": [
+    {
+     "text": "باي شكل",
+     "accent": true,
+     "size": 140
+    },
+    {
+     "text": "انت بتحب",
+     "size": 90
+    }
+   ],
+   "top": 0.04,
+   "motion": "smooth",
+   "depth": true,
+   "eyebrow": "الكارديو",
+   "occlude": true
+  },
+  {
+   "type": "iconPop",
+   "at": 15.71,
+   "dur": 2.79,
+   "items": [
+    {
+     "icon": "MessageCircle",
+     "label": "الكومنتس"
+    }
+   ],
+   "top": 0.14,
+   "size": 195
+  },
+  {
+   "type": "endCard",
+   "at": 18.5,
+   "dur": 2.4,
+   "cta": "OSM Coach Osama",
+   "reveal": "wipe",
+   "image": "brand/end/osm-end-photo.jpg"
+  }
+ ],
+ "shakes": [
+  {
+   "at": 2.067,
+   "amp": 0.5
+  },
+  {
+   "at": 5.667,
+   "amp": 0.5
+  },
+  {
+   "at": 14.0,
+   "amp": 0.5
+  },
+  {
+   "at": 18.5,
+   "amp": 0.6
+  }
+ ],
+ "sfx": {
+  "cues": [
+   {
+    "at": 0.05,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 0.1,
+    "sound": "impact",
+    "gain_db": -20
+   },
+   {
+    "at": 0.4333,
+    "sound": "whip",
+    "gain_db": -11,
+    "dir": 1.0
+   },
+   {
+    "at": 0.4533,
+    "sound": "air",
+    "gain_db": -20
+   },
+   {
+    "at": 2.0667,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 2.0667,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 2.69,
+    "sound": "slam",
+    "gain_db": -16
+   },
+   {
+    "at": 4.3667,
+    "sound": "whip",
+    "gain_db": -11,
+    "dir": 1.0
+   },
+   {
+    "at": 4.3867,
+    "sound": "air",
+    "gain_db": -20
+   },
+   {
+    "at": 4.93,
+    "sound": "slam",
+    "gain_db": -16
+   },
+   {
+    "at": 5.6667,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 5.6667,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 6.55,
+    "sound": "slam",
+    "gain_db": -16
+   },
+   {
+    "at": 7.9333,
+    "sound": "whip",
+    "gain_db": -11,
+    "dir": 1.0
+   },
+   {
+    "at": 7.9533,
+    "sound": "air",
+    "gain_db": -20
+   },
+   {
+    "at": 8.33,
+    "sound": "whoosh_in",
+    "gain_db": -15
+   },
+   {
+    "at": 8.94,
+    "sound": "whoosh_out",
+    "gain_db": -19
+   },
+   {
+    "at": 8.99,
+    "sound": "whoosh_in",
+    "gain_db": -15
+   },
+   {
+    "at": 9.31,
+    "sound": "whoosh_out",
+    "gain_db": -19
+   },
+   {
+    "at": 9.49,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 10.27,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 11.6667,
+    "sound": "whip",
+    "gain_db": -11,
+    "dir": 1.0
+   },
+   {
+    "at": 11.6867,
+    "sound": "air",
+    "gain_db": -20
+   },
+   {
+    "at": 13.85,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 13.9,
+    "sound": "impact",
+    "gain_db": -20
+   },
+   {
+    "at": 14.0,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 14.0,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 15.79,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 15.8,
+    "sound": "whip",
+    "gain_db": -11,
+    "dir": 1.0
+   },
+   {
+    "at": 15.82,
+    "sound": "air",
+    "gain_db": -20
+   },
+   {
+    "at": 18.5,
+    "sound": "reverse_hit",
+    "gain_db": -12,
+    "dur": 0.7
+   },
+   {
+    "at": 18.5,
+    "sound": "boom",
+    "gain_db": -7
+   },
+   {
+    "at": 19.0,
+    "sound": "click",
+    "gain_db": -17
+   }
+  ]
+ },
+ "music": {
+  "src": "work/music/music.wav",
+  "gain_db": -9
+ },
+ "tail": 2.4,
+ "textPlate": "#56A0FB"
+}

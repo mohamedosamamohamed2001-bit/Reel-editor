@@ -20,6 +20,11 @@ BATCHES = {
     "n6": ("2026-10-14_", 5, [("n1-0112", "creatine"), ("n2-training", "copying-workouts"), ("n3-scale", "scale-progress"),
                               ("n4-pulldown", "seated-row-wide-vs-close"), ("n5-lumbar", "glutes-lower-back"),
                               ("n6-triceps", "triceps-cable")]),
+    "b3": ("2026-10-15_", 12, [("b3-01", "pre-workout"), ("b3-02", "throwback-2021"), ("b3-03", "weight-stuck"),
+                               ("b3-04", "inbody-guide"), ("b3-08", "fat-loss-part-1"), ("b3-05", "fat-loss-part-2"),
+                               ("b3-06", "decline-press-alternatives"), ("b3-07", "fat-loss-and-muscle"),
+                               ("b3-09", "biceps-vs-hammer"), ("b3-10", "cardio-outside-the-gym"),
+                               ("b3-11", "calves-on-leg-curl"), ("b3-12", "rest-day")]),
 }
 BATCH = sys.argv[1] if len(sys.argv) > 1 else "c5"
 PREFIX, NUM0, ORDER = BATCHES[BATCH]
@@ -95,7 +100,7 @@ def main():
                 row["send_mb"] = round(send.stat().st_size / 1048576, 1)
             report.append(row)
             print(json.dumps(row, ensure_ascii=False))
-    (ROOT / "projects" / ("_c5" if BATCH == "c5" else "_n6") / "export_report.json").write_text(json.dumps(report, indent=1, ensure_ascii=False))
+    (ROOT / "projects" / {"c5": "_c5", "n6": "_n6", "b3": "_b3"}[BATCH] / "export_report.json").write_text(json.dumps(report, indent=1, ensure_ascii=False))
 
 
 if __name__ == "__main__":

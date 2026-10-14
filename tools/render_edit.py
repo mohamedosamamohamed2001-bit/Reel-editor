@@ -295,6 +295,33 @@ def make_plates(edit, proj):
             o["src"] = f"screenplate{j}"
 
 
+def make_cutouts(edit, proj):
+    """Behind-the-head titles (kineticTitle "occlude": true): person cut-outs (tools/cutout.py, MODNet) of exactly the
+    plate frames under each such title, so the studio can draw him above the title and below the captions."""
+    fps = edit["fps"]
+    wins = [(jsround(o["at"] * fps), jsround(o["at"] * fps) + max(1, jsround(o["dur"] * fps)))
+            for o in edit.get("overlays", []) if o.get("type") == "kineticTitle" and o.get("occlude")]
+    if not wins:
+        return
+    start = 0
+    for c in edit["clips"]:
+        sp = c.get("speed", 1)
+        n = jsround(c["out"] * fps) - jsround(c["in"] * fps) if sp == 1 else jsround((c["out"] - c["in"]) / sp * fps)
+        parts = []
+        for a, b in wins:
+            lo, hi = max(a, start), min(b, start + n)
+            if hi > lo:  # plate index of local frame k = round(in*fps) + k + 1 (FramedVideo)
+                base = jsround(c["in"] * fps) + 1
+                parts.append(f"{base + lo - start}-{base + hi - start - 1}")
+        if parts:
+            plate = (proj / edit["media"][c["src"]]).resolve()
+            out = plate.parent / f"{plate.name}_fg"
+            subprocess.run([str(ROOT / ".venv/bin/python"), str(ROOT / "tools/cutout.py"), str(plate), str(out),
+                            "--frames", ",".join(parts)], check=True)
+            c["fg_dir"] = str(out)
+        start += n
+
+
 def resolve(edit, proj, name):
     media = edit.pop("media", {})
     edit.pop("plates", None)
@@ -341,6 +368,17 @@ def resolve(edit, proj, name):
         return paths[key]
 
     for c in edit["clips"]:
+        fg = c.pop("fg_dir", None)
+        if fg:  # behind-the-head cut-outs: hard-link the PNGs next to the plate frames
+            fl = link_dir / Path(fg).name
+            fl.mkdir(exist_ok=True)
+            for f in Path(fg).glob("*.png"):
+                if not (fl / f.name).exists():
+                    try:
+                        os.link(f, fl / f.name)
+                    except OSError:
+                        shutil.copy2(f, fl / f.name)
+            c["fg"] = f"media/{name}/{fl.name}"
         c["srcW"], c["srcH"] = sizes.get(c["src"], (None, None))
         if c["src"] in seqs:
             c["frames"] = {"count": seqs[c["src"]], "fps": edit["fps"]}
@@ -550,6 +588,7 @@ def main():
     if music:
         music["path"] = str((proj / music["src"]).resolve())
     make_plates(edit, proj)
+    make_cutouts(edit, proj)
     edit_sfx = edit.pop("sfx", None)
     edit = resolve(edit, proj, name)
     renders = proj / "renders"

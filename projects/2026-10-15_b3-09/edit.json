@@ -1,0 +1,561 @@
+{
+ "title": "OSM: biceps vs hammer curl",
+ "fps": 30,
+ "width": 1080,
+ "height": 1920,
+ "media": {
+  "main": "work/clean/original.clean.mp4",
+  "v_arm103": "work/visuals/arm103.jpg"
+ },
+ "audio": {
+  "main": "work/stems/original.vocals.wav"
+ },
+ "dialogueFx": "highpass=f=70,acompressor=threshold=0.1:ratio=2.5:attack=8:release=120:makeup=1.5",
+ "dialogueLufs": -16.0,
+ "plates": {
+  "grade": "eq=contrast=1.05:saturation=0.95:gamma=0.99,colorbalance=rs=-0.015:bs=0.02:rm=-0.01:bm=0.005:rh=0.012:gh=0.004:bh=-0.012,curves=master='0/0 0.22/0.2 0.78/0.8 1/1',vignette=angle=PI/7",
+  "sharpen": "cas=strength=0.22"
+ },
+ "clips": [
+  {
+   "src": "main",
+   "in": 0.0,
+   "out": 0.78,
+   "zoom": [
+    1.0,
+    1.03
+   ],
+   "focusY": 0.35
+  },
+  {
+   "src": "main",
+   "in": 0.78,
+   "out": 1.02,
+   "zoom": 1.0,
+   "hold": 1.05,
+   "focusY": 0.35,
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  },
+  {
+   "src": "main",
+   "in": 1.02,
+   "out": 1.81,
+   "zoom": [
+    1.06,
+    1.09
+   ],
+   "focusY": 0.35
+  },
+  {
+   "src": "main",
+   "in": 1.81,
+   "out": 2.05,
+   "zoom": 1.0,
+   "hold": 2.08,
+   "focusY": 0.35,
+   "tin": {
+    "type": "zoom",
+    "flash": true
+   }
+  },
+  {
+   "src": "main",
+   "in": 2.05,
+   "out": 5.97,
+   "zoom": [
+    1.0,
+    1.03
+   ],
+   "focusY": 0.35
+  },
+  {
+   "src": "main",
+   "in": 5.97,
+   "out": 7.710000000000001,
+   "zoom": [
+    1.06,
+    1.09
+   ],
+   "focusY": 0.35,
+   "tin": {
+    "type": "whip",
+    "dir": "right"
+   }
+  },
+  {
+   "src": "main",
+   "in": 7.710000000000001,
+   "out": 7.85,
+   "zoom": 1.0,
+   "hold": 7.88,
+   "focusY": 0.35,
+   "tin": {
+    "type": "zoom"
+   }
+  },
+  {
+   "src": "main",
+   "in": 7.85,
+   "out": 12.88,
+   "zoom": [
+    1.0,
+    1.03
+   ],
+   "focusY": 0.35
+  },
+  {
+   "src": "main",
+   "in": 12.88,
+   "out": 13.020000000000001,
+   "zoom": 1.0,
+   "hold": 13.05,
+   "focusY": 0.35,
+   "tin": {
+    "type": "whip",
+    "dir": "up"
+   }
+  },
+  {
+   "src": "main",
+   "in": 13.020000000000001,
+   "out": 15.87,
+   "zoom": [
+    1.06,
+    1.09
+   ],
+   "focusY": 0.35
+  },
+  {
+   "src": "main",
+   "in": 15.87,
+   "out": 17.23,
+   "zoom": [
+    1.0,
+    1.03
+   ],
+   "focusY": 0.35,
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  },
+  {
+   "src": "main",
+   "in": 17.23,
+   "out": 21.85,
+   "zoom": [
+    1.06,
+    1.09
+   ],
+   "focusY": 0.35,
+   "tin": {
+    "type": "zoom",
+    "flash": true
+   }
+  },
+  {
+   "src": "main",
+   "in": 21.85,
+   "out": 22.38,
+   "zoom": 1.0,
+   "hold": 22.41,
+   "focusY": 0.35,
+   "tin": {
+    "type": "whip",
+    "dir": "right"
+   }
+  },
+  {
+   "src": "main",
+   "in": 22.38,
+   "out": 25.0,
+   "zoom": [
+    1.0,
+    1.03
+   ],
+   "focusY": 0.35
+  }
+ ],
+ "captions": {
+  "wordsFile": "work/tx/aligned.words.json",
+  "style": "plate",
+  "karaoke": true,
+  "maxWords": 3,
+  "maxChars": 22,
+  "keywords": [
+   "biceps",
+   "actions",
+   "supination",
+   "flexion",
+   "prone",
+   "brachioradialis",
+   "hammer",
+   "الفرق"
+  ],
+  "zones": [
+   {
+    "at": 0,
+    "dur": 25.01,
+    "top": 0.7
+   }
+  ]
+ },
+ "overlays": [
+  {
+   "type": "kineticTitle",
+   "at": 0.05,
+   "dur": 1.9,
+   "lines": [
+    {
+     "text": "BICEPS"
+    },
+    {
+     "text": "VS HAMMER",
+     "accent": true,
+     "size": 120
+    }
+   ],
+   "top": 0.03,
+   "motion": "smooth",
+   "depth": true,
+   "eyebrow": "مختلفة؟",
+   "occlude": true
+  },
+  {
+   "type": "visualCard",
+   "src": "v_arm103",
+   "at": 2.12,
+   "dur": 1.74,
+   "mode": "card",
+   "width": 760,
+   "top": 0.13,
+   "label": "BICEPS"
+  },
+  {
+   "type": "iconPop",
+   "at": 3.1,
+   "dur": 0.76,
+   "items": [
+    {
+     "icon": "Repeat",
+     "value": "2",
+     "label": "actions"
+    }
+   ],
+   "top": 0.4,
+   "size": 195
+  },
+  {
+   "type": "checklist",
+   "at": 3.86,
+   "dur": 2.14,
+   "items": [
+    {
+     "at": 0.0,
+     "text": "SUPINATION"
+    },
+    {
+     "at": 0.7200000000000002,
+     "text": "ELBOW FLEXION"
+    }
+   ],
+   "top": 0.13,
+   "row": false
+  },
+  {
+   "type": "lowerLabel",
+   "at": 6.0,
+   "dur": 4.8,
+   "title": "SUPINATION",
+   "top": 0.13,
+   "eyebrow": "الوضع ده"
+  },
+  {
+   "type": "stepBadge",
+   "at": 10.8,
+   "dur": 2.2,
+   "mark": "✓",
+   "label": "Biceps",
+   "top": 0.14,
+   "side": "right"
+  },
+  {
+   "type": "lowerLabel",
+   "at": 13.0,
+   "dur": 1.66,
+   "title": "MID PRONE",
+   "top": 0.13,
+   "eyebrow": "الوضع ده"
+  },
+  {
+   "type": "visualCard",
+   "src": "v_arm103",
+   "at": 15.26,
+   "dur": 2.27,
+   "mode": "full",
+   "label": "BRACHIORADIALIS",
+   "push": [
+    1.0,
+    1.05
+   ]
+  },
+  {
+   "type": "kineticTitle",
+   "at": 18.4,
+   "dur": 3.4,
+   "lines": [
+    {
+     "text": "HAMMER",
+     "accent": true,
+     "size": 150
+    }
+   ],
+   "top": 0.03,
+   "motion": "smooth",
+   "depth": true,
+   "eyebrow": "عضلة ال",
+   "occlude": true
+  },
+  {
+   "type": "kineticTitle",
+   "at": 21.8,
+   "dur": 3.2,
+   "lines": [
+    {
+     "text": "الفرق",
+     "accent": true,
+     "size": 160
+    }
+   ],
+   "top": 0.03,
+   "motion": "smooth",
+   "depth": true,
+   "eyebrow": "كده انت عرفت",
+   "occlude": true
+  },
+  {
+   "type": "endCard",
+   "at": 25.0,
+   "dur": 2.4,
+   "cta": "OSM Coach Osama",
+   "reveal": "wipe",
+   "image": "brand/end/osm-end-photo.jpg"
+  }
+ ],
+ "shakes": [
+  {
+   "at": 1.8,
+   "amp": 0.5
+  },
+  {
+   "at": 7.7,
+   "amp": 0.5
+  },
+  {
+   "at": 17.233,
+   "amp": 0.5
+  },
+  {
+   "at": 25.0,
+   "amp": 0.6
+  }
+ ],
+ "sfx": {
+  "cues": [
+   {
+    "at": 0.05,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 0.1,
+    "sound": "impact",
+    "gain_db": -20
+   },
+   {
+    "at": 0.7667,
+    "sound": "whip",
+    "gain_db": -11,
+    "dir": 1.0
+   },
+   {
+    "at": 0.7867,
+    "sound": "air",
+    "gain_db": -20
+   },
+   {
+    "at": 1.8,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 1.8,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 2.12,
+    "sound": "whoosh_in",
+    "gain_db": -15
+   },
+   {
+    "at": 3.18,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 3.76,
+    "sound": "whoosh_out",
+    "gain_db": -19
+   },
+   {
+    "at": 3.86,
+    "sound": "key",
+    "gain_db": -19
+   },
+   {
+    "at": 4.58,
+    "sound": "key",
+    "gain_db": -19
+   },
+   {
+    "at": 5.9667,
+    "sound": "whip",
+    "gain_db": -11,
+    "dir": 1.0
+   },
+   {
+    "at": 5.9867,
+    "sound": "air",
+    "gain_db": -20
+   },
+   {
+    "at": 6.0,
+    "sound": "click",
+    "gain_db": -18
+   },
+   {
+    "at": 7.7,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 7.7,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 10.8,
+    "sound": "slam",
+    "gain_db": -16
+   },
+   {
+    "at": 12.8667,
+    "sound": "whip",
+    "gain_db": -11,
+    "dir": 1.0
+   },
+   {
+    "at": 12.8867,
+    "sound": "air",
+    "gain_db": -20
+   },
+   {
+    "at": 13.0,
+    "sound": "click",
+    "gain_db": -18
+   },
+   {
+    "at": 15.26,
+    "sound": "whoosh_in",
+    "gain_db": -15
+   },
+   {
+    "at": 15.8667,
+    "sound": "whip",
+    "gain_db": -11,
+    "dir": 1.0
+   },
+   {
+    "at": 15.8867,
+    "sound": "air",
+    "gain_db": -20
+   },
+   {
+    "at": 17.2333,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 17.2333,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 17.43,
+    "sound": "whoosh_out",
+    "gain_db": -19
+   },
+   {
+    "at": 18.4,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 18.45,
+    "sound": "impact",
+    "gain_db": -20
+   },
+   {
+    "at": 21.8,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 21.85,
+    "sound": "impact",
+    "gain_db": -20
+   },
+   {
+    "at": 21.8667,
+    "sound": "whip",
+    "gain_db": -11,
+    "dir": 1.0
+   },
+   {
+    "at": 21.8867,
+    "sound": "air",
+    "gain_db": -20
+   },
+   {
+    "at": 25.0,
+    "sound": "reverse_hit",
+    "gain_db": -12,
+    "dur": 0.7
+   },
+   {
+    "at": 25.0,
+    "sound": "boom",
+    "gain_db": -7
+   },
+   {
+    "at": 25.5,
+    "sound": "click",
+    "gain_db": -17
+   }
+  ]
+ },
+ "music": {
+  "src": "work/music/music.wav",
+  "gain_db": -9
+ },
+ "tail": 2.4,
+ "textPlate": "#56A0FB"
+}

@@ -1,0 +1,602 @@
+{
+ "title": "OSM: pre-workout every day?",
+ "fps": 30,
+ "width": 1080,
+ "height": 1920,
+ "media": {
+  "main": "work/clean/original.clean.mp4",
+  "v_energy_drink": "work/visuals/energy_drink.jpg",
+  "v_coffee_cup": "work/visuals/coffee_cup.jpg",
+  "v_heart": "work/visuals/heart.jpg",
+  "v_tired_desk": "work/visuals/tired_desk.jpg"
+ },
+ "audio": {
+  "main": "work/stems/original.vocals.wav"
+ },
+ "dialogueFx": "highpass=f=70,acompressor=threshold=0.1:ratio=2.5:attack=8:release=120:makeup=1.5",
+ "dialogueLufs": -16.0,
+ "plates": {
+  "grade": "eq=contrast=1.05:saturation=0.95:gamma=0.99,colorbalance=rs=-0.015:bs=0.02:rm=-0.01:bm=0.005:rh=0.012:gh=0.004:bh=-0.012,curves=master='0/0 0.22/0.2 0.78/0.8 1/1',vignette=angle=PI/7",
+  "sharpen": "cas=strength=0.22"
+ },
+ "clips": [
+  {
+   "src": "main",
+   "in": 0.0,
+   "out": 1.03,
+   "zoom": [
+    1.0,
+    1.03
+   ],
+   "focusY": 0.42
+  },
+  {
+   "src": "main",
+   "in": 1.03,
+   "out": 2.0,
+   "zoom": [
+    1.06,
+    1.09
+   ],
+   "focusY": 0.42,
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  },
+  {
+   "src": "main",
+   "in": 2.0,
+   "out": 3.03,
+   "zoom": [
+    1.0,
+    1.03
+   ],
+   "focusY": 0.42,
+   "tin": {
+    "type": "zoom",
+    "flash": true
+   }
+  },
+  {
+   "src": "main",
+   "in": 3.03,
+   "out": 3.67,
+   "zoom": [
+    1.06,
+    1.09
+   ],
+   "focusY": 0.42,
+   "tin": {
+    "type": "whip",
+    "dir": "right"
+   }
+  },
+  {
+   "src": "main",
+   "in": 3.67,
+   "out": 12.4,
+   "zoom": [
+    1.0,
+    1.03
+   ],
+   "focusY": 0.42,
+   "tin": {
+    "type": "zoom"
+   }
+  },
+  {
+   "src": "main",
+   "in": 12.4,
+   "out": 16.78,
+   "zoom": [
+    1.06,
+    1.09
+   ],
+   "focusY": 0.42,
+   "tin": {
+    "type": "whip",
+    "dir": "up"
+   }
+  },
+  {
+   "src": "main",
+   "in": 16.78,
+   "out": 17.28,
+   "zoom": 1.0,
+   "hold": 17.31,
+   "focusY": 0.42,
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  },
+  {
+   "src": "main",
+   "in": 17.28,
+   "out": 25.91,
+   "zoom": [
+    1.0,
+    1.03
+   ],
+   "focusY": 0.42
+  },
+  {
+   "src": "main",
+   "in": 25.91,
+   "out": 26.42,
+   "zoom": 1.0,
+   "hold": 26.45,
+   "focusY": 0.42,
+   "tin": {
+    "type": "zoom",
+    "flash": true
+   }
+  },
+  {
+   "src": "main",
+   "in": 26.42,
+   "out": 29.0,
+   "zoom": [
+    1.06,
+    1.09
+   ],
+   "focusY": 0.42
+  }
+ ],
+ "captions": {
+  "wordsFile": "work/tx/aligned.words.json",
+  "style": "plate",
+  "karaoke": true,
+  "maxWords": 3,
+  "maxChars": 22,
+  "keywords": [
+   "workout",
+   "غلط",
+   "الكافيين",
+   "قلبك",
+   "power",
+   "تلات",
+   "فولو"
+  ],
+  "zones": [
+   {
+    "at": 0,
+    "dur": 29.01,
+    "top": 0.62
+   }
+  ]
+ },
+ "overlays": [
+  {
+   "type": "kineticTitle",
+   "at": 0.15,
+   "dur": 3.06,
+   "lines": [
+    {
+     "text": "PRE"
+    },
+    {
+     "text": "WORKOUT",
+     "accent": true
+    }
+   ],
+   "top": 0.04,
+   "motion": "smooth",
+   "depth": true,
+   "eyebrow": "كل يوم؟",
+   "occlude": true
+  },
+  {
+   "type": "visualCard",
+   "src": "v_energy_drink",
+   "at": 4.74,
+   "dur": 1.28,
+   "mode": "card",
+   "width": 620,
+   "top": 0.13
+  },
+  {
+   "type": "iconPop",
+   "at": 6.6,
+   "dur": 1.2,
+   "items": [
+    {
+     "icon": "Repeat",
+     "label": "بيتعود"
+    }
+   ],
+   "top": 0.16,
+   "size": 170
+  },
+  {
+   "type": "iconPop",
+   "at": 9.1,
+   "dur": 0.72,
+   "items": [
+    {
+     "icon": "Pill",
+     "mark": "up",
+     "label": "الجرعة"
+    }
+   ],
+   "top": 0.16,
+   "size": 170
+  },
+  {
+   "type": "stepBadge",
+   "at": 10.61,
+   "dur": 1.56,
+   "mark": "✗",
+   "label": "غلط",
+   "top": 0.15,
+   "side": "right"
+  },
+  {
+   "type": "visualCard",
+   "src": "v_coffee_cup",
+   "at": 12.17,
+   "dur": 1.76,
+   "mode": "card",
+   "width": 560,
+   "top": 0.12
+  },
+  {
+   "type": "iconPop",
+   "at": 13.22,
+   "dur": 0.56,
+   "items": [
+    {
+     "icon": "Coffee",
+     "mark": "up",
+     "label": "Caffeine"
+    }
+   ],
+   "top": 0.36,
+   "size": 140
+  },
+  {
+   "type": "visualCard",
+   "src": "v_heart",
+   "at": 15.86,
+   "dur": 1.04,
+   "mode": "card",
+   "width": 520,
+   "top": 0.12,
+   "markers": [
+    {
+     "at": 0.35,
+     "x": 0.5,
+     "y": 0.45,
+     "r": 0.12
+    }
+   ]
+  },
+  {
+   "type": "kineticTitle",
+   "at": 16.9,
+   "dur": 1.78,
+   "lines": [
+    {
+     "text": "ليه موجود؟",
+     "accent": true,
+     "size": 120
+    }
+   ],
+   "top": 0.12,
+   "motion": "smooth",
+   "depth": true,
+   "eyebrow": "PRE WORKOUT"
+  },
+  {
+   "type": "visualCard",
+   "src": "v_tired_desk",
+   "at": 19.96,
+   "dur": 0.78,
+   "mode": "card",
+   "width": 620,
+   "top": 0.13
+  },
+  {
+   "type": "iconPop",
+   "at": 21.06,
+   "dur": 0.74,
+   "items": [
+    {
+     "icon": "Moon",
+     "mark": "down",
+     "label": "نوم"
+    }
+   ],
+   "top": 0.16,
+   "size": 170
+  },
+  {
+   "type": "iconPop",
+   "at": 22.52,
+   "dur": 0.98,
+   "items": [
+    {
+     "icon": "Zap",
+     "mark": "up",
+     "label": "Power"
+    }
+   ],
+   "top": 0.16,
+   "size": 170
+  },
+  {
+   "type": "kineticTitle",
+   "at": 25.08,
+   "dur": 0.94,
+   "lines": [
+    {
+     "text": "3×",
+     "accent": true,
+     "size": 200
+    },
+    {
+     "text": "في الاسبوع",
+     "size": 90
+    }
+   ],
+   "top": 0.1,
+   "motion": "smooth",
+   "depth": true,
+   "eyebrow": "بس"
+  },
+  {
+   "type": "iconPop",
+   "at": 26.02,
+   "dur": 2.22,
+   "items": [
+    {
+     "icon": "UserPlus",
+     "label": "Follow"
+    }
+   ],
+   "top": 0.16,
+   "size": 170
+  },
+  {
+   "type": "endCard",
+   "at": 29.0,
+   "dur": 2.4,
+   "cta": "OSM Coach Osama",
+   "reveal": "wipe",
+   "image": "brand/end/osm-end-photo.jpg"
+  }
+ ],
+ "shakes": [
+  {
+   "at": 2.0,
+   "amp": 0.5
+  },
+  {
+   "at": 3.667,
+   "amp": 0.5
+  },
+  {
+   "at": 25.9,
+   "amp": 0.5
+  },
+  {
+   "at": 29.0,
+   "amp": 0.6
+  }
+ ],
+ "sfx": {
+  "cues": [
+   {
+    "at": 0.15,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 0.2,
+    "sound": "impact",
+    "gain_db": -20
+   },
+   {
+    "at": 1.0333,
+    "sound": "whip",
+    "gain_db": -11,
+    "dir": 1.0
+   },
+   {
+    "at": 1.0533,
+    "sound": "air",
+    "gain_db": -20
+   },
+   {
+    "at": 2.0,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 2.0,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 3.0333,
+    "sound": "whip",
+    "gain_db": -11,
+    "dir": 1.0
+   },
+   {
+    "at": 3.0533,
+    "sound": "air",
+    "gain_db": -20
+   },
+   {
+    "at": 3.6667,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 3.6667,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 4.74,
+    "sound": "whoosh_in",
+    "gain_db": -15
+   },
+   {
+    "at": 5.92,
+    "sound": "whoosh_out",
+    "gain_db": -19
+   },
+   {
+    "at": 6.68,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 9.18,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 10.61,
+    "sound": "slam",
+    "gain_db": -16
+   },
+   {
+    "at": 12.17,
+    "sound": "whoosh_in",
+    "gain_db": -15
+   },
+   {
+    "at": 12.4,
+    "sound": "whip",
+    "gain_db": -11,
+    "dir": 1.0
+   },
+   {
+    "at": 12.42,
+    "sound": "air",
+    "gain_db": -20
+   },
+   {
+    "at": 13.3,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 13.83,
+    "sound": "whoosh_out",
+    "gain_db": -19
+   },
+   {
+    "at": 15.86,
+    "sound": "whoosh_in",
+    "gain_db": -15
+   },
+   {
+    "at": 16.7667,
+    "sound": "whip",
+    "gain_db": -11,
+    "dir": 1.0
+   },
+   {
+    "at": 16.7867,
+    "sound": "air",
+    "gain_db": -20
+   },
+   {
+    "at": 16.8,
+    "sound": "whoosh_out",
+    "gain_db": -19
+   },
+   {
+    "at": 16.9,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 16.95,
+    "sound": "impact",
+    "gain_db": -20
+   },
+   {
+    "at": 19.96,
+    "sound": "whoosh_in",
+    "gain_db": -15
+   },
+   {
+    "at": 20.64,
+    "sound": "whoosh_out",
+    "gain_db": -19
+   },
+   {
+    "at": 21.14,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 22.6,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 25.08,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 25.13,
+    "sound": "impact",
+    "gain_db": -20
+   },
+   {
+    "at": 25.9,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 25.9,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 26.1,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 29.0,
+    "sound": "reverse_hit",
+    "gain_db": -12,
+    "dur": 0.7
+   },
+   {
+    "at": 29.0,
+    "sound": "boom",
+    "gain_db": -7
+   },
+   {
+    "at": 29.5,
+    "sound": "click",
+    "gain_db": -17
+   }
+  ]
+ },
+ "music": {
+  "src": "work/music/music.wav",
+  "gain_db": -9
+ },
+ "tail": 2.4,
+ "textPlate": "#56A0FB"
+}

@@ -1,0 +1,377 @@
+{
+ "title": "OSM: calves on the seated leg curl",
+ "fps": 30,
+ "width": 1080,
+ "height": 1920,
+ "media": {
+  "main": "work/clean/original.clean.mp4",
+  "v_calf": "work/visuals/calf.jpg"
+ },
+ "audio": {
+  "main": "work/stems/original.vocals.wav"
+ },
+ "dialogueFx": "highpass=f=70,acompressor=threshold=0.1:ratio=2.5:attack=8:release=120:makeup=1.5",
+ "dialogueLufs": -16.0,
+ "plates": {
+  "grade": "eq=contrast=1.05:saturation=0.95:gamma=0.99,colorbalance=rs=-0.015:bs=0.02:rm=-0.01:bm=0.005:rh=0.012:gh=0.004:bh=-0.012,curves=master='0/0 0.22/0.2 0.78/0.8 1/1',vignette=angle=PI/7",
+  "sharpen": "cas=strength=0.22"
+ },
+ "clips": [
+  {
+   "src": "main",
+   "in": 0.0,
+   "out": 2.55,
+   "zoom": [
+    1.0,
+    1.03
+   ],
+   "focusY": 0.45
+  },
+  {
+   "src": "main",
+   "in": 2.55,
+   "out": 2.78,
+   "zoom": 1.0,
+   "hold": 2.81,
+   "focusY": 0.45,
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  },
+  {
+   "src": "main",
+   "in": 2.78,
+   "out": 16.81,
+   "zoom": [
+    1.06,
+    1.09
+   ],
+   "focusY": 0.45
+  },
+  {
+   "src": "main",
+   "in": 16.81,
+   "out": 17.05,
+   "zoom": 1.0,
+   "hold": 17.08,
+   "focusY": 0.45,
+   "tin": {
+    "type": "zoom",
+    "flash": true
+   }
+  },
+  {
+   "src": "main",
+   "in": 17.05,
+   "out": 19.11,
+   "zoom": [
+    1.0,
+    1.03
+   ],
+   "focusY": 0.45
+  },
+  {
+   "src": "main",
+   "in": 19.11,
+   "out": 19.32,
+   "zoom": 1.0,
+   "hold": 19.35,
+   "focusY": 0.45,
+   "tin": {
+    "type": "whip",
+    "dir": "right"
+   }
+  },
+  {
+   "src": "main",
+   "in": 19.32,
+   "out": 24.080000000000002,
+   "zoom": [
+    1.06,
+    1.09
+   ],
+   "focusY": 0.45
+  },
+  {
+   "src": "main",
+   "in": 24.080000000000002,
+   "out": 24.18,
+   "zoom": 1.0,
+   "hold": 24.21,
+   "focusY": 0.45,
+   "tin": {
+    "type": "zoom"
+   }
+  },
+  {
+   "src": "main",
+   "in": 24.18,
+   "out": 24.5,
+   "zoom": [
+    1.0,
+    1.03
+   ],
+   "focusY": 0.45
+  }
+ ],
+ "captions": {
+  "wordsFile": "work/tx/aligned.words.json",
+  "style": "plate",
+  "karaoke": true,
+  "maxWords": 3,
+  "maxChars": 22,
+  "keywords": [
+   "السمانة",
+   "knee",
+   "flexion",
+   "gastrocnemius",
+   "15",
+   "عادي"
+  ],
+  "zones": [
+   {
+    "at": 0,
+    "dur": 24.51,
+    "top": 0.74
+   }
+  ]
+ },
+ "overlays": [
+  {
+   "type": "lowerLabel",
+   "at": 0.05,
+   "dur": 1.85,
+   "title": "SEATED LEG CURL",
+   "top": 0.13,
+   "eyebrow": "ليه وانا بلعب"
+  },
+  {
+   "type": "iconPop",
+   "at": 1.9,
+   "dur": 0.68,
+   "items": [
+    {
+     "icon": "CircleHelp",
+     "label": "السمانة اشتغلت؟"
+    }
+   ],
+   "top": 0.14,
+   "size": 195
+  },
+  {
+   "type": "lowerLabel",
+   "at": 4.66,
+   "dur": 2.38,
+   "title": "KNEE FLEXION",
+   "top": 0.13,
+   "eyebrow": "الحركة اسمها"
+  },
+  {
+   "type": "visualCard",
+   "src": "v_calf",
+   "at": 7.04,
+   "dur": 3.067,
+   "mode": "card",
+   "width": 560,
+   "top": 0.1,
+   "label": "GASTROCNEMIUS"
+  },
+  {
+   "type": "kineticTitle",
+   "at": 11.22,
+   "dur": 4.24,
+   "lines": [
+    {
+     "text": "0° → 15°",
+     "accent": true,
+     "size": 150
+    }
+   ],
+   "top": 0.05,
+   "motion": "smooth",
+   "depth": true,
+   "eyebrow": "المسؤوله عن"
+  },
+  {
+   "type": "iconPop",
+   "at": 15.46,
+   "dur": 2.78,
+   "items": [
+    {
+     "icon": "Zap",
+     "label": "السمانة شغاله"
+    }
+   ],
+   "top": 0.14,
+   "size": 195
+  },
+  {
+   "type": "stepBadge",
+   "at": 18.24,
+   "dur": 3.48,
+   "mark": "✓",
+   "label": "ده عادي",
+   "top": 0.14,
+   "side": "right"
+  },
+  {
+   "type": "iconPop",
+   "at": 21.72,
+   "dur": 2.78,
+   "items": [
+    {
+     "icon": "MessageCircle",
+     "label": "الكومنت"
+    }
+   ],
+   "top": 0.14,
+   "size": 195
+  },
+  {
+   "type": "endCard",
+   "at": 24.5,
+   "dur": 2.4,
+   "cta": "OSM Coach Osama",
+   "reveal": "wipe",
+   "image": "brand/end/osm-end-photo.jpg"
+  }
+ ],
+ "shakes": [
+  {
+   "at": 16.8,
+   "amp": 0.5
+  },
+  {
+   "at": 24.067,
+   "amp": 0.5
+  },
+  {
+   "at": 24.5,
+   "amp": 0.6
+  }
+ ],
+ "sfx": {
+  "cues": [
+   {
+    "at": 0.05,
+    "sound": "click",
+    "gain_db": -18
+   },
+   {
+    "at": 1.98,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 2.5667,
+    "sound": "whip",
+    "gain_db": -11,
+    "dir": 1.0
+   },
+   {
+    "at": 2.5867,
+    "sound": "air",
+    "gain_db": -20
+   },
+   {
+    "at": 4.66,
+    "sound": "click",
+    "gain_db": -18
+   },
+   {
+    "at": 7.04,
+    "sound": "whoosh_in",
+    "gain_db": -15
+   },
+   {
+    "at": 10.007,
+    "sound": "whoosh_out",
+    "gain_db": -19
+   },
+   {
+    "at": 11.22,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 11.27,
+    "sound": "impact",
+    "gain_db": -20
+   },
+   {
+    "at": 15.54,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 16.8,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 16.8,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 18.24,
+    "sound": "slam",
+    "gain_db": -16
+   },
+   {
+    "at": 19.1,
+    "sound": "whip",
+    "gain_db": -11,
+    "dir": 1.0
+   },
+   {
+    "at": 19.12,
+    "sound": "air",
+    "gain_db": -20
+   },
+   {
+    "at": 21.8,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 24.0667,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 24.0667,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 24.5,
+    "sound": "reverse_hit",
+    "gain_db": -12,
+    "dur": 0.7
+   },
+   {
+    "at": 24.5,
+    "sound": "boom",
+    "gain_db": -7
+   },
+   {
+    "at": 25.0,
+    "sound": "click",
+    "gain_db": -17
+   }
+  ]
+ },
+ "music": {
+  "src": "work/music/music.wav",
+  "gain_db": -9
+ },
+ "tail": 2.4,
+ "textPlate": "#56A0FB"
+}

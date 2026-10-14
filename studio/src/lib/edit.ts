@@ -17,6 +17,8 @@ export type Clip = {
   orig?: { in: number; out: number };
   /** set when src is a JPEG image-sequence plate (folder of 00001.jpg…): frame count and its fps */
   frames?: { count: number; fps: number };
+  /** set by tools/render_edit.py: folder of RGBA PNG cut-outs (him only) for frames under a behind-the-head title */
+  fg?: string;
   /** punch "settle": start at this scale (e.g. 1.04) and ease to 1 over 10 frames, like camera inertia */
   settle?: number;
   /** playback speed (plates only): 2 = twice as fast (frames blended = motion blur); timeline length = (out-in)/speed */
@@ -52,7 +54,10 @@ export type Overlay =
   | { type: "visualCard"; at: number; dur: number; src: string; mode?: "card" | "full"; label?: string; sub?: string; credit?: string;
       srcW?: number; srcH?: number; width?: number; top?: number; markers?: { at: number; x: number; y: number; label?: string; r?: number }[];
       push?: [number, number]; focusY?: number }
-  | { type: "kineticTitle"; at: number; dur: number; lines: { text: string; accent?: boolean; size?: number }[]; eyebrow?: string; top?: number; tilt?: boolean; backdrop?: boolean; motion?: "slam" | "smooth"; depth?: boolean; ink?: "light" | "dark" }
+  | { type: "iconPop"; at: number; dur: number; items: { icon: string; label?: string; value?: string; mark?: "up" | "down" | "x" | "check" }[];
+      top?: number; size?: number; align?: "center" | "left" | "right" }
+  | { type: "kineticTitle"; at: number; dur: number; lines: { text: string; accent?: boolean; size?: number }[]; eyebrow?: string; top?: number; tilt?: boolean; backdrop?: boolean; motion?: "slam" | "smooth"; depth?: boolean; ink?: "light" | "dark";
+      /** behind-the-head: he occludes the title (person cut-out by tools/render_edit.py, MODNet matte) */ occlude?: boolean }
   | { type: "stepBadge"; at: number; dur: number; mark: string; label: string; sub?: string; top?: number; side?: "left" | "right" }
   | { type: "lowerLabel"; at: number; dur: number; title: string; sets?: string; eyebrow?: string; top?: number }
   | { type: "trackedLabel"; at: number; dur: number; text: string; sub?: string; keys: { t: number; x: number; y: number }[]; side?: "left" | "right" }

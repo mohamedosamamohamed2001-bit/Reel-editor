@@ -1,0 +1,1004 @@
+{
+ "title": "OSM: how to read your InBody",
+ "fps": 30,
+ "width": 1080,
+ "height": 1920,
+ "media": {
+  "main": "work/clean/original.clean.mp4"
+ },
+ "audio": {
+  "main": "work/stems/original.vocals.wav"
+ },
+ "dialogueFx": "highpass=f=70,acompressor=threshold=0.1:ratio=2.5:attack=8:release=120:makeup=1.5",
+ "dialogueLufs": -16.0,
+ "plates": {
+  "grade": "eq=contrast=1.05:saturation=0.95:gamma=0.99,colorbalance=rs=-0.015:bs=0.02:rm=-0.01:bm=0.005:rh=0.012:gh=0.004:bh=-0.012,curves=master='0/0 0.22/0.2 0.78/0.8 1/1',vignette=angle=PI/7",
+  "sharpen": "cas=strength=0.22"
+ },
+ "clips": [
+  {
+   "src": "main",
+   "in": 0.0,
+   "out": 2.93,
+   "zoom": [
+    1.0,
+    1.03
+   ],
+   "focusY": 0.4
+  },
+  {
+   "src": "main",
+   "in": 2.93,
+   "out": 4.75,
+   "zoom": [
+    1.06,
+    1.09
+   ],
+   "focusY": 0.4,
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  },
+  {
+   "src": "main",
+   "in": 4.75,
+   "out": 5.18,
+   "zoom": 1.0,
+   "hold": 5.21,
+   "focusY": 0.4,
+   "tin": {
+    "type": "zoom",
+    "flash": true
+   }
+  },
+  {
+   "src": "main",
+   "in": 5.18,
+   "out": 5.8500000000000005,
+   "zoom": [
+    1.0,
+    1.03
+   ],
+   "focusY": 0.4
+  },
+  {
+   "src": "main",
+   "in": 5.8500000000000005,
+   "out": 6.4799999999999995,
+   "zoom": 1.0,
+   "hold": 6.51,
+   "focusY": 0.4,
+   "tin": {
+    "type": "whip",
+    "dir": "right"
+   }
+  },
+  {
+   "src": "main",
+   "in": 6.4799999999999995,
+   "out": 7.880000000000001,
+   "zoom": [
+    1.06,
+    1.09
+   ],
+   "focusY": 0.4
+  },
+  {
+   "src": "main",
+   "in": 7.880000000000001,
+   "out": 8.75,
+   "zoom": 1.0,
+   "hold": 8.78,
+   "focusY": 0.4,
+   "tin": {
+    "type": "zoom"
+   }
+  },
+  {
+   "src": "main",
+   "in": 8.75,
+   "out": 9.08,
+   "zoom": [
+    1.0,
+    1.03
+   ],
+   "focusY": 0.4
+  },
+  {
+   "src": "main",
+   "in": 9.08,
+   "out": 9.780000000000001,
+   "zoom": 1.0,
+   "hold": 9.81,
+   "focusY": 0.4,
+   "tin": {
+    "type": "whip",
+    "dir": "up"
+   }
+  },
+  {
+   "src": "main",
+   "in": 9.780000000000001,
+   "out": 19.78,
+   "zoom": [
+    1.06,
+    1.09
+   ],
+   "focusY": 0.4
+  },
+  {
+   "src": "main",
+   "in": 19.78,
+   "out": 20.32,
+   "zoom": 1.0,
+   "hold": 20.35,
+   "focusY": 0.4,
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  },
+  {
+   "src": "main",
+   "in": 20.32,
+   "out": 36.08,
+   "zoom": [
+    1.0,
+    1.03
+   ],
+   "focusY": 0.4
+  },
+  {
+   "src": "main",
+   "in": 36.08,
+   "out": 36.949999999999996,
+   "zoom": 1.0,
+   "hold": 36.98,
+   "focusY": 0.4,
+   "tin": {
+    "type": "zoom",
+    "flash": true
+   }
+  },
+  {
+   "src": "main",
+   "in": 36.949999999999996,
+   "out": 38.5,
+   "zoom": [
+    1.06,
+    1.09
+   ],
+   "focusY": 0.4
+  },
+  {
+   "src": "main",
+   "in": 38.5,
+   "out": 41.25,
+   "zoom": [
+    1.0,
+    1.03
+   ],
+   "focusY": 0.4,
+   "tin": {
+    "type": "whip",
+    "dir": "right"
+   }
+  },
+  {
+   "src": "main",
+   "in": 41.25,
+   "out": 41.72,
+   "zoom": 1.0,
+   "hold": 41.75,
+   "focusY": 0.4,
+   "tin": {
+    "type": "zoom"
+   }
+  },
+  {
+   "src": "main",
+   "in": 41.72,
+   "out": 52.23,
+   "zoom": [
+    1.06,
+    1.09
+   ],
+   "focusY": 0.4
+  },
+  {
+   "src": "main",
+   "in": 52.23,
+   "out": 53.01,
+   "zoom": [
+    1.0,
+    1.03
+   ],
+   "focusY": 0.4,
+   "tin": {
+    "type": "whip",
+    "dir": "up"
+   }
+  },
+  {
+   "src": "main",
+   "in": 53.01,
+   "out": 53.519999999999996,
+   "zoom": 1.0,
+   "hold": 53.55,
+   "focusY": 0.4,
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  },
+  {
+   "src": "main",
+   "in": 53.519999999999996,
+   "out": 61.809999999999995,
+   "zoom": [
+    1.06,
+    1.09
+   ],
+   "focusY": 0.4
+  },
+  {
+   "src": "main",
+   "in": 61.809999999999995,
+   "out": 62.32,
+   "zoom": 1.0,
+   "hold": 62.35,
+   "focusY": 0.4,
+   "tin": {
+    "type": "zoom",
+    "flash": true
+   }
+  },
+  {
+   "src": "main",
+   "in": 62.32,
+   "out": 64.41000000000001,
+   "zoom": [
+    1.0,
+    1.03
+   ],
+   "focusY": 0.4
+  },
+  {
+   "src": "main",
+   "in": 64.41000000000001,
+   "out": 64.88,
+   "zoom": 1.0,
+   "hold": 64.91,
+   "focusY": 0.4,
+   "tin": {
+    "type": "whip",
+    "dir": "right"
+   }
+  },
+  {
+   "src": "main",
+   "in": 64.88,
+   "out": 68.7,
+   "zoom": [
+    1.06,
+    1.09
+   ],
+   "focusY": 0.4
+  },
+  {
+   "src": "main",
+   "in": 68.7,
+   "out": 95.75,
+   "zoom": [
+    1.0,
+    1.03
+   ],
+   "focusY": 0.4,
+   "tin": {
+    "type": "zoom"
+   }
+  }
+ ],
+ "captions": {
+  "wordsFile": "work/tx/aligned.words.json",
+  "style": "plate",
+  "karaoke": true,
+  "maxWords": 3,
+  "maxChars": 22,
+  "keywords": [
+   "inbody",
+   "water",
+   "70%",
+   "mass",
+   "smm",
+   "pbf",
+   "رسمتين",
+   "score",
+   "bmr",
+   "1383",
+   "activity"
+  ],
+  "zones": [
+   {
+    "at": 0,
+    "dur": 95.777,
+    "top": 0.66
+   }
+  ]
+ },
+ "overlays": [
+  {
+   "type": "kineticTitle",
+   "at": 0.1,
+   "dur": 2.62,
+   "lines": [
+    {
+     "text": "INBODY"
+    },
+    {
+     "text": "مالوش لازمة؟",
+     "accent": true,
+     "size": 110
+    }
+   ],
+   "top": 0.05,
+   "motion": "smooth",
+   "depth": true,
+   "occlude": true
+  },
+  {
+   "type": "iconPop",
+   "at": 2.82,
+   "dur": 1.86,
+   "items": [
+    {
+     "icon": "ListOrdered",
+     "label": "بالترتيب"
+    }
+   ],
+   "top": 0.14,
+   "size": 195
+  },
+  {
+   "type": "lowerLabel",
+   "at": 5.82,
+   "dur": 2.58,
+   "title": "TOTAL BODY WATER",
+   "top": 0.13,
+   "eyebrow": "01"
+  },
+  {
+   "type": "iconPop",
+   "at": 9.34,
+   "dur": 4.88,
+   "items": [
+    {
+     "icon": "Droplets",
+     "label": "مايه"
+    },
+    {
+     "icon": "BicepsFlexed",
+     "value": "70%",
+     "label": "العضلات"
+    }
+   ],
+   "top": 0.13,
+   "size": 195
+  },
+  {
+   "type": "lowerLabel",
+   "at": 14.664,
+   "dur": 0.516,
+   "title": "PROTEIN",
+   "top": 0.13,
+   "eyebrow": "02"
+  },
+  {
+   "type": "lowerLabel",
+   "at": 15.376,
+   "dur": 1.284,
+   "title": "MINERALS",
+   "top": 0.13,
+   "eyebrow": "المعادن"
+  },
+  {
+   "type": "lowerLabel",
+   "at": 16.72,
+   "dur": 3.66,
+   "title": "BODY FAT MASS",
+   "top": 0.13,
+   "eyebrow": "وزن الدهون · KG"
+  },
+  {
+   "type": "lowerLabel",
+   "at": 20.777,
+   "dur": 3.363,
+   "title": "WEIGHT",
+   "top": 0.13,
+   "eyebrow": "وزنك"
+  },
+  {
+   "type": "lowerLabel",
+   "at": 24.32,
+   "dur": 1.24,
+   "title": "SMM",
+   "top": 0.13,
+   "eyebrow": "كتلة العضلات"
+  },
+  {
+   "type": "lowerLabel",
+   "at": 26.82,
+   "dur": 3.02,
+   "title": "BODY FAT MASS",
+   "top": 0.13,
+   "eyebrow": "كتلة الدهون · KG"
+  },
+  {
+   "type": "iconPop",
+   "at": 31.26,
+   "dur": 4.66,
+   "items": [
+    {
+     "icon": "Percent",
+     "label": "PBF · نسبة الدهون"
+    }
+   ],
+   "top": 0.13,
+   "size": 195
+  },
+  {
+   "type": "kineticTitle",
+   "at": 36.38,
+   "dur": 1.69,
+   "lines": [
+    {
+     "text": "رسمتين مهمين",
+     "accent": true,
+     "size": 110
+    }
+   ],
+   "top": 0.05,
+   "motion": "smooth",
+   "depth": true,
+   "occlude": true
+  },
+  {
+   "type": "iconPop",
+   "at": 38.02,
+   "dur": 3.04,
+   "items": [
+    {
+     "icon": "BicepsFlexed",
+     "label": "العضلات"
+    },
+    {
+     "icon": "Flame",
+     "label": "الدهون"
+    }
+   ],
+   "top": 0.13,
+   "size": 195
+  },
+  {
+   "type": "stepBadge",
+   "at": 51.7,
+   "dur": 1.56,
+   "mark": "=",
+   "label": "نفس الفكرة في الدهون",
+   "top": 0.14,
+   "side": "right"
+  },
+  {
+   "type": "iconPop",
+   "at": 54.88,
+   "dur": 2.3,
+   "items": [
+    {
+     "icon": "Scale",
+     "mark": "x",
+     "label": "يمين ≠ شمال"
+    }
+   ],
+   "top": 0.13,
+   "size": 195
+  },
+  {
+   "type": "iconPop",
+   "at": 57.18,
+   "dur": 3.9,
+   "items": [
+    {
+     "icon": "Scale",
+     "mark": "check",
+     "label": "يمين = شمال"
+    }
+   ],
+   "top": 0.13,
+   "size": 195
+  },
+  {
+   "type": "lowerLabel",
+   "at": 63.18,
+   "dur": 1.14,
+   "title": "INBODY SCORE",
+   "top": 0.13,
+   "eyebrow": "03"
+  },
+  {
+   "type": "iconPop",
+   "at": 67.6,
+   "dur": 6.42,
+   "items": [
+    {
+     "icon": "Target",
+     "label": "Weight Target"
+    },
+    {
+     "icon": "Flame",
+     "mark": "down",
+     "label": "الدهون"
+    }
+   ],
+   "top": 0.13,
+   "size": 182
+  },
+  {
+   "type": "kineticTitle",
+   "at": 76.78,
+   "dur": 4.0,
+   "lines": [
+    {
+     "text": "BMR"
+    },
+    {
+     "text": "1383",
+     "accent": true,
+     "size": 150
+    }
+   ],
+   "top": 0.05,
+   "motion": "smooth",
+   "depth": true,
+   "occlude": true
+  },
+  {
+   "type": "stepBadge",
+   "at": 81.14,
+   "dur": 1.2,
+   "mark": "✗",
+   "label": "مش معدل الحرق",
+   "top": 0.14,
+   "side": "right"
+  },
+  {
+   "type": "iconPop",
+   "at": 83.56,
+   "dur": 2.52,
+   "items": [
+    {
+     "icon": "BedDouble",
+     "label": "من غير مجهود"
+    }
+   ],
+   "top": 0.13,
+   "size": 195
+  },
+  {
+   "type": "iconPop",
+   "at": 88.16,
+   "dur": 1.82,
+   "items": [
+    {
+     "icon": "Calculator",
+     "value": "BMR"
+    },
+    {
+     "icon": "Plus"
+    },
+    {
+     "icon": "Activity",
+     "label": "Activity Level"
+    }
+   ],
+   "top": 0.13,
+   "size": 169
+  },
+  {
+   "type": "stepBadge",
+   "at": 92.42,
+   "dur": 3.347,
+   "mark": "✗",
+   "label": "مش سعراتك الاساسية",
+   "top": 0.14,
+   "side": "right"
+  },
+  {
+   "type": "endCard",
+   "at": 95.7667,
+   "dur": 2.4,
+   "cta": "OSM Coach Osama",
+   "reveal": "wipe",
+   "image": "brand/end/osm-end-photo.jpg"
+  }
+ ],
+ "shakes": [
+  {
+   "at": 4.767,
+   "amp": 0.5
+  },
+  {
+   "at": 7.867,
+   "amp": 0.5
+  },
+  {
+   "at": 36.067,
+   "amp": 0.5
+  },
+  {
+   "at": 41.267,
+   "amp": 0.5
+  },
+  {
+   "at": 61.8,
+   "amp": 0.5
+  },
+  {
+   "at": 68.7,
+   "amp": 0.5
+  },
+  {
+   "at": 95.767,
+   "amp": 0.6
+  }
+ ],
+ "sfx": {
+  "cues": [
+   {
+    "at": 0.1,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 0.15,
+    "sound": "impact",
+    "gain_db": -20
+   },
+   {
+    "at": 2.9,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 2.9333,
+    "sound": "whip",
+    "gain_db": -11,
+    "dir": 1.0
+   },
+   {
+    "at": 2.9533,
+    "sound": "air",
+    "gain_db": -20
+   },
+   {
+    "at": 4.7667,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 4.7667,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 5.82,
+    "sound": "click",
+    "gain_db": -18
+   },
+   {
+    "at": 5.8667,
+    "sound": "whip",
+    "gain_db": -11,
+    "dir": 1.0
+   },
+   {
+    "at": 5.8867,
+    "sound": "air",
+    "gain_db": -20
+   },
+   {
+    "at": 7.8667,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 7.8667,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 9.0667,
+    "sound": "whip",
+    "gain_db": -11,
+    "dir": 1.0
+   },
+   {
+    "at": 9.0867,
+    "sound": "air",
+    "gain_db": -20
+   },
+   {
+    "at": 9.42,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 9.59,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 820
+   },
+   {
+    "at": 14.664,
+    "sound": "click",
+    "gain_db": -18
+   },
+   {
+    "at": 15.376,
+    "sound": "click",
+    "gain_db": -18
+   },
+   {
+    "at": 16.72,
+    "sound": "click",
+    "gain_db": -18
+   },
+   {
+    "at": 19.7667,
+    "sound": "whip",
+    "gain_db": -11,
+    "dir": 1.0
+   },
+   {
+    "at": 19.7867,
+    "sound": "air",
+    "gain_db": -20
+   },
+   {
+    "at": 20.777,
+    "sound": "click",
+    "gain_db": -18
+   },
+   {
+    "at": 24.32,
+    "sound": "click",
+    "gain_db": -18
+   },
+   {
+    "at": 26.82,
+    "sound": "click",
+    "gain_db": -18
+   },
+   {
+    "at": 31.34,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 36.0667,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 36.0667,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 36.38,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 36.43,
+    "sound": "impact",
+    "gain_db": -20
+   },
+   {
+    "at": 38.1,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 38.27,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 820
+   },
+   {
+    "at": 38.5,
+    "sound": "whip",
+    "gain_db": -11,
+    "dir": 1.0
+   },
+   {
+    "at": 38.52,
+    "sound": "air",
+    "gain_db": -20
+   },
+   {
+    "at": 41.2667,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 41.2667,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 51.7,
+    "sound": "slam",
+    "gain_db": -16
+   },
+   {
+    "at": 52.2333,
+    "sound": "whip",
+    "gain_db": -11,
+    "dir": 1.0
+   },
+   {
+    "at": 52.2533,
+    "sound": "air",
+    "gain_db": -20
+   },
+   {
+    "at": 53.0,
+    "sound": "whip",
+    "gain_db": -11,
+    "dir": 1.0
+   },
+   {
+    "at": 53.02,
+    "sound": "air",
+    "gain_db": -20
+   },
+   {
+    "at": 54.96,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 57.26,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 61.8,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 61.8,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 63.18,
+    "sound": "click",
+    "gain_db": -18
+   },
+   {
+    "at": 64.4,
+    "sound": "whip",
+    "gain_db": -11,
+    "dir": 1.0
+   },
+   {
+    "at": 64.42,
+    "sound": "air",
+    "gain_db": -20
+   },
+   {
+    "at": 67.68,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 67.85,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 820
+   },
+   {
+    "at": 68.7,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 68.7,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 76.78,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 76.83,
+    "sound": "impact",
+    "gain_db": -20
+   },
+   {
+    "at": 81.14,
+    "sound": "slam",
+    "gain_db": -16
+   },
+   {
+    "at": 83.64,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 88.24,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 88.41,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 820
+   },
+   {
+    "at": 88.58,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 940
+   },
+   {
+    "at": 92.42,
+    "sound": "slam",
+    "gain_db": -16
+   },
+   {
+    "at": 95.7667,
+    "sound": "reverse_hit",
+    "gain_db": -12,
+    "dur": 0.7
+   },
+   {
+    "at": 95.7667,
+    "sound": "boom",
+    "gain_db": -7
+   },
+   {
+    "at": 96.2667,
+    "sound": "click",
+    "gain_db": -17
+   }
+  ]
+ },
+ "music": {
+  "src": "work/music/music.wav",
+  "gain_db": -10
+ },
+ "tail": 2.4,
+ "textPlate": "#56A0FB"
+}

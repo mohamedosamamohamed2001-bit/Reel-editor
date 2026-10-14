@@ -1,0 +1,550 @@
+{
+ "source": "projects/2026-10-15_b3-08/work/tx/original.vocals.words.json",
+ "reference": "projects/2026-10-15_b3-08/analysis/reference.txt",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 22.76,
+   "words": [
+    {
+     "w": "تعال",
+     "start": 0.0,
+     "end": 0.12,
+     "matched": false
+    },
+    {
+     "w": "اقولك",
+     "start": 0.0,
+     "end": 0.28,
+     "matched": true
+    },
+    {
+     "w": "ازاي",
+     "start": 0.28,
+     "end": 0.48,
+     "matched": true
+    },
+    {
+     "w": "تخس",
+     "start": 0.48,
+     "end": 0.88,
+     "matched": true
+    },
+    {
+     "w": "انا",
+     "start": 0.88,
+     "end": 1.14,
+     "matched": true
+    },
+    {
+     "w": "كوتش",
+     "start": 1.14,
+     "end": 1.44,
+     "matched": true
+    },
+    {
+     "w": "محمد",
+     "start": 1.44,
+     "end": 1.74,
+     "matched": true
+    },
+    {
+     "w": "اسامة",
+     "start": 1.74,
+     "end": 2.08,
+     "matched": true
+    },
+    {
+     "w": "وخسيت",
+     "start": 2.08,
+     "end": 2.34,
+     "matched": true
+    },
+    {
+     "w": "من",
+     "start": 2.34,
+     "end": 2.68,
+     "matched": true
+    },
+    {
+     "w": "الشكل",
+     "start": 2.68,
+     "end": 3.08,
+     "matched": true
+    },
+    {
+     "w": "ده",
+     "start": 3.08,
+     "end": 3.3,
+     "matched": true
+    },
+    {
+     "w": "للشكل",
+     "start": 3.3,
+     "end": 3.64,
+     "matched": true
+    },
+    {
+     "w": "ده",
+     "start": 3.52,
+     "end": 3.64,
+     "matched": false
+    },
+    {
+     "w": "في",
+     "start": 3.64,
+     "end": 3.76,
+     "matched": false
+    },
+    {
+     "w": "تلات",
+     "start": 3.64,
+     "end": 4.16,
+     "matched": true
+    },
+    {
+     "w": "شهور",
+     "start": 4.16,
+     "end": 4.72,
+     "matched": true
+    },
+    {
+     "w": "بس",
+     "start": 4.66,
+     "end": 4.78,
+     "matched": false
+    },
+    {
+     "w": "وبعلمك",
+     "start": 4.72,
+     "end": 5.36,
+     "matched": true
+    },
+    {
+     "w": "ازاي",
+     "start": 5.36,
+     "end": 5.58,
+     "matched": true
+    },
+    {
+     "w": "تخس",
+     "start": 5.58,
+     "end": 5.92,
+     "matched": true
+    },
+    {
+     "w": "اول",
+     "start": 5.92,
+     "end": 6.22,
+     "matched": true
+    },
+    {
+     "w": "حاجة",
+     "start": 6.22,
+     "end": 6.66,
+     "matched": true
+    },
+    {
+     "w": "لازم",
+     "start": 6.66,
+     "end": 6.84,
+     "matched": true
+    },
+    {
+     "w": "تعمل",
+     "start": 6.84,
+     "end": 6.92,
+     "matched": true
+    },
+    {
+     "w": "عجز",
+     "start": 6.92,
+     "end": 7.1,
+     "matched": true
+    },
+    {
+     "w": "في",
+     "start": 7.1,
+     "end": 7.18,
+     "matched": true
+    },
+    {
+     "w": "السعرات",
+     "start": 7.18,
+     "end": 7.62,
+     "matched": true
+    },
+    {
+     "w": "ولازم",
+     "start": 7.62,
+     "end": 7.96,
+     "matched": true
+    },
+    {
+     "w": "تعرف",
+     "start": 7.96,
+     "end": 8.18,
+     "matched": true
+    },
+    {
+     "w": "انت",
+     "start": 8.06,
+     "end": 8.15,
+     "matched": false
+    },
+    {
+     "w": "محتاج",
+     "start": 8.15,
+     "end": 8.3,
+     "matched": false
+    },
+    {
+     "w": "كام",
+     "start": 8.18,
+     "end": 8.76,
+     "matched": true
+    },
+    {
+     "w": "Calories",
+     "start": 8.76,
+     "end": 9.16,
+     "matched": true
+    },
+    {
+     "w": "في",
+     "start": 9.16,
+     "end": 9.26,
+     "matched": false
+    },
+    {
+     "w": "اليوم",
+     "start": 9.26,
+     "end": 9.46,
+     "matched": true
+    },
+    {
+     "w": "عن",
+     "start": 9.46,
+     "end": 9.66,
+     "matched": true
+    },
+    {
+     "w": "طريق",
+     "start": 9.66,
+     "end": 9.92,
+     "matched": true
+    },
+    {
+     "w": "ابلكيشن",
+     "start": 10.84,
+     "end": 11.24,
+     "matched": true
+    },
+    {
+     "w": "اسمه",
+     "start": 11.24,
+     "end": 11.74,
+     "matched": true
+    },
+    {
+     "w": "Calorie",
+     "start": 11.62,
+     "end": 11.719,
+     "matched": false
+    },
+    {
+     "w": "Calculator",
+     "start": 11.719,
+     "end": 11.86,
+     "matched": false
+    },
+    {
+     "w": "وتعرف",
+     "start": 11.74,
+     "end": 12.16,
+     "matched": true
+    },
+    {
+     "w": "انت",
+     "start": 12.04,
+     "end": 12.13,
+     "matched": false
+    },
+    {
+     "w": "محتاج",
+     "start": 12.13,
+     "end": 12.28,
+     "matched": false
+    },
+    {
+     "w": "كام",
+     "start": 12.16,
+     "end": 12.48,
+     "matched": true
+    },
+    {
+     "w": "Calories",
+     "start": 12.48,
+     "end": 13.56,
+     "matched": true
+    },
+    {
+     "w": "عشان",
+     "start": 13.56,
+     "end": 13.64,
+     "matched": true
+    },
+    {
+     "w": "تخس",
+     "start": 13.64,
+     "end": 14.1,
+     "matched": true
+    },
+    {
+     "w": "ده",
+     "start": 14.1,
+     "end": 14.26,
+     "matched": true
+    },
+    {
+     "w": "العنصر",
+     "start": 14.26,
+     "end": 14.7,
+     "matched": true
+    },
+    {
+     "w": "الاساسي",
+     "start": 14.7,
+     "end": 15.1,
+     "matched": true
+    },
+    {
+     "w": "ان",
+     "start": 14.98,
+     "end": 15.076,
+     "matched": false
+    },
+    {
+     "w": "انت",
+     "start": 15.076,
+     "end": 15.22,
+     "matched": false
+    },
+    {
+     "w": "تخس",
+     "start": 15.1,
+     "end": 15.72,
+     "matched": true
+    },
+    {
+     "w": "انا",
+     "start": 15.72,
+     "end": 15.98,
+     "matched": true
+    },
+    {
+     "w": "طبعا",
+     "start": 15.98,
+     "end": 16.38,
+     "matched": true
+    },
+    {
+     "w": "بحب",
+     "start": 16.38,
+     "end": 16.68,
+     "matched": true
+    },
+    {
+     "w": "الاكل",
+     "start": 16.68,
+     "end": 17.02,
+     "matched": true
+    },
+    {
+     "w": "والكل",
+     "start": 17.02,
+     "end": 17.3,
+     "matched": true
+    },
+    {
+     "w": "بيحب",
+     "start": 17.3,
+     "end": 17.8,
+     "matched": true
+    },
+    {
+     "w": "الاكل",
+     "start": 17.8,
+     "end": 18.14,
+     "matched": true
+    },
+    {
+     "w": "بس",
+     "start": 18.14,
+     "end": 18.56,
+     "matched": true
+    },
+    {
+     "w": "لازم",
+     "start": 18.56,
+     "end": 18.74,
+     "matched": true
+    },
+    {
+     "w": "تعمل",
+     "start": 18.74,
+     "end": 18.8,
+     "matched": true
+    },
+    {
+     "w": "عجز",
+     "start": 18.8,
+     "end": 18.94,
+     "matched": true
+    },
+    {
+     "w": "في",
+     "start": 18.94,
+     "end": 19.08,
+     "matched": true
+    },
+    {
+     "w": "السعرات",
+     "start": 19.08,
+     "end": 19.42,
+     "matched": true
+    },
+    {
+     "w": "عشان",
+     "start": 19.36,
+     "end": 19.48,
+     "matched": false
+    },
+    {
+     "w": "فعلا",
+     "start": 19.42,
+     "end": 19.72,
+     "matched": true
+    },
+    {
+     "w": "تخس",
+     "start": 19.72,
+     "end": 20.44,
+     "matched": true
+    },
+    {
+     "w": "في",
+     "start": 20.38,
+     "end": 20.5,
+     "matched": false
+    },
+    {
+     "w": "عوامل",
+     "start": 20.44,
+     "end": 21.0,
+     "matched": true
+    },
+    {
+     "w": "تانية",
+     "start": 21.0,
+     "end": 21.2,
+     "matched": true
+    },
+    {
+     "w": "ساعدتني",
+     "start": 21.2,
+     "end": 21.6,
+     "matched": true
+    },
+    {
+     "w": "ان",
+     "start": 21.6,
+     "end": 21.68,
+     "matched": true
+    },
+    {
+     "w": "انا",
+     "start": 21.68,
+     "end": 21.72,
+     "matched": true
+    },
+    {
+     "w": "اخس",
+     "start": 21.72,
+     "end": 22.08,
+     "matched": true
+    },
+    {
+     "w": "فاستنو",
+     "start": 22.08,
+     "end": 22.76,
+     "matched": true
+    }
+   ]
+  }
+ ],
+ "report": [
+  "   ---  (missing)  ->  تعال",
+  "  0.00  سأخبرك  ->  اقولك",
+  "  0.28  كيف  ->  ازاي",
+  "  2.08  وخس  ->  وخسيت",
+  "  2.54  هذا  ->  (part of من)",
+  "  2.90  إلى  ->  (part of الشكل)",
+  "  3.08  هذا  ->  ده",
+  "  3.30  الشكل  ->  للشكل",
+  "   ---  (missing)  ->  ده",
+  "   ---  (missing)  ->  في",
+  "  3.64  ثلاث  ->  تلات",
+  "  4.42  فقط  ->  (part of شهور)",
+  "   ---  (missing)  ->  بس",
+  "  4.72  وأعلمك  ->  وبعلمك",
+  "  5.36  كيف  ->  ازاي",
+  "  5.92  أولاً  ->  اول",
+  "  6.22  يجب  ->  حاجة",
+  "  6.66  أن  ->  (part of حاجة)",
+  "  6.66  تقوم  ->  لازم",
+  "  6.84  بعمل  ->  تعمل",
+  "  7.62  ويجب  ->  ولازم",
+  "  7.90  أن  ->  (part of ولازم)",
+  "   ---  (missing)  ->  انت",
+  "   ---  (missing)  ->  محتاج",
+  "  8.18  كم  ->  كام",
+  "  8.76  كالوريز  ->  Calories",
+  "  9.16  تحتاج  ->  (dropped)",
+  "   ---  (missing)  ->  في",
+  "  9.92  تحديث  ->  (dropped)",
+  " 10.26  يدعى  ->  (dropped)",
+  " 10.84  كالوريز  ->  ابلكيشن",
+  " 11.24  كالكليتر  ->  اسمه",
+  "   ---  (missing)  ->  Calorie",
+  "   ---  (missing)  ->  Calculator",
+  "   ---  (missing)  ->  انت",
+  "   ---  (missing)  ->  محتاج",
+  " 12.16  كم  ->  كام",
+  " 12.48  كالوريز  ->  Calories",
+  " 13.56  تحتاج  ->  عشان",
+  " 13.64  لتخس  ->  تخس",
+  " 14.10  هذا  ->  ده",
+  "   ---  (missing)  ->  ان",
+  "   ---  (missing)  ->  انت",
+  " 15.10  لتخس  ->  تخس",
+  " 16.38  أحب  ->  بحب",
+  " 17.02  وكل  ->  والكل",
+  " 17.30  أحب  ->  بيحب",
+  " 18.04  لكن  ->  (part of الاكل)",
+  " 18.14  يجب  ->  بس",
+  " 18.52  أن  ->  (part of بس)",
+  " 18.56  تقوم  ->  لازم",
+  " 18.74  بعمل  ->  تعمل",
+  "   ---  (missing)  ->  عشان",
+  " 19.42  لكي  ->  فعلا",
+  "   ---  (missing)  ->  في",
+  " 20.44  فعلاً  ->  عوامل",
+  " 21.00  الثانية  ->  تانية",
+  " 21.60  من  ->  ان",
+  " 21.68  أن  ->  انا",
+  " 22.08  فاستنى  ->  فاستنو",
+  " 22.54  مرة  ->  (part of فاستنو)",
+  " 22.76  أخرى  ->  (dropped)"
+ ]
+}

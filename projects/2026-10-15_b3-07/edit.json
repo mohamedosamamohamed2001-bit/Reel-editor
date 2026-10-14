@@ -1,0 +1,682 @@
+{
+ "title": "OSM: lose fat and build muscle together",
+ "fps": 30,
+ "width": 1080,
+ "height": 1920,
+ "media": {
+  "main": "work/clean/original.clean.mp4",
+  "v_lifting": "work/visuals/lifting.jpg",
+  "v_eggs": "work/visuals/eggs.jpg",
+  "v_treadmill": "work/visuals/treadmill.jpg"
+ },
+ "audio": {
+  "main": "work/stems/original.vocals.wav"
+ },
+ "dialogueFx": "highpass=f=70,acompressor=threshold=0.1:ratio=2.5:attack=8:release=120:makeup=1.5",
+ "dialogueLufs": -16.0,
+ "plates": {
+  "grade": "eq=contrast=1.05:saturation=0.95:gamma=0.99,colorbalance=rs=-0.015:bs=0.02:rm=-0.01:bm=0.005:rh=0.012:gh=0.004:bh=-0.012,curves=master='0/0 0.22/0.2 0.78/0.8 1/1',vignette=angle=PI/7",
+  "sharpen": "cas=strength=0.22"
+ },
+ "clips": [
+  {
+   "src": "main",
+   "in": 0.0,
+   "out": 2.58,
+   "zoom": [
+    1.0,
+    1.03
+   ],
+   "focusY": 0.35
+  },
+  {
+   "src": "main",
+   "in": 2.58,
+   "out": 2.7199999999999998,
+   "zoom": 1.0,
+   "hold": 2.75,
+   "focusY": 0.35,
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  },
+  {
+   "src": "main",
+   "in": 2.7199999999999998,
+   "out": 5.67,
+   "zoom": [
+    1.06,
+    1.09
+   ],
+   "focusY": 0.35
+  },
+  {
+   "src": "main",
+   "in": 5.67,
+   "out": 8.81,
+   "zoom": [
+    1.0,
+    1.03
+   ],
+   "focusY": 0.35,
+   "tin": {
+    "type": "zoom",
+    "flash": true
+   }
+  },
+  {
+   "src": "main",
+   "in": 8.81,
+   "out": 8.950000000000001,
+   "zoom": 1.0,
+   "hold": 8.98,
+   "focusY": 0.35,
+   "tin": {
+    "type": "whip",
+    "dir": "right"
+   }
+  },
+  {
+   "src": "main",
+   "in": 8.950000000000001,
+   "out": 11.67,
+   "zoom": [
+    1.06,
+    1.09
+   ],
+   "focusY": 0.35
+  },
+  {
+   "src": "main",
+   "in": 11.67,
+   "out": 15.18,
+   "zoom": [
+    1.0,
+    1.03
+   ],
+   "focusY": 0.35,
+   "tin": {
+    "type": "zoom"
+   }
+  },
+  {
+   "src": "main",
+   "in": 15.18,
+   "out": 15.680000000000001,
+   "zoom": 1.0,
+   "hold": 15.71,
+   "focusY": 0.35,
+   "tin": {
+    "type": "whip",
+    "dir": "up"
+   }
+  },
+  {
+   "src": "main",
+   "in": 15.680000000000001,
+   "out": 20.91,
+   "zoom": [
+    1.06,
+    1.09
+   ],
+   "focusY": 0.35
+  },
+  {
+   "src": "main",
+   "in": 20.91,
+   "out": 21.150000000000002,
+   "zoom": 1.0,
+   "hold": 21.18,
+   "focusY": 0.35,
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  },
+  {
+   "src": "main",
+   "in": 21.150000000000002,
+   "out": 22.23,
+   "zoom": [
+    1.0,
+    1.03
+   ],
+   "focusY": 0.35
+  },
+  {
+   "src": "main",
+   "in": 22.23,
+   "out": 28.31,
+   "zoom": [
+    1.06,
+    1.09
+   ],
+   "focusY": 0.35,
+   "tin": {
+    "type": "zoom",
+    "flash": true
+   }
+  },
+  {
+   "src": "main",
+   "in": 28.31,
+   "out": 28.48,
+   "zoom": 1.0,
+   "hold": 28.51,
+   "focusY": 0.35,
+   "tin": {
+    "type": "whip",
+    "dir": "right"
+   }
+  },
+  {
+   "src": "main",
+   "in": 28.48,
+   "out": 33.3,
+   "zoom": [
+    1.0,
+    1.03
+   ],
+   "focusY": 0.35
+  }
+ ],
+ "captions": {
+  "wordsFile": "work/tx/aligned.words.json",
+  "style": "plate",
+  "karaoke": true,
+  "maxWords": 3,
+  "maxChars": 22,
+  "keywords": [
+   "الاتنين",
+   "التمرين",
+   "التغذية",
+   "الشدة",
+   "calories",
+   "البروتين",
+   "الكارديو",
+   "start"
+  ],
+  "zones": [
+   {
+    "at": 0,
+    "dur": 33.31,
+    "top": 0.63
+   }
+  ]
+ },
+ "overlays": [
+  {
+   "type": "kineticTitle",
+   "at": 0.05,
+   "dur": 2.42,
+   "lines": [
+    {
+     "text": "دهون ↓"
+    },
+    {
+     "text": "عضلات ↑",
+     "accent": true
+    }
+   ],
+   "top": 0.04,
+   "motion": "smooth",
+   "depth": true,
+   "eyebrow": "في نفس الوقت؟"
+  },
+  {
+   "type": "iconPop",
+   "at": 4.18,
+   "dur": 2.14,
+   "items": [
+    {
+     "icon": "CircleHelp",
+     "label": "صح ولا لا؟"
+    }
+   ],
+   "top": 0.4,
+   "size": 195
+  },
+  {
+   "type": "stepBadge",
+   "at": 6.32,
+   "dur": 0.7,
+   "mark": "✗",
+   "label": "Myth",
+   "top": 0.14,
+   "side": "right"
+  },
+  {
+   "type": "kineticTitle",
+   "at": 7.02,
+   "dur": 2.3,
+   "lines": [
+    {
+     "text": "الاتنين",
+     "accent": true,
+     "size": 160
+    }
+   ],
+   "top": 0.03,
+   "motion": "smooth",
+   "depth": true,
+   "eyebrow": "ممكن تعمل",
+   "occlude": true
+  },
+  {
+   "type": "iconPop",
+   "at": 9.32,
+   "dur": 2.14,
+   "items": [
+    {
+     "icon": "Dumbbell",
+     "label": "التمرين"
+    },
+    {
+     "icon": "Utensils",
+     "label": "التغذية"
+    }
+   ],
+   "top": 0.4,
+   "size": 195
+  },
+  {
+   "type": "lowerLabel",
+   "at": 11.46,
+   "dur": 3.94,
+   "title": "INTENSITY ↑",
+   "top": 0.13,
+   "eyebrow": "التمرين"
+  },
+  {
+   "type": "visualCard",
+   "src": "v_lifting",
+   "at": 12.94,
+   "dur": 1.16,
+   "mode": "full",
+   "push": [
+    1.04,
+    1.0
+   ]
+  },
+  {
+   "type": "lowerLabel",
+   "at": 15.4,
+   "dur": 2.587,
+   "title": "CALORIES ↑",
+   "top": 0.13,
+   "eyebrow": "التغذية"
+  },
+  {
+   "type": "visualCard",
+   "src": "v_eggs",
+   "at": 17.987,
+   "dur": 2.233,
+   "mode": "full",
+   "push": [
+    1.0,
+    1.05
+   ]
+  },
+  {
+   "type": "iconPop",
+   "at": 19.3,
+   "dur": 1.8,
+   "items": [
+    {
+     "icon": "Egg",
+     "label": "Protein"
+    },
+    {
+     "icon": "BicepsFlexed",
+     "mark": "up"
+    }
+   ],
+   "top": 0.4,
+   "size": 195
+  },
+  {
+   "type": "visualCard",
+   "src": "v_treadmill",
+   "at": 21.8,
+   "dur": 2.1,
+   "mode": "full",
+   "push": [
+    1.05,
+    1.0
+   ]
+  },
+  {
+   "type": "iconPop",
+   "at": 23.8,
+   "dur": 1.52,
+   "items": [
+    {
+     "icon": "HeartPulse",
+     "mark": "check",
+     "label": "Cardio"
+    }
+   ],
+   "top": 0.4,
+   "size": 195
+  },
+  {
+   "type": "iconPop",
+   "at": 26.256,
+   "dur": 2.044,
+   "items": [
+    {
+     "icon": "BicepsFlexed",
+     "mark": "up",
+     "label": "عضلات"
+    },
+    {
+     "icon": "Flame",
+     "mark": "down",
+     "label": "دهون"
+    }
+   ],
+   "top": 0.4,
+   "size": 195
+  },
+  {
+   "type": "iconPop",
+   "at": 28.3,
+   "dur": 1.74,
+   "items": [
+    {
+     "icon": "FileText",
+     "label": "Description"
+    }
+   ],
+   "top": 0.4,
+   "size": 195
+  },
+  {
+   "type": "kineticTitle",
+   "at": 30.04,
+   "dur": 3.26,
+   "lines": [
+    {
+     "text": "START",
+     "accent": true,
+     "size": 170
+    }
+   ],
+   "top": 0.03,
+   "motion": "smooth",
+   "depth": true,
+   "eyebrow": "اكتب كلمة",
+   "occlude": true
+  },
+  {
+   "type": "endCard",
+   "at": 33.3,
+   "dur": 2.4,
+   "cta": "OSM Coach Osama",
+   "reveal": "wipe",
+   "image": "brand/end/osm-end-photo.jpg"
+  }
+ ],
+ "shakes": [
+  {
+   "at": 5.667,
+   "amp": 0.5
+  },
+  {
+   "at": 11.667,
+   "amp": 0.5
+  },
+  {
+   "at": 22.233,
+   "amp": 0.5
+  },
+  {
+   "at": 33.3,
+   "amp": 0.6
+  }
+ ],
+ "sfx": {
+  "cues": [
+   {
+    "at": 0.05,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 0.1,
+    "sound": "impact",
+    "gain_db": -20
+   },
+   {
+    "at": 2.5667,
+    "sound": "whip",
+    "gain_db": -11,
+    "dir": 1.0
+   },
+   {
+    "at": 2.5867,
+    "sound": "air",
+    "gain_db": -20
+   },
+   {
+    "at": 4.26,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 5.6667,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 5.6667,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 6.32,
+    "sound": "slam",
+    "gain_db": -16
+   },
+   {
+    "at": 7.02,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 7.07,
+    "sound": "impact",
+    "gain_db": -20
+   },
+   {
+    "at": 8.8,
+    "sound": "whip",
+    "gain_db": -11,
+    "dir": 1.0
+   },
+   {
+    "at": 8.82,
+    "sound": "air",
+    "gain_db": -20
+   },
+   {
+    "at": 9.4,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 9.57,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 820
+   },
+   {
+    "at": 11.46,
+    "sound": "click",
+    "gain_db": -18
+   },
+   {
+    "at": 11.6667,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 11.6667,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 12.94,
+    "sound": "whoosh_in",
+    "gain_db": -15
+   },
+   {
+    "at": 14.0,
+    "sound": "whoosh_out",
+    "gain_db": -19
+   },
+   {
+    "at": 15.1667,
+    "sound": "whip",
+    "gain_db": -11,
+    "dir": 1.0
+   },
+   {
+    "at": 15.1867,
+    "sound": "air",
+    "gain_db": -20
+   },
+   {
+    "at": 15.4,
+    "sound": "click",
+    "gain_db": -18
+   },
+   {
+    "at": 17.987,
+    "sound": "whoosh_in",
+    "gain_db": -15
+   },
+   {
+    "at": 19.38,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 19.55,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 820
+   },
+   {
+    "at": 20.12,
+    "sound": "whoosh_out",
+    "gain_db": -19
+   },
+   {
+    "at": 20.9,
+    "sound": "whip",
+    "gain_db": -11,
+    "dir": 1.0
+   },
+   {
+    "at": 20.92,
+    "sound": "air",
+    "gain_db": -20
+   },
+   {
+    "at": 21.8,
+    "sound": "whoosh_in",
+    "gain_db": -15
+   },
+   {
+    "at": 22.2333,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 22.2333,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 23.8,
+    "sound": "whoosh_out",
+    "gain_db": -19
+   },
+   {
+    "at": 23.88,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 26.336,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 26.506,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 820
+   },
+   {
+    "at": 28.3,
+    "sound": "whip",
+    "gain_db": -11,
+    "dir": 1.0
+   },
+   {
+    "at": 28.32,
+    "sound": "air",
+    "gain_db": -20
+   },
+   {
+    "at": 28.38,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 30.04,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 30.09,
+    "sound": "impact",
+    "gain_db": -20
+   },
+   {
+    "at": 33.3,
+    "sound": "reverse_hit",
+    "gain_db": -12,
+    "dur": 0.7
+   },
+   {
+    "at": 33.3,
+    "sound": "boom",
+    "gain_db": -7
+   },
+   {
+    "at": 33.8,
+    "sound": "click",
+    "gain_db": -17
+   }
+  ]
+ },
+ "music": {
+  "src": "work/music/music.wav",
+  "gain_db": -9
+ },
+ "tail": 2.4,
+ "textPlate": "#56A0FB"
+}

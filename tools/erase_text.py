@@ -32,49 +32,138 @@ def probe(src):
     return s["width"], s["height"], num, den, int(s.get("nb_frames", 0))
 
 
-def boxes_at(covers, t, W, H, pad=0.03, slack=0.08, full_width=True):
+def boxes_at(covers, t, W, H, pad=0.03, slack=0.08, full_width=True, pad_x=0.12):
     out = []
     for c in covers:
         if c["at"] - slack <= t < c["at"] + c["dur"] + slack:
             x0, y0, x1, y1 = c["box"]
             if full_width:  # detection boxes can stop short of a line's ends; the glyph test keeps the mask selective
                 x0, x1 = 0.0, 1.0
+            else:
+                x0, x1 = x0 - pad_x, x1 + pad_x
             out.append((max(0, int((x0 - pad) * W)), max(0, int((y0 - pad) * H)),
                         min(W, int((x1 + pad) * W + 1)), min(H, int((y1 + pad) * H + 1))))
     return out
 
 
+_FACE = None
+
+
+def face_guard(rgb, p):
+    """Mask (1 = protected) over every detected face + beard/neck, never erased (Coach Osama's face is off limits)."""
+    global _FACE
+    H, W = rgb.shape[:2]
+    k = 360 / W
+    sw, sh = 360, int(round(H * k))
+    if _FACE is None:  # YuNet (OpenCV model zoo, MIT), ~/.cache/osm-models/yunet.onnx
+        _FACE = cv2.FaceDetectorYN.create(str(Path.home() / ".cache/osm-models/yunet.onnx"), "", (sw, sh), 0.6, 0.3, 50)
+    _FACE.setInputSize((sw, sh))
+    _, faces = _FACE.detect(cv2.cvtColor(cv2.resize(rgb, (sw, sh)), cv2.COLOR_RGB2BGR))
+    g = np.zeros((H, W), np.uint8)
+    for f in (faces if faces is not None else []):
+        x, y, w, h = f[:4]
+        eye_y = (f[5] + f[7]) / 2
+        mouth_y = max(f[11], f[13])
+        beard = mouth_y + p.get("beard", 0.95) * (mouth_y - eye_y)  # chin + beard below the mouth
+        # face + beard as an ellipse (not a box): text beside the jaw stays erasable
+        cx, cy = (x + w / 2) / k, ((y - 0.25 * h) + beard) / 2 / k
+        ax, ay = 0.56 * w / k, (beard - (y - 0.25 * h)) / 2 / k
+        cv2.ellipse(g, (int(cx), int(cy)), (int(ax), int(ay)), 0, 0, 360, 1, -1)
+    return g
+
+
 def candidates(rgb, boxes, p, t=0.0):
-    """Pixels that look like old-caption glyphs in this frame (before the timing and shape tests)."""
+    """Pixels that look like old-caption glyphs in this frame (before the timing and shape tests).
+    Computed only on the rows the boxes span (+ margin): ~3x faster on a caption band."""
     H, W = rgb.shape[:2]
     if not boxes:
         return np.zeros((H, W), np.uint8)
+    ya = max(0, min(b[1] for b in boxes) - 40)
+    yb = min(H, max(b[3] for b in boxes) + 40)
+    out = np.zeros((H, W), np.uint8)
+    guard = face_guard(rgb, p) if p.get("protect_faces", True) else None
+    out[ya:yb] = _candidates(rgb[ya:yb], [(x0, y0 - ya, x1, y1 - ya) for x0, y0, x1, y1 in boxes], p, t, ya, H)
+    if guard is not None:
+        out *= 1 - guard
+    return out
+
+
+def _candidates(rgb, boxes, p, t, y_off, H):
     hsv = cv2.cvtColor(rgb, cv2.COLOR_RGB2HSV)
     h, s, v = hsv[..., 0], hsv[..., 1], hsv[..., 2]
     bright = ((v >= p["v_min"]) & (s <= p["s_max"])).astype(np.uint8)
-    near_dark = cv2.dilate((v <= p["dark_max"]).astype(np.uint8), np.ones((2 * p["r_dark"] + 1,) * 2, np.uint8))
+    if p.get("contrast"):
+        # soft-shadow captions (batch 3): a glyph pixel is clearly brighter than the darkest pixel a few px away
+        # (its own shadow / the background), so smooth white areas (shirt, pants, walls) drop out
+        r = int(round((p["r_dark"] * 2 + 3) * p.get("_scale", 1.0))) | 1
+        local_min = cv2.erode(v, np.ones((r, r), np.uint8))
+        near_dark = ((v.astype(np.int16) - local_min) >= p["contrast"]).astype(np.uint8)
+    else:
+        near_dark = cv2.dilate((v <= p["dark_max"]).astype(np.uint8), np.ones((2 * p["r_dark"] + 1,) * 2, np.uint8))
     cand = bright & near_dark
+    if any(a <= t < b for a, b in p.get("color_only", [])):  # white rule off (paper documents, face close-ups)
+        cand = np.zeros_like(cand)
+    for hue in p.get("colors", []):  # caption colours used by this video (keywords), with the same contrast test
+        lo, hi, smin, vmin = {"blue": (98, 122, 120, 90), "red": (0, 6, 120, 60), "red2": (170, 180, 120, 60),
+                          "dred": (165, 180, 150, 70)}[hue]
+        col = ((h >= lo) & (h <= hi) & (s >= smin) & (v >= vmin)).astype(np.uint8)
+        if hue == "dred":  # dark red caption words on a red garment: only the clearly darker-than-garment strokes
+            col &= (v.astype(np.int16) < cv2.blur(v, (41, 41)).astype(np.int16) - p.get("dred_dv", 28)).astype(np.uint8)
+            col = cv2.dilate(col, np.ones((3, 3), np.uint8))
+        r = int(round((p["r_dark"] * 2 + 3) * p.get("_scale", 1.0))) | 1
+        edge = ((cv2.dilate(v, np.ones((r, r), np.uint8)).astype(np.int16) - v) >= 40) | \
+               ((v.astype(np.int16) - cv2.erode(v, np.ones((r, r), np.uint8))) >= 40)
+        cand |= (col & edge.astype(np.uint8)) * 2  # bit 2: coloured words, shape-tested on their own
     for t0, t1, hue in p["color_windows"]:  # coloured caption words, only where a colour scan found static text
         if t0 <= t < t1:
             lo, hi, smin, vmin = {"blue": (105, 118, 170, 110), "brown": (5, 25, 150, 90)}[hue]
             cand |= ((h >= lo) & (h <= hi) & (s >= smin) & (v >= vmin)).astype(np.uint8)
+    if p.get("big_dark"):
+        # bright pixels bordering a LARGE dark shape (a printed logo, hair, a dark garment) are not caption glyphs:
+        # a caption's shadow is only a few px thick and vanishes under a morphological opening
+        k = p["big_dark"]
+        dark = (v.astype(np.int16) < cv2.blur(v, (31, 31)).astype(np.int16) - 35).astype(np.uint8)
+        big = cv2.morphologyEx(dark, cv2.MORPH_OPEN, cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (k, k)))
+        cand *= 1 - cv2.dilate(big, np.ones((9, 9), np.uint8))
     region = np.zeros_like(cand)
     for x0, y0, x1, y1 in boxes:
-        region[max(y0, int(p["y_min"] * H)):y1, x0:x1] = 1
-    return cand & region
+        region[max(y0, int(p["y_min"] * H) - y_off, 0):y1, x0:x1] = 1
+    return cand * region
 
 
 def final_mask(prev, cur, nxt, p):
+    """White glyphs (bit 1) and coloured words (bit 2) are tested separately, so a coloured garment fold can't merge
+    with a white caption line into one rejected shape."""
+    out = np.zeros(cur.shape, np.uint8)
+    for bit in (1, 2):
+        if (cur & bit).any():
+            out |= _final_mask(((prev & bit) > 0).astype(np.uint8), ((cur & bit) > 0).astype(np.uint8),
+                               ((nxt & bit) > 0).astype(np.uint8), dict(p, _colorbit=(bit == 2)))
+    return out
+
+
+def _final_mask(prev, cur, nxt, p):
     """Old captions are fixed on screen; clothing stripes and edges move. Keep a candidate only if it is also a
     candidate a moment before OR after (OR: a caption's first and last frames still pass), then judge the shapes."""
     cand = cur & (prev | nxt) if p["persist"] else cur
     if not cand.any():
         return cand
+    k = p.get("_scale", 1.0)  # pixel sizes below are for 720 px wide video
+    sz = lambda v: max(1, int(round(v * k)))
+    persisted = cand
+    if p.get("strokes") and not p.get("_colorbit"):
+        # text rows are dense with short strokes; a logo outline or a garment edge crosses a row only once or twice.
+        # Count stroke starts within +-40 px on the same row (+-2 rows) and keep candidates with enough of them.
+        starts = (cand & (1 - np.roll(cand, 1, axis=1))).astype(np.float32)
+        dens = cv2.boxFilter(starts, -1, (sz(81) | 1, 5), normalize=False)
+        cand = cand & (dens >= p["strokes"]).astype(np.uint8)
+        if not cand.any():
+            return cand
     def text_like(w, h, dens):
-        return p["h_min"] <= h <= p["h_max"] and w >= p["w_min"] and p["dens_min"] <= dens <= p["dens_max"]
+        return sz(p["h_min"]) <= h <= sz(p["h_max"]) and w >= sz(p["w_min"]) and p["dens_min"] <= dens <= p["dens_max"]
 
     def clusters(px, jy):
-        joined = cv2.dilate(px, cv2.getStructuringElement(cv2.MORPH_RECT, (p["join_x"], jy)))
+        joined = cv2.dilate(px, cv2.getStructuringElement(cv2.MORPH_RECT, (sz(p["join_x"]), jy)))
         n, lab, st, _ = cv2.connectedComponentsWithStats(joined, connectivity=8)
         return n, lab, st
 
@@ -90,12 +179,14 @@ def final_mask(prev, cur, nxt, p):
             for k in range(1, n2):
                 x2, y2, w2, h2, _ = st2[k]
                 sub2 = sub[y2:y2 + h2, x2:x2 + w2] * (lab2[y2:y2 + h2, x2:x2 + w2] == k)
-                if w2 >= 3 * p["w_min"] and text_like(w2, h2, sub2.sum() / max(1, w2 * h2)):
+                if w2 >= 3 * sz(p["w_min"]) and text_like(w2, h2, sub2.sum() / max(1, w2 * h2)):
                     m[y + y2:y + y2 + h2, x + x2:x + x2 + w2] |= sub2
     # dots and small marks right next to kept letters belong to them
-    m |= cand & cv2.dilate(m, cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (17, 17)))
+    # (taken from the persisted candidates BEFORE the stroke test: isolated dots fail it)
+    if m.any():
+        m |= persisted & cv2.dilate(m, cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (sz(21) | 1,) * 2))
     # take the outline / shadow / antialiased edge with the glyph
-    m = cv2.dilate(m, cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (2 * p["grow"] + 1,) * 2))
+    m = cv2.dilate(m, cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (2 * sz(p["grow"]) + 1,) * 2))
     # fill the inside of letters (counters) that are bright-ish but missed by the threshold
     m = cv2.morphologyEx(m, cv2.MORPH_CLOSE, cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5)))
     return m * 255
@@ -109,8 +200,12 @@ PARAMS = {"v_min": 200, "s_max": 70, "dark_max": 90, "r_dark": 3, "join_x": 15, 
 def inpaint(rgb, m):
     if not m.any():
         return rgb
-    out = cv2.inpaint(cv2.cvtColor(rgb, cv2.COLOR_RGB2BGR), m, PARAMS["radius"], cv2.INPAINT_TELEA)
-    return cv2.cvtColor(out, cv2.COLOR_BGR2RGB)
+    ys = np.nonzero(m.any(axis=1))[0]
+    ya, yb = max(0, ys[0] - 20), min(m.shape[0], ys[-1] + 21)  # only the rows around the mask
+    out = rgb.copy()
+    patch = cv2.inpaint(cv2.cvtColor(rgb[ya:yb], cv2.COLOR_RGB2BGR), m[ya:yb], PARAMS["radius"], cv2.INPAINT_TELEA)
+    out[ya:yb] = cv2.cvtColor(patch, cv2.COLOR_BGR2RGB)
+    return out
 
 
 def read_frames(src, W, H, ss=None, count=None):
@@ -134,19 +229,21 @@ def main():
     ap.add_argument("--test", default=None, help="comma-separated source times: write PNGs to --test-dir only")
     ap.add_argument("--test-dir", default=None)
     ap.add_argument("--params", default=None, help="JSON overrides for PARAMS")
+    ap.add_argument("--covers", default=None, help="covers JSON (instead of edit.json covers)")
     a = ap.parse_args()
     P = Path(a.project)
-    edit = json.loads((P / "edit.json").read_text())
-    covers = [c for c in edit.get("covers", []) if c.get("src", "main") == "main"]
+    cov_src = json.loads(Path(a.covers).read_text()) if a.covers else json.loads((P / "edit.json").read_text()).get("covers", [])
+    covers = [c for c in cov_src if c.get("src", "main") == "main"]
     p = dict(PARAMS, **(json.loads(a.params) if a.params else {}))
     pf = P / "erase_params.json"
     if pf.exists():
         p.update(json.loads(pf.read_text()))
     src = P / a.src
     W, H, num, den, nb = probe(src)
+    p["_scale"] = W / 720
     D = max(1, round(p["persist"] * num / den))  # frames before/after for the timing test
     fps = num / den
-    cand_at = lambda rgb, t: candidates(rgb, boxes_at(covers, t, W, H), p, t)
+    cand_at = lambda rgb, t: candidates(rgb, boxes_at(covers, t, W, H, full_width=p.get("full_width", True)), p, t)
     if a.test:
         od = Path(a.test_dir)
         od.mkdir(parents=True, exist_ok=True)
@@ -169,13 +266,20 @@ def main():
     frames, cands = [], []
     zero = np.zeros((H, W), np.uint8)
     i = touched = written = 0
+    L = round(p.get("static_s", 0) * fps)  # props/prints fixed on screen this long are not captions
+    D2 = max(D, L)
 
-    def emit(j):  # write frame j once its neighbours j-D and j+D are known
+    def emit(j):  # write frame j once its neighbours j-D2 .. j+D2 are known
         nonlocal touched, written
         k = j - (i - len(frames))  # index into the buffer
         prev = cands[k - D] if k - D >= 0 else zero
         nxt = cands[k + D] if k + D < len(cands) else zero
-        m = final_mask(prev, cands[k], nxt, p)
+        cur = cands[k]
+        if L and k - L >= 0 and k + L < len(cands):
+            static = (cands[k - L] > 0) & (cands[k + L] > 0)
+            static = cv2.dilate(static.astype(np.uint8), np.ones((5, 5), np.uint8)) > 0
+            cur = cur * (~static)
+        m = final_mask(prev, cur.astype(np.uint8), nxt, p)
         touched += bool(m.any())
         wr.stdin.write(np.ascontiguousarray(inpaint(frames[k], m)).tobytes())
         written += 1
@@ -184,15 +288,15 @@ def main():
         frames.append(rgb)
         cands.append(cand_at(rgb, i / fps))
         i += 1
-        j = i - 1 - D  # frame whose look-ahead is now complete
+        j = i - 1 - D2  # frame whose look-ahead is now complete
         if j >= 0:
             emit(j)
-            if len(frames) > 2 * D + 1:
+            if len(frames) > 2 * D2 + 1:
                 frames.pop(0)
                 cands.pop(0)
         if i % 600 == 0:
             print(f"{i}/{nb} frames", file=sys.stderr, flush=True)
-    for j in range(max(0, i - D), i):
+    for j in range(max(0, i - D2), i):
         emit(j)
     wr.stdin.close()
     wr.wait()

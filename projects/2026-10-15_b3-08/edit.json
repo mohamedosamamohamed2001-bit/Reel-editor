@@ -1,0 +1,452 @@
+{
+ "title": "OSM: how I lost weight, part 1",
+ "fps": 30,
+ "width": 1080,
+ "height": 1920,
+ "media": {
+  "main": "work/clean/original.clean.mp4",
+  "v_calculator": "work/visuals/calculator.jpg",
+  "v_pizza": "work/visuals/pizza.jpg"
+ },
+ "audio": {
+  "main": "work/stems/original.vocals.wav"
+ },
+ "dialogueFx": "highpass=f=70,acompressor=threshold=0.1:ratio=2.5:attack=8:release=120:makeup=1.5",
+ "dialogueLufs": -16.0,
+ "plates": {
+  "grade": "eq=contrast=1.05:saturation=0.95:gamma=0.99,colorbalance=rs=-0.015:bs=0.02:rm=-0.01:bm=0.005:rh=0.012:gh=0.004:bh=-0.012,curves=master='0/0 0.22/0.2 0.78/0.8 1/1',vignette=angle=PI/7",
+  "sharpen": "cas=strength=0.22"
+ },
+ "clips": [
+  {
+   "src": "main",
+   "in": 0.0,
+   "out": 5.61,
+   "zoom": [
+    1.0,
+    1.03
+   ],
+   "focusY": 0.38
+  },
+  {
+   "src": "main",
+   "in": 5.61,
+   "out": 6.12,
+   "zoom": 1.0,
+   "hold": 6.15,
+   "focusY": 0.38,
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  },
+  {
+   "src": "main",
+   "in": 6.12,
+   "out": 13.37,
+   "zoom": [
+    1.06,
+    1.09
+   ],
+   "focusY": 0.38
+  },
+  {
+   "src": "main",
+   "in": 13.37,
+   "out": 14.3,
+   "zoom": [
+    1.0,
+    1.03
+   ],
+   "focusY": 0.38,
+   "tin": {
+    "type": "zoom",
+    "flash": true
+   }
+  },
+  {
+   "src": "main",
+   "in": 14.3,
+   "out": 17.81,
+   "zoom": [
+    1.06,
+    1.09
+   ],
+   "focusY": 0.38,
+   "tin": {
+    "type": "whip",
+    "dir": "right"
+   }
+  },
+  {
+   "src": "main",
+   "in": 17.81,
+   "out": 18.32,
+   "zoom": 1.0,
+   "hold": 18.35,
+   "focusY": 0.38,
+   "tin": {
+    "type": "zoom"
+   }
+  },
+  {
+   "src": "main",
+   "in": 18.32,
+   "out": 20.45,
+   "zoom": [
+    1.0,
+    1.03
+   ],
+   "focusY": 0.38
+  },
+  {
+   "src": "main",
+   "in": 20.45,
+   "out": 20.62,
+   "zoom": 1.0,
+   "hold": 20.65,
+   "focusY": 0.38,
+   "tin": {
+    "type": "whip",
+    "dir": "up"
+   }
+  },
+  {
+   "src": "main",
+   "in": 20.62,
+   "out": 23.0,
+   "zoom": [
+    1.06,
+    1.09
+   ],
+   "focusY": 0.38
+  }
+ ],
+ "captions": {
+  "wordsFile": "work/tx/aligned.words.json",
+  "style": "plate",
+  "karaoke": true,
+  "maxWords": 3,
+  "maxChars": 22,
+  "keywords": [
+   "تخس",
+   "عجز",
+   "السعرات",
+   "calories",
+   "calculator",
+   "الاساسي"
+  ],
+  "zones": [
+   {
+    "at": 0,
+    "dur": 23.01,
+    "top": 0.67
+   }
+  ]
+ },
+ "overlays": [
+  {
+   "type": "kineticTitle",
+   "at": 0.1,
+   "dur": 0.73,
+   "lines": [
+    {
+     "text": "PART 1",
+     "accent": true,
+     "size": 150
+    },
+    {
+     "text": "ازاي تخس"
+    }
+   ],
+   "top": 0.04,
+   "motion": "smooth",
+   "depth": true,
+   "eyebrow": "OSM · FAT LOSS",
+   "occlude": true
+  },
+  {
+   "type": "iconPop",
+   "at": 3.64,
+   "dur": 1.08,
+   "items": [
+    {
+     "icon": "CalendarDays",
+     "value": "3",
+     "label": "شهور بس"
+    }
+   ],
+   "top": 0.42,
+   "size": 195
+  },
+  {
+   "type": "stepBadge",
+   "at": 5.92,
+   "dur": 1.7,
+   "mark": "1",
+   "label": "عجز في السعرات",
+   "top": 0.42,
+   "side": "right"
+  },
+  {
+   "type": "iconPop",
+   "at": 8.76,
+   "dur": 0.7,
+   "items": [
+    {
+     "icon": "Flame",
+     "label": "Calories / اليوم"
+    }
+   ],
+   "top": 0.42,
+   "size": 195
+  },
+  {
+   "type": "visualCard",
+   "src": "v_calculator",
+   "at": 13.56,
+   "dur": 2.16,
+   "mode": "full",
+   "push": [
+    1.0,
+    1.06
+   ]
+  },
+  {
+   "type": "kineticTitle",
+   "at": 14.1,
+   "dur": 1.62,
+   "lines": [
+    {
+     "text": "العنصر الاساسي",
+     "accent": true,
+     "size": 110
+    }
+   ],
+   "top": 0.05,
+   "motion": "smooth",
+   "depth": true,
+   "occlude": true
+  },
+  {
+   "type": "visualCard",
+   "src": "v_pizza",
+   "at": 16.38,
+   "dur": 1.76,
+   "mode": "full",
+   "push": [
+    1.05,
+    1.0
+   ]
+  },
+  {
+   "type": "kineticTitle",
+   "at": 18.14,
+   "dur": 2.24,
+   "lines": [
+    {
+     "text": "عجز",
+     "accent": true,
+     "size": 170
+    },
+    {
+     "text": "في السعرات",
+     "size": 90
+    }
+   ],
+   "top": 0.04,
+   "motion": "smooth",
+   "depth": true,
+   "occlude": true
+  },
+  {
+   "type": "iconPop",
+   "at": 20.38,
+   "dur": 2.62,
+   "items": [
+    {
+     "icon": "Hourglass",
+     "label": "Part 2"
+    }
+   ],
+   "top": 0.42,
+   "size": 195
+  },
+  {
+   "type": "endCard",
+   "at": 23.0,
+   "dur": 2.4,
+   "cta": "OSM Coach Osama",
+   "reveal": "wipe",
+   "image": "brand/end/osm-end-photo.jpg"
+  }
+ ],
+ "shakes": [
+  {
+   "at": 13.367,
+   "amp": 0.5
+  },
+  {
+   "at": 17.8,
+   "amp": 0.5
+  },
+  {
+   "at": 23.0,
+   "amp": 0.6
+  }
+ ],
+ "sfx": {
+  "cues": [
+   {
+    "at": 0.1,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 0.15,
+    "sound": "impact",
+    "gain_db": -20
+   },
+   {
+    "at": 3.72,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 5.6,
+    "sound": "whip",
+    "gain_db": -11,
+    "dir": 1.0
+   },
+   {
+    "at": 5.62,
+    "sound": "air",
+    "gain_db": -20
+   },
+   {
+    "at": 5.92,
+    "sound": "slam",
+    "gain_db": -16
+   },
+   {
+    "at": 8.84,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 13.3667,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 13.3667,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 13.56,
+    "sound": "whoosh_in",
+    "gain_db": -15
+   },
+   {
+    "at": 14.1,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 14.15,
+    "sound": "impact",
+    "gain_db": -20
+   },
+   {
+    "at": 14.3,
+    "sound": "whip",
+    "gain_db": -11,
+    "dir": 1.0
+   },
+   {
+    "at": 14.32,
+    "sound": "air",
+    "gain_db": -20
+   },
+   {
+    "at": 15.62,
+    "sound": "whoosh_out",
+    "gain_db": -19
+   },
+   {
+    "at": 16.38,
+    "sound": "whoosh_in",
+    "gain_db": -15
+   },
+   {
+    "at": 17.8,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 17.8,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 18.04,
+    "sound": "whoosh_out",
+    "gain_db": -19
+   },
+   {
+    "at": 18.14,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 18.19,
+    "sound": "impact",
+    "gain_db": -20
+   },
+   {
+    "at": 20.46,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 20.4667,
+    "sound": "whip",
+    "gain_db": -11,
+    "dir": 1.0
+   },
+   {
+    "at": 20.4867,
+    "sound": "air",
+    "gain_db": -20
+   },
+   {
+    "at": 23.0,
+    "sound": "reverse_hit",
+    "gain_db": -12,
+    "dur": 0.7
+   },
+   {
+    "at": 23.0,
+    "sound": "boom",
+    "gain_db": -7
+   },
+   {
+    "at": 23.5,
+    "sound": "click",
+    "gain_db": -17
+   }
+  ]
+ },
+ "music": {
+  "src": "work/music/music.wav",
+  "gain_db": -9
+ },
+ "tail": 2.4,
+ "textPlate": "#56A0FB"
+}

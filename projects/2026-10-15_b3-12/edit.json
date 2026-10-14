@@ -1,0 +1,510 @@
+{
+ "title": "OSM: rest day",
+ "fps": 30,
+ "width": 1080,
+ "height": 1920,
+ "media": {
+  "main": "work/clean/original.clean.mp4",
+  "v_sleep_bed": "work/visuals/sleep_bed.jpg",
+  "v_knee_injury": "work/visuals/knee_injury.jpg"
+ },
+ "audio": {
+  "main": "work/stems/original.vocals.wav"
+ },
+ "dialogueFx": "highpass=f=70,acompressor=threshold=0.1:ratio=2.5:attack=8:release=120:makeup=1.5",
+ "dialogueLufs": -16.0,
+ "plates": {
+  "grade": "eq=contrast=1.05:saturation=0.95:gamma=0.99,colorbalance=rs=-0.015:bs=0.02:rm=-0.01:bm=0.005:rh=0.012:gh=0.004:bh=-0.012,curves=master='0/0 0.22/0.2 0.78/0.8 1/1',vignette=angle=PI/7",
+  "sharpen": "cas=strength=0.22"
+ },
+ "clips": [
+  {
+   "src": "main",
+   "in": 0.0,
+   "out": 2.73,
+   "zoom": [
+    1.0,
+    1.03
+   ],
+   "focusY": 0.35
+  },
+  {
+   "src": "main",
+   "in": 2.73,
+   "out": 5.28,
+   "zoom": [
+    1.06,
+    1.09
+   ],
+   "focusY": 0.35,
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  },
+  {
+   "src": "main",
+   "in": 5.28,
+   "out": 5.68,
+   "zoom": 1.0,
+   "hold": 5.71,
+   "focusY": 0.35,
+   "tin": {
+    "type": "zoom",
+    "flash": true
+   }
+  },
+  {
+   "src": "main",
+   "in": 5.68,
+   "out": 7.050000000000001,
+   "zoom": [
+    1.0,
+    1.03
+   ],
+   "focusY": 0.35
+  },
+  {
+   "src": "main",
+   "in": 7.050000000000001,
+   "out": 7.28,
+   "zoom": 1.0,
+   "hold": 7.31,
+   "focusY": 0.35,
+   "tin": {
+    "type": "whip",
+    "dir": "right"
+   }
+  },
+  {
+   "src": "main",
+   "in": 7.28,
+   "out": 10.85,
+   "zoom": [
+    1.06,
+    1.09
+   ],
+   "focusY": 0.35
+  },
+  {
+   "src": "main",
+   "in": 10.85,
+   "out": 11.180000000000001,
+   "zoom": 1.0,
+   "hold": 11.21,
+   "focusY": 0.35,
+   "tin": {
+    "type": "zoom"
+   }
+  },
+  {
+   "src": "main",
+   "in": 11.180000000000001,
+   "out": 15.280000000000001,
+   "zoom": [
+    1.0,
+    1.03
+   ],
+   "focusY": 0.35
+  },
+  {
+   "src": "main",
+   "in": 15.280000000000001,
+   "out": 15.520000000000001,
+   "zoom": 1.0,
+   "hold": 15.55,
+   "focusY": 0.35,
+   "tin": {
+    "type": "whip",
+    "dir": "up"
+   }
+  },
+  {
+   "src": "main",
+   "in": 15.520000000000001,
+   "out": 17.55,
+   "zoom": [
+    1.06,
+    1.09
+   ],
+   "focusY": 0.35
+  },
+  {
+   "src": "main",
+   "in": 17.55,
+   "out": 17.650000000000002,
+   "zoom": 1.0,
+   "hold": 17.68,
+   "focusY": 0.35,
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  },
+  {
+   "src": "main",
+   "in": 17.650000000000002,
+   "out": 19.21,
+   "zoom": [
+    1.0,
+    1.03
+   ],
+   "focusY": 0.35
+  },
+  {
+   "src": "main",
+   "in": 19.21,
+   "out": 19.42,
+   "zoom": 1.0,
+   "hold": 19.45,
+   "focusY": 0.35,
+   "tin": {
+    "type": "zoom",
+    "flash": true
+   }
+  },
+  {
+   "src": "main",
+   "in": 19.42,
+   "out": 21.75,
+   "zoom": [
+    1.06,
+    1.09
+   ],
+   "focusY": 0.35
+  }
+ ],
+ "captions": {
+  "wordsFile": "work/tx/aligned.words.json",
+  "style": "plate",
+  "karaoke": true,
+  "maxWords": 3,
+  "maxChars": 22,
+  "keywords": [
+   "الراحة",
+   "بيكبر",
+   "بترتاح",
+   "عضلاتك",
+   "للإجهاد",
+   "الاصابات",
+   "راحة"
+  ],
+  "zones": [
+   {
+    "at": 0,
+    "dur": 21.777,
+    "top": 0.7
+   }
+  ]
+ },
+ "overlays": [
+  {
+   "type": "kineticTitle",
+   "at": 0.05,
+   "dur": 2.52,
+   "lines": [
+    {
+     "text": "REST DAY",
+     "accent": true
+    },
+    {
+     "text": "اهم من التمرين؟",
+     "size": 90
+    }
+   ],
+   "top": 0.03,
+   "motion": "smooth",
+   "depth": true,
+   "occlude": true
+  },
+  {
+   "type": "stepBadge",
+   "at": 3.22,
+   "dur": 2.0,
+   "mark": "✗",
+   "label": "اثناء التمرين",
+   "top": 0.14,
+   "side": "right"
+  },
+  {
+   "type": "visualCard",
+   "src": "v_sleep_bed",
+   "at": 5.22,
+   "dur": 1.8,
+   "mode": "full",
+   "push": [
+    1.0,
+    1.05
+   ]
+  },
+  {
+   "type": "iconPop",
+   "at": 8.3,
+   "dur": 2.66,
+   "items": [
+    {
+     "icon": "BicepsFlexed",
+     "mark": "check",
+     "label": "بتتعافى"
+    },
+    {
+     "icon": "BatteryFull",
+     "label": "الطاقة"
+    }
+   ],
+   "top": 0.14,
+   "size": 195
+  },
+  {
+   "type": "iconPop",
+   "at": 10.96,
+   "dur": 2.0,
+   "items": [
+    {
+     "icon": "CalendarDays",
+     "value": "7/7",
+     "label": "كل يوم"
+    }
+   ],
+   "top": 0.14,
+   "size": 195
+  },
+  {
+   "type": "kineticTitle",
+   "at": 14.02,
+   "dur": 1.22,
+   "lines": [
+    {
+     "text": "إجهاد",
+     "accent": true,
+     "size": 160
+    }
+   ],
+   "top": 0.03,
+   "motion": "smooth",
+   "depth": true,
+   "eyebrow": "بدل التطور",
+   "occlude": true
+  },
+  {
+   "type": "visualCard",
+   "src": "v_knee_injury",
+   "at": 18.02,
+   "dur": 1.36,
+   "mode": "card",
+   "width": 560,
+   "top": 0.1
+  },
+  {
+   "type": "iconPop",
+   "at": 19.38,
+   "dur": 2.387,
+   "items": [
+    {
+     "icon": "MessageCircle",
+     "label": "كم يوم راحة؟"
+    }
+   ],
+   "top": 0.14,
+   "size": 195
+  },
+  {
+   "type": "endCard",
+   "at": 21.7667,
+   "dur": 2.4,
+   "cta": "OSM Coach Osama",
+   "reveal": "wipe",
+   "image": "brand/end/osm-end-photo.jpg"
+  }
+ ],
+ "shakes": [
+  {
+   "at": 5.267,
+   "amp": 0.5
+  },
+  {
+   "at": 10.867,
+   "amp": 0.5
+  },
+  {
+   "at": 19.2,
+   "amp": 0.5
+  },
+  {
+   "at": 21.767,
+   "amp": 0.6
+  }
+ ],
+ "sfx": {
+  "cues": [
+   {
+    "at": 0.05,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 0.1,
+    "sound": "impact",
+    "gain_db": -20
+   },
+   {
+    "at": 2.7333,
+    "sound": "whip",
+    "gain_db": -11,
+    "dir": 1.0
+   },
+   {
+    "at": 2.7533,
+    "sound": "air",
+    "gain_db": -20
+   },
+   {
+    "at": 3.22,
+    "sound": "slam",
+    "gain_db": -16
+   },
+   {
+    "at": 5.22,
+    "sound": "whoosh_in",
+    "gain_db": -15
+   },
+   {
+    "at": 5.2667,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 5.2667,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 6.92,
+    "sound": "whoosh_out",
+    "gain_db": -19
+   },
+   {
+    "at": 7.0667,
+    "sound": "whip",
+    "gain_db": -11,
+    "dir": 1.0
+   },
+   {
+    "at": 7.0867,
+    "sound": "air",
+    "gain_db": -20
+   },
+   {
+    "at": 8.38,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 8.55,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 820
+   },
+   {
+    "at": 10.8667,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 10.8667,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 11.04,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 14.02,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 14.07,
+    "sound": "impact",
+    "gain_db": -20
+   },
+   {
+    "at": 15.2667,
+    "sound": "whip",
+    "gain_db": -11,
+    "dir": 1.0
+   },
+   {
+    "at": 15.2867,
+    "sound": "air",
+    "gain_db": -20
+   },
+   {
+    "at": 17.5667,
+    "sound": "whip",
+    "gain_db": -11,
+    "dir": 1.0
+   },
+   {
+    "at": 17.5867,
+    "sound": "air",
+    "gain_db": -20
+   },
+   {
+    "at": 18.02,
+    "sound": "whoosh_in",
+    "gain_db": -15
+   },
+   {
+    "at": 19.2,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 19.2,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 19.28,
+    "sound": "whoosh_out",
+    "gain_db": -19
+   },
+   {
+    "at": 19.46,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 21.7667,
+    "sound": "reverse_hit",
+    "gain_db": -12,
+    "dur": 0.7
+   },
+   {
+    "at": 21.7667,
+    "sound": "boom",
+    "gain_db": -7
+   },
+   {
+    "at": 22.2667,
+    "sound": "click",
+    "gain_db": -17
+   }
+  ]
+ },
+ "music": {
+  "src": "work/music/music.wav",
+  "gain_db": -9
+ },
+ "tail": 2.4,
+ "textPlate": "#56A0FB"
+}

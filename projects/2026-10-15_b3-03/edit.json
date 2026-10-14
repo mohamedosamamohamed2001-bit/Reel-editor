@@ -1,0 +1,693 @@
+{
+ "title": "OSM: your weight isn't moving",
+ "fps": 30,
+ "width": 1080,
+ "height": 1920,
+ "media": {
+  "main": "work/clean/original.clean.mp4",
+  "v_fast_food": "work/visuals/fast_food.jpg",
+  "v_lifting": "work/visuals/lifting.jpg",
+  "v_cardio_run": "work/visuals/cardio_run.jpg",
+  "v_tired_desk": "work/visuals/tired_desk.jpg"
+ },
+ "audio": {
+  "main": "work/stems/original.vocals.wav"
+ },
+ "dialogueFx": "highpass=f=70,acompressor=threshold=0.1:ratio=2.5:attack=8:release=120:makeup=1.5",
+ "dialogueLufs": -16.0,
+ "plates": {
+  "grade": "eq=contrast=1.05:saturation=0.95:gamma=0.99,colorbalance=rs=-0.015:bs=0.02:rm=-0.01:bm=0.005:rh=0.012:gh=0.004:bh=-0.012,curves=master='0/0 0.22/0.2 0.78/0.8 1/1',vignette=angle=PI/7",
+  "sharpen": "cas=strength=0.22"
+ },
+ "clips": [
+  {
+   "src": "main",
+   "in": 0.0,
+   "out": 2.55,
+   "zoom": [
+    1.0,
+    1.03
+   ],
+   "focusY": 0.35
+  },
+  {
+   "src": "main",
+   "in": 2.55,
+   "out": 2.6799999999999997,
+   "zoom": 1.0,
+   "hold": 2.71,
+   "focusY": 0.35,
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  },
+  {
+   "src": "main",
+   "in": 2.6799999999999997,
+   "out": 9.21,
+   "zoom": [
+    1.06,
+    1.09
+   ],
+   "focusY": 0.35
+  },
+  {
+   "src": "main",
+   "in": 9.21,
+   "out": 9.72,
+   "zoom": 1.0,
+   "hold": 9.75,
+   "focusY": 0.35,
+   "tin": {
+    "type": "zoom",
+    "flash": true
+   }
+  },
+  {
+   "src": "main",
+   "in": 9.72,
+   "out": 19.67,
+   "zoom": [
+    1.0,
+    1.03
+   ],
+   "focusY": 0.35
+  },
+  {
+   "src": "main",
+   "in": 19.67,
+   "out": 29.37,
+   "zoom": [
+    1.06,
+    1.09
+   ],
+   "focusY": 0.35,
+   "tin": {
+    "type": "whip",
+    "dir": "right"
+   }
+  },
+  {
+   "src": "main",
+   "in": 29.37,
+   "out": 31.27,
+   "zoom": [
+    1.0,
+    1.03
+   ],
+   "focusY": 0.35,
+   "tin": {
+    "type": "zoom"
+   }
+  },
+  {
+   "src": "main",
+   "in": 31.27,
+   "out": 31.650000000000002,
+   "zoom": [
+    1.06,
+    1.09
+   ],
+   "focusY": 0.35,
+   "tin": {
+    "type": "whip",
+    "dir": "up"
+   }
+  },
+  {
+   "src": "main",
+   "in": 31.650000000000002,
+   "out": 32.15,
+   "zoom": 1.0,
+   "hold": 32.18,
+   "focusY": 0.35,
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  },
+  {
+   "src": "main",
+   "in": 32.15,
+   "out": 35.05,
+   "zoom": [
+    1.0,
+    1.03
+   ],
+   "focusY": 0.35
+  }
+ ],
+ "captions": {
+  "wordsFile": "work/tx/aligned.words.json",
+  "style": "plate",
+  "karaoke": true,
+  "maxWords": 3,
+  "maxChars": 22,
+  "keywords": [
+   "ثابت",
+   "سعرات",
+   "مقاومة",
+   "الدهون",
+   "العضلات",
+   "بتتطور",
+   "الكورتيزون",
+   "description",
+   "جاهز"
+  ],
+  "zones": [
+   {
+    "at": 0,
+    "dur": 35.077,
+    "top": 0.64
+   }
+  ]
+ },
+ "overlays": [
+  {
+   "type": "kineticTitle",
+   "at": 0.1,
+   "dur": 2.29,
+   "lines": [
+    {
+     "text": "وزنك ثابت؟",
+     "accent": true,
+     "size": 130
+    }
+   ],
+   "top": 0.05,
+   "motion": "smooth",
+   "depth": true,
+   "eyebrow": "OSM · FAT LOSS"
+  },
+  {
+   "type": "iconPop",
+   "at": 0.02,
+   "dur": 2.34,
+   "items": [
+    {
+     "icon": "Utensils",
+     "mark": "check"
+    },
+    {
+     "icon": "Dumbbell",
+     "mark": "check"
+    },
+    {
+     "icon": "Weight",
+     "label": "ثابت"
+    }
+   ],
+   "top": 0.36,
+   "size": 169
+  },
+  {
+   "type": "kineticTitle",
+   "at": 2.44,
+   "dur": 0.8,
+   "lines": [
+    {
+     "text": "3 اسباب",
+     "accent": true,
+     "size": 140
+    }
+   ],
+   "top": 0.03,
+   "motion": "smooth",
+   "depth": true,
+   "occlude": true
+  },
+  {
+   "type": "stepBadge",
+   "at": 3.24,
+   "dur": 1.68,
+   "mark": "1",
+   "label": "سعرات زيادة",
+   "top": 0.38,
+   "side": "right"
+  },
+  {
+   "type": "visualCard",
+   "src": "v_fast_food",
+   "at": 4.87,
+   "dur": 2.62,
+   "mode": "full",
+   "push": [
+    1.0,
+    1.06
+   ]
+  },
+  {
+   "type": "iconPop",
+   "at": 7.98,
+   "dur": 1.36,
+   "items": [
+    {
+     "icon": "Weight",
+     "label": "ثابت"
+    }
+   ],
+   "top": 0.38,
+   "size": 195
+  },
+  {
+   "type": "stepBadge",
+   "at": 9.34,
+   "dur": 1.44,
+   "mark": "2",
+   "label": "مقاومة + كارديو",
+   "top": 0.38,
+   "side": "right"
+  },
+  {
+   "type": "visualCard",
+   "src": "v_lifting",
+   "at": 10.78,
+   "dur": 0.81,
+   "mode": "full",
+   "push": [
+    1.04,
+    1.0
+   ]
+  },
+  {
+   "type": "visualCard",
+   "src": "v_cardio_run",
+   "at": 11.59,
+   "dur": 0.7,
+   "mode": "full",
+   "push": [
+    1.0,
+    1.05
+   ]
+  },
+  {
+   "type": "iconPop",
+   "at": 13.64,
+   "dur": 2.36,
+   "items": [
+    {
+     "icon": "Flame",
+     "mark": "down",
+     "label": "دهون"
+    },
+    {
+     "icon": "BicepsFlexed",
+     "mark": "up",
+     "label": "عضلات"
+    }
+   ],
+   "top": 0.36,
+   "size": 195
+  },
+  {
+   "type": "kineticTitle",
+   "at": 17.8,
+   "dur": 1.74,
+   "lines": [
+    {
+     "text": "بتتطور",
+     "accent": true,
+     "size": 150
+    }
+   ],
+   "top": 0.03,
+   "motion": "smooth",
+   "depth": true,
+   "eyebrow": "انت كده",
+   "occlude": true
+  },
+  {
+   "type": "stepBadge",
+   "at": 19.54,
+   "dur": 1.24,
+   "mark": "3",
+   "label": "النوم والاسترس",
+   "top": 0.38,
+   "side": "right"
+  },
+  {
+   "type": "iconPop",
+   "at": 20.78,
+   "dur": 1.42,
+   "items": [
+    {
+     "icon": "Moon",
+     "mark": "x",
+     "label": "نومك بايظ"
+    }
+   ],
+   "top": 0.38,
+   "size": 195
+  },
+  {
+   "type": "visualCard",
+   "src": "v_tired_desk",
+   "at": 22.2,
+   "dur": 1.8,
+   "mode": "full",
+   "push": [
+    1.0,
+    1.05
+   ]
+  },
+  {
+   "type": "lowerLabel",
+   "at": 24.0,
+   "dur": 1.18,
+   "title": "CORTISOL ↑",
+   "top": 0.38,
+   "eyebrow": "هرمون"
+  },
+  {
+   "type": "iconPop",
+   "at": 26.34,
+   "dur": 1.08,
+   "items": [
+    {
+     "icon": "Droplets",
+     "label": "احتباس السوايل"
+    }
+   ],
+   "top": 0.38,
+   "size": 195
+  },
+  {
+   "type": "iconPop",
+   "at": 27.9,
+   "dur": 1.34,
+   "items": [
+    {
+     "icon": "Hourglass",
+     "label": "التقدم"
+    }
+   ],
+   "top": 0.38,
+   "size": 195
+  },
+  {
+   "type": "iconPop",
+   "at": 30.06,
+   "dur": 1.06,
+   "items": [
+    {
+     "icon": "FileText",
+     "label": "Description"
+    }
+   ],
+   "top": 0.38,
+   "size": 195
+  },
+  {
+   "type": "kineticTitle",
+   "at": 32.58,
+   "dur": 2.487,
+   "lines": [
+    {
+     "text": "جاهز",
+     "accent": true,
+     "size": 170
+    }
+   ],
+   "top": 0.03,
+   "motion": "smooth",
+   "depth": true,
+   "eyebrow": "ابعتلي كلمة",
+   "occlude": true
+  },
+  {
+   "type": "endCard",
+   "at": 35.0667,
+   "dur": 2.4,
+   "cta": "OSM Coach Osama",
+   "reveal": "wipe",
+   "image": "brand/end/osm-end-photo.jpg"
+  }
+ ],
+ "shakes": [
+  {
+   "at": 9.2,
+   "amp": 0.5
+  },
+  {
+   "at": 29.367,
+   "amp": 0.5
+  },
+  {
+   "at": 35.067,
+   "amp": 0.6
+  }
+ ],
+ "sfx": {
+  "cues": [
+   {
+    "at": 0.1,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 0.1,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 0.15,
+    "sound": "impact",
+    "gain_db": -20
+   },
+   {
+    "at": 0.27,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 820
+   },
+   {
+    "at": 0.44,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 940
+   },
+   {
+    "at": 2.44,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 2.49,
+    "sound": "impact",
+    "gain_db": -20
+   },
+   {
+    "at": 2.5667,
+    "sound": "whip",
+    "gain_db": -11,
+    "dir": 1.0
+   },
+   {
+    "at": 2.5867,
+    "sound": "air",
+    "gain_db": -20
+   },
+   {
+    "at": 3.24,
+    "sound": "slam",
+    "gain_db": -16
+   },
+   {
+    "at": 4.87,
+    "sound": "whoosh_in",
+    "gain_db": -15
+   },
+   {
+    "at": 7.39,
+    "sound": "whoosh_out",
+    "gain_db": -19
+   },
+   {
+    "at": 8.06,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 9.2,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 9.2,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 9.34,
+    "sound": "slam",
+    "gain_db": -16
+   },
+   {
+    "at": 10.78,
+    "sound": "whoosh_in",
+    "gain_db": -15
+   },
+   {
+    "at": 11.49,
+    "sound": "whoosh_out",
+    "gain_db": -19
+   },
+   {
+    "at": 11.59,
+    "sound": "whoosh_in",
+    "gain_db": -15
+   },
+   {
+    "at": 12.19,
+    "sound": "whoosh_out",
+    "gain_db": -19
+   },
+   {
+    "at": 13.72,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 13.89,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 820
+   },
+   {
+    "at": 17.8,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 17.85,
+    "sound": "impact",
+    "gain_db": -20
+   },
+   {
+    "at": 19.54,
+    "sound": "slam",
+    "gain_db": -16
+   },
+   {
+    "at": 19.6667,
+    "sound": "whip",
+    "gain_db": -11,
+    "dir": 1.0
+   },
+   {
+    "at": 19.6867,
+    "sound": "air",
+    "gain_db": -20
+   },
+   {
+    "at": 20.86,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 22.2,
+    "sound": "whoosh_in",
+    "gain_db": -15
+   },
+   {
+    "at": 23.9,
+    "sound": "whoosh_out",
+    "gain_db": -19
+   },
+   {
+    "at": 24.0,
+    "sound": "click",
+    "gain_db": -18
+   },
+   {
+    "at": 26.42,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 27.98,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 29.3667,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 29.3667,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 30.14,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 31.2667,
+    "sound": "whip",
+    "gain_db": -11,
+    "dir": 1.0
+   },
+   {
+    "at": 31.2867,
+    "sound": "air",
+    "gain_db": -20
+   },
+   {
+    "at": 31.6667,
+    "sound": "whip",
+    "gain_db": -11,
+    "dir": 1.0
+   },
+   {
+    "at": 31.6867,
+    "sound": "air",
+    "gain_db": -20
+   },
+   {
+    "at": 32.58,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 32.63,
+    "sound": "impact",
+    "gain_db": -20
+   },
+   {
+    "at": 35.0667,
+    "sound": "reverse_hit",
+    "gain_db": -12,
+    "dur": 0.7
+   },
+   {
+    "at": 35.0667,
+    "sound": "boom",
+    "gain_db": -7
+   },
+   {
+    "at": 35.5667,
+    "sound": "click",
+    "gain_db": -17
+   }
+  ]
+ },
+ "music": {
+  "src": "work/music/music.wav",
+  "gain_db": -9
+ },
+ "tail": 2.4,
+ "textPlate": "#56A0FB"
+}

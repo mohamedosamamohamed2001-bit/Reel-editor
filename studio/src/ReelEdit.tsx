@@ -11,6 +11,7 @@ import { KineticTitle } from "./components/KineticTitle";
 import { LowerLabel } from "./components/LowerLabel";
 import { ScreenCard } from "./components/ScreenCard";
 import { SplitStack } from "./components/SplitStack";
+import { IconPop } from "./components/IconPop";
 import { StepBadge } from "./components/StepBadge";
 import { TrackedLabel } from "./components/TrackedLabel";
 import { VisualCard } from "./components/VisualCard";
@@ -20,7 +21,7 @@ import { color } from "./lib/theme";
 
 const layer: Record<Overlay["type"], number> = {
   split: 1, insetCard: 1, screenCard: 1, exerciseTitle: 3, callout: 3, checklist: 3, endCard: 4,
-  kineticTitle: 3, stepBadge: 3, lowerLabel: 3, trackedLabel: 3, visualCard: 1,
+  kineticTitle: 3, iconPop: 3, stepBadge: 3, lowerLabel: 3, trackedLabel: 3, visualCard: 1,
 };
 
 const renderOverlay = (o: Overlay, plate?: string) => {
@@ -39,6 +40,8 @@ const renderOverlay = (o: Overlay, plate?: string) => {
       return <Checklist dur={o.dur} items={o.items} top={o.top} row={o.row} plate={plate} />;
     case "kineticTitle":
       return <KineticTitle lines={o.lines} eyebrow={o.eyebrow} dur={o.dur} top={o.top} tilt={o.tilt} backdrop={o.backdrop} motion={o.motion} depth={o.depth} ink={o.ink} />;
+    case "iconPop":
+      return <IconPop items={o.items} dur={o.dur} top={o.top} size={o.size} align={o.align} />;
     case "stepBadge":
       return <StepBadge mark={o.mark} label={o.label} sub={o.sub} dur={o.dur} top={o.top} side={o.side} />;
     case "lowerLabel":
@@ -123,7 +126,27 @@ export const ReelEdit: React.FC<{ edit: Edit }> = ({ edit }) => {
     </Sequence>
   );
   // a full-frame title card sits under the captions (his words stay readable while it covers the picture)
-  const layerOf = (o: Overlay) => (o.type === "kineticTitle" && o.backdrop ? 1 : layer[o.type]);
+  const occluded = (o: Overlay) => o.type === "kineticTitle" && !!o.occlude;
+  const layerOf = (o: Overlay) => (o.type === "kineticTitle" && o.backdrop ? 1 : occluded(o) ? 2 : layer[o.type]);
+  // behind-the-head titles: the title (layer 2) sits under a cut-out copy of the footage (him), under the captions
+  const fgSeqs: React.ReactNode[] = [];
+  edit.overlays.forEach((o, oi) => {
+    if (!occluded(o)) return;
+    const a = f(o.at), b = a + Math.max(1, f(o.dur));
+    let start = 0;
+    edit.clips.forEach((c, ci) => {
+      const len = clipFrames(c, fps);
+      const lo = Math.max(a, start), hi = Math.min(b, start + len);
+      if (c.fg && hi > lo) {
+        fgSeqs.push(
+          <Sequence key={`fg${oi}_${ci}`} from={start} durationInFrames={len} name={`cut-out ${ci + 1}`}>
+            <FramedVideo clip={c} durationInFrames={len} startFrom={Math.round(c.in * fps)} tout={edit.clips[ci + 1]?.tin} fgWindow={[lo - start, hi - start]} />
+          </Sequence>,
+        );
+      }
+      start += len;
+    });
+  });
   const byLayer = (n: number) => edit.overlays.map((o, i) => (layerOf(o) === n ? seq(o, i) : null));
 
   return (
@@ -131,6 +154,8 @@ export const ReelEdit: React.FC<{ edit: Edit }> = ({ edit }) => {
       <AbsoluteFill style={{ transform: shake }}>
         {clipSeqs}
         {byLayer(1)}
+        {byLayer(2)}
+        {fgSeqs}
         {edit.captions ? (
           <Captions groups={groups} keywords={edit.captions.keywords} style={edit.captions.style} zones={edit.captions.zones}
             karaoke={edit.captions.karaoke} anchors={edit.captions.anchors} cuts={cuts} plateColor={edit.textPlate} anchorPlate={edit.captions.anchorPlate} />

@@ -1,0 +1,490 @@
+{
+ "source": "projects/2026-10-15_b3-11/work/tx/original.vocals.words.json",
+ "reference": "projects/2026-10-15_b3-11/analysis/reference.txt",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 24.44,
+   "words": [
+    {
+     "w": "ليه",
+     "start": 0.0,
+     "end": 0.16,
+     "matched": true
+    },
+    {
+     "w": "وانا",
+     "start": 0.16,
+     "end": 0.28,
+     "matched": true
+    },
+    {
+     "w": "بلعب",
+     "start": 0.28,
+     "end": 0.56,
+     "matched": true
+    },
+    {
+     "w": "Seated",
+     "start": 0.38,
+     "end": 0.546,
+     "matched": false
+    },
+    {
+     "w": "leg",
+     "start": 0.546,
+     "end": 0.629,
+     "matched": false
+    },
+    {
+     "w": "curl",
+     "start": 0.629,
+     "end": 0.74,
+     "matched": false
+    },
+    {
+     "w": "بلاقي",
+     "start": 0.629,
+     "end": 1.2,
+     "matched": true
+    },
+    {
+     "w": "السمانة",
+     "start": 1.9,
+     "end": 2.3,
+     "matched": true
+    },
+    {
+     "w": "اشتغلت",
+     "start": 2.3,
+     "end": 2.58,
+     "matched": true
+    },
+    {
+     "w": "وانا",
+     "start": 2.58,
+     "end": 2.9,
+     "matched": true
+    },
+    {
+     "w": "بلعب",
+     "start": 2.9,
+     "end": 3.2,
+     "matched": true
+    },
+    {
+     "w": "بالشكل",
+     "start": 3.46,
+     "end": 3.76,
+     "matched": true
+    },
+    {
+     "w": "ده",
+     "start": 3.7,
+     "end": 3.82,
+     "matched": false
+    },
+    {
+     "w": "فانا",
+     "start": 3.76,
+     "end": 4.12,
+     "matched": true
+    },
+    {
+     "w": "بعمل",
+     "start": 4.52,
+     "end": 4.66,
+     "matched": true
+    },
+    {
+     "w": "لل",
+     "start": 4.66,
+     "end": 6.14,
+     "matched": true
+    },
+    {
+     "w": "Knee",
+     "start": 6.08,
+     "end": 6.2,
+     "matched": false
+    },
+    {
+     "w": "حاجة",
+     "start": 6.14,
+     "end": 6.76,
+     "matched": true
+    },
+    {
+     "w": "اسمها",
+     "start": 6.76,
+     "end": 7.04,
+     "matched": true
+    },
+    {
+     "w": "flexion",
+     "start": 6.98,
+     "end": 7.1,
+     "matched": false
+    },
+    {
+     "w": "السمانة",
+     "start": 7.04,
+     "end": 7.7,
+     "matched": true
+    },
+    {
+     "w": "اسمها",
+     "start": 7.7,
+     "end": 8.08,
+     "matched": true
+    },
+    {
+     "w": "انا",
+     "start": 8.08,
+     "end": 8.56,
+     "matched": true
+    },
+    {
+     "w": "اتلخبطت",
+     "start": 8.5,
+     "end": 8.62,
+     "matched": false
+    },
+    {
+     "w": "اسمها",
+     "start": 8.56,
+     "end": 9.3,
+     "matched": true
+    },
+    {
+     "w": "Gastrocnemius",
+     "start": 9.24,
+     "end": 9.36,
+     "matched": false
+    },
+    {
+     "w": "بتعمل",
+     "start": 9.3,
+     "end": 9.44,
+     "matched": true
+    },
+    {
+     "w": "knee",
+     "start": 9.44,
+     "end": 10.04,
+     "matched": true
+    },
+    {
+     "w": "flexion",
+     "start": 9.92,
+     "end": 10.107,
+     "matched": false
+    },
+    {
+     "w": "بس",
+     "start": 10.107,
+     "end": 10.16,
+     "matched": false
+    },
+    {
+     "w": "هي",
+     "start": 10.107,
+     "end": 10.46,
+     "matched": true
+    },
+    {
+     "w": "المسؤوله",
+     "start": 10.46,
+     "end": 11.06,
+     "matched": true
+    },
+    {
+     "w": "عن",
+     "start": 11.06,
+     "end": 11.22,
+     "matched": true
+    },
+    {
+     "w": "من",
+     "start": 11.22,
+     "end": 11.52,
+     "matched": true
+    },
+    {
+     "w": "0",
+     "start": 11.52,
+     "end": 11.88,
+     "matched": true
+    },
+    {
+     "w": "ل",
+     "start": 11.88,
+     "end": 12.32,
+     "matched": true
+    },
+    {
+     "w": "15",
+     "start": 12.32,
+     "end": 12.68,
+     "matched": true
+    },
+    {
+     "w": "درجة",
+     "start": 12.68,
+     "end": 13.28,
+     "matched": true
+    },
+    {
+     "w": "فهي",
+     "start": 13.28,
+     "end": 13.7,
+     "matched": true
+    },
+    {
+     "w": "الزاوية",
+     "start": 13.7,
+     "end": 14.08,
+     "matched": true
+    },
+    {
+     "w": "البسيطة",
+     "start": 14.08,
+     "end": 14.54,
+     "matched": true
+    },
+    {
+     "w": "دي",
+     "start": 14.54,
+     "end": 15.46,
+     "matched": true
+    },
+    {
+     "w": "فساعات",
+     "start": 15.46,
+     "end": 15.8,
+     "matched": true
+    },
+    {
+     "w": "بحس",
+     "start": 15.74,
+     "end": 15.86,
+     "matched": false
+    },
+    {
+     "w": "ان",
+     "start": 15.8,
+     "end": 15.86,
+     "matched": true
+    },
+    {
+     "w": "السمانة",
+     "start": 15.86,
+     "end": 16.34,
+     "matched": true
+    },
+    {
+     "w": "شغاله",
+     "start": 16.34,
+     "end": 16.96,
+     "matched": true
+    },
+    {
+     "w": "التمرين",
+     "start": 16.96,
+     "end": 17.72,
+     "matched": true
+    },
+    {
+     "w": "هيبقى",
+     "start": 17.72,
+     "end": 18.3,
+     "matched": true
+    },
+    {
+     "w": "وده",
+     "start": 18.24,
+     "end": 18.36,
+     "matched": false
+    },
+    {
+     "w": "عادي",
+     "start": 18.3,
+     "end": 19.04,
+     "matched": true
+    },
+    {
+     "w": "انك",
+     "start": 19.04,
+     "end": 19.38,
+     "matched": true
+    },
+    {
+     "w": "ممكن",
+     "start": 19.38,
+     "end": 19.7,
+     "matched": true
+    },
+    {
+     "w": "تحس",
+     "start": 19.7,
+     "end": 20.38,
+     "matched": true
+    },
+    {
+     "w": "ان",
+     "start": 20.38,
+     "end": 20.44,
+     "matched": true
+    },
+    {
+     "w": "السمانة",
+     "start": 20.44,
+     "end": 20.8,
+     "matched": true
+    },
+    {
+     "w": "شغالة",
+     "start": 20.8,
+     "end": 21.1,
+     "matched": true
+    },
+    {
+     "w": "في",
+     "start": 21.1,
+     "end": 21.28,
+     "matched": true
+    },
+    {
+     "w": "التمرين",
+     "start": 21.28,
+     "end": 21.72,
+     "matched": true
+    },
+    {
+     "w": "ده",
+     "start": 21.66,
+     "end": 21.78,
+     "matched": false
+    },
+    {
+     "w": "اكتبلي",
+     "start": 21.72,
+     "end": 22.4,
+     "matched": true
+    },
+    {
+     "w": "في",
+     "start": 22.4,
+     "end": 22.46,
+     "matched": true
+    },
+    {
+     "w": "الكومنت",
+     "start": 22.46,
+     "end": 23.08,
+     "matched": true
+    },
+    {
+     "w": "محتاجين",
+     "start": 23.08,
+     "end": 23.22,
+     "matched": true
+    },
+    {
+     "w": "تعرفوا",
+     "start": 23.22,
+     "end": 23.6,
+     "matched": true
+    },
+    {
+     "w": "ايه",
+     "start": 23.6,
+     "end": 23.7,
+     "matched": true
+    },
+    {
+     "w": "الفيديوز",
+     "start": 23.7,
+     "end": 24.08,
+     "matched": true
+    },
+    {
+     "w": "اللي",
+     "start": 24.02,
+     "end": 24.14,
+     "matched": false
+    },
+    {
+     "w": "جاية",
+     "start": 24.08,
+     "end": 24.44,
+     "matched": true
+    }
+   ]
+  }
+ ],
+ "report": [
+  "  0.00  لأنني  ->  ليه",
+  "  0.16  عندما  ->  وانا",
+  "  0.28  ألعب  ->  بلعب",
+  "   ---  (missing)  ->  Seated",
+  "   ---  (missing)  ->  leg",
+  "   ---  (missing)  ->  curl",
+  "  0.56  بسيديد  ->  بلاقي",
+  "  0.94  لكر  ->  (part of بلاقي)",
+  "  1.20  أجد  ->  (dropped)",
+  "  1.82  أن  ->  (dropped)",
+  "  2.30  تعمل  ->  اشتغلت",
+  "  2.58  وعندما  ->  وانا",
+  "  2.90  ألعب  ->  بلعب",
+  "  3.20  بهذا  ->  (dropped)",
+  "  3.46  الشكل  ->  بالشكل",
+  "   ---  (missing)  ->  ده",
+  "  4.12  أقوم  ->  (dropped)",
+  "  4.66  فلكشن  ->  لل",
+  "   ---  (missing)  ->  Knee",
+  "  6.14  وهناك  ->  حاجة",
+  "  6.76  عضلة  ->  اسمها",
+  "   ---  (missing)  ->  flexion",
+  "  7.70  تسمى  ->  اسمها",
+  "  8.08  سولياس  ->  انا",
+  "   ---  (missing)  ->  اتلخبطت",
+  "  8.56  تقوم  ->  اسمها",
+  "   ---  (missing)  ->  Gastrocnemius",
+  "  9.30  بعمل  ->  بتعمل",
+  "  9.44  فلكشن  ->  knee",
+  "   ---  (missing)  ->  flexion",
+  "   ---  (missing)  ->  بس",
+  " 10.04  ولكنها  ->  هي",
+  " 10.46  مسؤولة  ->  المسؤوله",
+  " 11.88  إلى  ->  ل",
+  " 13.28  وهي  ->  فهي",
+  " 13.56  هذه  ->  (part of فهي)",
+  " 14.54  فعندما  ->  دي",
+  " 15.46  أشعر  ->  فساعات",
+  "   ---  (missing)  ->  بحس",
+  " 16.34  تعمل  ->  شغاله",
+  " 16.74  فإن  ->  (part of شغاله)",
+  " 16.96  تمرينها  ->  التمرين",
+  " 17.72  الأساسي  ->  هيبقى",
+  "   ---  (missing)  ->  وده",
+  " 18.30  سيكون  ->  عادي",
+  " 18.52  خلص  ->  (part of عادي)",
+  " 19.04  ومن  ->  انك",
+  " 19.38  الممكن  ->  ممكن",
+  " 19.60  أن  ->  (part of ممكن)",
+  " 19.70  تشعر  ->  تحس",
+  " 20.80  تعمل  ->  شغالة",
+  " 21.20  هذا  ->  (part of في)",
+  "   ---  (missing)  ->  ده",
+  " 21.72  اتبعوا  ->  اكتبلي",
+  " 22.46  التعليقات  ->  الكومنت",
+  " 22.82  يجب  ->  (part of الكومنت)",
+  " 23.08  أن  ->  محتاجين",
+  " 23.60  ما  ->  ايه",
+  " 23.70  هي  ->  (part of ايه)",
+  " 23.70  الفيديوهات  ->  الفيديوز",
+  "   ---  (missing)  ->  اللي",
+  " 24.08  القادمة  ->  جاية"
+ ]
+}

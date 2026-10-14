@@ -1,0 +1,546 @@
+{
+ "source": "projects/2026-10-15_b3-10/work/tx/original.vocals.words.json",
+ "reference": "projects/2026-10-15_b3-10/analysis/reference.txt",
+ "segments": [
+  {
+   "start": 1.57,
+   "end": 19.41,
+   "words": [
+    {
+     "w": "تعرف",
+     "start": 1.57,
+     "end": 1.71,
+     "matched": true
+    },
+    {
+     "w": "ان",
+     "start": 1.71,
+     "end": 1.83,
+     "matched": true
+    },
+    {
+     "w": "الكارديو",
+     "start": 1.83,
+     "end": 2.11,
+     "matched": true
+    },
+    {
+     "w": "اللي",
+     "start": 2.05,
+     "end": 2.17,
+     "matched": false
+    },
+    {
+     "w": "في",
+     "start": 2.11,
+     "end": 2.25,
+     "matched": true
+    },
+    {
+     "w": "الجيم",
+     "start": 2.25,
+     "end": 2.55,
+     "matched": true
+    },
+    {
+     "w": "ما",
+     "start": 2.49,
+     "end": 2.61,
+     "matched": false
+    },
+    {
+     "w": "لوش",
+     "start": 2.55,
+     "end": 2.77,
+     "matched": true
+    },
+    {
+     "w": "لازمة",
+     "start": 2.77,
+     "end": 3.31,
+     "matched": true
+    },
+    {
+     "w": "يعني",
+     "start": 3.31,
+     "end": 3.79,
+     "matched": true
+    },
+    {
+     "w": "مش",
+     "start": 3.73,
+     "end": 3.85,
+     "matched": false
+    },
+    {
+     "w": "لازم",
+     "start": 3.79,
+     "end": 3.79,
+     "matched": true
+    },
+    {
+     "w": "تمشي",
+     "start": 3.79,
+     "end": 4.05,
+     "matched": true
+    },
+    {
+     "w": "على",
+     "start": 4.05,
+     "end": 4.15,
+     "matched": true
+    },
+    {
+     "w": "treadmill",
+     "start": 4.09,
+     "end": 4.21,
+     "matched": false
+    },
+    {
+     "w": "عشان",
+     "start": 4.15,
+     "end": 4.61,
+     "matched": true
+    },
+    {
+     "w": "تحرق",
+     "start": 4.61,
+     "end": 5.09,
+     "matched": true
+    },
+    {
+     "w": "دهون",
+     "start": 5.09,
+     "end": 5.37,
+     "matched": true
+    },
+    {
+     "w": "مش",
+     "start": 5.31,
+     "end": 5.43,
+     "matched": false
+    },
+    {
+     "w": "لازم",
+     "start": 5.37,
+     "end": 5.69,
+     "matched": true
+    },
+    {
+     "w": "تطلع",
+     "start": 5.69,
+     "end": 6.03,
+     "matched": true
+    },
+    {
+     "w": "على",
+     "start": 6.03,
+     "end": 6.05,
+     "matched": true
+    },
+    {
+     "w": "Bike",
+     "start": 6.03,
+     "end": 6.11,
+     "matched": false
+    },
+    {
+     "w": "عشان",
+     "start": 6.05,
+     "end": 6.57,
+     "matched": true
+    },
+    {
+     "w": "تخس",
+     "start": 6.57,
+     "end": 6.89,
+     "matched": true
+    },
+    {
+     "w": "مش",
+     "start": 6.83,
+     "end": 6.95,
+     "matched": false
+    },
+    {
+     "w": "لازم",
+     "start": 6.89,
+     "end": 7.31,
+     "matched": true
+    },
+    {
+     "w": "تطلع",
+     "start": 7.31,
+     "end": 7.63,
+     "matched": true
+    },
+    {
+     "w": "على",
+     "start": 7.63,
+     "end": 7.65,
+     "matched": true
+    },
+    {
+     "w": "stairmaster",
+     "start": 7.65,
+     "end": 8.01,
+     "matched": false
+    },
+    {
+     "w": "عشان",
+     "start": 8.01,
+     "end": 8.51,
+     "matched": true
+    },
+    {
+     "w": "تخس",
+     "start": 8.51,
+     "end": 8.91,
+     "matched": true
+    },
+    {
+     "w": "لو",
+     "start": 8.91,
+     "end": 9.07,
+     "matched": true
+    },
+    {
+     "w": "انت",
+     "start": 9.01,
+     "end": 9.13,
+     "matched": false
+    },
+    {
+     "w": "لعبت",
+     "start": 9.07,
+     "end": 9.43,
+     "matched": true
+    },
+    {
+     "w": "ping",
+     "start": 9.43,
+     "end": 9.69,
+     "matched": true
+    },
+    {
+     "w": "pong",
+     "start": 9.69,
+     "end": 9.95,
+     "matched": true
+    },
+    {
+     "w": "او",
+     "start": 9.95,
+     "end": 10.09,
+     "matched": true
+    },
+    {
+     "w": "Padel",
+     "start": 10.09,
+     "end": 10.37,
+     "matched": true
+    },
+    {
+     "w": "او",
+     "start": 10.37,
+     "end": 10.51,
+     "matched": true
+    },
+    {
+     "w": "كورة",
+     "start": 10.51,
+     "end": 10.73,
+     "matched": true
+    },
+    {
+     "w": "مع",
+     "start": 10.73,
+     "end": 10.83,
+     "matched": true
+    },
+    {
+     "w": "اصحابك",
+     "start": 10.83,
+     "end": 11.29,
+     "matched": true
+    },
+    {
+     "w": "فانت",
+     "start": 11.29,
+     "end": 11.47,
+     "matched": true
+    },
+    {
+     "w": "كده",
+     "start": 11.47,
+     "end": 11.65,
+     "matched": true
+    },
+    {
+     "w": "عملت",
+     "start": 11.65,
+     "end": 11.93,
+     "matched": true
+    },
+    {
+     "w": "الكارديو",
+     "start": 11.93,
+     "end": 12.23,
+     "matched": true
+    },
+    {
+     "w": "بتاعك",
+     "start": 12.17,
+     "end": 12.29,
+     "matched": false
+    },
+    {
+     "w": "اليومي",
+     "start": 12.23,
+     "end": 12.83,
+     "matched": true
+    },
+    {
+     "w": "وده",
+     "start": 12.83,
+     "end": 12.95,
+     "matched": true
+    },
+    {
+     "w": "مش",
+     "start": 12.83,
+     "end": 12.899,
+     "matched": false
+    },
+    {
+     "w": "معناه",
+     "start": 12.899,
+     "end": 13.07,
+     "matched": false
+    },
+    {
+     "w": "ان",
+     "start": 12.95,
+     "end": 13.15,
+     "matched": true
+    },
+    {
+     "w": "انت",
+     "start": 13.45,
+     "end": 13.65,
+     "matched": true
+    },
+    {
+     "w": "ما",
+     "start": 13.65,
+     "end": 13.75,
+     "matched": true
+    },
+    {
+     "w": "تتمرنش",
+     "start": 13.75,
+     "end": 14.11,
+     "matched": true
+    },
+    {
+     "w": "الكارديو",
+     "start": 14.11,
+     "end": 14.61,
+     "matched": true
+    },
+    {
+     "w": "في",
+     "start": 14.61,
+     "end": 14.65,
+     "matched": true
+    },
+    {
+     "w": "الجيم",
+     "start": 14.65,
+     "end": 15.01,
+     "matched": true
+    },
+    {
+     "w": "انت",
+     "start": 14.95,
+     "end": 15.07,
+     "matched": false
+    },
+    {
+     "w": "ممكن",
+     "start": 15.01,
+     "end": 15.37,
+     "matched": true
+    },
+    {
+     "w": "تعمل",
+     "start": 15.37,
+     "end": 15.59,
+     "matched": true
+    },
+    {
+     "w": "الكارديو",
+     "start": 15.59,
+     "end": 15.91,
+     "matched": true
+    },
+    {
+     "w": "باي",
+     "start": 15.91,
+     "end": 16.05,
+     "matched": true
+    },
+    {
+     "w": "شكل",
+     "start": 16.05,
+     "end": 16.33,
+     "matched": true
+    },
+    {
+     "w": "انت",
+     "start": 16.27,
+     "end": 16.39,
+     "matched": false
+    },
+    {
+     "w": "بتحب",
+     "start": 16.33,
+     "end": 16.81,
+     "matched": true
+    },
+    {
+     "w": "اكتبولي",
+     "start": 16.81,
+     "end": 17.23,
+     "matched": true
+    },
+    {
+     "w": "في",
+     "start": 17.23,
+     "end": 17.25,
+     "matched": true
+    },
+    {
+     "w": "الكومنتس",
+     "start": 17.25,
+     "end": 17.61,
+     "matched": true
+    },
+    {
+     "w": "عايزيني",
+     "start": 17.61,
+     "end": 17.73,
+     "matched": true
+    },
+    {
+     "w": "اتكلم",
+     "start": 17.73,
+     "end": 17.93,
+     "matched": true
+    },
+    {
+     "w": "عن",
+     "start": 17.93,
+     "end": 17.97,
+     "matched": true
+    },
+    {
+     "w": "ايه",
+     "start": 17.97,
+     "end": 18.33,
+     "matched": true
+    },
+    {
+     "w": "في",
+     "start": 18.33,
+     "end": 18.63,
+     "matched": true
+    },
+    {
+     "w": "الفيديوز",
+     "start": 18.63,
+     "end": 19.09,
+     "matched": true
+    },
+    {
+     "w": "اللي",
+     "start": 19.03,
+     "end": 19.15,
+     "matched": false
+    },
+    {
+     "w": "جايه",
+     "start": 19.09,
+     "end": 19.41,
+     "matched": true
+    }
+   ]
+  }
+ ],
+ "report": [
+  "  1.17  هل  ->  (dropped)",
+  "  1.83  الكاردو  ->  الكارديو",
+  "   ---  (missing)  ->  اللي",
+  "   ---  (missing)  ->  ما",
+  "  2.55  ليس  ->  لوش",
+  "  3.13  لا  ->  (part of لازمة)",
+  "  3.31  يجب  ->  يعني",
+  "   ---  (missing)  ->  مش",
+  "  3.79  أن  ->  لازم",
+  "  3.79  تذهب  ->  تمشي",
+  "   ---  (missing)  ->  treadmill",
+  "  4.15  التريدميل  ->  عشان",
+  "  4.61  لتحرق  ->  تحرق",
+  "  5.09  دهونك  ->  دهون",
+  "   ---  (missing)  ->  مش",
+  "  5.37  لا  ->  لازم",
+  "  5.47  يجب  ->  (part of لازم)",
+  "  5.61  أن  ->  (part of لازم)",
+  "  5.69  تذهب  ->  تطلع",
+  "   ---  (missing)  ->  Bike",
+  "  6.05  البيك  ->  عشان",
+  "  6.35  لكي  ->  (part of عشان)",
+  "   ---  (missing)  ->  مش",
+  "  6.89  لا  ->  لازم",
+  "  6.99  يجب  ->  (part of لازم)",
+  "  7.31  أن  ->  (part of لازم)",
+  "  7.31  تذهب  ->  تطلع",
+  "  7.65  الستيل  ->  (dropped)",
+  "   ---  (missing)  ->  stairmaster",
+  "  8.01  ماستر  ->  عشان",
+  "  8.29  لكي  ->  (part of عشان)",
+  "   ---  (missing)  ->  انت",
+  "  9.43  بنج  ->  ping",
+  "  9.69  بونج  ->  pong",
+  " 10.09  باديل  ->  Padel",
+  " 10.51  كرة  ->  كورة",
+  " 10.83  أصدقائك  ->  اصحابك",
+  " 11.47  أكيد  ->  كده",
+  " 11.93  الكاردو  ->  الكارديو",
+  "   ---  (missing)  ->  بتاعك",
+  " 12.23  اليوم  ->  اليومي",
+  " 12.83  هذا  ->  وده",
+  "   ---  (missing)  ->  مش",
+  "   ---  (missing)  ->  معناه",
+  " 12.95  لا  ->  ان",
+  " 13.15  يعني  ->  (dropped)",
+  " 13.45  أنك  ->  انت",
+  " 13.65  لا  ->  ما",
+  " 13.75  تتمرن  ->  تتمرنش",
+  " 14.11  الكاردو  ->  الكارديو",
+  "   ---  (missing)  ->  انت",
+  " 15.01  يمكنك  ->  ممكن",
+  " 15.59  الكاردو  ->  الكارديو",
+  "   ---  (missing)  ->  انت",
+  " 16.33  تحب  ->  بتحب",
+  " 16.81  أخبروني  ->  اكتبولي",
+  " 17.25  التعليقات  ->  الكومنتس",
+  " 17.61  ماذا  ->  عايزيني",
+  " 17.73  أريد  ->  اتكلم",
+  " 17.93  أن  ->  عن",
+  " 17.97  أتحدث  ->  ايه",
+  " 18.63  الفيديوهات  ->  الفيديوز",
+  "   ---  (missing)  ->  اللي",
+  " 19.09  القادمة  ->  جايه"
+ ]
+}
