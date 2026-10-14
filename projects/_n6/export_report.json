@@ -29,7 +29,7 @@
   "video": "h264 1080x1920 30/1",
   "audio": "aac 48000 Hz",
   "duration": 24.1,
-  "size_mb": 19.4,
+  "size_mb": 19.6,
   "decodes": true
  },
  {
@@ -40,7 +40,7 @@
   "video": "h264 1080x1920 30/1",
   "audio": "aac 48000 Hz",
   "duration": 24.1,
-  "size_mb": 19.4,
+  "size_mb": 19.6,
   "decodes": true
  },
  {
@@ -51,7 +51,7 @@
   "video": "h264 1080x1920 30/1",
   "audio": "aac 48000 Hz",
   "duration": 25.367,
-  "size_mb": 18.1,
+  "size_mb": 18.2,
   "decodes": true
  },
  {
@@ -62,7 +62,7 @@
   "video": "h264 1080x1920 30/1",
   "audio": "aac 48000 Hz",
   "duration": 25.367,
-  "size_mb": 18.1,
+  "size_mb": 18.2,
   "decodes": true
  },
  {
@@ -73,7 +73,7 @@
   "video": "h264 1080x1920 30/1",
   "audio": "aac 48000 Hz",
   "duration": 45.167,
-  "size_mb": 32.3,
+  "size_mb": 32.6,
   "decodes": true,
   "send_copy": "projects/2026-10-14_n4-pulldown/exports/OSM_09_seated-row-wide-vs-close_send.mp4",
   "send_mb": 27.9
@@ -86,7 +86,7 @@
   "video": "h264 1080x1920 30/1",
   "audio": "aac 48000 Hz",
   "duration": 45.167,
-  "size_mb": 32.3,
+  "size_mb": 32.6,
   "decodes": true,
   "send_copy": "projects/2026-10-14_n4-pulldown/exports/OSM_09_seated-row-wide-vs-close_no-music_send.mp4",
   "send_mb": 27.9
@@ -99,7 +99,7 @@
   "video": "h264 1080x1920 30/1",
   "audio": "aac 48000 Hz",
   "duration": 61.2,
-  "size_mb": 47.6,
+  "size_mb": 48.2,
   "decodes": true,
   "send_copy": "projects/2026-10-14_n5-lumbar/exports/OSM_10_glutes-lower-back_send.mp4",
   "send_mb": 28.2
@@ -112,7 +112,7 @@
   "video": "h264 1080x1920 30/1",
   "audio": "aac 48000 Hz",
   "duration": 61.2,
-  "size_mb": 47.5,
+  "size_mb": 48.1,
   "decodes": true,
   "send_copy": "projects/2026-10-14_n5-lumbar/exports/OSM_10_glutes-lower-back_no-music_send.mp4",
   "send_mb": 28.1
@@ -125,7 +125,7 @@
   "video": "h264 1080x1920 30/1",
   "audio": "aac 48000 Hz",
   "duration": 51.6,
-  "size_mb": 46.9,
+  "size_mb": 47.8,
   "decodes": true,
   "send_copy": "projects/2026-10-14_n6-triceps/exports/OSM_11_triceps-cable_send.mp4",
   "send_mb": 28.1
@@ -138,7 +138,7 @@
   "video": "h264 1080x1920 30/1",
   "audio": "aac 48000 Hz",
   "duration": 51.6,
-  "size_mb": 46.8,
+  "size_mb": 47.7,
   "decodes": true,
   "send_copy": "projects/2026-10-14_n6-triceps/exports/OSM_11_triceps-cable_no-music_send.mp4",
   "send_mb": 28.0
