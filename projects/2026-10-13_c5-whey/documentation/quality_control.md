@@ -9,8 +9,8 @@
 | Frozen frames | [{'start': 31.7, 'end': None}] = the static end card (expected) |
 | Dialogue sync (per clip, cross-correlation) | worst |lag| 2.0 ms -> PASS |
 | Source unchanged | sha256 76ad20fcc51f… matches the download |
-| Export `OSM_03_whey-protein.mp4` | h264 1080x1920 30/1, 1001 frames, 22.3 MB, full decode OK |
-| Export `OSM_03_whey-protein_no-music.mp4` | h264 1080x1920 30/1, 1001 frames, 22.3 MB, full decode OK |
+| Export `OSM_03_whey-protein.mp4` | h264 1080x1920 30/1, 1001 frames, 22.2 MB, full decode OK |
+| Export `OSM_03_whey-protein_no-music.mp4` | h264 1080x1920 30/1, 1001 frames, 22.2 MB, full decode OK |
 
 ## Looked at
 - Contact sheets of the whole render (2–4 fps) and frame-by-frame strips of every transition.

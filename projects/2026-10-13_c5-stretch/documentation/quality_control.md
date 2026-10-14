@@ -9,8 +9,8 @@
 | Frozen frames | [{'start': 25.1333, 'end': None}] = the static end card (expected) |
 | Dialogue sync (per clip, cross-correlation) | worst |lag| 2.0 ms -> PASS |
 | Source unchanged | sha256 613dd27594f1… matches the download |
-| Export `OSM_02_stretch-right.mp4` | h264 1080x1920 30/1, 804 frames, 22.5 MB, full decode OK |
-| Export `OSM_02_stretch-right_no-music.mp4` | h264 1080x1920 30/1, 804 frames, 22.5 MB, full decode OK |
+| Export `OSM_02_stretch-right.mp4` | h264 1080x1920 30/1, 804 frames, 22.2 MB, full decode OK |
+| Export `OSM_02_stretch-right_no-music.mp4` | h264 1080x1920 30/1, 804 frames, 22.2 MB, full decode OK |
 
 ## Looked at
 - Contact sheets of the whole render (2–4 fps) and frame-by-frame strips of every transition.

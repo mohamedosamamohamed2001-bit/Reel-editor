@@ -13,8 +13,16 @@ import subprocess
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-ORDER = [("comeback", "back-to-training"), ("stretch", "stretch-right"), ("whey", "whey-protein"),
-         ("crossfit", "crossfit-or-gym"), ("legday", "leg-day")]
+import sys
+BATCHES = {
+    "c5": ("2026-10-13_c5-", 0, [("comeback", "back-to-training"), ("stretch", "stretch-right"), ("whey", "whey-protein"),
+                                 ("crossfit", "crossfit-or-gym"), ("legday", "leg-day")]),
+    "n6": ("2026-10-14_", 5, [("n1-0112", "creatine"), ("n2-training", "copying-workouts"), ("n3-scale", "scale-progress"),
+                              ("n4-pulldown", "seated-row-wide-vs-close"), ("n5-lumbar", "glutes-lower-back"),
+                              ("n6-triceps", "triceps-cable")]),
+}
+BATCH = sys.argv[1] if len(sys.argv) > 1 else "c5"
+PREFIX, NUM0, ORDER = BATCHES[BATCH]
 LIMIT = 29 * 1024 * 1024
 
 
@@ -48,12 +56,13 @@ def send_copy(src, dst, target_mb=28.0):
 def main():
     report = []
     for n, (slug, name) in enumerate(ORDER, 1):
-        proj = ROOT / "projects" / f"2026-10-13_c5-{slug}"
+        proj = ROOT / "projects" / f"{PREFIX}{slug}"
         edit = json.loads((proj / "edit.json").read_text())
         out = proj / "exports"
         out.mkdir(exist_ok=True)
-        pairs = [(proj / "renders" / f"2026-10-13_c5-{slug}.mp4", out / f"OSM_{n:02d}_{name}.mp4")]
-        nm = proj / "renders" / f"2026-10-13_c5-{slug}_nomusic.mp4"
+        n += NUM0
+        pairs = [(proj / "renders" / f"{PREFIX}{slug}.mp4", out / f"OSM_{n:02d}_{name}.mp4")]
+        nm = proj / "renders" / f"{PREFIX}{slug}_nomusic.mp4"
         if nm.exists():
             pairs.append((nm, out / f"OSM_{n:02d}_{name}_no-music.mp4"))
         # expected frames: clips (frame-exact) + tail
@@ -86,7 +95,7 @@ def main():
                 row["send_mb"] = round(send.stat().st_size / 1048576, 1)
             report.append(row)
             print(json.dumps(row, ensure_ascii=False))
-    (ROOT / "projects" / "_c5" / "export_report.json").write_text(json.dumps(report, indent=1, ensure_ascii=False))
+    (ROOT / "projects" / ("_c5" if BATCH == "c5" else "_n6") / "export_report.json").write_text(json.dumps(report, indent=1, ensure_ascii=False))
 
 
 if __name__ == "__main__":

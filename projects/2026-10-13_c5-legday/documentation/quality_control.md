@@ -9,7 +9,7 @@
 | Frozen frames | [{'start': 30.3333, 'end': None}] = the static end card (expected) |
 | Dialogue sync (per clip, cross-correlation) | no dialogue (music-only edit) |
 | Source unchanged | sha256 48e88135d15f… matches the download |
-| Export `OSM_05_leg-day.mp4` | h264 1080x1920 30/1, 960 frames, 27.9 MB, full decode OK |
+| Export `OSM_05_leg-day.mp4` | h264 1080x1920 30/1, 960 frames, 27.7 MB, full decode OK |
 
 ## Looked at
 - Contact sheets of the whole render (2–4 fps) and frame-by-frame strips of every transition.
