@@ -1,0 +1,547 @@
+{
+ "source": "projects/2026-10-14_n1-0112/work/tx/original.vocals.words.json",
+ "reference": "projects/_n6/refs/n1-0112.txt",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 23.54,
+   "words": [
+    {
+     "w": "هل",
+     "start": 0.0,
+     "end": 0.3,
+     "matched": true
+    },
+    {
+     "w": "الكرياتين",
+     "start": 0.3,
+     "end": 0.78,
+     "matched": true
+    },
+    {
+     "w": "يستاهل",
+     "start": 0.78,
+     "end": 1.14,
+     "matched": true
+    },
+    {
+     "w": "فلوسك",
+     "start": 1.14,
+     "end": 1.54,
+     "matched": true
+    },
+    {
+     "w": "ولا",
+     "start": 1.54,
+     "end": 1.7,
+     "matched": true
+    },
+    {
+     "w": "لا؟",
+     "start": 1.7,
+     "end": 1.92,
+     "matched": true
+    },
+    {
+     "w": "الكرياتين",
+     "start": 1.92,
+     "end": 2.4,
+     "matched": true
+    },
+    {
+     "w": "بيساعدك",
+     "start": 2.4,
+     "end": 2.92,
+     "matched": true
+    },
+    {
+     "w": "ان",
+     "start": 2.86,
+     "end": 2.98,
+     "matched": false
+    },
+    {
+     "w": "انت",
+     "start": 2.92,
+     "end": 3.04,
+     "matched": true
+    },
+    {
+     "w": "تزود",
+     "start": 3.04,
+     "end": 3.3,
+     "matched": true
+    },
+    {
+     "w": "القوة",
+     "start": 3.3,
+     "end": 3.62,
+     "matched": true
+    },
+    {
+     "w": "بتاعتك،",
+     "start": 3.62,
+     "end": 3.98,
+     "matched": true
+    },
+    {
+     "w": "ترفع",
+     "start": 3.98,
+     "end": 4.26,
+     "matched": true
+    },
+    {
+     "w": "اوزان،",
+     "start": 4.26,
+     "end": 4.58,
+     "matched": true
+    },
+    {
+     "w": "وده",
+     "start": 4.94,
+     "end": 5.16,
+     "matched": true
+    },
+    {
+     "w": "مع",
+     "start": 5.16,
+     "end": 5.24,
+     "matched": true
+    },
+    {
+     "w": "الوقت",
+     "start": 5.24,
+     "end": 5.58,
+     "matched": true
+    },
+    {
+     "w": "بينعكس",
+     "start": 5.58,
+     "end": 6.1,
+     "matched": true
+    },
+    {
+     "w": "ان",
+     "start": 6.1,
+     "end": 6.16,
+     "matched": true
+    },
+    {
+     "w": "انت",
+     "start": 6.16,
+     "end": 6.36,
+     "matched": true
+    },
+    {
+     "w": "بتزيد",
+     "start": 6.36,
+     "end": 6.7,
+     "matched": true
+    },
+    {
+     "w": "في",
+     "start": 6.7,
+     "end": 6.78,
+     "matched": true
+    },
+    {
+     "w": "الكتلة",
+     "start": 6.78,
+     "end": 7.08,
+     "matched": true
+    },
+    {
+     "w": "العضلية.",
+     "start": 7.08,
+     "end": 7.5,
+     "matched": true
+    },
+    {
+     "w": "الكرياتين",
+     "start": 7.5,
+     "end": 8.08,
+     "matched": true
+    },
+    {
+     "w": "موجود",
+     "start": 8.08,
+     "end": 8.36,
+     "matched": true
+    },
+    {
+     "w": "في",
+     "start": 8.36,
+     "end": 8.46,
+     "matched": true
+    },
+    {
+     "w": "الاكل",
+     "start": 8.46,
+     "end": 8.74,
+     "matched": true
+    },
+    {
+     "w": "زي",
+     "start": 8.74,
+     "end": 8.98,
+     "matched": true
+    },
+    {
+     "w": "السمك",
+     "start": 8.98,
+     "end": 9.32,
+     "matched": true
+    },
+    {
+     "w": "او",
+     "start": 9.32,
+     "end": 9.46,
+     "matched": true
+    },
+    {
+     "w": "اللحمة،",
+     "start": 9.46,
+     "end": 9.76,
+     "matched": true
+    },
+    {
+     "w": "بس",
+     "start": 9.76,
+     "end": 9.94,
+     "matched": true
+    },
+    {
+     "w": "مش",
+     "start": 9.94,
+     "end": 10.02,
+     "matched": true
+    },
+    {
+     "w": "هيكفي",
+     "start": 10.02,
+     "end": 10.38,
+     "matched": true
+    },
+    {
+     "w": "احتياجك.",
+     "start": 10.38,
+     "end": 10.7,
+     "matched": true
+    },
+    {
+     "w": "فعشان",
+     "start": 10.7,
+     "end": 11.02,
+     "matched": true
+    },
+    {
+     "w": "كده",
+     "start": 11.02,
+     "end": 11.3,
+     "matched": true
+    },
+    {
+     "w": "لو",
+     "start": 11.3,
+     "end": 11.4,
+     "matched": true
+    },
+    {
+     "w": "انت",
+     "start": 11.4,
+     "end": 11.6,
+     "matched": true
+    },
+    {
+     "w": "رياضي",
+     "start": 11.6,
+     "end": 11.94,
+     "matched": true
+    },
+    {
+     "w": "لازم",
+     "start": 11.94,
+     "end": 12.46,
+     "matched": true
+    },
+    {
+     "w": "تاخد",
+     "start": 12.46,
+     "end": 12.7,
+     "matched": true
+    },
+    {
+     "w": "كرياتين.",
+     "start": 12.7,
+     "end": 13.08,
+     "matched": true
+    },
+    {
+     "w": "في",
+     "start": 13.08,
+     "end": 13.18,
+     "matched": true
+    },
+    {
+     "w": "معلومة",
+     "start": 13.18,
+     "end": 13.62,
+     "matched": true
+    },
+    {
+     "w": "مغلوطة",
+     "start": 13.62,
+     "end": 13.92,
+     "matched": true
+    },
+    {
+     "w": "عند",
+     "start": 13.92,
+     "end": 14.08,
+     "matched": true
+    },
+    {
+     "w": "الناس",
+     "start": 14.08,
+     "end": 14.46,
+     "matched": true
+    },
+    {
+     "w": "ان",
+     "start": 14.46,
+     "end": 14.52,
+     "matched": true
+    },
+    {
+     "w": "الكرياتين",
+     "start": 14.52,
+     "end": 14.98,
+     "matched": true
+    },
+    {
+     "w": "بيحبس",
+     "start": 14.98,
+     "end": 15.28,
+     "matched": true
+    },
+    {
+     "w": "مايه",
+     "start": 15.28,
+     "end": 15.46,
+     "matched": true
+    },
+    {
+     "w": "تحت",
+     "start": 15.46,
+     "end": 15.64,
+     "matched": true
+    },
+    {
+     "w": "الجلد.",
+     "start": 15.64,
+     "end": 15.94,
+     "matched": true
+    },
+    {
+     "w": "الكلام",
+     "start": 15.94,
+     "end": 16.2,
+     "matched": true
+    },
+    {
+     "w": "ده",
+     "start": 16.2,
+     "end": 16.32,
+     "matched": true
+    },
+    {
+     "w": "مش",
+     "start": 16.32,
+     "end": 16.36,
+     "matched": true
+    },
+    {
+     "w": "صح،",
+     "start": 16.36,
+     "end": 16.66,
+     "matched": true
+    },
+    {
+     "w": "الكرياتين",
+     "start": 16.66,
+     "end": 17.18,
+     "matched": true
+    },
+    {
+     "w": "بيخزن",
+     "start": 17.18,
+     "end": 17.7,
+     "matched": true
+    },
+    {
+     "w": "مايه",
+     "start": 17.7,
+     "end": 17.96,
+     "matched": true
+    },
+    {
+     "w": "في",
+     "start": 17.96,
+     "end": 18.06,
+     "matched": true
+    },
+    {
+     "w": "العضلات،",
+     "start": 18.06,
+     "end": 18.5,
+     "matched": true
+    },
+    {
+     "w": "وده",
+     "start": 18.5,
+     "end": 18.72,
+     "matched": true
+    },
+    {
+     "w": "بيدي",
+     "start": 18.72,
+     "end": 18.88,
+     "matched": true
+    },
+    {
+     "w": "شكل",
+     "start": 18.88,
+     "end": 19.14,
+     "matched": true
+    },
+    {
+     "w": "احسن",
+     "start": 19.14,
+     "end": 19.5,
+     "matched": true
+    },
+    {
+     "w": "للعضلات",
+     "start": 19.5,
+     "end": 19.98,
+     "matched": true
+    },
+    {
+     "w": "اصلا.",
+     "start": 19.98,
+     "end": 20.18,
+     "matched": true
+    },
+    {
+     "w": "اكتبلي",
+     "start": 20.18,
+     "end": 20.48,
+     "matched": true
+    },
+    {
+     "w": "في",
+     "start": 20.48,
+     "end": 20.52,
+     "matched": true
+    },
+    {
+     "w": "الكومنتس",
+     "start": 20.52,
+     "end": 20.94,
+     "matched": true
+    },
+    {
+     "w": "ايه",
+     "start": 20.94,
+     "end": 21.2,
+     "matched": true
+    },
+    {
+     "w": "نوع",
+     "start": 21.2,
+     "end": 21.38,
+     "matched": true
+    },
+    {
+     "w": "Supplement",
+     "start": 21.38,
+     "end": 21.88,
+     "matched": true
+    },
+    {
+     "w": "اللي",
+     "start": 21.88,
+     "end": 22.0,
+     "matched": true
+    },
+    {
+     "w": "انت",
+     "start": 22.0,
+     "end": 22.06,
+     "matched": true
+    },
+    {
+     "w": "عايزني",
+     "start": 22.06,
+     "end": 22.24,
+     "matched": true
+    },
+    {
+     "w": "اتكلم",
+     "start": 22.24,
+     "end": 22.58,
+     "matched": true
+    },
+    {
+     "w": "عنه",
+     "start": 22.58,
+     "end": 22.82,
+     "matched": true
+    },
+    {
+     "w": "في",
+     "start": 22.82,
+     "end": 22.92,
+     "matched": true
+    },
+    {
+     "w": "الفيديو",
+     "start": 22.92,
+     "end": 23.18,
+     "matched": true
+    },
+    {
+     "w": "اللي",
+     "start": 23.18,
+     "end": 23.38,
+     "matched": true
+    },
+    {
+     "w": "جاي.",
+     "start": 23.38,
+     "end": 23.54,
+     "matched": true
+    }
+   ]
+  }
+ ],
+ "report": [
+  "   ---  (missing)  ->  ان",
+  "  3.04  تزاد  ->  تزود",
+  "  4.26  عوزان  ->  اوزان،",
+  "  4.58  اكتر  ->  (dropped)",
+  "  6.78  القطرة  ->  الكتلة",
+  " 10.02  هيكف  ->  هيكفي",
+  " 10.28  في  ->  (part of هيكفي)",
+  " 15.28  مية  ->  مايه",
+  " 15.94  كلام  ->  الكلام",
+  " 17.70  مية  ->  مايه",
+  " 18.72  بيد  ->  بيدي",
+  " 18.88  بشكل  ->  شكل",
+  " 19.98  اخرى  ->  اصلا.",
+  " 21.38  السابلمنت  ->  Supplement",
+  " 22.06  عايز  ->  عايزني",
+  " 22.24  نتكلم  ->  اتكلم",
+  " 22.92  الفيديوز  ->  الفيديو"
+ ]
+}

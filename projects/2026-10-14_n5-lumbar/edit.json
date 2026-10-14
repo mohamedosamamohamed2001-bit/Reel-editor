@@ -1,0 +1,1205 @@
+{
+ "title": "OSM: glutes & lower back, one machine",
+ "fps": 30,
+ "width": 1080,
+ "height": 1920,
+ "media": {
+  "main": "source/original.mp4",
+  "v_glutes": "work/visuals/glutes_hams.jpg",
+  "v_es": "work/visuals/a_deep_back.jpg"
+ },
+ "audio": {
+  "main": "work/stems/original.vocals.wav"
+ },
+ "dialogueFx": "highpass=f=70,acompressor=threshold=0.1:ratio=2.5:attack=8:release=120:makeup=1.5",
+ "dialogueLufs": -16.0,
+ "plates": {
+  "grade": "eq=contrast=1.05:saturation=0.95:gamma=0.99,colorbalance=rs=-0.015:bs=0.02:rm=-0.01:bm=0.005:rh=0.012:gh=0.004:bh=-0.012,curves=master='0/0 0.22/0.2 0.78/0.8 1/1',vignette=angle=PI/7",
+  "sharpen": "cas=strength=0.22"
+ },
+ "clips": [
+  {
+   "src": "main",
+   "in": 0.0,
+   "out": 2.05,
+   "zoom": [
+    1.0,
+    1.06
+   ],
+   "focusY": 0.4
+  },
+  {
+   "src": "main",
+   "in": 2.05,
+   "out": 2.46,
+   "zoom": 1.0,
+   "hold": 2.5,
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  },
+  {
+   "src": "main",
+   "in": 2.46,
+   "out": 4.81,
+   "zoom": [
+    1.0,
+    1.04
+   ]
+  },
+  {
+   "src": "main",
+   "in": 4.81,
+   "out": 5.3,
+   "zoom": 1.0,
+   "hold": 5.34,
+   "tin": {
+    "type": "zoom",
+    "flash": true
+   }
+  },
+  {
+   "src": "main",
+   "in": 5.3,
+   "out": 22.4,
+   "zoom": [
+    1.0,
+    1.05
+   ]
+  },
+  {
+   "src": "main",
+   "in": 22.4,
+   "out": 22.56,
+   "zoom": 1.0,
+   "hold": 22.6,
+   "tin": {
+    "type": "zoom",
+    "flash": true
+   }
+  },
+  {
+   "src": "main",
+   "in": 22.56,
+   "out": 24.81,
+   "zoom": [
+    1.0,
+    1.05
+   ]
+  },
+  {
+   "src": "main",
+   "in": 24.81,
+   "out": 25.0,
+   "zoom": 1.0,
+   "hold": 25.03,
+   "tin": {
+    "type": "whip",
+    "dir": "up"
+   }
+  },
+  {
+   "src": "main",
+   "in": 25.0,
+   "out": 54.18,
+   "zoom": [
+    1.0,
+    1.04
+   ]
+  },
+  {
+   "src": "main",
+   "in": 54.18,
+   "out": 54.52,
+   "zoom": 1.0,
+   "hold": 54.6,
+   "tin": {
+    "type": "zoom",
+    "flash": true
+   }
+  },
+  {
+   "src": "main",
+   "in": 54.52,
+   "out": 58.8,
+   "zoom": [
+    1.0,
+    1.04
+   ]
+  }
+ ],
+ "captions": {
+  "wordsFile": "work/tx/aligned.words.json",
+  "style": "plate",
+  "anchorPlate": true,
+  "karaoke": true,
+  "maxWords": 3,
+  "maxChars": 22,
+  "keywords": [
+   "glutes",
+   "hip",
+   "dumbbells",
+   "lower",
+   "erector",
+   "انقباض",
+   "ينفعش"
+  ]
+ },
+ "overlays": [
+  {
+   "type": "kineticTitle",
+   "at": 0.05,
+   "dur": 1.9333333333333331,
+   "eyebrow": "OSM · ONE MACHINE",
+   "lines": [
+    {
+     "text": "GLUTES"
+    },
+    {
+     "text": "& LOWER BACK",
+     "accent": true,
+     "size": 120
+    }
+   ],
+   "top": 0.16,
+   "tilt": true
+  },
+  {
+   "type": "visualCard",
+   "src": "v_glutes",
+   "at": 3.66,
+   "dur": 1.09,
+   "mode": "card",
+   "label": "Glutes · Hamstring",
+   "markers": [
+    {
+     "at": 0.2,
+     "x": 0.68,
+     "y": 0.24,
+     "label": "GLUTES",
+     "r": 0.16
+    },
+    {
+     "at": 0.9840000000000002,
+     "x": 0.66,
+     "y": 0.6,
+     "label": "HAMSTRING",
+     "r": 0.14
+    }
+   ]
+  },
+  {
+   "type": "lowerLabel",
+   "at": 4.8999999999999995,
+   "dur": 6.76,
+   "eyebrow": "MOVE 01 · SETUP",
+   "title": "تحت Hip بحاجة بسيطة",
+   "top": 0.14
+  },
+  {
+   "type": "lowerLabel",
+   "at": 11.66,
+   "dur": 5.72,
+   "eyebrow": "MOVE 01",
+   "title": "GLUTES",
+   "top": 0.14
+  },
+  {
+   "type": "stepBadge",
+   "at": 17.53,
+   "dur": 4.8199999999999985,
+   "mark": "+",
+   "label": "2 Dumbbells",
+   "top": 0.15
+  },
+  {
+   "type": "kineticTitle",
+   "at": 24.22,
+   "dur": 0.5300000000000005,
+   "eyebrow": "MOVE 02",
+   "lines": [
+    {
+     "text": "LOWER BACK",
+     "accent": true,
+     "size": 150
+    }
+   ],
+   "top": 0.16
+  },
+  {
+   "type": "visualCard",
+   "src": "v_es",
+   "at": 26.78,
+   "dur": 2.6,
+   "mode": "card",
+   "label": "Erector spinae",
+   "markers": [
+    {
+     "at": 0.25,
+     "x": 0.58,
+     "y": 0.5,
+     "label": "ERECTOR SPINAE",
+     "r": 0.13
+    }
+   ]
+  },
+  {
+   "type": "stepBadge",
+   "at": 33.83,
+   "dur": 3.569999999999999,
+   "mark": "↑",
+   "label": "فوق مستوى Hip",
+   "top": 0.15
+  },
+  {
+   "type": "stepBadge",
+   "at": 41.57,
+   "dur": 3.0799999999999996,
+   "mark": "✗",
+   "label": "ما ينفعش كده",
+   "top": 0.15
+  },
+  {
+   "type": "stepBadge",
+   "at": 44.849999999999994,
+   "dur": 9.150000000000002,
+   "mark": "✓",
+   "label": "بالشكل ده",
+   "top": 0.15
+  },
+  {
+   "type": "endCard",
+   "at": 58.8,
+   "dur": 2.4,
+   "cta": "OSM Coach Osama",
+   "reveal": "wipe"
+  }
+ ],
+ "shakes": [
+  {
+   "at": 0.0,
+   "amp": 0.5
+  },
+  {
+   "at": 4.8,
+   "amp": 0.6
+  },
+  {
+   "at": 22.4,
+   "amp": 0.6
+  },
+  {
+   "at": 44.849999999999994,
+   "amp": 0.6
+  },
+  {
+   "at": 58.8,
+   "amp": 0.6
+  }
+ ],
+ "sfx": {
+  "cues": [
+   {
+    "at": 0.0,
+    "sound": "boom",
+    "gain_db": -9
+   },
+   {
+    "at": 0.12,
+    "sound": "slam",
+    "gain_db": -15
+   },
+   {
+    "at": 2.0333,
+    "sound": "whip",
+    "gain_db": -11,
+    "dir": -1.0
+   },
+   {
+    "at": 3.66,
+    "sound": "whip",
+    "gain_db": -13,
+    "dir": 1.0
+   },
+   {
+    "at": 3.96,
+    "sound": "mech",
+    "gain_db": -17
+   },
+   {
+    "at": 4.944,
+    "sound": "mech",
+    "gain_db": -18
+   },
+   {
+    "at": 4.3,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.5
+   },
+   {
+    "at": 4.8,
+    "sound": "boom",
+    "gain_db": -10
+   },
+   {
+    "at": 5.1,
+    "sound": "click",
+    "gain_db": -19
+   },
+   {
+    "at": 11.76,
+    "sound": "slam",
+    "gain_db": -16
+   },
+   {
+    "at": 17.68,
+    "sound": "slam",
+    "gain_db": -15
+   },
+   {
+    "at": 21.9,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.5
+   },
+   {
+    "at": 22.4,
+    "sound": "boom",
+    "gain_db": -10
+   },
+   {
+    "at": 24.32,
+    "sound": "slam",
+    "gain_db": -14
+   },
+   {
+    "at": 24.8,
+    "sound": "whip",
+    "gain_db": -11,
+    "dir": 1.0,
+    "bright": 7500
+   },
+   {
+    "at": 26.78,
+    "sound": "whip",
+    "gain_db": -13,
+    "dir": -1.0
+   },
+   {
+    "at": 27.03,
+    "sound": "mech",
+    "gain_db": -17
+   },
+   {
+    "at": 33.93,
+    "sound": "click",
+    "gain_db": -18
+   },
+   {
+    "at": 41.57,
+    "sound": "slam",
+    "gain_db": -14
+   },
+   {
+    "at": 44.85,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 44.95,
+    "sound": "slam",
+    "gain_db": -16
+   },
+   {
+    "at": 53.6667,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.5
+   },
+   {
+    "at": 54.1667,
+    "sound": "boom",
+    "gain_db": -10
+   },
+   {
+    "at": 58.8,
+    "sound": "reverse_hit",
+    "gain_db": -12,
+    "dur": 0.7
+   },
+   {
+    "at": 58.8,
+    "sound": "boom",
+    "gain_db": -7
+   },
+   {
+    "at": 59.3,
+    "sound": "click",
+    "gain_db": -17
+   }
+  ]
+ },
+ "music": {
+  "src": "work/music/music.wav",
+  "gain_db": -9
+ },
+ "tail": 2.4,
+ "covers": [
+  {
+   "src": "main",
+   "at": 0.0,
+   "dur": 0.39,
+   "kind": "blur",
+   "box": [
+    0.0694,
+    0.6122,
+    0.9778,
+    0.7956
+   ]
+  },
+  {
+   "src": "main",
+   "at": 0.35,
+   "dur": 1.54,
+   "kind": "blur",
+   "box": [
+    0.0694,
+    0.6122,
+    0.9778,
+    0.7378
+   ]
+  },
+  {
+   "src": "main",
+   "at": 1.85,
+   "dur": 0.24,
+   "kind": "blur",
+   "box": [
+    0.2167,
+    0.6356,
+    0.7778,
+    0.7253
+   ]
+  },
+  {
+   "src": "main",
+   "at": 2.05,
+   "dur": 0.14,
+   "kind": "blur",
+   "box": [
+    0.2167,
+    0.6169,
+    1.0,
+    0.7472
+   ]
+  },
+  {
+   "src": "main",
+   "at": 2.15,
+   "dur": 2.94,
+   "kind": "blur",
+   "box": [
+    0.0028,
+    0.6169,
+    1.0,
+    0.7472
+   ]
+  },
+  {
+   "src": "main",
+   "at": 5.05,
+   "dur": 0.84,
+   "kind": "blur",
+   "box": [
+    0.2194,
+    0.6341,
+    0.7722,
+    0.7425
+   ]
+  },
+  {
+   "src": "main",
+   "at": 5.85,
+   "dur": 1.04,
+   "kind": "blur",
+   "box": [
+    0.1861,
+    0.6341,
+    0.8083,
+    0.7425
+   ]
+  },
+  {
+   "src": "main",
+   "at": 6.85,
+   "dur": 2.04,
+   "kind": "blur",
+   "box": [
+    0.0,
+    0.6325,
+    1.0,
+    0.7425
+   ]
+  },
+  {
+   "src": "main",
+   "at": 8.85,
+   "dur": 0.44,
+   "kind": "blur",
+   "box": [
+    0.0,
+    0.5966,
+    1.0,
+    0.7675
+   ]
+  },
+  {
+   "src": "main",
+   "at": 9.25,
+   "dur": 2.74,
+   "kind": "blur",
+   "box": [
+    0.075,
+    0.5966,
+    0.9417,
+    0.7675
+   ]
+  },
+  {
+   "src": "main",
+   "at": 11.95,
+   "dur": 0.94,
+   "kind": "blur",
+   "box": [
+    0.15,
+    0.6356,
+    0.85,
+    0.7425
+   ]
+  },
+  {
+   "src": "main",
+   "at": 12.85,
+   "dur": 0.54,
+   "kind": "blur",
+   "box": [
+    0.15,
+    0.6356,
+    0.85,
+    0.7878
+   ]
+  },
+  {
+   "src": "main",
+   "at": 13.35,
+   "dur": 0.14,
+   "kind": "blur",
+   "box": [
+    0.5528,
+    0.6731,
+    0.7389,
+    0.7878
+   ]
+  },
+  {
+   "src": "main",
+   "at": 13.45,
+   "dur": 1.14,
+   "kind": "blur",
+   "box": [
+    0.5611,
+    0.6716,
+    0.7389,
+    0.7425
+   ]
+  },
+  {
+   "src": "main",
+   "at": 14.55,
+   "dur": 1.34,
+   "kind": "blur",
+   "box": [
+    0.25,
+    0.6341,
+    0.7583,
+    0.7425
+   ]
+  },
+  {
+   "src": "main",
+   "at": 15.85,
+   "dur": 0.14,
+   "kind": "blur",
+   "box": [
+    0.5611,
+    0.6731,
+    0.7389,
+    0.7425
+   ]
+  },
+  {
+   "src": "main",
+   "at": 15.95,
+   "dur": 1.14,
+   "kind": "blur",
+   "box": [
+    0.25,
+    0.6341,
+    0.7583,
+    0.7425
+   ]
+  },
+  {
+   "src": "main",
+   "at": 17.05,
+   "dur": 0.1,
+   "kind": "blur",
+   "box": [
+    0.5611,
+    0.6731,
+    0.7389,
+    0.7425
+   ]
+  },
+  {
+   "src": "main",
+   "at": 17.55,
+   "dur": 0.74,
+   "kind": "blur",
+   "box": [
+    0.5611,
+    0.6731,
+    0.7389,
+    0.7425
+   ]
+  },
+  {
+   "src": "main",
+   "at": 18.25,
+   "dur": 0.54,
+   "kind": "blur",
+   "box": [
+    0.3667,
+    0.6559,
+    0.7389,
+    0.7425
+   ]
+  },
+  {
+   "src": "main",
+   "at": 18.75,
+   "dur": 0.64,
+   "kind": "blur",
+   "box": [
+    0.5611,
+    0.6731,
+    0.7389,
+    0.7425
+   ]
+  },
+  {
+   "src": "main",
+   "at": 19.35,
+   "dur": 1.34,
+   "kind": "blur",
+   "box": [
+    0.3667,
+    0.6559,
+    0.7389,
+    0.7425
+   ]
+  },
+  {
+   "src": "main",
+   "at": 20.65,
+   "dur": 0.44,
+   "kind": "blur",
+   "box": [
+    0.5611,
+    0.6716,
+    0.7389,
+    0.7425
+   ]
+  },
+  {
+   "src": "main",
+   "at": 21.05,
+   "dur": 1.24,
+   "kind": "blur",
+   "box": [
+    0.2556,
+    0.6153,
+    0.7667,
+    0.7425
+   ]
+  },
+  {
+   "src": "main",
+   "at": 22.25,
+   "dur": 0.54,
+   "kind": "blur",
+   "box": [
+    0.0417,
+    0.6153,
+    0.8,
+    0.7425
+   ]
+  },
+  {
+   "src": "main",
+   "at": 22.75,
+   "dur": 0.64,
+   "kind": "blur",
+   "box": [
+    0.0417,
+    0.6138,
+    0.9917,
+    0.7378
+   ]
+  },
+  {
+   "src": "main",
+   "at": 23.35,
+   "dur": 0.54,
+   "kind": "blur",
+   "box": [
+    0.0417,
+    0.6138,
+    0.8,
+    0.7378
+   ]
+  },
+  {
+   "src": "main",
+   "at": 23.85,
+   "dur": 0.64,
+   "kind": "blur",
+   "box": [
+    0.0417,
+    0.6153,
+    0.7,
+    0.7378
+   ]
+  },
+  {
+   "src": "main",
+   "at": 24.45,
+   "dur": 0.24,
+   "kind": "blur",
+   "box": [
+    0.2667,
+    0.6403,
+    0.7389,
+    0.7175
+   ]
+  },
+  {
+   "src": "main",
+   "at": 24.65,
+   "dur": 5.14,
+   "kind": "blur",
+   "box": [
+    0.1778,
+    0.6138,
+    0.8222,
+    0.7316
+   ]
+  },
+  {
+   "src": "main",
+   "at": 29.75,
+   "dur": 0.14,
+   "kind": "blur",
+   "box": [
+    0.4778,
+    0.6153,
+    0.6611,
+    0.7253
+   ]
+  },
+  {
+   "src": "main",
+   "at": 29.85,
+   "dur": 0.25,
+   "kind": "blur",
+   "box": [
+    0.4778,
+    0.6559,
+    0.6556,
+    0.7253
+   ]
+  },
+  {
+   "src": "main",
+   "at": 30.85,
+   "dur": 0.65,
+   "kind": "blur",
+   "box": [
+    0.4694,
+    0.6169,
+    0.6556,
+    0.6878
+   ]
+  },
+  {
+   "src": "main",
+   "at": 31.65,
+   "dur": 0.84,
+   "kind": "blur",
+   "box": [
+    0.4778,
+    0.6559,
+    0.6556,
+    0.7253
+   ]
+  },
+  {
+   "src": "main",
+   "at": 32.45,
+   "dur": 0.24,
+   "kind": "blur",
+   "box": [
+    0.2583,
+    0.6169,
+    0.7417,
+    0.7331
+   ]
+  },
+  {
+   "src": "main",
+   "at": 32.65,
+   "dur": 0.14,
+   "kind": "blur",
+   "box": [
+    0.0778,
+    0.6153,
+    0.9333,
+    0.7488
+   ]
+  },
+  {
+   "src": "main",
+   "at": 32.75,
+   "dur": 0.14,
+   "kind": "blur",
+   "box": [
+    0.4833,
+    0.6184,
+    0.6583,
+    0.6878
+   ]
+  },
+  {
+   "src": "main",
+   "at": 32.85,
+   "dur": 1.04,
+   "kind": "blur",
+   "box": [
+    0.2583,
+    0.6169,
+    0.7417,
+    0.7331
+   ]
+  },
+  {
+   "src": "main",
+   "at": 33.85,
+   "dur": 2.34,
+   "kind": "blur",
+   "box": [
+    0.0778,
+    0.6153,
+    0.9333,
+    0.7488
+   ]
+  },
+  {
+   "src": "main",
+   "at": 36.15,
+   "dur": 1.44,
+   "kind": "blur",
+   "box": [
+    0.1111,
+    0.6153,
+    0.9056,
+    0.7472
+   ]
+  },
+  {
+   "src": "main",
+   "at": 37.55,
+   "dur": 2.04,
+   "kind": "blur",
+   "box": [
+    0.0333,
+    0.6153,
+    0.9667,
+    0.7472
+   ]
+  },
+  {
+   "src": "main",
+   "at": 39.55,
+   "dur": 1.24,
+   "kind": "blur",
+   "box": [
+    0.2056,
+    0.6184,
+    0.7944,
+    0.7269
+   ]
+  },
+  {
+   "src": "main",
+   "at": 40.75,
+   "dur": 0.54,
+   "kind": "blur",
+   "box": [
+    0.2917,
+    0.6169,
+    0.7056,
+    0.7253
+   ]
+  },
+  {
+   "src": "main",
+   "at": 41.25,
+   "dur": 2.64,
+   "kind": "blur",
+   "box": [
+    0.0333,
+    0.6044,
+    0.9639,
+    0.7409
+   ]
+  },
+  {
+   "src": "main",
+   "at": 43.85,
+   "dur": 1.54,
+   "kind": "blur",
+   "box": [
+    0.2417,
+    0.6028,
+    0.7583,
+    0.7253
+   ]
+  },
+  {
+   "src": "main",
+   "at": 45.35,
+   "dur": 0.94,
+   "kind": "blur",
+   "box": [
+    0.2806,
+    0.6028,
+    0.7444,
+    0.7253
+   ]
+  },
+  {
+   "src": "main",
+   "at": 46.25,
+   "dur": 0.24,
+   "kind": "blur",
+   "box": [
+    0.5667,
+    0.6044,
+    0.75,
+    0.6753
+   ]
+  },
+  {
+   "src": "main",
+   "at": 46.45,
+   "dur": 1.44,
+   "kind": "blur",
+   "box": [
+    0.1611,
+    0.6044,
+    0.8389,
+    0.7269
+   ]
+  },
+  {
+   "src": "main",
+   "at": 47.85,
+   "dur": 0.34,
+   "kind": "blur",
+   "box": [
+    0.1611,
+    0.6356,
+    0.8389,
+    0.7269
+   ]
+  },
+  {
+   "src": "main",
+   "at": 48.15,
+   "dur": 0.24,
+   "kind": "blur",
+   "box": [
+    0.5889,
+    0.6138,
+    0.7667,
+    0.6831
+   ]
+  },
+  {
+   "src": "main",
+   "at": 48.35,
+   "dur": 0.84,
+   "kind": "blur",
+   "box": [
+    0.5889,
+    0.6138,
+    0.7667,
+    0.7253
+   ]
+  },
+  {
+   "src": "main",
+   "at": 49.15,
+   "dur": 1.14,
+   "kind": "blur",
+   "box": [
+    0.5889,
+    0.6184,
+    0.7667,
+    0.6972
+   ]
+  },
+  {
+   "src": "main",
+   "at": 50.25,
+   "dur": 0.54,
+   "kind": "blur",
+   "box": [
+    0.3722,
+    0.6247,
+    0.7667,
+    0.7175
+   ]
+  },
+  {
+   "src": "main",
+   "at": 50.75,
+   "dur": 0.54,
+   "kind": "blur",
+   "box": [
+    0.3722,
+    0.6278,
+    0.6278,
+    0.7175
+   ]
+  },
+  {
+   "src": "main",
+   "at": 51.25,
+   "dur": 3.44,
+   "kind": "blur",
+   "box": [
+    0.0111,
+    0.5934,
+    1.0,
+    0.7581
+   ]
+  },
+  {
+   "src": "main",
+   "at": 54.65,
+   "dur": 2.14,
+   "kind": "blur",
+   "box": [
+    0.0361,
+    0.595,
+    0.9667,
+    0.7175
+   ]
+  },
+  {
+   "src": "main",
+   "at": 56.75,
+   "dur": 0.34,
+   "kind": "blur",
+   "box": [
+    0.1861,
+    0.595,
+    0.8139,
+    0.7175
+   ]
+  },
+  {
+   "src": "main",
+   "at": 57.05,
+   "dur": 0.54,
+   "kind": "blur",
+   "box": [
+    0.3333,
+    0.595,
+    0.8139,
+    0.7175
+   ]
+  },
+  {
+   "src": "main",
+   "at": 57.55,
+   "dur": 0.84,
+   "kind": "blur",
+   "box": [
+    0.1861,
+    0.595,
+    0.8139,
+    0.7175
+   ]
+  },
+  {
+   "src": "main",
+   "at": 58.35,
+   "dur": 0.74,
+   "kind": "blur",
+   "box": [
+    0.1861,
+    0.595,
+    0.8139,
+    0.7503
+   ]
+  },
+  {
+   "src": "main",
+   "at": 59.05,
+   "dur": 0.14,
+   "kind": "blur",
+   "box": [
+    0.1861,
+    0.6012,
+    0.8139,
+    0.7175
+   ]
+  },
+  {
+   "src": "main",
+   "at": 59.15,
+   "dur": 0.1,
+   "kind": "blur",
+   "box": [
+    0.3528,
+    0.6012,
+    0.8139,
+    0.7175
+   ]
+  }
+ ],
+ "blurMask": {
+  "file": "work/blurmask.mkv",
+  "band": [
+   512,
+   664
+  ],
+  "sigma": 16,
+  "darken": 0.12
+ },
+ "textPlate": "#56A0FB"
+}

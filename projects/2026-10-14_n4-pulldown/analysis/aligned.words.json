@@ -1,0 +1,780 @@
+{
+ "source": "projects/2026-10-14_n4-pulldown/work/tx/original.vocals.words.json",
+ "reference": "projects/_n6/refs/n4-pulldown.txt",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 42.78,
+   "words": [
+    {
+     "w": "لو",
+     "start": 0.0,
+     "end": 0.16,
+     "matched": true
+    },
+    {
+     "w": "انا",
+     "start": 0.16,
+     "end": 0.28,
+     "matched": true
+    },
+    {
+     "w": "بلعب",
+     "start": 0.28,
+     "end": 0.62,
+     "matched": true
+    },
+    {
+     "w": "Seated",
+     "start": 0.62,
+     "end": 0.92,
+     "matched": true
+    },
+    {
+     "w": "row،",
+     "start": 0.92,
+     "end": 1.22,
+     "matched": true
+    },
+    {
+     "w": "العب",
+     "start": 1.22,
+     "end": 1.58,
+     "matched": true
+    },
+    {
+     "w": "بالGrip",
+     "start": 1.58,
+     "end": 2.02,
+     "matched": true
+    },
+    {
+     "w": "دي",
+     "start": 2.02,
+     "end": 2.22,
+     "matched": true
+    },
+    {
+     "w": "ولا",
+     "start": 2.22,
+     "end": 2.9,
+     "matched": true
+    },
+    {
+     "w": "Grip",
+     "start": 2.9,
+     "end": 3.28,
+     "matched": true
+    },
+    {
+     "w": "دي،",
+     "start": 3.28,
+     "end": 3.52,
+     "matched": true
+    },
+    {
+     "w": "ولا",
+     "start": 3.52,
+     "end": 3.8,
+     "matched": true
+    },
+    {
+     "w": "مفيش",
+     "start": 3.8,
+     "end": 4.1,
+     "matched": true
+    },
+    {
+     "w": "فرق",
+     "start": 4.1,
+     "end": 4.28,
+     "matched": true
+    },
+    {
+     "w": "ما",
+     "start": 4.28,
+     "end": 4.38,
+     "matched": true
+    },
+    {
+     "w": "بينهم",
+     "start": 4.38,
+     "end": 4.6,
+     "matched": true
+    },
+    {
+     "w": "اصلا.",
+     "start": 4.6,
+     "end": 4.86,
+     "matched": true
+    },
+    {
+     "w": "وانا",
+     "start": 4.92,
+     "end": 5.18,
+     "matched": true
+    },
+    {
+     "w": "بلعب",
+     "start": 5.18,
+     "end": 5.48,
+     "matched": true
+    },
+    {
+     "w": "تمرين",
+     "start": 5.48,
+     "end": 5.88,
+     "matched": true
+    },
+    {
+     "w": "Seated",
+     "start": 5.88,
+     "end": 6.08,
+     "matched": true
+    },
+    {
+     "w": "row",
+     "start": 6.08,
+     "end": 6.28,
+     "matched": true
+    },
+    {
+     "w": "close،",
+     "start": 6.28,
+     "end": 6.74,
+     "matched": true
+    },
+    {
+     "w": "انا",
+     "start": 6.74,
+     "end": 7.04,
+     "matched": true
+    },
+    {
+     "w": "عندي",
+     "start": 7.04,
+     "end": 7.32,
+     "matched": true
+    },
+    {
+     "w": "Prime",
+     "start": 7.32,
+     "end": 7.6,
+     "matched": true
+    },
+    {
+     "w": "mover",
+     "start": 7.6,
+     "end": 7.88,
+     "matched": true
+    },
+    {
+     "w": "هنا",
+     "start": 7.88,
+     "end": 8.2,
+     "matched": true
+    },
+    {
+     "w": "هيبقى",
+     "start": 8.2,
+     "end": 8.94,
+     "matched": true
+    },
+    {
+     "w": "Lats،",
+     "start": 8.94,
+     "end": 9.3,
+     "matched": true
+    },
+    {
+     "w": "عشان",
+     "start": 9.3,
+     "end": 9.46,
+     "matched": true
+    },
+    {
+     "w": "انا",
+     "start": 9.46,
+     "end": 9.62,
+     "matched": true
+    },
+    {
+     "w": "بعمل",
+     "start": 9.62,
+     "end": 9.78,
+     "matched": true
+    },
+    {
+     "w": "حاجة",
+     "start": 9.78,
+     "end": 9.96,
+     "matched": true
+    },
+    {
+     "w": "اسمها",
+     "start": 9.96,
+     "end": 10.26,
+     "matched": true
+    },
+    {
+     "w": "Shoulder",
+     "start": 10.26,
+     "end": 11.02,
+     "matched": true
+    },
+    {
+     "w": "extension",
+     "start": 11.02,
+     "end": 11.4,
+     "matched": true
+    },
+    {
+     "w": "بالشكل",
+     "start": 11.4,
+     "end": 12.24,
+     "matched": true
+    },
+    {
+     "w": "ده",
+     "start": 12.24,
+     "end": 12.42,
+     "matched": true
+    },
+    {
+     "w": "كده",
+     "start": 12.42,
+     "end": 12.58,
+     "matched": true
+    },
+    {
+     "w": "بالظبط.",
+     "start": 12.58,
+     "end": 13.1,
+     "matched": true
+    },
+    {
+     "w": "فانا",
+     "start": 14.26,
+     "end": 14.86,
+     "matched": true
+    },
+    {
+     "w": "الاساسي",
+     "start": 14.86,
+     "end": 15.46,
+     "matched": true
+    },
+    {
+     "w": "معايا",
+     "start": 15.46,
+     "end": 15.66,
+     "matched": true
+    },
+    {
+     "w": "اللي",
+     "start": 15.6,
+     "end": 15.72,
+     "matched": false
+    },
+    {
+     "w": "شغال",
+     "start": 15.66,
+     "end": 16.3,
+     "matched": true
+    },
+    {
+     "w": "Lats،",
+     "start": 16.3,
+     "end": 16.8,
+     "matched": true
+    },
+    {
+     "w": "كده",
+     "start": 16.8,
+     "end": 17.16,
+     "matched": true
+    },
+    {
+     "w": "كده",
+     "start": 17.16,
+     "end": 17.3,
+     "matched": true
+    },
+    {
+     "w": "الظهر",
+     "start": 17.3,
+     "end": 17.52,
+     "matched": true
+    },
+    {
+     "w": "كله",
+     "start": 17.52,
+     "end": 17.76,
+     "matched": true
+    },
+    {
+     "w": "شغال",
+     "start": 17.76,
+     "end": 18.12,
+     "matched": true
+    },
+    {
+     "w": "بس",
+     "start": 18.12,
+     "end": 18.32,
+     "matched": true
+    },
+    {
+     "w": "بيكون",
+     "start": 18.32,
+     "end": 18.62,
+     "matched": true
+    },
+    {
+     "w": "بيشتغل",
+     "start": 18.62,
+     "end": 19.2,
+     "matched": true
+    },
+    {
+     "w": "بنسب",
+     "start": 19.2,
+     "end": 19.52,
+     "matched": true
+    },
+    {
+     "w": "معينة،",
+     "start": 19.52,
+     "end": 20.06,
+     "matched": true
+    },
+    {
+     "w": "ما",
+     "start": 20.0,
+     "end": 20.12,
+     "matched": false
+    },
+    {
+     "w": "ينفعش",
+     "start": 20.06,
+     "end": 20.52,
+     "matched": true
+    },
+    {
+     "w": "تعزل",
+     "start": 20.52,
+     "end": 20.84,
+     "matched": true
+    },
+    {
+     "w": "جزء",
+     "start": 20.84,
+     "end": 21.3,
+     "matched": true
+    },
+    {
+     "w": "على",
+     "start": 21.3,
+     "end": 21.44,
+     "matched": true
+    },
+    {
+     "w": "حساب",
+     "start": 21.44,
+     "end": 21.7,
+     "matched": true
+    },
+    {
+     "w": "جزء.",
+     "start": 21.7,
+     "end": 21.98,
+     "matched": true
+    },
+    {
+     "w": "تاني",
+     "start": 21.98,
+     "end": 22.22,
+     "matched": true
+    },
+    {
+     "w": "شكل",
+     "start": 22.22,
+     "end": 22.46,
+     "matched": true
+    },
+    {
+     "w": "ان",
+     "start": 22.4,
+     "end": 22.52,
+     "matched": false
+    },
+    {
+     "w": "انا",
+     "start": 22.46,
+     "end": 22.6,
+     "matched": true
+    },
+    {
+     "w": "بلعب",
+     "start": 22.6,
+     "end": 23.04,
+     "matched": true
+    },
+    {
+     "w": "Seated",
+     "start": 23.04,
+     "end": 23.5,
+     "matched": true
+    },
+    {
+     "w": "row",
+     "start": 23.5,
+     "end": 23.64,
+     "matched": true
+    },
+    {
+     "w": "wide",
+     "start": 23.64,
+     "end": 23.9,
+     "matched": true
+    },
+    {
+     "w": "بالشكل",
+     "start": 23.9,
+     "end": 24.44,
+     "matched": true
+    },
+    {
+     "w": "ده",
+     "start": 24.44,
+     "end": 24.6,
+     "matched": true
+    },
+    {
+     "w": "كده",
+     "start": 24.6,
+     "end": 24.8,
+     "matched": true
+    },
+    {
+     "w": "بالظبط،",
+     "start": 24.8,
+     "end": 25.26,
+     "matched": true
+    },
+    {
+     "w": "مختلفة",
+     "start": 25.26,
+     "end": 27.66,
+     "matched": true
+    },
+    {
+     "w": "عشان",
+     "start": 27.66,
+     "end": 28.06,
+     "matched": true
+    },
+    {
+     "w": "انا",
+     "start": 28.06,
+     "end": 28.36,
+     "matched": true
+    },
+    {
+     "w": "هنا",
+     "start": 28.36,
+     "end": 28.48,
+     "matched": true
+    },
+    {
+     "w": "كوعي",
+     "start": 28.48,
+     "end": 28.88,
+     "matched": true
+    },
+    {
+     "w": "بيكون",
+     "start": 28.88,
+     "end": 29.12,
+     "matched": true
+    },
+    {
+     "w": "لفوق",
+     "start": 29.12,
+     "end": 29.36,
+     "matched": true
+    },
+    {
+     "w": "شوية،",
+     "start": 29.36,
+     "end": 29.62,
+     "matched": true
+    },
+    {
+     "w": "فانا",
+     "start": 29.62,
+     "end": 29.9,
+     "matched": true
+    },
+    {
+     "w": "بعمل",
+     "start": 29.9,
+     "end": 30.14,
+     "matched": true
+    },
+    {
+     "w": "حاجة",
+     "start": 30.14,
+     "end": 30.38,
+     "matched": true
+    },
+    {
+     "w": "اسمها",
+     "start": 30.38,
+     "end": 30.64,
+     "matched": true
+    },
+    {
+     "w": "Horizontal",
+     "start": 30.64,
+     "end": 31.54,
+     "matched": true
+    },
+    {
+     "w": "abduction،",
+     "start": 31.54,
+     "end": 32.46,
+     "matched": true
+    },
+    {
+     "w": "فبشغل",
+     "start": 32.46,
+     "end": 33.46,
+     "matched": true
+    },
+    {
+     "w": "Mid",
+     "start": 33.46,
+     "end": 33.94,
+     "matched": true
+    },
+    {
+     "w": "back",
+     "start": 33.94,
+     "end": 34.2,
+     "matched": true
+    },
+    {
+     "w": "اللي",
+     "start": 34.2,
+     "end": 34.44,
+     "matched": true
+    },
+    {
+     "w": "هي",
+     "start": 34.44,
+     "end": 34.48,
+     "matched": true
+    },
+    {
+     "w": "الجزئية",
+     "start": 34.48,
+     "end": 34.82,
+     "matched": true
+    },
+    {
+     "w": "بتاعة",
+     "start": 34.82,
+     "end": 35.06,
+     "matched": true
+    },
+    {
+     "w": "Middle",
+     "start": 35.06,
+     "end": 35.46,
+     "matched": true
+    },
+    {
+     "w": "trapezius",
+     "start": 35.46,
+     "end": 35.88,
+     "matched": true
+    },
+    {
+     "w": "و",
+     "start": 35.82,
+     "end": 35.94,
+     "matched": false
+    },
+    {
+     "w": "Rhomboids.",
+     "start": 35.88,
+     "end": 36.46,
+     "matched": true
+    },
+    {
+     "w": "وبكده",
+     "start": 36.46,
+     "end": 36.98,
+     "matched": true
+    },
+    {
+     "w": "انا",
+     "start": 36.98,
+     "end": 37.08,
+     "matched": true
+    },
+    {
+     "w": "عرفتك",
+     "start": 37.08,
+     "end": 37.58,
+     "matched": true
+    },
+    {
+     "w": "ايه",
+     "start": 37.58,
+     "end": 37.7,
+     "matched": true
+    },
+    {
+     "w": "الفرق",
+     "start": 37.7,
+     "end": 37.94,
+     "matched": true
+    },
+    {
+     "w": "بين",
+     "start": 37.94,
+     "end": 38.1,
+     "matched": true
+    },
+    {
+     "w": "Seated",
+     "start": 38.1,
+     "end": 38.38,
+     "matched": true
+    },
+    {
+     "w": "row",
+     "start": 38.38,
+     "end": 38.56,
+     "matched": true
+    },
+    {
+     "w": "wide",
+     "start": 38.56,
+     "end": 38.86,
+     "matched": true
+    },
+    {
+     "w": "و",
+     "start": 38.86,
+     "end": 39.08,
+     "matched": true
+    },
+    {
+     "w": "Seated",
+     "start": 39.08,
+     "end": 39.32,
+     "matched": true
+    },
+    {
+     "w": "row",
+     "start": 39.32,
+     "end": 39.48,
+     "matched": true
+    },
+    {
+     "w": "close،",
+     "start": 39.48,
+     "end": 39.98,
+     "matched": true
+    },
+    {
+     "w": "واستنوني",
+     "start": 39.98,
+     "end": 40.8,
+     "matched": true
+    },
+    {
+     "w": "في",
+     "start": 40.8,
+     "end": 40.86,
+     "matched": true
+    },
+    {
+     "w": "الفيديوز",
+     "start": 40.86,
+     "end": 41.16,
+     "matched": true
+    },
+    {
+     "w": "اللي",
+     "start": 41.16,
+     "end": 41.34,
+     "matched": true
+    },
+    {
+     "w": "جاية",
+     "start": 41.34,
+     "end": 41.58,
+     "matched": true
+    },
+    {
+     "w": "عشان",
+     "start": 41.58,
+     "end": 41.98,
+     "matched": true
+    },
+    {
+     "w": "هافيدكم",
+     "start": 41.98,
+     "end": 42.32,
+     "matched": true
+    },
+    {
+     "w": "على",
+     "start": 42.32,
+     "end": 42.48,
+     "matched": true
+    },
+    {
+     "w": "فكرة.",
+     "start": 42.48,
+     "end": 42.78,
+     "matched": true
+    }
+   ]
+  }
+ ],
+ "report": [
+  "  1.22  بلعب  ->  العب",
+  "  2.90  الGrip  ->  Grip",
+  "  5.48  تمنين  ->  تمرين",
+  "  6.28  closed،  ->  close،",
+  "  7.32  الBrain  ->  Prime",
+  "  7.60  Move  ->  mover",
+  "  8.94  الLats،  ->  Lats،",
+  " 15.46  معاي  ->  معايا",
+  "   ---  (missing)  ->  اللي",
+  " 15.66  لشغال  ->  شغال",
+  " 16.30  الLats،  ->  Lats،",
+  "   ---  (missing)  ->  ما",
+  " 20.06  مفيش  ->  ينفعش",
+  " 20.52  تعز  ->  تعزل",
+  " 20.84  الجزء  ->  جزء",
+  " 21.44  حسب  ->  حساب",
+  " 21.98  ثاني  ->  تاني",
+  "   ---  (missing)  ->  ان",
+  " 27.66  علشان  ->  عشان",
+  " 28.48  قوعي  ->  كوعي",
+  " 33.46  الميد  ->  Mid",
+  " 33.94  باك  ->  back",
+  " 35.06  الميدل  ->  Middle",
+  " 35.46  ترابس  ->  trapezius",
+  "   ---  (missing)  ->  و",
+  " 35.88  ورنبايو.  ->  Rhomboids.",
+  " 39.48  closed،  ->  close،",
+  " 41.98  هفتكم  ->  هافيدكم"
+ ]
+}

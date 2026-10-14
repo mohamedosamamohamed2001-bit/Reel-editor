@@ -13,13 +13,14 @@ import { ScreenCard } from "./components/ScreenCard";
 import { SplitStack } from "./components/SplitStack";
 import { StepBadge } from "./components/StepBadge";
 import { TrackedLabel } from "./components/TrackedLabel";
+import { VisualCard } from "./components/VisualCard";
 import { Edit, Overlay, clipFrames, groupCaptions } from "./lib/edit";
 import { useBrandFonts } from "./lib/fonts";
 import { color } from "./lib/theme";
 
 const layer: Record<Overlay["type"], number> = {
   split: 1, insetCard: 1, screenCard: 1, exerciseTitle: 3, callout: 3, checklist: 3, endCard: 4,
-  kineticTitle: 3, stepBadge: 3, lowerLabel: 3, trackedLabel: 3,
+  kineticTitle: 3, stepBadge: 3, lowerLabel: 3, trackedLabel: 3, visualCard: 1,
 };
 
 const renderOverlay = (o: Overlay, plate?: string) => {
@@ -42,6 +43,9 @@ const renderOverlay = (o: Overlay, plate?: string) => {
       return <StepBadge mark={o.mark} label={o.label} sub={o.sub} dur={o.dur} top={o.top} side={o.side} />;
     case "lowerLabel":
       return <LowerLabel title={o.title} sets={o.sets} eyebrow={o.eyebrow} dur={o.dur} top={o.top} />;
+    case "visualCard":
+      return <VisualCard src={o.src} dur={o.dur} mode={o.mode} label={o.label} sub={o.sub} credit={o.credit} srcW={o.srcW} srcH={o.srcH}
+        width={o.width} top={o.top} markers={o.markers} push={o.push} focusY={o.focusY} />;
     case "trackedLabel":
       return <TrackedLabel text={o.text} sub={o.sub} keys={o.keys} dur={o.dur} side={o.side} plate={plate} />;
     case "screenCard":
@@ -129,7 +133,7 @@ export const ReelEdit: React.FC<{ edit: Edit }> = ({ edit }) => {
         {byLayer(1)}
         {edit.captions ? (
           <Captions groups={groups} keywords={edit.captions.keywords} style={edit.captions.style} zones={edit.captions.zones}
-            karaoke={edit.captions.karaoke} anchors={edit.captions.anchors} cuts={cuts} plateColor={edit.textPlate} />
+            karaoke={edit.captions.karaoke} anchors={edit.captions.anchors} cuts={cuts} plateColor={edit.textPlate} anchorPlate={edit.captions.anchorPlate} />
         ) : null}
         {byLayer(3)}
       </AbsoluteFill>

@@ -32,6 +32,11 @@ ALIASES = {
     "supplement": ["سبلمنت", "سبلمين", "سبليمنت", "سبلم"], "stretch": ["استرتش", "استريتش"], "range": ["رينج"],
     "motion": ["موشن"], "chest": ["تشيست", "شيست"], "triceps": ["ترايسبس", "ترايسيبس", "try"], "whey": ["واي", "وي"],
     "protein": ["بروتين"], "concentric": ["كونسنتريك"], "eccentric": ["اكسنتريك"],
+    "hip": ["هيب"], "glutes": ["جلوتس", "جلوتز", "بلوتز"], "hamstring": ["هامسترنج"], "dumbbells": ["دمبلز"],
+    "erector": ["erectile", "اريكتور"], "spinae": ["spine", "سباينا"], "lower": ["لور", "الور"], "back": ["باك", "الورباك"],
+    "mid": ["الميد", "ميد"], "middle": ["الميدل", "ميدل"], "trapezius": ["ترابس", "ترابيزيوس"], "rhomboids": ["رنبايو", "الرومبايو", "رومبويد"],
+    "lateral": ["lh", "لاترال"], "medial": ["mh", "ميديال"], "long": ["lh", "لونج"], "head": ["هيد"], "triceps": ["trio", "trial", "ترايسبس"],
+    "grip": ["جريب", "الgrip", "بالgrip"], "close": ["closed", "كلوز"], "mover": ["move", "موف"], "prime": ["brain", "برايم"],
 }
 
 
@@ -139,7 +144,9 @@ def main():
             out[k] = {"w": ref[k], "start": round(t, 3), "end": round(t + d, 3), "matched": False}
             t += d
         i = j
-    # keep times monotonic
+    # keep times monotonic, never before 0
+    out[0]["start"] = max(0.0, out[0]["start"])
+    out[0]["end"] = max(out[0]["end"], out[0]["start"] + 0.12)
     for k in range(1, len(out)):
         if out[k]["start"] < out[k - 1]["start"]:
             out[k]["start"] = out[k - 1]["start"]

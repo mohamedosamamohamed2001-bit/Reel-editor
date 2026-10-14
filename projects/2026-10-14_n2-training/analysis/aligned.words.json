@@ -1,0 +1,417 @@
+{
+ "source": "projects/2026-10-14_n2-training/work/tx/original.vocals.words.json",
+ "reference": "projects/_n6/refs/n2-training.txt",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 20.56,
+   "words": [
+    {
+     "w": "لو",
+     "start": 0.0,
+     "end": 0.06,
+     "matched": true
+    },
+    {
+     "w": "بتعمل",
+     "start": 0.06,
+     "end": 0.48,
+     "matched": true
+    },
+    {
+     "w": "كده",
+     "start": 0.48,
+     "end": 0.64,
+     "matched": true
+    },
+    {
+     "w": "في",
+     "start": 0.64,
+     "end": 0.74,
+     "matched": true
+    },
+    {
+     "w": "الجيم",
+     "start": 0.74,
+     "end": 1.08,
+     "matched": true
+    },
+    {
+     "w": "متستناش",
+     "start": 1.08,
+     "end": 1.76,
+     "matched": true
+    },
+    {
+     "w": "نتيجة.",
+     "start": 1.76,
+     "end": 2.12,
+     "matched": true
+    },
+    {
+     "w": "لو",
+     "start": 2.12,
+     "end": 2.34,
+     "matched": true
+    },
+    {
+     "w": "انت",
+     "start": 2.34,
+     "end": 2.56,
+     "matched": true
+    },
+    {
+     "w": "بتجيب",
+     "start": 2.56,
+     "end": 2.86,
+     "matched": true
+    },
+    {
+     "w": "اي",
+     "start": 2.86,
+     "end": 2.92,
+     "matched": true
+    },
+    {
+     "w": "تمارين",
+     "start": 2.92,
+     "end": 3.34,
+     "matched": true
+    },
+    {
+     "w": "من",
+     "start": 3.34,
+     "end": 3.42,
+     "matched": true
+    },
+    {
+     "w": "على",
+     "start": 3.36,
+     "end": 3.48,
+     "matched": false
+    },
+    {
+     "w": "النت",
+     "start": 3.42,
+     "end": 3.74,
+     "matched": true
+    },
+    {
+     "w": "وبتطبقها،",
+     "start": 3.74,
+     "end": 4.48,
+     "matched": true
+    },
+    {
+     "w": "فمتستناش",
+     "start": 4.48,
+     "end": 5.22,
+     "matched": true
+    },
+    {
+     "w": "نتيجة،",
+     "start": 5.22,
+     "end": 5.6,
+     "matched": true
+    },
+    {
+     "w": "عشان",
+     "start": 5.64,
+     "end": 6.08,
+     "matched": true
+    },
+    {
+     "w": "التمارين",
+     "start": 6.08,
+     "end": 6.3,
+     "matched": true
+    },
+    {
+     "w": "دي",
+     "start": 6.3,
+     "end": 6.5,
+     "matched": true
+    },
+    {
+     "w": "انت",
+     "start": 6.5,
+     "end": 6.68,
+     "matched": true
+    },
+    {
+     "w": "مش",
+     "start": 6.68,
+     "end": 6.78,
+     "matched": true
+    },
+    {
+     "w": "عارف",
+     "start": 6.78,
+     "end": 7.06,
+     "matched": true
+    },
+    {
+     "w": "هي",
+     "start": 7.06,
+     "end": 7.14,
+     "matched": true
+    },
+    {
+     "w": "مناسبة",
+     "start": 7.14,
+     "end": 7.58,
+     "matched": true
+    },
+    {
+     "w": "ليك",
+     "start": 7.58,
+     "end": 7.72,
+     "matched": true
+    },
+    {
+     "w": "لهدفك",
+     "start": 7.72,
+     "end": 8.3,
+     "matched": true
+    },
+    {
+     "w": "ومستواك",
+     "start": 8.3,
+     "end": 8.7,
+     "matched": true
+    },
+    {
+     "w": "ولا",
+     "start": 8.7,
+     "end": 8.88,
+     "matched": true
+    },
+    {
+     "w": "لا.",
+     "start": 8.88,
+     "end": 9.06,
+     "matched": true
+    },
+    {
+     "w": "كل",
+     "start": 9.1,
+     "end": 9.22,
+     "matched": true
+    },
+    {
+     "w": "واحد",
+     "start": 9.22,
+     "end": 9.58,
+     "matched": true
+    },
+    {
+     "w": "وليه",
+     "start": 9.58,
+     "end": 9.82,
+     "matched": true
+    },
+    {
+     "w": "تمرينه",
+     "start": 9.82,
+     "end": 10.28,
+     "matched": true
+    },
+    {
+     "w": "على",
+     "start": 10.28,
+     "end": 10.44,
+     "matched": true
+    },
+    {
+     "w": "حسب",
+     "start": 10.44,
+     "end": 10.76,
+     "matched": true
+    },
+    {
+     "w": "هدفه",
+     "start": 10.76,
+     "end": 11.16,
+     "matched": true
+    },
+    {
+     "w": "ومستواه.",
+     "start": 11.16,
+     "end": 11.64,
+     "matched": true
+    },
+    {
+     "w": "التدريب",
+     "start": 11.72,
+     "end": 12.06,
+     "matched": true
+    },
+    {
+     "w": "الصح",
+     "start": 12.06,
+     "end": 12.46,
+     "matched": true
+    },
+    {
+     "w": "مش",
+     "start": 12.46,
+     "end": 12.58,
+     "matched": true
+    },
+    {
+     "w": "تقليد.",
+     "start": 12.58,
+     "end": 13.04,
+     "matched": true
+    },
+    {
+     "w": "التدريب",
+     "start": 13.04,
+     "end": 13.32,
+     "matched": true
+    },
+    {
+     "w": "الصح",
+     "start": 13.32,
+     "end": 13.6,
+     "matched": true
+    },
+    {
+     "w": "ان",
+     "start": 13.6,
+     "end": 13.68,
+     "matched": true
+    },
+    {
+     "w": "يكون",
+     "start": 13.68,
+     "end": 13.9,
+     "matched": true
+    },
+    {
+     "w": "خطة",
+     "start": 13.9,
+     "end": 14.28,
+     "matched": true
+    },
+    {
+     "w": "معمولة",
+     "start": 14.28,
+     "end": 14.72,
+     "matched": true
+    },
+    {
+     "w": "ليك",
+     "start": 14.72,
+     "end": 14.92,
+     "matched": true
+    },
+    {
+     "w": "انت.",
+     "start": 14.92,
+     "end": 15.24,
+     "matched": true
+    },
+    {
+     "w": "ولو",
+     "start": 15.24,
+     "end": 15.5,
+     "matched": true
+    },
+    {
+     "w": "عايز",
+     "start": 15.5,
+     "end": 16.0,
+     "matched": true
+    },
+    {
+     "w": "تبدا",
+     "start": 16.0,
+     "end": 16.44,
+     "matched": true
+    },
+    {
+     "w": "بخطة",
+     "start": 16.44,
+     "end": 16.84,
+     "matched": true
+    },
+    {
+     "w": "تمرين",
+     "start": 16.84,
+     "end": 17.18,
+     "matched": true
+    },
+    {
+     "w": "مناسبة",
+     "start": 17.18,
+     "end": 17.64,
+     "matched": true
+    },
+    {
+     "w": "ابعتلي",
+     "start": 17.64,
+     "end": 18.22,
+     "matched": true
+    },
+    {
+     "w": "كلمة",
+     "start": 18.22,
+     "end": 18.52,
+     "matched": true
+    },
+    {
+     "w": "تدريب",
+     "start": 18.52,
+     "end": 18.96,
+     "matched": true
+    },
+    {
+     "w": "ونبدا",
+     "start": 18.96,
+     "end": 19.42,
+     "matched": true
+    },
+    {
+     "w": "مع",
+     "start": 19.42,
+     "end": 19.52,
+     "matched": true
+    },
+    {
+     "w": "بعض",
+     "start": 19.52,
+     "end": 19.86,
+     "matched": true
+    },
+    {
+     "w": "بطريقة",
+     "start": 19.86,
+     "end": 20.2,
+     "matched": true
+    },
+    {
+     "w": "علمية.",
+     "start": 20.2,
+     "end": 20.56,
+     "matched": true
+    }
+   ]
+  }
+ ],
+ "report": [
+  "  1.08  متصنعش  ->  متستناش",
+  "   ---  (missing)  ->  على",
+  "  3.42  عالنت  ->  النت",
+  "  4.48  فمتصنعش  ->  فمتستناش",
+  "  5.88  انت  ->  (part of عشان)",
+  "  6.08  مالين  ->  التمارين",
+  "  7.72  بهدفك  ->  لهدفك",
+  "  9.82  تمارينه  ->  تمرينه",
+  " 11.16  ومستواك.  ->  ومستواه.",
+  " 12.06  الصحي  ->  الصح",
+  " 13.32  الصحي  ->  الصح",
+  " 17.64  ابعث  ->  ابعتلي",
+  " 18.12  لي  ->  (part of ابعتلي)"
+ ]
+}

@@ -1,0 +1,892 @@
+{
+ "source": "projects/2026-10-14_n5-lumbar/work/tx/original.vocals.words.json",
+ "reference": "projects/_n6/refs/n5-lumbar.txt",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 58.68,
+   "words": [
+    {
+     "w": "تعرف",
+     "start": 0.0,
+     "end": 0.24,
+     "matched": true
+    },
+    {
+     "w": "ان",
+     "start": 0.24,
+     "end": 0.38,
+     "matched": true
+    },
+    {
+     "w": "انت",
+     "start": 0.38,
+     "end": 0.52,
+     "matched": true
+    },
+    {
+     "w": "ممكن",
+     "start": 0.52,
+     "end": 0.76,
+     "matched": true
+    },
+    {
+     "w": "تتمرن",
+     "start": 0.76,
+     "end": 1.22,
+     "matched": true
+    },
+    {
+     "w": "Glutes",
+     "start": 1.22,
+     "end": 1.52,
+     "matched": true
+    },
+    {
+     "w": "على",
+     "start": 1.52,
+     "end": 1.66,
+     "matched": true
+    },
+    {
+     "w": "الجهاز",
+     "start": 1.66,
+     "end": 2.08,
+     "matched": true
+    },
+    {
+     "w": "ده؟",
+     "start": 2.08,
+     "end": 2.24,
+     "matched": true
+    },
+    {
+     "w": "دي",
+     "start": 2.24,
+     "end": 2.5,
+     "matched": true
+    },
+    {
+     "w": "اول",
+     "start": 2.5,
+     "end": 2.72,
+     "matched": true
+    },
+    {
+     "w": "حركة",
+     "start": 2.72,
+     "end": 3.16,
+     "matched": true
+    },
+    {
+     "w": "ليه",
+     "start": 3.16,
+     "end": 3.3,
+     "matched": true
+    },
+    {
+     "w": "ان",
+     "start": 3.3,
+     "end": 3.48,
+     "matched": true
+    },
+    {
+     "w": "انا",
+     "start": 3.48,
+     "end": 3.66,
+     "matched": true
+    },
+    {
+     "w": "اشغل",
+     "start": 3.66,
+     "end": 3.96,
+     "matched": true
+    },
+    {
+     "w": "Glutes",
+     "start": 3.96,
+     "end": 4.3,
+     "matched": true
+    },
+    {
+     "w": "معايا",
+     "start": 4.3,
+     "end": 4.72,
+     "matched": true
+    },
+    {
+     "w": "و",
+     "start": 4.62,
+     "end": 4.644,
+     "matched": false
+    },
+    {
+     "w": "Hamstring.",
+     "start": 4.644,
+     "end": 4.86,
+     "matched": false
+    },
+    {
+     "w": "مسكة",
+     "start": 4.76,
+     "end": 5.32,
+     "matched": true
+    },
+    {
+     "w": "الجهاز:",
+     "start": 5.32,
+     "end": 5.86,
+     "matched": true
+    },
+    {
+     "w": "الجهاز",
+     "start": 5.88,
+     "end": 6.34,
+     "matched": true
+    },
+    {
+     "w": "يبقى",
+     "start": 6.34,
+     "end": 6.64,
+     "matched": true
+    },
+    {
+     "w": "لازم",
+     "start": 6.64,
+     "end": 6.98,
+     "matched": true
+    },
+    {
+     "w": "تحت",
+     "start": 6.98,
+     "end": 7.38,
+     "matched": true
+    },
+    {
+     "w": "Hip",
+     "start": 7.38,
+     "end": 7.68,
+     "matched": true
+    },
+    {
+     "w": "بتاعي",
+     "start": 7.68,
+     "end": 8.2,
+     "matched": true
+    },
+    {
+     "w": "بحاجة",
+     "start": 8.2,
+     "end": 8.42,
+     "matched": true
+    },
+    {
+     "w": "بسيطة،",
+     "start": 8.42,
+     "end": 8.82,
+     "matched": true
+    },
+    {
+     "w": "عشان",
+     "start": 8.82,
+     "end": 9.28,
+     "matched": true
+    },
+    {
+     "w": "اعرف",
+     "start": 9.28,
+     "end": 9.46,
+     "matched": true
+    },
+    {
+     "w": "احرك",
+     "start": 9.46,
+     "end": 9.72,
+     "matched": true
+    },
+    {
+     "w": "Hip",
+     "start": 9.72,
+     "end": 10.04,
+     "matched": true
+    },
+    {
+     "w": "عشان",
+     "start": 10.04,
+     "end": 10.32,
+     "matched": true
+    },
+    {
+     "w": "فعلا",
+     "start": 10.32,
+     "end": 10.58,
+     "matched": true
+    },
+    {
+     "w": "يشتغل",
+     "start": 10.58,
+     "end": 10.96,
+     "matched": true
+    },
+    {
+     "w": "على",
+     "start": 10.96,
+     "end": 11.04,
+     "matched": true
+    },
+    {
+     "w": "Glutes.",
+     "start": 11.04,
+     "end": 11.46,
+     "matched": true
+    },
+    {
+     "w": "انا",
+     "start": 11.46,
+     "end": 11.76,
+     "matched": false
+    },
+    {
+     "w": "بنزل",
+     "start": 11.76,
+     "end": 12.34,
+     "matched": true
+    },
+    {
+     "w": "بالشكل",
+     "start": 12.34,
+     "end": 12.68,
+     "matched": true
+    },
+    {
+     "w": "ده",
+     "start": 12.68,
+     "end": 14.74,
+     "matched": true
+    },
+    {
+     "w": "واطلع",
+     "start": 14.74,
+     "end": 15.16,
+     "matched": true
+    },
+    {
+     "w": "لفوق.",
+     "start": 15.16,
+     "end": 15.46,
+     "matched": true
+    },
+    {
+     "w": "طبعا",
+     "start": 15.62,
+     "end": 15.98,
+     "matched": true
+    },
+    {
+     "w": "لو",
+     "start": 15.98,
+     "end": 16.14,
+     "matched": true
+    },
+    {
+     "w": "عايز",
+     "start": 16.14,
+     "end": 16.34,
+     "matched": true
+    },
+    {
+     "w": "اصعب",
+     "start": 16.34,
+     "end": 16.6,
+     "matched": true
+    },
+    {
+     "w": "التمرين",
+     "start": 16.6,
+     "end": 16.94,
+     "matched": true
+    },
+    {
+     "w": "ممكن",
+     "start": 16.94,
+     "end": 17.12,
+     "matched": true
+    },
+    {
+     "w": "امسك",
+     "start": 17.12,
+     "end": 17.48,
+     "matched": true
+    },
+    {
+     "w": "2",
+     "start": 17.48,
+     "end": 17.68,
+     "matched": true
+    },
+    {
+     "w": "Dumbbells",
+     "start": 17.68,
+     "end": 18.08,
+     "matched": true
+    },
+    {
+     "w": "بايدي",
+     "start": 18.08,
+     "end": 18.34,
+     "matched": true
+    },
+    {
+     "w": "كده.",
+     "start": 18.34,
+     "end": 18.62,
+     "matched": true
+    },
+    {
+     "w": "هنزل",
+     "start": 20.82,
+     "end": 21.4,
+     "matched": true
+    },
+    {
+     "w": "واطلع",
+     "start": 21.4,
+     "end": 21.98,
+     "matched": true
+    },
+    {
+     "w": "أشد.",
+     "start": 21.98,
+     "end": 22.26,
+     "matched": true
+    },
+    {
+     "w": "وهاقولكو",
+     "start": 22.34,
+     "end": 22.9,
+     "matched": true
+    },
+    {
+     "w": "دلوقتي",
+     "start": 22.9,
+     "end": 23.32,
+     "matched": true
+    },
+    {
+     "w": "ازاي",
+     "start": 23.32,
+     "end": 23.6,
+     "matched": true
+    },
+    {
+     "w": "تلعب",
+     "start": 23.6,
+     "end": 23.84,
+     "matched": true
+    },
+    {
+     "w": "الجهاز",
+     "start": 23.84,
+     "end": 24.24,
+     "matched": true
+    },
+    {
+     "w": "ده",
+     "start": 24.24,
+     "end": 24.38,
+     "matched": true
+    },
+    {
+     "w": "Lower",
+     "start": 24.32,
+     "end": 24.44,
+     "matched": false
+    },
+    {
+     "w": "back.",
+     "start": 24.38,
+     "end": 24.8,
+     "matched": true
+    },
+    {
+     "w": "عشان",
+     "start": 24.8,
+     "end": 25.18,
+     "matched": true
+    },
+    {
+     "w": "نشغل",
+     "start": 25.18,
+     "end": 25.58,
+     "matched": true
+    },
+    {
+     "w": "التمرين",
+     "start": 25.58,
+     "end": 26.02,
+     "matched": true
+    },
+    {
+     "w": "ده",
+     "start": 26.02,
+     "end": 26.16,
+     "matched": true
+    },
+    {
+     "w": "صح",
+     "start": 26.16,
+     "end": 26.42,
+     "matched": true
+    },
+    {
+     "w": "اللي",
+     "start": 26.42,
+     "end": 26.72,
+     "matched": true
+    },
+    {
+     "w": "هم",
+     "start": 26.72,
+     "end": 26.98,
+     "matched": true
+    },
+    {
+     "w": "Erector",
+     "start": 26.98,
+     "end": 27.48,
+     "matched": true
+    },
+    {
+     "w": "spinae،",
+     "start": 27.48,
+     "end": 27.92,
+     "matched": true
+    },
+    {
+     "w": "فلازم",
+     "start": 27.92,
+     "end": 28.6,
+     "matched": true
+    },
+    {
+     "w": "نرفع",
+     "start": 28.6,
+     "end": 29.14,
+     "matched": true
+    },
+    {
+     "w": "دي",
+     "start": 29.14,
+     "end": 29.44,
+     "matched": true
+    },
+    {
+     "w": "بحيث",
+     "start": 32.73,
+     "end": 33.47,
+     "matched": true
+    },
+    {
+     "w": "تعدي",
+     "start": 33.47,
+     "end": 33.93,
+     "matched": true
+    },
+    {
+     "w": "مستوى",
+     "start": 33.93,
+     "end": 34.55,
+     "matched": true
+    },
+    {
+     "w": "Hip،",
+     "start": 34.55,
+     "end": 34.77,
+     "matched": true
+    },
+    {
+     "w": "عشان",
+     "start": 34.77,
+     "end": 34.99,
+     "matched": true
+    },
+    {
+     "w": "انا",
+     "start": 34.93,
+     "end": 35.05,
+     "matched": false
+    },
+    {
+     "w": "مش",
+     "start": 34.99,
+     "end": 35.15,
+     "matched": true
+    },
+    {
+     "w": "عايز",
+     "start": 35.15,
+     "end": 35.33,
+     "matched": true
+    },
+    {
+     "w": "Hip",
+     "start": 35.33,
+     "end": 35.53,
+     "matched": true
+    },
+    {
+     "w": "يشتغل.",
+     "start": 35.53,
+     "end": 35.87,
+     "matched": true
+    },
+    {
+     "w": "لو",
+     "start": 35.93,
+     "end": 35.99,
+     "matched": true
+    },
+    {
+     "w": "Hip",
+     "start": 35.99,
+     "end": 36.21,
+     "matched": true
+    },
+    {
+     "w": "اشتغل",
+     "start": 36.21,
+     "end": 36.59,
+     "matched": true
+    },
+    {
+     "w": "فكده",
+     "start": 36.59,
+     "end": 36.85,
+     "matched": true
+    },
+    {
+     "w": "Glutes",
+     "start": 36.85,
+     "end": 37.21,
+     "matched": true
+    },
+    {
+     "w": "اشتغلت.",
+     "start": 37.21,
+     "end": 37.59,
+     "matched": true
+    },
+    {
+     "w": "وبلعبها",
+     "start": 37.67,
+     "end": 38.41,
+     "matched": true
+    },
+    {
+     "w": "اي",
+     "start": 38.41,
+     "end": 38.63,
+     "matched": true
+    },
+    {
+     "w": "عضلة",
+     "start": 38.63,
+     "end": 38.83,
+     "matched": true
+    },
+    {
+     "w": "بتشتغل",
+     "start": 38.83,
+     "end": 39.29,
+     "matched": true
+    },
+    {
+     "w": "بتعمل",
+     "start": 39.29,
+     "end": 39.81,
+     "matched": true
+    },
+    {
+     "w": "انقباض",
+     "start": 39.81,
+     "end": 40.45,
+     "matched": true
+    },
+    {
+     "w": "وانبساط،",
+     "start": 40.45,
+     "end": 41.13,
+     "matched": true
+    },
+    {
+     "w": "فما",
+     "start": 41.23,
+     "end": 41.87,
+     "matched": true
+    },
+    {
+     "w": "ينفعش",
+     "start": 41.87,
+     "end": 42.29,
+     "matched": true
+    },
+    {
+     "w": "اتمرن",
+     "start": 42.29,
+     "end": 42.59,
+     "matched": true
+    },
+    {
+     "w": "التمرين",
+     "start": 42.59,
+     "end": 43.01,
+     "matched": true
+    },
+    {
+     "w": "ده",
+     "start": 43.01,
+     "end": 43.17,
+     "matched": true
+    },
+    {
+     "w": "كده.",
+     "start": 43.17,
+     "end": 43.43,
+     "matched": true
+    },
+    {
+     "w": "لا،",
+     "start": 43.47,
+     "end": 44.11,
+     "matched": true
+    },
+    {
+     "w": "التمرين",
+     "start": 44.11,
+     "end": 44.81,
+     "matched": true
+    },
+    {
+     "w": "ده",
+     "start": 44.81,
+     "end": 45.05,
+     "matched": true
+    },
+    {
+     "w": "لازم",
+     "start": 45.05,
+     "end": 45.49,
+     "matched": true
+    },
+    {
+     "w": "اعمل",
+     "start": 45.49,
+     "end": 45.87,
+     "matched": true
+    },
+    {
+     "w": "ظهري",
+     "start": 46.31,
+     "end": 47.05,
+     "matched": true
+    },
+    {
+     "w": "بالشكل",
+     "start": 47.05,
+     "end": 47.45,
+     "matched": true
+    },
+    {
+     "w": "ده",
+     "start": 47.45,
+     "end": 47.73,
+     "matched": true
+    },
+    {
+     "w": "كده.",
+     "start": 49.78,
+     "end": 50.86,
+     "matched": true
+    },
+    {
+     "w": "كده",
+     "start": 50.86,
+     "end": 51.32,
+     "matched": true
+    },
+    {
+     "w": "بعمل",
+     "start": 51.32,
+     "end": 51.7,
+     "matched": true
+    },
+    {
+     "w": "انقباض",
+     "start": 51.7,
+     "end": 52.24,
+     "matched": true
+    },
+    {
+     "w": "وانبساط",
+     "start": 52.24,
+     "end": 52.64,
+     "matched": true
+    },
+    {
+     "w": "في",
+     "start": 52.64,
+     "end": 52.76,
+     "matched": true
+    },
+    {
+     "w": "العضلة،",
+     "start": 52.76,
+     "end": 53.06,
+     "matched": true
+    },
+    {
+     "w": "فانت",
+     "start": 53.06,
+     "end": 53.36,
+     "matched": true
+    },
+    {
+     "w": "كده",
+     "start": 53.36,
+     "end": 53.64,
+     "matched": true
+    },
+    {
+     "w": "شغلت",
+     "start": 53.64,
+     "end": 54.02,
+     "matched": true
+    },
+    {
+     "w": "العضلة.",
+     "start": 54.02,
+     "end": 54.38,
+     "matched": true
+    },
+    {
+     "w": "وبكده",
+     "start": 54.48,
+     "end": 55.06,
+     "matched": true
+    },
+    {
+     "w": "انا",
+     "start": 55.06,
+     "end": 55.12,
+     "matched": true
+    },
+    {
+     "w": "عرفتك",
+     "start": 55.12,
+     "end": 55.56,
+     "matched": true
+    },
+    {
+     "w": "ازاي",
+     "start": 55.56,
+     "end": 55.74,
+     "matched": true
+    },
+    {
+     "w": "تلعب",
+     "start": 55.74,
+     "end": 55.98,
+     "matched": true
+    },
+    {
+     "w": "على",
+     "start": 55.98,
+     "end": 56.06,
+     "matched": true
+    },
+    {
+     "w": "الجهاز",
+     "start": 56.06,
+     "end": 56.46,
+     "matched": true
+    },
+    {
+     "w": "ده",
+     "start": 56.46,
+     "end": 56.58,
+     "matched": true
+    },
+    {
+     "w": "Glutes",
+     "start": 56.58,
+     "end": 56.96,
+     "matched": true
+    },
+    {
+     "w": "وازاي",
+     "start": 56.96,
+     "end": 57.24,
+     "matched": true
+    },
+    {
+     "w": "تلعب",
+     "start": 57.24,
+     "end": 57.58,
+     "matched": true
+    },
+    {
+     "w": "عليه",
+     "start": 57.58,
+     "end": 57.76,
+     "matched": true
+    },
+    {
+     "w": "Erector",
+     "start": 57.76,
+     "end": 58.32,
+     "matched": true
+    },
+    {
+     "w": "spinae.",
+     "start": 58.32,
+     "end": 58.68,
+     "matched": true
+    }
+   ]
+  }
+ ],
+ "report": [
+  "  3.16  لي  ->  ليه",
+  "   ---  (missing)  ->  و",
+  "   ---  (missing)  ->  Hamstring.",
+  "  7.38  الهيب  ->  Hip",
+  "  9.46  حرك  ->  احرك",
+  "  9.72  الهيب  ->  Hip",
+  "   ---  (missing)  ->  انا",
+  " 11.76  هنبهنزل  ->  بنزل",
+  " 16.34  صعب  ->  اصعب",
+  " 17.12  يمسك  ->  امسك",
+  " 18.08  بيدي  ->  بايدي",
+  " 21.98  شد.  ->  أشد.",
+  " 22.34  وهقولكو  ->  وهاقولكو",
+  "   ---  (missing)  ->  Lower",
+  " 24.38  الورباك.  ->  back.",
+  " 26.98  الErectile  ->  Erector",
+  " 27.48  Spine  ->  spinae،",
+  " 28.60  نرفعها.  ->  نرفع",
+  " 33.47  ساعدي  ->  تعدي",
+  " 34.55  الهيب  ->  Hip،",
+  "   ---  (missing)  ->  انا",
+  " 35.33  الهيب  ->  Hip",
+  " 35.99  الهيب  ->  Hip",
+  " 36.21  يشتغل  ->  اشتغل",
+  " 36.85  الجلوتس  ->  Glutes",
+  " 37.21  يشتغل.  ->  اشتغلت.",
+  " 39.81  انكباض  ->  انقباض",
+  " 46.31  ضهري  ->  ظهري",
+  " 51.70  انكباض  ->  انقباض",
+  " 56.58  جلوتس  ->  Glutes",
+  " 57.76  الErectile  ->  Erector",
+  " 58.32  Spine.  ->  spinae."
+ ]
+}

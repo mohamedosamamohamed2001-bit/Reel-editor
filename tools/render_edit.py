@@ -67,13 +67,14 @@ def _even(x):
     return max(2, int(round(x / 2)) * 2)
 
 
-def _plate(src, dst_dir, vf, extra_in, extra_out, fps, complex_=False):
+def _plate(src, dst_dir, vf, extra_in, extra_out, fps, complex_=False, more_inputs=()):
     """Write one plate as a JPEG image sequence (cached by a hash of source + filters + trim + fps).
 
     Image frames, not video: Remotion's <OffthreadVideo> frame extraction softened footage ~7x
     (face Laplacian variance 311 -> 44 on the same frame) while <Img> keeps it (JPEG q1 4:4:4).
     """
-    key = hashlib.sha1(json.dumps([str(src), os.path.getmtime(src), vf, extra_in, extra_out, fps, "jpg-q1-444", complex_]).encode()).hexdigest()[:12]
+    key = hashlib.sha1(json.dumps([str(src), os.path.getmtime(src), vf, extra_in, extra_out, fps, "jpg-q1-444", complex_,
+                                      [str(m) for m in more_inputs], [os.path.getmtime(m[-1]) for m in more_inputs]]).encode()).hexdigest()[:12]
     dst = dst_dir / f"{Path(src).stem}_{key}"
     done = dst / ".done"
     if not done.exists():
@@ -81,7 +82,8 @@ def _plate(src, dst_dir, vf, extra_in, extra_out, fps, complex_=False):
             shutil.rmtree(dst)
         dst.mkdir(parents=True)
         flt = ["-filter_complex", f"{vf},fps={fps},format=yuvj444p"] if complex_ else ["-vf", f"{vf},fps={fps},format=yuvj444p"]
-        subprocess.run(["ffmpeg", "-y", "-v", "error", *extra_in, "-i", str(src), *extra_out, "-an",
+        mi = [x for m in more_inputs for x in m]
+        subprocess.run(["ffmpeg", "-y", "-v", "error", *extra_in, "-i", str(src), *mi, *extra_out, "-an",
                         *flt, "-q:v", "1", "-qmin", "1",
                         str(dst / "%05d.jpg")], check=True)
         done.write_text("ok")
@@ -110,15 +112,22 @@ def _cover_chain(covers, sw, sh, seek, idx):
         Wd, Hd = _even((x1 - x0) * sw), _even((y1 - y0) * sh)
         a, b = cv["at"] - seek, cv["at"] + cv["dur"] - seek
         sigma = max(6, round(Hd * 0.18))
-        if cv.get("kind") == "fade":
+        if cv.get("kind") == "blur":
+            # frosted blur only (no tint): the old text melts into the footage; feathered edges so there is no box
+            f = max(4, round(min(Hd, Wd) * 0.3))
+            alpha = f"255*clip(min(min(X,W-1-X),min(Y,H-1-Y))/{f},0,1)"
+            sigma = max(8, round(Hd * 0.32))
+            tint = 0.0
+        elif cv.get("kind") == "fade":
             alpha = f"255*clip(Y/(H*0.45),0,1)"
             tint = 0.9
         else:
             r = max(6, round(min(Hd, Wd) * 0.28))
             alpha = (f"255*clip({r}+0.5-hypot(max(max({r}-X,X-(W-1-{r})),0),max(max({r}-Y,Y-(H-1-{r})),0)),0,1)")
             tint = cv.get("tint", 0.86)
-        steps.append(f"[cp{i}]crop={Wd}:{Hd}:{X}:{Y},gblur=sigma={sigma}:steps=2,"
-                     f"drawbox=x=0:y=0:w=iw:h=ih:color=0x0A0F16@{tint}:t=fill,format=yuva444p,"
+        tint_f = f"drawbox=x=0:y=0:w=iw:h=ih:color=0x0A0F16@{tint}:t=fill," if tint > 0 else ""
+        steps.append(f"[cp{i}]crop={Wd}:{Hd}:{X}:{Y},gblur=sigma={sigma}:steps=3,"
+                     f"{tint_f}format=yuva444p,"
                      f"geq=lum='lum(X,Y)':cb='cb(X,Y)':cr='cr(X,Y)':a='{alpha}'[cv{i}];"
                      f"[{last}][cv{i}]overlay={X}:{Y}:enable='between(t,{a:.3f},{b:.3f})'[co{i}]")
         last = f"co{i}"
@@ -202,7 +211,28 @@ def make_plates(edit, proj):
         else:
             mine = [cv for cv in covers if cv["src"] == c["src"] and cv["at"] < c["out"] and cv["at"] + cv["dur"] > c["in"]]
         text_plate = edit.get("textPlate")  # exact solid colour for the plates, drawn after the grade
-        pre, last = _cover_chain([] if text_plate else mine, sw, sh, seek, 0)
+        solid = [cv for cv in mine if cv.get("kind") != "blur"] if text_plate else []
+        bm = edit.get("blurMask")
+        more = []
+        if bm and c["src"] == bm.get("src", "main"):
+            # one blur of the caption band, merged through the precomputed feathered mask (any number of phrases)
+            y0b, bh = bm["band"]
+            sig = bm.get("sigma", 16)
+            dark = bm.get("darken", 0.12)
+            more = [["-ss", f"{seek:.5f}", "-i", str((proj / bm["file"]).resolve())]] if first else [["-i", str((proj / bm["file"]).resolve())]]
+            pre = (f"[0:v]split=2[bm0][bm1];[bm1]crop={sw}:{bh}:0:{y0b},gblur=sigma={sig}:steps=3,"
+                   f"colorchannelmixer=rr={1-dark}:gg={1-dark}:bb={1-dark},format=yuva444p[bmb];"
+                   f"[1:v]format=gray,scale={sw}:{bh}[bmm];[bmb][bmm]alphamerge[bma];"
+                   f"[bm0][bma]overlay=0:{y0b}:shortest=0:eof_action=pass[bmo]")
+            rest = [cv for cv in mine if cv not in solid and cv.get("kind") != "blur"]
+            if rest:
+                p2, l2 = _cover_chain(rest, sw, sh, seek, 0)
+                pre = pre + ";" + p2.replace("[0:v]", "[bmo]", 1)
+                last = l2
+            else:
+                last = "bmo"
+        else:
+            pre, last = _cover_chain([cv for cv in mine if cv not in solid], sw, sh, seek, 0)
         motion = []
         if freeze or hold is not None:
             motion = ["trim=end_frame=1", f"loop=loop={n_out + 1}:size=1:start=0", f"setpts=N/{fps}/TB"]
@@ -213,18 +243,18 @@ def make_plates(edit, proj):
             motion = [f"setpts=(PTS-STARTPTS)/{speed}", f"framerate=fps={fps}:interp_start=0:interp_end=255:scene=100"]
         chain = ",".join(f for f in [f"crop={cw}:{ch}:{_even(x)}:{_even(y)}", grade, *motion, f"fps={fps}", scale, sharpen] if f)
         vf = (pre + f";[{last}]" + chain) if pre else chain
-        if text_plate and mine:
+        if text_plate and solid:
             if freeze or hold is not None:
                 timing = None
             elif speed != 1:
                 timing = lambda t: (t - seek) / speed
             else:
                 timing = lambda t: t - seek
-            steps, plast = _cover_chain_out(mine, (_even(x), _even(y), cw, ch), sw, sh, W, H, text_plate, timing)
+            steps, plast = _cover_chain_out(solid, (_even(x), _even(y), cw, ch), sw, sh, W, H, text_plate, timing)
             if steps:
                 vf = (f"[0:v]{chain}[pb];" if not pre else pre + f";[{last}]" + chain + "[pb];") + ";".join(steps) + f";[{plast}]null"
                 pre = "post"  # forces filter_complex below
-        plate = _plate(src, out_dir, vf, ["-ss", f"{seek:.5f}"] if first else [], ["-frames:v", str(n_out + 1)], fps,
+        plate = _plate(src, out_dir, vf, ["-ss", f"{seek:.5f}"] if first else [], ["-frames:v", str(n_out + 1)], fps, more_inputs=more,
                        complex_=bool(pre))
         key = f"plate{i}"
         media[key] = str(plate.relative_to(proj))

@@ -1,0 +1,705 @@
+{
+ "source": "projects/2026-10-14_n6-triceps/work/tx/original.vocals.words.json",
+ "reference": "projects/_n6/refs/n6-triceps.txt",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 48.69,
+   "words": [
+    {
+     "w": "لو",
+     "start": 0.0,
+     "end": 0.12,
+     "matched": false
+    },
+    {
+     "w": "انت",
+     "start": 0.0,
+     "end": 0.22,
+     "matched": true
+    },
+    {
+     "w": "بتتمرن",
+     "start": 0.22,
+     "end": 0.68,
+     "matched": true
+    },
+    {
+     "w": "Triceps",
+     "start": 0.68,
+     "end": 1.06,
+     "matched": true
+    },
+    {
+     "w": "على",
+     "start": 1.06,
+     "end": 1.26,
+     "matched": true
+    },
+    {
+     "w": "Cable،",
+     "start": 1.26,
+     "end": 1.64,
+     "matched": true
+    },
+    {
+     "w": "العب",
+     "start": 1.64,
+     "end": 1.88,
+     "matched": true
+    },
+    {
+     "w": "بدي",
+     "start": 1.88,
+     "end": 2.16,
+     "matched": true
+    },
+    {
+     "w": "ولا",
+     "start": 2.16,
+     "end": 3.52,
+     "matched": true
+    },
+    {
+     "w": "دي",
+     "start": 3.52,
+     "end": 4.24,
+     "matched": true
+    },
+    {
+     "w": "ولا",
+     "start": 4.24,
+     "end": 5.92,
+     "matched": true
+    },
+    {
+     "w": "دي،",
+     "start": 5.92,
+     "end": 6.64,
+     "matched": true
+    },
+    {
+     "w": "ولا",
+     "start": 6.64,
+     "end": 7.68,
+     "matched": true
+    },
+    {
+     "w": "مفيش",
+     "start": 7.68,
+     "end": 7.82,
+     "matched": true
+    },
+    {
+     "w": "فرق",
+     "start": 7.82,
+     "end": 8.12,
+     "matched": true
+    },
+    {
+     "w": "اصلا",
+     "start": 8.12,
+     "end": 8.46,
+     "matched": true
+    },
+    {
+     "w": "ما",
+     "start": 8.46,
+     "end": 8.54,
+     "matched": true
+    },
+    {
+     "w": "بينهم.",
+     "start": 8.54,
+     "end": 8.84,
+     "matched": true
+    },
+    {
+     "w": "احنا",
+     "start": 8.94,
+     "end": 9.14,
+     "matched": true
+    },
+    {
+     "w": "هنقسم",
+     "start": 9.14,
+     "end": 9.48,
+     "matched": true
+    },
+    {
+     "w": "تمرينة",
+     "start": 9.48,
+     "end": 9.8,
+     "matched": true
+    },
+    {
+     "w": "Triceps",
+     "start": 9.8,
+     "end": 10.14,
+     "matched": true
+    },
+    {
+     "w": "لحركتين،",
+     "start": 10.14,
+     "end": 10.86,
+     "matched": true
+    },
+    {
+     "w": "مش",
+     "start": 10.86,
+     "end": 11.02,
+     "matched": true
+    },
+    {
+     "w": "هتفرق",
+     "start": 11.02,
+     "end": 11.36,
+     "matched": true
+    },
+    {
+     "w": "بقى",
+     "start": 11.36,
+     "end": 11.52,
+     "matched": true
+    },
+    {
+     "w": "ان",
+     "start": 11.52,
+     "end": 11.64,
+     "matched": true
+    },
+    {
+     "w": "انا",
+     "start": 11.64,
+     "end": 11.8,
+     "matched": true
+    },
+    {
+     "w": "هامسك",
+     "start": 11.8,
+     "end": 12.12,
+     "matched": true
+    },
+    {
+     "w": "Grip",
+     "start": 12.12,
+     "end": 12.44,
+     "matched": true
+    },
+    {
+     "w": "دي",
+     "start": 12.44,
+     "end": 12.62,
+     "matched": true
+    },
+    {
+     "w": "او",
+     "start": 12.62,
+     "end": 12.82,
+     "matched": true
+    },
+    {
+     "w": "اي",
+     "start": 12.82,
+     "end": 12.98,
+     "matched": true
+    },
+    {
+     "w": "Grip",
+     "start": 12.98,
+     "end": 13.22,
+     "matched": true
+    },
+    {
+     "w": "تانية.",
+     "start": 13.22,
+     "end": 13.54,
+     "matched": true
+    },
+    {
+     "w": "الحركة",
+     "start": 13.54,
+     "end": 14.28,
+     "matched": true
+    },
+    {
+     "w": "الأولى",
+     "start": 14.28,
+     "end": 14.64,
+     "matched": true
+    },
+    {
+     "w": "ان",
+     "start": 14.64,
+     "end": 15.0,
+     "matched": true
+    },
+    {
+     "w": "انا",
+     "start": 15.0,
+     "end": 15.18,
+     "matched": true
+    },
+    {
+     "w": "بشتغلها",
+     "start": 15.18,
+     "end": 15.68,
+     "matched": true
+    },
+    {
+     "w": "بالشكل",
+     "start": 15.68,
+     "end": 16.12,
+     "matched": true
+    },
+    {
+     "w": "ده،",
+     "start": 16.12,
+     "end": 16.38,
+     "matched": true
+    },
+    {
+     "w": "فانت",
+     "start": 16.38,
+     "end": 17.36,
+     "matched": true
+    },
+    {
+     "w": "كده",
+     "start": 19.73,
+     "end": 20.05,
+     "matched": true
+    },
+    {
+     "w": "بتجيب",
+     "start": 20.05,
+     "end": 20.49,
+     "matched": true
+    },
+    {
+     "w": "Lateral",
+     "start": 20.49,
+     "end": 20.89,
+     "matched": true
+    },
+    {
+     "w": "head",
+     "start": 20.77,
+     "end": 20.962,
+     "matched": false
+    },
+    {
+     "w": "و",
+     "start": 20.962,
+     "end": 21.01,
+     "matched": false
+    },
+    {
+     "w": "Medial",
+     "start": 20.962,
+     "end": 21.71,
+     "matched": true
+    },
+    {
+     "w": "head،",
+     "start": 21.65,
+     "end": 21.77,
+     "matched": false
+    },
+    {
+     "w": "لانها",
+     "start": 21.71,
+     "end": 22.85,
+     "matched": true
+    },
+    {
+     "w": "دي",
+     "start": 22.85,
+     "end": 23.13,
+     "matched": true
+    },
+    {
+     "w": "ماسكة",
+     "start": 23.13,
+     "end": 23.45,
+     "matched": true
+    },
+    {
+     "w": "في",
+     "start": 23.45,
+     "end": 23.59,
+     "matched": true
+    },
+    {
+     "w": "Humerus.",
+     "start": 23.59,
+     "end": 24.05,
+     "matched": true
+    },
+    {
+     "w": "ودي",
+     "start": 24.05,
+     "end": 24.61,
+     "matched": true
+    },
+    {
+     "w": "تاني",
+     "start": 24.61,
+     "end": 24.83,
+     "matched": true
+    },
+    {
+     "w": "حركة",
+     "start": 24.83,
+     "end": 25.19,
+     "matched": true
+    },
+    {
+     "w": "في",
+     "start": 25.19,
+     "end": 25.25,
+     "matched": true
+    },
+    {
+     "w": "Triceps،",
+     "start": 25.25,
+     "end": 25.85,
+     "matched": true
+    },
+    {
+     "w": "بلعبها",
+     "start": 25.85,
+     "end": 26.41,
+     "matched": true
+    },
+    {
+     "w": "بالطريقة",
+     "start": 26.41,
+     "end": 26.85,
+     "matched": true
+    },
+    {
+     "w": "دي",
+     "start": 26.85,
+     "end": 27.03,
+     "matched": true
+    },
+    {
+     "w": "من",
+     "start": 27.03,
+     "end": 27.13,
+     "matched": true
+    },
+    {
+     "w": "تحت",
+     "start": 27.13,
+     "end": 27.45,
+     "matched": true
+    },
+    {
+     "w": "لفوق،",
+     "start": 27.45,
+     "end": 27.83,
+     "matched": true
+    },
+    {
+     "w": "لان",
+     "start": 27.83,
+     "end": 28.19,
+     "matched": true
+    },
+    {
+     "w": "عضلة",
+     "start": 28.19,
+     "end": 28.47,
+     "matched": true
+    },
+    {
+     "w": "Long",
+     "start": 28.47,
+     "end": 28.91,
+     "matched": true
+    },
+    {
+     "w": "head",
+     "start": 28.85,
+     "end": 28.97,
+     "matched": false
+    },
+    {
+     "w": "ماسكة",
+     "start": 28.91,
+     "end": 29.51,
+     "matched": true
+    },
+    {
+     "w": "في",
+     "start": 29.51,
+     "end": 29.61,
+     "matched": true
+    },
+    {
+     "w": "Scapula.",
+     "start": 29.61,
+     "end": 30.17,
+     "matched": true
+    },
+    {
+     "w": "بالشكل",
+     "start": 34.15,
+     "end": 34.87,
+     "matched": true
+    },
+    {
+     "w": "ده",
+     "start": 34.81,
+     "end": 34.93,
+     "matched": false
+    },
+    {
+     "w": "كده",
+     "start": 34.87,
+     "end": 35.05,
+     "matched": true
+    },
+    {
+     "w": "بنزل",
+     "start": 35.05,
+     "end": 35.41,
+     "matched": true
+    },
+    {
+     "w": "لتحت",
+     "start": 35.35,
+     "end": 35.47,
+     "matched": false
+    },
+    {
+     "w": "للاخر",
+     "start": 35.41,
+     "end": 36.41,
+     "matched": true
+    },
+    {
+     "w": "خالص،",
+     "start": 36.41,
+     "end": 36.85,
+     "matched": true
+    },
+    {
+     "w": "وبطلع",
+     "start": 36.85,
+     "end": 37.59,
+     "matched": true
+    },
+    {
+     "w": "للاخر",
+     "start": 37.59,
+     "end": 38.01,
+     "matched": true
+    },
+    {
+     "w": "خالص.",
+     "start": 38.01,
+     "end": 38.49,
+     "matched": true
+    },
+    {
+     "w": "هارجع",
+     "start": 38.97,
+     "end": 39.69,
+     "matched": true
+    },
+    {
+     "w": "تاني",
+     "start": 39.69,
+     "end": 39.97,
+     "matched": true
+    },
+    {
+     "w": "اقول",
+     "start": 39.97,
+     "end": 40.23,
+     "matched": true
+    },
+    {
+     "w": "ان",
+     "start": 40.23,
+     "end": 40.49,
+     "matched": true
+    },
+    {
+     "w": "كل",
+     "start": 40.49,
+     "end": 41.11,
+     "matched": true
+    },
+    {
+     "w": "المسكات",
+     "start": 41.11,
+     "end": 41.63,
+     "matched": true
+    },
+    {
+     "w": "مش",
+     "start": 41.63,
+     "end": 41.81,
+     "matched": true
+    },
+    {
+     "w": "هتفرق،",
+     "start": 41.81,
+     "end": 42.39,
+     "matched": true
+    },
+    {
+     "w": "اهم",
+     "start": 42.39,
+     "end": 42.69,
+     "matched": true
+    },
+    {
+     "w": "حاجة",
+     "start": 42.69,
+     "end": 42.97,
+     "matched": true
+    },
+    {
+     "w": "تلعب",
+     "start": 42.97,
+     "end": 43.25,
+     "matched": true
+    },
+    {
+     "w": "تمرين",
+     "start": 43.25,
+     "end": 43.71,
+     "matched": true
+    },
+    {
+     "w": "من",
+     "start": 43.71,
+     "end": 44.07,
+     "matched": true
+    },
+    {
+     "w": "فوق",
+     "start": 44.07,
+     "end": 44.43,
+     "matched": true
+    },
+    {
+     "w": "لتحت،",
+     "start": 44.43,
+     "end": 44.87,
+     "matched": true
+    },
+    {
+     "w": "وده",
+     "start": 44.87,
+     "end": 45.31,
+     "matched": true
+    },
+    {
+     "w": "التمرين",
+     "start": 45.31,
+     "end": 45.71,
+     "matched": true
+    },
+    {
+     "w": "التاني",
+     "start": 45.71,
+     "end": 45.93,
+     "matched": true
+    },
+    {
+     "w": "بتاعت",
+     "start": 45.93,
+     "end": 46.11,
+     "matched": true
+    },
+    {
+     "w": "Triceps.",
+     "start": 46.11,
+     "end": 46.55,
+     "matched": true
+    },
+    {
+     "w": "وبكده",
+     "start": 46.69,
+     "end": 47.31,
+     "matched": true
+    },
+    {
+     "w": "يبقى",
+     "start": 47.31,
+     "end": 47.53,
+     "matched": true
+    },
+    {
+     "w": "جبت",
+     "start": 47.53,
+     "end": 47.77,
+     "matched": true
+    },
+    {
+     "w": "كل",
+     "start": 47.77,
+     "end": 47.89,
+     "matched": true
+    },
+    {
+     "w": "الزوايا",
+     "start": 47.89,
+     "end": 48.17,
+     "matched": true
+    },
+    {
+     "w": "بتاعت",
+     "start": 48.17,
+     "end": 48.29,
+     "matched": true
+    },
+    {
+     "w": "Triceps.",
+     "start": 48.29,
+     "end": 48.69,
+     "matched": true
+    }
+   ]
+  }
+ ],
+ "report": [
+  "   ---  (missing)  ->  لو",
+  "  0.00  انا  ->  انت",
+  "  1.26  الCable،  ->  Cable،",
+  "  7.48  ما  ->  (part of ولا)",
+  "  7.68  بيش  ->  مفيش",
+  "  9.48  تمرين  ->  تمرينة",
+  "  9.80  Trio  ->  Triceps",
+  " 11.80  همسك  ->  هامسك",
+  " 12.12  الجريب  ->  Grip",
+  " 12.98  جريب  ->  Grip",
+  " 13.22  تاني،  ->  تانية.",
+  " 15.18  بتشتغلها  ->  بشتغلها",
+  " 20.49  LH  ->  Lateral",
+  "   ---  (missing)  ->  head",
+  "   ---  (missing)  ->  و",
+  " 20.89  وMH  ->  Medial",
+  "   ---  (missing)  ->  head،",
+  " 23.13  مسكة  ->  ماسكة",
+  " 23.59  الHumerus.  ->  Humerus.",
+  " 26.41  بالتراية  ->  بالطريقة",
+  " 28.47  LH  ->  Long",
+  "   ---  (missing)  ->  head",
+  " 28.91  مسكة  ->  ماسكة",
+  " 29.61  الScapula.  ->  Scapula.",
+  "   ---  (missing)  ->  ده",
+  "   ---  (missing)  ->  لتحت",
+  " 38.97  هرجع  ->  هارجع",
+  " 39.97  هقول  ->  اقول",
+  " 45.93  بتاع  ->  بتاعت",
+  " 47.53  جبتوا  ->  جبت",
+  " 48.17  بتاع  ->  بتاعت"
+ ]
+}

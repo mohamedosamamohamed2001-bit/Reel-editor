@@ -1,0 +1,713 @@
+{
+ "title": "OSM: the scale isn't everything",
+ "fps": 30,
+ "width": 1080,
+ "height": 1920,
+ "media": {
+  "main": "source/original.mp4",
+  "v_scale": "work/visuals/scale.jpg",
+  "v_tape": "work/visuals/tape.jpg"
+ },
+ "audio": {
+  "main": "work/stems/original.vocals.wav"
+ },
+ "dialogueFx": "highpass=f=70,acompressor=threshold=0.1:ratio=2.5:attack=8:release=120:makeup=1.5",
+ "dialogueLufs": -16.0,
+ "plates": {
+  "grade": "eq=contrast=1.05:saturation=0.95:gamma=0.99,colorbalance=rs=-0.015:bs=0.02:rm=-0.01:bm=0.005:rh=0.012:gh=0.004:bh=-0.012,curves=master='0/0 0.22/0.2 0.78/0.8 1/1',vignette=angle=PI/7",
+  "sharpen": "cas=strength=0.22"
+ },
+ "clips": [
+  {
+   "src": "main",
+   "in": 0.0,
+   "out": 1.93,
+   "zoom": [
+    1.0,
+    1.06
+   ],
+   "focusY": 0.4
+  },
+  {
+   "src": "main",
+   "in": 1.93,
+   "out": 2.42,
+   "zoom": 1.0,
+   "hold": 2.46,
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  },
+  {
+   "src": "main",
+   "in": 2.42,
+   "out": 9.36,
+   "zoom": [
+    1.0,
+    1.05
+   ]
+  },
+  {
+   "src": "main",
+   "in": 9.36,
+   "out": 9.48,
+   "zoom": 1.08,
+   "focusY": 0.4,
+   "hold": 9.5,
+   "tin": {
+    "type": "zoom",
+    "flash": true
+   }
+  },
+  {
+   "src": "main",
+   "in": 9.48,
+   "out": 12.76,
+   "zoom": [
+    1.08,
+    1.12
+   ],
+   "focusY": 0.4
+  },
+  {
+   "src": "main",
+   "in": 12.76,
+   "out": 12.86,
+   "zoom": 1.0,
+   "hold": 12.9,
+   "tin": {
+    "type": "whip",
+    "dir": "up"
+   }
+  },
+  {
+   "src": "main",
+   "in": 12.86,
+   "out": 17.98,
+   "zoom": [
+    1.0,
+    1.05
+   ]
+  },
+  {
+   "src": "main",
+   "in": 17.98,
+   "out": 22.95,
+   "zoom": [
+    1.0,
+    1.05
+   ],
+   "tin": {
+    "type": "zoom",
+    "flash": true
+   }
+  }
+ ],
+ "captions": {
+  "wordsFile": "work/tx/aligned.words.json",
+  "style": "plate",
+  "anchorPlate": true,
+  "karaoke": true,
+  "maxWords": 3,
+  "maxChars": 22,
+  "keywords": [
+   "بالميزان",
+   "الحقيقة",
+   "العضلات",
+   "احباط",
+   "مقاسات",
+   "before",
+   "تدريب"
+  ]
+ },
+ "overlays": [
+  {
+   "type": "kineticTitle",
+   "at": 0.05,
+   "dur": 1.4,
+   "eyebrow": "OSM · PROGRESS",
+   "lines": [
+    {
+     "text": "الميزان",
+     "size": 120
+    },
+    {
+     "text": "بس؟",
+     "accent": true,
+     "size": 120
+    }
+   ],
+   "top": 0.16,
+   "tilt": true
+  },
+  {
+   "type": "visualCard",
+   "src": "v_scale",
+   "at": 1.45,
+   "dur": 2.7,
+   "mode": "full",
+   "credit": "Photo: Magnus D / Flickr · CC BY 2.0",
+   "push": [
+    1.08,
+    1.0
+   ],
+   "focusY": 0.45
+  },
+  {
+   "type": "checklist",
+   "at": 5.260000000000001,
+   "dur": 4.056666666666667,
+   "top": 0.15,
+   "items": [
+    {
+     "at": 0.1,
+     "text": "بتنزل في الدهون"
+    },
+    {
+     "at": 1.02,
+     "text": "بتزيد في العضلات"
+    },
+    {
+     "at": 1.4400000000000008,
+     "text": "ميزانك ثابت"
+    }
+   ]
+  },
+  {
+   "type": "stepBadge",
+   "at": 11.16,
+   "dur": 1.5566666666666678,
+   "mark": "✗",
+   "label": "احباط",
+   "sub": "واحيانا استعجال",
+   "top": 0.15
+  },
+  {
+   "type": "visualCard",
+   "src": "v_tape",
+   "at": 14.38,
+   "dur": 2.9,
+   "mode": "card",
+   "credit": "Photo: bradhoc / Flickr · CC BY 2.0",
+   "label": "مقاسات",
+   "push": [
+    1.0,
+    1.1
+   ]
+  },
+  {
+   "type": "kineticTitle",
+   "at": 17.18,
+   "dur": 0.7366666666666639,
+   "eyebrow": "الصور بتاعتك",
+   "lines": [
+    {
+     "text": "BEFORE"
+    },
+    {
+     "text": "& AFTER",
+     "accent": true
+    }
+   ],
+   "top": 0.16
+  },
+  {
+   "type": "stepBadge",
+   "at": 19.979999999999997,
+   "dur": 2.9366666666666665,
+   "mark": "✓",
+   "label": "ابعتلي: تدريب",
+   "top": 0.15
+  },
+  {
+   "type": "endCard",
+   "at": 22.9667,
+   "dur": 2.4,
+   "cta": "OSM Coach Osama",
+   "reveal": "wipe"
+  }
+ ],
+ "shakes": [
+  {
+   "at": 0.0,
+   "amp": 0.5
+  },
+  {
+   "at": 1.45,
+   "amp": 0.6
+  },
+  {
+   "at": 9.366666666666667,
+   "amp": 0.6
+  },
+  {
+   "at": 22.966666666666665,
+   "amp": 0.6
+  }
+ ],
+ "sfx": {
+  "cues": [
+   {
+    "at": 0.0,
+    "sound": "boom",
+    "gain_db": -9
+   },
+   {
+    "at": 0.12,
+    "sound": "slam",
+    "gain_db": -15
+   },
+   {
+    "at": 1.45,
+    "sound": "whip",
+    "gain_db": -11,
+    "dir": 1.0
+   },
+   {
+    "at": 1.45,
+    "sound": "bass_drop",
+    "gain_db": -17
+   },
+   {
+    "at": 1.9333,
+    "sound": "whip",
+    "gain_db": -14,
+    "dir": -1.0
+   },
+   {
+    "at": 4.15,
+    "sound": "whip",
+    "gain_db": -13,
+    "dir": -1.0
+   },
+   {
+    "at": 5.36,
+    "sound": "click",
+    "gain_db": -19
+   },
+   {
+    "at": 6.28,
+    "sound": "click",
+    "gain_db": -19
+   },
+   {
+    "at": 6.7,
+    "sound": "slam",
+    "gain_db": -16
+   },
+   {
+    "at": 8.7667,
+    "sound": "riser",
+    "gain_db": -19,
+    "dur": 0.6
+   },
+   {
+    "at": 9.3667,
+    "sound": "boom",
+    "gain_db": -10
+   },
+   {
+    "at": 11.26,
+    "sound": "slam",
+    "gain_db": -15
+   },
+   {
+    "at": 12.7667,
+    "sound": "whip",
+    "gain_db": -11,
+    "dir": 1.0,
+    "bright": 7500
+   },
+   {
+    "at": 14.38,
+    "sound": "whip",
+    "gain_db": -13,
+    "dir": -1.0
+   },
+   {
+    "at": 17.18,
+    "sound": "slam",
+    "gain_db": -14
+   },
+   {
+    "at": 17.28,
+    "sound": "bass_drop",
+    "gain_db": -17
+   },
+   {
+    "at": 17.4667,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.5
+   },
+   {
+    "at": 17.9667,
+    "sound": "boom",
+    "gain_db": -10
+   },
+   {
+    "at": 20.08,
+    "sound": "mech",
+    "gain_db": -18
+   },
+   {
+    "at": 22.9667,
+    "sound": "reverse_hit",
+    "gain_db": -12,
+    "dur": 0.7
+   },
+   {
+    "at": 22.9667,
+    "sound": "boom",
+    "gain_db": -7
+   },
+   {
+    "at": 23.4667,
+    "sound": "click",
+    "gain_db": -17
+   }
+  ]
+ },
+ "music": {
+  "src": "work/music/music.wav",
+  "gain_db": -9
+ },
+ "tail": 2.4,
+ "covers": [
+  {
+   "src": "main",
+   "at": 0.0,
+   "dur": 1.59,
+   "kind": "blur",
+   "box": [
+    0.0917,
+    0.6356,
+    0.9083,
+    0.7284
+   ]
+  },
+  {
+   "src": "main",
+   "at": 1.55,
+   "dur": 0.24,
+   "kind": "blur",
+   "box": [
+    0.2361,
+    0.6372,
+    0.7611,
+    0.7253
+   ]
+  },
+  {
+   "src": "main",
+   "at": 1.75,
+   "dur": 0.34,
+   "kind": "blur",
+   "box": [
+    0.2361,
+    0.6372,
+    0.7611,
+    0.8425
+   ]
+  },
+  {
+   "src": "main",
+   "at": 2.05,
+   "dur": 0.24,
+   "kind": "blur",
+   "box": [
+    0.0583,
+    0.6356,
+    0.9389,
+    0.8425
+   ]
+  },
+  {
+   "src": "main",
+   "at": 2.25,
+   "dur": 0.74,
+   "kind": "blur",
+   "box": [
+    0.0583,
+    0.6341,
+    0.9389,
+    0.8894
+   ]
+  },
+  {
+   "src": "main",
+   "at": 2.95,
+   "dur": 0.14,
+   "kind": "blur",
+   "box": [
+    0.0583,
+    0.6341,
+    0.9389,
+    0.8191
+   ]
+  },
+  {
+   "src": "main",
+   "at": 3.05,
+   "dur": 0.24,
+   "kind": "blur",
+   "box": [
+    0.0583,
+    0.6341,
+    0.9389,
+    0.7284
+   ]
+  },
+  {
+   "src": "main",
+   "at": 3.25,
+   "dur": 0.44,
+   "kind": "blur",
+   "box": [
+    0.0583,
+    0.6325,
+    0.9389,
+    0.8316
+   ]
+  },
+  {
+   "src": "main",
+   "at": 3.65,
+   "dur": 0.24,
+   "kind": "blur",
+   "box": [
+    0.2722,
+    0.6325,
+    0.6889,
+    0.8316
+   ]
+  },
+  {
+   "src": "main",
+   "at": 3.85,
+   "dur": 0.54,
+   "kind": "blur",
+   "box": [
+    0.1944,
+    0.6325,
+    0.8056,
+    0.8237
+   ]
+  },
+  {
+   "src": "main",
+   "at": 4.35,
+   "dur": 0.34,
+   "kind": "blur",
+   "box": [
+    0.1944,
+    0.6325,
+    0.8056,
+    0.7253
+   ]
+  },
+  {
+   "src": "main",
+   "at": 4.65,
+   "dur": 3.34,
+   "kind": "blur",
+   "box": [
+    0.0389,
+    0.6138,
+    0.9611,
+    0.7472
+   ]
+  },
+  {
+   "src": "main",
+   "at": 7.95,
+   "dur": 1.24,
+   "kind": "blur",
+   "box": [
+    0.1,
+    0.6153,
+    0.9194,
+    0.7472
+   ]
+  },
+  {
+   "src": "main",
+   "at": 9.15,
+   "dur": 0.14,
+   "kind": "blur",
+   "box": [
+    0.1,
+    0.6153,
+    0.95,
+    0.7472
+   ]
+  },
+  {
+   "src": "main",
+   "at": 9.25,
+   "dur": 2.14,
+   "kind": "blur",
+   "box": [
+    0.0667,
+    0.6138,
+    0.95,
+    0.7472
+   ]
+  },
+  {
+   "src": "main",
+   "at": 11.35,
+   "dur": 0.64,
+   "kind": "blur",
+   "box": [
+    0.0667,
+    0.4997,
+    0.95,
+    0.7472
+   ]
+  },
+  {
+   "src": "main",
+   "at": 11.95,
+   "dur": 0.14,
+   "kind": "blur",
+   "box": [
+    0.0667,
+    0.6153,
+    0.95,
+    0.7472
+   ]
+  },
+  {
+   "src": "main",
+   "at": 12.05,
+   "dur": 0.24,
+   "kind": "blur",
+   "box": [
+    0.3306,
+    0.6356,
+    0.6694,
+    0.7237
+   ]
+  },
+  {
+   "src": "main",
+   "at": 12.25,
+   "dur": 0.54,
+   "kind": "blur",
+   "box": [
+    0.2833,
+    0.6356,
+    0.7167,
+    0.7253
+   ]
+  },
+  {
+   "src": "main",
+   "at": 12.75,
+   "dur": 2.84,
+   "kind": "blur",
+   "box": [
+    0.1111,
+    0.6122,
+    0.9056,
+    0.7503
+   ]
+  },
+  {
+   "src": "main",
+   "at": 15.55,
+   "dur": 2.14,
+   "kind": "blur",
+   "box": [
+    0.225,
+    0.6138,
+    0.7806,
+    0.7378
+   ]
+  },
+  {
+   "src": "main",
+   "at": 17.65,
+   "dur": 0.14,
+   "kind": "blur",
+   "box": [
+    0.2361,
+    0.4934,
+    0.7806,
+    0.7378
+   ]
+  },
+  {
+   "src": "main",
+   "at": 17.75,
+   "dur": 0.54,
+   "kind": "blur",
+   "box": [
+    0.0278,
+    0.4934,
+    0.9722,
+    0.7378
+   ]
+  },
+  {
+   "src": "main",
+   "at": 18.25,
+   "dur": 1.64,
+   "kind": "blur",
+   "box": [
+    0.0278,
+    0.6325,
+    0.9722,
+    0.7316
+   ]
+  },
+  {
+   "src": "main",
+   "at": 19.85,
+   "dur": 1.44,
+   "kind": "blur",
+   "box": [
+    0.1556,
+    0.6325,
+    0.8444,
+    0.7316
+   ]
+  },
+  {
+   "src": "main",
+   "at": 21.25,
+   "dur": 1.04,
+   "kind": "blur",
+   "box": [
+    0.2083,
+    0.6403,
+    0.7917,
+    0.7316
+   ]
+  },
+  {
+   "src": "main",
+   "at": 22.25,
+   "dur": 0.25,
+   "kind": "blur",
+   "box": [
+    0.1556,
+    0.6325,
+    0.8444,
+    0.7316
+   ]
+  }
+ ],
+ "blurMask": {
+  "file": "work/blurmask.mkv",
+  "band": [
+   512,
+   664
+  ],
+  "sigma": 16,
+  "darken": 0.12
+ },
+ "textPlate": "#56A0FB"
+}

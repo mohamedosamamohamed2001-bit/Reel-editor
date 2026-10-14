@@ -49,6 +49,9 @@ export type Word = { w: string; start: number; end: number };
 
 export type Overlay =
   | { type: "exerciseTitle"; at: number; dur: number; title: string; eyebrow?: string }
+  | { type: "visualCard"; at: number; dur: number; src: string; mode?: "card" | "full"; label?: string; sub?: string; credit?: string;
+      srcW?: number; srcH?: number; width?: number; top?: number; markers?: { at: number; x: number; y: number; label?: string; r?: number }[];
+      push?: [number, number]; focusY?: number }
   | { type: "kineticTitle"; at: number; dur: number; lines: { text: string; accent?: boolean; size?: number }[]; eyebrow?: string; top?: number; tilt?: boolean; backdrop?: boolean }
   | { type: "stepBadge"; at: number; dur: number; mark: string; label: string; sub?: string; top?: number; side?: "left" | "right" }
   | { type: "lowerLabel"; at: number; dur: number; title: string; sets?: string; eyebrow?: string; top?: number }
@@ -97,6 +100,8 @@ export type Edit = {
     zones?: { at: number; dur: number; top: number }[];
     /** cover plates baked into the footage (tools/render_edit.py): captions sit centred on them, without a plate of their own */
     anchors?: { at: number; dur: number; box: number[] }[];
+    /** keep the caption's own plate (tight to the text) even when anchored on a cover (batch 2: narrow blue bars) */
+    anchorPlate?: boolean;
   };
   overlays: Overlay[];
   tail?: number; // seconds after the last clip (e.g. for an end card on its own)
