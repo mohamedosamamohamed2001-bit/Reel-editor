@@ -71,6 +71,7 @@ projects/<name>/  one folder per video: project.json, edit.json, analysis/, docu
 | faster-whisper 1.2.1 (`.venv`, `requirements.txt`) | word-timed transcripts for captions | verified on 5 videos. Audio decoded via FFmpeg because PyAV in this env rejects faster-whisper's `metadata_errors` argument |
 | onnxruntime 1.31 (`.venv`) + UVR-MDX-NET-Voc_FT.onnx (github.com/TRvlvr/model_repo, cached in ~/.cache/osm-models, sha256 534b2070…e111) | `tools/separate.py`: split a finished mix into voice + music bed | verified on 5 videos (clean spectrograms). Demucs weights host (dl.fbaipublicfiles.com) is blocked here (403) |
 | scipy 1.18 (`.venv`) | filters for `tools/music.py` | verified |
+| opencv-python-headless 5.0.0.93 (`.venv`) | `tools/erase_text.py`: inpaint old burned-in captions away | verified on 6 videos (before/after stills) |
 
 ## Decisions log
 - 2026-10-12: Brand book v1.0 analysed into `docs/BRAND_VIDEO_SYSTEM.md`. The logo files are raster crops from the PDF
@@ -147,3 +148,10 @@ projects/<name>/  one folder per video: project.json, edit.json, analysis/, docu
   timing unchanged. The end card shows his end artwork `brand/end/osm-end-photo.jpg` (sha256 ee0e9772…1676) via
   `endCard.image` (1080 px wide, `lighten` blends its near-black background into Night) with the CTA pill below;
   it replaces the wordmark file. Template: `projects/_n6/common2.py` (`NO_BLUR`, `END_IMAGE`).
+- 2026-10-14 (batch 2 v3, Coach Osama): **old burned-in captions are erased, never covered.** `tools/erase_text.py`
+  (OpenCV Telea inpainting, `opencv-python-headless` in `.venv`) masks only the old glyph pixels: white + low-saturation
+  + a dark outline within 3 px, inside the cover regions (full width), kept only if the same pixel is text 0.15 s
+  before or after (captions are static, clothing stripes move), then line-shaped clusters only (h 8–200 px,
+  density 0.08–0.75), grown 4 px. Coloured words need `color_windows` from a colour scan. LaMa (big-lama ONNX) was
+  tested and rejected: ~6 s/frame on this CPU (20+ h for a batch). Output is x264 CRF 10, same 60 fps frame count.
+

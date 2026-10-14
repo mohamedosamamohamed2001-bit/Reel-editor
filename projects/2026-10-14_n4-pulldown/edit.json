@@ -4,7 +4,7 @@
  "width": 1080,
  "height": 1920,
  "media": {
-  "main": "source/original.mp4",
+  "main": "work/clean/original.clean.mp4",
   "v_split": "work/visuals/split_wide_close.jpg",
   "v_lats": "work/visuals/a_back50.jpg",
   "v_midback": "work/visuals/a_back50.jpg"

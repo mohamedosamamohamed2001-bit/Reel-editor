@@ -4,7 +4,7 @@
  "width": 1080,
  "height": 1920,
  "media": {
-  "main": "source/original.mp4",
+  "main": "work/clean/original.clean.mp4",
   "v_glutes": "work/visuals/glutes_hams.jpg",
   "v_es": "work/visuals/a_deep_back.jpg"
  },

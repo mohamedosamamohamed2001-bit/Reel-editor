@@ -4,7 +4,7 @@
  "width": 1080,
  "height": 1920,
  "media": {
-  "main": "source/original.mp4",
+  "main": "work/clean/original.clean.mp4",
   "v_hum": "work/visuals/arm103.jpg",
   "v_scap": "work/visuals/arm103.jpg"
  },

@@ -4,7 +4,7 @@
  "width": 1080,
  "height": 1920,
  "media": {
-  "main": "source/original.mp4",
+  "main": "work/clean/original.clean.mp4",
   "v_lift": "work/visuals/w3.jpg",
   "v_fish": "work/visuals/salmon.jpg",
   "v_meat": "work/visuals/steak.jpg"

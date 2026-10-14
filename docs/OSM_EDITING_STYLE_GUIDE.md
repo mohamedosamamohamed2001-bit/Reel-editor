@@ -22,10 +22,13 @@ visuals). Brand rules come from `docs/BRAND_VIDEO_SYSTEM.md` and `brand/tokens.j
   Keyword + underline in Night #0A0F16 (blue on blue would vanish).
 - **No blur, no frosted glass, no extra box behind the text** (Coach Osama, 2026-10-14). The footage stays clear and
   fully visible behind the captions; the only thing behind the words is the narrow blue bar above.
-- Re-editing a finished video: the old burned-in captions are detected only to *place* the new captions (covers of
-  kind `"anchor"`: position only, nothing drawn or blurred). The old text is not hidden. Don't use `blurMask` or
-  blur covers. `projects/_n6/common2.py` `NO_BLUR = True` does this. A project's `covers.pinned.json` freezes the
-  approved caption positions.
+- **Re-editing a finished video: the old burned-in captions are ERASED, not covered** (Coach Osama, 2026-10-14).
+  `.venv/bin/python tools/erase_text.py projects/<p>` writes `work/clean/original.clean.mp4` (same frames and timing as
+  the source, which is never modified) and `common2.finish()` points the edit at it (`CLEAN_SOURCE`). Only the new
+  captions are visible. Check its `--test t1,t2,…` before/after PNGs first; per-video `erase_params.json` handles
+  coloured words (`color_windows`) and keeps clothing prints out (`y_min`).
+- The old-caption map (covers, kind `"anchor"`) still places the new captions: positions stay where they were approved.
+  A project's `covers.pinned.json` freezes them.
 
 ## 4. Motion graphics
 | Element | Use |

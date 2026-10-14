@@ -4,7 +4,7 @@
  "width": 1080,
  "height": 1920,
  "media": {
-  "main": "source/original.mp4",
+  "main": "work/clean/original.clean.mp4",
   "v_phone": "work/visuals/phone1.jpg",
   "v_plan": "work/visuals/checklist.jpg"
  },

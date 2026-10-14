@@ -1,6 +1,7 @@
 """Batch 2 (the next six OSM videos, 2026-10-14): the approved collection style (projects/_c5/common.py) plus
   - narrow #56A0FB caption bars: each caption keeps its own tight plate (anchorPlate) instead of a wide cover bar,
-  - old burned-in captions: NO blur since 2026-10-14 (covers are caption positions only, kind "anchor"),
+  - old burned-in captions: ERASED from a cleaned copy of the source (tools/erase_text.py -> CLEAN_SOURCE); no blur,
+    no box. Covers stay as caption positions only (kind "anchor"),
   - end card = Coach Osama's end artwork (END_IMAGE) + the "OSM Coach Osama" pill,
   - supporting visuals (visualCard) from openly licensed sources, credited in projects/_n6/assets/manifest.json.
 """
@@ -16,6 +17,7 @@ from common import (DIALOGUE_FX, END_DUR, FPS, GRADE, SHARPEN, TEXT_PLATE, Timel
 
 ASSETS = Path(__file__).resolve().parent / "assets"
 NO_BLUR = True  # Coach Osama 2026-10-14: remove the blurred background behind text in every video
+CLEAN_SOURCE = "work/clean/original.clean.mp4"  # Coach Osama 2026-10-14: old captions ERASED (tools/erase_text.py), not covered
 END_IMAGE = "brand/end/osm-end-photo.jpg"  # Coach Osama 2026-10-14: his end artwork, replaces the wordmark on the end card
 MANIFEST = json.loads((ASSETS / "manifest.json").read_text()) if (ASSETS / "manifest.json").exists() else []
 
@@ -66,6 +68,10 @@ def finish(P, tl, edit, covers, blur_band=(0.40, 1.0)):
         bm.update({"sigma": 16, "darken": 0.12})
         edit["covers"] = covers
         edit["blurMask"] = bm
+    if CLEAN_SOURCE:
+        if not (Path(P) / CLEAN_SOURCE).exists():
+            sys.exit(f"{P}: run `.venv/bin/python tools/erase_text.py {P}` first (it writes {CLEAN_SOURCE})")
+        edit["media"]["main"] = CLEAN_SOURCE  # same frames and timing as source/original.mp4, old captions erased
     for ov in edit["overlays"]:
         if ov["type"] == "endCard" and END_IMAGE:
             ov["image"] = END_IMAGE
