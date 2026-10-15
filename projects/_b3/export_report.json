@@ -7,7 +7,7 @@
   "video": "h264 1080x1920 30/1",
   "audio": "aac 48000 Hz",
   "duration": 31.4,
-  "size_mb": 23.0,
+  "size_mb": 23.2,
   "decodes": true
  },
  {
@@ -18,7 +18,7 @@
   "video": "h264 1080x1920 30/1",
   "audio": "aac 48000 Hz",
   "duration": 31.4,
-  "size_mb": 23.0,
+  "size_mb": 23.2,
   "decodes": true
  },
  {
@@ -51,7 +51,7 @@
   "video": "h264 1080x1920 30/1",
   "audio": "aac 48000 Hz",
   "duration": 37.467,
-  "size_mb": 29.2,
+  "size_mb": 29.5,
   "decodes": true,
   "send_copy": "projects/2026-10-15_b3-03/exports/OSM_15_weight-stuck_send.mp4",
   "send_mb": 28.1
@@ -64,7 +64,7 @@
   "video": "h264 1080x1920 30/1",
   "audio": "aac 48000 Hz",
   "duration": 37.467,
-  "size_mb": 29.2,
+  "size_mb": 29.5,
   "decodes": true,
   "send_copy": "projects/2026-10-15_b3-03/exports/OSM_15_weight-stuck_no-music_send.mp4",
   "send_mb": 28.1
@@ -77,7 +77,7 @@
   "video": "h264 1080x1920 30/1",
   "audio": "aac 48000 Hz",
   "duration": 98.167,
-  "size_mb": 70.7,
+  "size_mb": 70.3,
   "decodes": true,
   "send_copy": "projects/2026-10-15_b3-04/exports/OSM_16_inbody-guide_send.mp4",
   "send_mb": 28.2
@@ -90,7 +90,7 @@
   "video": "h264 1080x1920 30/1",
   "audio": "aac 48000 Hz",
   "duration": 98.167,
-  "size_mb": 70.7,
+  "size_mb": 70.3,
   "decodes": true,
   "send_copy": "projects/2026-10-15_b3-04/exports/OSM_16_inbody-guide_no-music_send.mp4",
   "send_mb": 28.2
@@ -103,7 +103,7 @@
   "video": "h264 1080x1920 30/1",
   "audio": "aac 48000 Hz",
   "duration": 25.4,
-  "size_mb": 16.1,
+  "size_mb": 15.5,
   "decodes": true
  },
  {
@@ -114,7 +114,7 @@
   "video": "h264 1080x1920 30/1",
   "audio": "aac 48000 Hz",
   "duration": 25.4,
-  "size_mb": 16.1,
+  "size_mb": 15.5,
   "decodes": true
  },
  {
@@ -125,7 +125,7 @@
   "video": "h264 1080x1920 30/1",
   "audio": "aac 48000 Hz",
   "duration": 22.8,
-  "size_mb": 16.0,
+  "size_mb": 16.1,
   "decodes": true
  },
  {
@@ -136,7 +136,7 @@
   "video": "h264 1080x1920 30/1",
   "audio": "aac 48000 Hz",
   "duration": 22.8,
-  "size_mb": 16.0,
+  "size_mb": 16.1,
   "decodes": true
  },
  {
@@ -146,8 +146,8 @@
   "trimmed": false,
   "video": "h264 1080x1920 30/1",
   "audio": "aac 48000 Hz",
-  "duration": 29.376,
-  "size_mb": 21.4,
+  "duration": 29.367,
+  "size_mb": 21.2,
   "decodes": true
  },
  {
@@ -157,8 +157,8 @@
   "trimmed": false,
   "video": "h264 1080x1920 30/1",
   "audio": "aac 48000 Hz",
-  "duration": 29.376,
-  "size_mb": 21.4,
+  "duration": 29.367,
+  "size_mb": 21.2,
   "decodes": true
  },
  {
@@ -169,7 +169,7 @@
   "video": "h264 1080x1920 30/1",
   "audio": "aac 48000 Hz",
   "duration": 35.7,
-  "size_mb": 28.0,
+  "size_mb": 28.1,
   "decodes": true
  },
  {
@@ -180,7 +180,7 @@
   "video": "h264 1080x1920 30/1",
   "audio": "aac 48000 Hz",
   "duration": 35.7,
-  "size_mb": 28.0,
+  "size_mb": 28.1,
   "decodes": true
  },
  {
@@ -191,7 +191,7 @@
   "video": "h264 1080x1920 30/1",
   "audio": "aac 48000 Hz",
   "duration": 27.4,
-  "size_mb": 22.7,
+  "size_mb": 22.5,
   "decodes": true
  },
  {
@@ -202,7 +202,7 @@
   "video": "h264 1080x1920 30/1",
   "audio": "aac 48000 Hz",
   "duration": 27.4,
-  "size_mb": 22.7,
+  "size_mb": 22.5,
   "decodes": true
  },
  {
@@ -213,7 +213,7 @@
   "video": "h264 1080x1920 30/1",
   "audio": "aac 48000 Hz",
   "duration": 20.9,
-  "size_mb": 15.9,
+  "size_mb": 15.8,
   "decodes": true
  },
  {
@@ -224,7 +224,7 @@
   "video": "h264 1080x1920 30/1",
   "audio": "aac 48000 Hz",
   "duration": 20.9,
-  "size_mb": 15.9,
+  "size_mb": 15.8,
   "decodes": true
  },
  {
@@ -235,7 +235,7 @@
   "video": "h264 1080x1920 30/1",
   "audio": "aac 48000 Hz",
   "duration": 26.9,
-  "size_mb": 21.3,
+  "size_mb": 20.8,
   "decodes": true
  },
  {
@@ -246,7 +246,7 @@
   "video": "h264 1080x1920 30/1",
   "audio": "aac 48000 Hz",
   "duration": 26.9,
-  "size_mb": 21.3,
+  "size_mb": 20.8,
   "decodes": true
  },
  {
@@ -257,7 +257,7 @@
   "video": "h264 1080x1920 30/1",
   "audio": "aac 48000 Hz",
   "duration": 24.167,
-  "size_mb": 18.5,
+  "size_mb": 18.1,
   "decodes": true
  },
  {
@@ -268,7 +268,7 @@
   "video": "h264 1080x1920 30/1",
   "audio": "aac 48000 Hz",
   "duration": 24.167,
-  "size_mb": 18.5,
+  "size_mb": 18.1,
   "decodes": true
  }
 ]
