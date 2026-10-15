@@ -13,7 +13,7 @@ t = M.stock("coverr-chicken-skewer-1416", 4.0, 2.0, zoom=(1.0, 1.1), focusX=0.62
 M.title(t + 0.1, 1.85, [{"text": "زهقت من", "size": 100}, {"text": "الفراخ؟", "accent": True, "size": 130}], top=0.60)
 # the real diet plan: Chicken Breast (Cooked) · 120 Gram -> Swap (9)
 t = M.app("diet", [(8.0, 3.5)], region=(0.0, 0.16, 1.0, 0.72), tin=Z,
-          highlights=[(0.3, 1.2, (0.03, 0.42, 0.94, 0.10)), (1.6, 1.6, (0.03, 0.53, 0.94, 0.25))])
+          highlights=[(0.3, 1.3, (0.03, 0.42, 0.94, 0.10))])
 M.title(t + 1.5, 1.9, [{"text": "بدّلها", "accent": True, "size": 120}], top=0.80, sfx="whoosh_in")
 # the alternatives the app lists for it, same 120 g, cooked
 for name, a, label, fx in [("coverr-shrimps-on-the-barbecue-2876", 6.0, "Shrimps · 120 Gram", 0.5),
