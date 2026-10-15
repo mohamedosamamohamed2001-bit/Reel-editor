@@ -42,5 +42,38 @@
   "source": "rawpixel",
   "landing": "https://www.rawpixel.com/image/14008361/image-paper-cartoon-face",
   "attribution": "\"Bones foot, ankle knee joint:\" is marked with CC0 1.0. To view the terms, visit https://creativecommons.org/publicdomain/zero/1.0/."
+ },
+ {
+  "file": "squat_deep.jpg",
+  "openverse_id": "a4dd19b2-0df1-4540-ae90-d82262eadaa5",
+  "title": "Deep squats",
+  "creator": "drewgstephens",
+  "license": "BY-SA 2.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/22809317@N04/9528195699",
+  "attribution": "\"Deep squats\" by drewgstephens is licensed under CC BY-SA 2.0. To view a copy of this license, visit https://creativecommons.org/licenses/by-sa/2.0/."
+ },
+ {
+  "file": "abs_core.jpg",
+  "openverse_id": "ac5ab626-63fb-4435-8fe4-9547299ded8f",
+  "title": "because all preschoolers want six pack abs",
+  "creator": "frankieleon",
+  "license": "BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "source": "flickr",
+  "landing": "https://www.flickr.com/photos/23307937@N04/5504250779",
+  "attribution": "\"because all preschoolers want six pack abs\" by frankieleon is licensed under CC BY 2.0. To view a copy of this license, visit https://creativecommons.org/licenses/by/2.0/."
+ },
+ {
+  "file": "back_pain.jpg",
+  "openverse_id": "ec19ca11-bde4-4dae-85d5-f90838f7c9c5",
+  "title": "Art model back pain",
+  "creator": null,
+  "license": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "rawpixel",
+  "landing": "https://www.rawpixel.com/image/5908928/image-public-domain-art-shape",
+  "attribution": "\"Art model back pain\" is marked with CC0 1.0. To view the terms, visit https://creativecommons.org/publicdomain/zero/1.0/."
  }
 ]

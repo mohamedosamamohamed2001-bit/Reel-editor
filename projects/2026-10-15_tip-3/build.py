@@ -20,7 +20,7 @@ S.badge(w("الأخطاء", near=17.6), w("أول", near=18.8) - w("الأخطا
 S.badge(w("أول", near=19.6), w("الـArch") - w("أول", near=19.6), "1", "Arch", top=0.15, side="right")
 S.image("back_pain", w("الـArch"), w("انت", near=23.2) - w("الـArch"), mode="full", push=[1.0, 1.06])
 S.icons(w("انت", near=23.2), w("أهم", near=26.5) - w("انت", near=23.2), [{"icon": "Shuffle", "label": "Compensation"}, {"icon": "X", "label": "Core"}], top=0.14, size=120, align="right")
-S.image("abs_core", w("أهم", near=26.5), w("فانت", near=30.9) - w("أهم", near=26.5), mode="full", push=[1.0, 1.06])
+S.badge(w("أهم", near=26.5), w("فانت", near=30.9) - w("أهم", near=26.5), "✓", "No Arch = Core", top=0.15, side="right")
 S.icons(w("فانت", near=30.9), w("ونبدأ") - w("فانت", near=30.9), [{"icon": "Flame", "label": "بطنك شغالة"}, {"icon": "Check"}], top=0.14, size=120, align="right")
 S.label(w("ونبدأ"), w("وأهم") - w("ونبدأ"), "ONE BY ONE", eyebrow="واحدة واحدة", top=0.15)
 S.badge(w("وأهم"), w("ونرجع") - w("وأهم"), "✗", "No Arch", top=0.15, side="right")

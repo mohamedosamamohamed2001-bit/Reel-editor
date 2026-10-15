@@ -43,14 +43,17 @@ class Tip(Story):
             z = zooms[i % len(zooms)]
             kw = {"tin": self._tin(kinds[(i - 1) % len(kinds)])} if i else {}
             self.tl.add("main", a, b, zoom=list(z), focusY=focusY, focusX=focusX, **kw)
-        self.transitions = [(self.tl.start_of(i), c["tin"]["type"]) for i, c in enumerate(self.tl.clips) if c.get("tin")]
         self.T = self.tl.total()
+
+    def _transition_cues(self):
+        """Transitions = clip starts with a tin (jump cuts and punch-ins); each gets its SFX hit (+ jolt on zooms)."""
+        self.transitions = [(self.tl.start_of(i), c["tin"]["type"]) for i, c in enumerate(self.tl.clips) if c.get("tin")]
         for t, kind in self.transitions:
             if kind == "whip":
                 self.cues += [cue(t, "whip", -11, dir=1.0), cue(t + 0.02, "air", -20)]
             else:
                 self.cues += [cue(t, "reverse_hit", -16, dur=0.45), cue(t, "boom", -12)]
-                self.shakes.append({"at": round(t, 3), "amp": 0.5})
+                self.shakes.append({"at": round(t, 3), "amp": 0.4})
 
     def punch(self, a, b, zoom=(1.1, 1.13), focusY=None):
         """A punch-in on the same take between source times a and b (emphasis on a key phrase), no transition."""
@@ -71,6 +74,8 @@ class Tip(Story):
                     n["focusY"] = focusY
                 if first and c.get("tin"):
                     n["tin"] = c["tin"]
+                elif not first or x == a:  # punch in / back out: a zoom punch on the cut
+                    n["tin"] = {"type": "zoom"}
                 first = False
                 out.append(n)
         tl = Timeline()
@@ -100,6 +105,7 @@ class Tip(Story):
         return ov
 
     def finish(self, title, keywords, cap_top=0.62, zones=(), music=None, replace=None, extra=None):
+        self._transition_cues()
         super().finish(title, keywords, cap_top=cap_top, zones=zones, music=music, replace=replace, extra=extra)
         p = self.P / "edit.json"
         e = json.loads(p.read_text())

@@ -15,10 +15,10 @@ S.punch(45.0, 50.3)  # "أهم حاجة ... ما ينفعش كوعي يفتح"
 
 S.title(0.1, w("أول") - 0.2, [{"text": "STEPS", "size": 170}, {"text": "خطوة بخطوة", "accent": True, "size": 100}],
         eyebrow="OSM · BAND", top=0.62)
-S.image("resistance_band", w("بشد"), w("كوعي") - w("بشد") - 0.1, mode="card", width=620, top=0.52)
+S.label(w("بشد"), w("كوعي") - w("بشد") - 0.1, "RESISTANCE BAND", eyebrow="الـBand", top=0.56)
 S.badge(w("كوعي"), w("ومش") - w("كوعي") - 0.05, "1", "الكوع والإيد لبرا", top=0.55, side="right")
 S.badge(w("ومش"), w("هشد") - w("ومش"), "✗", "Arch", top=0.55, side="right")
-S.image("abs_core", w("هشد"), w("وهطلع") - w("هشد") - 0.1, mode="full", push=[1.0, 1.06])
+S.icons(w("هشد"), w("وهطلع") - w("هشد") - 0.1, [{"icon": "Flame", "label": "شد بطنك"}, {"icon": "Shield", "label": "Core"}], top=0.55, size=130)
 S.icons(w("وهطلع"), w("ودايما") - w("وهطلع"), [{"icon": "ArrowUp", "label": "للآخر"}, {"icon": "ArrowDown", "label": "للآخر"}], top=0.55, size=130)
 S.label(w("ودايما"), w("هنا") - w("ودايما"), "PUSH OUT", eyebrow="ادفع إيدك لبرا", top=0.56)
 S.icons(w("هعمل"), w("نفس", near=32.5) - w("هعمل"), [{"icon": "Repeat", "value": "10", "label": "عدات"}], top=0.55, size=140)

@@ -1,0 +1,379 @@
+{
+ "title": "OSM tip: Goblet Squat + heels on a plate",
+ "fps": 30,
+ "width": 1080,
+ "height": 1920,
+ "media": {
+  "main": "source/original.mov",
+  "v_weight_plate": "work/visuals/weight_plate.jpg",
+  "v_ankle": "work/visuals/ankle.jpg"
+ },
+ "dialogueFx": "highpass=f=70,acompressor=threshold=0.1:ratio=2.5:attack=8:release=120:makeup=1.5",
+ "dialogueLufs": -16.0,
+ "plates": {
+  "grade": "format=yuv420p,eq=contrast=1.05:saturation=0.95:gamma=0.99,colorbalance=rs=-0.015:bs=0.02:rm=-0.01:bm=0.005:rh=0.012:gh=0.004:bh=-0.012,curves=master='0/0 0.22/0.2 0.78/0.8 1/1',vignette=angle=PI/7",
+  "sharpen": "cas=strength=0.22"
+ },
+ "clips": [
+  {
+   "src": "main",
+   "in": 0.0,
+   "out": 6.4,
+   "focusY": 0.45,
+   "focusX": 0.5,
+   "zoom": [
+    1.0,
+    1.05
+   ]
+  },
+  {
+   "src": "main",
+   "in": 6.4,
+   "out": 9.6,
+   "focusY": 0.35,
+   "focusX": 0.5,
+   "zoom": [
+    1.12,
+    1.15
+   ],
+   "tin": {
+    "type": "zoom"
+   }
+  },
+  {
+   "src": "main",
+   "in": 9.6,
+   "out": 15.2,
+   "focusY": 0.45,
+   "focusX": 0.5,
+   "zoom": [
+    1.0,
+    1.05
+   ],
+   "tin": {
+    "type": "zoom"
+   }
+  },
+  {
+   "src": "main",
+   "in": 15.2,
+   "out": 18.4,
+   "focusY": 0.45,
+   "focusX": 0.5,
+   "zoom": [
+    1.12,
+    1.15
+   ],
+   "tin": {
+    "type": "zoom"
+   }
+  },
+  {
+   "src": "main",
+   "in": 18.4,
+   "out": 20.83,
+   "focusY": 0.45,
+   "focusX": 0.5,
+   "zoom": [
+    1.0,
+    1.05
+   ],
+   "tin": {
+    "type": "zoom"
+   }
+  }
+ ],
+ "captions": {
+  "wordsFile": "work/tx/aligned.words.json",
+  "style": "plate",
+  "karaoke": true,
+  "maxWords": 3,
+  "maxChars": 22,
+  "keywords": [
+   "goblet",
+   "squat",
+   "للآخر",
+   "نسهل",
+   "plate",
+   "range",
+   "mobility"
+  ],
+  "zones": [
+   {
+    "at": 0,
+    "dur": 20.843,
+    "top": 0.8
+   }
+  ]
+ },
+ "overlays": [
+  {
+   "type": "kineticTitle",
+   "at": 0.1,
+   "dur": 3.7,
+   "lines": [
+    {
+     "text": "GOBLET",
+     "size": 160
+    },
+    {
+     "text": "SQUAT",
+     "accent": true,
+     "size": 170
+    }
+   ],
+   "top": 0.7,
+   "motion": "smooth",
+   "depth": true,
+   "eyebrow": "OSM · LEGS"
+  },
+  {
+   "type": "iconPop",
+   "at": 3.9,
+   "dur": 2.54,
+   "items": [
+    {
+     "icon": "ArrowDown",
+     "label": "للآخر"
+    },
+    {
+     "icon": "ArrowUp",
+     "label": "وبطلع"
+    }
+   ],
+   "top": 0.74,
+   "size": 156
+  },
+  {
+   "type": "stepBadge",
+   "at": 6.44,
+   "dur": 3.38,
+   "mark": "?",
+   "label": "مش عارف تنزل للآخر",
+   "top": 0.72,
+   "side": "right"
+  },
+  {
+   "type": "stepBadge",
+   "at": 9.82,
+   "dur": 1.14,
+   "mark": "✓",
+   "label": "الحل أسهل",
+   "top": 0.72,
+   "side": "right"
+  },
+  {
+   "type": "visualCard",
+   "src": "v_weight_plate",
+   "at": 11.3,
+   "dur": 2.72,
+   "mode": "card",
+   "width": 560,
+   "top": 0.52
+  },
+  {
+   "type": "lowerLabel",
+   "at": 14.02,
+   "dur": 2.26,
+   "title": "MORE RANGE",
+   "top": 0.72,
+   "eyebrow": "Range أكتر"
+  },
+  {
+   "type": "visualCard",
+   "src": "v_ankle",
+   "at": 16.28,
+   "dur": 2.16,
+   "mode": "full",
+   "push": [
+    1.0,
+    1.06
+   ]
+  },
+  {
+   "type": "iconPop",
+   "at": 18.44,
+   "dur": 2.393,
+   "items": [
+    {
+     "icon": "Footprints",
+     "label": "Ankle Mobility"
+    },
+    {
+     "icon": "Check"
+    }
+   ],
+   "top": 0.72,
+   "size": 156
+  },
+  {
+   "type": "endCard",
+   "at": 20.8333,
+   "dur": 2.4,
+   "cta": "OSM Coach Osama",
+   "reveal": "wipe",
+   "image": "brand/end/osm-end-photo.jpg"
+  }
+ ],
+ "shakes": [
+  {
+   "at": 6.4,
+   "amp": 0.4
+  },
+  {
+   "at": 9.6,
+   "amp": 0.4
+  },
+  {
+   "at": 15.2,
+   "amp": 0.4
+  },
+  {
+   "at": 18.4,
+   "amp": 0.4
+  },
+  {
+   "at": 20.833,
+   "amp": 0.6
+  }
+ ],
+ "sfx": {
+  "cues": [
+   {
+    "at": 0.1,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 0.15,
+    "sound": "impact",
+    "gain_db": -20
+   },
+   {
+    "at": 3.98,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 4.15,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 820
+   },
+   {
+    "at": 6.4,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 6.4,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 6.44,
+    "sound": "slam",
+    "gain_db": -16
+   },
+   {
+    "at": 9.6,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 9.6,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 9.82,
+    "sound": "slam",
+    "gain_db": -16
+   },
+   {
+    "at": 11.3,
+    "sound": "whoosh_in",
+    "gain_db": -15
+   },
+   {
+    "at": 13.92,
+    "sound": "whoosh_out",
+    "gain_db": -19
+   },
+   {
+    "at": 14.02,
+    "sound": "click",
+    "gain_db": -18
+   },
+   {
+    "at": 15.2,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 15.2,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 16.28,
+    "sound": "whoosh_in",
+    "gain_db": -15
+   },
+   {
+    "at": 18.34,
+    "sound": "whoosh_out",
+    "gain_db": -19
+   },
+   {
+    "at": 18.4,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 18.4,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 18.52,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 18.69,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 820
+   },
+   {
+    "at": 20.8333,
+    "sound": "reverse_hit",
+    "gain_db": -12,
+    "dur": 0.7
+   },
+   {
+    "at": 20.8333,
+    "sound": "boom",
+    "gain_db": -7
+   },
+   {
+    "at": 21.3333,
+    "sound": "click",
+    "gain_db": -17
+   }
+  ]
+ },
+ "music": {
+  "src": "work/music/music.wav",
+  "gain_db": -9
+ },
+ "tail": 2.4,
+ "textPlate": "#56A0FB"
+}
