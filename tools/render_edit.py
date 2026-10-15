@@ -626,7 +626,10 @@ def main():
         subprocess.run(["ffmpeg", "-y", "-v", "error", "-i", str((proj / voice_track).resolve()), "-af",
                         f"aresample=48000,aformat=channel_layouts=stereo,{fx}", "-t", f"{total:.3f}", "-c:a", "pcm_s24le",
                         str(dialogue)], check=True)
-        if dialogue_lufs is not None:
+        silent = subprocess.run(["ffmpeg", "-hide_banner", "-i", str(dialogue), "-af", "volumedetect", "-f", "null", "-"],
+                                capture_output=True, text=True).stderr
+        silent = "max_volume: -inf" in silent or "max_volume: -91" in silent  # music-led promo: no voice at all
+        if dialogue_lufs is not None and not silent:
             i, _ = measure(dialogue)
             tmp = dialogue.with_suffix(".norm.wav")
             subprocess.run(["ffmpeg", "-y", "-v", "error", "-i", str(dialogue), "-af", f"volume={dialogue_lufs - i:.2f}dB",
