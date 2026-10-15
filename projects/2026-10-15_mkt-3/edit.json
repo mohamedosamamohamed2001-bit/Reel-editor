@@ -154,27 +154,31 @@
    },
    "segments": [
     {
-     "in": 6.6,
+     "in": 8.0,
      "rate": 1,
      "dur": 3.5
     }
    ],
-   "taps": [
-    {
-     "at": 1.194,
-     "x": 0.7518,
-     "y": 0.4724
-    }
-   ],
+   "taps": [],
    "highlights": [
     {
-     "at": 0.2,
+     "at": 0.3,
      "dur": 1.2,
      "box": {
-      "x": 0.05,
-      "y": 0.37,
-      "w": 0.9,
-      "h": 0.09
+      "x": 0.03,
+      "y": 0.42,
+      "w": 0.94,
+      "h": 0.1
+     }
+    },
+    {
+     "at": 1.6,
+     "dur": 1.6,
+     "box": {
+      "x": 0.03,
+      "y": 0.53,
+      "w": 0.94,
+      "h": 0.25
      }
     }
    ]
@@ -198,7 +202,7 @@
    "type": "lowerLabel",
    "at": 5.6,
    "dur": 1.2,
-   "title": "Shrimps · 120 g",
+   "title": "Shrimps · 120 Gram",
    "top": 0.66,
    "plate": true,
    "eyebrow": "بديل · Cooked"
@@ -207,7 +211,7 @@
    "type": "lowerLabel",
    "at": 6.933,
    "dur": 1.2,
-   "title": "Tilapia Fish · 120 g",
+   "title": "Fish · 120 Gram",
    "top": 0.66,
    "plate": true,
    "eyebrow": "بديل · Cooked"
@@ -216,7 +220,7 @@
    "type": "lowerLabel",
    "at": 8.267,
    "dur": 1.2,
-   "title": "Lean Red Steak · 120 g",
+   "title": "Lean Steak · 120 Gram",
    "top": 0.66,
    "plate": true,
    "eyebrow": "بديل · Cooked"
@@ -322,11 +326,6 @@
     "at": 2.0,
     "sound": "boom",
     "gain_db": -13
-   },
-   {
-    "at": 3.194,
-    "sound": "click",
-    "gain_db": -18
    },
    {
     "at": 3.5,
