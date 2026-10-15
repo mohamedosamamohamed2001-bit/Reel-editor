@@ -26,7 +26,7 @@ a, b = M.span("n3", "التطور", "After", nth_first=1)
 t = M.t()
 end = M.say("n3", a, b, at=t + 0.1)
 M.app("progress", [(3.0, 2.2), (7.6, round(end - t + 0.1 - 2.2, 3))], tin=Z,
-      highlights=[(0.6, 1.5, (0.03, 0.33, 0.94, 0.4))])
+      highlights=[(0.6, 1.6, (0.03, 0.40, 0.94, 0.42))])
 a, b = M.span("n3", "ولو", "بعض")
 M.talk("n3", a, b, focusY=0.40, zoom=(1.0, 1.05), tin=WR)
 
