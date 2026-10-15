@@ -12,12 +12,11 @@ W, WR, Z = {"type": "whip", "dir": "left"}, {"type": "whip", "dir": "right"}, {"
 # "أكتر حاجة بتقلقك من الأونلاين كوتشنج إنك تعمل التمرين غلط" — his face, in sync (the hook)
 a, b = M.span("osm", "أكتر", "غلط")
 M.talk("osm", a, b, focusY=0.40, zoom=(1.06, 1.12))
-M.icons(M.t() - 1.5, 1.4, [{"icon": "Dumbbell", "mark": "x", "label": "غلط"}], top=0.56, size=170)
 # "وعشان كده كل تمرين في OSM هتلاقي عليه التمرين مشروح بالفيديو" — the app's demo videos
 a, b = M.span("osm", "وعشان", "بالفيديو")
 t = M.t()
 end = M.say("osm", a, b, at=t + 0.1)
-M.app("workout", [(3.6, round(end - t + 0.15, 3))], tin=Z, highlights=[(2.6, 2.4, (0.05, 0.32, 0.9, 0.62))])
+M.app("workout", [(3.6, round(end - t + 0.15, 3))], tin=Z, region=(0.0, 0.40, 1.0, 0.52), width=1000, top=200)
 # "مش بس وانا بتمرن هتلاقيني بشرحك كل التبس اللي في التمرينة بصوتي" — him training
 a, b = M.span("osm", "مش", "بصوتي")
 t = M.t()
@@ -31,7 +30,7 @@ M.icons(t3 + 0.1, end - t3 - 0.2, [{"icon": "Mic", "label": "بصوتي"}], top=
 a, b = M.span("osm", "يعني", "إيه")
 t = M.t()
 end = M.say("osm", a, b, at=t + 0.1)
-M.app("workout", [(19.9, round(end - t + 0.1, 3))], tin=Z, entrance="flat")
+M.app("workout", [(19.9, round(end - t + 0.1, 3))], tin=Z, entrance="flat", region=(0.0, 0.40, 1.0, 0.52), width=1000, top=200)
 # close: him, title
 t = M.gym(1, "IMG_8385.MOV", 0.3, 1.9, zoom=(1.04, 1.1), focusY=0.38, tin=WR)
 M.title(t + 0.1, 1.75, [{"text": "كل تمرين", "size": 110}, {"text": "مشروح بالفيديو", "accent": True, "size": 88}], top=0.64)
