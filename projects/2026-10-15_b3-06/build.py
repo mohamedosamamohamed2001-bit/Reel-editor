@@ -18,7 +18,7 @@ S.icons(w("Save", near=3.3), w("في", near=5.0) - w("Save", near=3.3), [{"icon"
 S.label(w("بديل", near=6.1), w("مش", near=9.3) - w("بديل", near=6.1), "CABLE", eyebrow="البديل 01", top=0.13)
 S.image("decline_bench", w("مش", near=9.3), w("انت", near=10.1) - w("مش", near=9.3) + 0.3, mode="full", push=[1.0, 1.06])
 S.badge(w("مش", near=9.3), w("نايم") - w("مش", near=9.3), "✗", "Decline Bench", top=0.14)
-S.icons(w("وما"), w("الامن") - w("وما"), [{"icon": "ShieldOff", "mark": "x", "label": "Support"}, {"icon": "TriangleAlert", "label": "امان"}], top=0.14, size=150)
+S.icons(w("وما"), w("الامن") - w("وما"), [{"icon": "ShieldOff", "mark": "x", "label": "Support"}, {"icon": "TriangleAlert", "label": "امان"}], top=0.42, size=150)
 S.badge(w("الامن"), w("وده", near=15.3) - w("الامن"), "✓", "الامن ليك", top=0.14)
 S.label(w("تاني", near=15.6), w("دي", near=20.7) - w("تاني", near=15.6), "CHEST DIPS", eyebrow="البديل 02", top=0.13)
 S.icons(w("ركز"), w("دي", near=20.7) - w("ركز"), [{"icon": "Eye", "label": "ركز على الاداء"}], top=0.40, size=140)

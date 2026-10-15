@@ -19,10 +19,10 @@ S.badge(w("Bike"), w("مش", near=6.6) - w("Bike"), "✗", "Bike", top=0.14)
 S.badge(w("stairmaster"), w("لو", near=8.9) - w("stairmaster"), "✗", "Stairmaster", top=0.14)
 S.image("pingpong", w("ping"), w("Padel") - w("ping") + 0.05, mode="full", push=[1.0, 1.06])
 S.image("padel", w("Padel"), w("كورة") - w("Padel"), mode="full", push=[1.05, 1.0])
-S.icons(w("كورة"), w("فانت", near=11.3) - w("كورة"), [{"icon": "Volleyball", "label": "كورة مع اصحابك"}], top=0.14, size=150)
-S.icons(w("فانت", near=11.3), w("وده", near=12.8) - w("فانت", near=11.3), [{"icon": "HeartPulse", "mark": "check", "label": "الكارديو اليومي"}], top=0.14, size=150)
+S.icons(w("كورة"), w("فانت", near=11.3) - w("كورة"), [{"icon": "Volleyball", "label": "كورة مع اصحابك"}], top=0.42, size=150)
+S.icons(w("فانت", near=11.3), w("وده", near=12.8) - w("فانت", near=11.3), [{"icon": "HeartPulse", "mark": "check", "label": "الكارديو اليومي"}], top=0.42, size=150)
 S.title(w("انت", near=15.0), w("اكتبولي") - w("انت", near=15.0), [{"text": "باي شكل", "accent": True, "size": 140}, {"text": "انت بتحب", "size": 90}], eyebrow="الكارديو", top=0.04, occlude=True)
-S.icons(w("اكتبولي"), S.T - w("اكتبولي"), [{"icon": "MessageCircle", "label": "الكومنتس"}], top=0.14, size=150)
+S.icons(w("اكتبولي"), S.T - w("اكتبولي"), [{"icon": "MessageCircle", "label": "الكومنتس"}], top=0.42, size=150)
 
 S.finish("OSM: cardio doesn't have to be in the gym", keywords=["الكارديو", "treadmill", "bike", "stairmaster", "ping", "padel", "كورة", "الكومنتس"],
          cap_top=0.76, music={"style": "trap", "key": "D", "seed": 40})
