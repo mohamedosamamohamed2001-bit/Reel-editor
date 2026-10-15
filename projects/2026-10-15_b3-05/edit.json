@@ -122,26 +122,6 @@
  },
  "overlays": [
   {
-   "type": "kineticTitle",
-   "at": 0.1,
-   "dur": 1.21,
-   "lines": [
-    {
-     "text": "PART 2",
-     "accent": true,
-     "size": 150
-    },
-    {
-     "text": "ازاي تخس"
-    }
-   ],
-   "top": 0.04,
-   "motion": "smooth",
-   "depth": true,
-   "eyebrow": "OSM · FAT LOSS",
-   "occlude": true
-  },
-  {
    "type": "iconPop",
    "at": 4.1,
    "dur": 0.58,
@@ -190,31 +170,6 @@
    "size": 195
   },
   {
-   "type": "checklist",
-   "at": 9.6,
-   "dur": 1.48,
-   "items": [
-    {
-     "at": 0.0,
-     "text": "PUSH"
-    },
-    {
-     "at": 0.34800000000000075,
-     "text": "PULL"
-    },
-    {
-     "at": 0.6959999999999997,
-     "text": "LEGS"
-    },
-    {
-     "at": 1.045,
-     "text": "UPPER"
-    }
-   ],
-   "top": 0.13,
-   "row": false
-  },
-  {
    "type": "stepBadge",
    "at": 12.74,
    "dur": 1.94,
@@ -247,26 +202,6 @@
    ],
    "top": 0.42,
    "size": 195
-  },
-  {
-   "type": "kineticTitle",
-   "at": 16.62,
-   "dur": 1.29,
-   "lines": [
-    {
-     "text": "150",
-     "accent": true,
-     "size": 200
-    },
-    {
-     "text": "دقيقة في الاسبوع",
-     "size": 80
-    }
-   ],
-   "top": 0.03,
-   "motion": "smooth",
-   "depth": true,
-   "occlude": true
   },
   {
    "type": "iconPop",
