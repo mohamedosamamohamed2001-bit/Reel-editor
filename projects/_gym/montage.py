@@ -33,7 +33,7 @@ LOOKS = {
     "grit": "eq=contrast=1.16:saturation=0.9:gamma=0.96,colorbalance=rs=-0.02:bs=0.03:rm=0.02:gm=0.0:bm=-0.02:rh=0.02:bh=-0.02,"
             "curves=master='0/0 0.1/0.06 0.5/0.48 0.9/0.94 1/1',vignette=angle=PI/5",
     # dark neon gym: deep blacks but readable shadows, cool blue light, natural skin
-    "neon": "eq=contrast=1.1:saturation=1.06:gamma=1.04,colorbalance=rs=-0.03:bs=0.05:rm=0.01:bm=0.0:rh=0.02:bh=-0.01,"
+    "neon": "eq=contrast=1.08:saturation=1.06:gamma=1.12:brightness=0.015,colorbalance=rs=-0.03:bs=0.05:rm=0.01:bm=0.0:rh=0.02:bh=-0.01,"
             "curves=master='0/0 0.06/0.05 0.3/0.32 0.7/0.74 1/1',vignette=angle=PI/5",
 }
 SHARPEN = "cas=strength=0.45"

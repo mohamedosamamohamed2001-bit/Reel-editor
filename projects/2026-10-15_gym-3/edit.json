@@ -13,7 +13,6 @@
   "c_IMG_8156": "source/IMG_8156.MOV",
   "c_IMG_8149": "source/IMG_8149.MOV",
   "c_CCA8ED09": "source/CCA8ED09.mp4",
-  "c_9E93C5B9": "source/9E93C5B9.mp4",
   "c_IMG_8153": "source/IMG_8153.MOV",
   "c_7DD371A0": "source/7DD371A0.mp4",
   "c_IMG_8151": "source/IMG_8151.MOV",
@@ -22,7 +21,7 @@
   "c_IMG_8158a": "source/IMG_8158a.mov"
  },
  "plates": {
-  "grade": "zscale=pin=bt2020:p=bt709:min=bt2020nc:m=bt709:tin=arib-std-b67:t=arib-std-b67:rin=tv:r=tv,format=yuv420p,eq=contrast=1.1:saturation=1.06:gamma=1.04,colorbalance=rs=-0.03:bs=0.05:rm=0.01:bm=0.0:rh=0.02:bh=-0.01,curves=master='0/0 0.06/0.05 0.3/0.32 0.7/0.74 1/1',vignette=angle=PI/5",
+  "grade": "zscale=pin=bt2020:p=bt709:min=bt2020nc:m=bt709:tin=arib-std-b67:t=arib-std-b67:rin=tv:r=tv,format=yuv420p,eq=contrast=1.08:saturation=1.06:gamma=1.12:brightness=0.015,colorbalance=rs=-0.03:bs=0.05:rm=0.01:bm=0.0:rh=0.02:bh=-0.01,curves=master='0/0 0.06/0.05 0.3/0.32 0.7/0.74 1/1',vignette=angle=PI/5",
   "sharpen": "cas=strength=0.45"
  },
  "clips": [
@@ -199,9 +198,9 @@
    }
   },
   {
-   "src": "c_9E93C5B9",
-   "in": 10.0,
-   "out": 10.6,
+   "src": "c_IMG_8147",
+   "in": 8.0,
+   "out": 8.6,
    "focusX": 0.5,
    "focusY": 0.45,
    "volume": 0.0,
@@ -215,9 +214,9 @@
    }
   },
   {
-   "src": "c_9E93C5B9",
-   "in": 10.6,
-   "out": 10.8,
+   "src": "c_IMG_8147",
+   "in": 8.6,
+   "out": 8.8,
    "speed": 0.3333333333333333,
    "focusX": 0.5,
    "focusY": 0.45,
@@ -228,9 +227,9 @@
    ]
   },
   {
-   "src": "c_9E93C5B9",
-   "in": 10.8,
-   "out": 11.53333,
+   "src": "c_IMG_8147",
+   "in": 8.8,
+   "out": 9.53333,
    "speed": 1.8333333333333333,
    "focusX": 0.5,
    "focusY": 0.45,
@@ -463,9 +462,9 @@
    "zoom": 1.12
   },
   {
-   "src": "c_9E93C5B9",
-   "in": 14.4,
-   "out": 15.0,
+   "src": "c_IMG_8147",
+   "in": 23.0,
+   "out": 23.6,
    "focusX": 0.5,
    "focusY": 0.45,
    "volume": 0.0,
@@ -479,9 +478,9 @@
    }
   },
   {
-   "src": "c_9E93C5B9",
-   "in": 15.0,
-   "out": 15.2,
+   "src": "c_IMG_8147",
+   "in": 23.6,
+   "out": 23.8,
    "speed": 0.3333333333333333,
    "focusX": 0.5,
    "focusY": 0.45,
@@ -492,9 +491,9 @@
    ]
   },
   {
-   "src": "c_9E93C5B9",
-   "in": 15.2,
-   "out": 15.93333,
+   "src": "c_IMG_8147",
+   "in": 23.8,
+   "out": 24.53333,
    "speed": 1.8333333333333333,
    "focusX": 0.5,
    "focusY": 0.45,
