@@ -182,8 +182,8 @@
      "label": "Core"
     }
    ],
-   "top": 0.583,
-   "size": 159
+   "top": 0.55,
+   "size": 208
   },
   {
    "type": "iconPop",
@@ -200,7 +200,7 @@
     }
    ],
    "top": 0.55,
-   "size": 169
+   "size": 208
   },
   {
    "type": "lowerLabel",
@@ -222,7 +222,7 @@
     }
    ],
    "top": 0.55,
-   "size": 182
+   "size": 208
   },
   {
    "type": "iconPop",
@@ -235,7 +235,7 @@
     }
    ],
    "top": 0.55,
-   "size": 182
+   "size": 208
   },
   {
    "type": "stepBadge",
@@ -283,8 +283,8 @@
      "label": "الكوع ما يفتحش"
     }
    ],
-   "top": 0.569,
-   "size": 178
+   "top": 0.55,
+   "size": 208
   },
   {
    "type": "lowerLabel",
@@ -311,7 +311,7 @@
     }
    ],
    "top": 0.55,
-   "size": 156
+   "size": 195
   },
   {
    "type": "endCard",
