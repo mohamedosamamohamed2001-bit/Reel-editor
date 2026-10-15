@@ -143,8 +143,9 @@
    "at": 0.05,
    "dur": 1.85,
    "title": "SEATED LEG CURL",
-   "top": 0.13,
-   "eyebrow": "ليه وانا بلعب"
+   "top": 0.506,
+   "eyebrow": "ليه وانا بلعب",
+   "plate": true
   },
   {
    "type": "iconPop",
@@ -156,7 +157,7 @@
      "label": "السمانة اشتغلت؟"
     }
    ],
-   "top": 0.14,
+   "top": 0.529,
    "size": 195
   },
   {
@@ -172,26 +173,8 @@
    "src": "v_calf",
    "at": 7.04,
    "dur": 3.067,
-   "mode": "card",
-   "width": 560,
-   "top": 0.1,
+   "mode": "full",
    "label": "GASTROCNEMIUS"
-  },
-  {
-   "type": "kineticTitle",
-   "at": 11.22,
-   "dur": 4.24,
-   "lines": [
-    {
-     "text": "0° → 15°",
-     "accent": true,
-     "size": 150
-    }
-   ],
-   "top": 0.05,
-   "motion": "smooth",
-   "depth": true,
-   "eyebrow": "المسؤوله عن"
   },
   {
    "type": "iconPop",
@@ -212,8 +195,10 @@
    "dur": 3.48,
    "mark": "✓",
    "label": "ده عادي",
-   "top": 0.14,
-   "side": "right"
+   "top": 0.656,
+   "side": "right",
+   "plate": true,
+   "scale": 0.659
   },
   {
    "type": "iconPop",
@@ -226,7 +211,8 @@
     }
    ],
    "top": 0.14,
-   "size": 195
+   "size": 195,
+   "align": "left"
   },
   {
    "type": "endCard",
