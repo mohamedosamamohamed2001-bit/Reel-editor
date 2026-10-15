@@ -1,0 +1,51 @@
+{
+ "original_overlays": 11,
+ "fixes": [
+  {
+   "index": 0,
+   "type": "kineticTitle",
+   "at": 0.05,
+   "action": "remove",
+   "why": "title on / above his head"
+  },
+  {
+   "index": 2,
+   "type": "stepBadge",
+   "at": 3.22,
+   "action": "move",
+   "top": 0.366,
+   "plate": true
+  },
+  {
+   "index": 5,
+   "type": "iconPop",
+   "at": 8.3,
+   "action": "move",
+   "top": 0.436,
+   "size": 195
+  },
+  {
+   "index": 6,
+   "type": "iconPop",
+   "at": 10.96,
+   "action": "move",
+   "top": 0.452,
+   "size": 195
+  },
+  {
+   "index": 7,
+   "type": "kineticTitle",
+   "at": 14.02,
+   "action": "remove",
+   "why": "title on / above his head"
+  },
+  {
+   "index": 8,
+   "type": "visualCard",
+   "at": 18.02,
+   "action": "full",
+   "why": "picture card covered his face"
+  }
+ ],
+ "captions": []
+}

@@ -201,25 +201,6 @@
  },
  "overlays": [
   {
-   "type": "kineticTitle",
-   "at": 0.05,
-   "dur": 2.52,
-   "lines": [
-    {
-     "text": "REST DAY",
-     "accent": true
-    },
-    {
-     "text": "اهم من التمرين؟",
-     "size": 90
-    }
-   ],
-   "top": 0.03,
-   "motion": "smooth",
-   "depth": true,
-   "occlude": true
-  },
-  {
    "type": "visualCard",
    "src": "v_lifting",
    "at": 2.73,
@@ -236,8 +217,9 @@
    "dur": 2.0,
    "mark": "✗",
    "label": "اثناء التمرين",
-   "top": 0.14,
-   "side": "right"
+   "top": 0.366,
+   "side": "right",
+   "plate": true
   },
   {
    "type": "visualCard",
@@ -276,7 +258,7 @@
      "label": "الطاقة"
     }
    ],
-   "top": 0.42,
+   "top": 0.436,
    "size": 195
   },
   {
@@ -290,34 +272,15 @@
      "label": "كل يوم"
     }
    ],
-   "top": 0.42,
+   "top": 0.452,
    "size": 195
-  },
-  {
-   "type": "kineticTitle",
-   "at": 14.02,
-   "dur": 1.22,
-   "lines": [
-    {
-     "text": "إجهاد",
-     "accent": true,
-     "size": 160
-    }
-   ],
-   "top": 0.03,
-   "motion": "smooth",
-   "depth": true,
-   "eyebrow": "بدل التطور",
-   "occlude": true
   },
   {
    "type": "visualCard",
    "src": "v_knee_injury",
    "at": 18.02,
    "dur": 1.36,
-   "mode": "card",
-   "width": 560,
-   "top": 0.1
+   "mode": "full"
   },
   {
    "type": "iconPop",
