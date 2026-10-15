@@ -293,6 +293,17 @@ def main():
         for t0, t1, rm in ref_masks:
             if t0 <= tj < t1:
                 m = np.maximum(m, rm)
+        # force_color [[t0, t1, "blue", [x0, y0, x1, y1]]]: every pixel of a caption colour in that box is old text
+        # (the last strokes of a coloured word that the shape tests drop), grown 4 px
+        for t0, t1, hue, (bx0, by0, bx1, by1) in p.get("force_color", []):
+            if t0 <= tj < t1:
+                lo, hi = {"blue": (98, 124)}[hue]
+                y0, y1, x0, x1 = int(by0 * H), int(by1 * H), int(bx0 * W), int(bx1 * W)
+                hsv = cv2.cvtColor(frames[k][y0:y1, x0:x1], cv2.COLOR_RGB2HSV)
+                fm = ((hsv[..., 0] >= lo) & (hsv[..., 0] <= hi) & (hsv[..., 1] >= 90) & (hsv[..., 2] >= 60)).astype(np.uint8)
+                fm = cv2.dilate(fm, np.ones((9, 9), np.uint8))
+                m = m.copy()
+                m[y0:y1, x0:x1] = np.maximum(m[y0:y1, x0:x1], fm * m.max() if m.max() else fm)
         touched += bool(m.any())
         wr.stdin.write(np.ascontiguousarray(inpaint(frames[k], m)).tobytes())
         written += 1
