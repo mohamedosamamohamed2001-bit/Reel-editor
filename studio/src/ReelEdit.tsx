@@ -45,7 +45,7 @@ const renderOverlay = (o: Overlay, plate?: string) => {
     case "stepBadge":
       return <StepBadge mark={o.mark} label={o.label} sub={o.sub} dur={o.dur} top={o.top} side={o.side} plate={o.plate ? plate : undefined} scale={o.scale} />;
     case "lowerLabel":
-      return <LowerLabel title={o.title} sets={o.sets} eyebrow={o.eyebrow} dur={o.dur} top={o.top} plate={o.plate ? plate : undefined} />;
+      return <LowerLabel title={o.title} sets={o.sets} eyebrow={o.eyebrow} dur={o.dur} top={o.top} plate={o.plate ? plate : undefined} align={o.align} />;
     case "visualCard":
       return <VisualCard src={o.src} dur={o.dur} mode={o.mode} label={o.label} sub={o.sub} credit={o.credit} srcW={o.srcW} srcH={o.srcH}
         width={o.width} top={o.top} markers={o.markers} push={o.push} focusY={o.focusY} />;

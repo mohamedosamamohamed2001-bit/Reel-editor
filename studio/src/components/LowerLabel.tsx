@@ -8,8 +8,8 @@ const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
  * behind it (mask wipe, never over the logo), and the prescription ("3 × 15") counts up digit by digit.
  * Lives just above the bottom safe line. Exit: slides out left with blur.
  */
-export const LowerLabel: React.FC<{ title: string; sets?: string; eyebrow?: string; dur: number; top?: number; plate?: string }> = ({
-  title, sets, eyebrow, dur, top, plate,
+export const LowerLabel: React.FC<{ title: string; sets?: string; eyebrow?: string; dur: number; top?: number; plate?: string; align?: "left" | "right" }> = ({
+  title, sets, eyebrow, dur, top, plate, align = "left",
 }) => {
   const frame = useCurrentFrame();
   const { fps, height } = useVideoConfig();
@@ -28,7 +28,7 @@ export const LowerLabel: React.FC<{ title: string; sets?: string; eyebrow?: stri
     <AbsoluteFill style={{ pointerEvents: "none" }}>
       <div
         style={{
-          position: "absolute", left: safe.side, top: y,
+          position: "absolute", [align]: safe.side, top: y,
           transform: `translateX(${-300 * exit}px)`, opacity: 1 - exit,
         }}
       >

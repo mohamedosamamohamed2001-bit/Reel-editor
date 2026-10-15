@@ -195,7 +195,7 @@ class Story:
             from head_fix import apply, apply_captions
             fix = json.loads(fix_p.read_text())
             self.overlays = apply(self.overlays, fix["fixes"])
-            apply_captions(cap, fix.get("captions", []))
+            apply_captions(cap, fix.get("captions", []), fix.get("caption_extra"))
         mus = make_music(self.P, {"bpm": spec.get("bpm", 124), "key": spec.get("key", "E"), "mode": "minor",
                                   "style": spec.get("style", "trap"), "seed": spec.get("seed", 7),
                                   "sections": secs, "duration": round(T + END_DUR, 3)}, gain_db=spec.get("gain", -9))

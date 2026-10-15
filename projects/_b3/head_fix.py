@@ -125,9 +125,15 @@ def cards_on_face(edit, props, faces):
     return out
 
 
-def apply_captions(captions, cap_fixes):
+def apply_captions(captions, cap_fixes, extra=None):
     for f in cap_fixes:
         captions["zones"][f["zone"]]["top"] = max(captions["zones"][f["zone"]]["top"], f["top"])
+    if extra:  # hand-placed (headfix.json "caption_extra"): anchors = captions moved sideways while his head passes
+        captions["anchors"] = extra.get("anchors", [])
+        captions["anchorPlate"] = True  # keep the approved blue bar
+        for z in extra.get("zones", []):  # zone edges only force phrase breaks at the anchor edges
+            if z not in captions["zones"]:
+                captions["zones"].insert(0, z)
 
 
 def apply(overlays, fixes):
@@ -170,13 +176,16 @@ def main():
     # the check reports indices into the CURRENT overlay list: map them back to the original list
     removed = sorted(f["index"] for f in log["fixes"] if f["action"] == "remove")
     cur2orig = [i for i in range(log["original_overlays"]) if i not in removed]
+    if log.get("caption_extra"):
+        apply_captions(edit["captions"], [], log["caption_extra"])
+        apply_captions(props["edit"]["captions"], [], log["caption_extra"])
     cf = fix_captions(edit, cap_hits)
     if cf:
         for f in cf:
             print(f"  captions zone {f['zone']} -> top {f['top']} (his beard reaches the caption bar)")
         log["captions"] += cf
-        apply_captions(edit["captions"], cf)
-        apply_captions(props["edit"]["captions"], cf)
+        apply_captions(edit["captions"], cf, log.get("caption_extra"))
+        apply_captions(props["edit"]["captions"], cf, log.get("caption_extra"))
         new = []  # re-check the graphics against the new caption position on the next pass
     else:
         orig_p = P / "work/overlays.original.json"
