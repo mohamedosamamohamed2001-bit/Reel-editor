@@ -15,7 +15,7 @@ S.punch(30.9, 34.9, zoom=(1.1, 1.13), focusY=0.55)  # "أول ما تحس إن �
 S.punch(39.6, 44.6, zoom=(1.1, 1.13), focusY=0.55)  # "وأهم حاجة ... ما يبقاش فيه أي Arch"
 
 S.title(0.1, w("ده", near=6.5) - 0.15, [{"text": "غلط", "accent": True, "size": 170}, {"text": "شائع", "size": 110}],
-        eyebrow="OSM · CORE", top=0.70)
+        eyebrow="OSM · CORE", top=0.50)
 S.title(w("Dead"), w("ده", near=8.7) - w("Dead"), [{"text": "DEAD", "size": 150}, {"text": "BUG", "accent": True, "size": 160}], top=0.14)
 S.icons(w("إيدي"), w("وطبعا") - w("إيدي"), [{"icon": "Hand", "mark": "up", "label": "إيدك لفوق"}, {"icon": "Footprints", "label": "رجلك"}], top=0.14, size=150, align="right")
 S.badge(w("الأخطاء", near=17.6), w("أول", near=18.8) - w("الأخطاء", near=17.6), "!", "الأخطاء", top=0.15, side="right")

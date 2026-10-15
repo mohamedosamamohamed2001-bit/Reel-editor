@@ -1,0 +1,13 @@
+{
+ "original_overlays": 15,
+ "fixes": [
+  {
+   "index": 9,
+   "type": "lowerLabel",
+   "at": 32.923,
+   "action": "remove",
+   "why": "no room under his chin (48px) or the captions (-33px) for 144px"
+  }
+ ],
+ "captions": []
+}

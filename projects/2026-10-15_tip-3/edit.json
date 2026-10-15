@@ -333,14 +333,6 @@
    "align": "right"
   },
   {
-   "type": "lowerLabel",
-   "at": 32.923,
-   "dur": 4.18,
-   "title": "ONE BY ONE",
-   "top": 0.15,
-   "eyebrow": "واحدة واحدة"
-  },
-  {
    "type": "stepBadge",
    "at": 37.103,
    "dur": 5.22,
