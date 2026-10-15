@@ -178,3 +178,12 @@ projects/<name>/  one folder per video: project.json, edit.json, analysis/, docu
   every render; `render_edit.py --props-only` prepares plates/props for it. Batch-3 fixes: `projects/_b3/head_fix.py`
   (titles over the head removed, other graphics moved under the chin with a solid `plate`), logged per project in
   `headfix.json` and re-applied by `common3.Story.finish`. Behind-the-head `occlude` titles are withdrawn.
+
+- 2026-10-15 (marketing Reels, `docs/marketing_2026-10-15.md`, `projects/_mkt/promo.py`, `projects/2026-10-15_mkt-1..6`):
+  - No new filming and no AI voice: narration is his own recorded voice, cut from earlier takes (`voiceTrack`, `captions.outputTime`).
+  - The real app is filmed read-only by `tools/app_record.js`. Credentials come only from env vars, the storage state lives in /tmp, H.264 demos are served as WebM, and Payments is never filmed.
+  - Stock comes only from `tools/stock_coverr.py` (isAiGenerated false, isPremium false, manifest).
+  - Per-clip `grade` mixes HDR, SDR and screen sources. `screenCard.backdrop: "none"` puts the card on `_mkt/bg_night.mp4`.
+  - Rebuilding after head_fix: delete `work/overlays.original.json` first, or stale overlays win.
+  - Never use the calorie-calculator line with "اسبوع فري" (trial length).
+  - The n3/n2 clean exports carry old baked-in graphics after ~1.9 s: use his face only before that point.

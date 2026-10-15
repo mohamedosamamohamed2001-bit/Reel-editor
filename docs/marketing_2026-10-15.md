@@ -3,14 +3,14 @@
 Six Reels from the marketing plan, made without new filming. Everything in them is real: Coach Osama's own voice and
 footage, the real OSM app, and free stock footage that is not AI-generated.
 
-| # | Reel | Voice | Picture | Length |
+| # | Reel | Voice | Picture | Length (incl. end card) |
 |---|---|---|---|---|
-| 1 | **Coach, not an app** (hero) | his own voice (n2-training + osm-reel takes) | gym footage, his face in sync, the app: workout demos, diet swaps, coach chat | ~21 s + end card |
-| 2 | **Every exercise has a demo** | his full osm-reel line | his face in sync, the app's exercise demo videos, gym footage | ~20 s + end card |
-| 3 | **Swap it** | none (music-led) | Coverr food clips + the real diet screen with the swap list | ~14.5 s + end card |
-| 4 | **Daily challenge** | none (music-led) | gym footage + challenge, points rules, badges screens | ~14.5 s + end card |
-| 5 | **The scale isn't the whole story** | his n3-scale take | his face in sync, gym footage, the Progress screen | ~19 s + end card |
-| 6 | **Calorie Calculator** | his calorie-calculator take | his face in sync, the calculator typed in and showing its 3 targets | ~12 s + end card |
+| 1 | **Coach, not an app** (hero) | his own voice (n2-training + osm-reel takes) | gym footage, his face in sync, the app: workout demos, diet swaps, coach chat | 23.5 s |
+| 2 | **Every exercise has a demo** | his full osm-reel line | his face in sync, the app's exercise demo videos, gym footage | 22.5 s |
+| 3 | **Swap it** | none (music-led) | Coverr food clips + the real diet screen with the swap list | 16.9 s |
+| 4 | **Daily challenge** | none (music-led) | gym footage + challenge, points rules, badges screens | 16.8 s |
+| 5 | **The scale isn't the whole story** | his n3-scale take | his face in sync, gym footage, the Progress screen | 21.5 s |
+| 6 | **Calorie Calculator** | his calorie-calculator take | his face in sync, the calculator typed in and showing its 3 targets | 14.3 s |
 
 ## Sources
 - **Voice:** his recorded takes only, cut on word boundaries. Captions are his exact words, from the hand-checked
@@ -40,3 +40,15 @@ footage, the real OSM app, and free stock footage that is not AI-generated.
 - The talking-head takes for n2/n3 exist only as 720p finished exports, so they are sharp on a phone but softer than
   the 4K takes.
 - Stock clips are landscape 1080p cropped to 9:16 and are used for 1.3–2 s at a time.
+
+## QA (final renders, 2026-10-15)
+- All six: 1080×1920, 30 fps, −14.0…−14.2 LUFS, true peak −1.7…−3.2 dBTP, no black frames, no clipping.
+- The only frozen interval in each Reel is the static end card (expected).
+- `tools/head_check.py` is clean on every Reel: no text on or above his head.
+- Full-resolution key frames were checked for each Reel: highlights sit on the right element, labels are readable, and nothing is blurred behind text.
+- Reel 3's first master was −0.5 dBTP after AAC, so its audio was re-limited (video copied).
+- Deliverables: `projects/2026-10-15_mkt-N/exports/OSM_PROMO_0N_*.mp4` (master), `*_send.mp4`, and `*_no-music.mp4` for the voice-led Reels 1, 2, 5 and 6.
+
+## Pipeline lesson
+`projects/_b3/head_fix.py` keeps `work/overlays.original.json` as the pristine overlay list and rebuilds from it.
+When `build.py` changes the overlays, delete that file first, or the old overlays come back. The promo batch script does this.
