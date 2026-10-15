@@ -5,6 +5,7 @@
  "height": 1920,
  "media": {
   "m_original_clean": "../2026-10-14_n3-scale/work/clean/original.clean.mp4",
+  "m_IMG_8386": "../2026-10-15_gym-1/source/IMG_8386.MOV",
   "m_IMG_7537": "../2026-10-15_gym-2/source/IMG_7537.MOV",
   "m_IMG_8382": "../2026-10-15_gym-1/source/IMG_8382.MOV",
   "m_IMG_8149": "../2026-10-15_gym-3/source/IMG_8149.MOV",
@@ -19,12 +20,28 @@
   {
    "src": "m_original_clean",
    "in": -0.06667,
-   "out": 3.96667,
+   "out": 1.93333,
    "zoom": [
     1.04,
     1.1
    ],
    "focusY": 0.4
+  },
+  {
+   "src": "m_IMG_8386",
+   "in": 2.6,
+   "out": 4.53333,
+   "zoom": [
+    1.0,
+    1.08
+   ],
+   "focusX": 0.5,
+   "focusY": 0.4,
+   "grade": "format=yuv420p,eq=contrast=1.12:saturation=1.0:gamma=0.97,colorbalance=rm=0.02:bm=-0.02:rh=0.02:bh=-0.02,curves=master='0/0 0.12/0.08 0.5/0.5 0.88/0.93 1/1',vignette=angle=PI/6",
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
   },
   {
    "src": "m_IMG_7537",
@@ -102,38 +119,8 @@
  ],
  "overlays": [
   {
-   "type": "iconPop",
-   "at": 4.183,
-   "dur": 1.73,
-   "items": [
-    {
-     "icon": "Flame",
-     "label": "دهون ↓"
-    },
-    {
-     "icon": "BicepsFlexed",
-     "label": "عضلات ↑"
-    }
-   ],
-   "top": 0.62,
-   "size": 160
-  },
-  {
-   "type": "iconPop",
-   "at": 6.15,
-   "dur": 1.51,
-   "items": [
-    {
-     "icon": "Scale",
-     "label": "ميزانك ثابت"
-    }
-   ],
-   "top": 0.62,
-   "size": 160
-  },
-  {
    "type": "screenCard",
-   "at": 9.5333,
+   "at": 9.4333,
    "dur": 5.42,
    "src": "m_progress",
    "plate": true,
@@ -175,7 +162,7 @@
   },
   {
    "type": "endCard",
-   "at": 19.2333,
+   "at": 19.1333,
    "dur": 2.4,
    "cta": "OSM Coach Osama",
    "reveal": "wipe",
@@ -184,11 +171,11 @@
  ],
  "shakes": [
   {
-   "at": 9.533,
+   "at": 9.433,
    "amp": 0.4
   },
   {
-   "at": 19.233,
+   "at": 19.133,
    "amp": 0.6
   }
  ],
@@ -197,91 +184,84 @@
  "sfx": {
   "cues": [
    {
-    "at": 4.0333,
+    "at": 2.0,
     "sound": "whip",
     "gain_db": -12,
     "dir": 1.0
    },
    {
-    "at": 4.0533,
+    "at": 2.02,
     "sound": "air",
     "gain_db": -21
    },
    {
-    "at": 4.2633,
-    "sound": "blip",
-    "gain_db": -20,
-    "freq": 700
-   },
-   {
-    "at": 4.4333,
-    "sound": "blip",
-    "gain_db": -20,
-    "freq": 820
-   },
-   {
-    "at": 6.0,
+    "at": 3.9333,
     "sound": "whip",
     "gain_db": -12,
     "dir": 1.0
    },
    {
-    "at": 6.02,
+    "at": 3.9533,
     "sound": "air",
     "gain_db": -21
    },
    {
-    "at": 6.23,
-    "sound": "blip",
-    "gain_db": -20,
-    "freq": 700
-   },
-   {
-    "at": 7.7667,
+    "at": 5.9,
     "sound": "whip",
     "gain_db": -12,
     "dir": 1.0
    },
    {
-    "at": 7.7867,
+    "at": 5.92,
     "sound": "air",
     "gain_db": -21
    },
    {
-    "at": 9.5333,
+    "at": 7.6667,
+    "sound": "whip",
+    "gain_db": -12,
+    "dir": 1.0
+   },
+   {
+    "at": 7.6867,
+    "sound": "air",
+    "gain_db": -21
+   },
+   {
+    "at": 9.4333,
     "sound": "reverse_hit",
     "gain_db": -17,
     "dur": 0.4
    },
    {
-    "at": 9.5333,
+    "at": 9.4333,
     "sound": "boom",
     "gain_db": -13
    },
    {
-    "at": 14.9667,
+    "at": 14.8667,
     "sound": "whip",
     "gain_db": -12,
     "dir": 1.0
    },
    {
-    "at": 14.9867,
+    "at": 14.8867,
     "sound": "air",
     "gain_db": -21
    },
    {
-    "at": 19.2333,
+    "at": 19.1333,
     "sound": "reverse_hit",
     "gain_db": -12,
     "dur": 0.7
    },
    {
-    "at": 19.2333,
+    "at": 19.1333,
     "sound": "boom",
     "gain_db": -7
    },
    {
-    "at": 19.7333,
+    "at": 19.6333,
     "sound": "click",
     "gain_db": -17
    }
@@ -314,13 +294,13 @@
   "replace": {},
   "zones": [
    {
-    "at": 9.483,
+    "at": 9.383,
     "dur": 5.47,
     "top": 0.739
    },
    {
     "at": 0,
-    "dur": 19.243,
+    "dur": 19.143,
     "top": 0.7
    }
   ]
