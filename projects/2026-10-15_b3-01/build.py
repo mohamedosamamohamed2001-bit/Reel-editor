@@ -17,12 +17,16 @@ S.title(0.15, w("الكلام") - 0.3, [{"text": "PRE"}, {"text": "WORKOUT", "ac
         top=0.04, occlude=True)
 S.image("energy_drink", w("بتاخد"), w("كده") - w("بتاخد") + 0.1, mode="card", width=620, top=0.13)
 S.icons(w("بيتعود"), w("فانت", near=7.8) - w("بيتعود"), [{"icon": "Repeat", "label": "بيتعود"}], top=0.16)
-S.icons(w("تزود", near=9.1), w("ودي") - w("تزود", near=9.1), [{"icon": "Pill", "mark": "up", "label": "الجرعة"}], top=0.16)
-S.badge(w("غلط", near=10.7) - 0.05, w("نسبة") - w("غلط", near=10.7), "✗", "غلط", top=0.15)
+# the old dark-red caption word (same red as his shirt, can't be erased cleanly) shows at 8.5-11.6 and 14.9-16.6 s:
+# full-screen visuals on exactly those moments
+S.image("protein_powder", S.o(8.5), w("ودي") - S.o(8.5), mode="full", push=[1.0, 1.06])
+S.icons(w("تزود", near=9.1), w("ودي") - w("تزود", near=9.1), [{"icon": "Pill", "mark": "up", "label": "الجرعة"}], top=0.16, sfx=False)
+S.title(w("ودي"), S.o(11.65) - w("ودي"), [{"text": "اكتر حاجة", "size": 110}, {"text": "غلط", "accent": True, "size": 180}],
+        eyebrow="PRE WORKOUT", top=0.30, backdrop=True)
 S.image("coffee_cup", w("نسبة") - 0.05, w("جدا") - w("نسبة") + 0.5, mode="card", width=560, top=0.12)
 S.icons(w("عالية"), w("فانت", near=13.8) - w("عالية"), [{"icon": "Coffee", "mark": "up", "label": "Caffeine"}], top=0.36, size=140)
-S.image("heart", w("بيكون", near=16.0) - 0.1, w("طب") - w("بيكون", near=16.0) + 0.1, mode="card", width=520, top=0.12,
-        markers=[{"at": 0.35, "x": 0.5, "y": 0.45, "r": 0.12}])
+S.image("heart", S.o(14.85), w("طب") - S.o(14.85), mode="full", push=[1.0, 1.06],
+        markers=[{"at": 1.2, "x": 0.5, "y": 0.45, "r": 0.12, "label": "قلبك"}])
 S.title(w("طب"), w("بنستعمله") - w("طب"), [{"text": "ليه موجود؟", "accent": True, "size": 120}], eyebrow="PRE WORKOUT", top=0.12)
 S.image("tired_desk", w("يوم", near=20.1) - 0.1, w("او", near=20.7) - w("يوم", near=20.1) + 0.1, mode="card", width=620, top=0.13)
 S.icons(w("مش", near=21.1), w("فده") - w("مش", near=21.1), [{"icon": "Moon", "mark": "down", "label": "نوم"}], top=0.16)

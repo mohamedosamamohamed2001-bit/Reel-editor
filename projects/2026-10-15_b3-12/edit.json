@@ -5,7 +5,9 @@
  "height": 1920,
  "media": {
   "main": "work/clean/original.clean.mp4",
+  "v_lifting": "work/visuals/lifting.jpg",
   "v_sleep_bed": "work/visuals/sleep_bed.jpg",
+  "v_rest_couch": "work/visuals/rest_couch.jpg",
   "v_knee_injury": "work/visuals/knee_injury.jpg"
  },
  "audio": {
@@ -218,6 +220,17 @@
    "occlude": true
   },
   {
+   "type": "visualCard",
+   "src": "v_lifting",
+   "at": 2.73,
+   "dur": 2.49,
+   "mode": "full",
+   "push": [
+    1.0,
+    1.06
+   ]
+  },
+  {
    "type": "stepBadge",
    "at": 3.22,
    "dur": 2.0,
@@ -235,6 +248,17 @@
    "push": [
     1.0,
     1.05
+   ]
+  },
+  {
+   "type": "visualCard",
+   "src": "v_rest_couch",
+   "at": 6.97,
+   "dur": 3.9,
+   "mode": "full",
+   "push": [
+    1.05,
+    1.0
    ]
   },
   {
@@ -348,6 +372,11 @@
     "gain_db": -20
    },
    {
+    "at": 2.73,
+    "sound": "whoosh_in",
+    "gain_db": -15
+   },
+   {
     "at": 2.7333,
     "sound": "whip",
     "gain_db": -11,
@@ -362,6 +391,11 @@
     "at": 3.22,
     "sound": "slam",
     "gain_db": -16
+   },
+   {
+    "at": 5.12,
+    "sound": "whoosh_out",
+    "gain_db": -19
    },
    {
     "at": 5.22,
@@ -385,6 +419,11 @@
     "gain_db": -19
    },
    {
+    "at": 6.97,
+    "sound": "whoosh_in",
+    "gain_db": -15
+   },
+   {
     "at": 7.0667,
     "sound": "whip",
     "gain_db": -11,
@@ -406,6 +445,11 @@
     "sound": "blip",
     "gain_db": -20,
     "freq": 820
+   },
+   {
+    "at": 10.77,
+    "sound": "whoosh_out",
+    "gain_db": -19
    },
    {
     "at": 10.8667,

@@ -6,6 +6,7 @@
  "media": {
   "main": "work/clean/original.clean.mp4",
   "v_energy_drink": "work/visuals/energy_drink.jpg",
+  "v_protein_powder": "work/visuals/protein_powder.jpg",
   "v_coffee_cup": "work/visuals/coffee_cup.jpg",
   "v_heart": "work/visuals/heart.jpg",
   "v_tired_desk": "work/visuals/tired_desk.jpg"
@@ -204,6 +205,17 @@
    "size": 221
   },
   {
+   "type": "visualCard",
+   "src": "v_protein_powder",
+   "at": 8.5,
+   "dur": 1.32,
+   "mode": "full",
+   "push": [
+    1.0,
+    1.06
+   ]
+  },
+  {
    "type": "iconPop",
    "at": 9.1,
    "dur": 0.72,
@@ -218,13 +230,25 @@
    "size": 221
   },
   {
-   "type": "stepBadge",
-   "at": 10.61,
-   "dur": 1.56,
-   "mark": "✗",
-   "label": "غلط",
-   "top": 0.15,
-   "side": "right"
+   "type": "kineticTitle",
+   "at": 9.82,
+   "dur": 1.83,
+   "lines": [
+    {
+     "text": "اكتر حاجة",
+     "size": 110
+    },
+    {
+     "text": "غلط",
+     "accent": true,
+     "size": 180
+    }
+   ],
+   "top": 0.3,
+   "motion": "smooth",
+   "depth": true,
+   "backdrop": true,
+   "eyebrow": "PRE WORKOUT"
   },
   {
    "type": "visualCard",
@@ -252,17 +276,20 @@
   {
    "type": "visualCard",
    "src": "v_heart",
-   "at": 15.86,
-   "dur": 1.04,
-   "mode": "card",
-   "width": 520,
-   "top": 0.12,
+   "at": 14.85,
+   "dur": 2.05,
+   "mode": "full",
+   "push": [
+    1.0,
+    1.06
+   ],
    "markers": [
     {
-     "at": 0.35,
+     "at": 1.2,
      "x": 0.5,
      "y": 0.45,
-     "r": 0.12
+     "r": 0.12,
+     "label": "قلبك"
     }
    ]
   },
@@ -437,15 +464,24 @@
     "freq": 700
    },
    {
-    "at": 9.18,
-    "sound": "blip",
-    "gain_db": -20,
-    "freq": 700
+    "at": 8.5,
+    "sound": "whoosh_in",
+    "gain_db": -15
    },
    {
-    "at": 10.61,
-    "sound": "slam",
-    "gain_db": -16
+    "at": 9.72,
+    "sound": "whoosh_out",
+    "gain_db": -19
+   },
+   {
+    "at": 9.82,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 9.87,
+    "sound": "impact",
+    "gain_db": -20
    },
    {
     "at": 12.17,
@@ -475,7 +511,7 @@
     "gain_db": -19
    },
    {
-    "at": 15.86,
+    "at": 14.85,
     "sound": "whoosh_in",
     "gain_db": -15
    },

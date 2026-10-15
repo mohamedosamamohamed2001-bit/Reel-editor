@@ -65,3 +65,13 @@ probe → separate voice/music (`tools/separate.py`) → find old captions (`too
 (large-v3, one short dialect prompt) → align to the approved caption text (`tools/align_words.py`) → `build.py`
 → preview → full render (+ no-music) → QA: `qa_render`, `sync_check` (≤ 10 ms), `mix_report`, `band_sweep` (no old
 text), effect-frame scan → export → deliver.
+
+## Batch 3 additions (2026-10-15, approved direction: more motion graphics, more B-roll)
+- Every spoken object / food / muscle / exercise / concept gets a visual: licensed image (full-screen cutaway, or a
+  card that never covers his face) or an `iconPop` illustration tile. Icons sit on the chest or beside him.
+- Every cut of the old edit gets a transition (whip / zoom punch / flash) with a hit SFX; the old edit's flashes and
+  glitches are replaced by a clean held frame under the new transition.
+- Titles: smooth motion (no fast zooms), `depth` for 3D type, `occlude` to sit behind his head when the head is in
+  the top of the frame.
+- Captions: unchanged system (narrow blue bar, karaoke, exact words). Old captions erased; his face is never retouched.
+

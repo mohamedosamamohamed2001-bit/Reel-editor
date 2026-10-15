@@ -14,8 +14,11 @@ S = Story(Path(__file__).resolve().parent, end=21.75, focusY=0.35)
 w = S.w
 
 S.title(0.05, w("جسمك", near=2.6) - 0.1, [{"text": "REST DAY", "accent": True}, {"text": "اهم من التمرين؟", "size": 90}], top=0.03, occlude=True)
+# wide box shots (old text merges with the box print, can't be erased cleanly): matching full-screen B-roll
+S.image("lifting", S.o(2.73), w("التطور") - S.o(2.73), mode="full", push=[1.0, 1.06])
 S.badge(w("مش", near=3.2), w("التطور") - w("مش", near=3.2), "✗", "اثناء التمرين", top=0.14)
 S.image("sleep_bed", w("التطور"), w("الراحة", near=7.0) - w("التطور"), mode="full", push=[1.0, 1.05])
+S.image("rest_couch", w("الراحة", near=7.0) - 0.05, S.o(10.87) - w("الراحة", near=7.0) + 0.05, mode="full", push=[1.05, 1.0])
 S.icons(w("عضلاتك"), w("ولو") - w("عضلاتك"), [{"icon": "BicepsFlexed", "mark": "check", "label": "بتتعافى"}, {"icon": "BatteryFull", "label": "الطاقة"}], top=0.42, size=150)
 S.icons(w("ولو"), w("انت", near=13.0) - w("ولو"), [{"icon": "CalendarDays", "value": "7/7", "label": "كل يوم"}], top=0.42, size=150)
 S.title(w("للإجهاد"), w("فقبل") - w("للإجهاد"), [{"text": "إجهاد", "accent": True, "size": 160}], eyebrow="بدل التطور", top=0.03, occlude=True)

@@ -73,7 +73,9 @@ projects/<name>/  one folder per video: project.json, edit.json, analysis/, docu
 | faster-whisper 1.2.1 (`.venv`, `requirements.txt`) | word-timed transcripts for captions | verified on 5 videos. Audio decoded via FFmpeg because PyAV in this env rejects faster-whisper's `metadata_errors` argument |
 | onnxruntime 1.31 (`.venv`) + UVR-MDX-NET-Voc_FT.onnx (github.com/TRvlvr/model_repo, cached in ~/.cache/osm-models, sha256 534b2070…e111) | `tools/separate.py`: split a finished mix into voice + music bed | verified on 5 videos (clean spectrograms). Demucs weights host (dl.fbaipublicfiles.com) is blocked here (403) |
 | scipy 1.18 (`.venv`) | filters for `tools/music.py` | verified |
-| opencv-python-headless 5.0.0.93 (`.venv`) | `tools/erase_text.py`: inpaint old burned-in captions away | verified on 6 videos (before/after stills) |
+| opencv-python-headless 5.0.0.93 (`.venv`) | `tools/erase_text.py`: inpaint old burned-in captions away | verified on 18 videos (before/after stills) |
+| MODNet ONNX (Xenova/modnet, Apache-2.0) + YuNet ONNX (OpenCV zoo, MIT), ~/.cache/osm-models | person matte for behind-the-head titles; face guard in the eraser | verified on batch 3 stills |
+| lucide-react 0.460.0 (`studio/`, ISC) | icons for `IconPop` motion graphics | verified (typecheck, renders) |
 
 ## Decisions log
 - 2026-10-12: Brand book v1.0 analysed into `docs/BRAND_VIDEO_SYSTEM.md`. The logo files are raster crops from the PDF
@@ -162,4 +164,10 @@ projects/<name>/  one folder per video: project.json, edit.json, analysis/, docu
   0.13 covered his eyes, so titles go on the T-shirt (dark ink, top ~0.67) and cards below the captions
   (`visualCard.top` is a FRACTION of the height). Screen-recording B-roll starts inside the app (never the home screen).
   Behind-the-head occlusion not attempted yet (needs a tested person-matte step).
+- 2026-10-15 (batch 3, 12 videos, `docs/batch3_2026-10-15.md`, preset `projects/_b3/common3.py`): erase_text v2 with a
+  YuNet **face guard** (face + beard never touched; text on his face → full-frame title card / cutaway instead),
+  behind-the-head titles (`tools/cutout.py` MODNet + `kineticTitle.occlude`), `iconPop` tiles (lucide-react, ISC),
+  transitions + SFX on every old cut, held frames over old flashes. Icons/cards go on the chest (top ≥ 0.42 in
+  talking-head shots) or full-screen, never over his face. AAC can raise true peak ~1 dB: re-limit if QA flags it.
+  Wait loops: never `pgrep -f` a pattern that also matches the waiting command itself.
 
