@@ -1,0 +1,87 @@
+{
+ "original_overlays": 16,
+ "fixes": [
+  {
+   "index": 0,
+   "type": "kineticTitle",
+   "at": 0.15,
+   "action": "remove",
+   "why": "title on / above his head"
+  },
+  {
+   "index": 1,
+   "type": "visualCard",
+   "at": 4.74,
+   "action": "full",
+   "why": "picture card covered his face"
+  },
+  {
+   "index": 2,
+   "type": "iconPop",
+   "at": 6.6,
+   "action": "move",
+   "top": 0.16,
+   "align": "right"
+  },
+  {
+   "index": 4,
+   "type": "iconPop",
+   "at": 9.1,
+   "action": "move",
+   "top": 0.16,
+   "align": "left"
+  },
+  {
+   "index": 7,
+   "type": "iconPop",
+   "at": 13.22,
+   "action": "move",
+   "top": 0.36,
+   "align": "left"
+  },
+  {
+   "index": 9,
+   "type": "kineticTitle",
+   "at": 16.9,
+   "action": "remove",
+   "why": "title on / above his head"
+  },
+  {
+   "index": 11,
+   "type": "iconPop",
+   "at": 21.06,
+   "action": "move",
+   "top": 0.16,
+   "align": "right"
+  },
+  {
+   "index": 12,
+   "type": "iconPop",
+   "at": 22.52,
+   "action": "move",
+   "top": 0.16,
+   "align": "left"
+  },
+  {
+   "index": 13,
+   "type": "kineticTitle",
+   "at": 25.08,
+   "action": "remove",
+   "why": "title on / above his head"
+  },
+  {
+   "index": 14,
+   "type": "iconPop",
+   "at": 26.02,
+   "action": "move",
+   "top": 0.16,
+   "align": "right"
+  }
+ ],
+ "captions": [
+  {
+   "zone": 0,
+   "top": 0.651
+  }
+ ]
+}

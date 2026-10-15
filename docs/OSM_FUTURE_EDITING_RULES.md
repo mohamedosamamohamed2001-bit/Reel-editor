@@ -48,3 +48,7 @@ backgrounds (narrow #56A0FB bars, no blur), erased old captions and the end card
   shadows or blur in its entrance/exit (smooth titles, badges, labels, icon tiles, captions). Readability on a light
   shirt comes from a solid caption-bar plate (`plate: true` on stepBadge/lowerLabel), never from a soft shadow.
   The footage behind text stays clean and untouched.
+- Picture cards: no full-frame dimming layer when a card appears, no blur in/out, no soft shadow/glow; full-screen
+  pictures have no dark gradient behind the captions. A picture card that would cover his face becomes a full-screen
+  cutaway. Graphics with no room under his chin (tight close-ups) sit beside his head (`iconPop.align`), never over
+  or above it; captions move down only where his beard would reach the bar (`headfix.json` "captions").

@@ -23,7 +23,7 @@ export const VisualCard: React.FC<{
   const inP = interpolate(frame, [0, 6], [0, 1], { ...clamp, easing: Easing.out(Easing.exp) });
   const outP = interpolate(frame, [durF - 6, durF], [0, 1], { ...clamp, easing: Easing.in(Easing.cubic) });
   const scale = 1.18 - 0.18 * inP;
-  const blur = (1 - inP) * 14 + outP * 16;
+  // Coach Osama 2026-10-15: no moving blur, no dimming/haze layer, no soft shadows or glows
   const kb = interpolate(frame, [0, durF], push, clamp);
   const url = staticFile(src);
 
@@ -53,7 +53,7 @@ export const VisualCard: React.FC<{
       return (
         <div key={i} style={{ position: "absolute", left: m.x * boxW, top: m.y * boxH, width: 0, height: 0 }}>
           <div style={{ position: "absolute", left: -r, top: -r, width: 2 * r, height: 2 * r, borderRadius: "50%", border: `7px solid ${color.coreBlue}`,
-            boxShadow: `0 0 24px ${color.glowBlue}`, transform: `scale(${p * pulse})` }} />
+            transform: `scale(${p * pulse})` }} />
           {m.label ? (
             <div dir={isArabic(m.label) ? "rtl" : "ltr"} style={{ position: "absolute", left: r * 0.75, top: -r - 46, whiteSpace: "nowrap", opacity: p,
               background: color.coreBlue, color: color.text, borderRadius: 14, padding: isArabic(m.label) ? "0 16px 6px" : "6px 16px",
@@ -68,7 +68,7 @@ export const VisualCard: React.FC<{
 
   const creditEl = credit ? (
     <div style={{ position: "absolute", right: safe.side, bottom: safe.bottom - 40, fontFamily: font.latin, fontSize: 20, color: "rgba(244,246,250,0.75)",
-      textShadow: "0 1px 4px rgba(10,15,22,0.9)", opacity: inP * (1 - outP) }}>
+      textShadow: "1px 1px 0 rgba(10,15,22,0.9)", opacity: inP * (1 - outP) }}>
       {credit}
     </div>
   ) : null;
@@ -77,12 +77,11 @@ export const VisualCard: React.FC<{
     const s = Math.max(W / srcW, H / srcH) * kb;
     const dw = srcW * s, dh = srcH * s;
     return (
-      <AbsoluteFill style={{ background: color.night, opacity: 1 - outP, filter: blur > 0.3 ? `blur(${blur}px)` : undefined, transform: `scale(${scale})` }}>
+      <AbsoluteFill style={{ background: color.night, opacity: 1 - outP, transform: `scale(${scale})` }}>
         <div style={{ position: "absolute", left: (W - dw) / 2, top: Math.min(0, Math.max(H - dh, H / 2 - focusY * dh)), width: dw, height: dh }}>
           <Img src={url} style={{ width: "100%", height: "100%" }} />
           {markerEls(dw, dh)}
         </div>
-        <AbsoluteFill style={{ background: "linear-gradient(180deg, rgba(10,15,22,0) 55%, rgba(10,15,22,0.75) 100%)" }} />
         <div style={{ position: "absolute", left: 0, right: 0, bottom: safe.bottom + 40, textAlign: "center" }}>{labelEl}</div>
         {creditEl}
       </AbsoluteFill>
@@ -94,11 +93,10 @@ export const VisualCard: React.FC<{
   const y0 = top !== undefined ? H * top : safe.top + 10;
   return (
     <AbsoluteFill style={{ pointerEvents: "none" }}>
-      <AbsoluteFill style={{ background: `rgba(10,15,22,${0.45 * inP * (1 - outP)})` }} />
       <div style={{ position: "absolute", top: y0, left: 0, right: 0, display: "flex", flexDirection: "column", alignItems: "center",
-        transform: `translateY(${-90 * outP}px) scale(${scale})`, opacity: inP * (1 - outP), filter: blur > 0.3 ? `blur(${blur}px)` : undefined }}>
+        transform: `translateY(${-90 * outP}px) scale(${scale})`, opacity: inP * (1 - outP) }}>
         <div style={{ position: "relative", width: Math.min(cw, iw), height: ch, borderRadius: 30, overflow: "hidden", border: `6px solid ${color.coreBlue}`,
-          boxShadow: `0 24px 60px rgba(10,15,22,0.55), 0 0 30px rgba(86,160,251,0.35)`, background: color.night }}>
+          background: color.night }}>
           <div style={{ position: "absolute", inset: 0, transform: `scale(${kb})`, transformOrigin: "50% 50%" }}>
             <Img src={url} style={{ position: "absolute", left: (Math.min(cw, iw) - iw) / 2, top: 0, width: iw, height: ch, maxWidth: "none" }} />
             <div style={{ position: "absolute", left: (Math.min(cw, iw) - iw) / 2, top: 0, width: iw, height: ch }}>{markerEls(iw, ch)}</div>

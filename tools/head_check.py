@@ -67,7 +67,7 @@ def main():
     det = cv2.FaceDetectorYN.create(str(Path.home() / ".cache/osm-models/yunet.onnx"), "", (w * 2, h * 2), 0.75, 0.3, 50)
     overlays = [o for o in edit["overlays"] if o["type"] in TEXT_TYPES and not o.get("backdrop")]
     zones = (edit.get("captions") or {}).get("zones", [])
-    hits, chin = [], {}
+    hits, chin, hx, face_log = [], {}, {}, []
     boxes = {i: None for i in range(len(overlays))}  # each text overlay's measured box (output px), from frames it is alone
     for i, (ft, ff) in enumerate(zip(frames(vt, w, h, 1), frames(vf, w, h, 3))):
         if i % a.every:
@@ -90,10 +90,12 @@ def main():
             # his face only: not tiny (background people / photos), face-shaped (hands and shirt prints fail this)
             if fw < w * 0.06 or not 0.6 < fw / fh < 1.15:
                 continue
+            face_log.append([round(t, 2)] + [round(v / a.scale) for v in (fx, fy, fx + fw, fy + fh)])
             x0, x1 = int(max(0, fx - 0.2 * fw)), int(min(w, fx + 1.2 * fw))
             y1 = int(min(h, fy + 1.2 * fh))  # chin + beard; everything above (hair and the air above the head) is out
             for k in on:
                 chin[k] = max(chin.get(k, 0), y1)
+                hx[k] = [min(hx.get(k, [w, 0])[0], x0), max(hx.get(k, [w, 0])[1], x1)]
             n_ov = int(text[:min(y1, cap_y), x0:x1].sum())
             n_cap = int(text[cap_y:y1, x0:x1].sum()) if y1 > cap_y else 0
             if n_ov + n_cap > 6:
@@ -115,10 +117,11 @@ def main():
         report.append({"index": edit["overlays"].index(o), "type": o["type"], "at": o["at"], "dur": o["dur"], "top": o.get("top"),
                        "label": o["lines"][0]["text"] if o["type"] == "kineticTitle" else o.get("label") or o.get("title") or "",
                        "frames": len(ts), "from": min(ts), "to": max(ts), "chin_y": round(chin.get(k, 0) * S) / H,
+                       "head_x": [round(v * S) for v in hx.get(k, [0, w])],
                        "box": [round(v * S) for v in bb] if bb is not None else None})
     caps = [x["t"] for x in hits if x["captions"]]
     out = proj / "renders/_head_check.json"
-    out.write_text(json.dumps({"overlays": report, "caption_hits": caps, "frames": hits}, ensure_ascii=False, indent=1))
+    out.write_text(json.dumps({"overlays": report, "caption_hits": caps, "frames": hits, "faces": face_log}, ensure_ascii=False, indent=1))
     for r in report:
         print(f"  {r['from']:6.2f}-{r['to']:6.2f}s {r['frames']:3d}f  #{r['index']} {r['type']} top={r['top']} chin={r['chin_y']:.3f} box={r['box']}  {r['label']}")
     if caps:

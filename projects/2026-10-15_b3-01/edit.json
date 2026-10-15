@@ -158,38 +158,17 @@
    {
     "at": 0,
     "dur": 29.01,
-    "top": 0.62
+    "top": 0.651
    }
   ]
  },
  "overlays": [
   {
-   "type": "kineticTitle",
-   "at": 0.15,
-   "dur": 3.06,
-   "lines": [
-    {
-     "text": "PRE"
-    },
-    {
-     "text": "WORKOUT",
-     "accent": true
-    }
-   ],
-   "top": 0.04,
-   "motion": "smooth",
-   "depth": true,
-   "eyebrow": "كل يوم؟",
-   "occlude": true
-  },
-  {
    "type": "visualCard",
    "src": "v_energy_drink",
    "at": 4.74,
    "dur": 1.28,
-   "mode": "card",
-   "width": 620,
-   "top": 0.13
+   "mode": "full"
   },
   {
    "type": "iconPop",
@@ -202,7 +181,8 @@
     }
    ],
    "top": 0.16,
-   "size": 221
+   "size": 221,
+   "align": "right"
   },
   {
    "type": "visualCard",
@@ -227,7 +207,8 @@
     }
    ],
    "top": 0.16,
-   "size": 221
+   "size": 221,
+   "align": "left"
   },
   {
    "type": "kineticTitle",
@@ -271,7 +252,8 @@
     }
    ],
    "top": 0.36,
-   "size": 182
+   "size": 182,
+   "align": "left"
   },
   {
    "type": "visualCard",
@@ -294,22 +276,6 @@
    ]
   },
   {
-   "type": "kineticTitle",
-   "at": 16.9,
-   "dur": 1.78,
-   "lines": [
-    {
-     "text": "ليه موجود؟",
-     "accent": true,
-     "size": 120
-    }
-   ],
-   "top": 0.12,
-   "motion": "smooth",
-   "depth": true,
-   "eyebrow": "PRE WORKOUT"
-  },
-  {
    "type": "visualCard",
    "src": "v_tired_desk",
    "at": 19.96,
@@ -330,7 +296,8 @@
     }
    ],
    "top": 0.16,
-   "size": 221
+   "size": 221,
+   "align": "right"
   },
   {
    "type": "iconPop",
@@ -344,27 +311,8 @@
     }
    ],
    "top": 0.16,
-   "size": 221
-  },
-  {
-   "type": "kineticTitle",
-   "at": 25.08,
-   "dur": 0.94,
-   "lines": [
-    {
-     "text": "3×",
-     "accent": true,
-     "size": 200
-    },
-    {
-     "text": "في الاسبوع",
-     "size": 90
-    }
-   ],
-   "top": 0.1,
-   "motion": "smooth",
-   "depth": true,
-   "eyebrow": "بس"
+   "size": 221,
+   "align": "left"
   },
   {
    "type": "iconPop",
@@ -377,7 +325,8 @@
     }
    ],
    "top": 0.16,
-   "size": 221
+   "size": 221,
+   "align": "right"
   },
   {
    "type": "endCard",
