@@ -132,7 +132,7 @@ def apply_captions(captions, cap_fixes, extra=None):
         captions["anchors"] = extra.get("anchors", [])
         captions["anchorPlate"] = True  # keep the approved blue bar
         for z in extra.get("zones", []):  # zone edges only force phrase breaks at the anchor edges
-            if z not in captions["zones"]:
+            if not any(abs(x["at"] - z["at"]) < 1e-6 and abs(x["dur"] - z["dur"]) < 1e-6 for x in captions["zones"]):
                 captions["zones"].insert(0, z)
 
 
@@ -179,7 +179,7 @@ def main():
     if log.get("caption_extra"):
         apply_captions(edit["captions"], [], log["caption_extra"])
         apply_captions(props["edit"]["captions"], [], log["caption_extra"])
-    cf = fix_captions(edit, cap_hits)
+    cf = None if log.get("caption_extra") else fix_captions(edit, cap_hits)  # hand-placed captions: no automatic shift
     if cf:
         for f in cf:
             print(f"  captions zone {f['zone']} -> top {f['top']} (his beard reaches the caption bar)")
@@ -199,6 +199,8 @@ def main():
     # moves replace earlier moves of the same overlay
     keep = {f["index"]: f for f in log["fixes"]}
     for f in new:
+        if keep.get(f["index"], {}).get("manual"):
+            continue  # hand-placed fixes are never overwritten by the automatic plan
         keep[f["index"]] = f
     log["fixes"] = sorted(keep.values(), key=lambda f: f["index"])
     # re-apply everything to the original lists: edit.json keeps a pristine copy of the build's overlays

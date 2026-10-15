@@ -2,6 +2,37 @@
  "original_overlays": 12,
  "fixes": [
   {
+   "index": 0,
+   "type": "kineticTitle",
+   "at": 0.1,
+   "action": "remove",
+   "why": "title on / above his head"
+  },
+  {
+   "index": 2,
+   "type": "lowerLabel",
+   "at": 6.08,
+   "action": "move",
+   "top": 0.589,
+   "plate": true
+  },
+  {
+   "index": 4,
+   "type": "stepBadge",
+   "at": 9.32,
+   "action": "move",
+   "top": 0.443,
+   "plate": true
+  },
+  {
+   "index": 6,
+   "type": "stepBadge",
+   "at": 14.04,
+   "action": "move",
+   "top": 0.426,
+   "plate": true
+  },
+  {
    "index": 7,
    "type": "lowerLabel",
    "at": 15.6,
@@ -9,7 +40,7 @@
    "top": 0.754,
    "align": "right",
    "plate": true,
-   "manual": "dips demo: his head drops through the left third; label bottom-right, clear of it"
+   "manual": "dips demo: his head drops through the left third down to 0.83; label bottom-right, clear of it"
   },
   {
    "index": 8,
@@ -19,29 +50,14 @@
    "top": 0.4,
    "align": "right",
    "manual": "dips demo: icon on the right, clear of his head"
+  },
+  {
+   "index": 9,
+   "type": "kineticTitle",
+   "at": 20.68,
+   "action": "remove",
+   "why": "title on / above his head"
   }
  ],
- "captions": [],
- "caption_extra": {
-  "anchors": [
-   {
-    "at": 18.8,
-    "dur": 2.05,
-    "box": [
-     0.46,
-     0.68,
-     0.86,
-     0.746
-    ]
-   }
-  ],
-  "zones": [
-   {
-    "at": 18.8,
-    "dur": 2.05,
-    "top": 0.68
-   }
-  ],
-  "why": "dips demo 18.8-20.85 s: his head passes through the caption band on the left; captions move to the right half"
- }
+ "captions": []
 }
