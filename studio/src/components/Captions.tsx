@@ -85,7 +85,8 @@ export const Captions: React.FC<{
           // Book: Night plate ~80% opacity, card radius, for legibility over bright areas (e.g. a white shirt)
           background: plate ? plateColor ?? "rgba(10,15,22,0.82)" : undefined,
           border: plate ? `1px solid ${plateColor ?? "rgba(38,50,68,0.9)"}` : undefined,
-          boxShadow: plate ? "0 10px 30px rgba(10,15,22,0.35)" : undefined,
+          // Coach Osama 2026-10-15: no soft shadow / haze around the bar (it moved and faded with the text)
+          boxShadow: undefined,
           padding: plate ? (rtl ? "6px 30px 10px" : "14px 30px") : undefined,
           borderRadius: plate ? 20 : undefined,
         }}

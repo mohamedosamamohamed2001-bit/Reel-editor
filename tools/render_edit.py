@@ -560,6 +560,7 @@ def main():
     ap.add_argument("--lufs", type=float, default=-14.0)
     ap.add_argument("--tp", type=float, default=-1.0)
     ap.add_argument("--alt-nomusic", action="store_true", help="also write <name>_nomusic.mp4 (dialogue + SFX only)")
+    ap.add_argument("--props-only", action="store_true", help="make plates + media links + renders/_props.json, no render")
     a = ap.parse_args()
 
     proj = Path(a.project).resolve()
@@ -588,13 +589,17 @@ def main():
     if music:
         music["path"] = str((proj / music["src"]).resolve())
     make_plates(edit, proj)
-    make_cutouts(edit, proj)
+    if not a.props_only:  # cut-outs only matter for the real render
+        make_cutouts(edit, proj)
     edit_sfx = edit.pop("sfx", None)
     edit = resolve(edit, proj, name)
     renders = proj / "renders"
     renders.mkdir(exist_ok=True)
     props = renders / "_props.json"
     props.write_text(json.dumps({"edit": edit}, ensure_ascii=False))
+    if a.props_only:  # e.g. for tools/head_check.py
+        print("props:", props, flush=True)
+        return
 
     suffix = "_preview" if a.preview else ""
     raw = renders / f"{name}{suffix}_raw.mp4"

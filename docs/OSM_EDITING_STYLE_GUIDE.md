@@ -71,7 +71,7 @@ text), effect-frame scan → export → deliver.
   card that never covers his face) or an `iconPop` illustration tile. Icons sit on the chest or beside him.
 - Every cut of the old edit gets a transition (whip / zoom punch / flash) with a hit SFX; the old edit's flashes and
   glitches are replaced by a clean held frame under the new transition.
-- Titles: smooth motion (no fast zooms), `depth` for 3D type, `occlude` to sit behind his head when the head is in
-  the top of the frame.
+- Titles: smooth motion (no fast zooms), `depth` for 3D type (hard extrusion only). ~~`occlude` behind his head~~
+  withdrawn 2026-10-15: no text on/above his head and no haze behind text (`docs/OSM_FUTURE_EDITING_RULES.md` section 7).
 - Captions: unchanged system (narrow blue bar, karaoke, exact words). Old captions erased; his face is never retouched.
 

@@ -36,7 +36,6 @@ export const IconPop: React.FC<{
           const lab = interpolate(frame, [st + 12, st + 24], [0, 1], { ...clamp, easing: Easing.out(Easing.cubic) });
           const markP = interpolate(frame, [st + 18, st + 28], [0, 1], { ...clamp, easing: Easing.out(Easing.back(1.4)) });
           const float = Math.sin((frame + i * 11) / 16) * 4;
-          const glow = 0.35 + 0.15 * Math.sin((frame + i * 7) / 9);
           const Ico = (Icons as unknown as Record<string, React.FC<Record<string, unknown>>>)[it.icon] ?? Icons.Circle;
           const r = size / 2 + 14;
           const circ = 2 * Math.PI * r;
@@ -53,7 +52,7 @@ export const IconPop: React.FC<{
                 <div style={{
                   position: "absolute", inset: 0, borderRadius: size * 0.28,
                   background: `radial-gradient(circle at 50% 35%, #16263f 0%, ${color.night} 75%)`,
-                  border: `3px solid ${color.coreBlue}`, boxShadow: `0 0 ${36}px rgba(86,160,251,${glow}), 0 18px 40px rgba(4,8,14,0.55)`,
+                  border: `3px solid ${color.coreBlue}`, // no glow / soft shadow around the tile (2026-10-15: no haze behind text)
                   display: "flex", alignItems: "center", justifyContent: "center",
                 }}>
                   {it.value ? (
@@ -61,14 +60,14 @@ export const IconPop: React.FC<{
                       opacity: draw, transform: `translateY(${(1 - draw) * 12}px)` }}>{it.value}</div>
                   ) : (
                     <Ico size={size * 0.52} color={color.text} strokeWidth={1.9}
-                      style={{ strokeDasharray: 100, strokeDashoffset: 100 * (1 - draw), filter: "drop-shadow(0 0 10px rgba(86,160,251,0.6))" }} />
+                      style={{ strokeDasharray: 100, strokeDashoffset: 100 * (1 - draw) }} />
                   )}
                 </div>
                 {it.mark ? (
                   <div style={{
                     position: "absolute", right: -16, top: -16, width: size * 0.36, height: size * 0.36, borderRadius: "50%",
                     background: markColor, display: "flex", alignItems: "center", justifyContent: "center",
-                    transform: `scale(${markP})`, boxShadow: "0 6px 16px rgba(4,8,14,0.5)",
+                    transform: `scale(${markP})`, 
                   }}>
                     {it.mark === "up" ? <Icons.ArrowUp size={size * 0.24} color={color.night} strokeWidth={3} /> : null}
                     {it.mark === "down" ? <Icons.ArrowDown size={size * 0.24} color={color.night} strokeWidth={3} /> : null}

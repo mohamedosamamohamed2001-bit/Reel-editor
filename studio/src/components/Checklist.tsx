@@ -27,7 +27,7 @@ export const Checklist: React.FC<{ dur: number; items: { at: number; text: strin
               style={{
                 display: "flex", alignItems: "center", gap: row ? 14 : 20, padding: row ? "12px 26px 14px" : "16px 34px 18px",
                 background: plate ?? "rgba(10,15,22,0.86)", border: `1px solid ${plate ?? color.line}`, borderRadius: 22,
-                boxShadow: "0 14px 34px rgba(10,15,22,0.35)",
+                
                 opacity: p, transform: `translateY(${24 * (1 - p)}px) scale(${0.96 + 0.04 * p})`,
               }}
             >

@@ -41,10 +41,9 @@ export const KineticTitle: React.FC<{
   };
   // extruded 3D face: 1 px steps down-right in deep brand blue, then a soft shadow on the "ground"
   const extrude = dark
-    ? "0 1px 0 rgba(255,255,255,0.55), 0 6px 18px rgba(10,15,22,0.22)" // embossed on a light surface: highlight edge + soft cast shadow
+    ? "0 1px 0 rgba(255,255,255,0.55)" // embossed on a light surface: highlight edge + soft cast shadow
     : depth
-    ? [1, 2, 3, 4, 5, 6].map((d) => `${d * 0.6}px ${d}px 0 rgba(${Math.round(16 + d * 2)},${Math.round(40 + d * 3)},${Math.round(78 + d * 4)},1)`).join(", ") +
-      ", 0 14px 22px rgba(4,8,14,0.65), 0 30px 60px rgba(4,8,14,0.45)"
+    ? [1, 2, 3, 4, 5, 6].map((d) => `${d * 0.6}px ${d}px 0 rgba(${Math.round(16 + d * 2)},${Math.round(40 + d * 3)},${Math.round(78 + d * 4)},1)`).join(", ") // hard extrusion only: no soft cast shadow (Coach Osama 2026-10-15: no haze behind text)
     : "0 8px 40px rgba(10,15,22,0.85), 0 2px 6px rgba(10,15,22,0.7)";
 
   return (
@@ -65,7 +64,7 @@ export const KineticTitle: React.FC<{
           textAlign: "center",
           transform: `translateY(${(smooth ? -40 : -140) * exit}px) rotateX(${22 * tiltP}deg)`,
           transformOrigin: "50% 100%",
-          filter: exit > 0.01 ? `blur(${(smooth ? 4 : 14) * exit}px)` : undefined,
+          filter: exit > 0.01 && !smooth ? `blur(${14 * exit}px)` : undefined, // smooth: no blur (2026-10-15)
           opacity: backdrop ? 1 : 1 - exit,
         }}
       >
@@ -106,7 +105,7 @@ export const KineticTitle: React.FC<{
                       transform: smooth
                         ? `translateY(${22 * (1 - p)}px) scale(${1.06 - 0.06 * p}) rotateX(${16 * (1 - p)}deg)`
                         : `scale(${1.7 - 0.7 * p})`,
-                      filter: p < 0.98 ? `blur(${(1 - p) * (smooth ? 3 : 10)}px)` : undefined,
+                      filter: p < 0.98 && !smooth ? `blur(${(1 - p) * 10}px)` : undefined,
                       textShadow: extrude,
                     }}
                   >
@@ -118,7 +117,7 @@ export const KineticTitle: React.FC<{
                 <div
                   style={{
                     margin: "6px auto 0", height: 10, width: `${46 * bar}%`, borderRadius: 2,
-                    background: color.coreBlue, transform: "skewX(-22deg)", boxShadow: `0 0 22px ${color.glowBlue}`,
+                    background: color.coreBlue, transform: "skewX(-22deg)",
                   }}
                 />
               ) : null}

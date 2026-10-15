@@ -58,8 +58,8 @@ export type Overlay =
       top?: number; size?: number; align?: "center" | "left" | "right" }
   | { type: "kineticTitle"; at: number; dur: number; lines: { text: string; accent?: boolean; size?: number }[]; eyebrow?: string; top?: number; tilt?: boolean; backdrop?: boolean; motion?: "slam" | "smooth"; depth?: boolean; ink?: "light" | "dark";
       /** behind-the-head: he occludes the title (person cut-out by tools/render_edit.py, MODNet matte) */ occlude?: boolean }
-  | { type: "stepBadge"; at: number; dur: number; mark: string; label: string; sub?: string; top?: number; side?: "left" | "right" }
-  | { type: "lowerLabel"; at: number; dur: number; title: string; sets?: string; eyebrow?: string; top?: number }
+  | { type: "stepBadge"; at: number; dur: number; mark: string; label: string; sub?: string; top?: number; side?: "left" | "right"; plate?: boolean }
+  | { type: "lowerLabel"; at: number; dur: number; title: string; sets?: string; eyebrow?: string; top?: number; plate?: boolean }
   | { type: "trackedLabel"; at: number; dur: number; text: string; sub?: string; keys: { t: number; x: number; y: number }[]; side?: "left" | "right" }
   | { type: "callout"; at: number; dur: number; text?: string; number?: string; unit?: string; earned?: boolean; position?: "top" | "center" }
   | { type: "insetCard"; at: number; dur: number; src: string; in: number; eyebrow?: string; volume?: number }
@@ -89,6 +89,8 @@ export type Overlay =
 
 export type Edit = {
   title: string;
+  /** QA only (tools/head_check.py): "text" = text layers on black, "footage" = everything except text layers */
+  debugLayer?: "text" | "footage";
   fps: number;
   width: number;
   height: number;

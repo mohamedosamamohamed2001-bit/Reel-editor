@@ -43,9 +43,9 @@ const renderOverlay = (o: Overlay, plate?: string) => {
     case "iconPop":
       return <IconPop items={o.items} dur={o.dur} top={o.top} size={o.size} align={o.align} />;
     case "stepBadge":
-      return <StepBadge mark={o.mark} label={o.label} sub={o.sub} dur={o.dur} top={o.top} side={o.side} />;
+      return <StepBadge mark={o.mark} label={o.label} sub={o.sub} dur={o.dur} top={o.top} side={o.side} plate={o.plate ? plate : undefined} />;
     case "lowerLabel":
-      return <LowerLabel title={o.title} sets={o.sets} eyebrow={o.eyebrow} dur={o.dur} top={o.top} />;
+      return <LowerLabel title={o.title} sets={o.sets} eyebrow={o.eyebrow} dur={o.dur} top={o.top} plate={o.plate ? plate : undefined} />;
     case "visualCard":
       return <VisualCard src={o.src} dur={o.dur} mode={o.mode} label={o.label} sub={o.sub} credit={o.credit} srcW={o.srcW} srcH={o.srcH}
         width={o.width} top={o.top} markers={o.markers} push={o.push} focusY={o.focusY} />;
@@ -147,22 +147,27 @@ export const ReelEdit: React.FC<{ edit: Edit }> = ({ edit }) => {
       start += len;
     });
   });
-  const byLayer = (n: number) => edit.overlays.map((o, i) => (layerOf(o) === n ? seq(o, i) : null));
+  // QA split (tools/head_check.py): text layers alone on black vs. the picture without them
+  const TEXT_TYPES = ["kineticTitle", "iconPop", "stepBadge", "lowerLabel", "checklist", "trackedLabel", "callout", "exerciseTitle"];
+  const isText = (o: Overlay) => TEXT_TYPES.includes(o.type) && !(o.type === "kineticTitle" && o.backdrop);
+  const dbg = edit.debugLayer;
+  const keep = (o: Overlay) => (!dbg ? true : dbg === "text" ? isText(o) : !isText(o));
+  const byLayer = (n: number) => edit.overlays.map((o, i) => (layerOf(o) === n && keep(o) ? seq(o, i) : null));
 
   return (
-    <AbsoluteFill style={{ background: color.night }}>
+    <AbsoluteFill style={{ background: dbg === "text" ? "#000" : color.night }}>
       <AbsoluteFill style={{ transform: shake }}>
-        {clipSeqs}
+        {dbg === "text" ? null : clipSeqs}
         {byLayer(1)}
         {byLayer(2)}
-        {fgSeqs}
-        {edit.captions ? (
+        {dbg ? null : fgSeqs}
+        {edit.captions && dbg !== "footage" ? (
           <Captions groups={groups} keywords={edit.captions.keywords} style={edit.captions.style} zones={edit.captions.zones}
             karaoke={edit.captions.karaoke} anchors={edit.captions.anchors} cuts={cuts} plateColor={edit.textPlate} anchorPlate={edit.captions.anchorPlate} />
         ) : null}
         {byLayer(3)}
       </AbsoluteFill>
-      <Flashes at={flashes} />
+      {dbg ? null : <Flashes at={flashes} />}
       {byLayer(4)}
     </AbsoluteFill>
   );

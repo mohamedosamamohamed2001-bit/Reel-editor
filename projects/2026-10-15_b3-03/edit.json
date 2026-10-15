@@ -165,22 +165,6 @@
  },
  "overlays": [
   {
-   "type": "kineticTitle",
-   "at": 0.1,
-   "dur": 2.29,
-   "lines": [
-    {
-     "text": "وزنك ثابت؟",
-     "accent": true,
-     "size": 130
-    }
-   ],
-   "top": 0.05,
-   "motion": "smooth",
-   "depth": true,
-   "eyebrow": "OSM · FAT LOSS"
-  },
-  {
    "type": "iconPop",
    "at": 0.02,
    "dur": 2.34,
@@ -202,29 +186,14 @@
    "size": 169
   },
   {
-   "type": "kineticTitle",
-   "at": 2.44,
-   "dur": 0.8,
-   "lines": [
-    {
-     "text": "3 اسباب",
-     "accent": true,
-     "size": 140
-    }
-   ],
-   "top": 0.03,
-   "motion": "smooth",
-   "depth": true,
-   "occlude": true
-  },
-  {
    "type": "stepBadge",
    "at": 3.24,
    "dur": 1.68,
    "mark": "1",
    "label": "سعرات زيادة",
-   "top": 0.38,
-   "side": "right"
+   "top": 0.491,
+   "side": "right",
+   "plate": true
   },
   {
    "type": "visualCard",
@@ -247,8 +216,8 @@
      "label": "ثابت"
     }
    ],
-   "top": 0.43,
-   "size": 195
+   "top": 0.538,
+   "size": 118
   },
   {
    "type": "stepBadge",
@@ -256,8 +225,9 @@
    "dur": 1.44,
    "mark": "2",
    "label": "مقاومة + كارديو",
-   "top": 0.38,
-   "side": "right"
+   "top": 0.462,
+   "side": "right",
+   "plate": true
   },
   {
    "type": "visualCard",
@@ -297,25 +267,8 @@
      "label": "عضلات"
     }
    ],
-   "top": 0.43,
-   "size": 195
-  },
-  {
-   "type": "kineticTitle",
-   "at": 17.8,
-   "dur": 1.74,
-   "lines": [
-    {
-     "text": "بتتطور",
-     "accent": true,
-     "size": 150
-    }
-   ],
-   "top": 0.03,
-   "motion": "smooth",
-   "depth": true,
-   "eyebrow": "انت كده",
-   "occlude": true
+   "top": 0.501,
+   "size": 164
   },
   {
    "type": "stepBadge",
@@ -323,8 +276,9 @@
    "dur": 1.24,
    "mark": "3",
    "label": "النوم والاسترس",
-   "top": 0.38,
-   "side": "right"
+   "top": 0.496,
+   "side": "right",
+   "plate": true
   },
   {
    "type": "iconPop",
@@ -337,8 +291,8 @@
      "label": "نومك بايظ"
     }
    ],
-   "top": 0.43,
-   "size": 195
+   "top": 0.506,
+   "size": 160
   },
   {
    "type": "visualCard",
@@ -356,8 +310,9 @@
    "at": 24.0,
    "dur": 1.18,
    "title": "CORTISOL ↑",
-   "top": 0.38,
-   "eyebrow": "هرمون"
+   "top": 0.462,
+   "eyebrow": "هرمون",
+   "plate": true
   },
   {
    "type": "iconPop",
@@ -369,8 +324,8 @@
      "label": "احتباس السوايل"
     }
    ],
-   "top": 0.43,
-   "size": 195
+   "top": 0.534,
+   "size": 122
   },
   {
    "type": "iconPop",
@@ -382,8 +337,8 @@
      "label": "التقدم"
     }
    ],
-   "top": 0.43,
-   "size": 195
+   "top": 0.516,
+   "size": 147
   },
   {
    "type": "iconPop",
@@ -395,25 +350,8 @@
      "label": "Description"
     }
    ],
-   "top": 0.43,
-   "size": 195
-  },
-  {
-   "type": "kineticTitle",
-   "at": 32.58,
-   "dur": 2.487,
-   "lines": [
-    {
-     "text": "جاهز",
-     "accent": true,
-     "size": 170
-    }
-   ],
-   "top": 0.03,
-   "motion": "smooth",
-   "depth": true,
-   "eyebrow": "ابعتلي كلمة",
-   "occlude": true
+   "top": 0.504,
+   "size": 167
   },
   {
    "type": "endCard",

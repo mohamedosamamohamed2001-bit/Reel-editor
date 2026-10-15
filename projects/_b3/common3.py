@@ -193,6 +193,10 @@ class Story:
         mus = make_music(self.P, {"bpm": spec.get("bpm", 124), "key": spec.get("key", "E"), "mode": "minor",
                                   "style": spec.get("style", "trap"), "seed": spec.get("seed", 7),
                                   "sections": secs, "duration": round(T + END_DUR, 3)}, gain_db=spec.get("gain", -9))
+        fix_p = self.P / "headfix.json"  # Coach Osama 2026-10-15: no text on / above his head (projects/_b3/head_fix.py)
+        if fix_p.exists():
+            from head_fix import apply
+            self.overlays = apply(self.overlays, json.loads(fix_p.read_text())["fixes"])
         edit = {"title": title, "fps": FPS, "width": 1080, "height": 1920, "media": self.media,
                 "audio": {"main": "work/stems/original.vocals.wav"}, "dialogueFx": DIALOGUE_FX, "dialogueLufs": -16.0,
                 "plates": {"grade": self.grade, "sharpen": SHARPEN}, "clips": self.tl.clips, "captions": cap,

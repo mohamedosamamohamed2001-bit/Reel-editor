@@ -8,7 +8,7 @@ The goal is publication-ready edits that follow the OSM brand, built by a reprod
 2. `brand/tokens.json`: exact colours, fonts, type scale, safe areas and logo rules.
 3. The `projects/<name>/project.json` of the video being worked on.
 4. `docs/OSM_FUTURE_EDITING_RULES.md`: Coach Osama's rules for NEW videos (smooth readable caption motion, selective
-   premium 3D type, behind-the-head occlusion, kinetic hierarchy). Additions only; never applied to delivered videos unless asked.
+   premium 3D type, kinetic hierarchy; section 7: NO text on/above his head, NO haze behind text). Additions only; never applied to delivered videos unless asked.
 
 ## Layout
 ```
@@ -171,3 +171,10 @@ projects/<name>/  one folder per video: project.json, edit.json, analysis/, docu
   talking-head shots) or full-screen, never over his face. AAC can raise true peak ~1 dB: re-limit if QA flags it.
   Wait loops: never `pgrep -f` a pattern that also matches the waiting command itself.
 
+- 2026-10-15 (batch 3 corrections, Coach Osama): **no text on or above his head** and **no moving blur / haze behind
+  text**, for all videos. Studio-wide: no soft box/text shadows, glows or entrance/exit blur on captions, smooth titles
+  (hard 3D extrusion kept), badges, labels, icon tiles, checklists. `tools/head_check.py` (renders a text-only and a
+  picture-only QA pass via `edit.debugLayer`, YuNet face → forbidden zone = head + column above it) must be clean on
+  every render; `render_edit.py --props-only` prepares plates/props for it. Batch-3 fixes: `projects/_b3/head_fix.py`
+  (titles over the head removed, other graphics moved under the chin with a solid `plate`), logged per project in
+  `headfix.json` and re-applied by `common3.Story.finish`. Behind-the-head `occlude` titles are withdrawn.

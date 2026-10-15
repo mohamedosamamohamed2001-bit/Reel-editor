@@ -1,0 +1,113 @@
+{
+ "original_overlays": 20,
+ "fixes": [
+  {
+   "index": 0,
+   "type": "kineticTitle",
+   "at": 0.1,
+   "action": "remove",
+   "why": "title on / above his head"
+  },
+  {
+   "index": 2,
+   "type": "kineticTitle",
+   "at": 2.44,
+   "action": "remove",
+   "why": "title on / above his head"
+  },
+  {
+   "index": 3,
+   "type": "stepBadge",
+   "at": 3.24,
+   "action": "move",
+   "top": 0.491,
+   "plate": true
+  },
+  {
+   "index": 5,
+   "type": "iconPop",
+   "at": 7.98,
+   "action": "move",
+   "top": 0.538,
+   "size": 118
+  },
+  {
+   "index": 6,
+   "type": "stepBadge",
+   "at": 9.34,
+   "action": "move",
+   "top": 0.462,
+   "plate": true
+  },
+  {
+   "index": 9,
+   "type": "iconPop",
+   "at": 13.64,
+   "action": "move",
+   "top": 0.501,
+   "size": 164
+  },
+  {
+   "index": 10,
+   "type": "kineticTitle",
+   "at": 17.8,
+   "action": "remove",
+   "why": "title on / above his head"
+  },
+  {
+   "index": 11,
+   "type": "stepBadge",
+   "at": 19.54,
+   "action": "move",
+   "top": 0.496,
+   "plate": true
+  },
+  {
+   "index": 12,
+   "type": "iconPop",
+   "at": 20.78,
+   "action": "move",
+   "top": 0.506,
+   "size": 160
+  },
+  {
+   "index": 14,
+   "type": "lowerLabel",
+   "at": 24.0,
+   "action": "move",
+   "top": 0.462,
+   "plate": true
+  },
+  {
+   "index": 15,
+   "type": "iconPop",
+   "at": 26.34,
+   "action": "move",
+   "top": 0.534,
+   "size": 122
+  },
+  {
+   "index": 16,
+   "type": "iconPop",
+   "at": 27.9,
+   "action": "move",
+   "top": 0.516,
+   "size": 147
+  },
+  {
+   "index": 17,
+   "type": "iconPop",
+   "at": 30.06,
+   "action": "move",
+   "top": 0.504,
+   "size": 167
+  },
+  {
+   "index": 18,
+   "type": "kineticTitle",
+   "at": 32.58,
+   "action": "remove",
+   "why": "title on / above his head"
+  }
+ ]
+}

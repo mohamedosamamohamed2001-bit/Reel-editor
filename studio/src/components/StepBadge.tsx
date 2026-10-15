@@ -8,9 +8,11 @@ const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
  * that sweeps across, then fills with Core Blue; the label (Arabic or English) slides out from under the slash.
  * Exit: everything snaps sideways with blur. Sits in the upper third so it never fights the captions.
  */
-export const StepBadge: React.FC<{ mark: string; label: string; sub?: string; dur: number; top?: number; side?: "left" | "right" }> = ({
-  mark, label, sub, dur, top = 0.17, side = "right",
-}) => {
+export const StepBadge: React.FC<{
+  mark: string; label: string; sub?: string; dur: number; top?: number; side?: "left" | "right";
+  /** solid caption-bar colour behind the label (Night text): for a label sitting on a light shirt, no shadow needed */
+  plate?: string;
+}> = ({ mark, label, sub, dur, top = 0.17, side = "right", plate }) => {
   const frame = useCurrentFrame();
   const { fps, height } = useVideoConfig();
   const durF = Math.round(dur * fps);
@@ -34,7 +36,7 @@ export const StepBadge: React.FC<{ mark: string; label: string; sub?: string; du
           alignItems: "center",
           gap: 26,
           transform: `translateX(${dirSign * 260 * exit}px)`,
-          filter: exit > 0.01 ? `blur(${12 * exit}px)` : undefined,
+          
           opacity: 1 - exit,
         }}
       >
@@ -44,7 +46,6 @@ export const StepBadge: React.FC<{ mark: string; label: string; sub?: string; du
             style={{
               position: "absolute", left: 92, top: -10, width: 16, height: 230, borderRadius: 3,
               background: color.coreBlue, transform: `skewX(-22deg) scaleY(${slash})`, transformOrigin: "50% 100%",
-              boxShadow: `0 0 26px ${color.glowBlue}`,
             }}
           />
           <div
@@ -55,7 +56,7 @@ export const StepBadge: React.FC<{ mark: string; label: string; sub?: string; du
               WebkitTextStroke: `4px ${color.text}`,
               clipPath: `inset(${100 - num * 100}% 0 0 0)`,
               transform: `translateY(${30 * (1 - num)}px)`,
-              textShadow: "0 10px 40px rgba(10,15,22,0.6)",
+              textShadow: "1px 2px 0 rgba(10,15,22,0.9), 2px 4px 0 rgba(10,15,22,0.55)", // no soft haze (2026-10-15)
             }}
           >
             {mark}
@@ -73,8 +74,9 @@ export const StepBadge: React.FC<{ mark: string; label: string; sub?: string; du
           <div
             style={{
               fontFamily: rtlLabel ? font.arabic : font.numbers, fontWeight: 700, fontSize: rtlLabel ? 74 : 92,
-              lineHeight: rtlLabel ? 1.35 : 1, color: color.text, textTransform: rtlLabel ? undefined : "uppercase",
-              textShadow: "0 6px 30px rgba(10,15,22,0.85), 0 2px 6px rgba(10,15,22,0.7)",
+              lineHeight: rtlLabel ? 1.35 : 1, color: plate ? color.night : color.text, textTransform: rtlLabel ? undefined : "uppercase",
+              textShadow: plate ? "none" : "1px 2px 0 rgba(10,15,22,0.9), 2px 4px 0 rgba(10,15,22,0.55)",
+              ...(plate ? { background: plate, borderRadius: 20, padding: rtlLabel ? "2px 28px 8px" : "10px 28px", display: "inline-block" } : {}),
             }}
           >
             {label}
