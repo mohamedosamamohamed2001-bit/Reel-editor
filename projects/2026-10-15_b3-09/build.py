@@ -14,7 +14,7 @@ S = Story(Path(__file__).resolve().parent, end=25.0, focusY=0.35)
 w = S.w
 
 S.title(0.05, w("ال", near=2.0) - 0.1, [{"text": "BICEPS"}, {"text": "VS HAMMER", "accent": True, "size": 120}], eyebrow="مختلفة؟", top=0.03, occlude=True)
-S.image("arm103", w("Biceps", near=2.2) - 0.1, w("بتعمل", near=3.9) - w("Biceps", near=2.2) + 0.1, mode="card", width=760, top=0.13, label="BICEPS")
+S.image("arm103", w("Biceps", near=2.2) - 0.1, w("بتعمل", near=3.9) - w("Biceps", near=2.2) + 0.1, mode="full", label="BICEPS", push=[1.05, 1.0])
 S.icons(w("2"), w("بتعمل", near=3.9) - w("2"), [{"icon": "Repeat", "value": "2", "label": "actions"}], top=0.40, size=150)
 S.checklist(w("بتعمل", near=3.9), w("فالوضع") - w("بتعمل", near=3.9),
             [{"at": 0.0, "text": "SUPINATION"}, {"at": w("وبتعمل") - w("بتعمل", near=3.9), "text": "ELBOW FLEXION"}], top=0.13)

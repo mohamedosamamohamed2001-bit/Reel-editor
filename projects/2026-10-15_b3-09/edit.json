@@ -229,10 +229,12 @@
    "src": "v_arm103",
    "at": 2.12,
    "dur": 1.74,
-   "mode": "card",
-   "width": 760,
-   "top": 0.13,
-   "label": "BICEPS"
+   "mode": "full",
+   "label": "BICEPS",
+   "push": [
+    1.05,
+    1.0
+   ]
   },
   {
    "type": "iconPop",
