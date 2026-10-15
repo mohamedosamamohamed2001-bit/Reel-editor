@@ -116,20 +116,6 @@
  ],
  "overlays": [
   {
-   "type": "iconPop",
-   "at": 2.533,
-   "dur": 1.4,
-   "items": [
-    {
-     "icon": "Dumbbell",
-     "mark": "x",
-     "label": "غلط"
-    }
-   ],
-   "top": 0.574,
-   "size": 148
-  },
-  {
    "type": "screenCard",
    "at": 4.0333,
    "dur": 6.11,
@@ -137,13 +123,13 @@
    "plate": true,
    "backdrop": "none",
    "entrance": "tilt",
-   "width": 800,
-   "top": 150,
+   "width": 1000,
+   "top": 200,
    "region": {
     "x": 0.0,
-    "y": 0.035,
+    "y": 0.4,
     "w": 1.0,
-    "h": 0.72
+    "h": 0.52
    },
    "segments": [
     {
@@ -153,18 +139,7 @@
     }
    ],
    "taps": [],
-   "highlights": [
-    {
-     "at": 2.6,
-     "dur": 2.4,
-     "box": {
-      "x": 0.05,
-      "y": 0.32,
-      "w": 0.9,
-      "h": 0.62
-     }
-    }
-   ]
+   "highlights": []
   },
   {
    "type": "iconPop",
@@ -187,13 +162,13 @@
    "plate": true,
    "backdrop": "none",
    "entrance": "flat",
-   "width": 800,
-   "top": 150,
+   "width": 1000,
+   "top": 200,
    "region": {
     "x": 0.0,
-    "y": 0.035,
+    "y": 0.4,
     "w": 1.0,
-    "h": 0.72
+    "h": 0.52
    },
    "segments": [
     {
@@ -251,12 +226,6 @@
  "flashes": [],
  "sfx": {
   "cues": [
-   {
-    "at": 2.6133,
-    "sound": "blip",
-    "gain_db": -20,
-    "freq": 700
-   },
    {
     "at": 4.0333,
     "sound": "reverse_hit",
@@ -389,12 +358,12 @@
    {
     "at": 3.983,
     "dur": 6.16,
-    "top": 0.739
+    "top": 0.702
    },
    {
     "at": 14.95,
     "dur": 3.27,
-    "top": 0.739
+    "top": 0.702
    },
    {
     "at": 0,

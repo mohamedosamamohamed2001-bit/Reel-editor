@@ -43,7 +43,7 @@ a, b = M.span("osm", "يعني", "إيه")
 t6 = M.t()
 end6 = M.say("osm", a, b, at=t6 + 0.1)
 M.app("messages", [(3.0, round(end6 - t6 + 0.1, 3))], region=(0.0, 0.03, 1.0, 0.84), width=700, tin=WR,
-      entrance="flat", highlights=[(0.3, 1.4, (0.02, 0.03, 0.96, 0.07)), (1.8, 1.3, (0.72, 0.9, 0.12, 0.075))])
+      entrance="flat", highlights=[(0.3, 1.4, (0.0, 0.058, 1.0, 0.062)), (1.8, 1.3, (0.72, 0.9, 0.12, 0.075))])
 # 7 — hero close
 t7 = M.gym(1, "IMG_8384.MOV", 2.6, 1.8, zoom=(1.04, 1.12), focusY=0.40, tin=Z)
 M.title(t7 + 0.1, 1.65, [{"text": "OSM", "size": 150}, {"text": "Osama Strength Method", "accent": True, "size": 60}], top=0.64)
