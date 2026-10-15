@@ -28,7 +28,7 @@
   "c_IMG_8401": "source/IMG_8401.MOV"
  },
  "plates": {
-  "grade": "zscale=pin=bt2020:p=bt709:min=bt2020nc:m=bt709:tin=arib-std-b67:t=arib-std-b67:rin=tv:r=tv,format=yuv420p,eq=contrast=1.12:saturation=1.04:gamma=0.97,colorbalance=rs=-0.03:bs=0.04:rm=0.01:bm=-0.005:rh=0.03:gh=0.005:bh=-0.03,curves=master='0/0 0.12/0.08 0.5/0.5 0.88/0.93 1/1',vignette=angle=PI/6",
+  "grade": "format=yuv420p,eq=contrast=1.12:saturation=1.0:gamma=0.97,colorbalance=rm=0.02:bm=-0.02:rh=0.02:bh=-0.02,curves=master='0/0 0.12/0.08 0.5/0.5 0.88/0.93 1/1',vignette=angle=PI/6",
   "sharpen": "cas=strength=0.45"
  },
  "clips": [
