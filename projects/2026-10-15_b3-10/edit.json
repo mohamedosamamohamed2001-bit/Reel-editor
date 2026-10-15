@@ -198,32 +198,14 @@
  },
  "overlays": [
   {
-   "type": "kineticTitle",
-   "at": 0.05,
-   "dur": 2.11,
-   "lines": [
-    {
-     "text": "CARDIO"
-    },
-    {
-     "text": "في الجيم؟",
-     "accent": true,
-     "size": 120
-    }
-   ],
-   "top": 0.04,
-   "motion": "smooth",
-   "depth": true,
-   "eyebrow": "ما لوش لازمة"
-  },
-  {
    "type": "stepBadge",
    "at": 2.69,
    "dur": 1.52,
    "mark": "✗",
    "label": "Treadmill",
-   "top": 0.14,
-   "side": "right"
+   "top": 0.374,
+   "side": "right",
+   "plate": true
   },
   {
    "type": "stepBadge",
@@ -231,8 +213,9 @@
    "dur": 0.8,
    "mark": "✗",
    "label": "Bike",
-   "top": 0.14,
-   "side": "right"
+   "top": 0.51,
+   "side": "right",
+   "plate": true
   },
   {
    "type": "stepBadge",
@@ -240,8 +223,9 @@
    "dur": 1.26,
    "mark": "✗",
    "label": "Stairmaster",
-   "top": 0.14,
-   "side": "right"
+   "top": 0.485,
+   "side": "right",
+   "plate": true
   },
   {
    "type": "visualCard",
@@ -275,7 +259,7 @@
      "label": "كورة مع اصحابك"
     }
    ],
-   "top": 0.42,
+   "top": 0.479,
    "size": 195
   },
   {
@@ -289,29 +273,8 @@
      "label": "الكارديو اليومي"
     }
    ],
-   "top": 0.42,
+   "top": 0.481,
    "size": 195
-  },
-  {
-   "type": "kineticTitle",
-   "at": 13.85,
-   "dur": 1.86,
-   "lines": [
-    {
-     "text": "باي شكل",
-     "accent": true,
-     "size": 140
-    },
-    {
-     "text": "انت بتحب",
-     "size": 90
-    }
-   ],
-   "top": 0.04,
-   "motion": "smooth",
-   "depth": true,
-   "eyebrow": "الكارديو",
-   "occlude": true
   },
   {
    "type": "iconPop",

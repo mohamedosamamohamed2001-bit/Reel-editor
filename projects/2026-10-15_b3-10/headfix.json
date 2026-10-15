@@ -1,0 +1,60 @@
+{
+ "original_overlays": 11,
+ "fixes": [
+  {
+   "index": 0,
+   "type": "kineticTitle",
+   "at": 0.05,
+   "action": "remove",
+   "why": "title on / above his head"
+  },
+  {
+   "index": 1,
+   "type": "stepBadge",
+   "at": 2.69,
+   "action": "move",
+   "top": 0.374,
+   "plate": true
+  },
+  {
+   "index": 2,
+   "type": "stepBadge",
+   "at": 4.93,
+   "action": "move",
+   "top": 0.51,
+   "plate": true
+  },
+  {
+   "index": 3,
+   "type": "stepBadge",
+   "at": 6.55,
+   "action": "move",
+   "top": 0.485,
+   "plate": true
+  },
+  {
+   "index": 6,
+   "type": "iconPop",
+   "at": 9.41,
+   "action": "move",
+   "top": 0.479,
+   "size": 195
+  },
+  {
+   "index": 7,
+   "type": "iconPop",
+   "at": 10.19,
+   "action": "move",
+   "top": 0.481,
+   "size": 195
+  },
+  {
+   "index": 8,
+   "type": "kineticTitle",
+   "at": 13.85,
+   "action": "remove",
+   "why": "title on / above his head"
+  }
+ ],
+ "captions": []
+}
