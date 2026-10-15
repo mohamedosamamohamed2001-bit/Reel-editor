@@ -1,0 +1,613 @@
+{
+ "title": "OSM tip: Dead Bug mistakes",
+ "fps": 30,
+ "width": 1080,
+ "height": 1920,
+ "media": {
+  "main": "source/original.mov",
+  "v_back_pain": "work/visuals/back_pain.jpg"
+ },
+ "dialogueFx": "highpass=f=70,acompressor=threshold=0.1:ratio=2.5:attack=8:release=120:makeup=1.5",
+ "dialogueLufs": -16.0,
+ "plates": {
+  "grade": "format=yuv420p,eq=contrast=1.05:saturation=0.95:gamma=0.99,colorbalance=rs=-0.015:bs=0.02:rm=-0.01:bm=0.005:rh=0.012:gh=0.004:bh=-0.012,curves=master='0/0 0.22/0.2 0.78/0.8 1/1',vignette=angle=PI/7",
+  "sharpen": "cas=strength=0.22"
+ },
+ "clips": [
+  {
+   "src": "main",
+   "in": 0.0,
+   "out": 4.45,
+   "zoom": [
+    1.0,
+    1.04
+   ],
+   "focusY": 0.5,
+   "focusX": 0.5
+  },
+  {
+   "src": "main",
+   "in": 6.08,
+   "out": 14.28,
+   "zoom": [
+    1.08,
+    1.11
+   ],
+   "focusY": 0.5,
+   "focusX": 0.5,
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  },
+  {
+   "src": "main",
+   "in": 15.12,
+   "out": 18.8,
+   "focusY": 0.5,
+   "focusX": 0.5,
+   "zoom": [
+    1.0,
+    1.04
+   ],
+   "tin": {
+    "type": "zoom",
+    "flash": true
+   }
+  },
+  {
+   "src": "main",
+   "in": 18.8,
+   "out": 23.0,
+   "focusY": 0.55,
+   "focusX": 0.5,
+   "zoom": [
+    1.1,
+    1.13
+   ],
+   "tin": {
+    "type": "zoom"
+   }
+  },
+  {
+   "src": "main",
+   "in": 23.0,
+   "out": 49.94,
+   "focusY": 0.5,
+   "focusX": 0.5,
+   "zoom": [
+    1.0,
+    1.04
+   ],
+   "tin": {
+    "type": "zoom"
+   }
+  },
+  {
+   "src": "main",
+   "in": 50.28,
+   "out": 52.4,
+   "focusY": 0.5,
+   "focusX": 0.5,
+   "zoom": [
+    1.08,
+    1.11
+   ],
+   "tin": {
+    "type": "whip",
+    "dir": "right"
+   }
+  },
+  {
+   "src": "main",
+   "in": 52.4,
+   "out": 58.5,
+   "focusY": 0.55,
+   "focusX": 0.5,
+   "zoom": [
+    1.1,
+    1.13
+   ],
+   "tin": {
+    "type": "zoom"
+   }
+  },
+  {
+   "src": "main",
+   "in": 58.5,
+   "out": 58.56,
+   "focusY": 0.5,
+   "focusX": 0.5,
+   "zoom": [
+    1.08,
+    1.11
+   ],
+   "tin": {
+    "type": "zoom"
+   }
+  }
+ ],
+ "captions": {
+  "wordsFile": "work/tx/aligned.words.json",
+  "style": "plate",
+  "karaoke": true,
+  "maxWords": 3,
+  "maxChars": 22,
+  "keywords": [
+   "غلط",
+   "dead",
+   "arch",
+   "core",
+   "تمام",
+   "واحدة",
+   "flat"
+  ],
+  "zones": [
+   {
+    "at": 0,
+    "dur": 6.0,
+    "top": 0.74
+   },
+   {
+    "at": 0,
+    "dur": 55.777,
+    "top": 0.8
+   }
+  ],
+  "replace": {
+   "بتكومبنسيت": "بتكومبنسيت"
+  }
+ },
+ "overlays": [
+  {
+   "type": "kineticTitle",
+   "at": 0.1,
+   "dur": 4.78,
+   "lines": [
+    {
+     "text": "غلط",
+     "accent": true,
+     "size": 170
+    },
+    {
+     "text": "شائع",
+     "size": 110
+    }
+   ],
+   "top": 0.7,
+   "motion": "smooth",
+   "depth": true,
+   "eyebrow": "OSM · CORE"
+  },
+  {
+   "type": "kineticTitle",
+   "at": 6.15,
+   "dur": 0.92,
+   "lines": [
+    {
+     "text": "DEAD",
+     "size": 150
+    },
+    {
+     "text": "BUG",
+     "accent": true,
+     "size": 160
+    }
+   ],
+   "top": 0.14,
+   "motion": "smooth",
+   "depth": true
+  },
+  {
+   "type": "iconPop",
+   "at": 8.25,
+   "dur": 2.6,
+   "items": [
+    {
+     "icon": "Hand",
+     "mark": "up",
+     "label": "إيدك لفوق"
+    },
+    {
+     "icon": "Footprints",
+     "label": "رجلك"
+    }
+   ],
+   "top": 0.14,
+   "size": 156,
+   "align": "right"
+  },
+  {
+   "type": "stepBadge",
+   "at": 15.143,
+   "dur": 1.18,
+   "mark": "!",
+   "label": "الأخطاء",
+   "top": 0.15,
+   "side": "right"
+  },
+  {
+   "type": "stepBadge",
+   "at": 17.143,
+   "dur": 2.08,
+   "mark": "1",
+   "label": "Arch",
+   "top": 0.15,
+   "side": "right"
+  },
+  {
+   "type": "visualCard",
+   "src": "v_back_pain",
+   "at": 19.223,
+   "dur": 1.48,
+   "mode": "full",
+   "push": [
+    1.0,
+    1.06
+   ]
+  },
+  {
+   "type": "iconPop",
+   "at": 20.703,
+   "dur": 3.32,
+   "items": [
+    {
+     "icon": "Shuffle",
+     "label": "Compensation"
+    },
+    {
+     "icon": "X",
+     "label": "Core"
+    }
+   ],
+   "top": 0.14,
+   "size": 156,
+   "align": "right"
+  },
+  {
+   "type": "stepBadge",
+   "at": 24.023,
+   "dur": 4.44,
+   "mark": "✓",
+   "label": "No Arch = Core",
+   "top": 0.15,
+   "side": "right"
+  },
+  {
+   "type": "iconPop",
+   "at": 28.463,
+   "dur": 4.46,
+   "items": [
+    {
+     "icon": "Flame",
+     "label": "بطنك شغالة"
+    },
+    {
+     "icon": "Check"
+    }
+   ],
+   "top": 0.14,
+   "size": 156,
+   "align": "right"
+  },
+  {
+   "type": "lowerLabel",
+   "at": 32.923,
+   "dur": 4.18,
+   "title": "ONE BY ONE",
+   "top": 0.15,
+   "eyebrow": "واحدة واحدة"
+  },
+  {
+   "type": "stepBadge",
+   "at": 37.103,
+   "dur": 5.22,
+   "mark": "✗",
+   "label": "No Arch",
+   "top": 0.15,
+   "side": "right"
+  },
+  {
+   "type": "iconPop",
+   "at": 43.643,
+   "dur": 5.947,
+   "items": [
+    {
+     "icon": "TrendingUp",
+     "label": "صعّبها"
+    }
+   ],
+   "top": 0.14,
+   "size": 169,
+   "align": "right"
+  },
+  {
+   "type": "kineticTitle",
+   "at": 49.59,
+   "dur": 3.42,
+   "lines": [
+    {
+     "text": "NO ARCH",
+     "accent": true,
+     "size": 150
+    }
+   ],
+   "top": 0.14,
+   "motion": "smooth",
+   "depth": true
+  },
+  {
+   "type": "iconPop",
+   "at": 53.01,
+   "dur": 2.757,
+   "items": [
+    {
+     "icon": "Minus",
+     "label": "ضهرك Flat"
+    },
+    {
+     "icon": "Check"
+    }
+   ],
+   "top": 0.14,
+   "size": 156,
+   "align": "right"
+  },
+  {
+   "type": "endCard",
+   "at": 55.7667,
+   "dur": 2.4,
+   "cta": "OSM Coach Osama",
+   "reveal": "wipe",
+   "image": "brand/end/osm-end-photo.jpg"
+  }
+ ],
+ "shakes": [
+  {
+   "at": 12.667,
+   "amp": 0.4
+  },
+  {
+   "at": 16.333,
+   "amp": 0.4
+  },
+  {
+   "at": 20.533,
+   "amp": 0.4
+  },
+  {
+   "at": 49.6,
+   "amp": 0.4
+  },
+  {
+   "at": 55.7,
+   "amp": 0.4
+  },
+  {
+   "at": 55.767,
+   "amp": 0.6
+  }
+ ],
+ "sfx": {
+  "cues": [
+   {
+    "at": 0.1,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 0.15,
+    "sound": "impact",
+    "gain_db": -20
+   },
+   {
+    "at": 4.4667,
+    "sound": "whip",
+    "gain_db": -11,
+    "dir": 1.0
+   },
+   {
+    "at": 4.4867,
+    "sound": "air",
+    "gain_db": -20
+   },
+   {
+    "at": 6.15,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 6.2,
+    "sound": "impact",
+    "gain_db": -20
+   },
+   {
+    "at": 8.33,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 8.5,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 820
+   },
+   {
+    "at": 12.6667,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 12.6667,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 15.143,
+    "sound": "slam",
+    "gain_db": -16
+   },
+   {
+    "at": 16.3333,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 16.3333,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 17.143,
+    "sound": "slam",
+    "gain_db": -16
+   },
+   {
+    "at": 19.223,
+    "sound": "whoosh_in",
+    "gain_db": -15
+   },
+   {
+    "at": 20.5333,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 20.5333,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 20.603,
+    "sound": "whoosh_out",
+    "gain_db": -19
+   },
+   {
+    "at": 20.783,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 20.953,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 820
+   },
+   {
+    "at": 24.023,
+    "sound": "slam",
+    "gain_db": -16
+   },
+   {
+    "at": 28.543,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 28.713,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 820
+   },
+   {
+    "at": 32.923,
+    "sound": "click",
+    "gain_db": -18
+   },
+   {
+    "at": 37.103,
+    "sound": "slam",
+    "gain_db": -16
+   },
+   {
+    "at": 43.723,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 47.4667,
+    "sound": "whip",
+    "gain_db": -11,
+    "dir": 1.0
+   },
+   {
+    "at": 47.4867,
+    "sound": "air",
+    "gain_db": -20
+   },
+   {
+    "at": 49.59,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 49.6,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 49.6,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 49.64,
+    "sound": "impact",
+    "gain_db": -20
+   },
+   {
+    "at": 53.09,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 53.26,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 820
+   },
+   {
+    "at": 55.7,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 55.7,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 55.7667,
+    "sound": "reverse_hit",
+    "gain_db": -12,
+    "dur": 0.7
+   },
+   {
+    "at": 55.7667,
+    "sound": "boom",
+    "gain_db": -7
+   },
+   {
+    "at": 56.2667,
+    "sound": "click",
+    "gain_db": -17
+   }
+  ]
+ },
+ "music": {
+  "src": "work/music/music.wav",
+  "gain_db": -9
+ },
+ "tail": 2.4,
+ "textPlate": "#56A0FB"
+}
