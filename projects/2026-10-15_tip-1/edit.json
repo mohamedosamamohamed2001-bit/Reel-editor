@@ -123,6 +123,26 @@
  },
  "overlays": [
   {
+   "type": "kineticTitle",
+   "at": 0.1,
+   "dur": 2.46,
+   "lines": [
+    {
+     "text": "STEPS",
+     "size": 150
+    },
+    {
+     "text": "خطوة بخطوة",
+     "accent": true,
+     "size": 90
+    }
+   ],
+   "top": 0.535,
+   "motion": "smooth",
+   "depth": true,
+   "eyebrow": "OSM · BAND"
+  },
+  {
    "type": "lowerLabel",
    "at": 4.2,
    "dur": 2.72,
@@ -162,8 +182,8 @@
      "label": "Core"
     }
    ],
-   "top": 0.584,
-   "size": 162
+   "top": 0.55,
+   "size": 208
   },
   {
    "type": "iconPop",
@@ -263,8 +283,8 @@
      "label": "الكوع ما يفتحش"
     }
    ],
-   "top": 0.57,
-   "size": 180
+   "top": 0.55,
+   "size": 208
   },
   {
    "type": "lowerLabel",
