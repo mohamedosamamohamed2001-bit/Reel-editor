@@ -1,0 +1,28 @@
+{
+ "original_overlays": 12,
+ "fixes": [
+  {
+   "index": 0,
+   "type": "kineticTitle",
+   "at": 0.1,
+   "action": "remove",
+   "why": "title on / above his head"
+  },
+  {
+   "index": 5,
+   "type": "checklist",
+   "at": 9.6,
+   "action": "move",
+   "top": 0.414,
+   "scale": 0.898
+  },
+  {
+   "index": 9,
+   "type": "kineticTitle",
+   "at": 16.62,
+   "action": "remove",
+   "why": "title on / above his head"
+  }
+ ],
+ "captions": []
+}
