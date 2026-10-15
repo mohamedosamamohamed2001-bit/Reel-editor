@@ -330,22 +330,24 @@
  "overlays": [
   {
    "type": "kineticTitle",
-   "at": 0.1,
-   "dur": 2.62,
+   "at": 0.0,
+   "dur": 2.93,
    "lines": [
     {
-     "text": "INBODY"
+     "text": "INBODY",
+     "size": 190
     },
     {
      "text": "مالوش لازمة؟",
      "accent": true,
-     "size": 110
+     "size": 120
     }
    ],
-   "top": 0.05,
+   "top": 0.3,
    "motion": "smooth",
    "depth": true,
-   "occlude": true
+   "backdrop": true,
+   "eyebrow": "OSM · INBODY"
   },
   {
    "type": "iconPop",
@@ -655,12 +657,12 @@
  "sfx": {
   "cues": [
    {
-    "at": 0.1,
+    "at": 0.0,
     "sound": "boom",
     "gain_db": -13
    },
    {
-    "at": 0.15,
+    "at": 0.05,
     "sound": "impact",
     "gain_db": -20
    },

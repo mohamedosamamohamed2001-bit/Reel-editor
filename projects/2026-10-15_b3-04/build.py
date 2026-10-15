@@ -15,7 +15,10 @@ S = Story(Path(__file__).resolve().parent, end=95.75, focusY=0.4)
 w = S.w
 L = lambda word, near, until, title, eyebrow=None: S.label(w(word, near=near), until - w(word, near=near), title, eyebrow=eyebrow, top=0.13)
 
-S.title(0.1, w("تعال") - 0.2, [{"text": "INBODY"}, {"text": "مالوش لازمة؟", "accent": True, "size": 110}], top=0.05, occlude=True)
+# the old edit's hook title sits on his face (can't be erased without touching it): full-frame OSM title card
+# until the first cut (2.93 s) while he speaks; captions stay on top
+S.title(0.0, S.o(2.93), [{"text": "INBODY", "size": 190}, {"text": "مالوش لازمة؟", "accent": True, "size": 120}],
+        eyebrow="OSM · INBODY", top=0.30, backdrop=True)
 S.icons(w("تعال"), w("اول") - w("تعال"), [{"icon": "ListOrdered", "label": "بالترتيب"}], top=0.14, size=150)
 L("Total", 5.8, w("وملحوظة"), "TOTAL BODY WATER", "01")
 S.icons(w("ممكن", near=9.3), w("بعد", near=14.2) - w("ممكن", near=9.3),

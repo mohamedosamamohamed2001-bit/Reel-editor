@@ -17,7 +17,8 @@ S.title(0.1, w("انا") - 0.15, [{"text": "PART 1", "accent": True, "size": 150
 S.icons(w("تلات"), w("وبعلمك") - w("تلات"), [{"icon": "CalendarDays", "value": "3", "label": "شهور بس"}], top=0.42, size=150)
 S.badge(w("اول"), w("ولازم") - w("اول"), "1", "عجز في السعرات", top=0.42)
 S.icons(w("Calories", near=8.8), w("عن") - w("Calories", near=8.8), [{"icon": "Flame", "label": "Calories / اليوم"}], top=0.42, size=150)
-S.image("calculator", w("عشان", near=13.6), w("انا", near=15.7) - w("عشان", near=13.6), mode="full", push=[1.0, 1.06])
+# old caption + blue box baked into his screen recording (10.6-13.0 s): the calculator cutaway covers it
+S.image("calculator", w("عن") - 0.05, w("انا", near=15.7) - w("عن") + 0.05, mode="full", push=[1.0, 1.06])
 S.title(w("ده", near=14.1), w("انا", near=15.7) - w("ده", near=14.1), [{"text": "العنصر الاساسي", "accent": True, "size": 110}], top=0.05, occlude=True)
 S.image("pizza", w("بحب"), w("بس", near=18.1) - w("بحب"), mode="full", push=[1.05, 1.0])
 S.title(w("بس", near=18.1), w("في", near=20.4) - w("بس", near=18.1), [{"text": "عجز", "accent": True, "size": 170}, {"text": "في السعرات", "size": 90}],

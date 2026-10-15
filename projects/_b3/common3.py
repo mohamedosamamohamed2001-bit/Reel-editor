@@ -41,7 +41,14 @@ class Story:
         groups = [[a, b] if b > a else [a] for a, b in spans if start + 0.3 < a and b < end - 0.3]
         for a, b in extra_holds:
             groups.append([a, b])
-        groups = [g for g in sorted(groups) if not any(abs(g[0] - x) < 0.05 for x in skip)]
+        groups = [g for g in sorted(groups, key=lambda g: (g[0], -len(g))) if not any(abs(g[0] - x) < 0.05 for x in skip)]
+        merged = []  # a hold span swallows single cuts inside / at its edges
+        for g in groups:
+            if merged and len(merged[-1]) > 1 and g[0] <= merged[-1][-1] + 0.05:
+                merged[-1][-1] = max(merged[-1][-1], g[-1])
+                continue
+            merged.append(list(g))
+        groups = merged
         self.tl = Timeline()
         kinds = ["whip_left", "zoom", "whip_right", "flash", "whip_up"]
         t0, pending = start, None  # pending: transition kind owed to the next clip (after a single hard cut)

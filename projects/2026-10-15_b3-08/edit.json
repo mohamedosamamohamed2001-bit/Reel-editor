@@ -204,8 +204,8 @@
   {
    "type": "visualCard",
    "src": "v_calculator",
-   "at": 13.56,
-   "dur": 2.16,
+   "at": 9.41,
+   "dur": 6.31,
    "mode": "full",
    "push": [
     1.0,
@@ -336,6 +336,11 @@
     "freq": 700
    },
    {
+    "at": 9.41,
+    "sound": "whoosh_in",
+    "gain_db": -15
+   },
+   {
     "at": 13.3667,
     "sound": "reverse_hit",
     "gain_db": -16,
@@ -345,11 +350,6 @@
     "at": 13.3667,
     "sound": "boom",
     "gain_db": -12
-   },
-   {
-    "at": 13.56,
-    "sound": "whoosh_in",
-    "gain_db": -15
    },
    {
     "at": 14.1,

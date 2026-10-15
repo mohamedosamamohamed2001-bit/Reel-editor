@@ -47,7 +47,7 @@
   {
    "src": "main",
    "in": 2.0,
-   "out": 3.03,
+   "out": 3.01,
    "zoom": [
     1.0,
     1.03
@@ -60,12 +60,10 @@
   },
   {
    "src": "main",
-   "in": 3.03,
-   "out": 3.67,
-   "zoom": [
-    1.06,
-    1.09
-   ],
+   "in": 3.01,
+   "out": 3.7199999999999998,
+   "zoom": 1.0,
+   "hold": 3.75,
    "focusY": 0.42,
    "tin": {
     "type": "whip",
@@ -74,8 +72,18 @@
   },
   {
    "src": "main",
-   "in": 3.67,
+   "in": 3.7199999999999998,
    "out": 12.4,
+   "zoom": [
+    1.06,
+    1.09
+   ],
+   "focusY": 0.42
+  },
+  {
+   "src": "main",
+   "in": 12.4,
+   "out": 16.78,
    "zoom": [
     1.0,
     1.03
@@ -87,12 +95,10 @@
   },
   {
    "src": "main",
-   "in": 12.4,
-   "out": 16.78,
-   "zoom": [
-    1.06,
-    1.09
-   ],
+   "in": 16.78,
+   "out": 17.28,
+   "zoom": 1.0,
+   "hold": 17.31,
    "focusY": 0.42,
    "tin": {
     "type": "whip",
@@ -101,23 +107,11 @@
   },
   {
    "src": "main",
-   "in": 16.78,
-   "out": 17.28,
-   "zoom": 1.0,
-   "hold": 17.31,
-   "focusY": 0.42,
-   "tin": {
-    "type": "whip",
-    "dir": "left"
-   }
-  },
-  {
-   "src": "main",
    "in": 17.28,
    "out": 25.91,
    "zoom": [
-    1.0,
-    1.03
+    1.06,
+    1.09
    ],
    "focusY": 0.42
   },
@@ -129,8 +123,8 @@
    "hold": 26.45,
    "focusY": 0.42,
    "tin": {
-    "type": "zoom",
-    "flash": true
+    "type": "whip",
+    "dir": "left"
    }
   },
   {
@@ -138,8 +132,8 @@
    "in": 26.42,
    "out": 29.0,
    "zoom": [
-    1.06,
-    1.09
+    1.0,
+    1.03
    ],
    "focusY": 0.42
   }
@@ -207,7 +201,7 @@
     }
    ],
    "top": 0.16,
-   "size": 170
+   "size": 221
   },
   {
    "type": "iconPop",
@@ -221,7 +215,7 @@
     }
    ],
    "top": 0.16,
-   "size": 170
+   "size": 221
   },
   {
    "type": "stepBadge",
@@ -253,7 +247,7 @@
     }
    ],
    "top": 0.36,
-   "size": 140
+   "size": 182
   },
   {
    "type": "visualCard",
@@ -309,7 +303,7 @@
     }
    ],
    "top": 0.16,
-   "size": 170
+   "size": 221
   },
   {
    "type": "iconPop",
@@ -323,7 +317,7 @@
     }
    ],
    "top": 0.16,
-   "size": 170
+   "size": 221
   },
   {
    "type": "kineticTitle",
@@ -356,7 +350,7 @@
     }
    ],
    "top": 0.16,
-   "size": 170
+   "size": 221
   },
   {
    "type": "endCard",
@@ -373,11 +367,7 @@
    "amp": 0.5
   },
   {
-   "at": 3.667,
-   "amp": 0.5
-  },
-  {
-   "at": 25.9,
+   "at": 12.4,
    "amp": 0.5
   },
   {
@@ -420,26 +410,15 @@
     "gain_db": -12
    },
    {
-    "at": 3.0333,
+    "at": 3.0,
     "sound": "whip",
     "gain_db": -11,
     "dir": 1.0
    },
    {
-    "at": 3.0533,
+    "at": 3.02,
     "sound": "air",
     "gain_db": -20
-   },
-   {
-    "at": 3.6667,
-    "sound": "reverse_hit",
-    "gain_db": -16,
-    "dur": 0.45
-   },
-   {
-    "at": 3.6667,
-    "sound": "boom",
-    "gain_db": -12
    },
    {
     "at": 4.74,
@@ -475,14 +454,14 @@
    },
    {
     "at": 12.4,
-    "sound": "whip",
-    "gain_db": -11,
-    "dir": 1.0
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
    },
    {
-    "at": 12.42,
-    "sound": "air",
-    "gain_db": -20
+    "at": 12.4,
+    "sound": "boom",
+    "gain_db": -12
    },
    {
     "at": 13.3,
@@ -560,14 +539,14 @@
    },
    {
     "at": 25.9,
-    "sound": "reverse_hit",
-    "gain_db": -16,
-    "dur": 0.45
+    "sound": "whip",
+    "gain_db": -11,
+    "dir": 1.0
    },
    {
-    "at": 25.9,
-    "sound": "boom",
-    "gain_db": -12
+    "at": 25.92,
+    "sound": "air",
+    "gain_db": -20
    },
    {
     "at": 26.1,
