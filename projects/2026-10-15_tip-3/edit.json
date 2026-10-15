@@ -203,26 +203,6 @@
  "overlays": [
   {
    "type": "kineticTitle",
-   "at": 0.1,
-   "dur": 4.78,
-   "lines": [
-    {
-     "text": "غلط",
-     "accent": true,
-     "size": 170
-    },
-    {
-     "text": "شائع",
-     "size": 110
-    }
-   ],
-   "top": 0.5,
-   "motion": "smooth",
-   "depth": true,
-   "eyebrow": "OSM · CORE"
-  },
-  {
-   "type": "kineticTitle",
    "at": 6.15,
    "dur": 0.92,
    "lines": [
@@ -331,14 +311,6 @@
    "top": 0.14,
    "size": 195,
    "align": "right"
-  },
-  {
-   "type": "lowerLabel",
-   "at": 32.923,
-   "dur": 4.18,
-   "title": "ONE BY ONE",
-   "top": 0.15,
-   "eyebrow": "واحدة واحدة"
   },
   {
    "type": "stepBadge",
