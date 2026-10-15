@@ -39,7 +39,8 @@ def dims(path):
                        capture_output=True, text=True, check=True)
     st = json.loads(r.stdout)["streams"][0]
     w, h = st["width"], st["height"]
-    rot = next((abs(int(sd.get("rotation", 0))) for sd in st.get("side_data_list", [])), 0)
+    # the rotation lives in the Display Matrix entry; iPhone Dolby Vision files list a DOVI record first
+    rot = next((abs(int(sd["rotation"])) for sd in st.get("side_data_list", []) if "rotation" in sd), 0)
     return (h, w) if rot in (90, 270) else (w, h)
 
 

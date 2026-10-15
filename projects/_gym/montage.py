@@ -27,7 +27,7 @@ END_IMAGE = "brand/end/osm-end-photo.jpg"
 HLG_TO_709 = "zscale=pin=bt2020:p=bt709:min=bt2020nc:m=bt709:tin=arib-std-b67:t=arib-std-b67:rin=tv:r=tv,format=yuv420p"
 LOOKS = {
     # bright gym, light-blue top: crisp, cool steel highlights, warm skin, strong contrast
-    "steel": "eq=contrast=1.12:saturation=1.04:gamma=0.97,colorbalance=rs=-0.03:bs=0.04:rm=0.01:bm=-0.005:rh=0.03:gh=0.005:bh=-0.03,"
+    "steel": "eq=contrast=1.12:saturation=1.0:gamma=0.97,colorbalance=rm=0.02:bm=-0.02:rh=0.02:bh=-0.02,"
              "curves=master='0/0 0.12/0.08 0.5/0.5 0.88/0.93 1/1',vignette=angle=PI/6",
     # daylight industrial, black tank: gritty, slightly desaturated, deep blacks, warm skin
     "grit": "eq=contrast=1.16:saturation=0.9:gamma=0.96,colorbalance=rs=-0.02:bs=0.03:rm=0.02:gm=0.0:bm=-0.02:rh=0.02:bh=-0.02,"
@@ -37,6 +37,9 @@ LOOKS = {
             "curves=master='0/0 0.06/0.05 0.3/0.32 0.7/0.74 1/1',vignette=angle=PI/5",
 }
 SHARPEN = "cas=strength=0.45"
+# Folder 1 (light-blue top under cool LEDs): the exact BT.2020 -> 709 conversion turned the shirt a saturated cyan it
+# never looks like; decoding the HLG signal as-is (what most players do) kept the shirt and the skin natural.
+DECODE = {"steel": "format=yuv420p"}
 
 
 class Montage:
@@ -189,7 +192,7 @@ class Montage:
         spec = dict(music_spec, duration=round(T + END_DUR, 3))
         mus = make_music(self.P, spec, gain_db=music_spec.get("gain", -4))
         mus.update({"duck_ratio": 1, "voice_dip_db": 0})  # music-led: no ducking under the gym sound
-        grade = HLG_TO_709 + "," + LOOKS[self.look]
+        grade = DECODE.get(self.look, HLG_TO_709) + "," + LOOKS[self.look]
         edit = {"title": title, "fps": FPS, "width": 1080, "height": 1920, "media": self.media,
                 "plates": {"grade": grade, "sharpen": SHARPEN}, "clips": self.clips, "overlays": self.overlays,
                 "shakes": self.shakes, "pulses": self.pulses, "flashes": self.flashes,
