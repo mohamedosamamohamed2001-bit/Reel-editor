@@ -129,15 +129,15 @@
    "lines": [
     {
      "text": "STEPS",
-     "size": 170
+     "size": 150
     },
     {
      "text": "خطوة بخطوة",
      "accent": true,
-     "size": 100
+     "size": 90
     }
    ],
-   "top": 0.62,
+   "top": 0.47,
    "motion": "smooth",
    "depth": true,
    "eyebrow": "OSM · BAND"

@@ -72,6 +72,62 @@
   {
    "src": "main",
    "in": 23.0,
+   "out": 30.9,
+   "focusY": 0.5,
+   "focusX": 0.5,
+   "zoom": [
+    1.0,
+    1.04
+   ],
+   "tin": {
+    "type": "zoom"
+   }
+  },
+  {
+   "src": "main",
+   "in": 30.9,
+   "out": 34.9,
+   "focusY": 0.55,
+   "focusX": 0.5,
+   "zoom": [
+    1.1,
+    1.13
+   ],
+   "tin": {
+    "type": "zoom"
+   }
+  },
+  {
+   "src": "main",
+   "in": 34.9,
+   "out": 39.6,
+   "focusY": 0.5,
+   "focusX": 0.5,
+   "zoom": [
+    1.0,
+    1.04
+   ],
+   "tin": {
+    "type": "zoom"
+   }
+  },
+  {
+   "src": "main",
+   "in": 39.6,
+   "out": 44.6,
+   "focusY": 0.55,
+   "focusX": 0.5,
+   "zoom": [
+    1.1,
+    1.13
+   ],
+   "tin": {
+    "type": "zoom"
+   }
+  },
+  {
+   "src": "main",
+   "in": 44.6,
    "out": 49.94,
    "focusY": 0.5,
    "focusX": 0.5,
@@ -101,26 +157,12 @@
   {
    "src": "main",
    "in": 52.4,
-   "out": 58.5,
+   "out": 58.028,
    "focusY": 0.55,
    "focusX": 0.5,
    "zoom": [
     1.1,
     1.13
-   ],
-   "tin": {
-    "type": "zoom"
-   }
-  },
-  {
-   "src": "main",
-   "in": 58.5,
-   "out": 58.56,
-   "focusY": 0.5,
-   "focusX": 0.5,
-   "zoom": [
-    1.08,
-    1.11
    ],
    "tin": {
     "type": "zoom"
@@ -150,7 +192,7 @@
    },
    {
     "at": 0,
-    "dur": 55.777,
+    "dur": 55.243,
     "top": 0.8
    }
   ],
@@ -339,7 +381,7 @@
   {
    "type": "iconPop",
    "at": 53.01,
-   "dur": 2.757,
+   "dur": 2.223,
    "items": [
     {
      "icon": "Minus",
@@ -355,7 +397,7 @@
   },
   {
    "type": "endCard",
-   "at": 55.7667,
+   "at": 55.2333,
    "dur": 2.4,
    "cta": "OSM Coach Osama",
    "reveal": "wipe",
@@ -376,15 +418,27 @@
    "amp": 0.4
   },
   {
+   "at": 28.433,
+   "amp": 0.4
+  },
+  {
+   "at": 32.433,
+   "amp": 0.4
+  },
+  {
+   "at": 37.133,
+   "amp": 0.4
+  },
+  {
+   "at": 42.133,
+   "amp": 0.4
+  },
+  {
    "at": 49.6,
    "amp": 0.4
   },
   {
-   "at": 55.7,
-   "amp": 0.4
-  },
-  {
-   "at": 55.767,
+   "at": 55.233,
    "amp": 0.6
   }
  ],
@@ -504,6 +558,17 @@
     "gain_db": -16
    },
    {
+    "at": 28.4333,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 28.4333,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
     "at": 28.543,
     "sound": "blip",
     "gain_db": -20,
@@ -516,6 +581,17 @@
     "freq": 820
    },
    {
+    "at": 32.4333,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 32.4333,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
     "at": 32.923,
     "sound": "click",
     "gain_db": -18
@@ -524,6 +600,28 @@
     "at": 37.103,
     "sound": "slam",
     "gain_db": -16
+   },
+   {
+    "at": 37.1333,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 37.1333,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 42.1333,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 42.1333,
+    "sound": "boom",
+    "gain_db": -12
    },
    {
     "at": 43.723,
@@ -576,29 +674,18 @@
     "freq": 820
    },
    {
-    "at": 55.7,
-    "sound": "reverse_hit",
-    "gain_db": -16,
-    "dur": 0.45
-   },
-   {
-    "at": 55.7,
-    "sound": "boom",
-    "gain_db": -12
-   },
-   {
-    "at": 55.7667,
+    "at": 55.2333,
     "sound": "reverse_hit",
     "gain_db": -12,
     "dur": 0.7
    },
    {
-    "at": 55.7667,
+    "at": 55.2333,
     "sound": "boom",
     "gain_db": -7
    },
    {
-    "at": 56.2667,
+    "at": 55.7333,
     "sound": "click",
     "gain_db": -17
    }

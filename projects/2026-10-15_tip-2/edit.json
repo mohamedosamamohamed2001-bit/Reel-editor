@@ -5,8 +5,7 @@
  "height": 1920,
  "media": {
   "main": "source/original.mov",
-  "v_weight_plate": "work/visuals/weight_plate.jpg",
-  "v_ankle": "work/visuals/ankle.jpg"
+  "v_weight_plate": "work/visuals/weight_plate.jpg"
  },
  "dialogueFx": "highpass=f=70,acompressor=threshold=0.1:ratio=2.5:attack=8:release=120:makeup=1.5",
  "dialogueLufs": -16.0,
@@ -19,22 +18,22 @@
    "src": "main",
    "in": 0.0,
    "out": 6.4,
-   "focusY": 0.45,
+   "focusY": 0.42,
    "focusX": 0.5,
    "zoom": [
-    1.0,
-    1.05
+    1.12,
+    1.16
    ]
   },
   {
    "src": "main",
    "in": 6.4,
    "out": 9.6,
-   "focusY": 0.35,
+   "focusY": 0.3,
    "focusX": 0.5,
    "zoom": [
-    1.12,
-    1.15
+    1.32,
+    1.36
    ],
    "tin": {
     "type": "zoom"
@@ -44,11 +43,11 @@
    "src": "main",
    "in": 9.6,
    "out": 15.2,
-   "focusY": 0.45,
+   "focusY": 0.42,
    "focusX": 0.5,
    "zoom": [
-    1.0,
-    1.05
+    1.12,
+    1.16
    ],
    "tin": {
     "type": "zoom"
@@ -58,11 +57,11 @@
    "src": "main",
    "in": 15.2,
    "out": 18.4,
-   "focusY": 0.45,
+   "focusY": 0.55,
    "focusX": 0.5,
    "zoom": [
-    1.12,
-    1.15
+    1.32,
+    1.36
    ],
    "tin": {
     "type": "zoom"
@@ -72,11 +71,11 @@
    "src": "main",
    "in": 18.4,
    "out": 20.83,
-   "focusY": 0.45,
+   "focusY": 0.42,
    "focusX": 0.5,
    "zoom": [
-    1.0,
-    1.05
+    1.12,
+    1.16
    ],
    "tin": {
     "type": "zoom"
@@ -114,15 +113,15 @@
    "lines": [
     {
      "text": "GOBLET",
-     "size": 160
+     "size": 120
     },
     {
      "text": "SQUAT",
      "accent": true,
-     "size": 170
+     "size": 130
     }
    ],
-   "top": 0.7,
+   "top": 0.55,
    "motion": "smooth",
    "depth": true,
    "eyebrow": "OSM · LEGS"
@@ -135,60 +134,62 @@
     {
      "icon": "ArrowDown",
      "label": "للآخر"
-    },
-    {
-     "icon": "ArrowUp",
-     "label": "وبطلع"
     }
    ],
-   "top": 0.74,
-   "size": 156
+   "top": 0.4,
+   "size": 143,
+   "align": "right"
   },
   {
    "type": "stepBadge",
    "at": 6.44,
    "dur": 3.38,
    "mark": "?",
-   "label": "مش عارف تنزل للآخر",
-   "top": 0.72,
+   "label": "مش بتنزل للآخر",
+   "top": 0.5,
    "side": "right"
   },
   {
    "type": "stepBadge",
    "at": 9.82,
-   "dur": 1.14,
+   "dur": 1.48,
    "mark": "✓",
    "label": "الحل أسهل",
-   "top": 0.72,
+   "top": 0.5,
    "side": "right"
   },
   {
    "type": "visualCard",
    "src": "v_weight_plate",
-   "at": 11.3,
-   "dur": 2.72,
-   "mode": "card",
-   "width": 560,
-   "top": 0.52
+   "at": 11.7,
+   "dur": 2.32,
+   "mode": "full",
+   "push": [
+    1.0,
+    1.08
+   ]
   },
   {
    "type": "lowerLabel",
    "at": 14.02,
    "dur": 2.26,
    "title": "MORE RANGE",
-   "top": 0.72,
+   "top": 0.42,
    "eyebrow": "Range أكتر"
   },
   {
-   "type": "visualCard",
-   "src": "v_ankle",
-   "at": 16.28,
-   "dur": 2.16,
-   "mode": "full",
-   "push": [
-    1.0,
-    1.06
-   ]
+   "type": "iconPop",
+   "at": 17.62,
+   "dur": 0.82,
+   "items": [
+    {
+     "icon": "Footprints",
+     "label": "Ankle Mobility"
+    }
+   ],
+   "top": 0.36,
+   "size": 143,
+   "align": "right"
   },
   {
    "type": "iconPop",
@@ -196,15 +197,13 @@
    "dur": 2.393,
    "items": [
     {
-     "icon": "Footprints",
-     "label": "Ankle Mobility"
-    },
-    {
-     "icon": "Check"
+     "icon": "Check",
+     "label": "بيحلها"
     }
    ],
-   "top": 0.72,
-   "size": 156
+   "top": 0.42,
+   "size": 143,
+   "align": "right"
   },
   {
    "type": "endCard",
@@ -256,12 +255,6 @@
     "freq": 700
    },
    {
-    "at": 4.15,
-    "sound": "blip",
-    "gain_db": -20,
-    "freq": 820
-   },
-   {
     "at": 6.4,
     "sound": "reverse_hit",
     "gain_db": -16,
@@ -294,7 +287,7 @@
     "gain_db": -16
    },
    {
-    "at": 11.3,
+    "at": 11.7,
     "sound": "whoosh_in",
     "gain_db": -15
    },
@@ -320,14 +313,10 @@
     "gain_db": -12
    },
    {
-    "at": 16.28,
-    "sound": "whoosh_in",
-    "gain_db": -15
-   },
-   {
-    "at": 18.34,
-    "sound": "whoosh_out",
-    "gain_db": -19
+    "at": 17.7,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
    },
    {
     "at": 18.4,
@@ -345,12 +334,6 @@
     "sound": "blip",
     "gain_db": -20,
     "freq": 700
-   },
-   {
-    "at": 18.69,
-    "sound": "blip",
-    "gain_db": -20,
-    "freq": 820
    },
    {
     "at": 20.8333,

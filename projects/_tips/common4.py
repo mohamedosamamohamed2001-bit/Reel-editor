@@ -27,7 +27,10 @@ class Tip(Story):
         self.media = {"main": "source/original.mov"}
         self.overlays, self.cues, self.shakes = [], [], []
         self.grade = DECODE + "," + GRADE
-        end = round(self.words[-1]["end"] + 0.45, 3)
+        import subprocess
+        dur = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0",
+                                    str(self.P / "source/original.mov")], capture_output=True, text=True).stdout)
+        end = round(min(self.words[-1]["end"] + 0.45, dur - 0.1), 3)
         keep, t0 = [], 0.0
         for a, b in sorted(pauses):
             if b - a > max_pause:
@@ -58,15 +61,19 @@ class Tip(Story):
     def punch(self, a, b, zoom=(1.1, 1.13), focusY=None):
         """A punch-in on the same take between source times a and b (emphasis on a key phrase), no transition."""
         out = []
+        a = max(a, self.tl.clips[0]["in"])
+        b = min(b, self.tl.clips[-1]["out"])
         for c in self.tl.clips:
             if c["out"] <= a or c["in"] >= b:
                 out.append(c)
                 continue
-            parts = [(c["in"], a, c.get("zoom")), (a, b, list(zoom)), (b, c["out"], c.get("zoom"))]
+            pa = c["in"] if a - c["in"] < 0.35 else a  # slivers at the clip edges join the punch-in
+            pb = c["out"] if c["out"] - b < 0.35 else b
+            parts = [(c["in"], pa, c.get("zoom")), (pa, pb, list(zoom)), (pb, c["out"], c.get("zoom"))]
             first = True
             for x, y, z in parts:
                 x, y = max(x, c["in"]), min(y, c["out"])
-                if y - x < 0.05:
+                if y - x < 1e-6:
                     continue
                 n = {k: v for k, v in c.items() if k not in ("in", "out", "zoom", "tin")}
                 n.update({"in": round(x, 3), "out": round(y, 3), "zoom": z})
@@ -74,7 +81,7 @@ class Tip(Story):
                     n["focusY"] = focusY
                 if first and c.get("tin"):
                     n["tin"] = c["tin"]
-                elif not first or x == a:  # punch in / back out: a zoom punch on the cut
+                elif not first or x == pa:  # punch in / back out: a zoom punch on the cut
                     n["tin"] = {"type": "zoom"}
                 first = False
                 out.append(n)

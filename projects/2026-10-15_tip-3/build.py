@@ -11,6 +11,8 @@ S = Tip(Path(__file__).resolve().parent, pauses=[(4.0, 6.53), (13.83, 15.57), (4
 w = S.w
 S.punch(18.8, 23.0, zoom=(1.1, 1.13), focusY=0.55)
 S.punch(52.4, 58.5, zoom=(1.1, 1.13), focusY=0.55)
+S.punch(30.9, 34.9, zoom=(1.1, 1.13), focusY=0.55)  # "أول ما تحس إن بطنك شغالة"
+S.punch(39.6, 44.6, zoom=(1.1, 1.13), focusY=0.55)  # "وأهم حاجة ... ما يبقاش فيه أي Arch"
 
 S.title(0.1, w("ده", near=6.5) - 0.15, [{"text": "غلط", "accent": True, "size": 170}, {"text": "شائع", "size": 110}],
         eyebrow="OSM · CORE", top=0.70)
