@@ -70,6 +70,18 @@ const Flashes: React.FC<{ at: number[]; n?: number }> = ({ at, n = 4 }) => {
   return <AbsoluteFill style={{ background: `radial-gradient(circle at 50% 45%, rgba(255,255,255,${a}) 0%, rgba(214,232,255,${a * 0.9}) 55%, rgba(86,160,251,${a * 0.75}) 100%)`, mixBlendMode: "screen" }} />;
 };
 
+/** Beat punch-in: the picture scales up on a hit and settles back over ~7 frames (music-synced energy, no blur). */
+const usePulse = (pulses: { f: number; amp: number }[]) => {
+  const frame = useCurrentFrame();
+  let s = 1;
+  for (const p of pulses) {
+    const d = frame - p.f;
+    if (d < 0 || d > 9) continue;
+    s += p.amp * Math.exp(-d / 2.4);
+  }
+  return s;
+};
+
 /** Short decaying camera jolt on impact frames (sum of damped sines, deterministic). */
 const useShake = (shakes: { f: number; amp: number }[]) => {
   const frame = useCurrentFrame();
@@ -119,6 +131,8 @@ export const ReelEdit: React.FC<{ edit: Edit }> = ({ edit }) => {
     );
   });
   const shake = useShake((edit.shakes ?? []).map((s) => ({ f: f(s.at), amp: s.amp ?? 1 })));
+  const pulse = usePulse((edit.pulses ?? []).map((p) => ({ f: f(p.at), amp: p.amp ?? 0.05 })));
+  for (const t of edit.flashes ?? []) flashes.push(f(t));
 
   const seq = (o: Overlay, i: number) => (
     <Sequence key={`ov${i}`} from={f(o.at)} durationInFrames={Math.max(1, f(o.dur))} name={`${o.type} @${o.at}s`}>
@@ -156,7 +170,7 @@ export const ReelEdit: React.FC<{ edit: Edit }> = ({ edit }) => {
 
   return (
     <AbsoluteFill style={{ background: dbg === "text" ? "#000" : color.night }}>
-      <AbsoluteFill style={{ transform: shake }}>
+      <AbsoluteFill style={{ transform: [shake, pulse !== 1 ? `scale(${pulse})` : ""].filter(Boolean).join(" ") || undefined }}>
         {dbg === "text" ? null : clipSeqs}
         {byLayer(1)}
         {byLayer(2)}

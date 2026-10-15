@@ -1,0 +1,1127 @@
+{
+ "title": "OSM gym edit 2: BUILT NOT BORN",
+ "fps": 30,
+ "width": 1080,
+ "height": 1920,
+ "media": {
+  "c_IMG_7550": "source/IMG_7550.MOV",
+  "c_IMG_7551": "source/IMG_7551.MOV",
+  "c_IMG_7549": "source/IMG_7549.MOV",
+  "c_IMG_7545": "source/IMG_7545.MOV",
+  "c_IMG_7558": "source/IMG_7558.MOV",
+  "c_IMG_7534": "source/IMG_7534.MOV",
+  "c_IMG_7552": "source/IMG_7552.MOV",
+  "c_IMG_7548": "source/IMG_7548.MOV",
+  "c_IMG_7539": "source/IMG_7539.MOV",
+  "c_IMG_7531": "source/IMG_7531.MOV",
+  "c_IMG_7560": "source/IMG_7560.MOV",
+  "c_IMG_7563": "source/IMG_7563.MOV",
+  "c_IMG_7538": "source/IMG_7538.MOV",
+  "c_IMG_7543": "source/IMG_7543.MOV",
+  "c_IMG_7561": "source/IMG_7561.MOV",
+  "c_IMG_7532": "source/IMG_7532.MOV",
+  "c_IMG_7547": "source/IMG_7547.MOV",
+  "c_IMG_7559": "source/IMG_7559.MOV",
+  "c_IMG_7536": "source/IMG_7536.MOV",
+  "c_IMG_7564": "source/IMG_7564.MOV",
+  "c_IMG_7533": "source/IMG_7533.MOV",
+  "c_IMG_7544": "source/IMG_7544.MOV",
+  "c_IMG_7542": "source/IMG_7542.MOV",
+  "c_IMG_7537": "source/IMG_7537.MOV",
+  "c_IMG_7562": "source/IMG_7562.MOV",
+  "c_IMG_7546": "source/IMG_7546.MOV",
+  "c_IMG_7565": "source/IMG_7565.MOV"
+ },
+ "plates": {
+  "grade": "zscale=pin=bt2020:p=bt709:min=bt2020nc:m=bt709:tin=arib-std-b67:t=arib-std-b67:rin=tv:r=tv,format=yuv420p,eq=contrast=1.16:saturation=0.9:gamma=0.96,colorbalance=rs=-0.02:bs=0.03:rm=0.02:gm=0.0:bm=-0.02:rh=0.02:bh=-0.02,curves=master='0/0 0.1/0.06 0.5/0.48 0.9/0.94 1/1',vignette=angle=PI/5",
+  "sharpen": "cas=strength=0.45"
+ },
+ "clips": [
+  {
+   "src": "c_IMG_7550",
+   "in": 0.2,
+   "out": 1.8,
+   "focusX": 0.5,
+   "focusY": 0.45,
+   "volume": 0.0,
+   "zoom": [
+    1.0,
+    1.12
+   ]
+  },
+  {
+   "src": "c_IMG_7551",
+   "in": 3.2,
+   "out": 4.0,
+   "focusX": 0.5,
+   "focusY": 0.45,
+   "volume": 0.0,
+   "zoom": [
+    1.04,
+    1.1
+   ],
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  },
+  {
+   "src": "c_IMG_7549",
+   "in": 2.8,
+   "out": 3.6,
+   "focusX": 0.5,
+   "focusY": 0.45,
+   "volume": 0.0,
+   "zoom": [
+    1.02,
+    1.08
+   ],
+   "tin": {
+    "type": "zoom"
+   }
+  },
+  {
+   "src": "c_IMG_7545",
+   "in": 0.7,
+   "out": 1.5,
+   "focusX": 0.5,
+   "focusY": 0.45,
+   "volume": 0.0,
+   "zoom": [
+    1.0,
+    1.06
+   ],
+   "tin": {
+    "type": "whip",
+    "dir": "right"
+   }
+  },
+  {
+   "src": "c_IMG_7558",
+   "in": 5.9,
+   "out": 6.7,
+   "focusX": 0.5,
+   "focusY": 0.45,
+   "volume": 0.0,
+   "zoom": [
+    1.0,
+    1.06
+   ]
+  },
+  {
+   "src": "c_IMG_7534",
+   "in": 1.4,
+   "out": 1.8,
+   "focusX": 0.5,
+   "focusY": 0.45,
+   "volume": 0.0,
+   "zoom": [
+    1.04,
+    1.08
+   ]
+  },
+  {
+   "src": "c_IMG_7552",
+   "in": 2.4,
+   "out": 2.8,
+   "focusX": 0.5,
+   "focusY": 0.45,
+   "volume": 0.0,
+   "zoom": [
+    1.06,
+    1.1
+   ]
+  },
+  {
+   "src": "c_IMG_7548",
+   "in": 6.0,
+   "out": 6.4,
+   "focusX": 0.5,
+   "focusY": 0.45,
+   "volume": 0.0,
+   "zoom": [
+    1.06,
+    1.1
+   ]
+  },
+  {
+   "src": "c_IMG_7549",
+   "in": 3.9,
+   "out": 4.3,
+   "freeze": true,
+   "zoom": 1.14
+  },
+  {
+   "src": "c_IMG_7539",
+   "in": 6.0,
+   "out": 6.6,
+   "focusX": 0.5,
+   "focusY": 0.45,
+   "volume": 0.0,
+   "zoom": [
+    1.0,
+    1.03
+   ],
+   "tin": {
+    "type": "zoom",
+    "flash": true
+   }
+  },
+  {
+   "src": "c_IMG_7539",
+   "in": 6.6,
+   "out": 6.8,
+   "speed": 0.3333333333333333,
+   "focusX": 0.5,
+   "focusY": 0.45,
+   "volume": 0.0,
+   "zoom": [
+    1.03,
+    1.06
+   ]
+  },
+  {
+   "src": "c_IMG_7539",
+   "in": 6.8,
+   "out": 7.53333,
+   "speed": 1.8333333333333333,
+   "focusX": 0.5,
+   "focusY": 0.45,
+   "volume": 0.0,
+   "zoom": [
+    1.06,
+    1.08
+   ]
+  },
+  {
+   "src": "c_IMG_7531",
+   "in": 6.3,
+   "out": 7.9,
+   "focusX": 0.5,
+   "focusY": 0.45,
+   "volume": 0.0,
+   "zoom": [
+    1.0,
+    1.06
+   ],
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  },
+  {
+   "src": "c_IMG_7560",
+   "in": 4.9,
+   "out": 5.5,
+   "focusX": 0.5,
+   "focusY": 0.45,
+   "volume": 0.0,
+   "zoom": [
+    1.02,
+    1.05
+   ],
+   "tin": {
+    "type": "whip",
+    "dir": "right"
+   }
+  },
+  {
+   "src": "c_IMG_7560",
+   "in": 5.5,
+   "out": 5.7,
+   "speed": 0.3333333333333333,
+   "focusX": 0.5,
+   "focusY": 0.45,
+   "volume": 0.0,
+   "zoom": [
+    1.05,
+    1.08
+   ]
+  },
+  {
+   "src": "c_IMG_7560",
+   "in": 5.7,
+   "out": 6.43333,
+   "speed": 1.8333333333333333,
+   "focusX": 0.5,
+   "focusY": 0.45,
+   "volume": 0.0,
+   "zoom": [
+    1.08,
+    1.1
+   ]
+  },
+  {
+   "src": "c_IMG_7563",
+   "in": 0.1,
+   "out": 1.7,
+   "focusX": 0.5,
+   "focusY": 0.45,
+   "volume": 0.0,
+   "zoom": [
+    1.04,
+    1.1
+   ],
+   "tin": {
+    "type": "zoom"
+   }
+  },
+  {
+   "src": "c_IMG_7538",
+   "in": 1.0,
+   "out": 1.6,
+   "focusX": 0.5,
+   "focusY": 0.45,
+   "volume": 0.0,
+   "zoom": [
+    1.0,
+    1.03
+   ],
+   "tin": {
+    "type": "whip",
+    "dir": "up"
+   }
+  },
+  {
+   "src": "c_IMG_7538",
+   "in": 1.6,
+   "out": 1.8,
+   "speed": 0.3333333333333333,
+   "focusX": 0.5,
+   "focusY": 0.45,
+   "volume": 0.0,
+   "zoom": [
+    1.03,
+    1.06
+   ]
+  },
+  {
+   "src": "c_IMG_7538",
+   "in": 1.8,
+   "out": 2.53333,
+   "speed": 1.8333333333333333,
+   "focusX": 0.5,
+   "focusY": 0.45,
+   "volume": 0.0,
+   "zoom": [
+    1.06,
+    1.08
+   ]
+  },
+  {
+   "src": "c_IMG_7543",
+   "in": 6.9,
+   "out": 8.5,
+   "focusX": 0.5,
+   "focusY": 0.45,
+   "volume": 0.0,
+   "zoom": [
+    1.0,
+    1.06
+   ],
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  },
+  {
+   "src": "c_IMG_7561",
+   "in": 8.0,
+   "out": 8.6,
+   "focusX": 0.5,
+   "focusY": 0.45,
+   "volume": 0.0,
+   "zoom": [
+    1.02,
+    1.05
+   ],
+   "tin": {
+    "type": "whip",
+    "dir": "right"
+   }
+  },
+  {
+   "src": "c_IMG_7561",
+   "in": 8.6,
+   "out": 8.8,
+   "speed": 0.3333333333333333,
+   "focusX": 0.5,
+   "focusY": 0.45,
+   "volume": 0.0,
+   "zoom": [
+    1.05,
+    1.08
+   ]
+  },
+  {
+   "src": "c_IMG_7561",
+   "in": 8.8,
+   "out": 9.53333,
+   "speed": 1.8333333333333333,
+   "focusX": 0.5,
+   "focusY": 0.45,
+   "volume": 0.0,
+   "zoom": [
+    1.08,
+    1.1
+   ]
+  },
+  {
+   "src": "c_IMG_7532",
+   "in": 5.3,
+   "out": 6.9,
+   "focusX": 0.5,
+   "focusY": 0.45,
+   "volume": 0.0,
+   "zoom": [
+    1.0,
+    1.06
+   ],
+   "tin": {
+    "type": "zoom"
+   }
+  },
+  {
+   "src": "c_IMG_7547",
+   "in": 8.6,
+   "out": 10.2,
+   "speed": 0.5,
+   "focusX": 0.5,
+   "focusY": 0.45,
+   "volume": 0.0,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tin": {
+    "type": "zoom",
+    "flash": true
+   }
+  },
+  {
+   "src": "c_IMG_7559",
+   "in": 7.4,
+   "out": 8.2,
+   "focusX": 0.5,
+   "focusY": 0.45,
+   "volume": 0.0,
+   "zoom": [
+    1.0,
+    1.06
+   ],
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  },
+  {
+   "src": "c_IMG_7536",
+   "in": 1.9,
+   "out": 2.7,
+   "focusX": 0.5,
+   "focusY": 0.45,
+   "volume": 0.0,
+   "zoom": [
+    1.04,
+    1.1
+   ],
+   "tin": {
+    "type": "whip",
+    "dir": "right"
+   }
+  },
+  {
+   "src": "c_IMG_7564",
+   "in": 2.6,
+   "out": 3.0,
+   "focusX": 0.5,
+   "focusY": 0.45,
+   "volume": 0.0,
+   "zoom": [
+    1.05,
+    1.08
+   ]
+  },
+  {
+   "src": "c_IMG_7533",
+   "in": 4.8,
+   "out": 5.2,
+   "focusX": 0.5,
+   "focusY": 0.45,
+   "volume": 0.0,
+   "zoom": [
+    1.05,
+    1.08
+   ]
+  },
+  {
+   "src": "c_IMG_7544",
+   "in": 2.3,
+   "out": 2.7,
+   "focusX": 0.5,
+   "focusY": 0.45,
+   "volume": 0.0,
+   "zoom": [
+    1.1,
+    1.14
+   ]
+  },
+  {
+   "src": "c_IMG_7542",
+   "in": 4.0,
+   "out": 4.4,
+   "freeze": true,
+   "zoom": 1.12
+  },
+  {
+   "src": "c_IMG_7537",
+   "in": 1.1,
+   "out": 1.7,
+   "focusX": 0.5,
+   "focusY": 0.45,
+   "volume": 0.0,
+   "zoom": [
+    1.0,
+    1.03
+   ],
+   "tin": {
+    "type": "zoom",
+    "flash": true
+   }
+  },
+  {
+   "src": "c_IMG_7537",
+   "in": 1.7,
+   "out": 1.9,
+   "speed": 0.3333333333333333,
+   "focusX": 0.5,
+   "focusY": 0.45,
+   "volume": 0.0,
+   "zoom": [
+    1.03,
+    1.06
+   ]
+  },
+  {
+   "src": "c_IMG_7537",
+   "in": 1.9,
+   "out": 2.63333,
+   "speed": 1.8333333333333333,
+   "focusX": 0.5,
+   "focusY": 0.45,
+   "volume": 0.0,
+   "zoom": [
+    1.06,
+    1.08
+   ]
+  },
+  {
+   "src": "c_IMG_7560",
+   "in": 7.1,
+   "out": 8.7,
+   "focusX": 0.5,
+   "focusY": 0.45,
+   "volume": 0.0,
+   "zoom": [
+    1.0,
+    1.08
+   ],
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  },
+  {
+   "src": "c_IMG_7562",
+   "in": 3.0,
+   "out": 3.6,
+   "focusX": 0.5,
+   "focusY": 0.45,
+   "volume": 0.0,
+   "zoom": [
+    1.02,
+    1.0425
+   ],
+   "tin": {
+    "type": "whip",
+    "dir": "right"
+   }
+  },
+  {
+   "src": "c_IMG_7562",
+   "in": 3.6,
+   "out": 3.8,
+   "speed": 0.3333333333333333,
+   "focusX": 0.5,
+   "focusY": 0.45,
+   "volume": 0.0,
+   "zoom": [
+    1.0425,
+    1.065
+   ]
+  },
+  {
+   "src": "c_IMG_7562",
+   "in": 3.8,
+   "out": 4.53333,
+   "speed": 1.8333333333333333,
+   "focusX": 0.5,
+   "focusY": 0.45,
+   "volume": 0.0,
+   "zoom": [
+    1.065,
+    1.08
+   ]
+  },
+  {
+   "src": "c_IMG_7546",
+   "in": 2.6,
+   "out": 4.2,
+   "focusX": 0.5,
+   "focusY": 0.45,
+   "volume": 0.0,
+   "zoom": [
+    1.0,
+    1.06
+   ],
+   "tin": {
+    "type": "zoom"
+   }
+  },
+  {
+   "src": "c_IMG_7565",
+   "in": 11.0,
+   "out": 12.6,
+   "focusX": 0.5,
+   "focusY": 0.45,
+   "volume": 0.0,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tin": {
+    "type": "whip",
+    "dir": "up"
+   }
+  },
+  {
+   "src": "c_IMG_7539",
+   "in": 13.4,
+   "out": 15.0,
+   "focusX": 0.5,
+   "focusY": 0.45,
+   "volume": 0.0,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  }
+ ],
+ "overlays": [
+  {
+   "type": "kineticTitle",
+   "at": 5.2,
+   "dur": 1.2,
+   "lines": [
+    {
+     "text": "BUILT",
+     "size": 180
+    },
+    {
+     "text": "NOT BORN",
+     "accent": true,
+     "size": 130
+    }
+   ],
+   "top": 0.7,
+   "motion": "smooth",
+   "depth": true
+  },
+  {
+   "type": "kineticTitle",
+   "at": 20.4,
+   "dur": 2.0,
+   "lines": [
+    {
+     "text": "NO",
+     "size": 150
+    },
+    {
+     "text": "SHORTCUTS",
+     "accent": true,
+     "size": 140
+    }
+   ],
+   "top": 0.7,
+   "motion": "smooth",
+   "depth": true
+  },
+  {
+   "type": "endCard",
+   "at": 35.2,
+   "dur": 2.4,
+   "cta": "OSM Coach Osama",
+   "reveal": "wipe",
+   "image": "brand/end/osm-end-photo.jpg"
+  }
+ ],
+ "shakes": [
+  {
+   "at": 0.0,
+   "amp": 1.0
+  },
+  {
+   "at": 6.4,
+   "amp": 1.0
+  },
+  {
+   "at": 25.6,
+   "amp": 1.0
+  },
+  {
+   "at": 35.2,
+   "amp": 0.6
+  }
+ ],
+ "pulses": [
+  {
+   "at": 0.0,
+   "amp": 0.09
+  },
+  {
+   "at": 6.4,
+   "amp": 0.09
+  },
+  {
+   "at": 6.4,
+   "amp": 0.035
+  },
+  {
+   "at": 7.2,
+   "amp": 0.035
+  },
+  {
+   "at": 8.0,
+   "amp": 0.035
+  },
+  {
+   "at": 8.8,
+   "amp": 0.035
+  },
+  {
+   "at": 9.6,
+   "amp": 0.035
+  },
+  {
+   "at": 10.4,
+   "amp": 0.035
+  },
+  {
+   "at": 11.2,
+   "amp": 0.035
+  },
+  {
+   "at": 12.0,
+   "amp": 0.035
+  },
+  {
+   "at": 12.8,
+   "amp": 0.035
+  },
+  {
+   "at": 13.6,
+   "amp": 0.035
+  },
+  {
+   "at": 14.4,
+   "amp": 0.035
+  },
+  {
+   "at": 15.2,
+   "amp": 0.035
+  },
+  {
+   "at": 16.0,
+   "amp": 0.035
+  },
+  {
+   "at": 16.8,
+   "amp": 0.035
+  },
+  {
+   "at": 17.6,
+   "amp": 0.035
+  },
+  {
+   "at": 18.4,
+   "amp": 0.035
+  },
+  {
+   "at": 25.6,
+   "amp": 0.09
+  },
+  {
+   "at": 25.6,
+   "amp": 0.035
+  },
+  {
+   "at": 26.4,
+   "amp": 0.035
+  },
+  {
+   "at": 27.2,
+   "amp": 0.035
+  },
+  {
+   "at": 28.0,
+   "amp": 0.035
+  },
+  {
+   "at": 28.8,
+   "amp": 0.035
+  },
+  {
+   "at": 29.6,
+   "amp": 0.035
+  },
+  {
+   "at": 30.4,
+   "amp": 0.035
+  },
+  {
+   "at": 31.2,
+   "amp": 0.035
+  },
+  {
+   "at": 32.0,
+   "amp": 0.035
+  },
+  {
+   "at": 32.8,
+   "amp": 0.035
+  },
+  {
+   "at": 33.6,
+   "amp": 0.035
+  },
+  {
+   "at": 34.4,
+   "amp": 0.035
+  }
+ ],
+ "flashes": [
+  0.0,
+  6.4,
+  25.6
+ ],
+ "sfx": {
+  "cues": [
+   {
+    "at": -0.7,
+    "sound": "reverse_hit",
+    "gain_db": -14,
+    "dur": 0.7
+   },
+   {
+    "at": 0.0,
+    "sound": "boom",
+    "gain_db": -8
+   },
+   {
+    "at": 0.02,
+    "sound": "impact",
+    "gain_db": -13
+   },
+   {
+    "at": 1.6,
+    "sound": "whip",
+    "gain_db": -14,
+    "dir": 1.0
+   },
+   {
+    "at": 2.4,
+    "sound": "slam",
+    "gain_db": -17
+   },
+   {
+    "at": 3.2,
+    "sound": "whip",
+    "gain_db": -14,
+    "dir": 1.0
+   },
+   {
+    "at": 4.0,
+    "sound": "slam",
+    "gain_db": -17
+   },
+   {
+    "at": 4.8,
+    "sound": "slam",
+    "gain_db": -17
+   },
+   {
+    "at": 5.2,
+    "sound": "slam",
+    "gain_db": -17
+   },
+   {
+    "at": 5.2,
+    "sound": "slam",
+    "gain_db": -14
+   },
+   {
+    "at": 5.6,
+    "sound": "slam",
+    "gain_db": -17
+   },
+   {
+    "at": 5.7,
+    "sound": "reverse_hit",
+    "gain_db": -14,
+    "dur": 0.7
+   },
+   {
+    "at": 6.4,
+    "sound": "boom",
+    "gain_db": -8
+   },
+   {
+    "at": 6.4,
+    "sound": "slam",
+    "gain_db": -17
+   },
+   {
+    "at": 6.42,
+    "sound": "impact",
+    "gain_db": -13
+   },
+   {
+    "at": 7.0,
+    "sound": "whoosh_in",
+    "gain_db": -16
+   },
+   {
+    "at": 7.6,
+    "sound": "whip",
+    "gain_db": -15,
+    "dir": -1.0
+   },
+   {
+    "at": 8.0,
+    "sound": "whip",
+    "gain_db": -14,
+    "dir": 1.0
+   },
+   {
+    "at": 9.6,
+    "sound": "whip",
+    "gain_db": -14,
+    "dir": 1.0
+   },
+   {
+    "at": 10.2,
+    "sound": "whoosh_in",
+    "gain_db": -16
+   },
+   {
+    "at": 10.8,
+    "sound": "whip",
+    "gain_db": -15,
+    "dir": -1.0
+   },
+   {
+    "at": 11.2,
+    "sound": "slam",
+    "gain_db": -17
+   },
+   {
+    "at": 12.8,
+    "sound": "whip",
+    "gain_db": -14,
+    "dir": 1.0
+   },
+   {
+    "at": 13.4,
+    "sound": "whoosh_in",
+    "gain_db": -16
+   },
+   {
+    "at": 14.0,
+    "sound": "whip",
+    "gain_db": -15,
+    "dir": -1.0
+   },
+   {
+    "at": 14.4,
+    "sound": "whip",
+    "gain_db": -14,
+    "dir": 1.0
+   },
+   {
+    "at": 16.0,
+    "sound": "whip",
+    "gain_db": -14,
+    "dir": 1.0
+   },
+   {
+    "at": 16.6,
+    "sound": "whoosh_in",
+    "gain_db": -16
+   },
+   {
+    "at": 17.2,
+    "sound": "whip",
+    "gain_db": -15,
+    "dir": -1.0
+   },
+   {
+    "at": 17.6,
+    "sound": "slam",
+    "gain_db": -17
+   },
+   {
+    "sound": "boom",
+    "gain_db": -12,
+    "at": 19.2
+   },
+   {
+    "sound": "swell",
+    "gain_db": -16,
+    "at": 19.2
+   },
+   {
+    "at": 20.4,
+    "sound": "slam",
+    "gain_db": -14
+   },
+   {
+    "at": 22.4,
+    "sound": "whip",
+    "gain_db": -14,
+    "dir": 1.0
+   },
+   {
+    "at": 23.2,
+    "sound": "whip",
+    "gain_db": -14,
+    "dir": 1.0
+   },
+   {
+    "at": 24.0,
+    "sound": "slam",
+    "gain_db": -17
+   },
+   {
+    "at": 24.4,
+    "sound": "slam",
+    "gain_db": -17
+   },
+   {
+    "at": 24.8,
+    "sound": "slam",
+    "gain_db": -17
+   },
+   {
+    "at": 24.9,
+    "sound": "reverse_hit",
+    "gain_db": -14,
+    "dur": 0.7
+   },
+   {
+    "at": 25.6,
+    "sound": "boom",
+    "gain_db": -8
+   },
+   {
+    "at": 25.6,
+    "sound": "slam",
+    "gain_db": -17
+   },
+   {
+    "at": 25.62,
+    "sound": "impact",
+    "gain_db": -13
+   },
+   {
+    "at": 26.2,
+    "sound": "whoosh_in",
+    "gain_db": -16
+   },
+   {
+    "at": 26.8,
+    "sound": "whip",
+    "gain_db": -15,
+    "dir": -1.0
+   },
+   {
+    "at": 27.2,
+    "sound": "whip",
+    "gain_db": -14,
+    "dir": 1.0
+   },
+   {
+    "at": 28.8,
+    "sound": "whip",
+    "gain_db": -14,
+    "dir": 1.0
+   },
+   {
+    "at": 29.4,
+    "sound": "whoosh_in",
+    "gain_db": -16
+   },
+   {
+    "at": 30.0,
+    "sound": "whip",
+    "gain_db": -15,
+    "dir": -1.0
+   },
+   {
+    "at": 30.4,
+    "sound": "slam",
+    "gain_db": -17
+   },
+   {
+    "at": 32.0,
+    "sound": "whip",
+    "gain_db": -14,
+    "dir": 1.0
+   },
+   {
+    "at": 33.6,
+    "sound": "whip",
+    "gain_db": -14,
+    "dir": 1.0
+   },
+   {
+    "at": 35.2,
+    "sound": "reverse_hit",
+    "gain_db": -12,
+    "dur": 0.7
+   },
+   {
+    "at": 35.2,
+    "sound": "boom",
+    "gain_db": -7
+   },
+   {
+    "at": 35.7,
+    "sound": "click",
+    "gain_db": -17
+   }
+  ]
+ },
+ "music": {
+  "src": "work/music/music.wav",
+  "gain_db": -3,
+  "duck_ratio": 1,
+  "voice_dip_db": 0
+ },
+ "tail": 2.4,
+ "dialogueFx": "highpass=f=60",
+ "textPlate": "#56A0FB"
+}

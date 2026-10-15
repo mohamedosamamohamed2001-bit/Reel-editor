@@ -7,7 +7,8 @@ SPEC = {
   "bpm": 120,                 # 120 bpm = a beat every 15 frames at 30 fps, so cuts can sit exactly on beats
   "key": "D", "mode": "minor",
   "progression": [0, -4, 3, -2],   # chord roots in semitones from the key (i, VI, III, VII by default)
-  "style": "trap" | "drive",  # trap = syncopated kick + 808, hats in 16ths/rolls; drive = four-on-the-floor
+  "style": "trap" | "drive" | "phonk",  # trap = syncopated kick + 808, hats in 16ths/rolls; drive = four-on-the-floor;
+                              # phonk = gym/workout: half-time snare on 3, hard-clipped sliding 808, cowbell riff, 16th hats
   "seed": 1,
   "sections": [ {"type": "intro"|"groove"|"build"|"drop"|"break"|"outro", "bars": 2, "stop": true}, ... ],
   "duration": 31.5            # seconds; the track is cut there with a short fade (the outro rings out)
@@ -198,6 +199,15 @@ class Kit:
         return stereo(x * 0.35, 0.8)
 
 
+def cowbell(midi, n):
+    """Phonk cowbell: two detuned squares at a 1:1.48 ratio through a band-pass, short metallic decay."""
+    f = hz(midi)
+    t = np.arange(n) / SR
+    sq = np.sign(np.sin(2 * np.pi * f * t)) + 0.8 * np.sign(np.sin(2 * np.pi * f * 1.48 * t + 0.3))
+    x = bp(sq * 0.4, f * 0.8, min(f * 6, 9000)) * env(n, 0.001, 0.09)
+    return np.tanh(x * 2.0) * 0.8
+
+
 def supersaw(midi_notes, n, cutoff, voices=5, detune=0.12, rng=None):
     rng = rng or np.random.default_rng(1)
     out = np.zeros((n, 2))
@@ -221,6 +231,8 @@ def render(spec):
     minor = spec.get("mode", "minor") == "minor"
     prog = spec.get("progression", [0, -4, 3, -2])
     style = spec.get("style", "trap")
+    phonk = style == "phonk"
+    riff = spec.get("riff", [0, 0, 3, 0, 7, 5, 3, 0, 0, 0, 3, 0, 10, 8, 7, 5])  # cowbell 16ths, semitones over the key
     kit = Kit(spec.get("seed", 1))
     rng = np.random.default_rng(spec.get("seed", 1) + 11)
     sections = spec["sections"]
@@ -287,24 +299,31 @@ def render(spec):
             if typ in ("groove", "drop", "intro", "build"):
                 if typ == "intro":
                     kpos = [0, 2]
-                elif style == "drive" or typ == "build":
+                elif style == "drive" or (typ == "build" and not phonk):
                     kpos = [0, 1, 2, 3]
+                elif phonk:  # half-time: kick on 1 + syncopated pickups, snare on 3
+                    kpos = [0, 0.75, 3.5] if b % 2 == 0 else [0, 1.5, 3.0]
                 else:  # trap: syncopated
                     kpos = [0, 1.75, 2.5] if b % 2 == 0 else [0, 0.75, 2.5, 3.25]
                 if typ == "build":
                     kpos = [0, 1, 2, 3] if b < nb - 1 else [0, 0.5, 1, 1.5, 2, 2.5]
+                    if phonk and b < nb - 1:
+                        kpos = [0, 2]
                 for k in kpos:
                     if k < beats_active:
-                        put(drums, kit.kick(1.0 if typ == "drop" else 0.6), tb + k * beat, 0.9 if typ != "intro" else 0.6)
+                        kx = kit.kick(1.0 if typ == "drop" else 0.6)
+                        if phonk:
+                            kx = np.tanh(kx * 3.0) * 0.8  # clipped, punchy phonk kick
+                        put(drums, kx, tb + k * beat, 0.9 if typ != "intro" else 0.6)
                         kicks.append(tb + k * beat)
             if typ in ("groove", "drop"):
-                for k in (1, 3):
+                for k in ((2,) if phonk else (1, 3)):
                     if k < beats_active:
-                        put(drums, kit.clap(), tb + k * beat, 0.55 if typ == "groove" else 0.7)
-                        put(drums, kit.snare(0.6), tb + k * beat, 0.25)
+                        put(drums, kit.clap(), tb + k * beat, (0.95 if phonk else 0.55) if typ == "groove" or phonk else 0.7)
+                        put(drums, kit.snare(0.9 if phonk else 0.6), tb + k * beat, 0.45 if phonk else 0.25)
             # hats
             if typ in ("intro", "groove", "drop", "build"):
-                step = 0.25 if typ == "drop" or (style == "trap" and typ == "groove") else 0.5
+                step = 0.25 if typ == "drop" or (style in ("trap", "phonk") and typ == "groove") else 0.5
                 k = 0.0
                 while k < beats_active:
                     vel = 1.0 if (k * 4) % 2 == 0 else 0.55
@@ -312,7 +331,7 @@ def render(spec):
                         vel *= 0.6
                     put(drums, kit.hat(False, vel), tb + k * beat, 0.45, pan=0.15)
                     k += step
-                if style == "trap" and typ in ("groove", "drop") and b % 2 == 1 and beats_active == 4:
+                if style in ("trap", "phonk") and typ in ("groove", "drop") and b % 2 == 1 and beats_active == 4:
                     for r in range(6):  # 32nd-triplet hat roll on the last beat (trap signature)
                         put(drums, kit.hat(False, 0.5 + r * 0.08), tb + 3 * beat + r * beat / 6, 0.4, pan=0.15)
                 if typ == "drive" or style == "drive":
@@ -348,11 +367,11 @@ def render(spec):
                         m0 += 12
                     f0 = hz(m0)  # fundamental 49-93 Hz: the energy peak of the reference beds is the 63 Hz octave
                     ff = np.full(n, f0)
-                    if style == "trap" and typ == "drop" and i == len(bpos) - 1 and b % 2 == 1:
+                    if style in ("trap", "phonk") and typ == "drop" and i == len(bpos) - 1 and b % 2 == 1:
                         ff = f0 * 2 ** (np.linspace(0, 12, n) * (np.arange(n) > n * 0.5) / 12)  # 808 glide up
                     sub = sine(ff, n)
                     e = env(n, 0.003, ln * 0.9 + 0.05) * np.minimum(1, (n - np.arange(n)) / (0.01 * SR))
-                    x = np.tanh(sub * e * 2.2) * 0.75
+                    x = np.tanh(sub * e * (5.0 if phonk else 2.2)) * (0.7 if phonk else 0.75)
                     put(bass, x, tb + k * beat, 1.0 if typ == "drop" else 0.8)
                 if typ == "drop":
                     n = int(beats_active * beat * SR)
@@ -379,7 +398,15 @@ def render(spec):
                     st = supersaw([t + 60 for t in tones], n, 3800 if typ == "drop" else 2000, voices=7, detune=0.18, rng=rng)
                     st *= env(n, 0.002, 0.08)[:, None]
                     put(synth, st * (0.55 if typ == "drop" else 0.3), tb + k * beat)
-            if typ in ("drop", "break"):
+            if phonk and typ in ("drop", "groove", "break"):
+                for i16 in range(int(beats_active * 4)):
+                    note = riff[(i16 + (b % 2) * 16) % len(riff)] if len(riff) > 16 else riff[i16 % len(riff)]
+                    if note is None or (typ == "groove" and i16 % 2):
+                        continue
+                    n = int(0.16 * SR)
+                    put(synth, cowbell(key + 72 + note, n), tb + i16 * beat / 4, 0.42 if typ == "drop" else 0.3,
+                        pan=0.15 * (1 if i16 % 2 else -1))
+            if typ in ("drop", "break") and not phonk:
                 arp = [tones[0] + 72, tones[1] + 72, tones[2] + 72, tones[1] + 72]
                 k = 0.0
                 i = 0

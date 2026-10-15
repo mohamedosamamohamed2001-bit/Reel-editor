@@ -91,6 +91,10 @@ export type Edit = {
   title: string;
   /** QA only (tools/head_check.py): "text" = text layers on black, "footage" = everything except text layers */
   debugLayer?: "text" | "footage";
+  /** beat punch-ins (output s): the whole picture scales up by amp (default 0.05) and settles over ~7 frames */
+  pulses?: { at: number; amp?: number }[];
+  /** extra white flash frames (output s), same look as a flash transition */
+  flashes?: number[];
   fps: number;
   width: number;
   height: number;
