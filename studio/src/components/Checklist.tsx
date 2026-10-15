@@ -6,8 +6,8 @@ import { color, font, isArabic } from "../lib/theme";
  * Items tick in as they are spoken (e.g. "نظام التمرين", "نظام التغذية"). Text must be the speaker's own words.
  * Night chips with a Core Blue check that draws on; at = seconds from the overlay start.
  */
-export const Checklist: React.FC<{ dur: number; items: { at: number; text: string }[]; top?: number; row?: boolean; plate?: string }> = ({
-  dur, items, top = 0.42, row = false, plate,
+export const Checklist: React.FC<{ dur: number; items: { at: number; text: string }[]; top?: number; row?: boolean; plate?: string; scale?: number }> = ({
+  dur, items, top = 0.42, row = false, plate, scale = 1,
 }) => {
   const frame = useCurrentFrame();
   const { fps, height } = useVideoConfig();
@@ -15,7 +15,7 @@ export const Checklist: React.FC<{ dur: number; items: { at: number; text: strin
   const out = presence(frame, Math.round(dur * fps), 1, 8);
   return (
     <AbsoluteFill style={{ alignItems: "center", pointerEvents: "none" }}>
-      <div dir={row ? "rtl" : undefined} style={{ position: "absolute", top: height * top, display: "flex", flexDirection: row ? "row" : "column", gap: row ? 14 : 18, alignItems: "center", opacity: out }}>
+      <div dir={row ? "rtl" : undefined} style={{ position: "absolute", top: height * top, display: "flex", flexDirection: row ? "row" : "column", gap: row ? 14 : 18, alignItems: "center", opacity: out, transform: scale !== 1 ? `scale(${scale})` : undefined, transformOrigin: "50% 0" }}>
         {items.map((it, i) => {
           const p = interpolate(t, [it.at, it.at + 9 / fps], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.out(Easing.cubic) });
           const draw = interpolate(t, [it.at + 4 / fps, it.at + 12 / fps], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.out(Easing.cubic) });

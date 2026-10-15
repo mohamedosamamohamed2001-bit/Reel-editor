@@ -37,7 +37,7 @@ const renderOverlay = (o: Overlay, plate?: string) => {
     case "endCard":
       return <EndCard dur={o.dur} cta={o.cta} signature={o.signature} reveal={o.reveal} sub={o.sub} image={o.image} />;
     case "checklist":
-      return <Checklist dur={o.dur} items={o.items} top={o.top} row={o.row} plate={plate} />;
+      return <Checklist dur={o.dur} items={o.items} top={o.top} row={o.row} plate={plate} scale={o.scale} />;
     case "kineticTitle":
       return <KineticTitle lines={o.lines} eyebrow={o.eyebrow} dur={o.dur} top={o.top} tilt={o.tilt} backdrop={o.backdrop} motion={o.motion} depth={o.depth} ink={o.ink} />;
     case "iconPop":

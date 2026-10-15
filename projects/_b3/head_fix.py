@@ -68,7 +68,10 @@ def plan(edit, report, orig, cur2orig):
         elif icon and side_fit(r, g):
             k, align = side_fit(r, g)
             fixes.append(dict(key, action="move", top=o0["top"], align=align, **size(k)))
-        elif o["type"] == "stepBadge" and room_below / hb >= 0.8:
+        elif o["type"] in ("stepBadge", "checklist") and gap / hb >= 0.8:
+            k = round(gap / hb, 3)
+            fixes.append(dict(key, action="move", top=round((chin - off) / H, 3), scale=k, **plate))
+        elif o["type"] in ("stepBadge", "checklist") and room_below / hb >= 0.8:
             k = round(room_below / hb, 3)
             fixes.append(dict(key, action="move", top=round((below - off) / H, 3), scale=k, where="under the captions", **plate))
         elif icon and room_below / hb >= 0.6:
