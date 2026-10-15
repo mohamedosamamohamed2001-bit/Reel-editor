@@ -83,6 +83,8 @@ export type Overlay =
       entrance?: "flat" | "tilt";
       /** draw a check mark on the active highlight */
       checks?: boolean;
+      /** "none" = no blur/darkening of the picture behind the card (default "blur") */
+      backdrop?: "blur" | "none";
       /** privacy blur over parts of the recording; at/dur = seconds from the card's start, box = fractions of the visible region */
       masks?: { at: number; dur: number; box: { x: number; y: number; w: number; h: number } }[];
     };
@@ -103,6 +105,8 @@ export type Edit = {
     words: Word[]; keywords?: string[]; maxWords?: number; maxChars?: number;
     /** word-synced captions: upcoming words dimmed, each lights up on its spoken start; keyword underline on its word */
     karaoke?: boolean;
+    /** words are already in OUTPUT time (voice-over built by the project, tools/render_edit.py voiceTrack) */
+    outputTime?: boolean;
     /** exact-word replacements applied when loading the transcript (spelling fixes, English terms) */
     replace?: Record<string, string>;
     /** "plate" = Night plate behind the text (use over bright or white areas); default soft shadow */
@@ -163,11 +167,12 @@ const latin = (w: string) => /^[A-Za-z0-9&][A-Za-z0-9&'’-]*$/.test(w.replace(/
  * A word belongs to the clip that contains its MIDPOINT: transcript word edges drift a little past
  * the real silence, so start-time mapping can resurrect a word that was cut out.
  */
-export const groupCaptions = (words: Word[], clips: Clip[], maxWords = 3, maxChars = 22, rawBreaks: number[] = []): CaptionGroup[] => {
+export const groupCaptions = (words: Word[], clips: Clip[], maxWords = 3, maxChars = 22, rawBreaks: number[] = [], outputTime = false): CaptionGroup[] => {
   const EPS = 0.005; // seconds; zone edges are sums of floats (8.85 + 8.28 = 17.130000000000003)
   const breaks = rawBreaks.map((b) => Math.round(b * 1000) / 1000);
   const mapped = words
     .map((w) => {
+      if (outputTime) return { w: w.w.trim(), start: w.start, end: w.end };
       const mid = (w.start + w.end) / 2;
       const clip = clips.filter((c) => !c.freeze && (c.speed ?? 1) === 1).map(span).find((c) => mid >= c.in && mid < c.out);
       if (!clip) return null;

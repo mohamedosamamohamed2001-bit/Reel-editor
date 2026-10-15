@@ -1,0 +1,328 @@
+{
+ "title": "OSM promo 5: the scale isn't the whole story",
+ "fps": 30,
+ "width": 1080,
+ "height": 1920,
+ "media": {
+  "m_original_clean": "../2026-10-14_n3-scale/work/clean/original.clean.mp4",
+  "m_IMG_7537": "../2026-10-15_gym-2/source/IMG_7537.MOV",
+  "m_IMG_8382": "../2026-10-15_gym-1/source/IMG_8382.MOV",
+  "m_IMG_8149": "../2026-10-15_gym-3/source/IMG_8149.MOV",
+  "m_bg_night": "../_mkt/bg_night.mp4",
+  "m_progress": "../_mkt/app/progress.mp4"
+ },
+ "plates": {
+  "grade": null,
+  "sharpen": "cas=strength=0.3"
+ },
+ "clips": [
+  {
+   "src": "m_original_clean",
+   "in": -0.06667,
+   "out": 3.96667,
+   "zoom": [
+    1.04,
+    1.1
+   ],
+   "focusY": 0.4
+  },
+  {
+   "src": "m_IMG_7537",
+   "in": 0.4,
+   "out": 2.36667,
+   "zoom": [
+    1.0,
+    1.06
+   ],
+   "focusX": 0.5,
+   "focusY": 0.45,
+   "grade": "zscale=pin=bt2020:p=bt709:min=bt2020nc:m=bt709:tin=arib-std-b67:t=arib-std-b67:rin=tv:r=tv,format=yuv420p,eq=contrast=1.16:saturation=0.9:gamma=0.96,colorbalance=rs=-0.02:bs=0.03:rm=0.02:gm=0.0:bm=-0.02:rh=0.02:bh=-0.02,curves=master='0/0 0.1/0.06 0.5/0.48 0.9/0.94 1/1',vignette=angle=PI/5",
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  },
+  {
+   "src": "m_IMG_8382",
+   "in": 0.3,
+   "out": 2.06667,
+   "zoom": [
+    1.0,
+    1.06
+   ],
+   "focusX": 0.5,
+   "focusY": 0.4,
+   "grade": "format=yuv420p,eq=contrast=1.12:saturation=1.0:gamma=0.97,colorbalance=rm=0.02:bm=-0.02:rh=0.02:bh=-0.02,curves=master='0/0 0.12/0.08 0.5/0.5 0.88/0.93 1/1',vignette=angle=PI/6",
+   "tin": {
+    "type": "whip",
+    "dir": "right"
+   }
+  },
+  {
+   "src": "m_IMG_8149",
+   "in": 2.0,
+   "out": 3.76667,
+   "zoom": [
+    1.0,
+    1.06
+   ],
+   "focusX": 0.5,
+   "focusY": 0.42,
+   "grade": "zscale=pin=bt2020:p=bt709:min=bt2020nc:m=bt709:tin=arib-std-b67:t=arib-std-b67:rin=tv:r=tv,format=yuv420p,eq=contrast=1.08:saturation=1.06:gamma=1.12:brightness=0.015,colorbalance=rs=-0.03:bs=0.05:rm=0.01:bm=0.0:rh=0.02:bh=-0.01,curves=master='0/0 0.06/0.05 0.3/0.32 0.7/0.74 1/1',vignette=angle=PI/5",
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  },
+  {
+   "src": "m_bg_night",
+   "in": 0.0,
+   "out": 5.43333,
+   "freeze": true,
+   "zoom": 1.0,
+   "tin": {
+    "type": "zoom",
+    "flash": true
+   }
+  },
+  {
+   "src": "m_original_clean",
+   "in": 17.9,
+   "out": 22.16667,
+   "zoom": [
+    1.0,
+    1.05
+   ],
+   "focusY": 0.4,
+   "tin": {
+    "type": "whip",
+    "dir": "right"
+   }
+  }
+ ],
+ "overlays": [
+  {
+   "type": "iconPop",
+   "at": 4.183,
+   "dur": 1.73,
+   "items": [
+    {
+     "icon": "Flame",
+     "label": "دهون ↓"
+    },
+    {
+     "icon": "BicepsFlexed",
+     "label": "عضلات ↑"
+    }
+   ],
+   "top": 0.62,
+   "size": 160
+  },
+  {
+   "type": "iconPop",
+   "at": 6.15,
+   "dur": 1.51,
+   "items": [
+    {
+     "icon": "Scale",
+     "label": "ميزانك ثابت"
+    }
+   ],
+   "top": 0.62,
+   "size": 160
+  },
+  {
+   "type": "screenCard",
+   "at": 9.5333,
+   "dur": 5.42,
+   "src": "m_progress",
+   "plate": true,
+   "backdrop": "none",
+   "entrance": "tilt",
+   "width": 800,
+   "top": 150,
+   "region": {
+    "x": 0.0,
+    "y": 0.035,
+    "w": 1.0,
+    "h": 0.72
+   },
+   "segments": [
+    {
+     "in": 3.0,
+     "rate": 1,
+     "dur": 2.2
+    },
+    {
+     "in": 7.6,
+     "rate": 1,
+     "dur": 3.22
+    }
+   ],
+   "taps": [],
+   "highlights": [
+    {
+     "at": 0.6,
+     "dur": 1.5,
+     "box": {
+      "x": 0.03,
+      "y": 0.33,
+      "w": 0.94,
+      "h": 0.4
+     }
+    }
+   ]
+  },
+  {
+   "type": "endCard",
+   "at": 19.2333,
+   "dur": 2.4,
+   "cta": "OSM Coach Osama",
+   "reveal": "wipe",
+   "image": "brand/end/osm-end-photo.jpg"
+  }
+ ],
+ "shakes": [
+  {
+   "at": 9.533,
+   "amp": 0.4
+  },
+  {
+   "at": 19.233,
+   "amp": 0.6
+  }
+ ],
+ "pulses": [],
+ "flashes": [],
+ "sfx": {
+  "cues": [
+   {
+    "at": 4.0333,
+    "sound": "whip",
+    "gain_db": -12,
+    "dir": 1.0
+   },
+   {
+    "at": 4.0533,
+    "sound": "air",
+    "gain_db": -21
+   },
+   {
+    "at": 4.2633,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 4.4333,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 820
+   },
+   {
+    "at": 6.0,
+    "sound": "whip",
+    "gain_db": -12,
+    "dir": 1.0
+   },
+   {
+    "at": 6.02,
+    "sound": "air",
+    "gain_db": -21
+   },
+   {
+    "at": 6.23,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 7.7667,
+    "sound": "whip",
+    "gain_db": -12,
+    "dir": 1.0
+   },
+   {
+    "at": 7.7867,
+    "sound": "air",
+    "gain_db": -21
+   },
+   {
+    "at": 9.5333,
+    "sound": "reverse_hit",
+    "gain_db": -17,
+    "dur": 0.4
+   },
+   {
+    "at": 9.5333,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 14.9667,
+    "sound": "whip",
+    "gain_db": -12,
+    "dir": 1.0
+   },
+   {
+    "at": 14.9867,
+    "sound": "air",
+    "gain_db": -21
+   },
+   {
+    "at": 19.2333,
+    "sound": "reverse_hit",
+    "gain_db": -12,
+    "dur": 0.7
+   },
+   {
+    "at": 19.2333,
+    "sound": "boom",
+    "gain_db": -7
+   },
+   {
+    "at": 19.7333,
+    "sound": "click",
+    "gain_db": -17
+   }
+  ]
+ },
+ "music": {
+  "src": "work/music/music.wav",
+  "gain_db": -9
+ },
+ "tail": 2.4,
+ "textPlate": "#56A0FB",
+ "voiceTrack": "work/vo.wav",
+ "dialogueFx": "highpass=f=70,acompressor=threshold=0.1:ratio=2.5:attack=8:release=120:makeup=1.5",
+ "dialogueLufs": -16.0,
+ "captions": {
+  "wordsFile": "work/vo.words.json",
+  "outputTime": true,
+  "style": "plate",
+  "karaoke": true,
+  "maxWords": 3,
+  "maxChars": 22,
+  "keywords": [
+   "الميزان",
+   "الحقيقة",
+   "العضلات",
+   "مقاسات",
+   "Before",
+   "After"
+  ],
+  "replace": {},
+  "zones": [
+   {
+    "at": 9.483,
+    "dur": 5.47,
+    "top": 0.739
+   },
+   {
+    "at": 0,
+    "dur": 19.243,
+    "top": 0.7
+   }
+  ]
+ }
+}

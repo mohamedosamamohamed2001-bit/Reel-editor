@@ -244,7 +244,8 @@ def make_plates(edit, proj):
             motion = [f"tmix=frames={k}", f"setpts=(PTS-STARTPTS)/{speed}"]
         elif speed < 1:
             motion = [f"setpts=(PTS-STARTPTS)/{speed}", f"framerate=fps={fps}:interp_start=0:interp_end=255:scene=100"]
-        chain = ",".join(f for f in [f"crop={cw}:{ch}:{_even(x)}:{_even(y)}", grade, *motion, f"fps={fps}", scale, sharpen] if f)
+        # per-clip "grade" overrides the top-level one (mixed sources: HDR phone clips, SDR stock, screen captures)
+        chain = ",".join(f for f in [f"crop={cw}:{ch}:{_even(x)}:{_even(y)}", c.pop("grade", grade), *motion, f"fps={fps}", scale, sharpen] if f)
         vf = (pre + f";[{last}]" + chain) if pre else chain
         if text_plate and solid:
             if freeze or hold is not None:
@@ -586,6 +587,7 @@ def main():
                             "len": n / fps})
     dialogue_fx = edit.pop("dialogueFx", None)
     dialogue_lufs = edit.pop("dialogueLufs", None)
+    voice_track = edit.pop("voiceTrack", None)  # e.g. "work/vo.wav", already timed to the output
     music = edit.pop("music", None)
     if music:
         music["path"] = str((proj / music["src"]).resolve())
@@ -619,7 +621,19 @@ def main():
     if a.frames:
         print("note: --frames renders a range; dialogue is built for the full cut list", flush=True)
     dialogue = renders / f"{name}{suffix}_dialogue.wav"
-    build_dialogue(audio_clips, total, dialogue, dialogue_fx, dialogue_lufs)
+    if voice_track:  # voice-over placed by the project on the OUTPUT timeline: the picture's own sound is not used
+        fx = ",".join(f for f in [dialogue_fx, "apad"] if f)
+        subprocess.run(["ffmpeg", "-y", "-v", "error", "-i", str((proj / voice_track).resolve()), "-af",
+                        f"aresample=48000,aformat=channel_layouts=stereo,{fx}", "-t", f"{total:.3f}", "-c:a", "pcm_s24le",
+                        str(dialogue)], check=True)
+        if dialogue_lufs is not None:
+            i, _ = measure(dialogue)
+            tmp = dialogue.with_suffix(".norm.wav")
+            subprocess.run(["ffmpeg", "-y", "-v", "error", "-i", str(dialogue), "-af", f"volume={dialogue_lufs - i:.2f}dB",
+                            "-c:a", "pcm_s24le", str(tmp)], check=True)
+            tmp.replace(dialogue)
+    else:
+        build_dialogue(audio_clips, total, dialogue, dialogue_fx, dialogue_lufs)
     cues = (edit_sfx or {}).get("cues", [])
     alt = None
     if a.alt_nomusic and music:

@@ -1,0 +1,406 @@
+{
+ "title": "OSM promo 2: every exercise has a demo",
+ "fps": 30,
+ "width": 1080,
+ "height": 1920,
+ "media": {
+  "m_main": "../2026-10-14_osm-reel/source/main.mp4",
+  "m_bg_night": "../_mkt/bg_night.mp4",
+  "m_workout": "../_mkt/app/workout.mp4",
+  "m_IMG_8381": "../2026-10-15_gym-1/source/IMG_8381.MOV",
+  "m_IMG_7531": "../2026-10-15_gym-2/source/IMG_7531.MOV",
+  "m_CCA8ED09": "../2026-10-15_gym-3/source/CCA8ED09.mp4",
+  "m_IMG_8385": "../2026-10-15_gym-1/source/IMG_8385.MOV"
+ },
+ "plates": {
+  "grade": null,
+  "sharpen": "cas=strength=0.3"
+ },
+ "clips": [
+  {
+   "src": "m_main",
+   "in": -0.06667,
+   "out": 3.96667,
+   "zoom": [
+    1.06,
+    1.12
+   ],
+   "focusY": 0.4
+  },
+  {
+   "src": "m_bg_night",
+   "in": 0.0,
+   "out": 6.1,
+   "freeze": true,
+   "zoom": 1.0,
+   "tin": {
+    "type": "zoom",
+    "flash": true
+   }
+  },
+  {
+   "src": "m_IMG_8381",
+   "in": 0.0,
+   "out": 1.66667,
+   "zoom": [
+    1.0,
+    1.06
+   ],
+   "focusX": 0.5,
+   "focusY": 0.4,
+   "grade": "format=yuv420p,eq=contrast=1.12:saturation=1.0:gamma=0.97,colorbalance=rm=0.02:bm=-0.02:rh=0.02:bh=-0.02,curves=master='0/0 0.12/0.08 0.5/0.5 0.88/0.93 1/1',vignette=angle=PI/6",
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  },
+  {
+   "src": "m_IMG_7531",
+   "in": 1.2,
+   "out": 2.8,
+   "zoom": [
+    1.02,
+    1.08
+   ],
+   "focusX": 0.5,
+   "focusY": 0.4,
+   "grade": "zscale=pin=bt2020:p=bt709:min=bt2020nc:m=bt709:tin=arib-std-b67:t=arib-std-b67:rin=tv:r=tv,format=yuv420p,eq=contrast=1.16:saturation=0.9:gamma=0.96,colorbalance=rs=-0.02:bs=0.03:rm=0.02:gm=0.0:bm=-0.02:rh=0.02:bh=-0.02,curves=master='0/0 0.1/0.06 0.5/0.48 0.9/0.94 1/1',vignette=angle=PI/5",
+   "tin": {
+    "type": "whip",
+    "dir": "right"
+   }
+  },
+  {
+   "src": "m_CCA8ED09",
+   "in": 7.0,
+   "out": 8.6,
+   "zoom": [
+    1.0,
+    1.06
+   ],
+   "focusX": 0.5,
+   "focusY": 0.45,
+   "grade": "zscale=pin=bt2020:p=bt709:min=bt2020nc:m=bt709:tin=arib-std-b67:t=arib-std-b67:rin=tv:r=tv,format=yuv420p,eq=contrast=1.08:saturation=1.06:gamma=1.12:brightness=0.015,colorbalance=rs=-0.03:bs=0.05:rm=0.01:bm=0.0:rh=0.02:bh=-0.01,curves=master='0/0 0.06/0.05 0.3/0.32 0.7/0.74 1/1',vignette=angle=PI/5",
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  },
+  {
+   "src": "m_bg_night",
+   "in": 0.0,
+   "out": 3.23333,
+   "freeze": true,
+   "zoom": 1.0,
+   "tin": {
+    "type": "zoom",
+    "flash": true
+   }
+  },
+  {
+   "src": "m_IMG_8385",
+   "in": 0.3,
+   "out": 2.2,
+   "zoom": [
+    1.04,
+    1.1
+   ],
+   "focusX": 0.5,
+   "focusY": 0.38,
+   "grade": "format=yuv420p,eq=contrast=1.12:saturation=1.0:gamma=0.97,colorbalance=rm=0.02:bm=-0.02:rh=0.02:bh=-0.02,curves=master='0/0 0.12/0.08 0.5/0.5 0.88/0.93 1/1',vignette=angle=PI/6",
+   "tin": {
+    "type": "whip",
+    "dir": "right"
+   }
+  }
+ ],
+ "overlays": [
+  {
+   "type": "iconPop",
+   "at": 2.533,
+   "dur": 1.4,
+   "items": [
+    {
+     "icon": "Dumbbell",
+     "mark": "x",
+     "label": "غلط"
+    }
+   ],
+   "top": 0.56,
+   "size": 170
+  },
+  {
+   "type": "screenCard",
+   "at": 4.0333,
+   "dur": 6.11,
+   "src": "m_workout",
+   "plate": true,
+   "backdrop": "none",
+   "entrance": "tilt",
+   "width": 800,
+   "top": 150,
+   "region": {
+    "x": 0.0,
+    "y": 0.035,
+    "w": 1.0,
+    "h": 0.72
+   },
+   "segments": [
+    {
+     "in": 3.6,
+     "rate": 1,
+     "dur": 6.11
+    }
+   ],
+   "taps": [],
+   "highlights": [
+    {
+     "at": 2.6,
+     "dur": 2.4,
+     "box": {
+      "x": 0.05,
+      "y": 0.32,
+      "w": 0.9,
+      "h": 0.62
+     }
+    }
+   ]
+  },
+  {
+   "type": "iconPop",
+   "at": 13.5,
+   "dur": 1.413,
+   "items": [
+    {
+     "icon": "Mic",
+     "label": "بصوتي"
+    }
+   ],
+   "top": 0.62,
+   "size": 170
+  },
+  {
+   "type": "screenCard",
+   "at": 15.0,
+   "dur": 3.22,
+   "src": "m_workout",
+   "plate": true,
+   "backdrop": "none",
+   "entrance": "flat",
+   "width": 800,
+   "top": 150,
+   "region": {
+    "x": 0.0,
+    "y": 0.035,
+    "w": 1.0,
+    "h": 0.72
+   },
+   "segments": [
+    {
+     "in": 19.9,
+     "rate": 1,
+     "dur": 3.22
+    }
+   ],
+   "taps": [],
+   "highlights": []
+  },
+  {
+   "type": "kineticTitle",
+   "at": 18.333,
+   "dur": 1.75,
+   "lines": [
+    {
+     "text": "كل تمرين",
+     "size": 110
+    },
+    {
+     "text": "مشروح بالفيديو",
+     "accent": true,
+     "size": 88
+    }
+   ],
+   "top": 0.64,
+   "motion": "smooth",
+   "depth": true
+  },
+  {
+   "type": "endCard",
+   "at": 20.1333,
+   "dur": 2.4,
+   "cta": "OSM Coach Osama",
+   "reveal": "wipe",
+   "image": "brand/end/osm-end-photo.jpg"
+  }
+ ],
+ "shakes": [
+  {
+   "at": 4.033,
+   "amp": 0.4
+  },
+  {
+   "at": 15.0,
+   "amp": 0.4
+  },
+  {
+   "at": 20.133,
+   "amp": 0.6
+  }
+ ],
+ "pulses": [],
+ "flashes": [],
+ "sfx": {
+  "cues": [
+   {
+    "at": 2.6133,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 4.0333,
+    "sound": "reverse_hit",
+    "gain_db": -17,
+    "dur": 0.4
+   },
+   {
+    "at": 4.0333,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 10.1333,
+    "sound": "whip",
+    "gain_db": -12,
+    "dir": 1.0
+   },
+   {
+    "at": 10.1533,
+    "sound": "air",
+    "gain_db": -21
+   },
+   {
+    "at": 11.8,
+    "sound": "whip",
+    "gain_db": -12,
+    "dir": 1.0
+   },
+   {
+    "at": 11.82,
+    "sound": "air",
+    "gain_db": -21
+   },
+   {
+    "at": 13.4,
+    "sound": "whip",
+    "gain_db": -12,
+    "dir": 1.0
+   },
+   {
+    "at": 13.42,
+    "sound": "air",
+    "gain_db": -21
+   },
+   {
+    "at": 13.58,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 15.0,
+    "sound": "reverse_hit",
+    "gain_db": -17,
+    "dur": 0.4
+   },
+   {
+    "at": 15.0,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 18.2333,
+    "sound": "whip",
+    "gain_db": -12,
+    "dir": 1.0
+   },
+   {
+    "at": 18.2533,
+    "sound": "air",
+    "gain_db": -21
+   },
+   {
+    "at": 18.3333,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 18.3833,
+    "sound": "impact",
+    "gain_db": -20
+   },
+   {
+    "at": 20.1333,
+    "sound": "reverse_hit",
+    "gain_db": -12,
+    "dur": 0.7
+   },
+   {
+    "at": 20.1333,
+    "sound": "boom",
+    "gain_db": -7
+   },
+   {
+    "at": 20.6333,
+    "sound": "click",
+    "gain_db": -17
+   }
+  ]
+ },
+ "music": {
+  "src": "work/music/music.wav",
+  "gain_db": -9
+ },
+ "tail": 2.4,
+ "textPlate": "#56A0FB",
+ "voiceTrack": "work/vo.wav",
+ "dialogueFx": "highpass=f=70,acompressor=threshold=0.1:ratio=2.5:attack=8:release=120:makeup=1.5",
+ "dialogueLufs": -16.0,
+ "captions": {
+  "wordsFile": "work/vo.words.json",
+  "outputTime": true,
+  "style": "plate",
+  "karaoke": true,
+  "maxWords": 3,
+  "maxChars": 22,
+  "keywords": [
+   "غلط",
+   "OSM",
+   "بالفيديو",
+   "بصوتي",
+   "لوحدك"
+  ],
+  "replace": {
+   "الأونلاين": "Online",
+   "كوتشنج": "Coaching",
+   "التبس": "Tips"
+  },
+  "zones": [
+   {
+    "at": 3.983,
+    "dur": 6.16,
+    "top": 0.739
+   },
+   {
+    "at": 14.95,
+    "dur": 3.27,
+    "top": 0.739
+   },
+   {
+    "at": 0,
+    "dur": 20.143,
+    "top": 0.7
+   }
+  ]
+ }
+}

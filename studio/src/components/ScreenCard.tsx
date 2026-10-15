@@ -7,7 +7,7 @@ import { Hairlines } from "./Hairlines";
 type Box = { x: number; y: number; w: number; h: number };
 type Props = {
   src: string; dur: number; segments: ScreenSegment[];
-  region?: Box; width?: number; top?: number; srcW?: number; srcH?: number;
+  region?: Box; width?: number; top?: number; srcW?: number; srcH?: number; backdrop?: "blur" | "none";
   taps?: { at: number; x: number; y: number }[];
   highlights?: { at: number; dur: number; box: Box }[];
   frames?: { count: number; fps: number };
@@ -25,7 +25,7 @@ const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
  */
 export const ScreenCard: React.FC<Props> = ({
   src, dur, segments, region = { x: 0, y: 0, w: 1, h: 1 }, width = 920, top = 300, srcW = 1080, srcH = 1920,
-  taps = [], highlights = [], frames, entrance = "flat", checks = false, masks = [],
+  taps = [], highlights = [], frames, entrance = "flat", checks = false, masks = [], backdrop = "blur",
 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -94,14 +94,15 @@ export const ScreenCard: React.FC<Props> = ({
   return (
     <AbsoluteFill>
       <AbsoluteFill style={{ opacity: p }}>
-      {/* blurs whatever is underneath (the speaker keeps talking behind the card); blur deepens as the card arrives */}
-      <AbsoluteFill
+      {/* blurs whatever is underneath (the speaker keeps talking behind the card); blur deepens as the card arrives.
+          backdrop "none": nothing behind the card (Coach Osama 2026-10-15: no blur / haze; promos put it on a Night plate) */}
+      {backdrop === "none" ? null : <AbsoluteFill
         style={{
           backdropFilter: `blur(${34 * blurK}px) brightness(${1 - 0.62 * blurK}) saturate(0.85)`,
           WebkitBackdropFilter: `blur(${34 * blurK}px) brightness(${1 - 0.62 * blurK}) saturate(0.85)`,
           background: `rgba(10,15,22,${0.35 * blurK})`,
         }}
-      />
+      />}
       <Hairlines />
       </AbsoluteFill>
       <div style={{ position: "absolute", inset: 0, opacity: tilt ? cardOpacity : p, perspective: tilt ? 1800 : undefined, perspectiveOrigin: "50% 30%" }}>

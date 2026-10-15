@@ -52,7 +52,7 @@ const renderOverlay = (o: Overlay, plate?: string) => {
     case "trackedLabel":
       return <TrackedLabel text={o.text} sub={o.sub} keys={o.keys} dur={o.dur} side={o.side} plate={plate} />;
     case "screenCard":
-      return <ScreenCard src={o.src} dur={o.dur} segments={o.segments} region={o.region} width={o.width} top={o.top} srcW={o.srcW} srcH={o.srcH} taps={o.taps} highlights={o.highlights} frames={o.frames} entrance={o.entrance} checks={o.checks} masks={o.masks} />;
+      return <ScreenCard src={o.src} dur={o.dur} segments={o.segments} region={o.region} width={o.width} top={o.top} srcW={o.srcW} srcH={o.srcH} taps={o.taps} highlights={o.highlights} frames={o.frames} entrance={o.entrance} checks={o.checks} masks={o.masks} backdrop={o.backdrop} />;
   }
 };
 
@@ -107,7 +107,7 @@ export const ReelEdit: React.FC<{ edit: Edit }> = ({ edit }) => {
       if (!edit.captions) return [];
       // caption position changes at zone edges, and captions must not straddle a card's entrance
       const breaks = (edit.captions.zones ?? []).flatMap((z) => [z.at, z.at + z.dur]);
-      return groupCaptions(edit.captions.words, edit.clips, edit.captions.maxWords, edit.captions.maxChars, breaks);
+      return groupCaptions(edit.captions.words, edit.clips, edit.captions.maxWords, edit.captions.maxChars, breaks, edit.captions.outputTime);
     },
     [edit],
   );

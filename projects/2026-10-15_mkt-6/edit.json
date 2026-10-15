@@ -1,0 +1,282 @@
+{
+ "title": "OSM promo 6: calorie calculator",
+ "fps": 30,
+ "width": 1080,
+ "height": 1920,
+ "media": {
+  "m_IMG_7538": "../2026-10-15_gym-2/source/IMG_7538.MOV",
+  "m_main": "../2026-10-12_calorie-calculator/source/main.mp4",
+  "m_bg_night": "../_mkt/bg_night.mp4",
+  "m_calculator": "../_mkt/app/calculator.mp4"
+ },
+ "plates": {
+  "grade": null,
+  "sharpen": "cas=strength=0.3"
+ },
+ "clips": [
+  {
+   "src": "m_IMG_7538",
+   "in": 1.0,
+   "out": 2.7,
+   "zoom": [
+    1.0,
+    1.08
+   ],
+   "focusX": 0.5,
+   "focusY": 0.45,
+   "grade": "zscale=pin=bt2020:p=bt709:min=bt2020nc:m=bt709:tin=arib-std-b67:t=arib-std-b67:rin=tv:r=tv,format=yuv420p,eq=contrast=1.16:saturation=0.9:gamma=0.96,colorbalance=rs=-0.02:bs=0.03:rm=0.02:gm=0.0:bm=-0.02:rh=0.02:bh=-0.02,curves=master='0/0 0.1/0.06 0.5/0.48 0.9/0.94 1/1',vignette=angle=PI/5"
+  },
+  {
+   "src": "m_main",
+   "in": 12.26667,
+   "out": 14.8,
+   "zoom": [
+    1.0,
+    1.04
+   ],
+   "focusY": 0.4,
+   "grade": "colorbalance=rs=-0.02:bs=0.025:rm=-0.05:bm=0.015:rh=0.02:gh=0.005:bh=-0.025,curves=all='0/0 0.25/0.235 0.5/0.5 0.75/0.765 1/1'",
+   "tin": {
+    "type": "zoom",
+    "flash": true
+   }
+  },
+  {
+   "src": "m_bg_night",
+   "in": 0.0,
+   "out": 3.06667,
+   "freeze": true,
+   "zoom": 1.0,
+   "tin": {
+    "type": "whip",
+    "dir": "right"
+   }
+  },
+  {
+   "src": "m_bg_night",
+   "in": 0.0,
+   "out": 4.6,
+   "freeze": true,
+   "zoom": 1.0
+  }
+ ],
+ "overlays": [
+  {
+   "type": "kineticTitle",
+   "at": 0.1,
+   "dur": 1.55,
+   "lines": [
+    {
+     "text": "جسمك محتاج",
+     "size": 96
+    },
+    {
+     "text": "كام Calorie؟",
+     "accent": true,
+     "size": 110
+    }
+   ],
+   "top": 0.66,
+   "motion": "smooth",
+   "depth": true
+  },
+  {
+   "type": "screenCard",
+   "at": 4.2333,
+   "dur": 3.08,
+   "src": "m_calculator",
+   "plate": true,
+   "backdrop": "none",
+   "entrance": "tilt",
+   "width": 800,
+   "top": 150,
+   "region": {
+    "x": 0.0,
+    "y": 0.035,
+    "w": 1.0,
+    "h": 0.72
+   },
+   "segments": [
+    {
+     "in": 3.1,
+     "rate": 1,
+     "dur": 3.08
+    }
+   ],
+   "taps": [
+    {
+     "at": 1.045,
+     "x": 0.5,
+     "y": 0.6081
+    },
+    {
+     "at": 1.605,
+     "x": 0.5,
+     "y": 0.7785
+    },
+    {
+     "at": 2.288,
+     "x": 0.5,
+     "y": 0.949
+    }
+   ],
+   "highlights": []
+  },
+  {
+   "type": "screenCard",
+   "at": 7.3,
+   "dur": 4.59,
+   "src": "m_calculator",
+   "plate": true,
+   "backdrop": "none",
+   "entrance": "flat",
+   "width": 800,
+   "top": 150,
+   "region": {
+    "x": 0.0,
+    "y": 0.035,
+    "w": 1.0,
+    "h": 0.72
+   },
+   "segments": [
+    {
+     "in": 14.2,
+     "rate": 1,
+     "dur": 4.59
+    }
+   ],
+   "taps": [],
+   "highlights": []
+  },
+  {
+   "type": "endCard",
+   "at": 11.9,
+   "dur": 2.4,
+   "cta": "OSM Coach Osama",
+   "reveal": "wipe",
+   "image": "brand/end/osm-end-photo.jpg"
+  }
+ ],
+ "shakes": [
+  {
+   "at": 1.7,
+   "amp": 0.4
+  },
+  {
+   "at": 11.9,
+   "amp": 0.6
+  }
+ ],
+ "pulses": [],
+ "flashes": [],
+ "sfx": {
+  "cues": [
+   {
+    "at": 0.1,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 0.15,
+    "sound": "impact",
+    "gain_db": -20
+   },
+   {
+    "at": 1.7,
+    "sound": "reverse_hit",
+    "gain_db": -17,
+    "dur": 0.4
+   },
+   {
+    "at": 1.7,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 4.2333,
+    "sound": "whip",
+    "gain_db": -12,
+    "dir": 1.0
+   },
+   {
+    "at": 4.2533,
+    "sound": "air",
+    "gain_db": -21
+   },
+   {
+    "at": 5.2783,
+    "sound": "click",
+    "gain_db": -18
+   },
+   {
+    "at": 5.8383,
+    "sound": "click",
+    "gain_db": -18
+   },
+   {
+    "at": 6.5213,
+    "sound": "click",
+    "gain_db": -18
+   },
+   {
+    "at": 11.9,
+    "sound": "reverse_hit",
+    "gain_db": -12,
+    "dur": 0.7
+   },
+   {
+    "at": 11.9,
+    "sound": "boom",
+    "gain_db": -7
+   },
+   {
+    "at": 12.4,
+    "sound": "click",
+    "gain_db": -17
+   }
+  ]
+ },
+ "music": {
+  "src": "work/music/music.wav",
+  "gain_db": -9
+ },
+ "tail": 2.4,
+ "textPlate": "#56A0FB",
+ "voiceTrack": "work/vo.wav",
+ "dialogueFx": "highpass=f=70,acompressor=threshold=0.1:ratio=2.5:attack=8:release=120:makeup=1.5",
+ "dialogueLufs": -16.0,
+ "captions": {
+  "wordsFile": "work/vo.words.json",
+  "outputTime": true,
+  "style": "plate",
+  "karaoke": true,
+  "maxWords": 3,
+  "maxChars": 22,
+  "keywords": [
+   "Calories",
+   "Calculator",
+   "free",
+   "جسمك"
+  ],
+  "replace": {
+   "تتحافظ": "تحافظ"
+  },
+  "zones": [
+   {
+    "at": 4.183,
+    "dur": 3.13,
+    "top": 0.739
+   },
+   {
+    "at": 7.25,
+    "dur": 4.64,
+    "top": 0.739
+   },
+   {
+    "at": 0,
+    "dur": 11.91,
+    "top": 0.7
+   }
+  ]
+ }
+}

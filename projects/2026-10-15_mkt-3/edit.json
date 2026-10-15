@@ -1,0 +1,450 @@
+{
+ "title": "OSM promo 3: swap it",
+ "fps": 30,
+ "width": 1080,
+ "height": 1920,
+ "media": {
+  "m_coverr_chicken_skewer_1416": "../_mkt/stock/coverr-chicken-skewer-1416.mp4",
+  "m_bg_night": "../_mkt/bg_night.mp4",
+  "m_diet": "../_mkt/app/diet.mp4",
+  "m_coverr_shrimps_on_the_barbecue_2876": "../_mkt/stock/coverr-shrimps-on-the-barbecue-2876.mp4",
+  "m_coverr_squeezing_lemon_on_fish_1227": "../_mkt/stock/coverr-squeezing-lemon-on-fish-1227.mp4",
+  "m_coverr_grilled_steak_8580": "../_mkt/stock/coverr-grilled-steak-8580.mp4",
+  "m_coverr_grilled_chicken_and_potatoes_1400": "../_mkt/stock/coverr-grilled-chicken-and-potatoes-1400.mp4"
+ },
+ "plates": {
+  "grade": null,
+  "sharpen": "cas=strength=0.3"
+ },
+ "clips": [
+  {
+   "src": "m_coverr_chicken_skewer_1416",
+   "in": 4.0,
+   "out": 6.0,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "focusX": 0.62,
+   "focusY": 0.5,
+   "grade": "eq=contrast=1.05:saturation=0.95:gamma=0.99,colorbalance=rs=-0.015:bs=0.02:rm=-0.01:bm=0.005:rh=0.012:gh=0.004:bh=-0.012,curves=master='0/0 0.22/0.2 0.78/0.8 1/1',vignette=angle=PI/7"
+  },
+  {
+   "src": "m_bg_night",
+   "in": 0.0,
+   "out": 3.5,
+   "freeze": true,
+   "zoom": 1.0,
+   "tin": {
+    "type": "zoom",
+    "flash": true
+   }
+  },
+  {
+   "src": "m_coverr_shrimps_on_the_barbecue_2876",
+   "in": 6.0,
+   "out": 7.33333,
+   "zoom": [
+    1.05,
+    1.14
+   ],
+   "focusX": 0.5,
+   "focusY": 0.5,
+   "grade": "eq=contrast=1.05:saturation=0.95:gamma=0.99,colorbalance=rs=-0.015:bs=0.02:rm=-0.01:bm=0.005:rh=0.012:gh=0.004:bh=-0.012,curves=master='0/0 0.22/0.2 0.78/0.8 1/1',vignette=angle=PI/7",
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  },
+  {
+   "src": "m_coverr_squeezing_lemon_on_fish_1227",
+   "in": 3.0,
+   "out": 4.33333,
+   "zoom": [
+    1.05,
+    1.14
+   ],
+   "focusX": 0.5,
+   "focusY": 0.5,
+   "grade": "eq=contrast=1.05:saturation=0.95:gamma=0.99,colorbalance=rs=-0.015:bs=0.02:rm=-0.01:bm=0.005:rh=0.012:gh=0.004:bh=-0.012,curves=master='0/0 0.22/0.2 0.78/0.8 1/1',vignette=angle=PI/7",
+   "tin": {
+    "type": "whip",
+    "dir": "right"
+   }
+  },
+  {
+   "src": "m_coverr_grilled_steak_8580",
+   "in": 2.0,
+   "out": 3.33333,
+   "zoom": [
+    1.05,
+    1.14
+   ],
+   "focusX": 0.4,
+   "focusY": 0.5,
+   "grade": "eq=contrast=1.05:saturation=0.95:gamma=0.99,colorbalance=rs=-0.015:bs=0.02:rm=-0.01:bm=0.005:rh=0.012:gh=0.004:bh=-0.012,curves=master='0/0 0.22/0.2 0.78/0.8 1/1',vignette=angle=PI/7",
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  },
+  {
+   "src": "m_bg_night",
+   "in": 0.0,
+   "out": 3.0,
+   "freeze": true,
+   "zoom": 1.0,
+   "tin": {
+    "type": "zoom",
+    "flash": true
+   }
+  },
+  {
+   "src": "m_coverr_grilled_chicken_and_potatoes_1400",
+   "in": 3.0,
+   "out": 5.0,
+   "zoom": [
+    1.0,
+    1.08
+   ],
+   "focusX": 0.5,
+   "focusY": 0.5,
+   "grade": "eq=contrast=1.05:saturation=0.95:gamma=0.99,colorbalance=rs=-0.015:bs=0.02:rm=-0.01:bm=0.005:rh=0.012:gh=0.004:bh=-0.012,curves=master='0/0 0.22/0.2 0.78/0.8 1/1',vignette=angle=PI/7",
+   "tin": {
+    "type": "whip",
+    "dir": "right"
+   }
+  }
+ ],
+ "overlays": [
+  {
+   "type": "kineticTitle",
+   "at": 0.1,
+   "dur": 1.85,
+   "lines": [
+    {
+     "text": "زهقت من",
+     "size": 100
+    },
+    {
+     "text": "الفراخ؟",
+     "accent": true,
+     "size": 130
+    }
+   ],
+   "top": 0.6,
+   "motion": "smooth",
+   "depth": true
+  },
+  {
+   "type": "screenCard",
+   "at": 2.0,
+   "dur": 3.5,
+   "src": "m_diet",
+   "plate": true,
+   "backdrop": "none",
+   "entrance": "tilt",
+   "width": 800,
+   "top": 150,
+   "region": {
+    "x": 0.0,
+    "y": 0.16,
+    "w": 1.0,
+    "h": 0.72
+   },
+   "segments": [
+    {
+     "in": 6.6,
+     "rate": 1,
+     "dur": 3.5
+    }
+   ],
+   "taps": [
+    {
+     "at": 1.194,
+     "x": 0.7518,
+     "y": 0.4724
+    }
+   ],
+   "highlights": [
+    {
+     "at": 0.2,
+     "dur": 1.2,
+     "box": {
+      "x": 0.05,
+      "y": 0.37,
+      "w": 0.9,
+      "h": 0.09
+     }
+    }
+   ]
+  },
+  {
+   "type": "kineticTitle",
+   "at": 3.5,
+   "dur": 1.9,
+   "lines": [
+    {
+     "text": "بدّلها",
+     "accent": true,
+     "size": 120
+    }
+   ],
+   "top": 0.8,
+   "motion": "smooth",
+   "depth": true
+  },
+  {
+   "type": "lowerLabel",
+   "at": 5.6,
+   "dur": 1.2,
+   "title": "Shrimps · 120 g",
+   "top": 0.66,
+   "plate": true,
+   "eyebrow": "بديل · Cooked"
+  },
+  {
+   "type": "lowerLabel",
+   "at": 6.933,
+   "dur": 1.2,
+   "title": "Tilapia Fish · 120 g",
+   "top": 0.66,
+   "plate": true,
+   "eyebrow": "بديل · Cooked"
+  },
+  {
+   "type": "lowerLabel",
+   "at": 8.267,
+   "dur": 1.2,
+   "title": "Lean Red Steak · 120 g",
+   "top": 0.66,
+   "plate": true,
+   "eyebrow": "بديل · Cooked"
+  },
+  {
+   "type": "screenCard",
+   "at": 9.5,
+   "dur": 3.0,
+   "src": "m_diet",
+   "plate": true,
+   "backdrop": "none",
+   "entrance": "flat",
+   "width": 800,
+   "top": 150,
+   "region": {
+    "x": 0.0,
+    "y": 0.16,
+    "w": 1.0,
+    "h": 0.72
+   },
+   "segments": [
+    {
+     "in": 10.6,
+     "rate": 1,
+     "dur": 3.0
+    }
+   ],
+   "taps": [],
+   "highlights": []
+  },
+  {
+   "type": "lowerLabel",
+   "at": 9.7,
+   "dur": 2.7,
+   "title": "بدائل جاهزة في خطتك",
+   "top": 0.8,
+   "plate": true,
+   "eyebrow": "DIET · SWAP"
+  },
+  {
+   "type": "kineticTitle",
+   "at": 12.6,
+   "dur": 1.85,
+   "lines": [
+    {
+     "text": "بدّل",
+     "size": 120
+    },
+    {
+     "text": "والخطة ماشية",
+     "accent": true,
+     "size": 92
+    }
+   ],
+   "top": 0.6,
+   "motion": "smooth",
+   "depth": true
+  },
+  {
+   "type": "endCard",
+   "at": 14.5,
+   "dur": 2.4,
+   "cta": "OSM Coach Osama",
+   "reveal": "wipe",
+   "image": "brand/end/osm-end-photo.jpg"
+  }
+ ],
+ "shakes": [
+  {
+   "at": 2.0,
+   "amp": 0.4
+  },
+  {
+   "at": 9.5,
+   "amp": 0.4
+  },
+  {
+   "at": 14.5,
+   "amp": 0.6
+  }
+ ],
+ "pulses": [],
+ "flashes": [],
+ "sfx": {
+  "cues": [
+   {
+    "at": 0.1,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 0.15,
+    "sound": "impact",
+    "gain_db": -20
+   },
+   {
+    "at": 2.0,
+    "sound": "reverse_hit",
+    "gain_db": -17,
+    "dur": 0.4
+   },
+   {
+    "at": 2.0,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 3.194,
+    "sound": "click",
+    "gain_db": -18
+   },
+   {
+    "at": 3.5,
+    "sound": "whoosh_in",
+    "gain_db": -16
+   },
+   {
+    "at": 5.5,
+    "sound": "whip",
+    "gain_db": -12,
+    "dir": 1.0
+   },
+   {
+    "at": 5.52,
+    "sound": "air",
+    "gain_db": -21
+   },
+   {
+    "at": 5.6,
+    "sound": "click",
+    "gain_db": -18
+   },
+   {
+    "at": 6.8333,
+    "sound": "whip",
+    "gain_db": -12,
+    "dir": 1.0
+   },
+   {
+    "at": 6.8533,
+    "sound": "air",
+    "gain_db": -21
+   },
+   {
+    "at": 6.9333,
+    "sound": "click",
+    "gain_db": -18
+   },
+   {
+    "at": 8.1667,
+    "sound": "whip",
+    "gain_db": -12,
+    "dir": 1.0
+   },
+   {
+    "at": 8.1867,
+    "sound": "air",
+    "gain_db": -21
+   },
+   {
+    "at": 8.2667,
+    "sound": "click",
+    "gain_db": -18
+   },
+   {
+    "at": 9.5,
+    "sound": "reverse_hit",
+    "gain_db": -17,
+    "dur": 0.4
+   },
+   {
+    "at": 9.5,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 9.7,
+    "sound": "click",
+    "gain_db": -18
+   },
+   {
+    "at": 12.5,
+    "sound": "whip",
+    "gain_db": -12,
+    "dir": 1.0
+   },
+   {
+    "at": 12.52,
+    "sound": "air",
+    "gain_db": -21
+   },
+   {
+    "at": 12.6,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 12.65,
+    "sound": "impact",
+    "gain_db": -20
+   },
+   {
+    "at": 14.5,
+    "sound": "reverse_hit",
+    "gain_db": -12,
+    "dur": 0.7
+   },
+   {
+    "at": 14.5,
+    "sound": "boom",
+    "gain_db": -7
+   },
+   {
+    "at": 15.0,
+    "sound": "click",
+    "gain_db": -17
+   }
+  ]
+ },
+ "music": {
+  "src": "work/music/music.wav",
+  "gain_db": -5,
+  "duck_ratio": 1,
+  "voice_dip_db": 0
+ },
+ "tail": 2.4,
+ "textPlate": "#56A0FB",
+ "voiceTrack": "work/vo.wav",
+ "dialogueFx": "highpass=f=70,acompressor=threshold=0.1:ratio=2.5:attack=8:release=120:makeup=1.5",
+ "dialogueLufs": -16.0
+}
