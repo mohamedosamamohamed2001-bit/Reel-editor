@@ -14,7 +14,7 @@
    "type": "lowerLabel",
    "at": 5.82,
    "action": "move",
-   "top": 0.477,
+   "top": 0.498,
    "plate": true
   },
   {
@@ -24,35 +24,42 @@
    "action": "move",
    "top": 0.13,
    "align": "right",
-   "size": 144
+   "size": 142
   },
   {
    "index": 4,
    "type": "lowerLabel",
    "at": 14.664,
-   "action": "remove",
-   "why": "no room between his chin and the captions (-10px < 144px)"
+   "action": "move",
+   "top": 0.748,
+   "where": "under the captions",
+   "plate": true
   },
   {
    "index": 5,
    "type": "lowerLabel",
    "at": 15.376,
-   "action": "remove",
-   "why": "no room between his chin and the captions (-18px < 144px)"
+   "action": "move",
+   "top": 0.748,
+   "where": "under the captions",
+   "plate": true
   },
   {
    "index": 6,
    "type": "lowerLabel",
    "at": 16.72,
-   "action": "remove",
-   "why": "no room between his chin and the captions (-10px < 144px)"
+   "action": "move",
+   "top": 0.748,
+   "where": "under the captions",
+   "plate": true
   },
   {
    "index": 7,
    "type": "lowerLabel",
    "at": 20.777,
-   "action": "remove",
-   "why": "no room between his chin and the captions (142px < 144px)"
+   "action": "move",
+   "top": 0.585,
+   "plate": true
   },
   {
    "index": 9,
@@ -84,8 +91,11 @@
    "index": 13,
    "type": "stepBadge",
    "at": 51.7,
-   "action": "remove",
-   "why": "no room between his chin and the captions (182px < 232px)"
+   "action": "move",
+   "top": 0.756,
+   "scale": 0.901,
+   "where": "under the captions",
+   "plate": true
   },
   {
    "index": 14,
@@ -94,7 +104,7 @@
    "action": "move",
    "top": 0.13,
    "align": "right",
-   "size": 184
+   "size": 181
   },
   {
    "index": 15,
@@ -110,7 +120,7 @@
    "type": "lowerLabel",
    "at": 63.18,
    "action": "move",
-   "top": 0.569,
+   "top": 0.571,
    "plate": true
   },
   {
@@ -120,7 +130,7 @@
    "action": "move",
    "top": 0.13,
    "align": "right",
-   "size": 123
+   "size": 112
   },
   {
    "index": 18,
@@ -133,8 +143,11 @@
    "index": 19,
    "type": "stepBadge",
    "at": 81.14,
-   "action": "remove",
-   "why": "no room between his chin and the captions (170px < 232px)"
+   "action": "move",
+   "top": 0.756,
+   "scale": 0.901,
+   "where": "under the captions",
+   "plate": true
   },
   {
    "index": 20,
@@ -142,7 +155,8 @@
    "at": 83.56,
    "action": "move",
    "top": 0.13,
-   "align": "right"
+   "align": "right",
+   "size": 195
   },
   {
    "index": 21,
@@ -156,8 +170,11 @@
    "index": 22,
    "type": "stepBadge",
    "at": 92.42,
-   "action": "remove",
-   "why": "no room between his chin and the captions (166px < 232px)"
+   "action": "move",
+   "top": 0.756,
+   "scale": 0.901,
+   "where": "under the captions",
+   "plate": true
   }
  ],
  "captions": [

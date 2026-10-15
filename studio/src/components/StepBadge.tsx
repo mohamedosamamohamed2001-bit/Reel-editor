@@ -12,7 +12,9 @@ export const StepBadge: React.FC<{
   mark: string; label: string; sub?: string; dur: number; top?: number; side?: "left" | "right";
   /** solid caption-bar colour behind the label (Night text): for a label sitting on a light shirt, no shadow needed */
   plate?: string;
-}> = ({ mark, label, sub, dur, top = 0.17, side = "right", plate }) => {
+  /** uniform scale (e.g. 0.9 to fit under the captions), anchored at its top corner */
+  scale?: number;
+}> = ({ mark, label, sub, dur, top = 0.17, side = "right", plate, scale = 1 }) => {
   const frame = useCurrentFrame();
   const { fps, height } = useVideoConfig();
   const durF = Math.round(dur * fps);
@@ -35,7 +37,7 @@ export const StepBadge: React.FC<{
           flexDirection: side === "right" ? "row-reverse" : "row",
           alignItems: "center",
           gap: 26,
-          transform: `translateX(${dirSign * 260 * exit}px)`,
+          transform: `translateX(${dirSign * 260 * exit}px) scale(${scale})`, transformOrigin: `top ${side}`,
           
           opacity: 1 - exit,
         }}

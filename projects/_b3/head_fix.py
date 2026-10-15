@@ -27,44 +27,61 @@ def cap_top(edit, at, dur):
     return min(tops) * H
 
 
-def plan(edit, report):
+CAP_H = 130  # caption bar height (Arabic 66 px x 1.7 line + padding)
+SAFE_B = 0.14 * H  # theme safe.bottom (Reels UI)
+
+
+def plan(edit, report, orig, cur2orig):
+    """Where each blamed graphic goes, in this order: under his chin at full size -> under the caption bar at full
+    size -> (icons) under his chin scaled to >= 60 % -> (icons) beside his head -> (icons) under the captions scaled
+    -> removed. Sizes always refer to the ORIGINAL size from build.py (no compounding over passes)."""
     fixes = []
     for r in report:
         o = edit["overlays"][r["index"]]
+        o0 = orig[cur2orig[r["index"]]]
         key = {"index": r["index"], "type": o["type"], "at": o["at"]}
         if o["type"] == "kineticTitle":
             fixes.append(dict(key, action="remove", why="title on / above his head"))
             continue
         if r["box"] is None:
             continue  # never alone on screen: measured on the next pass, once the title next to it is gone
-        chin = r["chin_y"] * H + MARGIN
-        bottom_limit = cap_top(edit, o["at"], o["dur"]) - MARGIN
+        icon = o["type"] == "iconPop"
+        s0, s = o0.get("size", 1), o.get("size", 1)
+        g = s0 / s if icon else 1.0  # current box -> original-size box
         y0, y1 = r["box"][1], r["box"][3]
-        off = y0 - (o.get("top") or 0) * H  # drawn box vs. declared top (icon rings, float)
-        hb = y1 - y0
-        gap = bottom_limit - chin
+        off = (y0 - (o.get("top") or 0) * H) * g  # drawn box top vs. declared top, at original size
+        hb = (y1 - y0) * g
+        chin = r["chin_y"] * H + MARGIN
+        ct = cap_top(edit, o["at"], o["dur"])
+        gap = ct - MARGIN - chin
+        below = ct + CAP_H + MARGIN  # first free row under the caption bar
+        room_below = H - SAFE_B - below
+        plate = {"plate": True} if o["type"] in ("stepBadge", "lowerLabel") else {}  # white type on his shirt: solid bar
+        size = lambda k: {"size": int(s0 * k)} if icon else {}
         if hb <= gap:
-            fixes.append(dict(key, action="move", top=round((chin - off) / H, 3)))
-            if o["type"] in ("stepBadge", "lowerLabel"):  # white type now sits on his shirt: caption-bar plate, no shadow
-                fixes[-1]["plate"] = True
-        elif o["type"] == "iconPop" and gap / hb >= 0.6:
+            fixes.append(dict(key, action="move", top=round((chin - off) / H, 3), **plate, **size(1.0)))
+        elif hb <= room_below:
+            fixes.append(dict(key, action="move", top=round((below - off) / H, 3), where="under the captions", **plate, **size(1.0)))
+        elif icon and gap / hb >= 0.6:
             k = gap / hb
-            fixes.append(dict(key, action="move", top=round((chin - off * k) / H, 3), size=int(o["size"] * k)))
-        elif o["type"] == "iconPop" and side_fit(r):
-            # no room under his chin (tight close-up): beside his head, never over it or above it
-            k, align = side_fit(r)
-            f = dict(key, action="move", top=o["top"], align=align)
-            if k < 1:
-                f["size"] = int(o["size"] * k)
-            fixes.append(f)
+            fixes.append(dict(key, action="move", top=round((chin - off * k) / H, 3), **size(k)))
+        elif icon and side_fit(r, g):
+            k, align = side_fit(r, g)
+            fixes.append(dict(key, action="move", top=o0["top"], align=align, **size(k)))
+        elif o["type"] == "stepBadge" and room_below / hb >= 0.8:
+            k = round(room_below / hb, 3)
+            fixes.append(dict(key, action="move", top=round((below - off) / H, 3), scale=k, where="under the captions", **plate))
+        elif icon and room_below / hb >= 0.6:
+            k = room_below / hb
+            fixes.append(dict(key, action="move", top=round((below - off * k) / H, 3), where="under the captions", **size(k)))
         else:
-            fixes.append(dict(key, action="remove", why=f"no room between his chin and the captions ({gap:.0f}px < {hb}px)"))
+            fixes.append(dict(key, action="remove", why=f"no room under his chin ({gap:.0f}px) or the captions ({room_below:.0f}px) for {hb:.0f}px"))
     return fixes
 
 
-def side_fit(r):
-    """(scale, "left"|"right") if the icon row fits beside his head (scaled down to >= 60 %), else None."""
-    bw = r["box"][2] - r["box"][0]
+def side_fit(r, g=1.0):
+    """(scale, "left"|"right") if the icon row fits beside his head (scaled down to >= 60 % of the original), else None."""
+    bw = (r["box"][2] - r["box"][0]) * g
     best = None
     for align, space in (("left", r["head_x"][0] - MARGIN - SIDE + 20), ("right", W - SIDE + 20 - r["head_x"][1] - MARGIN)):
         k = min(1.0, space / bw)
@@ -127,6 +144,8 @@ def apply(overlays, fixes):
                 o["plate"] = True
             if "align" in f:
                 o["align"] = f["align"]
+            if "scale" in f:
+                o["scale"] = f["scale"]
             if f["action"] == "full":
                 o["mode"] = "full"
                 o.pop("width", None)
@@ -157,16 +176,17 @@ def main():
         apply_captions(props["edit"]["captions"], cf)
         new = []  # re-check the graphics against the new caption position on the next pass
     else:
-        new = plan(edit, report["overlays"]) + cards_on_face(edit, props, report.get("faces", []))
+        orig_p = P / "work/overlays.original.json"
+        orig0 = json.loads(orig_p.read_text())["edit"] if orig_p.exists() else edit["overlays"]
+        new = plan(edit, report["overlays"], orig0, cur2orig) + cards_on_face(edit, props, report.get("faces", []))
     for f in new:
         f["index"] = cur2orig[f["index"]]
         print(f"  {f['action']:6s} #{f['index']} {f['type']} @{f['at']}" + (f" top={f['top']}" if "top" in f else "") +
-              (f" size={f['size']}" if "size" in f else "") + (f"  ({f['why']})" if "why" in f else ""))
+              (f" size={f['size']}" if "size" in f else "") + (f" align={f['align']}" if "align" in f else "") +
+              (f" [{f['where']}]" if "where" in f else "") + (f"  ({f['why']})" if "why" in f else ""))
     # moves replace earlier moves of the same overlay
     keep = {f["index"]: f for f in log["fixes"]}
     for f in new:
-        if f["index"] in keep and keep[f["index"]].get("plate"):
-            f["plate"] = True
         keep[f["index"]] = f
     log["fixes"] = sorted(keep.values(), key=lambda f: f["index"])
     # re-apply everything to the original lists: edit.json keeps a pristine copy of the build's overlays

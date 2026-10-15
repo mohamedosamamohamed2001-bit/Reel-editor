@@ -367,7 +367,7 @@
    "at": 5.82,
    "dur": 2.58,
    "title": "TOTAL BODY WATER",
-   "top": 0.477,
+   "top": 0.498,
    "eyebrow": "01",
    "plate": true
   },
@@ -387,8 +387,44 @@
     }
    ],
    "top": 0.13,
-   "size": 144,
+   "size": 142,
    "align": "right"
+  },
+  {
+   "type": "lowerLabel",
+   "at": 14.664,
+   "dur": 0.516,
+   "title": "PROTEIN",
+   "top": 0.748,
+   "eyebrow": "02",
+   "plate": true
+  },
+  {
+   "type": "lowerLabel",
+   "at": 15.376,
+   "dur": 1.284,
+   "title": "MINERALS",
+   "top": 0.748,
+   "eyebrow": "المعادن",
+   "plate": true
+  },
+  {
+   "type": "lowerLabel",
+   "at": 16.72,
+   "dur": 3.66,
+   "title": "BODY FAT MASS",
+   "top": 0.748,
+   "eyebrow": "وزن الدهون · KG",
+   "plate": true
+  },
+  {
+   "type": "lowerLabel",
+   "at": 20.777,
+   "dur": 3.363,
+   "title": "WEIGHT",
+   "top": 0.585,
+   "eyebrow": "وزنك",
+   "plate": true
   },
   {
    "type": "lowerLabel",
@@ -456,6 +492,17 @@
    "align": "right"
   },
   {
+   "type": "stepBadge",
+   "at": 51.7,
+   "dur": 1.56,
+   "mark": "=",
+   "label": "نفس الفكرة في الدهون",
+   "top": 0.756,
+   "side": "right",
+   "plate": true,
+   "scale": 0.901
+  },
+  {
    "type": "iconPop",
    "at": 54.88,
    "dur": 2.3,
@@ -467,7 +514,7 @@
     }
    ],
    "top": 0.13,
-   "size": 184,
+   "size": 181,
    "align": "right"
   },
   {
@@ -490,7 +537,7 @@
    "at": 63.18,
    "dur": 1.14,
    "title": "INBODY SCORE",
-   "top": 0.569,
+   "top": 0.571,
    "eyebrow": "03",
    "plate": true
   },
@@ -510,8 +557,19 @@
     }
    ],
    "top": 0.13,
-   "size": 123,
+   "size": 112,
    "align": "right"
+  },
+  {
+   "type": "stepBadge",
+   "at": 81.14,
+   "dur": 1.2,
+   "mark": "✗",
+   "label": "مش معدل الحرق",
+   "top": 0.756,
+   "side": "right",
+   "plate": true,
+   "scale": 0.901
   },
   {
    "type": "iconPop",
@@ -546,6 +604,17 @@
    ],
    "top": 0.559,
    "size": 129
+  },
+  {
+   "type": "stepBadge",
+   "at": 92.42,
+   "dur": 3.347,
+   "mark": "✗",
+   "label": "مش سعراتك الاساسية",
+   "top": 0.756,
+   "side": "right",
+   "plate": true,
+   "scale": 0.901
   },
   {
    "type": "endCard",
