@@ -146,26 +146,6 @@
  },
  "overlays": [
   {
-   "type": "kineticTitle",
-   "at": 0.1,
-   "dur": 0.73,
-   "lines": [
-    {
-     "text": "PART 1",
-     "accent": true,
-     "size": 150
-    },
-    {
-     "text": "ازاي تخس"
-    }
-   ],
-   "top": 0.04,
-   "motion": "smooth",
-   "depth": true,
-   "eyebrow": "OSM · FAT LOSS",
-   "occlude": true
-  },
-  {
    "type": "iconPop",
    "at": 3.64,
    "dur": 1.08,
@@ -198,7 +178,7 @@
      "label": "Calories / اليوم"
     }
    ],
-   "top": 0.42,
+   "top": 0.438,
    "size": 195
   },
   {
@@ -213,22 +193,6 @@
    ]
   },
   {
-   "type": "kineticTitle",
-   "at": 14.1,
-   "dur": 1.62,
-   "lines": [
-    {
-     "text": "العنصر الاساسي",
-     "accent": true,
-     "size": 110
-    }
-   ],
-   "top": 0.05,
-   "motion": "smooth",
-   "depth": true,
-   "occlude": true
-  },
-  {
    "type": "visualCard",
    "src": "v_pizza",
    "at": 16.38,
@@ -240,26 +204,6 @@
    ]
   },
   {
-   "type": "kineticTitle",
-   "at": 18.14,
-   "dur": 2.24,
-   "lines": [
-    {
-     "text": "عجز",
-     "accent": true,
-     "size": 170
-    },
-    {
-     "text": "في السعرات",
-     "size": 90
-    }
-   ],
-   "top": 0.04,
-   "motion": "smooth",
-   "depth": true,
-   "occlude": true
-  },
-  {
    "type": "iconPop",
    "at": 20.38,
    "dur": 2.62,
@@ -269,7 +213,7 @@
      "label": "Part 2"
     }
    ],
-   "top": 0.42,
+   "top": 0.465,
    "size": 195
   },
   {

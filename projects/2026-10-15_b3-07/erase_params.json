@@ -1,1 +1,1 @@
-{"contrast": 55, "v_min": 190, "s_max": 80, "grow": 5, "full_width": false, "strokes": 6, "band": [0.48, 0.76], "colors": ["blue"]}
+{"contrast": 55, "v_min": 190, "s_max": 80, "grow": 5, "full_width": false, "strokes": 6, "band": [0.48, 0.76], "colors": ["blue"], "static_masks": [[1.98, 2.6, 1.95]]}
