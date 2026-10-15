@@ -88,24 +88,6 @@
    "eyebrow": "OSM · THROWBACK"
   },
   {
-   "type": "kineticTitle",
-   "at": 3.3,
-   "dur": 3.0,
-   "lines": [
-    {
-     "text": "كل رحلة"
-    },
-    {
-     "text": "ليها بداية",
-     "accent": true,
-     "size": 120
-    }
-   ],
-   "top": 0.06,
-   "motion": "smooth",
-   "depth": true
-  },
-  {
    "type": "iconPop",
    "at": 6.5,
    "dur": 2.967,
