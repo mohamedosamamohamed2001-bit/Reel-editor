@@ -13,8 +13,8 @@ w = S.w
 S.punch(11.5, 16.2)  # "مش عايزك عامل Arch ... هشد بطني" punch-in
 S.punch(45.0, 50.3)  # "أهم حاجة ... ما ينفعش كوعي يفتح"
 
-S.title(0.1, w("أول") - 0.2, [{"text": "STEPS", "size": 170}, {"text": "خطوة بخطوة", "accent": True, "size": 100}],
-        eyebrow="OSM · BAND", top=0.62)
+S.title(0.1, w("أول") - 0.2, [{"text": "STEPS", "size": 150}, {"text": "خطوة بخطوة", "accent": True, "size": 90}],
+        eyebrow="OSM · BAND", top=0.47)
 S.label(w("بشد"), w("كوعي") - w("بشد") - 0.1, "RESISTANCE BAND", eyebrow="الـBand", top=0.56)
 S.badge(w("كوعي"), w("ومش") - w("كوعي") - 0.05, "1", "الكوع والإيد لبرا", top=0.55, side="right")
 S.badge(w("ومش"), w("هشد") - w("ومش"), "✗", "Arch", top=0.55, side="right")
