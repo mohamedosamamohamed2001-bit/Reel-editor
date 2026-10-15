@@ -205,26 +205,6 @@
  },
  "overlays": [
   {
-   "type": "kineticTitle",
-   "at": 0.05,
-   "dur": 1.9,
-   "lines": [
-    {
-     "text": "BICEPS"
-    },
-    {
-     "text": "VS HAMMER",
-     "accent": true,
-     "size": 120
-    }
-   ],
-   "top": 0.03,
-   "motion": "smooth",
-   "depth": true,
-   "eyebrow": "مختلفة؟",
-   "occlude": true
-  },
-  {
    "type": "visualCard",
    "src": "v_arm103",
    "at": 2.12,
@@ -264,7 +244,7 @@
      "text": "ELBOW FLEXION"
     }
    ],
-   "top": 0.13,
+   "top": 0.335,
    "row": false
   },
   {
@@ -272,8 +252,9 @@
    "at": 6.0,
    "dur": 4.8,
    "title": "SUPINATION",
-   "top": 0.13,
-   "eyebrow": "الوضع ده"
+   "top": 0.778,
+   "eyebrow": "الوضع ده",
+   "plate": true
   },
   {
    "type": "stepBadge",
@@ -281,16 +262,18 @@
    "dur": 2.2,
    "mark": "✓",
    "label": "Biceps",
-   "top": 0.14,
-   "side": "right"
+   "top": 0.36,
+   "side": "right",
+   "plate": true
   },
   {
    "type": "lowerLabel",
    "at": 13.0,
    "dur": 1.66,
    "title": "MID PRONE",
-   "top": 0.13,
-   "eyebrow": "الوضع ده"
+   "top": 0.358,
+   "eyebrow": "الوضع ده",
+   "plate": true
   },
   {
    "type": "visualCard",
@@ -303,40 +286,6 @@
     1.0,
     1.05
    ]
-  },
-  {
-   "type": "kineticTitle",
-   "at": 18.4,
-   "dur": 3.4,
-   "lines": [
-    {
-     "text": "HAMMER",
-     "accent": true,
-     "size": 150
-    }
-   ],
-   "top": 0.03,
-   "motion": "smooth",
-   "depth": true,
-   "eyebrow": "عضلة ال",
-   "occlude": true
-  },
-  {
-   "type": "kineticTitle",
-   "at": 21.8,
-   "dur": 3.2,
-   "lines": [
-    {
-     "text": "الفرق",
-     "accent": true,
-     "size": 160
-    }
-   ],
-   "top": 0.03,
-   "motion": "smooth",
-   "depth": true,
-   "eyebrow": "كده انت عرفت",
-   "occlude": true
   },
   {
    "type": "endCard",

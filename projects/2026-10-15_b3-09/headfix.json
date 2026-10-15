@@ -1,0 +1,59 @@
+{
+ "original_overlays": 11,
+ "fixes": [
+  {
+   "index": 0,
+   "type": "kineticTitle",
+   "at": 0.05,
+   "action": "remove",
+   "why": "title on / above his head"
+  },
+  {
+   "index": 3,
+   "type": "checklist",
+   "at": 3.86,
+   "action": "move",
+   "top": 0.335
+  },
+  {
+   "index": 4,
+   "type": "lowerLabel",
+   "at": 6.0,
+   "action": "move",
+   "top": 0.778,
+   "where": "under the captions",
+   "plate": true
+  },
+  {
+   "index": 5,
+   "type": "stepBadge",
+   "at": 10.8,
+   "action": "move",
+   "top": 0.36,
+   "plate": true
+  },
+  {
+   "index": 6,
+   "type": "lowerLabel",
+   "at": 13.0,
+   "action": "move",
+   "top": 0.358,
+   "plate": true
+  },
+  {
+   "index": 8,
+   "type": "kineticTitle",
+   "at": 18.4,
+   "action": "remove",
+   "why": "title on / above his head"
+  },
+  {
+   "index": 9,
+   "type": "kineticTitle",
+   "at": 21.8,
+   "action": "remove",
+   "why": "title on / above his head"
+  }
+ ],
+ "captions": []
+}
