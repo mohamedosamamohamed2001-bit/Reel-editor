@@ -234,10 +234,11 @@ def main():
     P = Path(a.project)
     cov_src = json.loads(Path(a.covers).read_text()) if a.covers else json.loads((P / "edit.json").read_text()).get("covers", [])
     covers = [c for c in cov_src if c.get("src", "main") == "main"]
-    p = dict(PARAMS, **(json.loads(a.params) if a.params else {}))
+    p = dict(PARAMS)
     pf = P / "erase_params.json"
     if pf.exists():
         p.update(json.loads(pf.read_text()))
+    p.update(json.loads(a.params) if a.params else {})  # command-line overrides win over the project file
     src = P / a.src
     W, H, num, den, nb = probe(src)
     p["_scale"] = W / 720
@@ -263,6 +264,14 @@ def main():
                            "-r", f"{num}/{den}", "-i", "-", "-c:v", "libx264", "-preset", "medium", "-crf", "10",
                            "-pix_fmt", "yuv420p", "-color_primaries", "bt709", "-color_trc", "bt709", "-colorspace", "bt709",
                            "-movflags", "+faststart", str(dst)], stdin=subprocess.PIPE)
+    # static_masks [[t0, t1, t_ref], ...]: an old caption that sits still from t0 to t1 is erased in every frame of that
+    # span with the glyph mask measured at t_ref (a frame where nothing crosses it), e.g. when his hand moves through
+    # the words and the per-frame shape test drops them (b3-01, 26.3-28.1 s)
+    ref_masks = []
+    for t0, t1, tr in p.get("static_masks", []):
+        fr = list(read_frames(src, W, H, ss=max(0.0, tr - D / fps), count=2 * D + 1))
+        cs = [cand_at(f, tr + (k - D) / fps) for k, f in enumerate(fr)]
+        ref_masks.append((t0, t1, final_mask(cs[0], cs[D], cs[-1], p)))
     frames, cands = [], []
     zero = np.zeros((H, W), np.uint8)
     i = touched = written = 0
@@ -280,6 +289,10 @@ def main():
             static = cv2.dilate(static.astype(np.uint8), np.ones((5, 5), np.uint8)) > 0
             cur = cur * (~static)
         m = final_mask(prev, cur.astype(np.uint8), nxt, p)
+        tj = (i - len(frames) + k) / fps
+        for t0, t1, rm in ref_masks:
+            if t0 <= tj < t1:
+                m = np.maximum(m, rm)
         touched += bool(m.any())
         wr.stdin.write(np.ascontiguousarray(inpaint(frames[k], m)).tobytes())
         written += 1
