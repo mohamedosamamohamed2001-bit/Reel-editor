@@ -1,0 +1,548 @@
+{
+ "title": "OSM tip: band exercise steps",
+ "fps": 30,
+ "width": 1080,
+ "height": 1920,
+ "media": {
+  "main": "source/original.mov",
+  "v_shoulder_anatomy": "work/visuals/shoulder_anatomy.jpg"
+ },
+ "dialogueFx": "highpass=f=70,acompressor=threshold=0.1:ratio=2.5:attack=8:release=120:makeup=1.5",
+ "dialogueLufs": -16.0,
+ "plates": {
+  "grade": "format=yuv420p,eq=contrast=1.05:saturation=0.95:gamma=0.99,colorbalance=rs=-0.015:bs=0.02:rm=-0.01:bm=0.005:rh=0.012:gh=0.004:bh=-0.012,curves=master='0/0 0.22/0.2 0.78/0.8 1/1',vignette=angle=PI/7",
+  "sharpen": "cas=strength=0.22"
+ },
+ "clips": [
+  {
+   "src": "main",
+   "in": 0.0,
+   "out": 11.5,
+   "focusY": 0.4,
+   "focusX": 0.5,
+   "zoom": [
+    1.0,
+    1.04
+   ]
+  },
+  {
+   "src": "main",
+   "in": 11.5,
+   "out": 16.2,
+   "focusY": 0.4,
+   "focusX": 0.5,
+   "zoom": [
+    1.1,
+    1.13
+   ],
+   "tin": {
+    "type": "zoom"
+   }
+  },
+  {
+   "src": "main",
+   "in": 16.2,
+   "out": 26.69,
+   "focusY": 0.4,
+   "focusX": 0.5,
+   "zoom": [
+    1.0,
+    1.04
+   ],
+   "tin": {
+    "type": "zoom"
+   }
+  },
+  {
+   "src": "main",
+   "in": 28.96,
+   "out": 45.0,
+   "focusY": 0.4,
+   "focusX": 0.5,
+   "zoom": [
+    1.08,
+    1.11
+   ],
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  },
+  {
+   "src": "main",
+   "in": 45.0,
+   "out": 50.3,
+   "focusY": 0.4,
+   "focusX": 0.5,
+   "zoom": [
+    1.1,
+    1.13
+   ],
+   "tin": {
+    "type": "zoom"
+   }
+  },
+  {
+   "src": "main",
+   "in": 50.3,
+   "out": 55.8,
+   "focusY": 0.4,
+   "focusX": 0.5,
+   "zoom": [
+    1.08,
+    1.11
+   ],
+   "tin": {
+    "type": "zoom"
+   }
+  }
+ ],
+ "captions": {
+  "wordsFile": "work/tx/aligned.words.json",
+  "style": "plate",
+  "karaoke": true,
+  "maxWords": 3,
+  "maxChars": 22,
+  "keywords": [
+   "steps",
+   "band",
+   "arch",
+   "بطني",
+   "لبرا",
+   "10",
+   "أهم",
+   "line"
+  ],
+  "zones": [
+   {
+    "at": 0,
+    "dur": 53.543,
+    "top": 0.72
+   }
+  ]
+ },
+ "overlays": [
+  {
+   "type": "kineticTitle",
+   "at": 0.1,
+   "dur": 2.46,
+   "lines": [
+    {
+     "text": "STEPS",
+     "size": 170
+    },
+    {
+     "text": "خطوة بخطوة",
+     "accent": true,
+     "size": 100
+    }
+   ],
+   "top": 0.62,
+   "motion": "smooth",
+   "depth": true,
+   "eyebrow": "OSM · BAND"
+  },
+  {
+   "type": "lowerLabel",
+   "at": 4.2,
+   "dur": 2.72,
+   "title": "RESISTANCE BAND",
+   "top": 0.56,
+   "eyebrow": "الـBand"
+  },
+  {
+   "type": "stepBadge",
+   "at": 7.02,
+   "dur": 4.49,
+   "mark": "1",
+   "label": "الكوع والإيد لبرا",
+   "top": 0.55,
+   "side": "right"
+  },
+  {
+   "type": "stepBadge",
+   "at": 11.56,
+   "dur": 2.62,
+   "mark": "✗",
+   "label": "Arch",
+   "top": 0.55,
+   "side": "right"
+  },
+  {
+   "type": "iconPop",
+   "at": 14.18,
+   "dur": 2.0,
+   "items": [
+    {
+     "icon": "Flame",
+     "label": "شد بطنك"
+    },
+    {
+     "icon": "Shield",
+     "label": "Core"
+    }
+   ],
+   "top": 0.55,
+   "size": 169
+  },
+  {
+   "type": "iconPop",
+   "at": 16.28,
+   "dur": 4.06,
+   "items": [
+    {
+     "icon": "ArrowUp",
+     "label": "للآخر"
+    },
+    {
+     "icon": "ArrowDown",
+     "label": "للآخر"
+    }
+   ],
+   "top": 0.55,
+   "size": 169
+  },
+  {
+   "type": "lowerLabel",
+   "at": 20.34,
+   "dur": 2.98,
+   "title": "PUSH OUT",
+   "top": 0.56,
+   "eyebrow": "ادفع إيدك لبرا"
+  },
+  {
+   "type": "iconPop",
+   "at": 27.143,
+   "dur": 3.14,
+   "items": [
+    {
+     "icon": "Repeat",
+     "value": "10",
+     "label": "عدات"
+    }
+   ],
+   "top": 0.55,
+   "size": 182
+  },
+  {
+   "type": "iconPop",
+   "at": 30.283,
+   "dur": 2.4,
+   "items": [
+    {
+     "icon": "TimerOff",
+     "label": "من غير راحة"
+    }
+   ],
+   "top": 0.55,
+   "size": 182
+  },
+  {
+   "type": "stepBadge",
+   "at": 32.683,
+   "dur": 6.3,
+   "mark": "2",
+   "label": "من الجنب",
+   "top": 0.55,
+   "side": "right"
+  },
+  {
+   "type": "visualCard",
+   "src": "v_shoulder_anatomy",
+   "at": 38.983,
+   "dur": 3.76,
+   "mode": "full",
+   "push": [
+    1.0,
+    1.06
+   ]
+  },
+  {
+   "type": "kineticTitle",
+   "at": 42.843,
+   "dur": 3.12,
+   "lines": [
+    {
+     "text": "أهم حاجة",
+     "accent": true,
+     "size": 120
+    }
+   ],
+   "top": 0.6,
+   "motion": "smooth",
+   "depth": true
+  },
+  {
+   "type": "iconPop",
+   "at": 45.963,
+   "dur": 2.22,
+   "items": [
+    {
+     "icon": "BicepsFlexed",
+     "mark": "x",
+     "label": "الكوع ما يفتحش"
+    }
+   ],
+   "top": 0.55,
+   "size": 182
+  },
+  {
+   "type": "lowerLabel",
+   "at": 48.183,
+   "dur": 1.36,
+   "title": "SAME LINE",
+   "top": 0.56,
+   "eyebrow": "نفس الخط"
+  },
+  {
+   "type": "iconPop",
+   "at": 49.543,
+   "dur": 3.99,
+   "items": [
+    {
+     "icon": "ArrowUp"
+    },
+    {
+     "icon": "Check",
+     "label": "Full Range"
+    },
+    {
+     "icon": "ArrowDown"
+    }
+   ],
+   "top": 0.55,
+   "size": 156
+  },
+  {
+   "type": "endCard",
+   "at": 53.5333,
+   "dur": 2.4,
+   "cta": "OSM Coach Osama",
+   "reveal": "wipe",
+   "image": "brand/end/osm-end-photo.jpg"
+  }
+ ],
+ "shakes": [
+  {
+   "at": 11.5,
+   "amp": 0.4
+  },
+  {
+   "at": 16.2,
+   "amp": 0.4
+  },
+  {
+   "at": 42.733,
+   "amp": 0.4
+  },
+  {
+   "at": 48.033,
+   "amp": 0.4
+  },
+  {
+   "at": 53.533,
+   "amp": 0.6
+  }
+ ],
+ "sfx": {
+  "cues": [
+   {
+    "at": 0.1,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 0.15,
+    "sound": "impact",
+    "gain_db": -20
+   },
+   {
+    "at": 4.2,
+    "sound": "click",
+    "gain_db": -18
+   },
+   {
+    "at": 7.02,
+    "sound": "slam",
+    "gain_db": -16
+   },
+   {
+    "at": 11.5,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 11.5,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 11.56,
+    "sound": "slam",
+    "gain_db": -16
+   },
+   {
+    "at": 14.26,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 14.43,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 820
+   },
+   {
+    "at": 16.2,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 16.2,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 16.36,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 16.53,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 820
+   },
+   {
+    "at": 20.34,
+    "sound": "click",
+    "gain_db": -18
+   },
+   {
+    "at": 26.7,
+    "sound": "whip",
+    "gain_db": -11,
+    "dir": 1.0
+   },
+   {
+    "at": 26.72,
+    "sound": "air",
+    "gain_db": -20
+   },
+   {
+    "at": 27.223,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 30.363,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 32.683,
+    "sound": "slam",
+    "gain_db": -16
+   },
+   {
+    "at": 38.983,
+    "sound": "whoosh_in",
+    "gain_db": -15
+   },
+   {
+    "at": 42.643,
+    "sound": "whoosh_out",
+    "gain_db": -19
+   },
+   {
+    "at": 42.7333,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 42.7333,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 42.843,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 42.893,
+    "sound": "impact",
+    "gain_db": -20
+   },
+   {
+    "at": 46.043,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 48.0333,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 48.0333,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 48.183,
+    "sound": "click",
+    "gain_db": -18
+   },
+   {
+    "at": 49.623,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 49.793,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 820
+   },
+   {
+    "at": 49.963,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 940
+   },
+   {
+    "at": 53.5333,
+    "sound": "reverse_hit",
+    "gain_db": -12,
+    "dur": 0.7
+   },
+   {
+    "at": 53.5333,
+    "sound": "boom",
+    "gain_db": -7
+   },
+   {
+    "at": 54.0333,
+    "sound": "click",
+    "gain_db": -17
+   }
+  ]
+ },
+ "music": {
+  "src": "work/music/music.wav",
+  "gain_db": -9
+ },
+ "tail": 2.4,
+ "textPlate": "#56A0FB"
+}
