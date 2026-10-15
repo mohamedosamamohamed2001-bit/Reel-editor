@@ -1,0 +1,169 @@
+{
+ "original_overlays": 24,
+ "fixes": [
+  {
+   "index": 1,
+   "type": "iconPop",
+   "at": 2.82,
+   "action": "move",
+   "top": 0.573,
+   "size": 117
+  },
+  {
+   "index": 2,
+   "type": "lowerLabel",
+   "at": 5.82,
+   "action": "move",
+   "top": 0.477,
+   "plate": true
+  },
+  {
+   "index": 3,
+   "type": "iconPop",
+   "at": 9.34,
+   "action": "move",
+   "top": 0.13,
+   "align": "right",
+   "size": 144
+  },
+  {
+   "index": 4,
+   "type": "lowerLabel",
+   "at": 14.664,
+   "action": "remove",
+   "why": "no room between his chin and the captions (-10px < 144px)"
+  },
+  {
+   "index": 5,
+   "type": "lowerLabel",
+   "at": 15.376,
+   "action": "remove",
+   "why": "no room between his chin and the captions (-18px < 144px)"
+  },
+  {
+   "index": 6,
+   "type": "lowerLabel",
+   "at": 16.72,
+   "action": "remove",
+   "why": "no room between his chin and the captions (-10px < 144px)"
+  },
+  {
+   "index": 7,
+   "type": "lowerLabel",
+   "at": 20.777,
+   "action": "remove",
+   "why": "no room between his chin and the captions (142px < 144px)"
+  },
+  {
+   "index": 9,
+   "type": "lowerLabel",
+   "at": 26.82,
+   "action": "move",
+   "top": 0.579,
+   "plate": true
+  },
+  {
+   "index": 10,
+   "type": "iconPop",
+   "at": 31.26,
+   "action": "move",
+   "top": 0.13,
+   "align": "right",
+   "size": 159
+  },
+  {
+   "index": 12,
+   "type": "iconPop",
+   "at": 38.02,
+   "action": "move",
+   "top": 0.13,
+   "align": "right",
+   "size": 149
+  },
+  {
+   "index": 13,
+   "type": "stepBadge",
+   "at": 51.7,
+   "action": "remove",
+   "why": "no room between his chin and the captions (182px < 232px)"
+  },
+  {
+   "index": 14,
+   "type": "iconPop",
+   "at": 54.88,
+   "action": "move",
+   "top": 0.13,
+   "align": "right",
+   "size": 184
+  },
+  {
+   "index": 15,
+   "type": "iconPop",
+   "at": 57.18,
+   "action": "move",
+   "top": 0.13,
+   "align": "right",
+   "size": 187
+  },
+  {
+   "index": 16,
+   "type": "lowerLabel",
+   "at": 63.18,
+   "action": "move",
+   "top": 0.569,
+   "plate": true
+  },
+  {
+   "index": 17,
+   "type": "iconPop",
+   "at": 67.6,
+   "action": "move",
+   "top": 0.13,
+   "align": "right",
+   "size": 123
+  },
+  {
+   "index": 18,
+   "type": "kineticTitle",
+   "at": 76.78,
+   "action": "remove",
+   "why": "title on / above his head"
+  },
+  {
+   "index": 19,
+   "type": "stepBadge",
+   "at": 81.14,
+   "action": "remove",
+   "why": "no room between his chin and the captions (170px < 232px)"
+  },
+  {
+   "index": 20,
+   "type": "iconPop",
+   "at": 83.56,
+   "action": "move",
+   "top": 0.13,
+   "align": "right"
+  },
+  {
+   "index": 21,
+   "type": "iconPop",
+   "at": 88.16,
+   "action": "move",
+   "top": 0.559,
+   "size": 129
+  },
+  {
+   "index": 22,
+   "type": "stepBadge",
+   "at": 92.42,
+   "action": "remove",
+   "why": "no room between his chin and the captions (166px < 232px)"
+  }
+ ],
+ "captions": [
+  {
+   "zone": 0,
+   "top": 0.674
+  }
+ ]
+}

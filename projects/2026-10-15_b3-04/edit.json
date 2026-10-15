@@ -323,7 +323,7 @@
    {
     "at": 0,
     "dur": 95.777,
-    "top": 0.66
+    "top": 0.674
    }
   ]
  },
@@ -359,16 +359,17 @@
      "label": "بالترتيب"
     }
    ],
-   "top": 0.14,
-   "size": 195
+   "top": 0.573,
+   "size": 117
   },
   {
    "type": "lowerLabel",
    "at": 5.82,
    "dur": 2.58,
    "title": "TOTAL BODY WATER",
-   "top": 0.13,
-   "eyebrow": "01"
+   "top": 0.477,
+   "eyebrow": "01",
+   "plate": true
   },
   {
    "type": "iconPop",
@@ -386,39 +387,8 @@
     }
    ],
    "top": 0.13,
-   "size": 195
-  },
-  {
-   "type": "lowerLabel",
-   "at": 14.664,
-   "dur": 0.516,
-   "title": "PROTEIN",
-   "top": 0.13,
-   "eyebrow": "02"
-  },
-  {
-   "type": "lowerLabel",
-   "at": 15.376,
-   "dur": 1.284,
-   "title": "MINERALS",
-   "top": 0.13,
-   "eyebrow": "المعادن"
-  },
-  {
-   "type": "lowerLabel",
-   "at": 16.72,
-   "dur": 3.66,
-   "title": "BODY FAT MASS",
-   "top": 0.13,
-   "eyebrow": "وزن الدهون · KG"
-  },
-  {
-   "type": "lowerLabel",
-   "at": 20.777,
-   "dur": 3.363,
-   "title": "WEIGHT",
-   "top": 0.13,
-   "eyebrow": "وزنك"
+   "size": 144,
+   "align": "right"
   },
   {
    "type": "lowerLabel",
@@ -433,8 +403,9 @@
    "at": 26.82,
    "dur": 3.02,
    "title": "BODY FAT MASS",
-   "top": 0.13,
-   "eyebrow": "كتلة الدهون · KG"
+   "top": 0.579,
+   "eyebrow": "كتلة الدهون · KG",
+   "plate": true
   },
   {
    "type": "iconPop",
@@ -447,7 +418,8 @@
     }
    ],
    "top": 0.13,
-   "size": 195
+   "size": 159,
+   "align": "right"
   },
   {
    "type": "kineticTitle",
@@ -480,16 +452,8 @@
     }
    ],
    "top": 0.13,
-   "size": 195
-  },
-  {
-   "type": "stepBadge",
-   "at": 51.7,
-   "dur": 1.56,
-   "mark": "=",
-   "label": "نفس الفكرة في الدهون",
-   "top": 0.14,
-   "side": "right"
+   "size": 149,
+   "align": "right"
   },
   {
    "type": "iconPop",
@@ -503,7 +467,8 @@
     }
    ],
    "top": 0.13,
-   "size": 195
+   "size": 184,
+   "align": "right"
   },
   {
    "type": "iconPop",
@@ -517,15 +482,17 @@
     }
    ],
    "top": 0.13,
-   "size": 195
+   "size": 187,
+   "align": "right"
   },
   {
    "type": "lowerLabel",
    "at": 63.18,
    "dur": 1.14,
    "title": "INBODY SCORE",
-   "top": 0.13,
-   "eyebrow": "03"
+   "top": 0.569,
+   "eyebrow": "03",
+   "plate": true
   },
   {
    "type": "iconPop",
@@ -543,35 +510,8 @@
     }
    ],
    "top": 0.13,
-   "size": 182
-  },
-  {
-   "type": "kineticTitle",
-   "at": 76.78,
-   "dur": 4.0,
-   "lines": [
-    {
-     "text": "BMR"
-    },
-    {
-     "text": "1383",
-     "accent": true,
-     "size": 150
-    }
-   ],
-   "top": 0.05,
-   "motion": "smooth",
-   "depth": true,
-   "occlude": true
-  },
-  {
-   "type": "stepBadge",
-   "at": 81.14,
-   "dur": 1.2,
-   "mark": "✗",
-   "label": "مش معدل الحرق",
-   "top": 0.14,
-   "side": "right"
+   "size": 123,
+   "align": "right"
   },
   {
    "type": "iconPop",
@@ -584,7 +524,8 @@
     }
    ],
    "top": 0.13,
-   "size": 195
+   "size": 195,
+   "align": "right"
   },
   {
    "type": "iconPop",
@@ -603,17 +544,8 @@
      "label": "Activity Level"
     }
    ],
-   "top": 0.13,
-   "size": 169
-  },
-  {
-   "type": "stepBadge",
-   "at": 92.42,
-   "dur": 3.347,
-   "mark": "✗",
-   "label": "مش سعراتك الاساسية",
-   "top": 0.14,
-   "side": "right"
+   "top": 0.559,
+   "size": 129
   },
   {
    "type": "endCard",
