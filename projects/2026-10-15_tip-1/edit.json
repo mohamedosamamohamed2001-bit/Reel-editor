@@ -182,8 +182,8 @@
      "label": "Core"
     }
    ],
-   "top": 0.55,
-   "size": 169
+   "top": 0.583,
+   "size": 159
   },
   {
    "type": "iconPop",
@@ -283,8 +283,8 @@
      "label": "الكوع ما يفتحش"
     }
    ],
-   "top": 0.55,
-   "size": 182
+   "top": 0.569,
+   "size": 178
   },
   {
    "type": "lowerLabel",
