@@ -253,8 +253,8 @@
      "label": "هدفك"
     }
    ],
-   "top": 0.58,
-   "size": 150
+   "top": 0.602,
+   "size": 133
   },
   {
    "type": "screenCard",
@@ -358,25 +358,6 @@
    ],
    "taps": [],
    "highlights": []
-  },
-  {
-   "type": "kineticTitle",
-   "at": 22.883,
-   "dur": 1.717,
-   "lines": [
-    {
-     "text": "Coach Osama",
-     "size": 96
-    },
-    {
-     "text": "OSM",
-     "accent": true,
-     "size": 120
-    }
-   ],
-   "top": 0.64,
-   "motion": "smooth",
-   "depth": true
   },
   {
    "type": "endCard",

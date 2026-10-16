@@ -1,0 +1,21 @@
+{
+ "original_overlays": 10,
+ "fixes": [
+  {
+   "index": 3,
+   "type": "iconPop",
+   "at": 11.34,
+   "action": "move",
+   "top": 0.602,
+   "size": 133
+  },
+  {
+   "index": 8,
+   "type": "kineticTitle",
+   "at": 22.883,
+   "action": "remove",
+   "why": "title on / above his head"
+  }
+ ],
+ "captions": []
+}
