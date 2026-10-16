@@ -25,6 +25,20 @@ const runs = (words: string[]) =>
  * drawn as it appears (one keyword per phrase, max). English words inside Arabic phrases are set in
  * Inter (the brand Latin face) instead of the Arabic font's Latin glyphs.
  */
+/** an Arabic prefix glued to an English term ("الـApp", "والـPoints"): Arabic part in RTL, the English part as its own
+ *  isolated LTR span in Inter, so the browser can't reorder it into "AppJ" */
+const mixed = (w: string): React.ReactNode => {
+  const m = /^([\u0600-\u06FF]+\u0640?)([A-Za-z][A-Za-z0-9'’-]*)(.*)$/.exec(w);
+  if (!m) return w;
+  return (
+    <>
+      {m[1]}
+      <span dir="ltr" style={{ unicodeBidi: "isolate", fontFamily: font.latin, fontSize: "0.92em" }}>{m[2]}</span>
+      {m[3]}
+    </>
+  );
+};
+
 export const Captions: React.FC<{
   groups: CaptionGroup[]; keywords?: string[]; style?: "shadow" | "plate"; zones?: Zone[]; karaoke?: boolean;
   anchors?: { at: number; dur: number; box: number[] }[]; cuts?: { f: number; n: number }[];
@@ -106,7 +120,7 @@ export const Captions: React.FC<{
               : bar;
             return (
               <span key={w + wi} style={{ position: "relative", display: "inline-block", color: isKw ? kwColor : undefined, opacity: lit }}>
-                {run.latin && rtl ? w.replace(/[.،,؟]+$/, "") : w.replace(/[.،,]+$/, "")}
+                {run.latin && rtl ? w.replace(/[.،,؟]+$/, "") : mixed(w.replace(/[.،,]+$/, ""))}
                 {isKw ? (
                   <span
                     style={{
