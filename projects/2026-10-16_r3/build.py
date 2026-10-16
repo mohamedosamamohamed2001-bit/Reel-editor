@@ -40,7 +40,7 @@ R.label(t0 - (w("وحاجات") - w("الـAirPods")) + 0.05, w("وحاجات") 
 R.me(w("التزم"), zoom=(1.06, 1.1), tin=W)
 # "التزم أكتر، اكسب أكتر في OSM."
 t = R.me(R.end, zoom=(1.16, 1.22), focusY=0.38, tin=Z)
-R.title(t + 0.1, R.end - t - 0.15, [{"text": "اكسب أكتر", "accent": True, "size": 110}], top=0.62)
+R.icons(w("اكسب"), R.end - w("اكسب") - 0.05, [{"icon": "Trophy", "label": "اكسب أكتر"}], top=0.56, size=200)
 
 R.finish("OSM r3: train and win an Apple Watch", keywords=["Apple", "Points", "Daily", "بجوايز", "اكسب"],
          music={"style": "trap", "key": "G", "seed": 1603, "gain": -9, "bpm": 130})
