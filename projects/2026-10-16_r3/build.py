@@ -33,7 +33,7 @@ R.app2("osm_real", 7.0, w("زي"), region=(0.0, 0.045, 1.0, 0.72), tin=WR, entra
        highlights=[(0.5, 1.4, (0.0, 0.42, 1.0, 0.36))])
 # "زي الـApple Watch، الـAirPods وحاجات تانية كتير"
 t = R.me(w("الـAirPods"), zoom=(1.0, 1.04), tin=W)
-R.photo(t, w("الـAirPods") - t, "aw_461a56.jpg", mode="full", push=[1.04, 1.1], label="Apple Watch")
+R.photo(t, w("الـAirPods") - t, "aw_461a56.jpg", mode="full", push=[1.04, 1.1])
 R.stock2("coverr-taking-airpods-out-of-the-case-2007", 2.0, w("وحاجات"), zoom=(1.0, 1.08), focusX=0.42, tin=WR)
 t0 = R.t()
 R.label(t0 - (w("وحاجات") - w("الـAirPods")) + 0.05, w("وحاجات") - w("الـAirPods") - 0.1, "AirPods", eyebrow="جوايز", top=0.66)
