@@ -1,0 +1,14 @@
+{
+ "original_overlays": 9,
+ "fixes": [
+  {
+   "index": 3,
+   "type": "iconPop",
+   "at": 11.34,
+   "action": "move",
+   "top": 0.601,
+   "size": 182
+  }
+ ],
+ "captions": []
+}
