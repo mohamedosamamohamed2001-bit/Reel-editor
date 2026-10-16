@@ -38,9 +38,11 @@ R.stock2("coverr-taking-airpods-out-of-the-case-2007", 2.0, w("وحاجات"), z
 t0 = R.t()
 R.label(t0 - (w("وحاجات") - w("الـAirPods")) + 0.05, w("وحاجات") - w("الـAirPods") - 0.1, "AirPods", eyebrow="جوايز", top=0.66)
 R.me(w("التزم"), zoom=(1.06, 1.1), tin=W)
-# "التزم أكتر، اكسب أكتر في OSM."
-t = R.me(R.end, zoom=(1.16, 1.22), focusY=0.38, tin=Z)
-R.icons(w("اكسب"), R.end - w("اكسب") - 0.05, [{"icon": "Trophy", "label": "اكسب أكتر"}], top=0.56, size=200)
+# "التزم أكتر، اكسب أكتر في OSM." — him, then a clean brand card for the payoff
+R.me(w("اكسب"), zoom=(1.16, 1.22), focusY=0.38, tin=Z)
+t = R.card(R.end, tin=ZP)
+R.icons(t + 0.05, R.end - t - 0.05, [{"icon": "Trophy"}], top=0.30, size=250)
+R.title(t + 0.2, R.end - t - 0.2, [{"text": "اكسب أكتر", "accent": True, "size": 130}, {"text": "OSM", "size": 110}], top=0.48)
 
 R.finish("OSM r3: train and win an Apple Watch", keywords=["Apple", "Points", "Daily", "بجوايز", "اكسب"],
          music={"style": "trap", "key": "G", "seed": 1603, "gain": -9, "bpm": 130})
