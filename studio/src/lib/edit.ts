@@ -110,6 +110,8 @@ export type Edit = {
     /** caption bar colour (overrides textPlate for captions only) and light = dark text on it */
     plateColor?: string;
     light?: boolean;
+    /** keyword text colour override, e.g. "#FFFFFF" (the keyword keeps its underline in that colour) */
+    keywordColor?: string;
     /** exact-word replacements applied when loading the transcript (spelling fixes, English terms) */
     replace?: Record<string, string>;
     /** "plate" = Night plate behind the text (use over bright or white areas); default soft shadow */

@@ -177,7 +177,7 @@ export const ReelEdit: React.FC<{ edit: Edit }> = ({ edit }) => {
         {dbg ? null : fgSeqs}
         {edit.captions && dbg !== "footage" ? (
           <Captions groups={groups} keywords={edit.captions.keywords} style={edit.captions.style} zones={edit.captions.zones}
-            karaoke={edit.captions.karaoke} anchors={edit.captions.anchors} cuts={cuts} plateColor={edit.captions.plateColor ?? edit.textPlate} anchorPlate={edit.captions.anchorPlate} light={edit.captions.light} />
+            karaoke={edit.captions.karaoke} anchors={edit.captions.anchors} cuts={cuts} plateColor={edit.captions.plateColor ?? edit.textPlate} anchorPlate={edit.captions.anchorPlate} light={edit.captions.light} keywordColor={edit.captions.keywordColor} />
         ) : null}
         {byLayer(3)}
       </AbsoluteFill>

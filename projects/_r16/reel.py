@@ -19,6 +19,7 @@ import promo  # noqa: E402
 from promo import CAL_GRADE, PJ, Promo, cue  # noqa: E402
 
 ASSETS = HERE / "assets"
+CAPTION_BAR = "#56A0FB"  # official OSM brand blue, exact hex, mandatory for every caption bar
 W, WR, WU = {"type": "whip", "dir": "left"}, {"type": "whip", "dir": "right"}, {"type": "whip", "dir": "up"}
 Z, ZP = {"type": "zoom", "flash": True}, {"type": "zoom"}
 
@@ -85,8 +86,8 @@ class Reel(Promo):
         p = self.P / "edit.json"
         e = json.loads(p.read_text())
         cap = e.get("captions")
-        if cap:  # white caption bars (Coach Osama 2026-10-16), Night text, keyword in Core Blue
-            cap.update({"plateColor": "#FFFFFF", "light": True})
+        if cap:  # PERMANENT BRAND RULE (Coach Osama 2026-10-16): caption bar #56A0FB, ALL caption text white, brand font
+            cap.update({"plateColor": CAPTION_BAR, "light": False, "keywordColor": "#FFFFFF"})
             if replace:
                 cap.setdefault("replace", {}).update(replace)
         p.write_text(json.dumps(e, ensure_ascii=False, indent=1))

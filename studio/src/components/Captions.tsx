@@ -46,8 +46,10 @@ export const Captions: React.FC<{
   plateColor?: string;
   /** light caption bar (Coach Osama 2026-10-16: white bars): Night text, the keyword stays Core Blue */
   light?: boolean;
+  /** keyword colour override (Coach Osama 2026-10-16: all caption text white on the #56A0FB bar; the keyword keeps its underline) */
+  keywordColor?: string;
   anchorPlate?: boolean;
-}> = ({ groups, keywords = [], style = "shadow", zones = [], karaoke = false, anchors = [], cuts = [], plateColor, anchorPlate = false, light = false }) => {
+}> = ({ groups, keywords = [], style = "shadow", zones = [], karaoke = false, anchors = [], cuts = [], plateColor, anchorPlate = false, light = false, keywordColor }) => {
   const frame = useCurrentFrame();
   const { fps, height, width } = useVideoConfig();
   const t = frame / fps;
@@ -71,7 +73,7 @@ export const Captions: React.FC<{
   const zone = zones.find((z) => g.start >= z.at - 0.005 && g.start < z.at + z.dur - 0.005);
   const plate = style === "plate" && (!anchor || anchorPlate);
   // on a brand-blue plate the blue keyword would disappear: Night keyword + underline instead
-  const kwColor = light ? color.coreBlue : plateColor && (plate || anchor) ? color.night : color.coreBlue;
+  const kwColor = keywordColor ? keywordColor : light ? color.coreBlue : plateColor && (plate || anchor) ? color.night : color.coreBlue;
   const kw = new Set(keywords.map((k) => k.toLowerCase()));
   let blueUsed = false;
 

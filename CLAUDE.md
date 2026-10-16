@@ -28,6 +28,15 @@ projects/<name>/  one folder per video: project.json, edit.json, analysis/, docu
 - The container is ephemeral. Anything worth keeping must be committed (code/docs) or uploaded (renders).
 - The Google Drive connector can search and download the user's files. Never bypass Drive permissions.
 
+## LOCKED BRAND RULE (Coach Osama 2026-10-16, applies to ALL videos until he says otherwise)
+- **Caption bar `#56A0FB` (exact hex), caption text WHITE (keyword too, underline kept), original brand font**
+  (IBM Plex Sans Arabic 700 / Inter for English, same size and padding). In an edit: `textPlate: "#56A0FB"`,
+  `captions.style: "plate"`, `captions.plateColor: "#56A0FB"`, `captions.keywordColor: "#FFFFFF"`, no `light`.
+  Presets: `projects/_r16/reel.py` (`CAPTION_BAR`).
+- **The approved editing system is locked.** Do not redesign or rebuild it. Change only what he asks for.
+- Before rendering, sample a Remotion still (PNG) and confirm the bar pixels are `#56A0FB`.
+  This supersedes the white bars of the 2026-10-16 entry in the decisions log.
+
 ## Studio rules
 - **Never modify source footage.** Copy it into `projects/<name>/source/`, record its sha256, and work on copies.
 - Analyze before acting: probe → transcribe → timecoded map → blueprint → base edit → graphics → audio → render → QA.
@@ -193,3 +202,6 @@ projects/<name>/  one folder per video: project.json, edit.json, analysis/, docu
   - His take is the unbroken voice track (output time = source time). Cutaways fill shots "until" a word.
   - Arabic-prefixed English words ("الـApp") render as Arabic prefix + isolated English part. Keep multi-word names as one English run (`replace` "الـApple" → "Apple").
   - When a graphic has no room between his chin and the captions, head_fix removes it: put that beat on a clean brand card (`Reel.card`).
+- 2026-10-16 (correction, Coach Osama): the 3 Reels were re-rendered with ONLY the caption colours changed (bar `#56A0FB`,
+  white text). The edit.json diff was checked against the approved versions: captions.plateColor / light / keywordColor only.
+  A Remotion still was sampled: the bar is exactly #56A0FB. New option: `captions.keywordColor`.

@@ -606,7 +606,8 @@
     "top": 0.76
    }
   ],
-  "plateColor": "#FFFFFF",
-  "light": true
+  "plateColor": "#56A0FB",
+  "light": false,
+  "keywordColor": "#FFFFFF"
  }
 }

@@ -9,6 +9,16 @@ the verified item wins.
 
 ---
 
+## 0. LOCKED CAPTION RULE (Coach Osama, 2026-10-16, permanent)
+Applies to every video automatically, until he explicitly asks for a change:
+- **Caption background: `#56A0FB`** (official OSM brand blue). This exact hex is mandatory; no other shade.
+- **Caption text: white**, every word, including the keyword (the keyword keeps its underline, in white).
+- **Font: the approved brand font**, unchanged: IBM Plex Sans Arabic 700 for Arabic, Inter for English terms,
+  at the same size, line height and padding.
+- **Editing system: locked.** Keep the approved style, timing, transitions, SFX, music, graphics, animations, caption
+  timing and positions, and end card. Change any of them only on his explicit request.
+- Before every render, check that the caption bar is exactly `#56A0FB`: sample a rendered still (PNG, before encoding).
+
 ## 1. What the brand is (what the edit must communicate)
 
 - **Positioning:** "A method, not an app." The app carries the plan, and the coach carries the result.
