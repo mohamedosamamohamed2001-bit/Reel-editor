@@ -450,25 +450,6 @@
    "eyebrow": "جوايز"
   },
   {
-   "type": "kineticTitle",
-   "at": 18.233,
-   "dur": 2.787,
-   "lines": [
-    {
-     "text": "التزم أكتر",
-     "size": 110
-    },
-    {
-     "text": "اكسب أكتر",
-     "accent": true,
-     "size": 120
-    }
-   ],
-   "top": 0.62,
-   "motion": "smooth",
-   "depth": true
-  },
-  {
    "type": "endCard",
    "at": 21.0667,
    "dur": 2.4,
