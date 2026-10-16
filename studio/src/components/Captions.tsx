@@ -30,8 +30,10 @@ export const Captions: React.FC<{
   anchors?: { at: number; dur: number; box: number[] }[]; cuts?: { f: number; n: number }[];
   /** solid plate colour (brand blue): keywords switch to Night so they don't vanish into the plate */
   plateColor?: string;
+  /** light caption bar (Coach Osama 2026-10-16: white bars): Night text, the keyword stays Core Blue */
+  light?: boolean;
   anchorPlate?: boolean;
-}> = ({ groups, keywords = [], style = "shadow", zones = [], karaoke = false, anchors = [], cuts = [], plateColor, anchorPlate = false }) => {
+}> = ({ groups, keywords = [], style = "shadow", zones = [], karaoke = false, anchors = [], cuts = [], plateColor, anchorPlate = false, light = false }) => {
   const frame = useCurrentFrame();
   const { fps, height, width } = useVideoConfig();
   const t = frame / fps;
@@ -55,7 +57,7 @@ export const Captions: React.FC<{
   const zone = zones.find((z) => g.start >= z.at - 0.005 && g.start < z.at + z.dur - 0.005);
   const plate = style === "plate" && (!anchor || anchorPlate);
   // on a brand-blue plate the blue keyword would disappear: Night keyword + underline instead
-  const kwColor = plateColor && (plate || anchor) ? color.night : color.coreBlue;
+  const kwColor = light ? color.coreBlue : plateColor && (plate || anchor) ? color.night : color.coreBlue;
   const kw = new Set(keywords.map((k) => k.toLowerCase()));
   let blueUsed = false;
 
@@ -77,7 +79,7 @@ export const Captions: React.FC<{
           // Book: Arabic 1–2px larger than Latin, line-height 1.7, never italic, never letter-spaced.
           fontSize: rtl ? 66 : 62,
           lineHeight: rtl ? 1.7 : 1.25,
-          color: color.text,
+          color: light && plate ? color.night : color.text,
           opacity: p * cutFade,
           transform: `${anchor ? "translate(-50%, -50%) " : ""}translateY(${10 * (1 - p)}px) scale(${0.95 + 0.05 * p})`,
           textShadow: plate ? "none" : anchor ? "0 2px 8px rgba(10,15,22,0.6)" : "0 4px 22px rgba(10,15,22,0.9), 0 1px 3px rgba(10,15,22,0.9)",

@@ -107,6 +107,9 @@ export type Edit = {
     karaoke?: boolean;
     /** words are already in OUTPUT time (voice-over built by the project, tools/render_edit.py voiceTrack) */
     outputTime?: boolean;
+    /** caption bar colour (overrides textPlate for captions only) and light = dark text on it */
+    plateColor?: string;
+    light?: boolean;
     /** exact-word replacements applied when loading the transcript (spelling fixes, English terms) */
     replace?: Record<string, string>;
     /** "plate" = Night plate behind the text (use over bright or white areas); default soft shadow */

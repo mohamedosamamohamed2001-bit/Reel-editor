@@ -1,0 +1,756 @@
+{
+ "title": "OSM r3: train and win an Apple Watch",
+ "fps": 30,
+ "width": 1080,
+ "height": 1920,
+ "media": {
+  "m_IMG_8147": "../2026-10-15_gym-3/source/IMG_8147.MOV",
+  "m_original": "../2026-10-16_r3/source/original.mp4",
+  "v_aw_f30499": "work/visuals/aw_f30499.jpg",
+  "m_bg_night": "../_mkt/bg_night.mp4",
+  "m_osm_real": "../_mkt/app/osm_real.mp4",
+  "m_IMG_7537": "../2026-10-15_gym-2/source/IMG_7537.MOV",
+  "v_aw_461a56": "work/visuals/aw_461a56.jpg",
+  "m_verr_taking_airpods_out_of_the_case_2007": "../_mkt/stock/coverr-taking-airpods-out-of-the-case-2007.mp4"
+ },
+ "plates": {
+  "grade": null,
+  "sharpen": "cas=strength=0.3"
+ },
+ "clips": [
+  {
+   "src": "m_IMG_8147",
+   "in": 15.0,
+   "out": 16.13333,
+   "zoom": [
+    1.0,
+    1.08
+   ],
+   "focusX": 0.5,
+   "focusY": 0.5,
+   "grade": "zscale=pin=bt2020:p=bt709:min=bt2020nc:m=bt709:tin=arib-std-b67:t=arib-std-b67:rin=tv:r=tv,format=yuv420p,eq=contrast=1.08:saturation=1.06:gamma=1.12:brightness=0.015,colorbalance=rs=-0.03:bs=0.05:rm=0.01:bm=0.0:rh=0.02:bh=-0.01,curves=master='0/0 0.06/0.05 0.3/0.32 0.7/0.74 1/1',vignette=angle=PI/5"
+  },
+  {
+   "src": "m_original",
+   "in": 1.13333,
+   "out": 2.3,
+   "zoom": [
+    1.0,
+    1.04
+   ],
+   "focusY": 0.4,
+   "focusX": 0.5,
+   "grade": "colorbalance=rs=-0.02:bs=0.025:rm=-0.05:bm=0.015:rh=0.02:gh=0.005:bh=-0.025,curves=all='0/0 0.25/0.235 0.5/0.5 0.75/0.765 1/1'"
+  },
+  {
+   "src": "m_original",
+   "in": 2.3,
+   "out": 5.1,
+   "zoom": [
+    1.04,
+    1.1
+   ],
+   "focusY": 0.4,
+   "focusX": 0.5,
+   "grade": "colorbalance=rs=-0.02:bs=0.025:rm=-0.05:bm=0.015:rh=0.02:gh=0.005:bh=-0.025,curves=all='0/0 0.25/0.235 0.5/0.5 0.75/0.765 1/1'",
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  },
+  {
+   "src": "m_bg_night",
+   "in": 0.0,
+   "out": 1.2,
+   "freeze": true,
+   "zoom": 1.0,
+   "tin": {
+    "type": "zoom",
+    "flash": true
+   }
+  },
+  {
+   "src": "m_bg_night",
+   "in": 0.0,
+   "out": 1.5,
+   "freeze": true,
+   "zoom": 1.0,
+   "tin": {
+    "type": "whip",
+    "dir": "right"
+   }
+  },
+  {
+   "src": "m_IMG_7537",
+   "in": 2.0,
+   "out": 3.63333,
+   "zoom": [
+    1.02,
+    1.08
+   ],
+   "focusX": 0.5,
+   "focusY": 0.45,
+   "grade": "zscale=pin=bt2020:p=bt709:min=bt2020nc:m=bt709:tin=arib-std-b67:t=arib-std-b67:rin=tv:r=tv,format=yuv420p,eq=contrast=1.16:saturation=0.9:gamma=0.96,colorbalance=rs=-0.02:bs=0.03:rm=0.02:gm=0.0:bm=-0.02:rh=0.02:bh=-0.02,curves=master='0/0 0.1/0.06 0.5/0.48 0.9/0.94 1/1',vignette=angle=PI/5",
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  },
+  {
+   "src": "m_bg_night",
+   "in": 0.0,
+   "out": 1.1,
+   "freeze": true,
+   "zoom": 1.0,
+   "tin": {
+    "type": "whip",
+    "dir": "right"
+   }
+  },
+  {
+   "src": "m_original",
+   "in": 10.53333,
+   "out": 11.5,
+   "zoom": [
+    1.08,
+    1.12
+   ],
+   "focusY": 0.4,
+   "focusX": 0.5,
+   "grade": "colorbalance=rs=-0.02:bs=0.025:rm=-0.05:bm=0.015:rh=0.02:gh=0.005:bh=-0.025,curves=all='0/0 0.25/0.235 0.5/0.5 0.75/0.765 1/1'",
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  },
+  {
+   "src": "m_bg_night",
+   "in": 0.0,
+   "out": 1.0,
+   "freeze": true,
+   "zoom": 1.0,
+   "tin": {
+    "type": "zoom",
+    "flash": true
+   }
+  },
+  {
+   "src": "m_bg_night",
+   "in": 0.0,
+   "out": 2.76667,
+   "freeze": true,
+   "zoom": 1.0,
+   "tin": {
+    "type": "whip",
+    "dir": "right"
+   }
+  },
+  {
+   "src": "m_original",
+   "in": 15.26667,
+   "out": 16.66667,
+   "zoom": [
+    1.0,
+    1.04
+   ],
+   "focusY": 0.4,
+   "focusX": 0.5,
+   "grade": "colorbalance=rs=-0.02:bs=0.025:rm=-0.05:bm=0.015:rh=0.02:gh=0.005:bh=-0.025,curves=all='0/0 0.25/0.235 0.5/0.5 0.75/0.765 1/1'",
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  },
+  {
+   "src": "m_verr_taking_airpods_out_of_the_case_2007",
+   "in": 2.0,
+   "out": 2.63333,
+   "zoom": [
+    1.0,
+    1.08
+   ],
+   "focusX": 0.42,
+   "focusY": 0.5,
+   "grade": "eq=contrast=1.05:saturation=0.95:gamma=0.99,colorbalance=rs=-0.015:bs=0.02:rm=-0.01:bm=0.005:rh=0.012:gh=0.004:bh=-0.012,curves=master='0/0 0.22/0.2 0.78/0.8 1/1',vignette=angle=PI/7",
+   "tin": {
+    "type": "whip",
+    "dir": "right"
+   }
+  },
+  {
+   "src": "m_original",
+   "in": 17.3,
+   "out": 18.13333,
+   "zoom": [
+    1.06,
+    1.1
+   ],
+   "focusY": 0.4,
+   "focusX": 0.5,
+   "grade": "colorbalance=rs=-0.02:bs=0.025:rm=-0.05:bm=0.015:rh=0.02:gh=0.005:bh=-0.025,curves=all='0/0 0.25/0.235 0.5/0.5 0.75/0.765 1/1'",
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  },
+  {
+   "src": "m_original",
+   "in": 18.13333,
+   "out": 21.06667,
+   "zoom": [
+    1.16,
+    1.22
+   ],
+   "focusY": 0.38,
+   "focusX": 0.5,
+   "grade": "colorbalance=rs=-0.02:bs=0.025:rm=-0.05:bm=0.015:rh=0.02:gh=0.005:bh=-0.025,curves=all='0/0 0.25/0.235 0.5/0.5 0.75/0.765 1/1'",
+   "tin": {
+    "type": "zoom",
+    "flash": true
+   }
+  }
+ ],
+ "overlays": [
+  {
+   "type": "visualCard",
+   "src": "v_aw_f30499",
+   "at": 1.133,
+   "dur": 1.167,
+   "mode": "full",
+   "credit": "Photo: blakespot · CC BY 2.0",
+   "push": [
+    1.0,
+    1.08
+   ]
+  },
+  {
+   "type": "kineticTitle",
+   "at": 1.233,
+   "dur": 1.017,
+   "lines": [
+    {
+     "text": "Apple Watch",
+     "size": 110
+    },
+    {
+     "text": "ببلاش",
+     "accent": true,
+     "size": 130
+    }
+   ],
+   "top": 0.68,
+   "motion": "smooth",
+   "depth": true
+  },
+  {
+   "type": "screenCard",
+   "at": 5.1,
+   "dur": 1.2,
+   "src": "m_osm_real",
+   "plate": true,
+   "backdrop": "none",
+   "entrance": "tilt",
+   "width": 800,
+   "top": 150,
+   "region": {
+    "x": 0.0,
+    "y": 0.045,
+    "w": 1.0,
+    "h": 0.72
+   },
+   "segments": [
+    {
+     "in": 7.1,
+     "rate": 1,
+     "dur": 1.2
+    }
+   ],
+   "taps": [],
+   "highlights": [
+    {
+     "at": 0.2,
+     "dur": 0.9,
+     "box": {
+      "x": 0.0,
+      "y": 0.0,
+      "w": 1.0,
+      "h": 0.16
+     }
+    }
+   ]
+  },
+  {
+   "type": "screenCard",
+   "at": 6.3,
+   "dur": 1.5,
+   "src": "m_osm_real",
+   "plate": true,
+   "backdrop": "none",
+   "entrance": "flat",
+   "width": 800,
+   "top": 150,
+   "region": {
+    "x": 0.0,
+    "y": 0.045,
+    "w": 1.0,
+    "h": 0.72
+   },
+   "segments": [
+    {
+     "in": 2.0,
+     "rate": 1,
+     "dur": 1.5
+    }
+   ],
+   "taps": [],
+   "highlights": [
+    {
+     "at": 0.3,
+     "dur": 1.0,
+     "box": {
+      "x": 0.03,
+      "y": 0.08,
+      "w": 0.94,
+      "h": 0.28
+     }
+    }
+   ]
+  },
+  {
+   "type": "screenCard",
+   "at": 9.4333,
+   "dur": 1.087,
+   "src": "m_osm_real",
+   "plate": true,
+   "backdrop": "none",
+   "entrance": "flat",
+   "width": 800,
+   "top": 150,
+   "region": {
+    "x": 0.0,
+    "y": 0.045,
+    "w": 1.0,
+    "h": 0.72
+   },
+   "segments": [
+    {
+     "in": 3.4,
+     "rate": 1,
+     "dur": 1.087
+    }
+   ],
+   "taps": [],
+   "highlights": [
+    {
+     "at": 0.1,
+     "dur": 0.8,
+     "box": {
+      "x": 0.03,
+      "y": 0.4,
+      "w": 0.94,
+      "h": 0.17
+     }
+    }
+   ]
+  },
+  {
+   "type": "screenCard",
+   "at": 11.5,
+   "dur": 1.0,
+   "src": "m_osm_real",
+   "plate": true,
+   "backdrop": "none",
+   "entrance": "flat",
+   "width": 800,
+   "top": 150,
+   "region": {
+    "x": 0.0,
+    "y": 0.045,
+    "w": 1.0,
+    "h": 0.72
+   },
+   "segments": [
+    {
+     "in": 9.6,
+     "rate": 1,
+     "dur": 1.0
+    }
+   ],
+   "taps": [],
+   "highlights": [
+    {
+     "at": 0.1,
+     "dur": 0.9,
+     "box": {
+      "x": 0.0,
+      "y": 0.13,
+      "w": 1.0,
+      "h": 0.2
+     }
+    }
+   ]
+  },
+  {
+   "type": "screenCard",
+   "at": 12.5,
+   "dur": 2.76,
+   "src": "m_osm_real",
+   "plate": true,
+   "backdrop": "none",
+   "entrance": "flat",
+   "width": 800,
+   "top": 150,
+   "region": {
+    "x": 0.0,
+    "y": 0.045,
+    "w": 1.0,
+    "h": 0.72
+   },
+   "segments": [
+    {
+     "in": 7.0,
+     "rate": 1,
+     "dur": 2.76
+    }
+   ],
+   "taps": [],
+   "highlights": [
+    {
+     "at": 0.5,
+     "dur": 1.4,
+     "box": {
+      "x": 0.0,
+      "y": 0.2,
+      "w": 1.0,
+      "h": 0.28
+     }
+    }
+   ]
+  },
+  {
+   "type": "visualCard",
+   "src": "v_aw_461a56",
+   "at": 15.267,
+   "dur": 1.393,
+   "mode": "full",
+   "credit": "Photo: pestoverde · CC BY 2.0",
+   "push": [
+    1.04,
+    1.1
+   ],
+   "label": "Apple Watch"
+  },
+  {
+   "type": "lowerLabel",
+   "at": 16.71,
+   "dur": 0.54,
+   "title": "AirPods",
+   "top": 0.66,
+   "plate": true,
+   "eyebrow": "جوايز"
+  },
+  {
+   "type": "kineticTitle",
+   "at": 18.233,
+   "dur": 2.787,
+   "lines": [
+    {
+     "text": "التزم أكتر",
+     "size": 110
+    },
+    {
+     "text": "اكسب أكتر",
+     "accent": true,
+     "size": 120
+    }
+   ],
+   "top": 0.62,
+   "motion": "smooth",
+   "depth": true
+  },
+  {
+   "type": "endCard",
+   "at": 21.0667,
+   "dur": 2.4,
+   "cta": "OSM Coach Osama",
+   "reveal": "wipe",
+   "image": "brand/end/osm-end-photo.jpg"
+  }
+ ],
+ "shakes": [
+  {
+   "at": 5.1,
+   "amp": 0.4
+  },
+  {
+   "at": 11.5,
+   "amp": 0.4
+  },
+  {
+   "at": 18.133,
+   "amp": 0.4
+  },
+  {
+   "at": 21.067,
+   "amp": 0.6
+  }
+ ],
+ "pulses": [],
+ "flashes": [],
+ "sfx": {
+  "cues": [
+   {
+    "at": 1.1333,
+    "sound": "whoosh_in",
+    "gain_db": -15
+   },
+   {
+    "at": 1.2333,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 1.2833,
+    "sound": "impact",
+    "gain_db": -20
+   },
+   {
+    "at": 2.2,
+    "sound": "whoosh_out",
+    "gain_db": -19
+   },
+   {
+    "at": 2.3,
+    "sound": "whip",
+    "gain_db": -12,
+    "dir": 1.0
+   },
+   {
+    "at": 2.32,
+    "sound": "air",
+    "gain_db": -21
+   },
+   {
+    "at": 5.1,
+    "sound": "reverse_hit",
+    "gain_db": -17,
+    "dur": 0.4
+   },
+   {
+    "at": 5.1,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 6.3,
+    "sound": "whip",
+    "gain_db": -12,
+    "dir": 1.0
+   },
+   {
+    "at": 6.32,
+    "sound": "air",
+    "gain_db": -21
+   },
+   {
+    "at": 7.8,
+    "sound": "whip",
+    "gain_db": -12,
+    "dir": 1.0
+   },
+   {
+    "at": 7.82,
+    "sound": "air",
+    "gain_db": -21
+   },
+   {
+    "at": 9.4333,
+    "sound": "whip",
+    "gain_db": -12,
+    "dir": 1.0
+   },
+   {
+    "at": 9.4533,
+    "sound": "air",
+    "gain_db": -21
+   },
+   {
+    "at": 10.5333,
+    "sound": "whip",
+    "gain_db": -12,
+    "dir": 1.0
+   },
+   {
+    "at": 10.5533,
+    "sound": "air",
+    "gain_db": -21
+   },
+   {
+    "at": 11.5,
+    "sound": "reverse_hit",
+    "gain_db": -17,
+    "dur": 0.4
+   },
+   {
+    "at": 11.5,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 12.5,
+    "sound": "whip",
+    "gain_db": -12,
+    "dir": 1.0
+   },
+   {
+    "at": 12.52,
+    "sound": "air",
+    "gain_db": -21
+   },
+   {
+    "at": 15.2667,
+    "sound": "whip",
+    "gain_db": -12,
+    "dir": 1.0
+   },
+   {
+    "at": 15.2667,
+    "sound": "whoosh_in",
+    "gain_db": -15
+   },
+   {
+    "at": 15.2867,
+    "sound": "air",
+    "gain_db": -21
+   },
+   {
+    "at": 16.56,
+    "sound": "whoosh_out",
+    "gain_db": -19
+   },
+   {
+    "at": 16.6667,
+    "sound": "whip",
+    "gain_db": -12,
+    "dir": 1.0
+   },
+   {
+    "at": 16.6867,
+    "sound": "air",
+    "gain_db": -21
+   },
+   {
+    "at": 16.71,
+    "sound": "click",
+    "gain_db": -18
+   },
+   {
+    "at": 17.3,
+    "sound": "whip",
+    "gain_db": -12,
+    "dir": 1.0
+   },
+   {
+    "at": 17.32,
+    "sound": "air",
+    "gain_db": -21
+   },
+   {
+    "at": 18.1333,
+    "sound": "reverse_hit",
+    "gain_db": -17,
+    "dur": 0.4
+   },
+   {
+    "at": 18.1333,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 18.2333,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 18.2833,
+    "sound": "impact",
+    "gain_db": -20
+   },
+   {
+    "at": 21.0667,
+    "sound": "reverse_hit",
+    "gain_db": -12,
+    "dur": 0.7
+   },
+   {
+    "at": 21.0667,
+    "sound": "boom",
+    "gain_db": -7
+   },
+   {
+    "at": 21.5667,
+    "sound": "click",
+    "gain_db": -17
+   }
+  ]
+ },
+ "music": {
+  "src": "work/music/music.wav",
+  "gain_db": -9
+ },
+ "tail": 2.4,
+ "textPlate": "#56A0FB",
+ "voiceTrack": "work/vo.wav",
+ "dialogueFx": "highpass=f=70,acompressor=threshold=0.1:ratio=2.5:attack=8:release=120:makeup=1.5",
+ "dialogueLufs": -16.0,
+ "captions": {
+  "wordsFile": "work/vo.words.json",
+  "outputTime": true,
+  "style": "plate",
+  "karaoke": true,
+  "maxWords": 3,
+  "maxChars": 22,
+  "keywords": [
+   "Apple",
+   "Points",
+   "Daily",
+   "بجوايز",
+   "اكسب"
+  ],
+  "replace": {},
+  "zones": [
+   {
+    "at": 5.05,
+    "dur": 1.25,
+    "top": 0.739
+   },
+   {
+    "at": 6.25,
+    "dur": 1.55,
+    "top": 0.739
+   },
+   {
+    "at": 9.383,
+    "dur": 1.137,
+    "top": 0.739
+   },
+   {
+    "at": 11.45,
+    "dur": 1.05,
+    "top": 0.739
+   },
+   {
+    "at": 12.45,
+    "dur": 2.81,
+    "top": 0.739
+   },
+   {
+    "at": 0,
+    "dur": 21.077,
+    "top": 0.72
+   }
+  ],
+  "plateColor": "#FFFFFF",
+  "light": true
+ }
+}
