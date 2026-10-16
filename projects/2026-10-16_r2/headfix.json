@@ -1,12 +1,12 @@
 {
- "original_overlays": 7,
+ "original_overlays": 6,
  "fixes": [
   {
-   "index": 5,
-   "type": "kineticTitle",
+   "index": 4,
+   "type": "iconPop",
    "at": 20.84,
    "action": "remove",
-   "why": "title on / above his head"
+   "why": "no room under his chin (183px) or the captions (44px) for 340px"
   }
  ],
  "captions": []

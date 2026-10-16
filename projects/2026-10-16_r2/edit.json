@@ -276,9 +276,9 @@
      "dur": 1.5,
      "box": {
       "x": 0.0,
-      "y": 0.2,
+      "y": 0.42,
       "w": 1.0,
-      "h": 0.28
+      "h": 0.36
      }
     }
    ]
@@ -294,19 +294,6 @@
     }
    ],
    "top": 0.3,
-   "size": 220
-  },
-  {
-   "type": "iconPop",
-   "at": 16.64,
-   "dur": 2.6,
-   "items": [
-    {
-     "icon": "CalendarCheck",
-     "label": "شهر أو شهرين"
-    }
-   ],
-   "top": 0.62,
    "size": 220
   },
   {
@@ -438,12 +425,6 @@
     "gain_db": -21
    },
    {
-    "at": 16.72,
-    "sound": "blip",
-    "gain_db": -20,
-    "freq": 700
-   },
-   {
     "at": 17.5333,
     "sound": "whip",
     "gain_db": -12,
@@ -477,14 +458,22 @@
     "gain_db": -13
    },
    {
-    "at": 20.84,
-    "sound": "boom",
-    "gain_db": -13
+    "at": 20.92,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
    },
    {
-    "at": 20.89,
-    "sound": "impact",
-    "gain_db": -20
+    "at": 21.09,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 820
+   },
+   {
+    "at": 21.26,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 940
    },
    {
     "at": 23.5667,
