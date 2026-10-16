@@ -310,25 +310,6 @@
    "size": 170
   },
   {
-   "type": "kineticTitle",
-   "at": 20.84,
-   "dur": 2.66,
-   "lines": [
-    {
-     "text": "3",
-     "size": 190
-    },
-    {
-     "text": "فايزين بس",
-     "accent": true,
-     "size": 100
-    }
-   ],
-   "top": 0.58,
-   "motion": "smooth",
-   "depth": true
-  },
-  {
    "type": "endCard",
    "at": 23.5667,
    "dur": 2.4,
