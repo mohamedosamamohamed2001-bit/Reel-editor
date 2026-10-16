@@ -33,8 +33,8 @@ t = R.gym2(1, "IMG_8382.MOV", 2.2, w("بس", 2), zoom=(1.0, 1.06), focusY=0.40, 
 R.icons(w("شهر") + 0.1, w("بس", 2) - w("شهر") - 0.2, [{"icon": "CalendarCheck", "label": "شهر أو شهرين"}], top=0.62, size=220)
 # "بس خليني أقولك برضو إن الفايزين هيكونوا 3 بس."
 t = R.me(R.end, zoom=(1.12, 1.18), focusY=0.38, tin=Z)
-R.title(w("الفايزين"), R.end - w("الفايزين") - 0.05, [{"text": "3 فايزين بس", "accent": True, "size": 110}],
-        top=0.60)
+R.icons(w("الفايزين"), R.end - w("الفايزين") - 0.05,
+        [{"icon": "Trophy"}, {"icon": "Trophy", "label": "3 فايزين بس"}, {"icon": "Trophy"}], top=0.56, size=200)
 
 R.finish("OSM r2: commit and win the supplements", keywords=["ببلاش", "Points", "بجوايز", "كفاية", "3"],
          music={"style": "trap", "key": "F", "seed": 1602, "gain": -9, "bpm": 128})
