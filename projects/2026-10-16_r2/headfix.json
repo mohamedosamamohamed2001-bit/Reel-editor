@@ -1,0 +1,13 @@
+{
+ "original_overlays": 7,
+ "fixes": [
+  {
+   "index": 5,
+   "type": "kineticTitle",
+   "at": 20.84,
+   "action": "remove",
+   "why": "title on / above his head"
+  }
+ ],
+ "captions": []
+}
