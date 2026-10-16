@@ -30,7 +30,7 @@ R.app2("osm_real", 9.6, w("والـPoints"), region=(0.0, 0.045, 1.0, 0.72), tin
        highlights=[(0.1, 0.9, (0.0, 0.13, 1.0, 0.2))])
 # "والـPoints دي تقدر تستبدلها بجوايز" — rewards
 R.app2("osm_real", 7.0, w("زي"), region=(0.0, 0.045, 1.0, 0.72), tin=WR, entrance="flat",
-       highlights=[(0.5, 1.4, (0.0, 0.2, 1.0, 0.28))])
+       highlights=[(0.5, 1.4, (0.0, 0.42, 1.0, 0.36))])
 # "زي الـApple Watch، الـAirPods وحاجات تانية كتير"
 t = R.me(w("الـAirPods"), zoom=(1.0, 1.04), tin=W)
 R.photo(t, w("الـAirPods") - t, "aw_461a56.jpg", mode="full", push=[1.04, 1.1], label="Apple Watch")

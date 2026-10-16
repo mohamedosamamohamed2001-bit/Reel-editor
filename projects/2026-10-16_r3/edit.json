@@ -238,7 +238,7 @@
      "size": 130
     }
    ],
-   "top": 0.68,
+   "top": 0.42,
    "motion": "smooth",
    "depth": true
   },
@@ -448,6 +448,21 @@
    "top": 0.66,
    "plate": true,
    "eyebrow": "جوايز"
+  },
+  {
+   "type": "kineticTitle",
+   "at": 18.233,
+   "dur": 2.787,
+   "lines": [
+    {
+     "text": "اكسب أكتر",
+     "accent": true,
+     "size": 110
+    }
+   ],
+   "top": 0.62,
+   "motion": "smooth",
+   "depth": true
   },
   {
    "type": "endCard",
@@ -728,7 +743,7 @@
    {
     "at": 0,
     "dur": 21.077,
-    "top": 0.72
+    "top": 0.76
    }
   ],
   "plateColor": "#FFFFFF",
