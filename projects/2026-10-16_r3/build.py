@@ -14,7 +14,7 @@ w = R.w
 R.gym2(3, "IMG_8147.MOV", 15.0, w("وتاخد"), zoom=(1.0, 1.08), focusY=0.5)
 t = R.me(w("في"), zoom=(1.0, 1.04))
 R.photo(t, w("في") - t, "aw_f30499.jpg", mode="full", push=[1.0, 1.08])
-R.title(t + 0.1, w("في") - t - 0.15, [{"text": "Apple Watch", "size": 110}, {"text": "ببلاش", "accent": True, "size": 130}], top=0.68)
+R.title(t + 0.1, w("في") - t - 0.15, [{"text": "Apple Watch", "size": 110}, {"text": "ببلاش", "accent": True, "size": 130}], top=0.42)
 # "في OSM كل ما بتلتزم أكتر بتجمع Points أكتر" — him, then the points balance
 R.me(w("بتجمع"), zoom=(1.04, 1.1), tin=W)
 R.app2("osm_real", 7.1, w("أنا"), region=(0.0, 0.045, 1.0, 0.72), tin=Z, highlights=[(0.2, 0.9, (0.0, 0.0, 1.0, 0.16))])
@@ -40,7 +40,7 @@ R.label(t0 - (w("وحاجات") - w("الـAirPods")) + 0.05, w("وحاجات") 
 R.me(w("التزم"), zoom=(1.06, 1.1), tin=W)
 # "التزم أكتر، اكسب أكتر في OSM."
 t = R.me(R.end, zoom=(1.16, 1.22), focusY=0.38, tin=Z)
-R.title(t + 0.1, R.end - t - 0.15, [{"text": "التزم أكتر", "size": 110}, {"text": "اكسب أكتر", "accent": True, "size": 120}], top=0.62)
+R.title(t + 0.1, R.end - t - 0.15, [{"text": "اكسب أكتر", "accent": True, "size": 110}], top=0.62)
 
 R.finish("OSM r3: train and win an Apple Watch", keywords=["Apple", "Points", "Daily", "بجوايز", "اكسب"],
          music={"style": "trap", "key": "G", "seed": 1603, "gain": -9, "bpm": 130})
