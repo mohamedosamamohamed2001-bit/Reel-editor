@@ -759,7 +759,9 @@
    "بجوايز",
    "اكسب"
   ],
-  "replace": {},
+  "replace": {
+   "الـApple": "Apple"
+  },
   "zones": [
    {
     "at": 5.05,

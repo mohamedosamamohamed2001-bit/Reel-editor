@@ -187,3 +187,9 @@ projects/<name>/  one folder per video: project.json, edit.json, analysis/, docu
   - Rebuilding after head_fix: delete `work/overlays.original.json` first, or stale overlays win.
   - Never use the calorie-calculator line with "اسبوع فري" (trial length).
   - The n3/n2 clean exports carry old baked-in graphics after ~1.9 s: use his face only before that point.
+
+- 2026-10-16 (3 landscape takes → 9:16, `docs/reels_2026-10-16.md`, `projects/_r16/reel.py`, `projects/2026-10-16_r1..3`):
+  **white caption bars** (`captions.plateColor: "#FFFFFF"`, `light: true` = Night text, Core Blue keyword).
+  - His take is the unbroken voice track (output time = source time). Cutaways fill shots "until" a word.
+  - Arabic-prefixed English words ("الـApp") render as Arabic prefix + isolated English part. Keep multi-word names as one English run (`replace` "الـApple" → "Apple").
+  - When a graphic has no room between his chin and the captions, head_fix removes it: put that beat on a clean brand card (`Reel.card`).
