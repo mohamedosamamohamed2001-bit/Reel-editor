@@ -196,7 +196,7 @@
   {
    "src": "m_original",
    "in": 18.13333,
-   "out": 21.06667,
+   "out": 19.03333,
    "zoom": [
     1.16,
     1.22
@@ -207,6 +207,16 @@
    "tin": {
     "type": "zoom",
     "flash": true
+   }
+  },
+  {
+   "src": "m_bg_night",
+   "in": 0.0,
+   "out": 2.03333,
+   "freeze": true,
+   "zoom": 1.0,
+   "tin": {
+    "type": "zoom"
    }
   }
  ],
@@ -450,6 +460,37 @@
    "eyebrow": "جوايز"
   },
   {
+   "type": "iconPop",
+   "at": 19.083,
+   "dur": 1.987,
+   "items": [
+    {
+     "icon": "Trophy"
+    }
+   ],
+   "top": 0.3,
+   "size": 250
+  },
+  {
+   "type": "kineticTitle",
+   "at": 19.233,
+   "dur": 1.837,
+   "lines": [
+    {
+     "text": "اكسب أكتر",
+     "accent": true,
+     "size": 130
+    },
+    {
+     "text": "OSM",
+     "size": 110
+    }
+   ],
+   "top": 0.48,
+   "motion": "smooth",
+   "depth": true
+  },
+  {
    "type": "endCard",
    "at": 21.0667,
    "dur": 2.4,
@@ -469,6 +510,10 @@
   },
   {
    "at": 18.133,
+   "amp": 0.4
+  },
+  {
+   "at": 19.033,
    "amp": 0.4
   },
   {
@@ -648,10 +693,31 @@
     "gain_db": -13
    },
    {
-    "at": 19.12,
+    "at": 19.0333,
+    "sound": "reverse_hit",
+    "gain_db": -17,
+    "dur": 0.4
+   },
+   {
+    "at": 19.0333,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 19.1633,
     "sound": "blip",
     "gain_db": -20,
     "freq": 700
+   },
+   {
+    "at": 19.2333,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 19.2833,
+    "sound": "impact",
+    "gain_db": -20
    },
    {
     "at": 21.0667,
