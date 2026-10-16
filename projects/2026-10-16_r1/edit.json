@@ -195,8 +195,8 @@
      "label": "تشترك معايا"
     }
    ],
-   "top": 0.56,
-   "size": 220
+   "top": 0.591,
+   "size": 204
   },
   {
    "type": "screenCard",
@@ -253,8 +253,8 @@
      "label": "هدفك"
     }
    ],
-   "top": 0.56,
-   "size": 220
+   "top": 0.601,
+   "size": 192
   },
   {
    "type": "screenCard",
