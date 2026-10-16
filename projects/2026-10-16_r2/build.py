@@ -30,10 +30,11 @@ R.me(w("شهر"), zoom=(1.06, 1.1), tin=W)
 R.gym2(2, "IMG_7531.MOV", 1.2, w("التزام", 1), zoom=(1.02, 1.08), focusY=0.40, tin=WR)
 R.gym2(3, "CCA8ED09.mp4", 9.0, w("كفاية"), zoom=(1.0, 1.06), focusY=0.45, tin=W)
 t = R.gym2(1, "IMG_8382.MOV", 2.2, w("بس", 2), zoom=(1.0, 1.06), focusY=0.40, tin=WR)
-# "بس خليني أقولك برضو إن الفايزين هيكونوا 3 بس."
-t = R.me(R.end, zoom=(1.12, 1.18), focusY=0.38, tin=Z)
-R.icons(w("الفايزين"), R.end - w("الفايزين") - 0.05,
-        [{"icon": "Trophy"}, {"icon": "Trophy", "label": "3 فايزين بس"}, {"icon": "Trophy"}], top=0.56, size=200)
+# "بس خليني أقولك برضو إن الفايزين هيكونوا 3 بس." — him, then a clean brand card for the 3 winners
+R.me(w("الفايزين"), zoom=(1.12, 1.18), focusY=0.38, tin=Z)
+t = R.card(R.end, tin=ZP)
+R.icons(t + 0.05, R.end - t - 0.05, [{"icon": "Trophy"}, {"icon": "Trophy"}, {"icon": "Trophy"}], top=0.30, size=230)
+R.title(t + 0.25, R.end - t - 0.25, [{"text": "3 فايزين", "size": 140}, {"text": "بس", "accent": True, "size": 120}], top=0.48)
 
 R.finish("OSM r2: commit and win the supplements", keywords=["ببلاش", "Points", "بجوايز", "كفاية", "3"],
          music={"style": "trap", "key": "F", "seed": 1602, "gain": -9, "bpm": 128})

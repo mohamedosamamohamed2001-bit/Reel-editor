@@ -58,6 +58,10 @@ class Reel(Promo):
     def app2(self, flow, a, until, **kw):
         return self.app(flow, [(a, self.dur_to(until))], **kw)
 
+    def card(self, until, tin=None):
+        """A clean brand background (Deep Navy -> Night, static) for a full-screen graphic beat; his voice continues."""
+        return self._add(f"../{promo.BG.relative_to(PJ).as_posix()}", 0.0, self.dur_to(until), tin=tin, freeze=True, zoom=1.0)
+
     def photo(self, at, dur, name, mode="full", label=None, sub=None, **kw):
         """Openly licensed photo (projects/_r16/assets, manifest) as a visualCard; CC BY credit on screen."""
         dst = self.P / "work/visuals" / name
