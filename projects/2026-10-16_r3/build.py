@@ -45,4 +45,5 @@ R.icons(t + 0.05, R.end - t - 0.05, [{"icon": "Trophy"}], top=0.30, size=250)
 R.title(t + 0.2, R.end - t - 0.2, [{"text": "اكسب أكتر", "accent": True, "size": 130}, {"text": "OSM", "size": 110}], top=0.48)
 
 R.finish("OSM r3: train and win an Apple Watch", keywords=["Apple", "Points", "Daily", "بجوايز", "اكسب"],
-         music={"style": "trap", "key": "G", "seed": 1603, "gain": -9, "bpm": 130})
+         music={"style": "trap", "key": "G", "seed": 1603, "gain": -9, "bpm": 130},
+         replace={"الـApple": "Apple"})
