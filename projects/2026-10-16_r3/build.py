@@ -7,7 +7,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "_r16"))
 from reel import W, WR, WU, Z, ZP, Reel  # noqa: E402
 
-R = Reel(Path(__file__).resolve().parent)
+R = Reel(Path(__file__).resolve().parent, cap_top=0.76)
 w = R.w
 
 # "تخيل تتمرن" — him training; "وتاخد Apple Watch ببلاش" — the watch

@@ -294,7 +294,7 @@
     }
    ],
    "top": 0.3,
-   "size": 170
+   "size": 220
   },
   {
    "type": "iconPop",
@@ -307,7 +307,22 @@
     }
    ],
    "top": 0.62,
-   "size": 170
+   "size": 220
+  },
+  {
+   "type": "kineticTitle",
+   "at": 20.84,
+   "dur": 2.66,
+   "lines": [
+    {
+     "text": "3 فايزين بس",
+     "accent": true,
+     "size": 110
+    }
+   ],
+   "top": 0.6,
+   "motion": "smooth",
+   "depth": true
   },
   {
    "type": "endCard",
