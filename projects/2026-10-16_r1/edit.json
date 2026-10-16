@@ -174,7 +174,7 @@
   {
    "type": "kineticTitle",
    "at": 3.86,
-   "dur": 0.17,
+   "dur": 0.95,
    "lines": [
     {
      "text": "لأ",
@@ -196,7 +196,7 @@
     }
    ],
    "top": 0.58,
-   "size": 170
+   "size": 220
   },
   {
    "type": "screenCard",
@@ -253,8 +253,8 @@
      "label": "هدفك"
     }
    ],
-   "top": 0.602,
-   "size": 133
+   "top": 0.58,
+   "size": 220
   },
   {
    "type": "screenCard",
@@ -542,11 +542,6 @@
     "at": 22.7333,
     "sound": "boom",
     "gain_db": -13
-   },
-   {
-    "at": 22.8833,
-    "sound": "slam",
-    "gain_db": -16
    },
    {
     "at": 24.6667,
