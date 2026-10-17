@@ -1,0 +1,384 @@
+{
+ "title": "OSM tip 4: speed on the pitch",
+ "fps": 30,
+ "width": 1080,
+ "height": 1920,
+ "media": {
+  "main": "work/clean/original.clean.mp4"
+ },
+ "audio": {
+  "main": "work/stems/original.vocals.wav"
+ },
+ "dialogueFx": "highpass=f=70,acompressor=threshold=0.1:ratio=2.5:attack=8:release=120:makeup=1.5",
+ "dialogueLufs": -16.0,
+ "plates": {
+  "grade": "eq=contrast=1.05:saturation=0.95:gamma=0.99,colorbalance=rs=-0.015:bs=0.02:rm=-0.01:bm=0.005:rh=0.012:gh=0.004:bh=-0.012,curves=master='0/0 0.22/0.2 0.78/0.8 1/1',vignette=angle=PI/7",
+  "sharpen": "cas=strength=0.22"
+ },
+ "clips": [
+  {
+   "src": "main",
+   "in": 0.0,
+   "out": 5.367,
+   "zoom": [
+    1.0,
+    1.03
+   ],
+   "focusY": 0.45
+  },
+  {
+   "src": "main",
+   "in": 5.367,
+   "out": 7.5,
+   "zoom": [
+    1.04,
+    1.07
+   ],
+   "focusY": 0.45,
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  },
+  {
+   "src": "main",
+   "in": 7.5,
+   "out": 10.3,
+   "zoom": [
+    1.0,
+    1.03
+   ],
+   "focusY": 0.45,
+   "tin": {
+    "type": "zoom",
+    "flash": true
+   }
+  },
+  {
+   "src": "main",
+   "in": 10.3,
+   "out": 12.367,
+   "zoom": [
+    1.04,
+    1.07
+   ],
+   "focusY": 0.45,
+   "tin": {
+    "type": "whip",
+    "dir": "right"
+   }
+  },
+  {
+   "src": "main",
+   "in": 12.367,
+   "out": 15.167,
+   "zoom": [
+    1.0,
+    1.03
+   ],
+   "focusY": 0.45,
+   "tin": {
+    "type": "zoom"
+   }
+  },
+  {
+   "src": "main",
+   "in": 15.167,
+   "out": 20.3,
+   "zoom": [
+    1.04,
+    1.07
+   ],
+   "focusY": 0.45,
+   "tin": {
+    "type": "whip",
+    "dir": "up"
+   }
+  }
+ ],
+ "captions": {
+  "wordsFile": "work/tx/aligned.words.json",
+  "style": "plate",
+  "karaoke": true,
+  "maxWords": 3,
+  "maxChars": 22,
+  "keywords": [
+   "بطيء",
+   "Speed",
+   "سرعتك",
+   "كفاية",
+   "Plan"
+  ],
+  "zones": [
+   {
+    "at": 0,
+    "dur": 20.31,
+    "top": 0.745
+   }
+  ],
+  "replace": {
+   "الـSpeed": "Speed"
+  },
+  "plateColor": "#56A0FB",
+  "keywordColor": "#FFFFFF"
+ },
+ "overlays": [
+  {
+   "type": "kineticTitle",
+   "at": 0.1,
+   "dur": 1.34,
+   "lines": [
+    {
+     "text": "SPEED",
+     "size": 150
+    },
+    {
+     "text": "في الملعب",
+     "accent": true,
+     "size": 96
+    }
+   ],
+   "top": 0.5,
+   "motion": "smooth",
+   "depth": true,
+   "eyebrow": "OSM · TIPS"
+  },
+  {
+   "type": "kineticTitle",
+   "at": 5.4,
+   "dur": 0.95,
+   "lines": [
+    {
+     "text": "3 تمارين",
+     "size": 120
+    },
+    {
+     "text": "للـ Speed",
+     "accent": true,
+     "size": 96
+    }
+   ],
+   "top": 0.48,
+   "motion": "smooth",
+   "depth": true
+  },
+  {
+   "type": "lowerLabel",
+   "at": 6.4,
+   "dur": 1.05,
+   "title": "POGOS",
+   "top": 0.72,
+   "eyebrow": "01 · rest 2–3 min",
+   "sets": "3×5"
+  },
+  {
+   "type": "lowerLabel",
+   "at": 7.62,
+   "dur": 2.63,
+   "title": "A SKIP",
+   "top": 0.72,
+   "eyebrow": "02 · rest 2–3 min",
+   "sets": "3×5"
+  },
+  {
+   "type": "lowerLabel",
+   "at": 10.42,
+   "dur": 1.9,
+   "title": "SWITCHES",
+   "top": 0.72,
+   "eyebrow": "03 · rest 2–3 min",
+   "sets": "3×5"
+  },
+  {
+   "type": "iconPop",
+   "at": 13.48,
+   "dur": 1.7,
+   "items": [
+    {
+     "icon": "Zap",
+     "label": "Speed"
+    }
+   ],
+   "top": 0.55,
+   "size": 221
+  },
+  {
+   "type": "iconPop",
+   "at": 16.62,
+   "dur": 0.91,
+   "items": [
+    {
+     "icon": "Dumbbell",
+     "mark": "x",
+     "label": "لوحدها مش كفاية"
+    }
+   ],
+   "top": 0.55,
+   "size": 221
+  },
+  {
+   "type": "iconPop",
+   "at": 17.72,
+   "dur": 2.53,
+   "items": [
+    {
+     "icon": "ClipboardList",
+     "label": "Plan كاملة"
+    }
+   ],
+   "top": 0.55,
+   "size": 221
+  },
+  {
+   "type": "endCard",
+   "at": 20.3,
+   "dur": 2.4,
+   "cta": "OSM Coach Osama",
+   "reveal": "wipe",
+   "image": "brand/end/osm-end-photo.jpg"
+  }
+ ],
+ "shakes": [
+  {
+   "at": 7.5,
+   "amp": 0.5
+  },
+  {
+   "at": 12.367,
+   "amp": 0.5
+  },
+  {
+   "at": 20.3,
+   "amp": 0.6
+  }
+ ],
+ "sfx": {
+  "cues": [
+   {
+    "at": 0.1,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 0.15,
+    "sound": "impact",
+    "gain_db": -20
+   },
+   {
+    "at": 5.3667,
+    "sound": "whip",
+    "gain_db": -11,
+    "dir": 1.0
+   },
+   {
+    "at": 5.3867,
+    "sound": "air",
+    "gain_db": -20
+   },
+   {
+    "at": 5.4,
+    "sound": "whoosh_in",
+    "gain_db": -16
+   },
+   {
+    "at": 6.4,
+    "sound": "click",
+    "gain_db": -18
+   },
+   {
+    "at": 7.5,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 7.5,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 7.62,
+    "sound": "click",
+    "gain_db": -18
+   },
+   {
+    "at": 10.3,
+    "sound": "whip",
+    "gain_db": -11,
+    "dir": 1.0
+   },
+   {
+    "at": 10.32,
+    "sound": "air",
+    "gain_db": -20
+   },
+   {
+    "at": 10.42,
+    "sound": "click",
+    "gain_db": -18
+   },
+   {
+    "at": 12.3667,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 12.3667,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 13.56,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 15.1667,
+    "sound": "whip",
+    "gain_db": -11,
+    "dir": 1.0
+   },
+   {
+    "at": 15.1867,
+    "sound": "air",
+    "gain_db": -20
+   },
+   {
+    "at": 16.7,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 17.8,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 20.3,
+    "sound": "reverse_hit",
+    "gain_db": -12,
+    "dur": 0.7
+   },
+   {
+    "at": 20.3,
+    "sound": "boom",
+    "gain_db": -7
+   },
+   {
+    "at": 20.8,
+    "sound": "click",
+    "gain_db": -17
+   }
+  ]
+ },
+ "music": {
+  "src": "work/music/music.wav",
+  "gain_db": -9
+ },
+ "tail": 2.4,
+ "textPlate": "#56A0FB"
+}
