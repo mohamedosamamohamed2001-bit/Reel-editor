@@ -50,8 +50,7 @@
    ],
    "focusY": 0.45,
    "tin": {
-    "type": "zoom",
-    "flash": true
+    "type": "zoom"
    }
   },
   {
@@ -169,7 +168,8 @@
    "title": "POGOS",
    "top": 0.72,
    "eyebrow": "01 · rest 2–3 min",
-   "sets": "3×5"
+   "sets": "3×5",
+   "plate": true
   },
   {
    "type": "lowerLabel",
@@ -178,7 +178,8 @@
    "title": "A SKIP",
    "top": 0.72,
    "eyebrow": "02 · rest 2–3 min",
-   "sets": "3×5"
+   "sets": "3×5",
+   "plate": true
   },
   {
    "type": "lowerLabel",
@@ -187,7 +188,8 @@
    "title": "SWITCHES",
    "top": 0.72,
    "eyebrow": "03 · rest 2–3 min",
-   "sets": "3×5"
+   "sets": "3×5",
+   "plate": true
   },
   {
    "type": "iconPop",
