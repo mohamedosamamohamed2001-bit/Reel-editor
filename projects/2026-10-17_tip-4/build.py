@@ -19,9 +19,9 @@ S.title(0.1, w("وأنا") - 0.15, [{"text": "SPEED", "size": 150}, {"text": "ف
         eyebrow="OSM · TIPS", top=0.50)
 # the drills (no speech: the old exercise cards, rebuilt in the OSM style)
 S.title(S.o(5.40), 0.95, [{"text": "3 تمارين", "size": 120}, {"text": "للـ Speed", "accent": True, "size": 96}], top=0.48, sfx="whoosh_in")
-S.label(S.o(6.40), S.o(7.45) - S.o(6.40), "POGOS", eyebrow="01 · rest 2–3 min", top=0.72, sets="3×5")
-S.label(S.o(7.62), S.o(10.25) - S.o(7.62), "A SKIP", eyebrow="02 · rest 2–3 min", top=0.72, sets="3×5")
-S.label(S.o(10.42), S.o(12.32) - S.o(10.42), "SWITCHES", eyebrow="03 · rest 2–3 min", top=0.72, sets="3×5")
+for name, a, b in (("POGOS", 6.40, 7.45), ("A SKIP", 7.62, 10.25), ("SWITCHES", 10.42, 12.32)):
+    S.label(S.o(a), S.o(b) - S.o(a), f"{name} · 3×5", top=0.70)
+    S.label(S.o(a) + 0.25, S.o(b) - S.o(a) - 0.25, "REST 2–3 MIN", top=0.765)
 # "وهتلاقي سرعتك اختلفت تماماً في الملعب"
 S.icons(w("سرعتك"), w("بس") - w("سرعتك") - 0.1, [{"icon": "Zap", "label": "Speed"}], top=0.55, size=170)
 # "التمارين دي لوحدها مش كفاية"
