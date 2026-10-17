@@ -165,30 +165,48 @@
    "type": "lowerLabel",
    "at": 6.4,
    "dur": 1.05,
-   "title": "POGOS",
-   "top": 0.72,
-   "eyebrow": "01 · rest 2–3 min",
-   "sets": "3×5",
+   "title": "POGOS · 3×5",
+   "top": 0.7,
+   "plate": true
+  },
+  {
+   "type": "lowerLabel",
+   "at": 6.65,
+   "dur": 0.8,
+   "title": "REST 2–3 MIN",
+   "top": 0.765,
    "plate": true
   },
   {
    "type": "lowerLabel",
    "at": 7.62,
    "dur": 2.63,
-   "title": "A SKIP",
-   "top": 0.72,
-   "eyebrow": "02 · rest 2–3 min",
-   "sets": "3×5",
+   "title": "A SKIP · 3×5",
+   "top": 0.7,
+   "plate": true
+  },
+  {
+   "type": "lowerLabel",
+   "at": 7.87,
+   "dur": 2.38,
+   "title": "REST 2–3 MIN",
+   "top": 0.765,
    "plate": true
   },
   {
    "type": "lowerLabel",
    "at": 10.42,
    "dur": 1.9,
-   "title": "SWITCHES",
-   "top": 0.72,
-   "eyebrow": "03 · rest 2–3 min",
-   "sets": "3×5",
+   "title": "SWITCHES · 3×5",
+   "top": 0.7,
+   "plate": true
+  },
+  {
+   "type": "lowerLabel",
+   "at": 10.67,
+   "dur": 1.65,
+   "title": "REST 2–3 MIN",
+   "top": 0.765,
    "plate": true
   },
   {
@@ -288,6 +306,11 @@
     "gain_db": -18
    },
    {
+    "at": 6.65,
+    "sound": "click",
+    "gain_db": -18
+   },
+   {
     "at": 7.5,
     "sound": "reverse_hit",
     "gain_db": -16,
@@ -304,6 +327,11 @@
     "gain_db": -18
    },
    {
+    "at": 7.87,
+    "sound": "click",
+    "gain_db": -18
+   },
+   {
     "at": 10.3,
     "sound": "whip",
     "gain_db": -11,
@@ -316,6 +344,11 @@
    },
    {
     "at": 10.42,
+    "sound": "click",
+    "gain_db": -18
+   },
+   {
+    "at": 10.67,
     "sound": "click",
     "gain_db": -18
    },
