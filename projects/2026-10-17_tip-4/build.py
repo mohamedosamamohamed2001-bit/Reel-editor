@@ -38,4 +38,11 @@ e = json.loads(p.read_text())
 e["textPlate"] = "#56A0FB"
 e["captions"].update({"style": "plate", "plateColor": "#56A0FB", "keywordColor": "#FFFFFF"})
 e["captions"].pop("light", None)
+# educational tone: exercise labels on the solid brand plate; no white flash frame on the cut (a plain zoom)
+for o in e["overlays"]:
+    if o["type"] == "lowerLabel":
+        o["plate"] = True
+for c in e["clips"]:
+    if c.get("tin", {}).get("flash"):
+        c["tin"] = {"type": "zoom"}
 p.write_text(json.dumps(e, ensure_ascii=False, indent=1))
