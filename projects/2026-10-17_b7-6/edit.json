@@ -1,0 +1,854 @@
+{
+ "title": "OSM app for gym clients",
+ "fps": 30,
+ "width": 1080,
+ "height": 1920,
+ "media": {
+  "m_original": "../2026-10-17_b7-6/source/original.mp4",
+  "m_bg_night": "../_mkt/bg_night.mp4"
+ },
+ "plates": {
+  "grade": null,
+  "sharpen": "cas=strength=0.3"
+ },
+ "clips": [
+  {
+   "src": "m_original",
+   "in": 0.0,
+   "out": 4.13333,
+   "zoom": [
+    1.0,
+    1.03
+   ],
+   "focusX": 0.48,
+   "focusY": 0.32,
+   "grade": "eq=contrast=1.05:saturation=1.08:gamma=0.99"
+  },
+  {
+   "src": "m_original",
+   "in": 4.13333,
+   "out": 6.0,
+   "zoom": [
+    1.0,
+    1.03
+   ],
+   "focusX": 0.65,
+   "focusY": 0.32,
+   "grade": "eq=contrast=1.05:saturation=1.08:gamma=0.99",
+   "tin": {
+    "type": "zoom",
+    "flash": true
+   }
+  },
+  {
+   "src": "m_bg_night",
+   "in": 0.0,
+   "out": 2.3,
+   "freeze": true,
+   "zoom": 1.0
+  },
+  {
+   "src": "m_original",
+   "in": 8.3,
+   "out": 11.2,
+   "zoom": [
+    1.05,
+    1.08
+   ],
+   "focusX": 0.65,
+   "focusY": 0.32,
+   "grade": "eq=contrast=1.05:saturation=1.08:gamma=0.99"
+  },
+  {
+   "src": "m_bg_night",
+   "in": 0.0,
+   "out": 5.0,
+   "freeze": true,
+   "zoom": 1.0
+  },
+  {
+   "src": "m_bg_night",
+   "in": 0.0,
+   "out": 2.5,
+   "freeze": true,
+   "zoom": 1.0,
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  },
+  {
+   "src": "m_original",
+   "in": 23.6,
+   "out": 29.9,
+   "zoom": [
+    1.0,
+    1.03
+   ],
+   "focusX": 0.65,
+   "focusY": 0.32,
+   "grade": "eq=contrast=1.05:saturation=1.08:gamma=0.99"
+  },
+  {
+   "src": "m_original",
+   "in": 31.1,
+   "out": 34.9,
+   "zoom": [
+    1.05,
+    1.08
+   ],
+   "focusX": 0.65,
+   "focusY": 0.32,
+   "grade": "eq=contrast=1.05:saturation=1.08:gamma=0.99",
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  },
+  {
+   "src": "m_bg_night",
+   "in": 0.0,
+   "out": 4.5,
+   "freeze": true,
+   "zoom": 1.0
+  },
+  {
+   "src": "m_original",
+   "in": 39.4,
+   "out": 43.8,
+   "zoom": [
+    1.0,
+    1.03
+   ],
+   "focusX": 0.65,
+   "focusY": 0.32,
+   "grade": "eq=contrast=1.05:saturation=1.08:gamma=0.99"
+  },
+  {
+   "src": "m_bg_night",
+   "in": 0.0,
+   "out": 10.1,
+   "freeze": true,
+   "zoom": 1.0
+  },
+  {
+   "src": "m_original",
+   "in": 54.6,
+   "out": 57.0,
+   "zoom": [
+    1.05,
+    1.08
+   ],
+   "focusX": 0.65,
+   "focusY": 0.32,
+   "grade": "eq=contrast=1.05:saturation=1.08:gamma=0.99",
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  },
+  {
+   "src": "m_bg_night",
+   "in": 0.0,
+   "out": 2.3,
+   "freeze": true,
+   "zoom": 1.0
+  },
+  {
+   "src": "m_original",
+   "in": 59.3,
+   "out": 63.6,
+   "zoom": [
+    1.0,
+    1.03
+   ],
+   "focusX": 0.65,
+   "focusY": 0.32,
+   "grade": "eq=contrast=1.05:saturation=1.08:gamma=0.99"
+  },
+  {
+   "src": "m_original",
+   "in": 76.3,
+   "out": 78.0,
+   "zoom": [
+    1.05,
+    1.08
+   ],
+   "focusX": 0.65,
+   "focusY": 0.32,
+   "grade": "eq=contrast=1.05:saturation=1.08:gamma=0.99",
+   "tin": {
+    "type": "whip",
+    "dir": "right"
+   }
+  },
+  {
+   "src": "m_bg_night",
+   "in": 0.0,
+   "out": 3.7,
+   "freeze": true,
+   "zoom": 1.0
+  },
+  {
+   "src": "m_original",
+   "in": 81.7,
+   "out": 88.36667,
+   "zoom": [
+    1.0,
+    1.03
+   ],
+   "focusX": 0.5,
+   "focusY": 0.32,
+   "grade": "eq=contrast=1.05:saturation=1.08:gamma=0.99",
+   "tin": {
+    "type": "zoom",
+    "flash": true
+   }
+  }
+ ],
+ "overlays": [
+  {
+   "type": "screenCard",
+   "at": 6.0,
+   "dur": 2.3,
+   "src": "m_original",
+   "plate": true,
+   "backdrop": "none",
+   "entrance": "tilt",
+   "width": 680,
+   "top": 120,
+   "region": {
+    "x": 0.1,
+    "y": 0.05462962962962963,
+    "w": 0.26145833333333335,
+    "h": 0.8898148148148148
+   },
+   "segments": [
+    {
+     "in": 6.0,
+     "rate": 1,
+     "dur": 2.3
+    }
+   ],
+   "taps": [],
+   "highlights": []
+  },
+  {
+   "type": "screenCard",
+   "at": 11.2,
+   "dur": 5.0,
+   "src": "m_original",
+   "plate": true,
+   "backdrop": "none",
+   "entrance": "tilt",
+   "width": 680,
+   "top": 120,
+   "region": {
+    "x": 0.1,
+    "y": 0.05462962962962963,
+    "w": 0.26145833333333335,
+    "h": 0.8898148148148148
+   },
+   "segments": [
+    {
+     "in": 11.2,
+     "rate": 1,
+     "dur": 5.0
+    }
+   ],
+   "taps": [],
+   "highlights": []
+  },
+  {
+   "type": "screenCard",
+   "at": 16.2,
+   "dur": 2.5,
+   "src": "m_original",
+   "plate": true,
+   "backdrop": "none",
+   "entrance": "tilt",
+   "width": 680,
+   "top": 120,
+   "region": {
+    "x": 0.1,
+    "y": 0.05462962962962963,
+    "w": 0.26145833333333335,
+    "h": 0.8898148148148148
+   },
+   "segments": [
+    {
+     "in": 21.1,
+     "rate": 1,
+     "dur": 2.5
+    }
+   ],
+   "taps": [],
+   "highlights": []
+  },
+  {
+   "type": "screenCard",
+   "at": 28.8,
+   "dur": 4.5,
+   "src": "m_original",
+   "plate": true,
+   "backdrop": "none",
+   "entrance": "tilt",
+   "width": 680,
+   "top": 120,
+   "region": {
+    "x": 0.1,
+    "y": 0.05462962962962963,
+    "w": 0.26145833333333335,
+    "h": 0.8898148148148148
+   },
+   "segments": [
+    {
+     "in": 34.9,
+     "rate": 1,
+     "dur": 4.5
+    }
+   ],
+   "taps": [],
+   "highlights": []
+  },
+  {
+   "type": "screenCard",
+   "at": 37.7,
+   "dur": 10.1,
+   "src": "m_original",
+   "plate": true,
+   "backdrop": "none",
+   "entrance": "tilt",
+   "width": 680,
+   "top": 120,
+   "region": {
+    "x": 0.1,
+    "y": 0.05462962962962963,
+    "w": 0.26145833333333335,
+    "h": 0.8898148148148148
+   },
+   "segments": [
+    {
+     "in": 43.8,
+     "rate": 1,
+     "dur": 10.1
+    }
+   ],
+   "taps": [],
+   "highlights": []
+  },
+  {
+   "type": "screenCard",
+   "at": 50.2,
+   "dur": 2.3,
+   "src": "m_original",
+   "plate": true,
+   "backdrop": "none",
+   "entrance": "tilt",
+   "width": 680,
+   "top": 120,
+   "region": {
+    "x": 0.1,
+    "y": 0.05462962962962963,
+    "w": 0.26145833333333335,
+    "h": 0.8898148148148148
+   },
+   "segments": [
+    {
+     "in": 57.0,
+     "rate": 1,
+     "dur": 2.3
+    }
+   ],
+   "taps": [],
+   "highlights": []
+  },
+  {
+   "type": "screenCard",
+   "at": 58.5,
+   "dur": 3.7,
+   "src": "m_original",
+   "plate": true,
+   "backdrop": "none",
+   "entrance": "tilt",
+   "width": 680,
+   "top": 120,
+   "region": {
+    "x": 0.1,
+    "y": 0.05462962962962963,
+    "w": 0.26145833333333335,
+    "h": 0.8898148148148148
+   },
+   "segments": [
+    {
+     "in": 78.0,
+     "rate": 1,
+     "dur": 3.7
+    }
+   ],
+   "taps": [],
+   "highlights": []
+  },
+  {
+   "type": "kineticTitle",
+   "at": 0.1,
+   "dur": 2.14,
+   "lines": [
+    {
+     "text": "OSM APP",
+     "size": 120
+    },
+    {
+     "text": "لعملاء الجيم",
+     "accent": true,
+     "size": 80
+    }
+   ],
+   "top": 0.56,
+   "motion": "smooth",
+   "depth": true
+  },
+  {
+   "type": "kineticTitle",
+   "at": 2.24,
+   "dur": 2.58,
+   "lines": [
+    {
+     "text": "هتستفيد إزاي",
+     "size": 110
+    },
+    {
+     "text": "بالـApp؟",
+     "accent": true,
+     "size": 140
+    }
+   ],
+   "top": 0.36,
+   "motion": "smooth",
+   "depth": true,
+   "backdrop": true,
+   "eyebrow": "COACH OSAMA"
+  },
+  {
+   "type": "iconPop",
+   "at": 5.64,
+   "dur": 0.31,
+   "items": [
+    {
+     "icon": "CalendarCheck",
+     "label": "كل يوم"
+    }
+   ],
+   "top": 0.5,
+   "size": 210
+  },
+  {
+   "type": "iconPop",
+   "at": 8.7,
+   "dur": 2.4,
+   "items": [
+    {
+     "icon": "Dumbbell",
+     "label": "الوزن"
+    },
+    {
+     "icon": "Repeat",
+     "label": "العدات"
+    }
+   ],
+   "top": 0.575,
+   "size": 198
+  },
+  {
+   "type": "iconPop",
+   "at": 18.83,
+   "dur": 1.64,
+   "items": [
+    {
+     "icon": "Users",
+     "label": "معاك في الجيم"
+    }
+   ],
+   "top": 0.555,
+   "size": 210
+  },
+  {
+   "type": "iconPop",
+   "at": 23.07,
+   "dur": 1.88,
+   "items": [
+    {
+     "icon": "TrendingUp",
+     "label": "كل أسبوع"
+    }
+   ],
+   "top": 0.569,
+   "size": 205
+  },
+  {
+   "type": "lowerLabel",
+   "at": 26.89,
+   "dur": 1.86,
+   "title": "CALORIES CALCULATOR",
+   "top": 0.56,
+   "plate": true,
+   "eyebrow": "في الـApp"
+  },
+  {
+   "type": "iconPop",
+   "at": 33.43,
+   "dur": 4.17,
+   "items": [
+    {
+     "icon": "Footprints",
+     "label": "سجل الـSteps"
+    }
+   ],
+   "top": 0.539,
+   "size": 210
+  },
+  {
+   "type": "lowerLabel",
+   "at": 49.07,
+   "dur": 1.08,
+   "title": "PROGRESS",
+   "top": 0.56,
+   "plate": true,
+   "eyebrow": "ده مهم"
+  },
+  {
+   "type": "iconPop",
+   "at": 52.57,
+   "dur": 4.13,
+   "items": [
+    {
+     "icon": "Scale",
+     "label": "تراك للوزن"
+    }
+   ],
+   "top": 0.545,
+   "size": 210
+  },
+  {
+   "type": "iconPop",
+   "at": 62.06,
+   "dur": 0.95,
+   "items": [
+    {
+     "icon": "Salad",
+     "label": "Online بس"
+    }
+   ],
+   "top": 0.543,
+   "size": 210
+  },
+  {
+   "type": "iconPop",
+   "at": 63.06,
+   "dur": 5.707,
+   "items": [
+    {
+     "icon": "Dumbbell",
+     "mark": "check",
+     "label": "التمارين فقط"
+    }
+   ],
+   "top": 0.575,
+   "size": 198
+  },
+  {
+   "type": "endCard",
+   "at": 68.8667,
+   "dur": 2.4,
+   "cta": "OSM Coach Osama",
+   "reveal": "wipe",
+   "image": "brand/end/osm-end-photo.jpg"
+  }
+ ],
+ "shakes": [
+  {
+   "at": 4.133,
+   "amp": 0.4
+  },
+  {
+   "at": 62.2,
+   "amp": 0.4
+  },
+  {
+   "at": 68.867,
+   "amp": 0.6
+  }
+ ],
+ "pulses": [],
+ "flashes": [],
+ "sfx": {
+  "cues": [
+   {
+    "at": 0.1,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 0.15,
+    "sound": "impact",
+    "gain_db": -20
+   },
+   {
+    "at": 2.24,
+    "sound": "whoosh_in",
+    "gain_db": -16
+   },
+   {
+    "at": 4.1333,
+    "sound": "reverse_hit",
+    "gain_db": -17,
+    "dur": 0.4
+   },
+   {
+    "at": 4.1333,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 5.72,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 6.0,
+    "sound": "whoosh_in",
+    "gain_db": -15
+   },
+   {
+    "at": 8.78,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 8.95,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 820
+   },
+   {
+    "at": 11.2,
+    "sound": "whoosh_in",
+    "gain_db": -15
+   },
+   {
+    "at": 16.2,
+    "sound": "whip",
+    "gain_db": -12,
+    "dir": 1.0
+   },
+   {
+    "at": 16.22,
+    "sound": "air",
+    "gain_db": -21
+   },
+   {
+    "at": 18.91,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 23.15,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 25.0,
+    "sound": "whip",
+    "gain_db": -12,
+    "dir": 1.0
+   },
+   {
+    "at": 25.02,
+    "sound": "air",
+    "gain_db": -21
+   },
+   {
+    "at": 26.89,
+    "sound": "click",
+    "gain_db": -18
+   },
+   {
+    "at": 28.8,
+    "sound": "whoosh_in",
+    "gain_db": -15
+   },
+   {
+    "at": 33.51,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 37.7,
+    "sound": "whoosh_in",
+    "gain_db": -15
+   },
+   {
+    "at": 47.8,
+    "sound": "whip",
+    "gain_db": -12,
+    "dir": 1.0
+   },
+   {
+    "at": 47.82,
+    "sound": "air",
+    "gain_db": -21
+   },
+   {
+    "at": 49.07,
+    "sound": "click",
+    "gain_db": -18
+   },
+   {
+    "at": 50.2,
+    "sound": "whoosh_in",
+    "gain_db": -15
+   },
+   {
+    "at": 52.65,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 56.8,
+    "sound": "whip",
+    "gain_db": -12,
+    "dir": 1.0
+   },
+   {
+    "at": 56.82,
+    "sound": "air",
+    "gain_db": -21
+   },
+   {
+    "at": 58.5,
+    "sound": "whoosh_in",
+    "gain_db": -15
+   },
+   {
+    "at": 62.14,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 62.2,
+    "sound": "reverse_hit",
+    "gain_db": -17,
+    "dur": 0.4
+   },
+   {
+    "at": 62.2,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 63.14,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 68.8667,
+    "sound": "reverse_hit",
+    "gain_db": -12,
+    "dur": 0.7
+   },
+   {
+    "at": 68.8667,
+    "sound": "boom",
+    "gain_db": -7
+   },
+   {
+    "at": 69.3667,
+    "sound": "click",
+    "gain_db": -17
+   }
+  ]
+ },
+ "music": {
+  "src": "work/music/music.wav",
+  "gain_db": -10
+ },
+ "tail": 2.4,
+ "textPlate": "#56A0FB",
+ "voiceTrack": "work/vo.wav",
+ "dialogueFx": "highpass=f=70,acompressor=threshold=0.1:ratio=2.5:attack=8:release=120:makeup=1.5",
+ "dialogueLufs": -16.0,
+ "captions": {
+  "wordsFile": "work/vo.words.json",
+  "outputTime": true,
+  "style": "plate",
+  "karaoke": true,
+  "maxWords": 3,
+  "maxChars": 22,
+  "keywords": [
+   "App",
+   "Application",
+   "12",
+   "50",
+   "Calories",
+   "Steps",
+   "10,000",
+   "400",
+   "Progress",
+   "Nutrition",
+   "التمارين"
+  ],
+  "replace": {},
+  "zones": [
+   {
+    "at": 5.95,
+    "dur": 2.35,
+    "top": 0.752
+   },
+   {
+    "at": 11.15,
+    "dur": 5.05,
+    "top": 0.752
+   },
+   {
+    "at": 16.15,
+    "dur": 2.55,
+    "top": 0.752
+   },
+   {
+    "at": 28.75,
+    "dur": 4.55,
+    "top": 0.752
+   },
+   {
+    "at": 37.65,
+    "dur": 10.15,
+    "top": 0.752
+   },
+   {
+    "at": 50.15,
+    "dur": 2.35,
+    "top": 0.752
+   },
+   {
+    "at": 58.45,
+    "dur": 3.75,
+    "top": 0.752
+   },
+   {
+    "at": 0,
+    "dur": 68.877,
+    "top": 0.74
+   }
+  ],
+  "plateColor": "#56A0FB",
+  "keywordColor": "#FFFFFF"
+ }
+}

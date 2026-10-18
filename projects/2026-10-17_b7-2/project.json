@@ -1,0 +1,20 @@
+{
+ "name": "2026-10-17_b7-2",
+ "slug": "lateral-raises",
+ "source": {
+  "drive_folder_id": "1VtiRfhEfO6OP8AauinMp9l0qmqYy8JdX",
+  "filename": "IMG_3017.MOV",
+  "sha256": "86b2024dc2f7a8250e4751eb2b2f1f5c30a5a4596c11e7bd1b99315c5eb16b98"
+ },
+ "delivery": {
+  "platform": "instagram_reel",
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "lufs": -14,
+  "true_peak": -1.0
+ },
+ "language": "ar-EG",
+ "captions": true,
+ "status": "final render"
+}

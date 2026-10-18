@@ -1,0 +1,20 @@
+{
+ "name": "2026-10-17_b7-5",
+ "slug": "triceps-overhead",
+ "source": {
+  "drive_folder_id": "1VtiRfhEfO6OP8AauinMp9l0qmqYy8JdX",
+  "filename": "IMG_3022.MOV",
+  "sha256": "63aeeff2807885702b6baf36f5de05e2a566e322a144f0d69ac3db013bcc034c"
+ },
+ "delivery": {
+  "platform": "instagram_reel",
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "lufs": -14,
+  "true_peak": -1.0
+ },
+ "language": "ar-EG",
+ "captions": true,
+ "status": "final render"
+}

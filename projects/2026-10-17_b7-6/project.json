@@ -1,0 +1,20 @@
+{
+ "name": "2026-10-17_b7-6",
+ "slug": "app-for-gym-clients",
+ "source": {
+  "drive_folder_id": "1VtiRfhEfO6OP8AauinMp9l0qmqYy8JdX",
+  "filename": "V2.mp4",
+  "sha256": "8d4ddefed88da5029e51afc4a15294b51876a9f745b957a6b0cb562c829aeead"
+ },
+ "delivery": {
+  "platform": "instagram_reel",
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "lufs": -14,
+  "true_peak": -1.0
+ },
+ "language": "ar-EG",
+ "captions": true,
+ "status": "final render"
+}

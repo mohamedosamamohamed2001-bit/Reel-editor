@@ -1,0 +1,62 @@
+{
+ "original_overlays": 20,
+ "fixes": [
+  {
+   "index": 10,
+   "type": "iconPop",
+   "at": 8.7,
+   "action": "move",
+   "top": 0.575,
+   "size": 198
+  },
+  {
+   "index": 11,
+   "type": "iconPop",
+   "at": 18.83,
+   "action": "move",
+   "top": 0.555,
+   "size": 210
+  },
+  {
+   "index": 12,
+   "type": "iconPop",
+   "at": 23.07,
+   "action": "move",
+   "top": 0.569,
+   "size": 205
+  },
+  {
+   "index": 14,
+   "type": "iconPop",
+   "at": 33.43,
+   "action": "move",
+   "top": 0.539,
+   "size": 210
+  },
+  {
+   "index": 16,
+   "type": "iconPop",
+   "at": 52.57,
+   "action": "move",
+   "top": 0.545,
+   "size": 210
+  },
+  {
+   "index": 17,
+   "type": "iconPop",
+   "at": 62.06,
+   "action": "move",
+   "top": 0.543,
+   "size": 210
+  },
+  {
+   "index": 18,
+   "type": "iconPop",
+   "at": 63.06,
+   "action": "move",
+   "top": 0.575,
+   "size": 198
+  }
+ ],
+ "captions": []
+}

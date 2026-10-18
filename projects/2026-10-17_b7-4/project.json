@@ -1,0 +1,20 @@
+{
+ "name": "2026-10-17_b7-4",
+ "slug": "dumbbell-shrugs",
+ "source": {
+  "drive_folder_id": "1VtiRfhEfO6OP8AauinMp9l0qmqYy8JdX",
+  "filename": "IMG_3019.MOV",
+  "sha256": "31e66403bedd222a17e7b56b0c496c02074abb90dbbf8affe90a980f8fd1519a"
+ },
+ "delivery": {
+  "platform": "instagram_reel",
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "lufs": -14,
+  "true_peak": -1.0
+ },
+ "language": "ar-EG",
+ "captions": true,
+ "status": "final render"
+}

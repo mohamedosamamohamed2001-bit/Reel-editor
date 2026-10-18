@@ -1,0 +1,552 @@
+{
+ "title": "OSM gym talk: a sensitive topic",
+ "fps": 30,
+ "width": 1080,
+ "height": 1920,
+ "media": {
+  "main": "work/clean/original.clean.mp4",
+  "v_gym_weights": "work/visuals/gym_weights.jpg",
+  "v_washing_machine": "work/visuals/washing_machine.jpg"
+ },
+ "dialogueFx": "highpass=f=70,acompressor=threshold=0.1:ratio=2.5:attack=8:release=120:makeup=1.5",
+ "dialogueLufs": -16.0,
+ "plates": {
+  "grade": "format=yuv420p,eq=contrast=1.12:saturation=1.20:gamma=0.97,colorbalance=rs=-0.015:bs=0.02:rm=-0.01:bm=0.005:rh=0.012:gh=0.004:bh=-0.012,curves=master='0/0 0.06/0.035 0.25/0.21 0.5/0.5 0.75/0.79 0.94/0.965 1/1',vignette=angle=PI/7",
+  "sharpen": "cas=strength=0.22"
+ },
+ "clips": [
+  {
+   "src": "main",
+   "in": 0.0,
+   "out": 4.45,
+   "zoom": [
+    1.0,
+    1.03
+   ],
+   "focusY": 0.4,
+   "focusX": 0.5
+  },
+  {
+   "src": "main",
+   "in": 6.7,
+   "out": 19.6,
+   "focusY": 0.4,
+   "focusX": 0.5,
+   "zoom": [
+    1.05,
+    1.08
+   ],
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  },
+  {
+   "src": "main",
+   "in": 19.6,
+   "out": 21.4,
+   "focusY": 0.4,
+   "focusX": 0.5,
+   "zoom": [
+    1.1,
+    1.13
+   ],
+   "tin": {
+    "type": "zoom"
+   }
+  },
+  {
+   "src": "main",
+   "in": 21.4,
+   "out": 40.71,
+   "focusY": 0.4,
+   "focusX": 0.5,
+   "zoom": [
+    1.05,
+    1.08
+   ],
+   "tin": {
+    "type": "zoom"
+   }
+  },
+  {
+   "src": "main",
+   "in": 41.17,
+   "out": 46.93,
+   "zoom": [
+    1.0,
+    1.03
+   ],
+   "focusY": 0.4,
+   "focusX": 0.5,
+   "tin": {
+    "type": "zoom",
+    "flash": true
+   }
+  },
+  {
+   "src": "main",
+   "in": 47.17,
+   "out": 47.6,
+   "focusY": 0.4,
+   "focusX": 0.5,
+   "zoom": [
+    1.05,
+    1.08
+   ],
+   "tin": {
+    "type": "whip",
+    "dir": "right"
+   }
+  },
+  {
+   "src": "main",
+   "in": 47.6,
+   "out": 49.3,
+   "focusY": 0.4,
+   "focusX": 0.5,
+   "zoom": [
+    1.1,
+    1.13
+   ],
+   "tin": {
+    "type": "zoom"
+   }
+  },
+  {
+   "src": "main",
+   "in": 49.3,
+   "out": 84.4,
+   "focusY": 0.4,
+   "focusX": 0.5,
+   "zoom": [
+    1.05,
+    1.08
+   ],
+   "tin": {
+    "type": "zoom"
+   }
+  },
+  {
+   "src": "main",
+   "in": 84.4,
+   "out": 88.0,
+   "focusY": 0.4,
+   "focusX": 0.5,
+   "zoom": [
+    1.1,
+    1.13
+   ],
+   "tin": {
+    "type": "zoom"
+   }
+  },
+  {
+   "src": "main",
+   "in": 88.0,
+   "out": 95.05,
+   "focusY": 0.4,
+   "focusX": 0.5,
+   "zoom": [
+    1.05,
+    1.08
+   ],
+   "tin": {
+    "type": "zoom"
+   }
+  }
+ ],
+ "captions": {
+  "wordsFile": "work/tx/aligned.words.json",
+  "style": "plate",
+  "karaoke": true,
+  "maxWords": 3,
+  "maxChars": 22,
+  "keywords": [
+   "حساس",
+   "ريحته",
+   "ريحتك",
+   "الهدوم",
+   "T-shirt",
+   "تتبسط",
+   "حقنا",
+   "بشياكة",
+   "تقبلوا"
+  ],
+  "zones": [
+   {
+    "at": 0,
+    "dur": 92.143,
+    "top": 0.745
+   }
+  ],
+  "plateColor": "#56A0FB",
+  "keywordColor": "#FFFFFF"
+ },
+ "overlays": [
+  {
+   "type": "kineticTitle",
+   "at": 1.26,
+   "dur": 3.157,
+   "lines": [
+    {
+     "text": "موضوع حساس",
+     "size": 120
+    },
+    {
+     "text": "في الجيم",
+     "accent": true,
+     "size": 110
+    }
+   ],
+   "top": 0.34,
+   "motion": "smooth",
+   "depth": true,
+   "backdrop": true,
+   "eyebrow": "OSM · GYM TALK"
+  },
+  {
+   "type": "kineticTitle",
+   "at": 18.127,
+   "dur": 2.03,
+   "lines": [
+    {
+     "text": "ليه",
+     "size": 120
+    },
+    {
+     "text": "بتتضايق؟",
+     "accent": true,
+     "size": 130
+    }
+   ],
+   "top": 0.34,
+   "motion": "smooth",
+   "depth": true,
+   "backdrop": true
+  },
+  {
+   "type": "kineticTitle",
+   "at": 42.4,
+   "dur": 2.237,
+   "lines": [
+    {
+     "text": "الموضوع",
+     "size": 110
+    },
+    {
+     "text": "مايضايقكش",
+     "accent": true,
+     "size": 120
+    }
+   ],
+   "top": 0.34,
+   "motion": "smooth",
+   "depth": true,
+   "backdrop": true
+  },
+  {
+   "type": "kineticTitle",
+   "at": 53.627,
+   "dur": 1.61,
+   "lines": [
+    {
+     "text": "أتمنى الناس",
+     "size": 110
+    },
+    {
+     "text": "تتقبل ده",
+     "accent": true,
+     "size": 120
+    }
+   ],
+   "top": 0.34,
+   "motion": "smooth",
+   "depth": true,
+   "backdrop": true
+  },
+  {
+   "type": "visualCard",
+   "src": "v_gym_weights",
+   "at": 58.187,
+   "dur": 5.49,
+   "mode": "full",
+   "push": [
+    1.0,
+    1.06
+   ]
+  },
+  {
+   "type": "visualCard",
+   "src": "v_washing_machine",
+   "at": 74.267,
+   "dur": 4.93,
+   "mode": "full",
+   "credit": "Photo: dejankrsmanovic · CC BY 2.0",
+   "push": [
+    1.0,
+    1.06
+   ]
+  },
+  {
+   "type": "kineticTitle",
+   "at": 79.247,
+   "dur": 2.23,
+   "lines": [
+    {
+     "text": "اتقبلوا",
+     "size": 120
+    },
+    {
+     "text": "الموضوع ده",
+     "accent": true,
+     "size": 110
+    }
+   ],
+   "top": 0.34,
+   "motion": "smooth",
+   "depth": true,
+   "backdrop": true
+  },
+  {
+   "type": "endCard",
+   "at": 92.1333,
+   "dur": 2.4,
+   "cta": "OSM Coach Osama",
+   "reveal": "wipe",
+   "image": "brand/end/osm-end-photo.jpg"
+  }
+ ],
+ "shakes": [
+  {
+   "at": 17.367,
+   "amp": 0.4
+  },
+  {
+   "at": 19.167,
+   "amp": 0.4
+  },
+  {
+   "at": 38.467,
+   "amp": 0.4
+  },
+  {
+   "at": 44.667,
+   "amp": 0.4
+  },
+  {
+   "at": 46.367,
+   "amp": 0.4
+  },
+  {
+   "at": 81.467,
+   "amp": 0.4
+  },
+  {
+   "at": 85.067,
+   "amp": 0.4
+  },
+  {
+   "at": 92.133,
+   "amp": 0.6
+  }
+ ],
+ "sfx": {
+  "cues": [
+   {
+    "at": 1.26,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 1.31,
+    "sound": "impact",
+    "gain_db": -20
+   },
+   {
+    "at": 4.4667,
+    "sound": "whip",
+    "gain_db": -11,
+    "dir": 1.0
+   },
+   {
+    "at": 4.4867,
+    "sound": "air",
+    "gain_db": -20
+   },
+   {
+    "at": 17.3667,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 17.3667,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 18.127,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 18.177,
+    "sound": "impact",
+    "gain_db": -20
+   },
+   {
+    "at": 19.1667,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 19.1667,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 38.4667,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 38.4667,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 42.4,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 42.45,
+    "sound": "impact",
+    "gain_db": -20
+   },
+   {
+    "at": 44.2333,
+    "sound": "whip",
+    "gain_db": -11,
+    "dir": 1.0
+   },
+   {
+    "at": 44.2533,
+    "sound": "air",
+    "gain_db": -20
+   },
+   {
+    "at": 44.6667,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 44.6667,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 46.3667,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 46.3667,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 53.627,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 53.677,
+    "sound": "impact",
+    "gain_db": -20
+   },
+   {
+    "at": 58.187,
+    "sound": "whoosh_in",
+    "gain_db": -15
+   },
+   {
+    "at": 63.577,
+    "sound": "whoosh_out",
+    "gain_db": -19
+   },
+   {
+    "at": 74.267,
+    "sound": "whoosh_in",
+    "gain_db": -15
+   },
+   {
+    "at": 79.097,
+    "sound": "whoosh_out",
+    "gain_db": -19
+   },
+   {
+    "at": 79.247,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 79.297,
+    "sound": "impact",
+    "gain_db": -20
+   },
+   {
+    "at": 81.4667,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 81.4667,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 85.0667,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 85.0667,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 92.1333,
+    "sound": "reverse_hit",
+    "gain_db": -12,
+    "dur": 0.7
+   },
+   {
+    "at": 92.1333,
+    "sound": "boom",
+    "gain_db": -7
+   },
+   {
+    "at": 92.6333,
+    "sound": "click",
+    "gain_db": -17
+   }
+  ]
+ },
+ "music": {
+  "src": "work/music/music.wav",
+  "gain_db": -11
+ },
+ "tail": 2.4,
+ "textPlate": "#56A0FB",
+ "audio": {
+  "main": "work/stems/original.vocals.wav"
+ }
+}

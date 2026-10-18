@@ -1,0 +1,20 @@
+{
+ "name": "2026-10-17_b7-1",
+ "slug": "one-hand-row",
+ "source": {
+  "drive_folder_id": "1VtiRfhEfO6OP8AauinMp9l0qmqYy8JdX",
+  "filename": "IMG_3006.MOV",
+  "sha256": "77e7640e40a388b0bfbc0fa1d3ac9410066e639b2b080edc04a217b27691952d"
+ },
+ "delivery": {
+  "platform": "instagram_reel",
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "lufs": -14,
+  "true_peak": -1.0
+ },
+ "language": "ar-EG",
+ "captions": true,
+ "status": "final render"
+}

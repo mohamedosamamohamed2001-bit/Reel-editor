@@ -45,7 +45,7 @@ def read_frames(src, w, h):
 _FACE = None
 
 
-def face_mask(bgr):
+def face_mask(bgr, neck=0.5, min_score=0.6):
     global _FACE
     H, W = bgr.shape[:2]
     k = 360 / W
@@ -56,8 +56,10 @@ def face_mask(bgr):
     _, faces = _FACE.detect(cv2.resize(bgr, (sw, sh)))
     m = np.zeros((H, W), np.uint8)
     for f in faces if faces is not None else []:
+        if f[-1] < min_score:  # a blurred hand can score ~0.7
+            continue
         x, y, w, h = (f[:4] / k).astype(int)
-        cv2.rectangle(m, (x - w // 3, y - h // 3), (x + w + w // 3, y + h + h // 2), 1, -1)  # face + beard + neck
+        cv2.rectangle(m, (x - w // 3, y - h // 3), (x + w + w // 3, y + h + int(h * neck)), 1, -1)  # face + beard + neck
     return m
 
 
@@ -150,12 +152,67 @@ def fill_shot_median(frames, masks, min_samples=3):
     return out
 
 
+def fill_shot_matched(frames, masks, reach=20, ring_px=24, max_err=7.0):
+    """Handheld shots (selfies): each frame's whole plate area comes from ONE nearby frame where that area is fully
+    uncovered, shifted onto this frame (phase correlation on a ring around the plate) and kept only if the ring then
+    matches (mean abs error <= max_err): no patchwork from several frames, no pasted skin over the shirt when a hand
+    passes. Otherwise (hand in front, fast motion) OpenCV Telea. Pasted with a feathered edge."""
+    n = len(frames)
+    out = []
+    for i in range(n):
+        f, m = frames[i].copy(), masks[i].astype(bool)
+        todo = np.zeros(m.shape, bool)
+        if m.any():
+            ys, xs = np.where(m)
+            pad = ring_px + 12
+            y0, y1 = max(0, ys.min() - pad), min(m.shape[0], ys.max() + pad + 1)
+            x0, x1 = max(0, xs.min() - pad), min(m.shape[1], xs.max() + pad + 1)
+            mc = m[y0:y1, x0:x1].astype(np.uint8)
+            ring = (cv2.dilate(mc, cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (2 * ring_px + 1,) * 2)) > 0) & (mc == 0)
+            gi = cv2.cvtColor(f[y0:y1, x0:x1], cv2.COLOR_BGR2GRAY).astype(np.float32)
+            win = cv2.createHanningWindow(gi.shape[::-1], cv2.CV_32F)
+            best = None
+            for k in range(1, reach + 1):
+                for j in (i - k, i + k):
+                    if not 0 <= j < n:
+                        continue
+                    grown = cv2.dilate(mc, np.ones((25, 25), np.uint8)) > 0
+                    if (masks[j][y0:y1, x0:x1].astype(bool) & grown).any():
+                        continue
+                    gj = cv2.cvtColor(frames[j][y0:y1, x0:x1], cv2.COLOR_BGR2GRAY).astype(np.float32)
+                    gi_r, gj_r = gi.copy(), gj.copy()
+                    gi_r[~ring] = gi[ring].mean()
+                    gj_r[~ring] = gj[ring].mean()
+                    (dx, dy), _ = cv2.phaseCorrelate(gj_r, gi_r, win)
+                    if abs(dx) > 24 or abs(dy) > 24:
+                        continue
+                    M = np.float32([[1, 0, dx], [0, 1, dy]])
+                    sh = cv2.warpAffine(frames[j], M, (f.shape[1], f.shape[0]), flags=cv2.INTER_LINEAR, borderMode=cv2.BORDER_REFLECT)
+                    err = float(np.abs(sh[y0:y1, x0:x1].astype(np.float32) - f[y0:y1, x0:x1].astype(np.float32))[ring].mean())
+                    if best is None or err < best[0]:
+                        best = (err, sh)
+                if best is not None and best[0] <= max_err * 0.6:
+                    break
+            if best is not None and best[0] <= max_err:
+                src = best[1]
+            else:
+                src = cv2.inpaint(f, m.astype(np.uint8), 5, cv2.INPAINT_TELEA)
+                todo = m
+            a = cv2.GaussianBlur(cv2.dilate(m.astype(np.uint8), np.ones((7, 7), np.uint8)).astype(np.float32), (0, 0), 3)[..., None]
+            f = (src.astype(np.float32) * a + f.astype(np.float32) * (1 - a)).round().clip(0, 255).astype(np.uint8)
+        out.append((f, m, todo))
+    return out
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("src")
     ap.add_argument("out")
     ap.add_argument("--test", default=None)
     ap.add_argument("--cuts", default=None)
+    ap.add_argument("--neck", type=float, default=0.5, help="face guard below the chin, x face height (selfies: 0.15)")
+    ap.add_argument("--face-score", type=float, default=0.6, help="min YuNet score for the face guard")
+    ap.add_argument("--matched", action="store_true", help="handheld: one aligned frame per plate (fill_shot_matched)")
     ap.add_argument("--median-shots", default="", help="shot indices (0-based) filled from the median background plate")
     a = ap.parse_args()
     w, h, num, den = probe(a.src)
@@ -166,13 +223,13 @@ def main():
     masks = []
     for f in frames:
         m = plate_mask(f)
-        m[face_mask(f) > 0] = 0
+        m[face_mask(f, a.neck, a.face_score) > 0] = 0
         masks.append(m)
     result = [None] * len(frames)
     rest = 0
     for s0, s1 in zip(bounds, bounds[1:]):
         si = bounds.index(s0)
-        fill = fill_shot_median if str(si) in a.median_shots.split(",") else fill_shot_nearest
+        fill = fill_shot_median if str(si) in a.median_shots.split(",") else fill_shot_matched if a.matched else fill_shot_nearest
         for k, (f, m, todo) in enumerate(fill(frames[s0:s1], masks[s0:s1])):
             result[s0 + k] = f
             rest += int(todo.sum())

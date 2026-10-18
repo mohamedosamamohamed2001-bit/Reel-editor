@@ -1,0 +1,284 @@
+{
+ "title": "OSM technique: Triceps Overhead",
+ "fps": 30,
+ "width": 1080,
+ "height": 1920,
+ "media": {
+  "main": "source/original.mov"
+ },
+ "dialogueFx": "highpass=f=70,acompressor=threshold=0.1:ratio=2.5:attack=8:release=120:makeup=1.5",
+ "dialogueLufs": -16.0,
+ "plates": {
+  "grade": "format=yuv420p,eq=contrast=1.12:saturation=1.20:gamma=0.97,colorbalance=rs=-0.015:bs=0.02:rm=-0.01:bm=0.005:rh=0.012:gh=0.004:bh=-0.012,curves=master='0/0 0.06/0.035 0.25/0.21 0.5/0.5 0.75/0.79 0.94/0.965 1/1',vignette=angle=PI/7",
+  "sharpen": "cas=strength=0.22"
+ },
+ "clips": [
+  {
+   "src": "main",
+   "in": 0.0,
+   "out": 5.7,
+   "focusY": 0.45,
+   "focusX": 0.5,
+   "zoom": [
+    1.0,
+    1.04
+   ]
+  },
+  {
+   "src": "main",
+   "in": 5.7,
+   "out": 9.2,
+   "focusY": 0.45,
+   "focusX": 0.5,
+   "zoom": [
+    1.1,
+    1.13
+   ],
+   "tin": {
+    "type": "zoom"
+   }
+  },
+  {
+   "src": "main",
+   "in": 9.2,
+   "out": 11.6,
+   "focusY": 0.45,
+   "focusX": 0.5,
+   "zoom": [
+    1.0,
+    1.04
+   ],
+   "tin": {
+    "type": "zoom"
+   }
+  },
+  {
+   "src": "main",
+   "in": 11.6,
+   "out": 14.277,
+   "focusY": 0.45,
+   "focusX": 0.5,
+   "zoom": [
+    1.12,
+    1.15
+   ],
+   "tin": {
+    "type": "zoom"
+   }
+  }
+ ],
+ "captions": {
+  "wordsFile": "work/tx/aligned.words.json",
+  "style": "plate",
+  "karaoke": true,
+  "maxWords": 3,
+  "maxChars": 22,
+  "keywords": [
+   "Triceps",
+   "Overhead",
+   "أهم",
+   "للآخر"
+  ],
+  "zones": [
+   {
+    "at": 0,
+    "dur": 14.277,
+    "top": 0.76
+   }
+  ],
+  "replace": {
+   "الـTriceps": "Triceps"
+  },
+  "plateColor": "#56A0FB",
+  "keywordColor": "#FFFFFF"
+ },
+ "overlays": [
+  {
+   "type": "kineticTitle",
+   "at": 0.1,
+   "dur": 1.22,
+   "lines": [
+    {
+     "text": "TRICEPS",
+     "size": 140
+    },
+    {
+     "text": "OVERHEAD",
+     "size": 110
+    }
+   ],
+   "top": 0.52,
+   "motion": "smooth",
+   "depth": true
+  },
+  {
+   "type": "lowerLabel",
+   "at": 1.32,
+   "dur": 2.9,
+   "title": "GRIP",
+   "top": 0.58,
+   "eyebrow": "امسك الدمبل من هنا",
+   "plate": true
+  },
+  {
+   "type": "kineticTitle",
+   "at": 4.32,
+   "dur": 1.43,
+   "lines": [
+    {
+     "text": "أهم حاجة",
+     "accent": true,
+     "size": 150
+    }
+   ],
+   "top": 0.4,
+   "motion": "smooth",
+   "depth": true,
+   "backdrop": true
+  },
+  {
+   "type": "iconPop",
+   "at": 5.8,
+   "dur": 1.51,
+   "items": [
+    {
+     "icon": "ArrowDown",
+     "label": "للآخر"
+    }
+   ],
+   "top": 0.64,
+   "size": 141
+  },
+  {
+   "type": "iconPop",
+   "at": 7.36,
+   "dur": 1.98,
+   "items": [
+    {
+     "icon": "ArrowUp",
+     "label": "للآخر"
+    }
+   ],
+   "top": 0.55,
+   "size": 208,
+   "align": "left"
+  },
+  {
+   "type": "endCard",
+   "at": 14.2667,
+   "dur": 2.4,
+   "cta": "OSM Coach Osama",
+   "reveal": "wipe",
+   "image": "brand/end/osm-end-photo.jpg"
+  }
+ ],
+ "shakes": [
+  {
+   "at": 5.7,
+   "amp": 0.4
+  },
+  {
+   "at": 9.2,
+   "amp": 0.4
+  },
+  {
+   "at": 11.6,
+   "amp": 0.4
+  },
+  {
+   "at": 14.267,
+   "amp": 0.6
+  }
+ ],
+ "sfx": {
+  "cues": [
+   {
+    "at": 0.1,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 0.15,
+    "sound": "impact",
+    "gain_db": -20
+   },
+   {
+    "at": 1.32,
+    "sound": "click",
+    "gain_db": -18
+   },
+   {
+    "at": 4.32,
+    "sound": "whoosh_in",
+    "gain_db": -16
+   },
+   {
+    "at": 5.7,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 5.7,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 5.88,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 7.44,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 9.2,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 9.2,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 11.6,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 11.6,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 14.2667,
+    "sound": "reverse_hit",
+    "gain_db": -12,
+    "dur": 0.7
+   },
+   {
+    "at": 14.2667,
+    "sound": "boom",
+    "gain_db": -7
+   },
+   {
+    "at": 14.7667,
+    "sound": "click",
+    "gain_db": -17
+   }
+  ]
+ },
+ "music": {
+  "src": "work/music/music.wav",
+  "gain_db": -9
+ },
+ "tail": 2.4,
+ "textPlate": "#56A0FB"
+}

@@ -1,0 +1,646 @@
+{
+ "title": "OSM technique: Shoulder Press without the Arch",
+ "fps": 30,
+ "width": 1080,
+ "height": 1920,
+ "media": {
+  "main": "source/original.mov",
+  "v_back_pain": "work/visuals/back_pain.jpg",
+  "v_shoulder_anatomy": "work/visuals/shoulder_anatomy.jpg"
+ },
+ "dialogueFx": "highpass=f=70,acompressor=threshold=0.1:ratio=2.5:attack=8:release=120:makeup=1.5",
+ "dialogueLufs": -16.0,
+ "plates": {
+  "grade": "format=yuv420p,eq=contrast=1.12:saturation=1.20:gamma=0.97,colorbalance=rs=-0.015:bs=0.02:rm=-0.01:bm=0.005:rh=0.012:gh=0.004:bh=-0.012,curves=master='0/0 0.06/0.035 0.25/0.21 0.5/0.5 0.75/0.79 0.94/0.965 1/1',vignette=angle=PI/7",
+  "sharpen": "cas=strength=0.22"
+ },
+ "clips": [
+  {
+   "src": "main",
+   "in": 0.0,
+   "out": 14.1,
+   "focusY": 0.42,
+   "focusX": 0.5,
+   "zoom": [
+    1.0,
+    1.04
+   ]
+  },
+  {
+   "src": "main",
+   "in": 14.1,
+   "out": 17.2,
+   "focusY": 0.42,
+   "focusX": 0.5,
+   "zoom": [
+    1.1,
+    1.13
+   ],
+   "tin": {
+    "type": "zoom"
+   }
+  },
+  {
+   "src": "main",
+   "in": 17.2,
+   "out": 21.45,
+   "focusY": 0.42,
+   "focusX": 0.5,
+   "zoom": [
+    1.0,
+    1.04
+   ],
+   "tin": {
+    "type": "zoom"
+   }
+  },
+  {
+   "src": "main",
+   "in": 24.45,
+   "out": 29.8,
+   "focusY": 0.42,
+   "focusX": 0.5,
+   "zoom": [
+    1.08,
+    1.11
+   ],
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  },
+  {
+   "src": "main",
+   "in": 29.8,
+   "out": 31.5,
+   "focusY": 0.42,
+   "focusX": 0.5,
+   "zoom": [
+    1.1,
+    1.13
+   ],
+   "tin": {
+    "type": "zoom"
+   }
+  },
+  {
+   "src": "main",
+   "in": 31.5,
+   "out": 36.3,
+   "focusY": 0.42,
+   "focusX": 0.5,
+   "zoom": [
+    1.08,
+    1.11
+   ],
+   "tin": {
+    "type": "zoom"
+   }
+  },
+  {
+   "src": "main",
+   "in": 36.3,
+   "out": 41.6,
+   "focusY": 0.42,
+   "focusX": 0.5,
+   "zoom": [
+    1.1,
+    1.13
+   ],
+   "tin": {
+    "type": "zoom"
+   }
+  },
+  {
+   "src": "main",
+   "in": 41.6,
+   "out": 45.9,
+   "focusY": 0.42,
+   "focusX": 0.5,
+   "zoom": [
+    1.08,
+    1.11
+   ],
+   "tin": {
+    "type": "zoom"
+   }
+  },
+  {
+   "src": "main",
+   "in": 45.9,
+   "out": 47.4,
+   "focusY": 0.42,
+   "focusX": 0.5,
+   "zoom": [
+    1.1,
+    1.13
+   ],
+   "tin": {
+    "type": "zoom"
+   }
+  }
+ ],
+ "captions": {
+  "wordsFile": "work/tx/aligned.words.json",
+  "style": "plate",
+  "karaoke": true,
+  "maxWords": 3,
+  "maxChars": 22,
+  "keywords": [
+   "Shoulder",
+   "Press",
+   "ظهرك",
+   "كتفك",
+   "بطنك",
+   "Arch",
+   "Lower",
+   "Range",
+   "صح"
+  ],
+  "zones": [
+   {
+    "at": 0,
+    "dur": 44.41,
+    "top": 0.74
+   }
+  ],
+  "plateColor": "#56A0FB",
+  "keywordColor": "#FFFFFF"
+ },
+ "overlays": [
+  {
+   "type": "kineticTitle",
+   "at": 0.1,
+   "dur": 3.03,
+   "lines": [
+    {
+     "text": "SHOULDER",
+     "size": 130
+    },
+    {
+     "text": "PRESS",
+     "size": 140
+    }
+   ],
+   "top": 0.52,
+   "motion": "smooth",
+   "depth": true
+  },
+  {
+   "type": "lowerLabel",
+   "at": 3.18,
+   "dur": 4.04,
+   "title": "COMMON WAY",
+   "top": 0.58,
+   "eyebrow": "معظم الناس بتلعبها كده",
+   "plate": true
+  },
+  {
+   "type": "stepBadge",
+   "at": 7.32,
+   "dur": 1.08,
+   "mark": "✓",
+   "label": "مش غلط",
+   "top": 0.56,
+   "side": "right",
+   "plate": true
+  },
+  {
+   "type": "visualCard",
+   "src": "v_back_pain",
+   "at": 9.54,
+   "dur": 2.13,
+   "mode": "full",
+   "push": [
+    1.0,
+    1.06
+   ]
+  },
+  {
+   "type": "kineticTitle",
+   "at": 11.72,
+   "dur": 2.4,
+   "lines": [
+    {
+     "text": "لازم",
+     "size": 110
+    },
+    {
+     "text": "تعمل كده",
+     "size": 100
+    }
+   ],
+   "top": 0.54,
+   "motion": "smooth",
+   "depth": true
+  },
+  {
+   "type": "iconPop",
+   "at": 14.22,
+   "dur": 0.91,
+   "items": [
+    {
+     "icon": "Shield",
+     "label": "شد بطنك"
+    }
+   ],
+   "top": 0.52,
+   "size": 208
+  },
+  {
+   "type": "stepBadge",
+   "at": 15.18,
+   "dur": 3.56,
+   "mark": "✗",
+   "label": "Arch",
+   "top": 0.56,
+   "side": "right",
+   "plate": true
+  },
+  {
+   "type": "iconPop",
+   "at": 18.84,
+   "dur": 3.09,
+   "items": [
+    {
+     "icon": "ArrowUp",
+     "label": "اطلع"
+    },
+    {
+     "icon": "ArrowDown",
+     "label": "انزل"
+    }
+   ],
+   "top": 0.548,
+   "size": 195
+  },
+  {
+   "type": "kineticTitle",
+   "at": 22.08,
+   "dur": 2.53,
+   "lines": [
+    {
+     "text": "ليه الـArch",
+     "size": 120
+    },
+    {
+     "text": "بيوجع ظهرك؟",
+     "accent": true,
+     "size": 110
+    }
+   ],
+   "top": 0.34,
+   "motion": "smooth",
+   "depth": true,
+   "backdrop": true,
+   "eyebrow": "OSM · WHY"
+  },
+  {
+   "type": "iconPop",
+   "at": 25.14,
+   "dur": 1.67,
+   "items": [
+    {
+     "icon": "Dumbbell",
+     "label": "وزن تقيل"
+    }
+   ],
+   "top": 0.52,
+   "size": 208
+  },
+  {
+   "type": "lowerLabel",
+   "at": 26.86,
+   "dur": 1.63,
+   "title": "LOWER BACK",
+   "top": 0.58,
+   "eyebrow": "الحمل كله على",
+   "plate": true
+  },
+  {
+   "type": "iconPop",
+   "at": 28.54,
+   "dur": 1.89,
+   "items": [
+    {
+     "icon": "TriangleAlert",
+     "label": "حمل على الكتف"
+    }
+   ],
+   "top": 0.52,
+   "size": 208
+  },
+  {
+   "type": "iconPop",
+   "at": 30.48,
+   "dur": 2.8,
+   "items": [
+    {
+     "icon": "TriangleAlert",
+     "value": "+",
+     "label": "الـLower Back"
+    }
+   ],
+   "top": 0.52,
+   "size": 208
+  },
+  {
+   "type": "visualCard",
+   "src": "v_shoulder_anatomy",
+   "at": 35.24,
+   "dur": 3.31,
+   "mode": "full",
+   "push": [
+    1.0,
+    1.06
+   ]
+  },
+  {
+   "type": "stepBadge",
+   "at": 41.18,
+   "dur": 1.83,
+   "mark": "!",
+   "label": "عامل Arch",
+   "top": 0.56,
+   "side": "right",
+   "plate": true
+  },
+  {
+   "type": "stepBadge",
+   "at": 43.06,
+   "dur": 1.24,
+   "mark": "✗",
+   "label": "مش صح",
+   "top": 0.56,
+   "side": "right",
+   "plate": true
+  },
+  {
+   "type": "endCard",
+   "at": 44.4,
+   "dur": 2.4,
+   "cta": "OSM Coach Osama",
+   "reveal": "wipe",
+   "image": "brand/end/osm-end-photo.jpg"
+  }
+ ],
+ "shakes": [
+  {
+   "at": 14.1,
+   "amp": 0.4
+  },
+  {
+   "at": 17.2,
+   "amp": 0.4
+  },
+  {
+   "at": 26.8,
+   "amp": 0.4
+  },
+  {
+   "at": 28.5,
+   "amp": 0.4
+  },
+  {
+   "at": 33.3,
+   "amp": 0.4
+  },
+  {
+   "at": 38.6,
+   "amp": 0.4
+  },
+  {
+   "at": 42.9,
+   "amp": 0.4
+  },
+  {
+   "at": 44.4,
+   "amp": 0.6
+  }
+ ],
+ "sfx": {
+  "cues": [
+   {
+    "at": 0.1,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 0.15,
+    "sound": "impact",
+    "gain_db": -20
+   },
+   {
+    "at": 3.18,
+    "sound": "click",
+    "gain_db": -18
+   },
+   {
+    "at": 7.32,
+    "sound": "slam",
+    "gain_db": -16
+   },
+   {
+    "at": 9.54,
+    "sound": "whoosh_in",
+    "gain_db": -15
+   },
+   {
+    "at": 11.57,
+    "sound": "whoosh_out",
+    "gain_db": -19
+   },
+   {
+    "at": 11.72,
+    "sound": "whoosh_in",
+    "gain_db": -16
+   },
+   {
+    "at": 14.1,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 14.1,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 14.3,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 15.18,
+    "sound": "slam",
+    "gain_db": -16
+   },
+   {
+    "at": 17.2,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 17.2,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 18.92,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 19.09,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 820
+   },
+   {
+    "at": 21.4667,
+    "sound": "whip",
+    "gain_db": -11,
+    "dir": 1.0
+   },
+   {
+    "at": 21.4867,
+    "sound": "air",
+    "gain_db": -20
+   },
+   {
+    "at": 22.08,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 22.13,
+    "sound": "impact",
+    "gain_db": -20
+   },
+   {
+    "at": 25.22,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 26.8,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 26.8,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 26.86,
+    "sound": "click",
+    "gain_db": -18
+   },
+   {
+    "at": 28.5,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 28.5,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 28.62,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 30.56,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 33.3,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 33.3,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 35.24,
+    "sound": "whoosh_in",
+    "gain_db": -15
+   },
+   {
+    "at": 38.45,
+    "sound": "whoosh_out",
+    "gain_db": -19
+   },
+   {
+    "at": 38.6,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 38.6,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 41.18,
+    "sound": "slam",
+    "gain_db": -16
+   },
+   {
+    "at": 42.9,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 42.9,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 43.06,
+    "sound": "slam",
+    "gain_db": -16
+   },
+   {
+    "at": 44.4,
+    "sound": "reverse_hit",
+    "gain_db": -12,
+    "dur": 0.7
+   },
+   {
+    "at": 44.4,
+    "sound": "boom",
+    "gain_db": -7
+   },
+   {
+    "at": 44.9,
+    "sound": "click",
+    "gain_db": -17
+   }
+  ]
+ },
+ "music": {
+  "src": "work/music/music.wav",
+  "gain_db": -9
+ },
+ "tail": 2.4,
+ "textPlate": "#56A0FB"
+}

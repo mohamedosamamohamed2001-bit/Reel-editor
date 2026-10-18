@@ -1,0 +1,20 @@
+{
+ "name": "2026-10-17_b7-3",
+ "slug": "shoulder-press-arch",
+ "source": {
+  "drive_folder_id": "1VtiRfhEfO6OP8AauinMp9l0qmqYy8JdX",
+  "filename": "IMG_3018.MOV",
+  "sha256": "85f32e09dbd426bc631515dd9f57ff044c9d8ff96a79a849d71d6ba5949fd6d6"
+ },
+ "delivery": {
+  "platform": "instagram_reel",
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "lufs": -14,
+  "true_peak": -1.0
+ },
+ "language": "ar-EG",
+ "captions": true,
+ "status": "final render"
+}

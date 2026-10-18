@@ -19,8 +19,9 @@ DECODE = "format=yuv420p"
 
 
 class Tip(Story):
-    def __init__(self, P, pauses=(), max_pause=0.9, zooms=((1.0, 1.04), (1.08, 1.11)), focusY=0.42, focusX=0.5):
-        """pauses: source gaps (a, b) to shorten to max_pause (jump cuts). Everything else plays in real time."""
+    def __init__(self, P, pauses=(), max_pause=0.9, zooms=((1.0, 1.04), (1.08, 1.11)), focusY=0.42, focusX=0.5, end=None):
+        """pauses: source gaps (a, b) to shorten to max_pause (jump cuts). Everything else plays in real time.
+        end: source end time (default: 0.45 s after the last word; exercise demos keep their silent reps)."""
         self.P = Path(P)
         d = json.load(open(self.P / "work/tx/aligned.words.json"))
         self.words = [w for s in d["segments"] for w in s["words"]]
@@ -30,7 +31,7 @@ class Tip(Story):
         import subprocess
         dur = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0",
                                     str(self.P / "source/original.mov")], capture_output=True, text=True).stdout)
-        end = round(min(self.words[-1]["end"] + 0.45, dur - 0.1), 3)
+        end = round(min(end or self.words[-1]["end"] + 0.45, dur - 0.1), 3)
         keep, t0 = [], 0.0
         for a, b in sorted(pauses):
             if b - a > max_pause:

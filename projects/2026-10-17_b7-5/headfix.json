@@ -1,0 +1,23 @@
+{
+ "original_overlays": 6,
+ "fixes": [
+  {
+   "index": 3,
+   "type": "iconPop",
+   "at": 5.8,
+   "action": "move",
+   "top": 0.64,
+   "size": 141
+  },
+  {
+   "index": 4,
+   "type": "iconPop",
+   "at": 7.36,
+   "action": "move",
+   "top": 0.55,
+   "align": "left",
+   "size": 208
+  }
+ ],
+ "captions": []
+}

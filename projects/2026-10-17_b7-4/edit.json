@@ -1,0 +1,328 @@
+{
+ "title": "OSM technique: Dumbbell Shrugs",
+ "fps": 30,
+ "width": 1080,
+ "height": 1920,
+ "media": {
+  "main": "source/original.mov"
+ },
+ "dialogueFx": "highpass=f=70,acompressor=threshold=0.1:ratio=2.5:attack=8:release=120:makeup=1.5",
+ "dialogueLufs": -16.0,
+ "plates": {
+  "grade": "format=yuv420p,eq=contrast=1.12:saturation=1.20:gamma=0.97,colorbalance=rs=-0.015:bs=0.02:rm=-0.01:bm=0.005:rh=0.012:gh=0.004:bh=-0.012,curves=master='0/0 0.06/0.035 0.25/0.21 0.5/0.5 0.75/0.79 0.94/0.965 1/1',vignette=angle=PI/7",
+  "sharpen": "cas=strength=0.22"
+ },
+ "clips": [
+  {
+   "src": "main",
+   "in": 0.0,
+   "out": 4.25,
+   "focusY": 0.4,
+   "focusX": 0.5,
+   "zoom": [
+    1.0,
+    1.04
+   ]
+  },
+  {
+   "src": "main",
+   "in": 4.25,
+   "out": 7.6,
+   "focusY": 0.4,
+   "focusX": 0.5,
+   "zoom": [
+    1.1,
+    1.13
+   ],
+   "tin": {
+    "type": "zoom"
+   }
+  },
+  {
+   "src": "main",
+   "in": 7.6,
+   "out": 8.6,
+   "focusY": 0.4,
+   "focusX": 0.5,
+   "zoom": [
+    1.0,
+    1.04
+   ],
+   "tin": {
+    "type": "zoom"
+   }
+  },
+  {
+   "src": "main",
+   "in": 8.6,
+   "out": 11.1,
+   "focusY": 0.4,
+   "focusX": 0.5,
+   "zoom": [
+    1.12,
+    1.15
+   ],
+   "tin": {
+    "type": "zoom"
+   }
+  }
+ ],
+ "captions": {
+  "wordsFile": "work/tx/aligned.words.json",
+  "style": "plate",
+  "karaoke": true,
+  "maxWords": 3,
+  "maxChars": 22,
+  "keywords": [
+   "Shrugs",
+   "جنبي",
+   "بكوعي",
+   "بكتافي"
+  ],
+  "zones": [
+   {
+    "at": 0,
+    "dur": 11.11,
+    "top": 0.74
+   }
+  ],
+  "replace": {
+   "الـShrugs": "Shrugs"
+  },
+  "plateColor": "#56A0FB",
+  "keywordColor": "#FFFFFF"
+ },
+ "overlays": [
+  {
+   "type": "kineticTitle",
+   "at": 0.1,
+   "dur": 1.08,
+   "lines": [
+    {
+     "text": "SHRUGS",
+     "size": 150
+    },
+    {
+     "text": "بالدمبل",
+     "size": 96
+    }
+   ],
+   "top": 0.5,
+   "motion": "smooth",
+   "depth": true
+  },
+  {
+   "type": "iconPop",
+   "at": 1.18,
+   "dur": 0.95,
+   "items": [
+    {
+     "icon": "Hand",
+     "label": "إيدك جنبك"
+    }
+   ],
+   "top": 0.5,
+   "size": 208
+  },
+  {
+   "type": "iconPop",
+   "at": 2.18,
+   "dur": 2.02,
+   "items": [
+    {
+     "icon": "ArrowUp",
+     "label": "اطلع"
+    },
+    {
+     "icon": "ArrowDown",
+     "label": "انزل"
+    }
+   ],
+   "top": 0.5,
+   "size": 195
+  },
+  {
+   "type": "stepBadge",
+   "at": 4.3,
+   "dur": 1.13,
+   "mark": "✗",
+   "label": "بكوعك",
+   "top": 0.54,
+   "side": "right",
+   "plate": true
+  },
+  {
+   "type": "stepBadge",
+   "at": 5.48,
+   "dur": 2.9,
+   "mark": "✓",
+   "label": "بكتافك لفوق",
+   "top": 0.54,
+   "side": "right",
+   "plate": true
+  },
+  {
+   "type": "iconPop",
+   "at": 8.58,
+   "dur": 2.42,
+   "items": [
+    {
+     "icon": "Hand",
+     "label": "إيدك جنبك"
+    },
+    {
+     "icon": "ArrowUp",
+     "label": "بكتافك"
+    },
+    {
+     "icon": "BicepsFlexed",
+     "mark": "x",
+     "label": "مش بكوعك"
+    }
+   ],
+   "top": 0.5,
+   "size": 182
+  },
+  {
+   "type": "endCard",
+   "at": 11.1,
+   "dur": 2.4,
+   "cta": "OSM Coach Osama",
+   "reveal": "wipe",
+   "image": "brand/end/osm-end-photo.jpg"
+  }
+ ],
+ "shakes": [
+  {
+   "at": 4.267,
+   "amp": 0.4
+  },
+  {
+   "at": 7.6,
+   "amp": 0.4
+  },
+  {
+   "at": 8.6,
+   "amp": 0.4
+  },
+  {
+   "at": 11.1,
+   "amp": 0.6
+  }
+ ],
+ "sfx": {
+  "cues": [
+   {
+    "at": 0.1,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 0.15,
+    "sound": "impact",
+    "gain_db": -20
+   },
+   {
+    "at": 1.26,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 2.26,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 2.43,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 820
+   },
+   {
+    "at": 4.2667,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 4.2667,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 4.3,
+    "sound": "slam",
+    "gain_db": -16
+   },
+   {
+    "at": 5.48,
+    "sound": "slam",
+    "gain_db": -16
+   },
+   {
+    "at": 7.6,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 7.6,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 8.6,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 8.6,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 8.66,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 8.83,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 820
+   },
+   {
+    "at": 9.0,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 940
+   },
+   {
+    "at": 11.1,
+    "sound": "reverse_hit",
+    "gain_db": -12,
+    "dur": 0.7
+   },
+   {
+    "at": 11.1,
+    "sound": "boom",
+    "gain_db": -7
+   },
+   {
+    "at": 11.6,
+    "sound": "click",
+    "gain_db": -17
+   }
+  ]
+ },
+ "music": {
+  "src": "work/music/music.wav",
+  "gain_db": -9
+ },
+ "tail": 2.4,
+ "textPlate": "#56A0FB"
+}

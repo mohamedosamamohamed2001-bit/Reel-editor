@@ -1,0 +1,20 @@
+{
+ "name": "2026-10-17_b7-7",
+ "slug": "gym-etiquette",
+ "source": {
+  "drive_folder_id": "1VtiRfhEfO6OP8AauinMp9l0qmqYy8JdX",
+  "filename": "1011_2.MOV",
+  "sha256": "d530113a7fc02b4bae6d96e251aad7abfa6412405a64360de6bb22ce9fdc7d90"
+ },
+ "delivery": {
+  "platform": "instagram_reel",
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "lufs": -14,
+  "true_peak": -1.0
+ },
+ "language": "ar-EG",
+ "captions": true,
+ "status": "final render"
+}

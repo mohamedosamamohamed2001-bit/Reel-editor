@@ -205,3 +205,11 @@ projects/<name>/  one folder per video: project.json, edit.json, analysis/, docu
 - 2026-10-16 (correction, Coach Osama): the 3 Reels were re-rendered with ONLY the caption colours changed (bar `#56A0FB`,
   white text). The edit.json diff was checked against the approved versions: captions.plateColor / light / keywordColor only.
   A Remotion still was sampled: the bar is exactly #56A0FB. New option: `captions.keywordColor`.
+- 2026-10-17 (batch 7, 7 videos, `docs/batch7_2026-10-17.md`, preset `projects/_b7/b7.py`): raw exercise demos in his
+  BLUE shirt: titles over the footage go white (`lock(P, blue_shirt=True)`; Core Blue accents and eyebrows vanish into the
+  shirt), labels/badges on the solid plate, silent reps kept (`Tip(end=…)`). Handheld selfie with burned-in solid plates:
+  `tools/erase_plates.py --matched --neck 0.12 --face-score 0.85`, chunks ≤ 300 frames (550 was OOM-killed).
+  A landscape take with his phone screen beside him: alternate his face crop and the panel as a `screenCard` (region of the
+  same file), voice unbroken except deliberate cuts (`projects/2026-10-17_b7-6/build.py`). Payment / admin screens are cut.
+  When no room is left between his chin and the captions, use `kineticTitle` `backdrop: true` cards (head check skips them).
+  Studio/public/media keeps hard links to plates: delete both to free disk.

@@ -1,0 +1,300 @@
+{
+ "title": "OSM technique: One Hand Row",
+ "fps": 30,
+ "width": 1080,
+ "height": 1920,
+ "media": {
+  "main": "source/original.mov"
+ },
+ "dialogueFx": "highpass=f=70,acompressor=threshold=0.1:ratio=2.5:attack=8:release=120:makeup=1.5",
+ "dialogueLufs": -16.0,
+ "plates": {
+  "grade": "format=yuv420p,eq=contrast=1.12:saturation=1.20:gamma=0.97,colorbalance=rs=-0.015:bs=0.02:rm=-0.01:bm=0.005:rh=0.012:gh=0.004:bh=-0.012,curves=master='0/0 0.06/0.035 0.25/0.21 0.5/0.5 0.75/0.79 0.94/0.965 1/1',vignette=angle=PI/7",
+  "sharpen": "cas=strength=0.22"
+ },
+ "clips": [
+  {
+   "src": "main",
+   "in": 0.0,
+   "out": 5.9,
+   "focusY": 0.45,
+   "focusX": 0.5,
+   "zoom": [
+    1.0,
+    1.04
+   ]
+  },
+  {
+   "src": "main",
+   "in": 5.9,
+   "out": 8.9,
+   "focusY": 0.45,
+   "focusX": 0.5,
+   "zoom": [
+    1.1,
+    1.13
+   ],
+   "tin": {
+    "type": "zoom"
+   }
+  },
+  {
+   "src": "main",
+   "in": 8.9,
+   "out": 11.4,
+   "focusY": 0.45,
+   "focusX": 0.5,
+   "zoom": [
+    1.0,
+    1.04
+   ],
+   "tin": {
+    "type": "zoom"
+   }
+  },
+  {
+   "src": "main",
+   "in": 11.4,
+   "out": 14.5,
+   "focusY": 0.45,
+   "focusX": 0.5,
+   "zoom": [
+    1.12,
+    1.15
+   ],
+   "tin": {
+    "type": "zoom"
+   }
+  }
+ ],
+ "captions": {
+  "wordsFile": "work/tx/aligned.words.json",
+  "style": "plate",
+  "karaoke": true,
+  "maxWords": 3,
+  "maxChars": 22,
+  "keywords": [
+   "One",
+   "Hand",
+   "Row",
+   "بميل",
+   "وبنزل",
+   "لفوق"
+  ],
+  "zones": [
+   {
+    "at": 0,
+    "dur": 14.51,
+    "top": 0.74
+   }
+  ],
+  "replace": {
+   "الـOne": "One"
+  },
+  "plateColor": "#56A0FB",
+  "keywordColor": "#FFFFFF"
+ },
+ "overlays": [
+  {
+   "type": "kineticTitle",
+   "at": 0.1,
+   "dur": 2.37,
+   "lines": [
+    {
+     "text": "ONE HAND ROW",
+     "size": 112
+    }
+   ],
+   "top": 0.57,
+   "motion": "smooth",
+   "depth": true
+  },
+  {
+   "type": "lowerLabel",
+   "at": 2.74,
+   "dur": 3.12,
+   "title": "LEAN SLIGHTLY",
+   "top": 0.56,
+   "eyebrow": "ميل بجسمك حاجة بسيطة",
+   "plate": true
+  },
+  {
+   "type": "iconPop",
+   "at": 5.96,
+   "dur": 0.83,
+   "items": [
+    {
+     "icon": "ArrowDown",
+     "label": "انزل"
+    }
+   ],
+   "top": 0.52,
+   "size": 208
+  },
+  {
+   "type": "iconPop",
+   "at": 6.84,
+   "dur": 2.12,
+   "items": [
+    {
+     "icon": "ArrowUp",
+     "label": "اطلع لفوق"
+    }
+   ],
+   "top": 0.52,
+   "size": 208,
+   "align": "left"
+  },
+  {
+   "type": "iconPop",
+   "at": 9.16,
+   "dur": 5.24,
+   "items": [
+    {
+     "icon": "MoveDiagonal2",
+     "label": "ميل بسيط"
+    },
+    {
+     "icon": "ArrowDown",
+     "label": "انزل"
+    },
+    {
+     "icon": "ArrowUp",
+     "label": "اطلع لفوق"
+    }
+   ],
+   "top": 0.612,
+   "size": 149
+  },
+  {
+   "type": "endCard",
+   "at": 14.5,
+   "dur": 2.4,
+   "cta": "OSM Coach Osama",
+   "reveal": "wipe",
+   "image": "brand/end/osm-end-photo.jpg"
+  }
+ ],
+ "shakes": [
+  {
+   "at": 5.9,
+   "amp": 0.4
+  },
+  {
+   "at": 8.9,
+   "amp": 0.4
+  },
+  {
+   "at": 11.4,
+   "amp": 0.4
+  },
+  {
+   "at": 14.5,
+   "amp": 0.6
+  }
+ ],
+ "sfx": {
+  "cues": [
+   {
+    "at": 0.1,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 0.15,
+    "sound": "impact",
+    "gain_db": -20
+   },
+   {
+    "at": 2.74,
+    "sound": "click",
+    "gain_db": -18
+   },
+   {
+    "at": 5.9,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 5.9,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 6.04,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 6.92,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 8.9,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 8.9,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 9.24,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 700
+   },
+   {
+    "at": 9.41,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 820
+   },
+   {
+    "at": 9.58,
+    "sound": "blip",
+    "gain_db": -20,
+    "freq": 940
+   },
+   {
+    "at": 11.4,
+    "sound": "reverse_hit",
+    "gain_db": -16,
+    "dur": 0.45
+   },
+   {
+    "at": 11.4,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 14.5,
+    "sound": "reverse_hit",
+    "gain_db": -12,
+    "dur": 0.7
+   },
+   {
+    "at": 14.5,
+    "sound": "boom",
+    "gain_db": -7
+   },
+   {
+    "at": 15.0,
+    "sound": "click",
+    "gain_db": -17
+   }
+  ]
+ },
+ "music": {
+  "src": "work/music/music.wav",
+  "gain_db": -9
+ },
+ "tail": 2.4,
+ "textPlate": "#56A0FB"
+}
