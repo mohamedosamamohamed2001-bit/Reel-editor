@@ -85,6 +85,7 @@ projects/<name>/  one folder per video: project.json, edit.json, analysis/, docu
 | opencv-python-headless 5.0.0.93 (`.venv`) | `tools/erase_text.py`: inpaint old burned-in captions away | verified on 18 videos (before/after stills) |
 | MODNet ONNX (Xenova/modnet, Apache-2.0) + YuNet ONNX (OpenCV zoo, MIT), ~/.cache/osm-models | person matte for behind-the-head titles; face guard in the eraser | verified on batch 3 stills |
 | lucide-react 0.460.0 (`studio/`, ISC) | icons for `IconPop` motion graphics | verified (typecheck, renders) |
+| pillow-heif 1.8.1 (`.venv`, BSD-3) | read iPhone HEIC photos (ImageMagick 6 here fails on HEICs with depth maps); P3 → sRGB via ICC, no other colour change | verified on 5 carousel photos (2026-10-20) |
 
 ## Decisions log
 - 2026-10-12: Brand book v1.0 analysed into `docs/BRAND_VIDEO_SYSTEM.md`. The logo files are raster crops from the PDF
