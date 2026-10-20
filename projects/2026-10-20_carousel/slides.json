@@ -9,10 +9,10 @@
     "<span class=\"k\">نتيجة؟</span>"
    ],
    "size": 118,
-   "top": 500,
+   "top": 470,
    "side": "right",
    "x": 54,
-   "maxw": 404,
+   "maxw": 400,
    "behind": true
   },
   "sub": {
@@ -35,9 +35,9 @@
    ],
    "size": 112,
    "top": 600,
-   "side": "left",
-   "x": 50,
-   "maxw": 440,
+   "side": "right",
+   "x": 54,
+   "maxw": 430,
    "align": "right",
    "behind": true
   },
@@ -89,10 +89,10 @@
     "<span class=\"k\">التمرين</span>"
    ],
    "size": 108,
-   "top": 330,
+   "top": 560,
    "side": "right",
    "x": 54,
-   "maxw": 380,
+   "maxw": 410,
    "behind": true
   },
   "sub": {
