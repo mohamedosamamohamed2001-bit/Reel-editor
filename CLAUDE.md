@@ -213,3 +213,7 @@ projects/<name>/  one folder per video: project.json, edit.json, analysis/, docu
   same file), voice unbroken except deliberate cuts (`projects/2026-10-17_b7-6/build.py`). Payment / admin screens are cut.
   When no room is left between his chin and the captions, use `kineticTitle` `backdrop: true` cards (head check skips them).
   Studio/public/media keeps hard links to plates: delete both to free disk.
+- 2026-10-20 (Coach Osama, colour fix): the tips grade (`eq=contrast=1.12:saturation=1.20…` + warm colorbalance/curves/vignette,
+  `projects/_b7/b7.py TIP_GRADE`) read as an over-warm/yellow cast. Tip 1 and batch-7 videos 1, 2, 4, 5, 7 were re-rendered with
+  ONLY `plates.grade = "format=yuv420p"` (his camera's own colours, no creative grade); frame counts equal, title/end cards
+  pixel-identical, the approved master audio stream copied unchanged. Default for his footage from now on: natural camera colour.

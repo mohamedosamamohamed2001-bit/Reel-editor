@@ -9,7 +9,7 @@
  "dialogueFx": "highpass=f=70,acompressor=threshold=0.1:ratio=2.5:attack=8:release=120:makeup=1.5",
  "dialogueLufs": -16.0,
  "plates": {
-  "grade": "format=yuv420p,eq=contrast=1.12:saturation=1.20:gamma=0.97,colorbalance=rs=-0.015:bs=0.02:rm=-0.01:bm=0.005:rh=0.012:gh=0.004:bh=-0.012,curves=master='0/0 0.06/0.035 0.25/0.21 0.5/0.5 0.75/0.79 0.94/0.965 1/1',vignette=angle=PI/7",
+  "grade": "format=yuv420p",
   "sharpen": "cas=strength=0.22"
  },
  "clips": [

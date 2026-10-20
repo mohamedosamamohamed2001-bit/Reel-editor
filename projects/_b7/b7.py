@@ -15,7 +15,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "_tips"))
 from common4 import DECODE, Tip  # noqa: E402,F401
 
 CAPTION_BAR = "#56A0FB"
-TIP_GRADE = ("format=yuv420p,eq=contrast=1.12:saturation=1.20:gamma=0.97,"
+TIP_GRADE = "format=yuv420p"  # 2026-10-20: natural camera colours (the old warm grade below read yellow)
+OLD_WARM_GRADE = ("format=yuv420p,eq=contrast=1.12:saturation=1.20:gamma=0.97,"
              "colorbalance=rs=-0.015:bs=0.02:rm=-0.01:bm=0.005:rh=0.012:gh=0.004:bh=-0.012,"
              "curves=master='0/0 0.06/0.035 0.25/0.21 0.5/0.5 0.75/0.79 0.94/0.965 1/1',vignette=angle=PI/7")
 
