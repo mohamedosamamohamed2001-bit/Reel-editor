@@ -1,0 +1,899 @@
+{
+ "t1": {
+  "name": "AlphaX_Teaser_01",
+  "bpm": 130,
+  "song": "Timber - Pitbull ft. Ke$ha",
+  "shots": [
+   {
+    "clip": "0731",
+    "in": 0.2,
+    "beats": 4,
+    "sfx": [
+     [
+      "impact",
+      -8
+     ]
+    ]
+   },
+   {
+    "clip": "0564",
+    "in": 0.4,
+    "beats": 2,
+    "sfx": [
+     [
+      "whoosh_in",
+      -14
+     ]
+    ]
+   },
+   {
+    "clip": "3926",
+    "in": 0.9,
+    "beats": 4,
+    "speed": 0.3,
+    "flash": true,
+    "sfx": [
+     [
+      "impact",
+      -9
+     ],
+     [
+      "swell",
+      -18
+     ]
+    ]
+   },
+   {
+    "clip": "0767",
+    "in": 3.3,
+    "beats": 2,
+    "zoom": 1.4,
+    "fy": 0.2
+   },
+   {
+    "clip": "0767",
+    "in": 9.0,
+    "beats": 2,
+    "zoom": 1.4,
+    "fy": 0.2,
+    "sfx": [
+     [
+      "whip",
+      -14
+     ]
+    ]
+   },
+   {
+    "clip": "0751",
+    "in": 2.0,
+    "beats": 4,
+    "zoom": 1.3,
+    "fy": 0.35
+   },
+   {
+    "clip": "3935",
+    "in": 1.5,
+    "beats": 4,
+    "speed": 0.3,
+    "flash": true,
+    "sfx": [
+     [
+      "impact",
+      -9
+     ]
+    ]
+   },
+   {
+    "clip": "0651",
+    "in": 0.3,
+    "beats": 2,
+    "sfx": [
+     [
+      "whoosh_in",
+      -15
+     ]
+    ]
+   },
+   {
+    "clip": "0601",
+    "in": 0.2,
+    "beats": 2
+   },
+   {
+    "clip": "0731",
+    "in": 4.0,
+    "beats": 2,
+    "sfx": [
+     [
+      "whip",
+      -14
+     ]
+    ]
+   },
+   {
+    "clip": "0731",
+    "in": 11.8,
+    "beats": 2
+   },
+   {
+    "clip": "0751",
+    "in": 5.5,
+    "beats": 2,
+    "zoom": 1.3,
+    "fy": 0.35
+   },
+   {
+    "clip": "3936",
+    "in": 0.0,
+    "beats": 4,
+    "speed": 0.3,
+    "sfx": [
+     [
+      "swell",
+      -16
+     ]
+    ]
+   },
+   {
+    "clip": "3929",
+    "in": 8.6,
+    "beats": 2,
+    "speed": 0.5,
+    "sfx": [
+     [
+      "whoosh_in",
+      -14
+     ]
+    ]
+   },
+   {
+    "clip": "0767",
+    "in": 11.3,
+    "beats": 2,
+    "zoom": 1.4,
+    "fy": 0.2
+   },
+   {
+    "clip": "3927",
+    "in": 0.0,
+    "beats": 2,
+    "speed": 0.5
+   },
+   {
+    "clip": "3923",
+    "in": 0.5,
+    "beats": 2,
+    "speed": 0.4,
+    "sfx": [
+     [
+      "riser",
+      -16
+     ]
+    ]
+   },
+   {
+    "clip": "3941",
+    "in": 1.8,
+    "beats": 6,
+    "speed": 0.35,
+    "flash": true,
+    "sfx": [
+     [
+      "impact",
+      -8
+     ],
+     [
+      "boom",
+      -12
+     ]
+    ]
+   }
+  ],
+  "texts": [
+   {
+    "shot": 0,
+    "beats": 4,
+    "text": [
+     "ALPHAX",
+     "RACE DAY"
+    ]
+   },
+   {
+    "shot": 17,
+    "beats": 6,
+    "text": [
+     "FULL RACE",
+     "COMING SOON"
+    ]
+   }
+  ]
+ },
+ "t2": {
+  "name": "AlphaX_Teaser_02",
+  "bpm": 101,
+  "song": "Pray For Me - The Weeknd & Kendrick Lamar",
+  "shots": [
+   {
+    "clip": "3936",
+    "in": 2.0,
+    "beats": 4,
+    "speed": 0.3,
+    "sfx": [
+     [
+      "impact",
+      -8
+     ],
+     [
+      "swell",
+      -16
+     ]
+    ]
+   },
+   {
+    "clip": "0731",
+    "in": 8.0,
+    "beats": 2,
+    "flash": true,
+    "sfx": [
+     [
+      "slam",
+      -10
+     ]
+    ]
+   },
+   {
+    "clip": "0731",
+    "in": 12.4,
+    "beats": 2
+   },
+   {
+    "clip": "3943",
+    "in": 0.5,
+    "beats": 2,
+    "sfx": [
+     [
+      "whoosh_in",
+      -15
+     ]
+    ]
+   },
+   {
+    "clip": "3944",
+    "in": 1.5,
+    "beats": 2
+   },
+   {
+    "clip": "0751",
+    "in": 6.5,
+    "beats": 4,
+    "zoom": 1.3,
+    "fy": 0.35,
+    "sfx": [
+     [
+      "whip",
+      -14
+     ]
+    ]
+   },
+   {
+    "clip": "3935",
+    "in": 2.4,
+    "beats": 4,
+    "speed": 0.3,
+    "flash": true,
+    "sfx": [
+     [
+      "impact",
+      -9
+     ]
+    ]
+   },
+   {
+    "clip": "0767",
+    "in": 1.2,
+    "beats": 2,
+    "zoom": 1.4,
+    "fy": 0.2
+   },
+   {
+    "clip": "0767",
+    "in": 4.0,
+    "beats": 2,
+    "zoom": 1.4,
+    "fy": 0.2
+   },
+   {
+    "clip": "3929",
+    "in": 1.0,
+    "beats": 2,
+    "speed": 0.4,
+    "sfx": [
+     [
+      "whoosh_in",
+      -14
+     ]
+    ]
+   },
+   {
+    "clip": "0751",
+    "in": 3.0,
+    "beats": 2,
+    "zoom": 1.3,
+    "fy": 0.35
+   },
+   {
+    "clip": "0731",
+    "in": 6.0,
+    "beats": 2,
+    "sfx": [
+     [
+      "whip",
+      -14
+     ]
+    ]
+   },
+   {
+    "clip": "3926",
+    "in": 0.0,
+    "beats": 4,
+    "speed": 0.35,
+    "flash": true,
+    "sfx": [
+     [
+      "impact",
+      -9
+     ]
+    ]
+   },
+   {
+    "clip": "0651",
+    "in": 1.0,
+    "beats": 2
+   },
+   {
+    "clip": "0564",
+    "in": 1.6,
+    "beats": 2,
+    "sfx": [
+     [
+      "riser",
+      -16
+     ]
+    ]
+   },
+   {
+    "clip": "3941",
+    "in": 0.2,
+    "beats": 2,
+    "speed": 0.4
+   },
+   {
+    "clip": "3941",
+    "in": 2.2,
+    "beats": 4,
+    "speed": 0.4,
+    "flash": true,
+    "sfx": [
+     [
+      "impact",
+      -8
+     ],
+     [
+      "boom",
+      -12
+     ]
+    ]
+   }
+  ],
+  "texts": [
+   {
+    "shot": 0,
+    "beats": 4,
+    "text": [
+     "RACE MODE"
+    ]
+   },
+   {
+    "shot": 16,
+    "beats": 4,
+    "text": [
+     "ALPHAX"
+    ]
+   }
+  ]
+ },
+ "t3": {
+  "name": "AlphaX_Teaser_03",
+  "bpm": 103,
+  "song": "Anything Could Happen - Ellie Goulding",
+  "shots": [
+   {
+    "clip": "0560",
+    "in": 0.2,
+    "beats": 3,
+    "sfx": [
+     [
+      "air",
+      -16
+     ]
+    ]
+   },
+   {
+    "clip": "3923",
+    "in": 0.6,
+    "beats": 4,
+    "speed": 0.4,
+    "sfx": [
+     [
+      "whoosh_in",
+      -15
+     ]
+    ]
+   },
+   {
+    "clip": "0564",
+    "in": 0.2,
+    "beats": 4
+   },
+   {
+    "clip": "3927",
+    "in": 0.2,
+    "beats": 2,
+    "speed": 0.5,
+    "sfx": [
+     [
+      "riser",
+      -15
+     ]
+    ]
+   },
+   {
+    "clip": "0601",
+    "in": 0.0,
+    "beats": 3,
+    "flash": true,
+    "sfx": [
+     [
+      "impact",
+      -8
+     ]
+    ]
+   },
+   {
+    "clip": "0651",
+    "in": 3.0,
+    "beats": 3
+   },
+   {
+    "clip": "0731",
+    "in": 1.2,
+    "beats": 2,
+    "sfx": [
+     [
+      "whip",
+      -14
+     ]
+    ]
+   },
+   {
+    "clip": "0767",
+    "in": 10.8,
+    "beats": 2,
+    "zoom": 1.4,
+    "fy": 0.2
+   },
+   {
+    "clip": "0751",
+    "in": 1.0,
+    "beats": 2,
+    "zoom": 1.3,
+    "fy": 0.35,
+    "sfx": [
+     [
+      "whip",
+      -14
+     ]
+    ]
+   },
+   {
+    "clip": "3935",
+    "in": 0.5,
+    "beats": 4,
+    "speed": 0.35,
+    "flash": true,
+    "sfx": [
+     [
+      "impact",
+      -9
+     ]
+    ]
+   },
+   {
+    "clip": "0767",
+    "in": 3.6,
+    "beats": 2,
+    "zoom": 1.4,
+    "fy": 0.2,
+    "sfx": [
+     [
+      "whoosh_in",
+      -14
+     ]
+    ]
+   },
+   {
+    "clip": "3936",
+    "in": 5.0,
+    "beats": 2,
+    "speed": 0.35
+   },
+   {
+    "clip": "3926",
+    "in": 1.5,
+    "beats": 4,
+    "speed": 0.3,
+    "flash": true,
+    "sfx": [
+     [
+      "impact",
+      -9
+     ],
+     [
+      "swell",
+      -18
+     ]
+    ]
+   },
+   {
+    "clip": "3941",
+    "in": 1.9,
+    "beats": 6,
+    "speed": 0.35,
+    "sfx": [
+     [
+      "boom",
+      -10
+     ]
+    ]
+   }
+  ],
+  "texts": [
+   {
+    "shot": 0,
+    "beats": 3,
+    "text": [
+     "ALPHAX"
+    ]
+   },
+   {
+    "shot": 13,
+    "beats": 6,
+    "text": [
+     "FULL VIDEO",
+     "COMING SOON"
+    ]
+   }
+  ]
+ },
+ "full": {
+  "name": "AlphaX_Full_Competition",
+  "bpm": 133,
+  "song": "Sweet But Psycho - Ava Max",
+  "shots": [
+   {
+    "clip": "3927",
+    "in": 0.0,
+    "beats": 4,
+    "speed": 0.5,
+    "sfx": [
+     [
+      "air",
+      -16
+     ]
+    ]
+   },
+   {
+    "clip": "3923",
+    "in": 0.5,
+    "beats": 8,
+    "speed": 0.5,
+    "sfx": [
+     [
+      "whoosh_in",
+      -15
+     ]
+    ]
+   },
+   {
+    "clip": "0560",
+    "in": 0.0,
+    "beats": 4
+   },
+   {
+    "clip": "0564",
+    "in": 0.0,
+    "beats": 6,
+    "sfx": [
+     [
+      "whoosh_in",
+      -15
+     ]
+    ]
+   },
+   {
+    "clip": "3929",
+    "in": 10.5,
+    "beats": 4,
+    "sfx": [
+     [
+      "riser",
+      -14
+     ]
+    ]
+   },
+   {
+    "clip": "0601",
+    "in": 0.0,
+    "beats": 4,
+    "flash": true,
+    "sfx": [
+     [
+      "impact",
+      -8
+     ],
+     [
+      "boom",
+      -12
+     ]
+    ]
+   },
+   {
+    "clip": "3926",
+    "in": 0.0,
+    "beats": 6,
+    "speed": 0.5
+   },
+   {
+    "clip": "3926",
+    "in": 1.35,
+    "beats": 4,
+    "speed": 0.3,
+    "sfx": [
+     [
+      "swell",
+      -18
+     ]
+    ]
+   },
+   {
+    "clip": "0651",
+    "in": 0.0,
+    "beats": 6,
+    "sfx": [
+     [
+      "whip",
+      -14
+     ]
+    ]
+   },
+   {
+    "clip": "0651",
+    "in": 3.0,
+    "beats": 6
+   },
+   {
+    "clip": "0767",
+    "in": 0.8,
+    "beats": 8,
+    "zoom": 1.4,
+    "fy": 0.2,
+    "flash": true,
+    "sfx": [
+     [
+      "impact",
+      -9
+     ]
+    ]
+   },
+   {
+    "clip": "0767",
+    "in": 8.3,
+    "beats": 8,
+    "zoom": 1.4,
+    "fy": 0.2,
+    "sfx": [
+     [
+      "whoosh_in",
+      -15
+     ]
+    ]
+   },
+   {
+    "clip": "0731",
+    "in": 0.0,
+    "beats": 6,
+    "flash": true,
+    "sfx": [
+     [
+      "slam",
+      -10
+     ]
+    ]
+   },
+   {
+    "clip": "0731",
+    "in": 4.0,
+    "beats": 4,
+    "sfx": [
+     [
+      "whip",
+      -14
+     ]
+    ]
+   },
+   {
+    "clip": "0731",
+    "in": 12.0,
+    "beats": 4
+   },
+   {
+    "clip": "0751",
+    "in": 1.0,
+    "beats": 8,
+    "zoom": 1.3,
+    "fy": 0.35,
+    "sfx": [
+     [
+      "whoosh_in",
+      -15
+     ]
+    ]
+   },
+   {
+    "clip": "0751",
+    "in": 4.6,
+    "beats": 6,
+    "zoom": 1.3,
+    "fy": 0.35
+   },
+   {
+    "clip": "3929",
+    "in": 0.5,
+    "beats": 4,
+    "speed": 0.5,
+    "sfx": [
+     [
+      "whip",
+      -14
+     ]
+    ]
+   },
+   {
+    "clip": "3929",
+    "in": 2.5,
+    "beats": 4
+   },
+   {
+    "clip": "3935",
+    "in": 0.3,
+    "beats": 8,
+    "speed": 0.4,
+    "flash": true,
+    "sfx": [
+     [
+      "impact",
+      -9
+     ]
+    ]
+   },
+   {
+    "clip": "3935",
+    "in": 1.74,
+    "beats": 6,
+    "speed": 0.3,
+    "sfx": [
+     [
+      "swell",
+      -18
+     ]
+    ]
+   },
+   {
+    "clip": "3936",
+    "in": 0.0,
+    "beats": 8,
+    "speed": 0.5,
+    "sfx": [
+     [
+      "whoosh_in",
+      -15
+     ]
+    ]
+   },
+   {
+    "clip": "3943",
+    "in": 0.0,
+    "beats": 4,
+    "sfx": [
+     [
+      "whip",
+      -14
+     ]
+    ],
+    "zoom": 1.4,
+    "fx": 0.35,
+    "fy": 0.55
+   },
+   {
+    "clip": "3944",
+    "in": 0.5,
+    "beats": 4,
+    "sfx": [
+     [
+      "riser",
+      -14
+     ]
+    ],
+    "zoom": 1.4,
+    "fx": 0.4,
+    "fy": 0.55
+   },
+   {
+    "clip": "3941",
+    "in": 0.0,
+    "beats": 4,
+    "speed": 0.5,
+    "flash": true,
+    "sfx": [
+     [
+      "impact",
+      -8
+     ]
+    ]
+   },
+   {
+    "clip": "3941",
+    "in": 1.6,
+    "beats": 10,
+    "speed": 0.3,
+    "sfx": [
+     [
+      "swell",
+      -16
+     ]
+    ]
+   }
+  ],
+  "texts": [
+   {
+    "shot": 0,
+    "beats": 8,
+    "text": [
+     "ALPHAX",
+     "HYBRID FITNESS RACE"
+    ]
+   },
+   {
+    "shot": 5,
+    "beats": 6,
+    "text": [
+     "THE RACE"
+    ]
+   },
+   {
+    "shot": 10,
+    "beats": 6,
+    "text": [
+     "STATIONS"
+    ]
+   },
+   {
+    "shot": 24,
+    "beats": 6,
+    "text": [
+     "FINISH"
+    ]
+   }
+  ]
+ }
+}
