@@ -1,0 +1,289 @@
+{
+ "peak_db": -4.0,
+ "transitions": [
+  {
+   "cut": 93,
+   "kind": "punch",
+   "sfx": [
+    [
+     "whoosh_in",
+     -16
+    ],
+    [
+     "impact",
+     -6
+    ]
+   ]
+  },
+  {
+   "cut": 234,
+   "kind": "whip",
+   "dir": "L",
+   "sfx": [
+    [
+     "whip",
+     -8
+    ],
+    [
+     "air",
+     -20
+    ]
+   ]
+  },
+  {
+   "cut": 353,
+   "kind": "whip",
+   "dir": "U",
+   "sfx": [
+    [
+     "whip",
+     -8
+    ],
+    [
+     "air",
+     -20
+    ]
+   ]
+  },
+  {
+   "cut": 491,
+   "kind": "whip",
+   "dir": "R",
+   "sfx": [
+    [
+     "whip",
+     -8
+    ],
+    [
+     "air",
+     -20
+    ]
+   ]
+  },
+  {
+   "cut": 608,
+   "kind": "whip",
+   "dir": "L",
+   "sfx": [
+    [
+     "whip",
+     -8
+    ],
+    [
+     "air",
+     -20
+    ]
+   ]
+  },
+  {
+   "cut": 677,
+   "kind": "punch",
+   "sfx": [
+    [
+     "whoosh_in",
+     -16
+    ],
+    [
+     "impact",
+     -6
+    ]
+   ]
+  },
+  {
+   "cut": 810,
+   "kind": "whip",
+   "dir": "R",
+   "sfx": [
+    [
+     "whip",
+     -8
+    ],
+    [
+     "air",
+     -20
+    ]
+   ]
+  },
+  {
+   "cut": 888,
+   "kind": "whip",
+   "dir": "U",
+   "sfx": [
+    [
+     "whip",
+     -8
+    ],
+    [
+     "air",
+     -20
+    ]
+   ]
+  },
+  {
+   "cut": 1026,
+   "kind": "punch",
+   "sfx": [
+    [
+     "whoosh_in",
+     -16
+    ],
+    [
+     "impact",
+     -6
+    ]
+   ]
+  },
+  {
+   "cut": 1128,
+   "kind": "whip",
+   "dir": "L",
+   "sfx": [
+    [
+     "whip",
+     -8
+    ],
+    [
+     "air",
+     -20
+    ]
+   ]
+  },
+  {
+   "cut": 1215,
+   "kind": "whip",
+   "dir": "R",
+   "sfx": [
+    [
+     "whip",
+     -8
+    ],
+    [
+     "air",
+     -20
+    ]
+   ]
+  },
+  {
+   "cut": 1299,
+   "kind": "whip",
+   "dir": "D",
+   "sfx": [
+    [
+     "whip",
+     -8
+    ],
+    [
+     "air",
+     -20
+    ]
+   ]
+  },
+  {
+   "cut": 1397,
+   "kind": "punch",
+   "sfx": [
+    [
+     "whoosh_in",
+     -16
+    ],
+    [
+     "impact",
+     -6
+    ]
+   ]
+  },
+  {
+   "cut": 1550,
+   "kind": "whip",
+   "dir": "L",
+   "sfx": [
+    [
+     "whip",
+     -8
+    ],
+    [
+     "air",
+     -20
+    ]
+   ]
+  },
+  {
+   "cut": 1606,
+   "kind": "punch",
+   "sfx": [
+    [
+     "whoosh_in",
+     -16
+    ],
+    [
+     "impact",
+     -6
+    ]
+   ]
+  },
+  {
+   "cut": 1756,
+   "kind": "whip",
+   "dir": "R",
+   "sfx": [
+    [
+     "whip",
+     -8
+    ],
+    [
+     "air",
+     -20
+    ]
+   ]
+  },
+  {
+   "cut": 1864,
+   "kind": "whip",
+   "dir": "L",
+   "sfx": [
+    [
+     "whip",
+     -8
+    ],
+    [
+     "air",
+     -20
+    ]
+   ]
+  },
+  {
+   "cut": 1924,
+   "kind": "punch",
+   "z": 1.06,
+   "sfx": [
+    [
+     "whoosh_in",
+     -17
+    ],
+    [
+     "thump",
+     -10
+    ]
+   ]
+  },
+  {
+   "cut": 1995,
+   "kind": "punch",
+   "z": 1.08,
+   "sfx": [
+    [
+     "swell",
+     -16
+    ],
+    [
+     "impact",
+     -6
+    ],
+    [
+     "boom",
+     -10
+    ]
+   ]
+  }
+ ]
+}
