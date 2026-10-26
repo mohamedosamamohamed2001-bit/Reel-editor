@@ -1,0 +1,912 @@
+{
+ "_about": "OSM registry for the vendored Claude Video Effects pack (vendor/claude-video-effects). Read by tools/vfx.py. osm: approved = usable as is; restricted = usable only under the stated condition (and only when it serves the beat); blocked = breaks a locked OSM rule, refused unless the edit gives an explicit osmOverride reason from Coach Osama.",
+ "source": {
+  "zip": "claude-video-effects-main.zip",
+  "zipSha256": "d93503ee9bd869073d034a8a600a5b36465fa1ba57fca2ab917f7d35903b2b5b",
+  "fxSha256Upstream": "c36b2192bf5dce3a9f0af9abe321a87c77c246ad456c493b00ba186f393756cb",
+  "license": "MIT (code), OFL/Apache-2.0 (fonts), MIT/Apache-2.0 (models)"
+ },
+ "rules": {
+  "A": "No text on or above his head; behind-the-head titles are withdrawn (Coach Osama 2026-10-15)",
+  "B": "No moving blur, haze or glow behind text (Coach Osama 2026-10-15)",
+  "C": "Natural camera colour is the default; no creative grade unless he asks (2026-10-20)",
+  "D": "No third-party branding (e.g. 'Claude', 'Edited by Claude') or another platform's UI presented as real",
+  "E": "On-brand type and colour: OSM tokens only (brand/tokens.json); text must stay off his head (tools/head_check.py)",
+  "F": "No prices or payment steps in app-facing video"
+ },
+ "effects": {
+  "noise": {
+   "category": "compositing",
+   "needs": [
+    "face",
+    "mask"
+   ],
+   "options": {
+    "images": "folder",
+    "size": "number"
+   },
+   "osm": "restricted",
+   "rules": [
+    "A",
+    "E"
+   ],
+   "note": "Image cards pile up behind him. Only with his own reel screenshots; no text on cards; run head_check.",
+   "uses": [
+    "hook"
+   ]
+  },
+  "lineup": {
+   "category": "typography",
+   "needs": [
+    "face",
+    "mask"
+   ],
+   "options": {
+    "text": "string"
+   },
+   "osm": "blocked",
+   "rules": [
+    "A"
+   ],
+   "note": "Numbered text tiles fan out above his head.",
+   "uses": []
+  },
+  "locked-on": {
+   "category": "camera",
+   "needs": [
+    "face"
+   ],
+   "options": {
+    "zoom": [
+     1,
+     2
+    ],
+    "text": "string"
+   },
+   "osm": "restricted",
+   "rules": [
+    "A"
+   ],
+   "note": "Corner brackets on the face + camera follow. Allowed without `text` (the tag sits by the face).",
+   "uses": [
+    "hook",
+    "emphasis",
+    "tracking"
+   ]
+  },
+  "orbit": {
+   "category": "compositing",
+   "needs": [
+    "face",
+    "mask"
+   ],
+   "options": {
+    "images": "folder",
+    "count": "int",
+    "speed": "number",
+    "size": "number"
+   },
+   "osm": "restricted",
+   "rules": [
+    "A",
+    "E"
+   ],
+   "note": "Cards circle his head (behind at the top). His own thumbnails only; no text; head_check.",
+   "uses": [
+    "hook"
+   ]
+  },
+  "lean-in": {
+   "category": "camera",
+   "needs": [
+    "face"
+   ],
+   "options": {
+    "zoom": [
+     1,
+     2
+    ],
+    "speed": "number"
+   },
+   "osm": "approved",
+   "rules": [],
+   "note": "Fast punch-in on one word. Natural footage, no text, no colour change.",
+   "uses": [
+    "emphasis"
+   ],
+   "studioEquivalent": "clip zoom / settle / beats punch-in"
+  },
+  "backdrop-word": {
+   "category": "typography",
+   "needs": [
+    "face",
+    "mask"
+   ],
+   "options": {
+    "text": "string",
+    "color": "hex",
+    "font": [
+     "bold",
+     "serif"
+    ]
+   },
+   "osm": "blocked",
+   "rules": [
+    "A"
+   ],
+   "note": "Giant word behind his head.",
+   "uses": []
+  },
+  "spotlight": {
+   "category": "lighting",
+   "needs": [
+    "face",
+    "mask"
+   ],
+   "options": {
+    "text": "string",
+    "color": "hex",
+    "push": "number",
+    "look": [
+     "sparkle"
+    ]
+   },
+   "osm": "restricted",
+   "rules": [
+    "A",
+    "B",
+    "C"
+   ],
+   "note": "Room darkens, he stays lit. Allowed only without `text` (glowing word behind him) and without look=sparkle (glitter-spotlight: rays + glow). Darkening the room is a look change: only when he asks.",
+   "uses": [
+    "hook",
+    "emphasis",
+    "depth"
+   ]
+  },
+  "the-bill": {
+   "category": "typography",
+   "needs": [
+    "face",
+    "mask"
+   ],
+   "options": {
+    "text": "string"
+   },
+   "osm": "blocked",
+   "rules": [
+    "A"
+   ],
+   "note": "Receipt text printed into the wall above his head.",
+   "uses": []
+  },
+  "moody": {
+   "category": "grade",
+   "needs": [],
+   "options": {
+    "grade": [
+     "moody",
+     "bw",
+     "warm",
+     "cool",
+     "pop"
+    ]
+   },
+   "osm": "restricted",
+   "rules": [
+    "C"
+   ],
+   "note": "Creative colour grade. Only when he asks for a look.",
+   "uses": [
+    "mood"
+   ]
+  },
+  "swipe": {
+   "category": "grade",
+   "needs": [
+    "mask"
+   ],
+   "options": {
+    "grade": [
+     "moody",
+     "bw",
+     "warm",
+     "cool",
+     "pop"
+    ]
+   },
+   "osm": "restricted",
+   "rules": [
+    "C"
+   ],
+   "note": "Before/after slider between the footage and a GRADE (not two different shots). Only when he asks for a look.",
+   "uses": [
+    "before-after"
+   ]
+  },
+  "todo": {
+   "category": "graphics",
+   "needs": [
+    "face"
+   ],
+   "options": {
+    "text": "string",
+    "ticks": "string",
+    "title": "string"
+   },
+   "osm": "restricted",
+   "rules": [
+    "A",
+    "E"
+   ],
+   "note": "Checklist card beside his head. Must clear head_check; prefer the studio checklist overlay (OSM style).",
+   "uses": [
+    "explainer"
+   ],
+   "studioEquivalent": "overlay checklist / checklist.row"
+  },
+  "tap": {
+   "category": "ui-mock",
+   "needs": [],
+   "options": {
+    "at": "number",
+    "x": [
+     0,
+     1
+    ],
+    "y": [
+     0,
+     1
+    ],
+    "color": "hex"
+   },
+   "osm": "restricted",
+   "rules": [
+    "D",
+    "E"
+   ],
+   "note": "Follow button flips to Following. His own account only; colour = Core Blue.",
+   "uses": [
+    "cta"
+   ]
+  },
+  "pause-point": {
+   "category": "graphics",
+   "needs": [
+    "face"
+   ],
+   "options": {
+    "text": "string",
+    "color": "hex",
+    "label_x": [
+     0,
+     1
+    ]
+   },
+   "osm": "restricted",
+   "rules": [
+    "A",
+    "E"
+   ],
+   "note": "Freeze frame + hand-drawn arrow and label (Permanent Marker font, off-brand). Label must clear his head.",
+   "uses": [
+    "emphasis",
+    "explainer"
+   ]
+  },
+  "uninstall": {
+   "category": "transition",
+   "needs": [],
+   "options": {
+    "text": "string"
+   },
+   "osm": "restricted",
+   "rules": [
+    "E"
+   ],
+   "note": "Glitchy progress bar breaks the frame. Off-brand glitch look; sparing use only.",
+   "uses": [
+    "hook",
+    "transition"
+   ]
+  },
+  "reel-frame": {
+   "category": "ui-mock",
+   "needs": [],
+   "options": {
+    "text": "string"
+   },
+   "osm": "restricted",
+   "rules": [
+    "D"
+   ],
+   "note": "Frame shrinks into a Reel card with a handle. His own handle only.",
+   "uses": [
+    "outro"
+   ]
+  },
+  "shortcut-rain": {
+   "category": "typography",
+   "needs": [
+    "face",
+    "mask"
+   ],
+   "options": {
+    "text": "string",
+    "count": "int"
+   },
+   "osm": "blocked",
+   "rules": [
+    "A"
+   ],
+   "note": "Key caps (text) rain behind his head.",
+   "uses": []
+  },
+  "reject-stamp": {
+   "category": "graphics",
+   "needs": [
+    "face"
+   ],
+   "options": {
+    "text": "string",
+    "color": "hex",
+    "angle": "number",
+    "y": [
+     0,
+     1
+    ]
+   },
+   "osm": "restricted",
+   "rules": [
+    "A",
+    "E"
+   ],
+   "note": "Big stamp slams on screen. Colour must be an OSM token (error #F26D6D is for 'Not OSM' examples); keep it off his head via `y`.",
+   "uses": [
+    "emphasis",
+    "myth-busting"
+   ]
+  },
+  "countdown-flip": {
+   "category": "graphics",
+   "needs": [
+    "face",
+    "mask"
+   ],
+   "options": {
+    "from": "int"
+   },
+   "osm": "blocked",
+   "rules": [
+    "A"
+   ],
+   "note": "3-2-1 flip clock above his head.",
+   "uses": []
+  },
+  "rabbit-hole": {
+   "category": "transition",
+   "needs": [],
+   "options": {
+    "ratio": "number",
+    "speed": "number",
+    "spin": "number"
+   },
+   "osm": "restricted",
+   "rules": [
+    "E"
+   ],
+   "note": "Frame tunnels into itself, spinning. Heavy; one per video at most.",
+   "uses": [
+    "hook",
+    "transition"
+   ]
+  },
+  "cover-star": {
+   "category": "typography",
+   "needs": [
+    "face",
+    "mask"
+   ],
+   "options": {
+    "text": "string",
+    "lines": "string",
+    "issue": "string",
+    "color": "hex",
+    "look": [
+     "editorial"
+    ],
+    "accent": "hex",
+    "right": "string",
+    "lines_y": [
+     0,
+     1
+    ],
+    "right_y": [
+     0,
+     1
+    ]
+   },
+   "osm": "blocked",
+   "rules": [
+    "A",
+    "C"
+   ],
+   "note": "Magazine title behind his head (editorial look adds a film grade).",
+   "uses": []
+  },
+  "scribble": {
+   "category": "graphics",
+   "needs": [
+    "face",
+    "mask"
+   ],
+   "options": {
+    "text": "string",
+    "color": "hex"
+   },
+   "osm": "restricted",
+   "rules": [
+    "A",
+    "E"
+   ],
+   "note": "Marker doodles around him (off-brand hand font). Doodles/label must clear his head.",
+   "uses": [
+    "emphasis"
+   ]
+  },
+  "red-collage": {
+   "category": "typography",
+   "needs": [
+    "face",
+    "mask"
+   ],
+   "options": {
+    "text": "string",
+    "lines": "string",
+    "tag": "string"
+   },
+   "osm": "blocked",
+   "rules": [
+    "A",
+    "C"
+   ],
+   "note": "Black-and-white grade + giant red word behind him.",
+   "uses": []
+  },
+  "split-headline": {
+   "category": "typography",
+   "needs": [
+    "face"
+   ],
+   "options": {
+    "text": "string",
+    "hl": "string",
+    "pill": "string"
+   },
+   "osm": "blocked",
+   "rules": [
+    "A"
+   ],
+   "note": "Headline card fills the top half and pushes him down: the text sits above his head.",
+   "uses": []
+  },
+  "pastel-word": {
+   "category": "typography",
+   "needs": [
+    "face",
+    "mask"
+   ],
+   "options": {
+    "text": "string",
+    "name": "string",
+    "handle": "string"
+   },
+   "osm": "blocked",
+   "rules": [
+    "A",
+    "C"
+   ],
+   "note": "Lavender room + giant word behind him.",
+   "uses": []
+  },
+  "check-pills": {
+   "category": "compositing",
+   "needs": [
+    "face",
+    "mask"
+   ],
+   "options": {
+    "text": "string",
+    "images": "folder"
+   },
+   "osm": "restricted",
+   "rules": [
+    "A",
+    "C",
+    "E"
+   ],
+   "note": "Replaces the room with grid paper; reels behind him; pills clicked. Changes the real background: only on request.",
+   "uses": [
+    "explainer"
+   ]
+  },
+  "headline-box": {
+   "category": "typography",
+   "needs": [
+    "face"
+   ],
+   "options": {
+    "text": "string",
+    "zoom": [
+     1,
+     2
+    ]
+   },
+   "osm": "restricted",
+   "rules": [
+    "A",
+    "E"
+   ],
+   "note": "Punch-in + two-line headline. Headline must clear his head (head_check); OSM type.",
+   "uses": [
+    "hook"
+   ]
+  },
+  "profile-wall": {
+   "category": "compositing",
+   "needs": [
+    "face",
+    "mask"
+   ],
+   "options": {
+    "images": "folder",
+    "count": "int",
+    "label": "string"
+   },
+   "osm": "restricted",
+   "rules": [
+    "A",
+    "E"
+   ],
+   "note": "His reel grid behind him + counter. Real numbers only; his own thumbnails.",
+   "uses": [
+    "social-proof"
+   ]
+  },
+  "tier-list": {
+   "category": "graphics",
+   "needs": [
+    "face"
+   ],
+   "options": {
+    "title": "string",
+    "item": "string",
+    "others": "string"
+   },
+   "osm": "restricted",
+   "rules": [
+    "D",
+    "E"
+   ],
+   "note": "Tier list; the default item is 'Claude'. Allowed only with his own `item`/`others`.",
+   "uses": [
+    "opinion"
+   ]
+  },
+  "broll-split": {
+   "category": "compositing",
+   "needs": [
+    "face"
+   ],
+   "options": {
+    "images": "folder",
+    "text": "string"
+   },
+   "osm": "restricted",
+   "rules": [
+    "F",
+    "E"
+   ],
+   "note": "B-roll top, him below, price-tag-style sticker. Sticker text must never be a price.",
+   "uses": [
+    "broll"
+   ],
+   "studioEquivalent": "splitStack / insetCard"
+  },
+  "phone-fan": {
+   "category": "compositing",
+   "needs": [],
+   "options": {
+    "images": "folder",
+    "text": "string"
+   },
+   "osm": "restricted",
+   "rules": [
+    "A",
+    "E"
+   ],
+   "note": "Reels fan out under a headline. His own thumbnails; headline must clear his head.",
+   "uses": [
+    "social-proof"
+   ]
+  },
+  "dot-reveal": {
+   "category": "transition",
+   "needs": [],
+   "options": {
+    "color": "hex",
+    "cell": "number"
+   },
+   "osm": "restricted",
+   "rules": [
+    "B",
+    "E"
+   ],
+   "note": "Shot builds out of glowing dots, then snaps in. No text during it; colour = OSM token.",
+   "uses": [
+    "hook",
+    "transition"
+   ]
+  },
+  "headline-wall": {
+   "category": "typography",
+   "needs": [
+    "face",
+    "mask"
+   ],
+   "options": {
+    "text": "string",
+    "total": "string",
+    "label": "string"
+   },
+   "osm": "blocked",
+   "rules": [
+    "A"
+   ],
+   "note": "Headlines pile up behind his head.",
+   "uses": []
+  },
+  "checklist": {
+   "category": "graphics",
+   "needs": [
+    "face"
+   ],
+   "options": {
+    "text": "string",
+    "title": "string"
+   },
+   "osm": "restricted",
+   "rules": [
+    "D",
+    "E"
+   ],
+   "note": "Task list under his chin (default title/branding 'Claude'). Only with his own title/steps; prefer the studio checklist overlay.",
+   "uses": [
+    "explainer"
+   ],
+   "studioEquivalent": "overlay checklist"
+  },
+  "glass-widgets": {
+   "category": "graphics",
+   "needs": [
+    "face",
+    "mask"
+   ],
+   "options": {
+    "text": "string",
+    "name": "string",
+    "handle": "string",
+    "look": [
+     "simple"
+    ]
+   },
+   "osm": "blocked",
+   "rules": [
+    "B",
+    "D"
+   ],
+   "note": "Frosted-glass widgets (blur behind text) + an 'Edited by Claude' pill.",
+   "uses": []
+  },
+  "timeline": {
+   "category": "grade",
+   "needs": [
+    "face",
+    "mask"
+   ],
+   "options": {
+    "text": "string",
+    "sub": "string",
+    "tc": "string"
+   },
+   "osm": "restricted",
+   "rules": [
+    "C",
+    "E"
+   ],
+   "note": "Dark red film grade + editing timeline UI. Only when he asks for that look.",
+   "uses": [
+    "mood"
+   ]
+  },
+  "comment-box": {
+   "category": "ui-mock",
+   "needs": [
+    "face",
+    "mask"
+   ],
+   "options": {
+    "text": "string"
+   },
+   "osm": "blocked",
+   "rules": [
+    "A",
+    "D"
+   ],
+   "note": "Instagram comment sheet above his head.",
+   "uses": []
+  },
+  "liquid-glass-graph": {
+   "category": "graphics",
+   "needs": [
+    "face",
+    "mask"
+   ],
+   "options": {
+    "text": "string",
+    "from": "string",
+    "to": "string",
+    "color": "hex",
+    "look": [
+     "bento"
+    ],
+    "donut": "string",
+    "kpi": "string",
+    "bars": "string"
+   },
+   "osm": "blocked",
+   "rules": [
+    "B"
+   ],
+   "note": "Liquid-glass card (blur behind text/number).",
+   "uses": []
+  },
+  "carousel-spin": {
+   "category": "compositing",
+   "needs": [
+    "face",
+    "mask"
+   ],
+   "options": {
+    "images": "folder",
+    "count": "int",
+    "size": "number",
+    "turns": "number"
+   },
+   "osm": "restricted",
+   "rules": [
+    "A",
+    "E"
+   ],
+   "note": "Cards spin around him in 3D. His own thumbnails; no text; head_check.",
+   "uses": [
+    "hook",
+    "social-proof"
+   ]
+  },
+  "match-cut": {
+   "category": "typography",
+   "needs": [
+    "face",
+    "mask"
+   ],
+   "options": {
+    "text": "string",
+    "color": "hex"
+   },
+   "osm": "blocked",
+   "rules": [
+    "A",
+    "D"
+   ],
+   "note": "News pages locked behind his head (default word 'Claude').",
+   "uses": []
+  },
+  "apple-toggles": {
+   "category": "ui-mock",
+   "needs": [
+    "face",
+    "mask"
+   ],
+   "options": {
+    "text": "string",
+    "ticks": "string",
+    "color": "hex",
+    "pos": [
+     "above",
+     "below"
+    ],
+    "overlap": "number",
+    "zoom": [
+     1,
+     2
+    ]
+   },
+   "osm": "restricted",
+   "rules": [
+    "A",
+    "E"
+   ],
+   "note": "iPhone-settings toggles. Only pos=below (under the chin); the default sits above/behind his head.",
+   "uses": [
+    "explainer"
+   ]
+  },
+  "led-sign": {
+   "category": "typography",
+   "needs": [
+    "face",
+    "mask"
+   ],
+   "options": {
+    "text": "string",
+    "color": "hex",
+    "push": "number"
+   },
+   "osm": "blocked",
+   "rules": [
+    "A",
+    "B"
+   ],
+   "note": "Glowing LED sign behind his head.",
+   "uses": []
+  },
+  "slow-push": {
+   "category": "camera",
+   "needs": [
+    "face",
+    "mask"
+   ],
+   "options": {
+    "zoom": [
+     1,
+     2
+    ],
+    "blur": "number"
+   },
+   "osm": "restricted",
+   "rules": [
+    "B"
+   ],
+   "note": "Slow push-in while the room blurs. No captions/text on screen during it (the blur would sit behind text).",
+   "uses": [
+    "mood",
+    "emphasis",
+    "depth"
+   ],
+   "studioEquivalent": "clip zoom [from,to] (push without blur)"
+  }
+ },
+ "looks": {
+  "glitter-spotlight": {
+   "effect": "spotlight",
+   "look": "sparkle",
+   "osm": "blocked",
+   "rules": [
+    "A",
+    "B"
+   ],
+   "note": "Golden rays, glow and a word behind his head."
+  },
+  "glitter": {
+   "effect": "spotlight",
+   "look": "sparkle",
+   "osm": "blocked",
+   "rules": [
+    "A",
+    "B"
+   ],
+   "note": "Alias of glitter-spotlight."
+  }
+ }
+}

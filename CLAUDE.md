@@ -63,6 +63,10 @@ projects/<name>/  one folder per video: project.json, edit.json, analysis/, docu
   with `region` crop, re-timed `segments`, `plate: true`, `taps` and speech-synced `highlights`. Caption options:
   `style: "plate"`, `zones` (move captions), `replace` (exact-word fixes, English terms).
   Speed: 4K source, 24 s reel: preview about 3 min, full 1080×1920 about 6–7 min on 4 CPUs.
+- `tools/vfx.py` = the Claude Video Effects pack (42 face/matte-aware effects, `vendor/claude-video-effects`, MIT) on clip PLATES:
+  clip `"vfx": [{fx, start, end, …options}]` (clip-local output s, needs `plates`, run render_edit with `.venv/bin/python`).
+  OSM status per effect in `tools/vfx_effects.json` (1 approved, 26 restricted, 15 blocked by the locked rules; blocked needs
+  `osmOverride`). `vfx.py list|describe|validate|selftest`. Guide: `docs/vfx_effects.md`. Prefer studio equivalents where listed.
 - `tools/sfx.py` is the in-house sound kit (numpy only, no samples, no licences): air, whoosh_in/out, swell, thump, impact, click,
   key, blip, chime, accent. Each sound has a "hit" sample that lands on the cue time. `edit.json` `sfx.cues` = [{at, sound,
   gain_db, …kwargs}]. Cue times snap to frames. render_edit mixes the bus (HPF 40 Hz, −4 dB @ 2.5 kHz, sidechain-ducked 2:1
@@ -85,6 +89,7 @@ projects/<name>/  one folder per video: project.json, edit.json, analysis/, docu
 | opencv-python-headless 5.0.0.93 (`.venv`) | `tools/erase_text.py`: inpaint old burned-in captions away | verified on 18 videos (before/after stills) |
 | MODNet ONNX (Xenova/modnet, Apache-2.0) + YuNet ONNX (OpenCV zoo, MIT), ~/.cache/osm-models | person matte for behind-the-head titles; face guard in the eraser | verified on batch 3 stills |
 | lucide-react 0.460.0 (`studio/`, ISC) | icons for `IconPop` motion graphics | verified (typecheck, renders) |
+| Claude Video Effects pack (`vendor/claude-video-effects`, MIT code, OFL/Apache fonts, YuNet MIT) | `tools/vfx.py` effects on plates. Reuses .venv numpy/OpenCV/Pillow/onnxruntime + MODNet; MediaPipe NOT installed (adapter uses MODNet). setup.sh/words.py not imported; fx.py exec() hook disabled | selftest 27/27 on synthetic inputs (2026-10-26); not yet used on footage |
 | pillow-heif 1.8.1 (`.venv`, BSD-3) | read iPhone HEIC photos (ImageMagick 6 here fails on HEICs with depth maps); P3 → sRGB via ICC, no other colour change | verified on 5 carousel photos (2026-10-20) |
 
 ## Decisions log
@@ -148,6 +153,7 @@ projects/<name>/  one folder per video: project.json, edit.json, analysis/, docu
 2. Download the source and record its sha256. Probe it with `tools/qa_render.py` (source QA = technical audit).
 3. Transcribe it (`tools/transcribe.py`), fix flagged words by ear, and build a timecoded map (segments, purpose, visual opportunities, risks).
 4. Write `blueprint.md`: creative direction, and why it suits this video.
+   Effects: pick from `python3 tools/vfx.py list` only where an effect serves the beat; `vfx.py validate` the edit before rendering.
 5. Write `edit.json` (cuts + overlays), render with `--preview`, inspect the contact sheet and stills, fix, then do the final render (QA runs automatically).
 6. Deliver the final file plus a QA summary. Update this file only if the studio itself changed.
 - 2026-10-13 (video 2, `projects/2026-10-13_video2`): Drive files shared "anyone with link" download directly with
@@ -218,3 +224,5 @@ projects/<name>/  one folder per video: project.json, edit.json, analysis/, docu
   `projects/_b7/b7.py TIP_GRADE`) read as an over-warm/yellow cast. Tip 1 and batch-7 videos 1, 2, 4, 5, 7 were re-rendered with
   ONLY `plates.grade = "format=yuv420p"` (his camera's own colours, no creative grade); frame counts equal, title/end cards
   pixel-identical, the approved master audio stream copied unchanged. Default for his footage from now on: natural camera colour.
+- 2026-10-26: Claude Video Effects pack integrated (`tools/vfx.py`, `docs/vfx_effects.md`): effects bake into plate frames inside
+  render_edit (cached derived plate, untouched frames hard-linked). Integration only; no video was processed.

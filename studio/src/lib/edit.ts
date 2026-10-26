@@ -28,7 +28,13 @@ export type Clip = {
   freeze?: boolean;
   /** transition INTO this clip from the previous one (the previous clip plays the matching exit) */
   tin?: Transition;
+  /** Claude Video Effects pack (tools/vfx.py), plates only: baked into this clip's plate frames by render_edit.py and
+   *  removed before the studio sees the clip. Times are clip-local output seconds. */
+  vfx?: VfxEntry[];
 };
+
+/** one effect from tools/vfx_effects.json; extra keys are the effect's options (text, zoom, color, …) */
+export type VfxEntry = { fx: string; start: number; end: number; osmOverride?: string; [option: string]: unknown };
 
 /**
  * whip: directional move with real motion blur and mirrored edges (outgoing accelerates out, incoming decelerates in)

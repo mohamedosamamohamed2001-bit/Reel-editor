@@ -175,6 +175,18 @@ def make_plates(edit, proj):
     source-frame fractions are baked into the plates; captions.anchors (output time + output-frame box) are derived
     so the new captions sit on the cover plates.
     """
+    if any(c.get("vfx") for c in edit["clips"]):
+        # tools/vfx.py: Claude Video Effects pack on plate frames. Only imported when an edit uses it.
+        try:
+            import cv2, onnxruntime  # noqa: F401
+        except ImportError:
+            raise SystemExit("vfx: clips[].vfx needs OpenCV + onnxruntime: run .venv/bin/python tools/render_edit.py ...")
+        import vfx
+        errs, warns = vfx.check_edit(edit)
+        for w in warns:
+            print("vfx WARN", w)
+        if errs:
+            raise SystemExit("vfx: edit refused:\n  " + "\n  ".join(errs))
     cfg = edit.get("plates")
     if not cfg:
         return
@@ -260,6 +272,10 @@ def make_plates(edit, proj):
                 pre = "post"  # forces filter_complex below
         plate = _plate(src, out_dir, vf, ["-ss", f"{seek:.5f}"] if first else [], ["-frames:v", str(n_out + 1)], fps, more_inputs=more,
                        complex_=bool(pre))
+        clip_vfx = c.pop("vfx", None)
+        if clip_vfx:  # effects run on this clip's plate frames (times = clip-local output seconds); cached derived plate
+            import vfx
+            plate = vfx.apply_to_plate(plate, fps, clip_vfx, out_dir, images_root=proj)
         key = f"plate{i}"
         media[key] = str(plate.relative_to(proj))
         # caption anchors: cover boxes mapped into the output frame (zoom ramp taken at the clip's midpoint)
