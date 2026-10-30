@@ -1,0 +1,147 @@
+[
+ {
+  "n": "01",
+  "en": [
+   "DISCIPLINE.",
+   "PERFORMANCE.",
+   "LIFESTYLE."
+  ],
+  "tip": [
+   "Coach Osama"
+  ],
+  "blocks": [
+   {
+    "top": 150,
+    "side": "left",
+    "x": 46,
+    "w": 380,
+    "align": "left",
+    "en": 46,
+    "tip": true,
+    "ltr": true,
+    "gap": 22,
+    "subsize": 32
+   }
+  ]
+ },
+ {
+  "n": "02",
+  "en": [
+   "DISCIPLINE"
+  ],
+  "tip": [
+   "Show up.",
+   "Every single day."
+  ],
+  "blocks": [
+   {
+    "top": 760,
+    "side": "right",
+    "x": 40,
+    "w": 420,
+    "align": "right",
+    "en": 68,
+    "tip": true,
+    "ltr": true,
+    "gap": 22,
+    "subsize": 34
+   }
+  ]
+ },
+ {
+  "n": "03",
+  "en": [
+   "PERFORMANCE"
+  ],
+  "tip": [
+   "Train like an athlete."
+  ],
+  "blocks": [
+   {
+    "top": 170,
+    "side": "right",
+    "x": 40,
+    "w": 440,
+    "align": "right",
+    "en": 58,
+    "tip": true,
+    "ltr": true,
+    "gap": 22,
+    "subsize": 34
+   }
+  ]
+ },
+ {
+  "n": "04",
+  "en": [
+   "BALANCE"
+  ],
+  "tip": [
+   "Strong body.",
+   "Clear mind."
+  ],
+  "blocks": [
+   {
+    "top": 150,
+    "side": "left",
+    "x": 46,
+    "w": 400,
+    "align": "left",
+    "en": 66,
+    "tip": true,
+    "ltr": true,
+    "gap": 22,
+    "subsize": 34
+   }
+  ]
+ },
+ {
+  "n": "05",
+  "en": [
+   "THE",
+   "COACH"
+  ],
+  "tip": [
+   "7 years of coaching.",
+   "Built on real training."
+  ],
+  "blocks": [
+   {
+    "top": 150,
+    "side": "left",
+    "x": 46,
+    "w": 420,
+    "align": "left",
+    "en": 66,
+    "tip": true,
+    "ltr": true,
+    "gap": 22,
+    "subsize": 32
+   }
+  ]
+ },
+ {
+  "n": "06",
+  "en": [
+   "LIFESTYLE"
+  ],
+  "tip": [
+   "Work hard.",
+   "Live well."
+  ],
+  "blocks": [
+   {
+    "top": 200,
+    "side": "right",
+    "x": 40,
+    "w": 450,
+    "align": "right",
+    "en": 70,
+    "tip": true,
+    "ltr": true,
+    "gap": 22,
+    "subsize": 34
+   }
+  ]
+ }
+]
