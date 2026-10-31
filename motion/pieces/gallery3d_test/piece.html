@@ -1,0 +1,80 @@
+<!doctype html>
+<!-- Spec 1 pipeline test (three.js, physically based): a gently curved wall of cards in soft daylight. A Core Blue wave runs
+     along the wall and each card tilts on a spring as it passes (things react to each other). Camera: dolly back, then crane up
+     (named moves, eased in/out, never through geometry). MeshPhysicalMaterial with varied roughness, PMREM RoomEnvironment,
+     key/fill/rim with soft shadows (bias set), fog, ACES, tight near/far, seeded layout, ?render = time only.
+     node tools/seek_render.js motion/pieces/gallery3d_test/piece.html out.mp4 --dur 4 -->
+<html><head><meta charset="utf-8">
+<style>html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#E4E7EB}canvas{display:block}</style>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+ "three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
+</head><body>
+<script type="module">
+import * as THREE from "three";
+import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
+import { rand, spring, seg, expoInOut, lerp, cameraAt } from "/osm/motion-core.js";
+
+const W = 1080, H = 1920, DUR = 4, SEED = 2026;
+window.meta = { dur: DUR, size: [W, H] };
+const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
+renderer.setPixelRatio(1); renderer.setSize(W, H);
+renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 0.85;
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+document.body.appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color("#E4E7EB");
+scene.fog = new THREE.Fog("#E4E7EB", 14, 42);                        // depth
+const pmrem = new THREE.PMREMGenerator(renderer);
+scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;   // reflections
+
+const cam = new THREE.PerspectiveCamera(32, W / H, 0.3, 50);       // tight near/far: no distant flicker
+// key / fill / rim
+const key = new THREE.DirectionalLight("#fff6ec", 2.4); key.position.set(-6, 9, 8); key.castShadow = true;
+key.shadow.mapSize.set(2048, 2048); key.shadow.bias = -0.0004; key.shadow.normalBias = 0.02; key.shadow.radius = 6;
+Object.assign(key.shadow.camera, { left: -12, right: 12, top: 12, bottom: -12, near: 1, far: 30 });
+scene.add(key, new THREE.HemisphereLight("#ffffff", "#d9dde3", 0.55));
+const rim = new THREE.DirectionalLight("#dfe9ff", 1.4); rim.position.set(5, 4, -9); scene.add(rim);
+
+// floor
+const floor = new THREE.Mesh(new THREE.PlaneGeometry(80, 80), new THREE.MeshPhysicalMaterial({ color: "#E9EBEE", roughness: 0.85, metalness: 0 }));
+floor.rotation.x = -Math.PI / 2; floor.receiveShadow = true; scene.add(floor);
+
+// curved wall of cards (seeded variation)
+const ROWS = 5, COLS = 19, R = 14, CARD = [1.0, 1.6], cards = [];
+const geo = new THREE.BoxGeometry(CARD[0], CARD[1], 0.05);
+for (let r = 0; r < ROWS; r++) for (let c = 0; c < COLS; c++) {
+  const i = r * COLS + c, a = (c - (COLS - 1) / 2) * 0.085;
+  const tone = 0.06 + rand(SEED, i) * 0.3;                           // poster-like mid tones, seeded
+  const mat = new THREE.MeshPhysicalMaterial({ color: new THREE.Color(tone, tone, tone * 1.01), roughness: 0.25 + rand(SEED, i + 500) * 0.5,
+    clearcoat: 0.4, clearcoatRoughness: 0.3, emissive: new THREE.Color("#56A0FB"), emissiveIntensity: 0 });
+  const m = new THREE.Mesh(geo, mat); m.castShadow = m.receiveShadow = true;
+  const pivot = new THREE.Group();                                   // hinge at the card's left edge
+  pivot.position.set(Math.sin(a) * R, 0.95 + r * 1.75, R - Math.cos(a) * R - 2);
+  pivot.rotation.y = -a; m.position.x = CARD[0] / 2; pivot.add(m); scene.add(pivot);
+  cards.push({ pivot, m, mat, x: pivot.position.x });
+}
+
+const start = { x: 0, y: 4.2, z: 0, rx: 0, ry: 0, rz: 0, fov: 32, focus: 0 };
+function seek(t) {
+  // camera: dolly back (0-2 s), crane up (2-4 s); eased in and out; stays in front of the wall (z >= 3)
+  const c = cameraAt(t, start, [
+    { kind: "dolly", t0: 0, t1: 2, to: { z: 15 } },
+    { kind: "crane", t0: 2, t1: 4, to: { y: 11, z: 18, rx: 24 } },
+  ]);
+  cam.position.set(c.x, c.y, 2 + c.z); cam.rotation.set(-c.rx * Math.PI / 180, 0, 0); cam.fov = c.fov; cam.updateProjectionMatrix();
+  // the wave: front x(t) sweeps left -> right; each card reacts when the front passes it (spring, not a tween)
+  const sine = (x) => (1 - Math.cos(Math.PI * x)) / 2;                 // a travelling wave keeps a near-constant speed
+  const front = lerp(-9, 9, seg(t, 0.4, 3.4, sine));
+  for (const k of cards) {
+    const tPass = 0.4 + 3.0 * Math.acos(1 - 2 * Math.min(1, Math.max(0, (k.x + 9) / 18))) / Math.PI;   // when the front reaches this card
+    const hitAmt = spring(t - tPass, { freq: 1.6, damping: 0.75 }) - spring(t - tPass - 0.35, { freq: 1.6, damping: 0.75 });
+    k.pivot.children[0].rotation.y = -0.35 * hitAmt;                  // tilts as it passes, settles back
+    k.mat.emissiveIntensity = 3.2 * Math.exp(-Math.pow((k.x - front) / 0.9, 2));   // near the front lights up
+  }
+  renderer.render(scene, cam);
+}
+window.seek = seek;
+window.ready = Promise.resolve().then(() => seek(0));
+</script></body></html>

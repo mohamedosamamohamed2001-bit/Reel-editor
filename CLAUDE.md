@@ -9,6 +9,8 @@ The goal is publication-ready edits that follow the OSM brand, built by a reprod
 3. The `projects/<name>/project.json` of the video being worked on.
 4. `docs/OSM_FUTURE_EDITING_RULES.md`: Coach Osama's rules for NEW videos (smooth readable caption motion, selective
    premium 3D type, kinetic hierarchy; section 7: NO text on/above his head, NO haze behind text). Additions only; never applied to delivered videos unless asked.
+5. `docs/motion/MOTION_SYSTEM.md`: the permanent motion-design standard (Spec 1 3D gallery + Spec 2 showreel, kept verbatim in
+   `docs/motion/`). Applies to every new video automatically, with judgment; skill `.claude/skills/osm-motion-design`.
 
 ## Layout
 ```
@@ -67,6 +69,10 @@ projects/<name>/  one folder per video: project.json, edit.json, analysis/, docu
   clip `"vfx": [{fx, start, end, …options}]` (clip-local output s, needs `plates`, run render_edit with `.venv/bin/python`).
   OSM status per effect in `tools/vfx_effects.json` (1 approved, 26 restricted, 15 blocked by the locked rules; blocked needs
   `osmOverride`). `vfx.py list|describe|validate|selftest`. Guide: `docs/vfx_effects.md`. Prefer studio equivalents where listed.
+- Motion pieces (`docs/motion/MOTION_SYSTEM.md`): `studio/src/lib/motionCore.ts` (time-based springs, expo, beat grid, seeded rand,
+  motion blur, named camera moves, morph) shared with HTML pieces; `node tools/seek_render.js PIECE.html OUT.mp4 [--audio]`
+  (window.seek(t), 60 fps x 3 subframes tmix, OfflineAudioContext WAV; `--beats 120` stills, `--determinism`);
+  `python3 tools/motion_qc.py OUT.mp4 --bpm 120 --loop` (holds > 0.5 s, change on every beat, loop); `node tools/motion_selftest.js` (core maths). Pieces: `motion/pieces/`.
 - `tools/sfx.py` is the in-house sound kit (numpy only, no samples, no licences): air, whoosh_in/out, swell, thump, impact, click,
   key, blip, chime, accent. Each sound has a "hit" sample that lands on the cue time. `edit.json` `sfx.cues` = [{at, sound,
   gain_db, …kwargs}]. Cue times snap to frames. render_edit mixes the bus (HPF 40 Hz, −4 dB @ 2.5 kHz, sidechain-ducked 2:1
@@ -90,6 +96,7 @@ projects/<name>/  one folder per video: project.json, edit.json, analysis/, docu
 | MODNet ONNX (Xenova/modnet, Apache-2.0) + YuNet ONNX (OpenCV zoo, MIT), ~/.cache/osm-models | person matte for behind-the-head titles; face guard in the eraser | verified on batch 3 stills |
 | lucide-react 0.460.0 (`studio/`, ISC) | icons for `IconPop` motion graphics | verified (typecheck, renders) |
 | Claude Video Effects pack (`vendor/claude-video-effects`, MIT code, OFL/Apache fonts, YuNet MIT) | `tools/vfx.py` effects on plates. Reuses .venv numpy/OpenCV/Pillow/onnxruntime + MODNet; MediaPipe NOT installed (adapter uses MODNet). setup.sh/words.py not imported; fx.py exec() hook disabled | selftest 27/27 on synthetic inputs (2026-10-26); not yet used on footage |
+| three.js 0.160.0 (jsdelivr CDN, pinned in each 3D piece's importmap; nothing installed) | Spec 1 physically based 3D motion pieces | gallery3d_test rendered + determinism pass (2026-10-31); needs network at render time |
 | pillow-heif 1.8.1 (`.venv`, BSD-3) | read iPhone HEIC photos (ImageMagick 6 here fails on HEICs with depth maps); P3 → sRGB via ICC, no other colour change | verified on 5 carousel photos (2026-10-20) |
 
 ## Decisions log
@@ -154,6 +161,8 @@ projects/<name>/  one folder per video: project.json, edit.json, analysis/, docu
 3. Transcribe it (`tools/transcribe.py`), fix flagged words by ear, and build a timecoded map (segments, purpose, visual opportunities, risks).
 4. Write `blueprint.md`: creative direction, and why it suits this video.
    Effects: pick from `python3 tools/vfx.py list` only where an effect serves the beat; `vfx.py validate` the edit before rendering.
+   Motion plan (mandatory section, `.claude/skills/osm-motion-design`): beat-by-beat opportunities from the trigger table, chosen
+   techniques + one-line concept, or the reason for none. Motion pieces: stills first, render, `motion_qc.py`, then into the edit as clips.
 5. Write `edit.json` (cuts + overlays), render with `--preview`, inspect the contact sheet and stills, fix, then do the final render (QA runs automatically).
 6. Deliver the final file plus a QA summary. Update this file only if the studio itself changed.
 - 2026-10-13 (video 2, `projects/2026-10-13_video2`): Drive files shared "anyone with link" download directly with
@@ -226,3 +235,6 @@ projects/<name>/  one folder per video: project.json, edit.json, analysis/, docu
   pixel-identical, the approved master audio stream copied unchanged. Default for his footage from now on: natural camera colour.
 - 2026-10-26: Claude Video Effects pack integrated (`tools/vfx.py`, `docs/vfx_effects.md`): effects bake into plate frames inside
   render_edit (cached derived plate, untouched frames hard-linked). Integration only; no video was processed.
+- 2026-10-31: Spec 1 (3D gallery) + Spec 2 (motion showreel) adopted permanently: `docs/motion/`, motionCore, seek_render, motion_qc,
+  `motion/pieces/osm_sting` (all checks pass: no hold > 0.5 s, change + audio onset on all 18 beats, loop 33.9 dB, deterministic) and
+  `gallery3d_test` (three.js). Locked editing system and delivered videos unchanged.

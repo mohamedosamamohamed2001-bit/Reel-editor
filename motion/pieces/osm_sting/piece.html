@@ -1,0 +1,174 @@
+<!doctype html>
+<!-- OSM sting: "The bar becomes the word becomes the build."  1080x1920, 9 s, 120 BPM (4 bars + half bar), loops.
+     Spec 2 techniques in the OSM system (docs/motion/MOTION_SYSTEM.md): kinetic type -> shape morph -> data/UI ->
+     2D-to-3D (strongest bar) -> end title = first frame. Inter only; Night, white, Core Blue #56A0FB.
+     Every style is computed from t in window.seek(t). Render: node tools/seek_render.js motion/pieces/osm_sting/piece.html out.mp4 --audio -->
+<html><head><meta charset="utf-8">
+<style>
+@font-face { font-family: Inter; src: url('/osm/fonts/Inter[opsz,wght].ttf'); font-weight: 100 900; }
+@font-face { font-family: InterI; src: url('/osm/fonts/Inter-Italic[opsz,wght].ttf'); font-weight: 100 900; font-style: italic; }
+html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #0A0F16; }
+#stage { position: absolute; inset: 0; perspective-origin: 540px 960px; }
+#world { position: absolute; left: 540px; top: 960px; width: 0; height: 0; transform-style: preserve-3d; }
+.abs { position: absolute; left: 0; top: 0; transform-style: preserve-3d; }
+.letter { font-family: InterI; font-style: italic; font-weight: 900; font-size: 300px; line-height: 1; color: #fff; letter-spacing: -0.02em;
+          width: 220px; margin-left: -110px; margin-top: -150px; text-align: center; backface-visibility: hidden; }
+.mask { position: absolute; left: 0; width: 1080px; overflow: hidden; }
+.word { font-family: InterI; font-style: italic; font-weight: 900; font-size: 116px; line-height: 1; color: #fff; text-align: center;
+        letter-spacing: -0.02em; will-change: transform; }
+.col { width: 150px; margin-left: -75px; transform-style: preserve-3d; }
+.face { position: absolute; left: 0; width: 150px; }
+.num { font-family: Inter; font-weight: 800; font-size: 52px; color: #fff; width: 200px; margin-left: -100px; text-align: center; }
+.lab { font-family: Inter; font-weight: 600; font-size: 30px; letter-spacing: .12em; color: #8C98AA; width: 150px; margin-left: -75px; text-align: center; }
+#sub { position: absolute; top: 1150px; left: 0; width: 1080px; height: 60px; overflow: hidden; }
+#subIn { font-family: Inter; font-weight: 700; font-size: 34px; letter-spacing: .32em; color: #fff; text-align: center; line-height: 60px; }
+#subBar { position: absolute; left: 390px; top: 1222px; width: 300px; height: 6px; background: #56A0FB; transform-origin: 50% 50%; }
+svg { position: absolute; inset: 0; }
+</style></head>
+<body>
+<div id="stage"><div id="world">
+  <div class="abs letter" id="L0">O</div><div class="abs letter" id="L1">S</div><div class="abs letter" id="L2">M</div>
+  <div id="cols" style="position:absolute;left:0;top:0;transform-style:preserve-3d"></div>
+</div></div>
+<svg width="1080" height="1920" viewBox="0 0 1080 1920"><defs>
+  <filter id="mb" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur id="mbg" stdDeviation="0 0"/></filter></defs>
+  <path id="shape" fill="#56A0FB" fill-rule="evenodd"/>
+  <path id="arc" fill="none" stroke="#fff" stroke-width="22" stroke-linecap="round"/>
+  <text id="pct" x="540" y="925" text-anchor="middle" font-family="Inter" font-weight="800" font-size="120" fill="#fff"></text>
+</svg>
+<div class="mask" id="m0" style="top:610px;height:140px"><div class="word" id="w0">DISCIPLINE.</div></div>
+<div class="mask" id="m1" style="top:760px;height:140px"><div class="word" id="w1">PERFORMANCE.</div></div>
+<div class="mask" id="m2" style="top:910px;height:140px"><div class="word" id="w2">LIFESTYLE.</div></div>
+<div id="sub"><div id="subIn">OSAMA STRENGTH METHOD</div></div><div id="subBar"></div>
+<script type="module">
+import * as M from "/osm/motion-core.js";
+import { renderSoundtrack } from "/osm/audio.js";
+const { seg, spring, expoIn, expoOut, expoInOut, lerp, clamp01, motionBlur, cameraAt, cssWorld, cssPerspective, resample, morph, polyPath,
+        rectPoly, circlePoly, countUp, frameTime } = M;
+const DUR = 9, BPM = 120, B = 0.5, W = 1080, H = 1920;
+window.meta = { dur: DUR, bpm: BPM, size: [W, H], concept: "The bar becomes the word becomes the build." };
+const $ = (id) => document.getElementById(id);
+const S = (el, st) => { for (const k in st) el.style[k] = st[k]; };
+
+// ---- chart (world coords: origin at frame centre) ----
+const BASE = 330, XS = [-330, -110, 110, 330], HS = [260, 380, 330, 520], VAL = [62, 71, 68, 84], CW = 150, DEPTH = 150;
+const cols = XS.map((x, i) => {
+  const c = document.createElement("div"); c.className = "abs col";
+  c.innerHTML = `<div class="face" data-f="front"></div><div class="face" data-f="top"></div><div class="face" data-f="side"></div><div class="face" data-f="sideL"></div>`
+    + `<div class="abs num"></div><div class="abs lab">W${i + 1}</div>`;
+  $("cols").appendChild(c); return c;
+});
+const LX = [-200, 0, 200], LY = 0;                    // title letters (frontal)
+const springY = (t, t0, o) => spring(t - t0, o);
+
+// ---- shape keyframes (screen coords) ----
+const N = 96, CX = 540, CY = 900;
+const RECT = resample(rectPoly(CX, 830, 820, 150), N);         // the caption bar
+const CIRC = circlePoly(CX, CY, 230, N);
+const BAR1 = resample(rectPoly(540 + XS[0], 960 + BASE - HS[0] / 2, CW, HS[0]), N);
+const ring = (r, inner) => polyPath(circlePoly(CX, CY, r, N)) + (inner > 1 ? polyPath(circlePoly(CX, CY, inner, N).reverse()) : "");
+
+function seek(t) {
+  t = ((t % DUR) + DUR) % DUR;
+  const beat = (n) => n * B;
+
+  // ---------- camera: hold, then crane / orbit / orbit back / push-in / crane back (one named move per shot) ----------
+  const cam0 = { x: 0, y: 0, z: 0, rx: 0, ry: 0, rz: 0, fov: 40, focus: 0 };
+  const cam = cameraAt(t, cam0, [
+    { kind: "crane", t0: beat(12), t1: beat(13), to: { y: -240, rx: 34, z: 60 } },
+    { kind: "orbit", t0: beat(13), t1: beat(14), to: { ry: -24, x: -90 } },
+    { kind: "orbit", t0: beat(14), t1: beat(15), to: { ry: 0, x: 0 } },
+    { kind: "pushIn", t0: beat(15), t1: beat(16), to: { z: 220 } },
+    { kind: "crane", t0: beat(16), t1: beat(17), to: { y: 0, rx: 0, z: 0 } },
+  ]);
+  S($("stage"), { perspective: cssPerspective(cam.fov, H) + "px" });
+  S($("world"), { transform: cssWorld(cam, H) });
+
+  // ---------- title letters: exit at beat 0, return standing on the columns (beat 15), settle frontal (beat 16-17) ----------
+  const out = seg(t, 0, beat(1), expoIn);                      // fly up, fast -> blur follows speed
+  const rise = springY(t, beat(15), { freq: 2.4 });             // rise from the column tops
+  const home = seg(t, beat(16), beat(17.6), expoInOut);         // back to the title position
+  [0, 1, 2].forEach((i) => {
+    const el = $("L" + i);
+    const topY = BASE - 300 - 150;                               // letter centre when its foot is on the plinth top (300)
+    let x = LX[i], y = LY, z = 0, vis = 1, sy = 1;
+    if (t < beat(15)) { y = LY - 1500 * out; vis = t < beat(1.02) ? 1 : 0; }
+    else if (t < beat(16)) { x = XS[i]; y = topY; z = -DEPTH / 2; sy = Math.max(0.001, rise); }   // grows out of the column top
+    else { x = lerp(XS[i], LX[i], home); y = lerp(topY, LY, home); z = lerp(-DEPTH / 2, 0, home); }
+    const blur = t < beat(1) ? Math.min(18, 40 * out) : 0;
+    S(el, { transform: `translate3d(${x}px, ${y}px, ${z}px) scaleY(${sy})`, transformOrigin: "50% 100%", opacity: vis,
+      filter: blur > 0.3 ? `blur(${blur}px)` : "none" });
+  });
+
+  // ---------- kinetic words: rise in on beats 1-3, drop into the bar on beat 4 ----------
+  [0, 1, 2].forEach((i) => {
+    const pin = spring(t - beat(i + 1), { freq: 2.8 }), pout = seg(t, beat(4), beat(4.6), expoIn);
+    const y = (1 - pin) * 150 + pout * 170;
+    const mb = motionBlur((tt) => [0, (1 - spring(tt - beat(i + 1), { freq: 2.8 })) * 150 + seg(tt, beat(4), beat(4.6), expoIn) * 170], t);
+    S($("w" + i), { transform: `translateY(${y}px)`, filter: mb.sy > 0.4 ? `blur(${Math.min(10, mb.sy)}px)` : "none",
+      color: i === 1 ? "#56A0FB" : "#fff" });
+  });
+
+  // ---------- shape: bar (beat 4) -> circle (5) -> ring (6) -> progress (7) -> bar 1 of the chart (8) ----------
+  let d = "", arcLen = 0, pctTxt = "";
+  if (t >= beat(4) && t < beat(9)) {
+    const grow = spring(t - beat(4), { freq: 3 });
+    const bar = RECT.map(([x, y]) => [CX + (x - CX) * grow, y]);
+    const toC = spring(t - beat(5), { freq: 2.2 }), toB = spring(t - beat(8), { freq: 2.4 });
+    let pts = morph(bar, CIRC, toC);
+    if (t >= beat(8)) pts = morph(CIRC, BAR1, toB);
+    const inner = t >= beat(6) && t < beat(8) ? 160 * spring(t - beat(6), { freq: 2.6 }) : t >= beat(8) ? 160 * (1 - seg(t, beat(8), beat(8.4), expoOut)) : 0;
+    d = polyPath(pts) + (inner > 1 ? polyPath(circlePoly(CX, CY, inner, N).reverse()) : "");
+    if (t >= beat(7) && t < beat(8)) {
+      const p = seg(t, beat(7), beat(7.9), expoOut);
+      arcLen = 0.75 * p; pctTxt = Math.round(countUp(frameTime(t), beat(7), beat(7.9), 0, 75)) + "%";
+    }
+  }
+  $("shape").setAttribute("d", d);
+  const R = 195, C = 2 * Math.PI * R;
+  S($("arc"), { strokeDasharray: `${C * arcLen} ${C}`, transform: `rotate(-90deg)`, transformOrigin: `${CX}px ${CY}px` });
+  $("arc").setAttribute("d", arcLen > 0 ? `M${CX + R},${CY} A${R},${R} 0 1,1 ${CX + R - 0.01},${CY}` : "");
+  $("pct").textContent = pctTxt;
+
+  // ---------- chart columns: bar 1 hands over from the SVG at beat 9; bars 2-4 slide out on beats 9-11 ----------
+  const level = spring(t - beat(14), { freq: 2.2 });            // columns level into a plinth (300)
+  const extrude = spring(t - beat(12), { freq: 2.4 });          // 2D -> 3D: depth grows
+  const flat = seg(t, beat(16), beat(16.9), expoOut);           // columns drop away on the beat
+  cols.forEach((c, i) => {
+    const on = i === 0 ? t >= beat(9) && t < beat(17) : t >= beat(8 + i) && t < beat(17);
+    if (!on) { S(c, { opacity: 0 }); return; }
+    const slide = i === 0 ? 1 : spring(t - beat(8 + i), { freq: 2.6 });
+    const x = lerp(XS[0], XS[i], slide);
+    let h = i === 0 ? HS[0] : HS[i] * slide;
+    if (i === 3) h += 70 * seg(t, beat(13), beat(13.6), expoOut);    // the orbit "hits" it: an impact starts fast (expoOut), a spring would start at rest
+    h = (i === 3 ? h * (1 - seg(t, beat(14), beat(14.8), expoIn)) : lerp(h, 300, level)) * (1 - flat);   // blue sinks, 1-3 level
+    const dep = DEPTH * extrude;
+    const hi = i === 3 ? "#56A0FB" : "#FFFFFF";
+    S(c, { opacity: 1, transform: `translate3d(${x}px, ${BASE}px, 0px)` });
+    const [front, top, side, sideL, num, lab] = c.children;
+    S(front, { height: h + "px", top: -h + "px", background: hi, transform: "translateZ(0px)" });
+    S(top, { height: dep + "px", top: -h + "px", background: i === 3 ? "#7DB6FC" : "#DCE3EA", transformOrigin: "50% 0%",
+      transform: `rotateX(-90deg)`, display: dep > 1 && h > 1 ? "block" : "none" });
+    S(side, { width: dep + "px", height: h + "px", top: -h + "px", left: "150px", background: i === 3 ? "#3F7FD0" : "#AEB8C4",
+      transformOrigin: "0% 50%", transform: `rotateY(90deg)`, display: dep > 1 ? "block" : "none" });
+    S(sideL, { width: dep + "px", height: h + "px", top: -h + "px", left: -dep + "px", background: i === 3 ? "#3F7FD0" : "#AEB8C4",
+      transformOrigin: "100% 50%", transform: `rotateY(-90deg)`, display: dep > 1 ? "block" : "none" });
+    const c0 = i === 0 ? beat(8.4) : beat(8 + i) + 0.12;
+    const v = Math.round(countUp(frameTime(t), c0, c0 + 0.4, 0, VAL[i]));
+    const numOn = t < beat(12) && (i === 0 || slide > 0.85) ? 1 : 0;   // shown once landed; none once we are in 3D
+    S(num, { transform: `translate3d(0px, ${-h - 80}px, 0px)`, opacity: numOn }); num.textContent = v + "%";
+    S(lab, { transform: `translate3d(0px, 24px, 0px)`, opacity: numOn });
+  });
+
+  // ---------- subtitle: in a mask, out at beat 0, back at beat 17 ----------
+  const sOut = seg(t, 0, beat(0.6), expoOut), sIn = spring(t - beat(17), { freq: 3 });
+  const sy = t < beat(17) ? (t < beat(1) ? -70 * sOut : 70) : 70 * (1 - sIn);
+  S($("subIn"), { transform: `translateY(${sy}px)` });
+  const bw = t < beat(17) ? 1 - seg(t, 0, beat(0.6), expoOut) : spring(t - beat(17.2), { freq: 3 });
+  S($("subBar"), { transform: `scaleX(${bw})` });
+}
+window.seek = seek;
+window.renderAudio = () => renderSoundtrack({ dur: DUR, bpm: BPM, riser: [beat(10), beat(12)], hits: [0, 2, 4, 6, 8] });
+function beat(n) { return n * B; }
+window.ready = document.fonts.ready.then(() => document.fonts.load("900 italic 100px InterI")).then(() => { seek(0); });
+</script></body></html>
