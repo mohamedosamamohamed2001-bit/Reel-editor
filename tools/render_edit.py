@@ -257,7 +257,11 @@ def make_plates(edit, proj):
         elif speed < 1:
             motion = [f"setpts=(PTS-STARTPTS)/{speed}", f"framerate=fps={fps}:interp_start=0:interp_end=255:scene=100"]
         # per-clip "grade" overrides the top-level one (mixed sources: HDR phone clips, SDR stock, screen captures)
-        chain = ",".join(f for f in [f"crop={cw}:{ch}:{_even(x)}:{_even(y)}", c.pop("grade", grade), *motion, f"fps={fps}", scale, sharpen] if f)
+        g = c.pop("grade", grade)
+        if g == "auto":  # docs/COLOR_GRADING.md: measured shot-by-shot grade of THIS clip's range (graphics are never graded)
+            import grade as grader
+            g = grader.auto_grade(src, c["in"], c["out"], cache=proj / "work" / "grades.json")["grade"]
+        chain = ",".join(f for f in [f"crop={cw}:{ch}:{_even(x)}:{_even(y)}", g, *motion, f"fps={fps}", scale, sharpen] if f)
         vf = (pre + f";[{last}]" + chain) if pre else chain
         if text_plate and solid:
             if freeze or hold is not None:

@@ -11,6 +11,8 @@ The goal is publication-ready edits that follow the OSM brand, built by a reprod
    premium 3D type, kinetic hierarchy; section 7: NO text on/above his head, NO haze behind text). Additions only; never applied to delivered videos unless asked.
 5. `docs/motion/MOTION_SYSTEM.md`: the permanent motion-design standard (Spec 1 3D gallery + Spec 2 showreel, kept verbatim in
    `docs/motion/`). Applies to every new video automatically, with judgment; skill `.claude/skills/osm-motion-design`.
+6. `docs/COLOR_GRADING.md`: the permanent colour standard (Coach Osama 2026-10-31). Every new reel: `plates.grade: "auto"`
+   (measured shot-by-shot grade; iPhone HLG decoded properly), before/after + scopes checked before the full render. Skill `.claude/skills/osm-color-grading`.
 
 ## Layout
 ```
@@ -73,6 +75,9 @@ projects/<name>/  one folder per video: project.json, edit.json, analysis/, docu
   motion blur, named camera moves, morph) shared with HTML pieces; `node tools/seek_render.js PIECE.html OUT.mp4 [--audio]`
   (window.seek(t), 60 fps x 3 subframes tmix, OfflineAudioContext WAV; `--beats 120` stills, `--determinism`);
   `python3 tools/motion_qc.py OUT.mp4 --bpm 120 --loop` (holds > 0.5 s, change on every beat, loop); `node tools/motion_selftest.js` (core maths). Pieces: `motion/pieces/`.
+- `tools/grade.py` (premium grade per clip range: HDR->709, WB/tint, contrast, gamut-safe vibrance, separation, skin protection,
+  verify; `--compare DIR` stills+scopes, `--sample DIR` synced before/after video) and `tools/scopes.py` (waveform, RGB parade,
+  vectorscope, histogram + numbers). `plates.grade: "auto"` runs it inside render_edit; reports in `work/grades.json`.
 - `tools/sfx.py` is the in-house sound kit (numpy only, no samples, no licences): air, whoosh_in/out, swell, thump, impact, click,
   key, blip, chime, accent. Each sound has a "hit" sample that lands on the cue time. `edit.json` `sfx.cues` = [{at, sound,
   gain_db, …kwargs}]. Cue times snap to frames. render_edit mixes the bus (HPF 40 Hz, −4 dB @ 2.5 kHz, sidechain-ducked 2:1
@@ -163,6 +168,7 @@ projects/<name>/  one folder per video: project.json, edit.json, analysis/, docu
    Effects: pick from `python3 tools/vfx.py list` only where an effect serves the beat; `vfx.py validate` the edit before rendering.
    Motion plan (mandatory section, `.claude/skills/osm-motion-design`): beat-by-beat opportunities from the trigger table, chosen
    techniques + one-line concept, or the reason for none. Motion pieces: stills first, render, `motion_qc.py`, then into the edit as clips.
+   Colour: `plates.grade: "auto"`; `tools/grade.py --compare/--sample` on representative clips, look at stills + scopes before the full render.
 5. Write `edit.json` (cuts + overlays), render with `--preview`, inspect the contact sheet and stills, fix, then do the final render (QA runs automatically).
 6. Deliver the final file plus a QA summary. Update this file only if the studio itself changed.
 - 2026-10-13 (video 2, `projects/2026-10-13_video2`): Drive files shared "anyone with link" download directly with
@@ -238,3 +244,7 @@ projects/<name>/  one folder per video: project.json, edit.json, analysis/, docu
 - 2026-10-31: Spec 1 (3D gallery) + Spec 2 (motion showreel) adopted permanently: `docs/motion/`, motionCore, seek_render, motion_qc,
   `motion/pieces/osm_sting` (all checks pass: no hold > 0.5 s, change + audio onset on all 18 beats, loop 33.9 dB, deterministic) and
   `gallery3d_test` (three.js). Locked editing system and delivered videos unchanged.
+- 2026-10-31 (Coach Osama, colour standard): **supersedes the 2026-10-20 "natural camera colour / format=yuv420p" default for NEW videos.**
+  Root cause of the dull/yellow look measured: HLG/BT.2020 iPhone footage was read as BT.709. New default `plates.grade: "auto"`
+  (`docs/COLOR_GRADING.md`): 10 real shots pass all checks; end-to-end render: colourfulness 40 -> 76, neutral b* 4.6 -> 2.0, skin hue
+  76 -> 51 deg, caption bar unchanged. Delivered videos and shared presets untouched.

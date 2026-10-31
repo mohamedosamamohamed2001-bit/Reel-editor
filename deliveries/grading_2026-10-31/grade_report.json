@@ -1,0 +1,215 @@
+{
+ "a0963143abf76850": {
+  "grade": "zscale=tin=arib-std-b67:min=bt2020nc:pin=bt2020:rin=tv:t=linear:npl=203,format=gbrpf32le,zscale=p=bt709,tonemap=mobius:param=0.3:desat=0,zscale=t=bt709,format=gbrp16le,colorchannelmixer=rr=0.9902:gg=0.9980:bb=1.0000,curves=master='0.0000/0.0000 0.0467/0.0275 0.2851/0.2431 0.5234/0.5137 0.7617/0.7734 0.9237/0.9222 1.0000/1.0000',huesaturation=saturation=-0.12:colors=y:strength=2,huesaturation=saturation=-0.03:colors=r:strength=2,huesaturation=hue=0.00:saturation=-0.378:colors=r+y:strength=1.5",
+  "report": {
+   "source": "/home/user/Reel-editor/projects/_grade_test/source/original.mov",
+   "range": [
+    0.0,
+    5.9
+   ],
+   "input": "HLG BT.2020 -> BT.709 (mobius, 203 nit)",
+   "old_pipeline": {
+    "luma_p0_5": 9.26,
+    "luma_p50": 152.78,
+    "luma_p99_5": 237.96,
+    "clipped_pct": 0.08,
+    "luma_clipped_pct": 0.01,
+    "crushed_pct": 0.27,
+    "contrast_rms": 23.64,
+    "chroma_mean": 10.78,
+    "colourfulness": 36.46,
+    "neutral_px_pct": 57.5,
+    "neutral_a": 0.56,
+    "neutral_b": 4.64,
+    "skin_hue": 65.5,
+    "skin_chroma": 18.0
+   },
+   "input_converted": {
+    "luma_p0_5": 11.92,
+    "luma_p50": 146.48,
+    "luma_p99_5": 240.46,
+    "clipped_pct": 0.16,
+    "luma_clipped_pct": 0.0,
+    "crushed_pct": 0.1,
+    "contrast_rms": 22.62,
+    "chroma_mean": 20.46,
+    "colourfulness": 85.34,
+    "neutral_px_pct": 29.32,
+    "neutral_a": 2.26,
+    "neutral_b": 1.37,
+    "skin_hue": 43.6,
+    "skin_chroma": 39.9
+   },
+   "graded": {
+    "luma_p0_5": 7.22,
+    "luma_p50": 144.58,
+    "luma_p99_5": 239.14,
+    "clipped_pct": 0.07,
+    "luma_clipped_pct": 0.0,
+    "crushed_pct": 0.31,
+    "contrast_rms": 24.36,
+    "chroma_mean": 18.94,
+    "colourfulness": 79.4,
+    "neutral_px_pct": 25.42,
+    "neutral_a": 1.86,
+    "neutral_b": 1.66,
+    "skin_hue": 46.1,
+    "skin_chroma": 31.4
+   },
+   "params": {
+    "gains": [
+     0.9902,
+     0.998,
+     1.0
+    ],
+    "black_in": 11.9,
+    "white_in": 255.0,
+    "s_curve": 0.028,
+    "vibrance": 0.0,
+    "saturation": 1.0,
+    "skin_fix": [
+     0.0,
+     0.378
+    ],
+    "blue": 0.0,
+    "cool": 0.0
+   },
+   "iterations": [
+    {
+     "vibrance": 0.0,
+     "blue": 0.0,
+     "colourfulness": 83.74,
+     "chroma": 20.36,
+     "clipped": 0.07,
+     "skin_hue": 45.9,
+     "skin_chroma": 38.8
+    },
+    {
+     "skin_fix": [
+      0.0,
+      0.378
+     ],
+     "skin_hue": 46.1,
+     "skin_chroma": 31.4
+    }
+   ],
+   "checks": {
+    "neutral_cast_ok": true,
+    "no_new_luma_clipping": true,
+    "colour_channels_not_clipping": true,
+    "no_crushed_blacks": true,
+    "richer_than_old_pipeline": true,
+    "not_oversaturated": true,
+    "skin_natural": true
+   },
+   "pass": true
+  }
+ },
+ "97279e81bf09c03b": {
+  "grade": "zscale=tin=arib-std-b67:min=bt2020nc:pin=bt2020:rin=tv:t=linear:npl=203,format=gbrpf32le,zscale=p=bt709,tonemap=mobius:param=0.3:desat=0,zscale=t=bt709,format=gbrp16le,colorchannelmixer=rr=0.9821:gg=0.9921:bb=1.0000,curves=master='0.0000/0.0000 0.0436/0.0275 0.2827/0.2466 0.5218/0.5137 0.7609/0.7713 0.9235/0.9222 1.0000/1.0000',huesaturation=saturation=-0.12:colors=y:strength=2,huesaturation=saturation=-0.03:colors=r:strength=2",
+  "report": {
+   "source": "/home/user/Reel-editor/projects/_grade_test/source/original.mov",
+   "range": [
+    5.9,
+    8.9
+   ],
+   "input": "HLG BT.2020 -> BT.709 (mobius, 203 nit)",
+   "old_pipeline": {
+    "luma_p0_5": 8.7,
+    "luma_p50": 155.18,
+    "luma_p99_5": 237.24,
+    "clipped_pct": 0.05,
+    "luma_clipped_pct": 0.0,
+    "crushed_pct": 0.26,
+    "contrast_rms": 24.16,
+    "chroma_mean": 10.3,
+    "colourfulness": 34.98,
+    "neutral_px_pct": 59.46,
+    "neutral_a": 0.48,
+    "neutral_b": 4.52,
+    "skin_hue": 53.8,
+    "skin_chroma": 13.1
+   },
+   "input_converted": {
+    "luma_p0_5": 11.12,
+    "luma_p50": 145.28,
+    "luma_p99_5": 240.36,
+    "clipped_pct": 0.21,
+    "luma_clipped_pct": 0.0,
+    "crushed_pct": 0.1,
+    "contrast_rms": 23.22,
+    "chroma_mean": 19.72,
+    "colourfulness": 83.24,
+    "neutral_px_pct": 30.52,
+    "neutral_a": 2.15,
+    "neutral_b": 1.46,
+    "skin_hue": 35.3,
+    "skin_chroma": 30.8
+   },
+   "graded": {
+    "luma_p0_5": 7.08,
+    "luma_p50": 142.98,
+    "luma_p99_5": 237.78,
+    "clipped_pct": 0.12,
+    "luma_clipped_pct": 0.0,
+    "crushed_pct": 0.29,
+    "contrast_rms": 24.7,
+    "chroma_mean": 19.26,
+    "colourfulness": 80.82,
+    "neutral_px_pct": 26.98,
+    "neutral_a": 1.81,
+    "neutral_b": 1.69,
+    "skin_hue": 35.8,
+    "skin_chroma": 28.9
+   },
+   "params": {
+    "gains": [
+     0.9821,
+     0.9921,
+     1.0
+    ],
+    "black_in": 11.1,
+    "white_in": 255.0,
+    "s_curve": 0.025,
+    "vibrance": 0.0,
+    "saturation": 1.0,
+    "skin_fix": [
+     0.0,
+     0.0
+    ],
+    "blue": 0.0,
+    "cool": 0.0
+   },
+   "iterations": [
+    {
+     "vibrance": 0.0,
+     "blue": 0.0,
+     "colourfulness": 80.82,
+     "chroma": 19.26,
+     "clipped": 0.12,
+     "skin_hue": 35.8,
+     "skin_chroma": 28.9
+    },
+    {
+     "vibrance": 0.1,
+     "blue": 0.0,
+     "colourfulness": 87.08,
+     "chroma": 21.6,
+     "clipped": 8.83,
+     "skin_hue": 35.5,
+     "skin_chroma": 32.2
+    }
+   ],
+   "checks": {
+    "neutral_cast_ok": true,
+    "no_new_luma_clipping": true,
+    "colour_channels_not_clipping": true,
+    "no_crushed_blacks": true,
+    "richer_than_old_pipeline": true,
+    "not_oversaturated": true,
+    "skin_natural": true
+   },
+   "pass": true
+  }
+ }
+}

@@ -2,6 +2,7 @@
   "title": "Example — replace everything",
   "fps": 30, "width": 1080, "height": 1920,
   "media": { "main": "source/main.mp4", "set": "source/set-side.mp4" },
+  "plates": { "grade": "auto", "sharpen": "cas=strength=0.22" },
   "clips": [
     { "src": "main", "in": 0.4, "out": 6.2 },
     { "src": "main", "in": 7.0, "out": 21.5 }
