@@ -218,6 +218,8 @@ if (scene === "water") {                                   // "it's extra water 
     inUp(lab, t, 0.7, 40); inUp(sub, t, 1.0, 20); };
 }
 
-window.seek = seek;
-window.ready = document.fonts.ready.then(() => Promise.all(["700 40px Plex", "900 italic 80px InterI", "700 80px Barlow", "800 40px Inter"].map((f) => document.fonts.load(f)))).then(() => seek(0));
+// one named camera move per scene: a slow push-in (eased, continuous), so no frame holds still for more than a beat
+const scenePush = (t) => { const p = seg(t, 0, DUR, (x) => x); root.style.transformOrigin = "50% 38%"; root.style.transform = `scale(${1 + 0.05 * p})`; };
+window.seek = (t) => { seek(t); scenePush(t); };
+window.ready = document.fonts.ready.then(() => Promise.all(["700 40px Plex", "900 italic 80px InterI", "700 80px Barlow", "800 40px Inter"].map((f) => document.fonts.load(f)))).then(() => window.seek(0));
 </script></body></html>

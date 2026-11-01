@@ -31,10 +31,10 @@ SHOTS = [
     (4.90, 8.44, "m_study2009", 0.0, dict(grade=GFX, tin={"type": "whip", "dir": "up"})),
     (8.44, 13.98, "m_dht", 0.0, dict(grade=GFX, tin={"type": "whip", "dir": "left"})),
     (13.98, 15.06, "s_insta", 6.0, dict(zoom=[1.0, 1.08], focusX=0.42, tin={"type": "whip", "dir": "right"})),
-    (15.06, 16.16, "s_social", 8.0, dict(zoom=[1.05, 1.15], focusX=0.55, tin={"type": "zoom"})),
+    (15.06, 16.16, "s_type", 2.0, dict(zoom=[1.0, 1.08], focusX=0.55, tin={"type": "zoom"})),
     (16.16, 20.74, "m_rct2025", 0.0, dict(grade=GFX, tin={"type": "whip", "dir": "up"})),
-    (20.74, 22.82, "s_kettle", 3.0, dict(zoom=[1.0, 1.06], focusX=0.45, tin={"type": "whip", "dir": "left"})),
-    (22.82, 24.10, "s_calendar", 1.5, dict(zoom=[1.0, 1.06], focusX=0.4, tin={"type": "zoom"})),
+    (20.74, 22.82, "o_2253", 16.4, dict(zoom=[1.0, 1.06], focusY=0.6, tin={"type": "whip", "dir": "left"})),
+    (22.82, 24.10, "s_calendar", 1.5, dict(zoom=[1.0, 1.06], focusX=0.4, grade="format=yuv420p", tin={"type": "zoom"})),
     (24.10, 27.38, "m_hair", 0.0, dict(grade=GFX, tin={"type": "whip", "dir": "up"})),
     (27.38, 30.02, "s_vitamins", 3.5, dict(zoom=[1.02, 1.1], focusX=0.5, tin={"type": "whip", "dir": "right"})),
     (30.02, 31.28, "s_science", 4.0, dict(zoom=[1.1, 1.2], focusX=0.42, tin={"type": "zoom"})),
@@ -52,7 +52,7 @@ SHOTS = [
 ]
 MEDIA = {
     "s_comb": "source/stock/coverr-combing-a-man-s-hair-2623.mp4", "s_insta": "source/stock/coverr-man-scrolling-through-his-instagram-feed-4477.mp4",
-    "s_social": "source/stock/coverr-social-media-on-a-smartphone-9524.mp4", "s_kettle": "source/stock/coverr-man-lifting-a-kettlebell-240.mp4",
+    "s_type": "source/stock/coverr-man-types-on-iphone-15.mp4",
     "s_calendar": "source/stock/coverr-july-calendar-5192.mp4", "s_vitamins": "source/stock/coverr-taking-vitamins-230.mp4",
     "s_science": "source/stock/coverr-science-experiment-6978.mp4", "s_equip": "source/stock/coverr-sports-equipment-in-a-gym-7635.mp4",
     "s_scale": "source/stock/coverr-pouring-flour-on-the-scales-2968.mp4", "s_water": "source/stock/coverr-pouring-water-into-a-glass-749.mp4",
@@ -107,8 +107,8 @@ def main():
     ov = [
         {"type": "kineticTitle", "at": 0.05, "dur": 1.2, "lines": [{"text": "CREATINE", "size": 118}, {"text": "= HAIR LOSS?", "accent": True, "size": 92}],
          "top": 0.12, "motion": "smooth", "depth": True},
-        {"type": "callout", "at": 21.45, "dur": 1.35, "number": "5g", "unit": "كرياتين يوميًا", "position": "top"},
-        {"type": "callout", "at": 23.2, "dur": 0.9, "number": "12", "unit": "أسبوع", "position": "top"},
+        {"type": "lowerLabel", "at": 21.45, "dur": 1.32, "title": "5 جرام كرياتين يوميًا", "eyebrow": "THE DOSE", "top": 0.16, "plate": True},
+        {"type": "lowerLabel", "at": 23.2, "dur": 0.88, "title": "لمدة 12 أسبوع", "eyebrow": "DURATION", "top": 0.16, "plate": True},
         {"type": "kineticTitle", "at": 30.6, "dur": 0.68, "lines": [{"text": "NOT MAGIC", "size": 120}], "top": 0.14, "motion": "smooth", "depth": True},
         {"type": "kineticTitle", "at": 36.35, "dur": 1.3, "lines": [{"text": "NO TRAINING", "size": 104}, {"text": "= NO RESULTS", "accent": True, "size": 92}],
          "top": 0.14, "motion": "smooth", "depth": True},
