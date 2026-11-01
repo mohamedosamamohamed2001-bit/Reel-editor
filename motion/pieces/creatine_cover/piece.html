@@ -1,0 +1,57 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<!-- Instagram Reel cover, creatine & hair loss reel (2026-11-01). Static: seek(t) does nothing.
+     Render: node tools/seek_render.js motion/pieces/creatine_cover/piece.html OUTDIR --stills 0
+     photo.png = IMG_3324.HEIC (his photo), crop + measured WB/levels only, made by projects/2026-11-01_voiceover (git-ignored). -->
+<style>
+@font-face{font-family:Inter;src:url(/osm/fonts/Inter[opsz,wght].ttf);font-weight:100 900}
+@font-face{font-family:InterI;src:url(/osm/fonts/Inter-Italic[opsz,wght].ttf);font-weight:100 900}
+@font-face{font-family:Plex;src:url(/osm/fonts/IBMPlexSansArabic-Bold.ttf);font-weight:700}
+@font-face{font-family:Plex;src:url(/osm/fonts/IBMPlexSansArabic-SemiBold.ttf);font-weight:600}
+@font-face{font-family:Barlow;src:url(/osm/fonts/BarlowCondensed-Bold.ttf);font-weight:700}
+:root{--night:#0A0F16;--surface:#141B26;--line:#263244;--blue:#56A0FB;--cyan:#7DD2EC;--white:#E5EBF1;--muted:#8C98AA;--steel:#7F8EA3}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;background:var(--night);overflow:hidden}
+#c{position:absolute;inset:0;overflow:hidden}
+.photo{position:absolute;inset:0;background:url(photo.png) center/cover}
+/* solid-colour shading only (no blur): edges and the lower third go to Night so the type sits on a flat field */
+.shade{position:absolute;inset:0;background:
+  linear-gradient(180deg,rgba(10,15,22,.55) 0%,rgba(10,15,22,0) 14%,rgba(10,15,22,0) 50%,rgba(10,15,22,.88) 60%,#0A0F16 64%),
+  linear-gradient(90deg,rgba(10,15,22,.45) 0%,rgba(10,15,22,0) 22%,rgba(10,15,22,0) 78%,rgba(10,15,22,.45) 100%)}
+.grid{position:absolute;left:0;right:0;top:1230px;bottom:0;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:54px 54px;opacity:.35}
+/* viewfinder brackets around the face (outside the column above his head) */
+.br{position:absolute;width:64px;height:64px;border:0 solid var(--blue)}
+.tl{left:262px;top:318px;border-left-width:5px;border-top-width:5px}
+.tr{left:774px;top:318px;border-right-width:5px;border-top-width:5px}
+.bl{left:262px;top:930px;border-left-width:5px;border-bottom-width:5px}
+.brr{left:774px;top:930px;border-right-width:5px;border-bottom-width:5px}
+.tick{position:absolute;font:600 19px/1 Inter;letter-spacing:.14em;color:var(--white);opacity:.85}
+.slash{position:absolute;height:6px;background:var(--blue);transform:skewX(-24deg)}
+.eyebrow{position:absolute;left:0;right:0;top:1180px;text-align:center;font:800 27px/1 Inter;letter-spacing:.26em;color:var(--cyan)}
+.eyebrow b{color:var(--blue);font-weight:800}
+.h1{position:absolute;left:40px;right:40px;top:1222px;text-align:center;direction:rtl;font:700 134px/1.16 Plex;color:#fff;letter-spacing:0}
+.h1 .k{color:var(--blue)}
+.row{position:absolute;left:0;right:0;top:1548px;display:flex;justify-content:center;align-items:center;gap:18px}
+.chip{font:700 50px/1 Barlow;color:var(--white);border:2px solid var(--line);background:var(--surface);padding:10px 20px 8px;border-radius:12px;letter-spacing:.02em}
+.chip.b{color:var(--night);background:var(--blue);border-color:var(--blue)}
+.ar{font:600 44px/1 Plex;color:var(--white);direction:rtl}
+.vs{font:600 22px/1 Inter;color:var(--muted);letter-spacing:.2em}
+.logo{position:absolute;left:66px;top:262px;width:180px;mix-blend-mode:lighten}
+</style></head>
+<body><div id="c">
+  <div class="photo"></div><div class="shade"></div><div class="grid"></div>
+  <div class="br tl"></div><div class="br tr"></div><div class="br bl"></div><div class="br brr"></div>
+  <img class="logo" src="/osm/brand/logo/osm-wordmark-780x264.jpg">
+  <div class="slash" style="left:120px;top:1150px;width:250px;opacity:.9"></div>
+  <div class="slash" style="left:710px;top:1150px;width:250px;opacity:.9"></div>
+  <div class="eyebrow">CREATINE <b>×</b> HAIR LOSS</div>
+  <div class="h1">الكرياتين<br>بيوقع <span class="k">الشعر؟</span></div>
+  <div class="row"><span class="chip b">2025</span><span class="chip">2009</span><span class="ar">دراستين بيجاوبوا</span></div>
+</div>
+<script>
+window.meta={dur:1};
+window.ready=Promise.all([document.fonts.ready,...[...document.images].map(i=>i.decode().catch(()=>{}))]);
+window.seek=()=>{};
+</script></body></html>
