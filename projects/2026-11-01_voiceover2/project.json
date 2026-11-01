@@ -1,0 +1,19 @@
+{
+  "name": "2026-11-01_voiceover2",
+  "source": {
+    "drive_file_id": "11gHnb_tQQmeQv-CDlV1lcEQSMp-aorOi",
+    "filename": "copy_6B788EBC-A291-4B78-811A-B5E20E0DCA59.mov",
+    "sha256": "392e8db901e534e0b8a60d966cb020b130cca45d3abd6688eaf15168070527e7"
+  },
+  "delivery": {
+    "platform": "instagram_reel",
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "lufs": -14,
+    "true_peak": -1.0
+  },
+  "language": "ar-EG",
+  "captions": true,
+  "status": "delivered"
+}

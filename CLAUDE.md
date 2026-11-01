@@ -248,3 +248,6 @@ projects/<name>/  one folder per video: project.json, edit.json, analysis/, docu
   Root cause of the dull/yellow look measured: HLG/BT.2020 iPhone footage was read as BT.709. New default `plates.grade: "auto"`
   (`docs/COLOR_GRADING.md`): 10 real shots pass all checks; end-to-end render: colourfulness 40 -> 76, neutral b* 4.6 -> 2.0, skin hue
   76 -> 51 deg, caption bar unchanged. Delivered videos and shared presets untouched.
+- 2026-11-01 (grade.py g9): FFmpeg `curves` with its default natural spline overshot and wrapped on a steep black-point curve
+  (Coverr bench-press clip: false-colour face). The grade curve now uses `interp=pchip` (monotonic); VERSION g9 re-grades caches.
+  Lesson: look at every graded clip in the preview, a PASS on the numbers does not catch a broken frame.

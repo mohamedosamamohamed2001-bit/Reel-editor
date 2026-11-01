@@ -96,3 +96,8 @@ Adopted from Coach Osama's directive of 2026-10-31. Every new reel is graded bef
 - **Skin metrics need a detected face** (YuNet). Shots without a face rely on the neutral, clipping and chroma checks.
 - **The grade is per clip range,** not per frame. A clip whose light changes a lot inside it should be split into separate clips in the edit.
 - **Render cost:** about 20–40 s of analysis per clip, cached in `work/grades.json`. The plates take longer than with the old plain grade because of the 16-bit processing.
+
+## Fix log
+- 2026-11-01, g9: the tone curve is applied with `curves=...:interp=pchip`. The default natural cubic spline can overshoot between a
+  black point near 0 and the next knot, and the overshoot wrapped into false colours (found on a stock bench-press clip in
+  `projects/2026-11-01_voiceover2`; the numeric checks still said PASS). pchip is monotonic, so it cannot overshoot.

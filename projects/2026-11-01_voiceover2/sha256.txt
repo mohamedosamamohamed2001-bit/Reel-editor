@@ -1,0 +1,3 @@
+392e8db901e534e0b8a60d966cb020b130cca45d3abd6688eaf15168070527e7  projects/2026-11-02_voiceover2/source/main.mov
+dbc27274c674ae4612f6fde4889b35aa2518608894ce685db9e80b9cce0c15da  projects/2026-11-01_voiceover2/source/IMG_2253.mov
+6ffa008bc9efa50d4e5145e56a450f83c24a3215e2c7be6205849d8d42d3862f  projects/2026-11-01_voiceover2/source/IMG_2258.MOV

@@ -25,7 +25,7 @@ import numpy as np
 sys.path.insert(0, str(Path(__file__).parent))
 from scopes import metrics  # noqa: E402
 
-VERSION = "g8"
+VERSION = "g9"   # g9: curves interp=pchip (natural spline overshot/wrapped on steep black points, 2026-11-01)
 TONEMAP = ("zscale=tin={tin}:min=bt2020nc:pin=bt2020:rin=tv:t=linear:npl=203,format=gbrpf32le,zscale=p=bt709,"
            "tonemap=mobius:param=0.3:desat=0,zscale=t=bt709,format=gbrp16le")
 TARGET = {"neutral_ab": 2.0, "colour_gain": 1.25, "chroma_max": 30.0, "skin_chroma": (14.0, 31.0), "skin_hue": (30.0, 65.0), "p99": 242.0, "black": 7.0}
@@ -98,7 +98,7 @@ def build(tech, curve, vib, sat, skin=(0.0, 0.0), sep=True, blue=0.08, cool=0.0)
     pts += [(b, lo), (X(0.25), Y(0.25 - s)), (X(0.5), Y(0.5)), (X(0.75), Y(0.75 + s * 0.6)), (X(0.92), Y(0.92)), (w, hi)]
     if w < 0.995:
         pts.append((1, 1))
-    c.append("curves=master='" + " ".join(f"{x:.4f}/{y:.4f}" for x, y in pts) + "'")
+    c.append("curves=master='" + " ".join(f"{x:.4f}/{y:.4f}" for x, y in pts) + "':interp=pchip")
     if vib > 0:
         c.append(f"vibrance=intensity={vib:.3f}")
     if abs(sat - 1) > 1e-3:                 # global saturation in RGB (eq would drop the chain to 8-bit YUV)

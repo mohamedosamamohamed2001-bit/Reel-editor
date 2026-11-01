@@ -1,0 +1,233 @@
+<!doctype html>
+<!-- "There is no perfect sitting posture": science / data scenes for projects/2026-11-01_voiceover2. 1080x1920, every pixel from t.
+     ?scene=posture|research|hours|next|timer|strength|cta   (window.meta.dur per scene)
+     Facts only from PubMed-verified papers:
+       Swain et al. 2019, J Biomech 102:109312, umbrella review of 41 systematic reviews, no consensus on causality (doi 10.1016/j.jbiomech.2019.08.006)
+       Slater et al. 2019, JOSPT 49(8):562-564, "Sit up straight": time to re-evaluate (doi 10.2519/jospt.2019.0610)
+       Shiri et al. 2018, Am J Epidemiol 187(5):1093-1101, exercise alone -33% LBP risk (RR 0.67; 8 RCTs, n=1,634); strengthening 2-3x/week (doi 10.1093/aje/kwx337)
+     Text stays above y=1330 (captions below). Inter / Barlow / IBM Plex Sans Arabic; Night, white, Core Blue (+ error red for status only). -->
+<html><head><meta charset="utf-8">
+<style>
+@font-face { font-family: Inter; src: url('/osm/fonts/Inter[opsz,wght].ttf'); font-weight: 100 900; }
+@font-face { font-family: InterI; src: url('/osm/fonts/Inter-Italic[opsz,wght].ttf'); font-weight: 100 900; font-style: italic; }
+@font-face { font-family: Plex; src: url('/osm/fonts/IBMPlexSansArabic-Bold.ttf'); font-weight: 700; }
+@font-face { font-family: Barlow; src: url('/osm/fonts/BarlowCondensed-Bold.ttf'); font-weight: 700; }
+html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #0A0F16; }
+svg { position: absolute; left: 0; top: 0; overflow: visible; }
+.ar { font-family: Plex; font-weight: 700; direction: rtl; }
+.en { font-family: Inter; }
+.ti { font-family: InterI; font-style: italic; font-weight: 900; text-transform: uppercase; letter-spacing: -0.02em; }
+.num { font-family: Barlow; font-weight: 700; }
+#root { position: absolute; inset: 0; }
+.abs { position: absolute; }
+</style></head>
+<body><div id="root"></div>
+<script type="module">
+import { seg, spring, lerp, clamp01 } from "/osm/motion-core.js";
+const BLUE = "#56A0FB", WHITE = "#FFFFFF", TXT = "#E5EBF1", MUTED = "#8C98AA", LINE = "#263244", SURF = "#141B26", RAISED = "#1C2634", RED = "#F26D6D", CYAN = "#7DD2EC";
+const scene = new URLSearchParams(location.search).get("scene") || "posture";
+const DUR = { posture: 2.55, research: 4.5, hours: 2.97, next: 2.6, timer: 2.65, strength: 2.78, cta: 1.23 }[scene];
+window.meta = { dur: DUR, size: [1080, 1920], scene };
+const root = document.getElementById("root");
+const el = (html) => { const d = document.createElement("div"); d.innerHTML = html.trim(); return d.firstElementChild; };
+const add = (node) => (root.appendChild(node), node);
+const S = (n, st) => { for (const k in st) n.style[k] = st[k]; };
+const sp = (t, t0, f = 2.6) => spring(t - t0, { freq: f });
+const inUp = (n, t, t0, dy = 60, f = 2.6) => { const p = sp(t, t0, f); S(n, { opacity: clamp01((t - t0) * 6), transform: `translateY(${(1 - p) * dy}px)` }); return p; };
+const pop = (n, t, t0, f = 3) => { const p = sp(t, t0, f); S(n, { opacity: clamp01((t - t0) * 8), transform: `scale(${0.6 + 0.4 * p})` }); return p; };
+const SVG = (w, h, inner) => `<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" xmlns="http://www.w3.org/2000/svg">${inner}</svg>`;
+
+const grid = add(el(`<div class="abs" style="inset:0">${SVG(1080, 1920, Array.from({ length: 13 }, (_, i) =>
+  `<line x1="${i * 90}" y1="0" x2="${i * 90}" y2="1920" stroke="${LINE}" stroke-width="1" opacity=".35"/>`).join("") +
+  Array.from({ length: 22 }, (_, i) => `<line x1="0" y1="${i * 90}" x2="1080" y2="${i * 90}" stroke="${LINE}" stroke-width="1" opacity=".35"/>`).join(""))}</div>`));
+const eyebrow = (txt) => add(el(`<div class="abs en" style="left:80px;top:170px;font-weight:700;font-size:30px;letter-spacing:.22em;color:${CYAN}">${txt}</div>`));
+const card = (top, h) => add(el(`<div class="abs" style="left:70px;top:${top}px;width:940px;height:${h}px;background:${SURF};border:1px solid ${LINE};border-radius:28px"></div>`));
+
+// ---- seated figure (side view, facing right): x-ray style body, Core Blue spine with vertebrae ----
+const POSE = { upright: { lean: 0, curve: 0, head: 0 }, slouch: { lean: 0.30, curve: 0.55, head: 0.45 }, recline: { lean: -0.38, curve: 0.25, head: 0.25 },
+  forward: { lean: 0.5, curve: 0.2, head: 0.2 }, twist: { lean: 0.1, curve: -0.15, head: -0.1 } };
+const mixPose = (a, b, k) => ({ lean: lerp(a.lean, b.lean, k), curve: lerp(a.curve, b.curve, k), head: lerp(a.head, b.head, k) });
+function figureSVG(p, ox, oy, sc = 1, spineCol = BLUE, alpha = 1) {
+  const H = [ox, oy], L = 300 * sc;
+  const Sx = H[0] + L * Math.sin(p.lean), Sy = H[1] - L * Math.cos(p.lean);
+  const mx = (H[0] + Sx) / 2, my = (H[1] + Sy) / 2, nx = -Math.cos(p.lean), ny = -Math.sin(p.lean);   // normal pointing to the back
+  const Cx = mx + nx * p.curve * 120 * sc, Cy = my + ny * p.curve * 120 * sc;
+  const ha = p.lean + p.head, Nx = Sx + 52 * sc * Math.sin(ha), Ny = Sy - 52 * sc * Math.cos(ha);
+  const HDx = Nx + 58 * sc * Math.sin(ha) + 10 * sc, HDy = Ny - 58 * sc * Math.cos(ha);
+  const K = [H[0] + 240 * sc, H[1] - 6 * sc], F = [K[0] + 10 * sc, K[1] + 230 * sc];
+  const E = [Sx + 95 * sc, Sy + 150 * sc], W = [ox + 330 * sc, oy - 112 * sc];
+  const q = (a, c, b, k) => [(1 - k) ** 2 * a[0] + 2 * (1 - k) * k * c[0] + k * k * b[0], (1 - k) ** 2 * a[1] + 2 * (1 - k) * k * c[1] + k * k * b[1]];
+  const body = (d, w) => `<path d="${d}" stroke="${MUTED}" stroke-opacity=".45" stroke-width="${w + 6}" stroke-linecap="round" stroke-linejoin="round" fill="none"/>` +
+                         `<path d="${d}" stroke="${RAISED}" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round" fill="none"/>`;
+  const spine = `M${H[0]},${H[1]} Q${Cx},${Cy} ${Sx},${Sy}`;
+  const verts = Array.from({ length: 9 }, (_, i) => q(H, [Cx, Cy], [Sx, Sy], 0.06 + i * 0.11)).map(([x, y]) => `<circle cx="${x}" cy="${y}" r="${7 * sc}" fill="${WHITE}"/>`).join("");
+  return `<g opacity="${alpha}">` +
+    // chair + desk
+    `<path d="M${ox - 70 * sc},${oy + 40 * sc} h${250 * sc} M${ox - 60 * sc},${oy + 40 * sc} v-${330 * sc} M${ox + 40 * sc},${oy + 40 * sc} v${230 * sc}" stroke="${MUTED}" stroke-width="${8 * sc}" stroke-linecap="round" opacity=".55"/>` +
+    `<path d="M${ox + 250 * sc},${oy - 100 * sc} h${330 * sc} M${ox + 540 * sc},${oy - 100 * sc} v${370 * sc}" stroke="${MUTED}" stroke-width="${8 * sc}" stroke-linecap="round" opacity=".55"/>` +
+    `<path d="M${ox + 360 * sc},${oy - 104 * sc} l${70 * sc},-${120 * sc}" stroke="${TXT}" stroke-width="${9 * sc}" stroke-linecap="round" opacity=".7"/>` +
+    body(`M${H[0]},${H[1]} L${K[0]},${K[1]} L${F[0]},${F[1]}`, 46 * sc) +
+    body(spine, 92 * sc) +
+    body(`M${Nx},${Ny} L${Sx},${Sy}`, 40 * sc) +
+    `<circle cx="${HDx}" cy="${HDy}" r="${52 * sc}" fill="${RAISED}" stroke="${MUTED}" stroke-opacity=".45" stroke-width="6"/>` +
+    body(`M${Sx + 8 * sc},${Sy + 20 * sc} L${E[0]},${E[1]} L${W[0]},${W[1]}`, 32 * sc) +
+    `<path d="${spine}" stroke="${spineCol}" stroke-width="${14 * sc}" stroke-linecap="round" fill="none"/>` + verts +
+    `</g>`;
+}
+const figLayer = () => add(el(`<div class="abs" style="left:0;top:0;width:1080px;height:1920px">${SVG(1080, 1920, "<g id='g'></g>")}</div>`));
+
+let seek;
+
+if (scene === "posture") {          // "there's no such thing as a perfect posture for the back"
+  const eb = eyebrow("PERFECT POSTURE?");
+  const t1 = add(el(`<div class="abs ar" style="right:80px;top:240px;font-size:118px;color:${WHITE};line-height:1.2">القعدة المثالية</div>`));
+  const strike = add(el(`<div class="abs" style="right:70px;top:330px;height:14px;width:0;background:${BLUE};border-radius:7px"></div>`));
+  const t2 = add(el(`<div class="abs ti" style="right:80px;top:430px;font-size:84px;color:${BLUE}">DOESN'T EXIST</div>`));
+  const fl = figLayer(), g = fl.querySelector("#g");
+  const labs = ["UPRIGHT", "SLOUCHED", "RECLINED"].map((s, i) => add(el(`<div class="abs en" style="left:80px;top:${1240}px;font-weight:800;font-size:34px;letter-spacing:.18em;color:${TXT}">${s} <span style="color:${BLUE}">✓</span></div>`)));
+  const seq = [POSE.upright, POSE.slouch, POSE.recline];
+  seek = (t) => {
+    inUp(eb, t, 0); inUp(t1, t, 0.0, 80);
+    S(strike, { width: `${seg(t, 0.75, 1.15, (x) => 1 - (1 - x) ** 3) * 760}px` });
+    inUp(t2, t, 1.05, 50, 3);
+    const k = clamp01((t - 0.15) / 0.75), i = Math.min(1, Math.floor(k * 2)), f = k * 2 - i;
+    const ph = clamp01((t - 0.2) / 2.0) * 2, a = Math.min(1, Math.floor(ph)), b = ph - a, e = (x) => x * x * (3 - 2 * x);
+    const pose = mixPose(seq[a], seq[Math.min(2, a + 1)], e(clamp01(b * 1.6)));
+    g.innerHTML = figureSVG(pose, 300, 1010, 0.95);
+    S(fl, { opacity: clamp01(t * 5) });
+    const cur = ph < 0.6 ? 0 : ph < 1.6 ? 1 : 2;
+    labs.forEach((l, j) => S(l, { opacity: j === cur ? clamp01((t - 0.1) * 6) : 0 }));
+  };
+}
+
+if (scene === "research") {         // "research hasn't found strong evidence that sitting straight prevents or treats back pain"
+  const eb = eyebrow("THE RESEARCH");
+  const c = card(250, 430);
+  const au = add(el(`<div class="abs en" style="left:120px;top:290px;font-size:46px;font-weight:800;color:${WHITE}">Swain et al. <span style="color:${BLUE}">2019</span></div>`));
+  const jn = add(el(`<div class="abs en" style="left:120px;top:356px;font-size:30px;font-weight:500;color:${MUTED}">Journal of Biomechanics · umbrella review</div>`));
+  const n = add(el(`<div class="abs num" style="left:120px;top:410px;font-size:190px;color:${BLUE};line-height:1">41</div>`));
+  const nl = add(el(`<div class="abs en" style="left:300px;top:500px;font-size:40px;font-weight:700;color:${WHITE};line-height:1.15">systematic<br>reviews</div>`));
+  const row = add(el(`<div class="abs" style="left:70px;top:760px;width:940px;height:150px">
+     <div class="abs en" style="left:0;top:40px;width:330px;text-align:center;font-size:44px;font-weight:800;color:${WHITE}">POSTURE</div>
+     <div class="abs en" style="left:610px;top:40px;width:330px;text-align:center;font-size:44px;font-weight:800;color:${WHITE}">BACK PAIN</div></div>`));
+  const arr = add(el(`<div class="abs" style="left:0;top:0">${SVG(1080, 1920, `<path id="ar" d="M410,825 H650 M620,800 L655,825 L620,850" stroke="${MUTED}" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+     <g id="x" stroke="${RED}" stroke-width="14" stroke-linecap="round"><path d="M500,785 L570,865"/><path d="M570,785 L500,865"/></g>`)}</div>`));
+  const chip = add(el(`<div class="abs ti" style="left:50%;top:960px;transform:translateX(-50%);font-size:76px;color:#0A0F16;background:${BLUE};padding:14px 34px 10px;border-radius:18px;white-space:nowrap">NO CONSENSUS</div>`));
+  const ar1 = add(el(`<div class="abs ar" style="right:80px;top:1100px;font-size:58px;color:${WHITE}">مفيش دليل قوي إن القعدة هي السبب</div>`));
+  const ref = add(el(`<div class="abs en" style="left:80px;top:1215px;font-size:26px;font-weight:500;color:${MUTED};width:920px;line-height:1.4">+ Slater et al., JOSPT 2019: <i>“Sit up straight”: time to re-evaluate</i></div>`));
+  const xg = arr.querySelector("#x");
+  seek = (t) => {
+    inUp(eb, t, 0); const pc = sp(t, 0.05, 2.4); S(c, { opacity: clamp01(t * 6), transform: `translateY(${(1 - pc) * 80}px)` });
+    inUp(au, t, 0.12); inUp(jn, t, 0.25);
+    n.textContent = String(Math.round(41 * seg(t, 0.3, 1.2, (x) => 1 - (1 - x) ** 3))); pop(n, t, 0.3); inUp(nl, t, 0.5);
+    inUp(row, t, 1.25, 40); S(arr, { opacity: clamp01((t - 1.35) * 6) });
+    const xp = sp(t, 2.0, 3.2); xg.setAttribute("opacity", clamp01((t - 2.0) * 8)); xg.setAttribute("transform", `translate(535 825) scale(${0.3 + 0.7 * xp}) translate(-535 -825)`);
+    const cp = sp(t, 2.35, 3); S(chip, { opacity: clamp01((t - 2.35) * 8), transform: `translateX(-50%) scale(${0.7 + 0.3 * cp})` });
+    inUp(ar1, t, 2.7, 40); inUp(ref, t, 3.1, 30);
+  };
+}
+
+if (scene === "hours") {            // "because you stayed in the same position for hours without moving"
+  const eb = eyebrow("SAME POSITION");
+  const t1 = add(el(`<div class="abs ar" style="right:80px;top:240px;font-size:104px;color:${WHITE}">ساعات</div>`));
+  const t2 = add(el(`<div class="abs ar" style="right:80px;top:380px;font-size:60px;color:${BLUE}">من غير ما تتحرك</div>`));
+  const clk = add(el(`<div class="abs" style="left:0;top:0">${SVG(1080, 1920, `<circle cx="250" cy="370" r="125" fill="${SURF}" stroke="${LINE}" stroke-width="6"/>` +
+     Array.from({ length: 12 }, (_, i) => { const a = i * Math.PI / 6; return `<line x1="${250 + 100 * Math.sin(a)}" y1="${370 - 100 * Math.cos(a)}" x2="${250 + 112 * Math.sin(a)}" y2="${370 - 112 * Math.cos(a)}" stroke="${MUTED}" stroke-width="6" stroke-linecap="round"/>`; }).join("") +
+     `<line id="hh" x1="250" y1="370" x2="250" y2="305" stroke="${WHITE}" stroke-width="12" stroke-linecap="round"/><line id="mh" x1="250" y1="370" x2="250" y2="275" stroke="${BLUE}" stroke-width="8" stroke-linecap="round"/><circle cx="250" cy="370" r="12" fill="${BLUE}"/>`)}</div>`));
+  const tm = add(el(`<div class="abs num" style="left:140px;top:510px;font-size:84px;color:${WHITE};width:220px;text-align:center">09:00</div>`));
+  const fl = figLayer(), g = fl.querySelector("#g");
+  const bar = add(el(`<div class="abs" style="left:80px;top:1250px;width:920px">
+      <div class="en" style="font-size:28px;font-weight:800;letter-spacing:.18em;color:${MUTED}">MOVEMENT</div>
+      <div style="margin-top:14px;height:18px;border-radius:9px;background:${RAISED};overflow:hidden"><div id="f" style="height:100%;width:0;background:${RED}"></div></div></div>`));
+  const fill = bar.querySelector("#f"), hh = clk.querySelector("#hh"), mh = clk.querySelector("#mh");
+  seek = (t) => {
+    inUp(eb, t, 0); inUp(t1, t, 0.0, 70); inUp(t2, t, 0.25, 50); pop(clk, t, 0.1); inUp(tm, t, 0.2, 30);
+    const h = 9 + 8 * seg(t, 0.3, 2.7, (x) => x * x * (3 - 2 * x)), hrs = Math.floor(h), mins = Math.floor((h - hrs) * 60);
+    tm.textContent = `${String(hrs).padStart(2, "0")}:${String(mins).padStart(2, "0")}`;
+    mh.setAttribute("transform", `rotate(${(h - 9) * 360} 250 370)`); hh.setAttribute("transform", `rotate(${h * 30} 250 370)`);
+    const stiff = clamp01((t - 1.3) / 1.2), pulse = 0.5 + 0.5 * Math.sin(t * 9);
+    g.innerHTML = figureSVG(mixPose(POSE.upright, POSE.slouch, 0.35 + 0.5 * clamp01((t - 0.3) / 2.4)), 330, 1010, 0.9, stiff > 0 ? (stiff * pulse > 0.4 ? RED : BLUE) : BLUE);
+    S(fl, { opacity: clamp01(t * 5) }); inUp(bar, t, 0.5, 30);
+    S(fill, { width: `${3 + 2 * Math.sin(t * 2)}%` });
+  };
+}
+
+if (scene === "next") {             // "the best posture is the next one"
+  const eb = eyebrow("THE BEST POSTURE");
+  const t1 = add(el(`<div class="abs ar" style="right:80px;top:240px;font-size:112px;color:${WHITE}">أحسن قعدة</div>`));
+  const t2 = add(el(`<div class="abs ar" style="right:80px;top:390px;font-size:104px;color:${BLUE}">هي اللي جاية</div>`));
+  const fl = figLayer(), g = fl.querySelector("#g");
+  const seq = [POSE.slouch, POSE.upright, POSE.recline, POSE.forward, POSE.upright];
+  const cnt = add(el(`<div class="abs en" style="left:80px;top:1250px;font-weight:800;font-size:34px;letter-spacing:.18em;color:${TXT}">NEXT → <span id="n" style="color:${BLUE}">1</span></div>`));
+  const nn = cnt.querySelector("#n");
+  seek = (t) => {
+    inUp(eb, t, 0); inUp(t1, t, 0.0, 70); inUp(t2, t, 0.3, 60, 3);
+    const ph = clamp01((t - 0.15) / 2.3) * (seq.length - 1), a = Math.min(seq.length - 2, Math.floor(ph)), b = ph - a;
+    const e = (x) => x * x * (3 - 2 * x), cur = mixPose(seq[a], seq[a + 1], e(clamp01(b * 1.5)));
+    const prev = mixPose(seq[Math.max(0, a - 1)], seq[a], 1);
+    g.innerHTML = figureSVG(prev, 300, 1010, 0.95, BLUE, 0.18) + figureSVG(cur, 300, 1010, 0.95);
+    S(fl, { opacity: clamp01(t * 5) }); inUp(cnt, t, 0.3, 30); nn.textContent = String(a + 1);
+  };
+}
+
+if (scene === "timer") {            // "every half hour or 45 minutes"
+  const eb = eyebrow("EVERY");
+  const R = 300, C = 2 * Math.PI * R;
+  const ring = add(el(`<div class="abs" style="left:0;top:0">${SVG(1080, 1920, `<circle cx="540" cy="780" r="${R}" fill="none" stroke="${RAISED}" stroke-width="34"/>
+     <circle id="p" cx="540" cy="780" r="${R}" fill="none" stroke="${BLUE}" stroke-width="34" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="${C}" transform="rotate(-90 540 780)"/>` +
+     Array.from({ length: 60 }, (_, i) => { const a = i * Math.PI / 30, r1 = i % 5 ? 350 : 340; return `<line x1="${540 + r1 * Math.sin(a)}" y1="${780 - r1 * Math.cos(a)}" x2="${540 + 362 * Math.sin(a)}" y2="${780 - 362 * Math.cos(a)}" stroke="${LINE}" stroke-width="${i % 5 ? 3 : 6}"/>`; }).join(""))}</div>`));
+  const num = add(el(`<div class="abs num" style="left:0;width:1080px;top:610px;text-align:center;font-size:250px;color:${WHITE};line-height:1">30</div>`));
+  const unit = add(el(`<div class="abs ar" style="left:0;width:1080px;top:880px;text-align:center;font-size:62px;color:${MUTED}">دقيقة</div>`));
+  const badge = add(el(`<div class="abs ar" style="left:50%;top:1170px;transform:translateX(-50%);font-size:70px;color:#0A0F16;background:${BLUE};padding:6px 40px 14px;border-radius:20px;white-space:nowrap">قوم واتحرك</div>`));
+  const prog = ring.querySelector("#p");
+  seek = (t) => {
+    inUp(eb, t, 0); pop(ring, t, 0.0, 2.6);
+    const k = seg(t, 0.15, 1.9, (x) => x * x * (3 - 2 * x));
+    prog.setAttribute("stroke-dashoffset", C * (1 - (0.5 + 0.25 * k)));        // 30 -> 45 of 60 minutes
+    num.textContent = t < 0.9 ? "30" : t < 1.25 ? "30–45" : "45"; pop(num, t, 0.1); inUp(unit, t, 0.25, 30);
+    if (t >= 1.25) S(num, { fontSize: "250px" });
+    const bp = sp(t, 1.85, 3); S(badge, { opacity: clamp01((t - 1.85) * 8), transform: `translateX(-50%) scale(${0.7 + 0.3 * bp})` });
+  };
+}
+
+if (scene === "strength") {         // "...a specialist who strengthens all your muscles" -> the evidence for exercise
+  const eb = eyebrow("THE REAL SOLUTION");
+  const c = card(250, 300);
+  const au = add(el(`<div class="abs en" style="left:120px;top:290px;font-size:46px;font-weight:800;color:${WHITE}">Shiri et al. <span style="color:${BLUE}">2018</span></div>`));
+  const jn = add(el(`<div class="abs en" style="left:120px;top:356px;font-size:30px;font-weight:500;color:${MUTED}">American Journal of Epidemiology</div>`));
+  const ds = add(el(`<div class="abs en" style="left:120px;top:420px;font-size:30px;font-weight:600;color:${WHITE}">Meta-analysis · 8 RCTs · 1,634 people</div>`));
+  const big = add(el(`<div class="abs num" style="left:0;width:1080px;top:600px;text-align:center;font-size:300px;color:${BLUE};line-height:1">−33%</div>`));
+  const lab = add(el(`<div class="abs ar" style="left:0;width:1080px;top:920px;text-align:center;font-size:60px;color:${WHITE}">خطر وجع الضهر مع التمرين</div>`));
+  const wk = add(el(`<div class="abs" style="left:0;width:1080px;top:1080px;text-align:center">
+      <div class="en" style="font-size:28px;font-weight:800;letter-spacing:.18em;color:${MUTED}">STRENGTH · 2–3× / WEEK</div>
+      <div style="display:flex;gap:22px;justify-content:center;margin-top:24px">${Array.from({ length: 7 }, (_, i) => `<div class="d" style="width:86px;height:86px;border-radius:20px;border:3px solid ${LINE};background:${SURF}"></div>`).join("")}</div></div>`));
+  const days = [...wk.querySelectorAll(".d")], on = [0, 2, 4];
+  seek = (t) => {
+    inUp(eb, t, 0); const pc = sp(t, 0.05, 2.4); S(c, { opacity: clamp01(t * 6), transform: `translateY(${(1 - pc) * 80}px)` });
+    inUp(au, t, 0.1); inUp(jn, t, 0.2); inUp(ds, t, 0.3);
+    big.textContent = `−${Math.round(33 * seg(t, 0.45, 1.3, (x) => 1 - (1 - x) ** 3))}%`; pop(big, t, 0.45); inUp(lab, t, 0.8, 40);
+    inUp(wk, t, 1.2, 30);
+    days.forEach((d, i) => { const k = on.indexOf(i), lit = k >= 0 && t > 1.6 + k * 0.22; S(d, { background: lit ? BLUE : SURF, borderColor: lit ? BLUE : LINE, transform: `scale(${lit ? 0.92 + 0.08 * sp(t, 1.6 + k * 0.22, 4) : 1})` }); });
+  };
+}
+
+if (scene === "cta") {              // "send me the word 'office'"
+  const eb = eyebrow("DM");
+  const t1 = add(el(`<div class="abs ar" style="right:80px;top:240px;font-size:110px;color:${WHITE}">ابعتلي كلمة</div>`));
+  const ph = add(el(`<div class="abs" style="left:150px;top:470px;width:780px;height:760px;border-radius:48px;background:${SURF};border:2px solid ${LINE}">
+      <div class="abs" style="left:0;top:0;width:780px;height:120px;border-bottom:2px solid ${LINE}"></div>
+      <div class="abs" style="left:40px;top:30px;width:60px;height:60px;border-radius:30px;background:${BLUE}"></div>
+      <div class="abs en" style="left:122px;top:44px;font-size:32px;font-weight:800;color:${WHITE}">Coach Osama</div>
+      <div class="abs" style="left:40px;top:640px;width:700px;height:76px;border-radius:38px;border:2px solid ${LINE}"></div></div>`));
+  const bub = add(el(`<div class="abs ar" style="right:190px;top:900px;font-size:92px;color:#0A0F16;background:${BLUE};padding:4px 46px 18px;border-radius:44px 44px 12px 44px">مكتب</div>`));
+  seek = (t) => {
+    inUp(eb, t, 0); inUp(t1, t, 0.0, 70); inUp(ph, t, 0.05, 90, 2.6);
+    const bp = sp(t, 0.42, 3.2); S(bub, { opacity: clamp01((t - 0.42) * 8), transform: `translateY(${(1 - bp) * 120}px) scale(${0.7 + 0.3 * bp})`, transformOrigin: "100% 100%" });
+  };
+}
+
+// slow push-in on every scene (keeps the frame alive between beats)
+const scenePush = (t) => { const p = seg(t, 0, DUR, (x) => x); root.style.transformOrigin = "50% 38%"; root.style.transform = `scale(${1 + 0.12 * p}) translateY(${-26 * p}px)`; };
+window.seek = (t) => { seek(t); scenePush(t); };
+window.ready = document.fonts.ready;
+</script></body></html>
