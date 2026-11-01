@@ -19,3 +19,8 @@ qa_render PASS except frozen frames = end card only (40.77 s -> end). Caption ba
 Grade: all PASS except neutral-cast CHECKs on the warm desk clip (b* 7.1 -> 2.5, 5.7 -> 2.6: warm practical lamps) and IMG_2258
 (b* 4.1 -> 2.8, warm gym light), photo "richer" check (cast removed). Studio fix: grade.py g9 (curves interp=pchip).
 Captions to confirm by ear: بتبقى قاعدة مايلة, مع (only one model hears it), عشان.
+
+## Cover
+`deliveries/posture_2026-11-01/OSM_no_perfect_posture_cover_1080x1920.{jpg,png}` from `cover.json` + `tools/make_cover.py`:
+IMG_2258 at 1.50 s (his gym shot from the reel, the reel's own grade), scale 1.32, hook "مفيش قعدة مثالية", chip 41 = Swain 2019
+("مفيش إجماع" = no consensus). Checks: grid crop, head column, blue chip #56A0FB all pass.

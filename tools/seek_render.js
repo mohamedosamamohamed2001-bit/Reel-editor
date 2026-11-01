@@ -5,6 +5,7 @@
 //   node tools/seek_render.js PIECE.html OUTDIR --beats 120 --dur 8         one PNG per beat + contact sheet
 //   node tools/seek_render.js PIECE.html - --determinism --dur 8           same t rendered twice, out of order: hashes must match
 //   --query k=v[&k2=v2]   extra URL parameters for the piece (e.g. scene=dht)
+//   --dump EXPR           with --stills: also write OUTDIR/dump.json = JSON of the page expression after the last still (e.g. window.boxes)
 //
 // The piece is a single HTML file that sets window.ready (a Promise) and window.seek(t): every pixel computed from t,
 // no CSS animations, no timers, no state carried between frames. It is loaded from https://osm.local/piece/<file>
@@ -78,6 +79,7 @@ const sheet = (files, dst, cols) => execFileSync("montage", [...files, "-tile", 
   if (stills) {
     fs.mkdirSync(out, { recursive: true }); const files = [];
     for (const t of stills) { const f = path.join(out, `t${t.toFixed(3)}.png`); fs.writeFileSync(f, await shot(page, t)); files.push(f); }
+    if (opt("dump")) fs.writeFileSync(path.join(out, "dump.json"), JSON.stringify(await page.evaluate(String(opt("dump"))), null, 1));
     sheet(files, path.join(out, "sheet.jpg"), Math.min(8, files.length));
     console.log(`${files.length} stills -> ${out}/sheet.jpg`);
     await browser.close(); return;

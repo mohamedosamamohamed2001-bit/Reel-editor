@@ -13,6 +13,9 @@ The goal is publication-ready edits that follow the OSM brand, built by a reprod
    `docs/motion/`). Applies to every new video automatically, with judgment; skill `.claude/skills/osm-motion-design`.
 6. `docs/COLOR_GRADING.md`: the permanent colour standard (Coach Osama 2026-10-31). Every new reel: `plates.grade: "auto"`
    (measured shot-by-shot grade; iPhone HLG decoded properly), before/after + scopes checked before the full render. Skill `.claude/skills/osm-color-grading`.
+7. `docs/COVER_SYSTEM.md`: **every finished video ships with its Instagram Reel cover** (Coach Osama 2026-11-01), made with
+   `tools/make_cover.py` from the fixed template `motion/cover/cover.html`, delivered together with the video without being asked.
+   Skill `.claude/skills/osm-reel-cover`.
 
 ## Layout
 ```
@@ -84,6 +87,8 @@ projects/<name>/  one folder per video: project.json, edit.json, analysis/, docu
   by dialogue) before mastering. `python3 tools/sfx.py DIR` writes every sound for auditioning.
 - v3 motion options (all opt-in): `captions.karaoke`, `clip.settle`, `screenCard.entrance:"tilt"` + `checks`, `endCard.reveal:"wipe"`
   (= fade + scale settle, never a mask on the logo).
+- `tools/make_cover.py projects/<p>`: the Reel cover (sharpest graded frame of him, face-placed, template render, grid/head/blue checks).
+  `seek_render.js --stills 0 --dump EXPR` writes the page's layout boxes for such checks.
 - `tools/qa_render.py VIDEO [--expect WxH --fps N --lufs -14 --tp -1]` reports specs, black and frozen frames, loudness,
   true peak, clipping and silences, and makes a contact sheet. Writes `<video>_qa/qa.json`. Exit code 1 on a hard failure.
   Tested against a synthetic clip with planted black, frozen and silent sections (all detected).
@@ -170,7 +175,8 @@ projects/<name>/  one folder per video: project.json, edit.json, analysis/, docu
    techniques + one-line concept, or the reason for none. Motion pieces: stills first, render, `motion_qc.py`, then into the edit as clips.
    Colour: `plates.grade: "auto"`; `tools/grade.py --compare/--sample` on representative clips, look at stills + scopes before the full render.
 5. Write `edit.json` (cuts + overlays), render with `--preview`, inspect the contact sheet and stills, fix, then do the final render (QA runs automatically).
-6. Deliver the final file plus a QA summary. Update this file only if the studio itself changed.
+6. **Cover (mandatory):** `cover.json` + `tools/make_cover.py` (`docs/COVER_SYSTEM.md`), `"fails": []`, check sheet looked at.
+7. Deliver the final video AND its cover (JPG + PNG) plus a QA summary. Update this file only if the studio itself changed.
 - 2026-10-13 (video 2, `projects/2026-10-13_video2`): Drive files shared "anyone with link" download directly with
   `curl -L "https://drive.usercontent.google.com/download?id=ID&export=download&confirm=t"` (the MCP download returns base64,
   unusable for large video). New edit options: `captions.replaceSeq` (merge multi-word phrases, e.g. a spoken URL),
@@ -251,3 +257,5 @@ projects/<name>/  one folder per video: project.json, edit.json, analysis/, docu
 - 2026-11-01 (grade.py g9): FFmpeg `curves` with its default natural spline overshot and wrapped on a steep black-point curve
   (Coverr bench-press clip: false-colour face). The grade curve now uses `interp=pchip` (monotonic); VERSION g9 re-grades caches.
   Lesson: look at every graded clip in the preview, a PASS on the numbers does not catch a broken frame.
+- 2026-11-01 (Coach Osama): **Reel cover = permanent, automatic final step of every video** (`docs/COVER_SYSTEM.md`, `tools/make_cover.py`,
+  template `motion/cover/cover.html` from the approved creatine cover). Deliver video + cover together.

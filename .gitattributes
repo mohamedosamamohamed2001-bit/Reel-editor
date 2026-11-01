@@ -7,3 +7,5 @@ deliveries/creatine_2026-11-01/*.mp4 filter=lfs diff=lfs merge=lfs -text
 deliveries/creatine_2026-11-01/*.png filter=lfs diff=lfs merge=lfs -text
 deliveries/creatine_2026-11-01/*.jpg filter=lfs diff=lfs merge=lfs -text
 deliveries/posture_2026-11-01/*.mp4 filter=lfs diff=lfs merge=lfs -text
+deliveries/posture_2026-11-01/*.png filter=lfs diff=lfs merge=lfs -text
+deliveries/posture_2026-11-01/*.jpg filter=lfs diff=lfs merge=lfs -text

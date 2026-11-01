@@ -1,0 +1,72 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<!-- OSM Instagram Reel cover template (docs/COVER_SYSTEM.md). Do not edit per video: tools/make_cover.py copies this file next to
+     photo.png + cfg.json (projects/<p>/work/cover/) and renders it with seek_render --stills 0 --dump window.boxes.
+     Design system (fixed): photo top ~60 %, solid Night fade (no blur), Core Blue viewfinder brackets around the face,
+     OSM wordmark top-left, two angled blue slashes, cyan eyebrow (Inter 800 caps), Arabic headline (IBM Plex Sans Arabic 700,
+     one Core Blue accent word), chip row (Barlow numbers; the blue chip carries Night text, never white), hairline grid under the type.
+     Everything that matters sits inside the profile-grid crop (y 240-1680). No text in the column above his head. -->
+<style>
+@font-face{font-family:Inter;src:url(/osm/fonts/Inter[opsz,wght].ttf);font-weight:100 900}
+@font-face{font-family:Plex;src:url(/osm/fonts/IBMPlexSansArabic-Bold.ttf);font-weight:700}
+@font-face{font-family:Plex;src:url(/osm/fonts/IBMPlexSansArabic-SemiBold.ttf);font-weight:600}
+@font-face{font-family:Barlow;src:url(/osm/fonts/BarlowCondensed-Bold.ttf);font-weight:700}
+:root{--night:#0A0F16;--surface:#141B26;--line:#263244;--blue:#56A0FB;--cyan:#7DD2EC;--white:#E5EBF1;--muted:#8C98AA}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;background:var(--night);overflow:hidden}
+#c{position:absolute;inset:0;overflow:hidden}
+.photo{position:absolute;inset:0;background:url(photo.png) 0 0/1080px 1920px no-repeat}
+.shade{position:absolute;inset:0}
+.grid{position:absolute;left:0;right:0;bottom:0;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:54px 54px;opacity:.35}
+.br{position:absolute;width:64px;height:64px;border:0 solid var(--blue)}
+.slash{position:absolute;height:6px;background:var(--blue);transform:skewX(-24deg);opacity:.9}
+.eyebrow{position:absolute;left:0;right:0;text-align:center;font:800 27px/1 Inter;letter-spacing:.26em;color:var(--cyan);white-space:nowrap}
+.eyebrow b{color:var(--blue);font-weight:800}
+.h1{position:absolute;left:40px;right:40px;text-align:center;direction:rtl;font:700 134px/1.16 Plex;color:#fff}
+.h1 .k{color:var(--blue)}
+.row{position:absolute;left:0;right:0;display:flex;justify-content:center;align-items:center;gap:18px;direction:ltr}
+.chip{font:700 50px/1 Barlow;color:var(--white);border:2px solid var(--line);background:var(--surface);padding:10px 20px 8px;border-radius:12px;letter-spacing:.02em}
+.chip.b{color:var(--night);background:var(--blue);border-color:var(--blue)}
+.ar{font:600 44px/1 Plex;color:var(--white);direction:rtl}
+.logo{position:absolute;width:180px;mix-blend-mode:lighten}
+</style></head>
+<body><div id="c"></div>
+<script>
+const esc = (s) => String(s).replace(/[&<>]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]));
+window.meta = { dur: 1 };
+window.seek = () => {};
+window.ready = (async () => {
+  const cfg = await (await fetch("cfg.json")).json();
+  const L = cfg.layout, c = document.getElementById("c"), f = cfg.face;           // f = face box on the canvas {x,y,w,h}
+  const fadeA = L.fadeStart / 1920 * 100, fadeB = L.fadeEnd / 1920 * 100;
+  const pad = 0.42 * f.w, bx0 = Math.round(f.x - pad), bx1 = Math.round(f.x + f.w + pad - 64);
+  const by0 = Math.round(f.y - 0.55 * f.h), by1 = Math.round(f.y + f.h + 0.35 * f.h - 64);
+  const brs = [["tl", bx0, by0, "left", "top"], ["tr", bx1, by0, "right", "top"], ["bl", bx0, by1, "left", "bottom"], ["brr", bx1, by1, "right", "bottom"]]
+    .map(([k, x, y, a, b]) => `<div class="br" style="left:${x}px;top:${y}px;border-${a}-width:5px;border-${b}-width:5px"></div>`).join("");
+  const chips = (cfg.chips || []).map((ch) => `<span class="chip${ch.blue ? " b" : ""}">${esc(ch.text)}</span>`).join("");
+  const subHtml = cfg.sub ? `<span class="ar">${esc(cfg.sub)}</span>` : "";   // row is LTR: chips on the right read first in Arabic
+  const eb = esc(cfg.eyebrow).replace(/×/g, "<b>×</b>");
+  const hl = cfg.headline.map((line) => esc(line).replace(esc(cfg.accent || "\u0000"), `<span class="k">${esc(cfg.accent)}</span>`)).join("<br>");
+  c.innerHTML = `<div class="photo"></div>
+    <div class="shade" style="background:linear-gradient(180deg,rgba(10,15,22,.55) 0%,rgba(10,15,22,0) 14%,rgba(10,15,22,0) ${fadeA}%,rgba(10,15,22,.88) ${fadeB - 4}%,#0A0F16 ${fadeB}%),
+       linear-gradient(90deg,rgba(10,15,22,.45) 0%,rgba(10,15,22,0) 22%,rgba(10,15,22,0) 78%,rgba(10,15,22,.45) 100%)"></div>
+    <div class="grid" style="top:${L.fadeEnd}px"></div>${brs}
+    <img class="logo" data-box="logo" style="${L.logo === "bottom" ? "left:450px;width:180px" : `left:${L.logo[0]}px;top:${L.logo[1]}px`}" src="/osm/brand/logo/osm-wordmark-780x264.jpg">
+    <div class="slash" style="left:120px;top:${L.eyebrowY - 30}px;width:250px"></div><div class="slash" style="left:710px;top:${L.eyebrowY - 30}px;width:250px"></div>
+    <div class="eyebrow" data-box="eyebrow" style="top:${L.eyebrowY}px"><span>${eb}</span></div>
+    <div class="h1" data-box="headline" style="top:${L.eyebrowY + 42}px;font-size:${L.headSize || 134}px"><span>${hl}</span></div>
+    <div class="row" data-box="row">${cfg.chipSide === "left" ? chips + subHtml : subHtml + chips}</div>`;
+  await document.fonts.ready;
+  await Promise.all([...document.images].map((i) => i.decode().catch(() => {})));
+  const h1 = c.querySelector(".h1 span").getBoundingClientRect();
+  c.querySelector(".row").style.top = `${Math.round(h1.bottom + 26)}px`;           // chip row follows the real headline height
+  if (L.logo === "bottom") { const rb = c.querySelector(".row").getBoundingClientRect(); c.querySelector(".logo").style.top = `${Math.round(rb.bottom + 30)}px`; }
+  const box = (n) => { const r = n.getBoundingClientRect(); return [Math.round(r.left), Math.round(r.top), Math.round(r.right), Math.round(r.bottom)]; };
+  window.boxes = {
+    logo: box(c.querySelector(".logo")), eyebrow: box(c.querySelector(".eyebrow span")), headline: box(c.querySelector(".h1 span")),
+    row: (() => { const k = [...c.querySelectorAll(".row > *")].map(box); return k.length ? [Math.min(...k.map((b) => b[0])), Math.min(...k.map((b) => b[1])), Math.max(...k.map((b) => b[2])), Math.max(...k.map((b) => b[3]))] : null; })(),
+    blueChip: (() => { const b = c.querySelector(".chip.b"); return b ? box(b) : null; })(),
+  };
+})();
+</script></body></html>
