@@ -1,0 +1,9 @@
+{
+ "frame": {"media": "b_8385", "from": 0.0, "to": 3.15},
+ "faceH": 300, "faceTop": 420,
+ "eyebrow": "SCALE × FAT LOSS",
+ "headline": ["زيادة كيلو", "في يوم؟"],
+ "accent": "كيلو",
+ "chips": [{"text": "~7000", "blue": true}],
+ "sub": "سعر عشان كيلو دهون واحد"
+}

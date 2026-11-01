@@ -1,0 +1,19 @@
+{
+  "name": "2026-11-01_voiceover3",
+  "source": {
+    "drive_file_id": "1tokgFysht9vypl_ERPIW4R6N6VAc4x2K",
+    "filename": "Main video .mov",
+    "sha256": "965ded378d7be775e83d58fac15429863bb91ae193f97ee05f98b45df5c0fddf"
+  },
+  "delivery": {
+    "platform": "instagram_reel",
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "lufs": -14,
+    "true_peak": -1.0
+  },
+  "language": "ar-EG",
+  "captions": true,
+  "status": "delivered"
+}

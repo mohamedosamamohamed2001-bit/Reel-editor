@@ -1,0 +1,241 @@
+<!doctype html>
+<!-- "+1 kg on the scale in one day is not fat": science / data scenes for projects/2026-11-01_voiceover3. 1080x1920, every pixel from t.
+     ?scene=scale|kcal|days|water|routine|average|waist|trend|plateau|cta   (window.meta.dur per scene)
+     Facts only from PubMed-verified papers:
+       Hall 2008, Int J Obes 32:573-576: the 3,500 kcal/lb rule = 32.2 MJ/kg (~7,700 kcal/kg) is a rule of thumb (doi 10.1038/sj.ijo.0803720)
+       Orsama et al. 2014, Obes Facts 7:36-47: 80 adults, 4,657 daily weigh-ins, weight higher after weekends, lower during the week (doi 10.1159/000356147)
+     His numbers ("~7000 kcal", "3-4 times a week", "every 2 weeks", "2-3 weeks") are his coaching words and are shown as such.
+     Text stays above y=1330 (captions below). Inter / Barlow / IBM Plex Sans Arabic; Night, white, Core Blue (+ error red for status only). -->
+<html><head><meta charset="utf-8">
+<style>
+@font-face { font-family: Inter; src: url('/osm/fonts/Inter[opsz,wght].ttf'); font-weight: 100 900; }
+@font-face { font-family: InterI; src: url('/osm/fonts/Inter-Italic[opsz,wght].ttf'); font-weight: 100 900; font-style: italic; }
+@font-face { font-family: Plex; src: url('/osm/fonts/IBMPlexSansArabic-Bold.ttf'); font-weight: 700; }
+@font-face { font-family: Barlow; src: url('/osm/fonts/BarlowCondensed-Bold.ttf'); font-weight: 700; }
+html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #0A0F16; }
+svg { position: absolute; left: 0; top: 0; overflow: visible; }
+.ar { font-family: Plex; font-weight: 700; direction: rtl; }
+.en { font-family: Inter; }
+.ti { font-family: InterI; font-style: italic; font-weight: 900; text-transform: uppercase; letter-spacing: -0.02em; }
+.num { font-family: Barlow; font-weight: 700; }
+#root { position: absolute; inset: 0; }
+.abs { position: absolute; }
+</style></head>
+<body><div id="root"></div>
+<script type="module">
+import { seg, spring, lerp, clamp01, rand } from "/osm/motion-core.js";
+const BLUE = "#56A0FB", WHITE = "#FFFFFF", TXT = "#E5EBF1", MUTED = "#8C98AA", LINE = "#263244", SURF = "#141B26", RAISED = "#1C2634", RED = "#F26D6D", CYAN = "#7DD2EC", NIGHT = "#0A0F16";
+const scene = new URLSearchParams(location.search).get("scene") || "scale";
+const DUR = { scale: 3.4, kcal: 5.0, days: 2.45, water: 2.75, routine: 4.4, average: 3.8, waist: 2.5, trend: 3.9, plateau: 4.1, cta: 1.25 }[scene];
+window.meta = { dur: DUR, size: [1080, 1920], scene };
+const root = document.getElementById("root");
+const el = (html) => { const d = document.createElement("div"); d.innerHTML = html.trim(); return d.firstElementChild; };
+const add = (node) => (root.appendChild(node), node);
+const S = (n, st) => { for (const k in st) n.style[k] = st[k]; };
+const sp = (t, t0, f = 2.6) => spring(t - t0, { freq: f });
+const inUp = (n, t, t0, dy = 60, f = 2.6) => { const p = sp(t, t0, f); S(n, { opacity: clamp01((t - t0) * 6), transform: `translateY(${(1 - p) * dy}px)` }); return p; };
+const pop = (n, t, t0, f = 3, base = "") => { const p = sp(t, t0, f); S(n, { opacity: clamp01((t - t0) * 8), transform: `${base} scale(${0.6 + 0.4 * p})` }); return p; };
+const SVG = (w, h, inner) => `<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" xmlns="http://www.w3.org/2000/svg">${inner}</svg>`;
+const ease = (x) => x * x * (3 - 2 * x), eOut = (x) => 1 - (1 - x) ** 3;
+
+add(el(`<div class="abs" style="inset:0">${SVG(1080, 1920, Array.from({ length: 13 }, (_, i) =>
+  `<line x1="${i * 90}" y1="0" x2="${i * 90}" y2="1920" stroke="${LINE}" stroke-width="1" opacity=".35"/>`).join("") +
+  Array.from({ length: 22 }, (_, i) => `<line x1="0" y1="${i * 90}" x2="1080" y2="${i * 90}" stroke="${LINE}" stroke-width="1" opacity=".35"/>`).join(""))}</div>`));
+const eyebrow = (txt) => add(el(`<div class="abs en" style="left:80px;top:170px;font-weight:700;font-size:30px;letter-spacing:.22em;color:${CYAN}">${txt}</div>`));
+const card = (top, h) => add(el(`<div class="abs" style="left:70px;top:${top}px;width:940px;height:${h}px;background:${SURF};border:1px solid ${LINE};border-radius:28px"></div>`));
+const title = (txt, top, size = 110, color = WHITE) => add(el(`<div class="abs ar" style="right:80px;top:${top}px;font-size:${size}px;color:${color};line-height:1.2;white-space:nowrap">${txt}</div>`));
+
+// bathroom scale (top view) with a digital display
+function scaleSVG(cx, cy, w) {
+  const h = w * 1.08;
+  return `<rect x="${cx - w / 2}" y="${cy - h / 2}" width="${w}" height="${h}" rx="${w * 0.16}" fill="${RAISED}" stroke="${MUTED}" stroke-opacity=".45" stroke-width="6"/>` +
+    `<rect x="${cx - w * 0.32}" y="${cy - h * 0.36}" width="${w * 0.64}" height="${h * 0.24}" rx="18" fill="${NIGHT}" stroke="${LINE}" stroke-width="4"/>` +
+    `<ellipse cx="${cx - w * 0.2}" cy="${cy + h * 0.2}" rx="${w * 0.12}" ry="${h * 0.19}" fill="${SURF}" stroke="${LINE}" stroke-width="4"/>` +
+    `<ellipse cx="${cx + w * 0.2}" cy="${cy + h * 0.2}" rx="${w * 0.12}" ry="${h * 0.19}" fill="${SURF}" stroke="${LINE}" stroke-width="4"/>`;
+}
+let seek;
+
+if (scene === "scale") {            // "+1 kg on the scale in one day? it can't be fat"
+  const eb = eyebrow("ONE DAY");
+  const sc = add(el(`<div class="abs" style="left:0;top:0">${SVG(1080, 1920, scaleSVG(540, 820, 640))}</div>`));
+  const disp = add(el(`<div class="abs num" style="left:0;width:1080px;top:528px;text-align:center;font-size:150px;color:${WHITE};line-height:1">80.0</div>`));
+  const kg = add(el(`<div class="abs en" style="left:770px;top:600px;font-size:34px;font-weight:800;color:${MUTED}">KG</div>`));
+  const plus = add(el(`<div class="abs num" style="left:0;width:1080px;top:230px;text-align:center;font-size:190px;color:${RED};line-height:1">+1 KG</div>`));
+  const fat = add(el(`<div class="abs" style="left:0;width:1080px;top:1180px;text-align:center"><span class="ar" style="font-size:84px;color:${WHITE}">دهون؟</span>
+      <span class="en" style="display:inline-block;margin-right:26px;font-size:84px;font-weight:900;color:${RED}">✕</span></div>`));
+  seek = (t) => {
+    inUp(eb, t, 0); pop(sc, t, 0.0, 2.6); S(kg, { opacity: clamp01(t * 5) });
+    const k = seg(t, 0.35, 1.1, eOut), jit = t < 1.1 ? (rand(Math.floor(t * 30)) - 0.5) * 0.6 * (1 - k) : 0;
+    disp.textContent = (80 + k + jit).toFixed(1); S(disp, { color: t > 1.1 ? RED : WHITE, opacity: clamp01(t * 5) });
+    pop(plus, t, 1.1, 3.2); pop(fat, t, 1.9, 3);
+  };
+}
+
+if (scene === "kcal") {             // "to gain 1 kg of fat you need ~7000 kcal above your needs ... impossible in one day"
+  const eb = eyebrow("1 KG OF FAT");
+  const t1 = title("كيلو دهون", 240, 104);
+  const n = add(el(`<div class="abs num" style="left:0;width:1080px;top:420px;text-align:center;font-size:260px;color:${BLUE};line-height:1">0</div>`));
+  const u = add(el(`<div class="abs ar" style="left:0;width:1080px;top:700px;text-align:center;font-size:62px;color:${WHITE}">سعر حراري فوق احتياجك</div>`));
+  const bars = add(el(`<div class="abs" style="left:110px;top:860px;width:860px">
+      <div class="en" style="font-size:26px;font-weight:800;letter-spacing:.18em;color:${MUTED}">ONE NORMAL DAY</div>
+      <div style="margin-top:14px;height:40px;border-radius:12px;background:${RAISED};overflow:hidden"><div id="d" style="height:100%;width:0;background:${MUTED}"></div></div>
+      <div class="en" style="margin-top:26px;font-size:26px;font-weight:800;letter-spacing:.18em;color:${MUTED}">NEEDED FOR +1 KG FAT</div>
+      <div style="margin-top:14px;height:40px;border-radius:12px;background:${RAISED};overflow:hidden"><div id="f" style="height:100%;width:0;background:${BLUE}"></div></div></div>`));
+  const no = add(el(`<div class="abs" style="left:0;width:1080px;top:1140px;text-align:center"><span class="ar" style="font-size:76px;color:${WHITE}">في يوم واحد؟ </span><span class="ti" style="font-size:76px;color:${RED}">NO</span></div>`));
+  const ref = add(el(`<div class="abs en" style="left:80px;top:1265px;font-size:24px;font-weight:500;color:${MUTED};width:920px">Rule of thumb ≈ 7,000–7,700 kcal per kg · Hall, Int J Obes 2008</div>`));
+  const d = bars.querySelector("#d"), f = bars.querySelector("#f");
+  seek = (t) => {
+    inUp(eb, t, 0); inUp(t1, t, 0, 70);
+    n.textContent = `~${Math.round(7000 * seg(t, 0.3, 1.6, eOut)).toLocaleString("en-US")}`; pop(n, t, 0.25); inUp(u, t, 0.6, 40);
+    inUp(bars, t, 1.6, 40); S(d, { width: `${30 * seg(t, 1.9, 2.5, eOut)}%` }); S(f, { width: `${100 * seg(t, 2.3, 3.2, eOut)}%` });
+    pop(no, t, 3.35, 3); inUp(ref, t, 3.6, 20);
+  };
+}
+
+if (scene === "days") {             // "what moves the scale from day to day"
+  const eb = eyebrow("DAY TO DAY");
+  const vals = [80.4, 81.1, 80.6, 80.9, 80.2], names = ["SAT", "SUN", "MON", "TUE", "WED"];
+  const cols = vals.map((v, i) => add(el(`<div class="abs" style="left:${90 + i * 186}px;top:420px;width:160px;text-align:center">
+      <div class="en" style="font-size:26px;font-weight:800;letter-spacing:.14em;color:${MUTED}">${names[i]}</div>
+      <div class="num" style="margin-top:14px;font-size:76px;color:${v > 80.8 ? RED : WHITE};background:${SURF};border:2px solid ${LINE};border-radius:20px;padding:16px 0 10px">${v.toFixed(1)}</div></div>`)));
+  const wave = add(el(`<div class="abs" style="left:0;top:0">${SVG(1080, 1920, `<path id="w" d="" stroke="${BLUE}" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`)}</div>`));
+  const lab = add(el(`<div class="abs ar" style="left:0;width:1080px;top:1050px;text-align:center;font-size:66px;color:${WHITE}">طالع نازل… طبيعي</div>`));
+  const ref = add(el(`<div class="abs en" style="left:80px;top:1200px;font-size:24px;font-weight:500;color:${MUTED};width:920px;line-height:1.4">80 adults · 4,657 daily weigh-ins: weight rises after weekends, falls in the week · Orsama et al., Obes Facts 2014</div>`));
+  const w = wave.querySelector("#w");
+  seek = (t) => {
+    inUp(eb, t, 0);
+    cols.forEach((c, i) => inUp(c, t, 0.05 + i * 0.12, 50, 3));
+    const k = seg(t, 0.5, 1.4, ease), pts = vals.map((v, i) => [170 + i * 186, 900 - (v - 80) * 260]);
+    let dd = ""; const n = 60; for (let j = 0; j <= n * k; j++) { const u = j / n * 4, a = Math.floor(Math.min(3.999, u)), f = u - a; const p = [lerp(pts[a][0], pts[a + 1][0], f), lerp(pts[a][1], pts[a + 1][1], ease(f))]; dd += (j ? "L" : "M") + p[0].toFixed(1) + "," + p[1].toFixed(1); }
+    w.setAttribute("d", dd); inUp(lab, t, 1.3, 40); inUp(ref, t, 1.6, 20);
+  };
+}
+
+if (scene === "water") {            // "your body holds water: water retention"
+  const eb = eyebrow("WATER RETENTION");
+  const t1 = add(el(`<div class="abs ti" style="left:80px;top:240px;font-size:104px;color:${WHITE};line-height:1">WATER</div>`));
+  const t2 = add(el(`<div class="abs ti" style="left:80px;top:350px;font-size:104px;color:${BLUE};line-height:1">RETENTION</div>`));
+  // body silhouette as a container filling with water, Na+ ions pulling drops in
+  const body = add(el(`<div class="abs" style="left:0;top:0">${SVG(1080, 1920, `<defs><clipPath id="cb"><path id="bp" d="M540,560 c60,0 95,40 95,95 c0,45 -25,75 -55,90 l120,40 c40,15 55,40 55,80 l0,250 l-70,0 l0,-210 l-30,0 l0,520 l-80,0 l0,-300 l-70,0 l0,300 l-80,0 l0,-520 l-30,0 l0,210 l-70,0 l0,-250 c0,-40 15,-65 55,-80 l120,-40 c-30,-15 -55,-45 -55,-90 c0,-55 35,-95 95,-95z"/></clipPath></defs>
+     <use href="#bp" fill="${RAISED}" stroke="${MUTED}" stroke-opacity=".45" stroke-width="6"/>
+     <g clip-path="url(#cb)"><rect id="lv" x="300" y="1600" width="480" height="1100" fill="${BLUE}" opacity=".85"/></g>`)}</div>`));
+  const ions = Array.from({ length: 6 }, (_, i) => add(el(`<div class="abs num" style="left:${i % 2 ? 820 : 120}px;top:${640 + i * 95}px;font-size:46px;color:${WHITE};background:${SURF};border:2px solid ${LINE};border-radius:40px;padding:6px 18px 2px">Na⁺</div>`)));
+  const lab = add(el(`<div class="abs ar" style="left:90px;width:900px;top:1200px;text-align:center;font-size:58px;color:${WHITE};background:${SURF};border:2px solid ${LINE};border-radius:24px;padding:10px 0 20px">ملح عالي ← مية محبوسة، مش دهون</div>`));
+  const lv = body.querySelector("#lv");
+  seek = (t) => {
+    inUp(eb, t, 0); inUp(t1, t, 0, 60); inUp(t2, t, 0.15, 60, 3); S(body, { opacity: clamp01(t * 5) });
+    ions.forEach((n, i) => { const k = seg(t, 0.3 + i * 0.12, 1.3 + i * 0.12, ease), dir = i % 2 ? -1 : 1; S(n, { opacity: clamp01((t - 0.3 - i * 0.12) * 6) * (1 - 0.6 * k), transform: `translateX(${dir * 200 * k}px)` }); });
+    lv.setAttribute("y", (1640 - 820 * seg(t, 0.5, 2.2, eOut) - 10 * Math.sin(t * 6)).toFixed(1));
+    inUp(lab, t, 1.4, 40);
+  };
+}
+
+if (scene === "routine") {          // "weigh in the morning, before eating, 3-4 times a week"
+  const eb = eyebrow("HOW TO WEIGH IN");
+  const steps = [["☀", "الصبح"], ["🍽", "قبل الأكل"], ["⚖", "<span dir=\"ltr\">3–4</span> مرات في الأسبوع"]];
+  const rows = steps.map(([ic, tx], i) => add(el(`<div class="abs" style="left:80px;top:${260 + i * 200}px;width:920px;height:160px;background:${SURF};border:1px solid ${LINE};border-radius:28px">
+      <div class="abs num" style="left:30px;top:28px;width:104px;height:104px;border-radius:24px;background:${i === 2 ? BLUE : RAISED};color:${i === 2 ? NIGHT : WHITE};font-size:64px;text-align:center;line-height:110px">${i + 1}</div>
+      <div class="abs ar" style="right:40px;top:38px;font-size:64px;color:${WHITE}">${tx}</div></div>`)));
+  const wk = add(el(`<div class="abs" style="left:0;width:1080px;top:930px;text-align:center">
+      <div style="display:flex;gap:20px;justify-content:center">${["S", "S", "M", "T", "W", "T", "F"].map((d) => `<div class="d" style="width:104px;height:104px;border-radius:24px;border:3px solid ${LINE};background:${SURF};font:800 30px/104px Inter;color:${MUTED}">${d}</div>`).join("")}</div></div>`));
+  const days = [...wk.querySelectorAll(".d")], on = [0, 2, 4, 6];
+  const avg = add(el(`<div class="abs" style="left:0;width:1080px;top:1110px;text-align:center"><span class="ti" style="font-size:64px;color:${WHITE}">→ WEEKLY </span><span class="ti" style="font-size:64px;color:${BLUE}">AVERAGE</span></div>`));
+  seek = (t) => {
+    inUp(eb, t, 0);
+    rows.forEach((r, i) => inUp(r, t, [0.3, 1.0, 1.7][i], 60, 3));
+    inUp(wk, t, 2.3, 40);
+    days.forEach((d, i) => { const k = on.indexOf(i), lit = k >= 0 && t > 2.5 + k * 0.2; S(d, { background: lit ? BLUE : SURF, borderColor: lit ? BLUE : LINE, color: lit ? NIGHT : MUTED }); });
+    pop(avg, t, 3.5, 3);
+  };
+}
+
+if (scene === "average") {          // "take the average and compare this week's average with last week's"
+  const eb = eyebrow("WEEK VS WEEK");
+  const w1 = [81.0, 80.6, 81.2, 80.8], w2 = [80.7, 80.2, 80.9, 80.3];
+  const a1 = w1.reduce((a, b) => a + b) / 4, a2 = w2.reduce((a, b) => a + b) / 4;
+  const mk = (arr, x0, lbl) => add(el(`<div class="abs" style="left:${x0}px;top:300px;width:420px">
+      <div class="en" style="font-size:28px;font-weight:800;letter-spacing:.16em;color:${MUTED};text-align:center">${lbl}</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px">${arr.map((v) => `<div class="num v" style="font-size:58px;color:${TXT};background:${SURF};border:2px solid ${LINE};border-radius:18px;text-align:center;padding:10px 0 4px">${v.toFixed(1)}</div>`).join("")}</div>
+      <div class="num m" style="margin-top:24px;font-size:120px;text-align:center;color:${WHITE};line-height:1">${(arr.reduce((a, b) => a + b) / 4).toFixed(1)}</div>
+      <div class="en" style="font-size:24px;font-weight:800;letter-spacing:.18em;color:${MUTED};text-align:center;margin-top:6px">AVERAGE</div></div>`));
+  const L1 = mk(w1, 90, "LAST WEEK"), L2 = mk(w2, 570, "THIS WEEK");
+  const diff = add(el(`<div class="abs" style="left:0;width:1080px;top:960px;text-align:center"><span class="num" style="font-size:150px;color:${BLUE}">−${(a1 - a2).toFixed(1)} KG</span></div>`));
+  const ok = add(el(`<div class="abs ar" style="left:0;width:1080px;top:1150px;text-align:center;font-size:64px;color:${WHITE}">قارن المتوسط بالمتوسط</div>`));
+  seek = (t) => {
+    inUp(eb, t, 0); inUp(L1, t, 0.1, 50); inUp(L2, t, 0.9, 50);
+    [L1, L2].forEach((L, j) => { const m = L.querySelector(".m"); S(m, { opacity: clamp01((t - (0.6 + j * 0.8)) * 5), color: j ? BLUE : WHITE }); });
+    pop(diff, t, 2.0, 3); inUp(ok, t, 2.4, 40);
+  };
+}
+
+if (scene === "waist") {            // "know your waist measurement"
+  const eb = eyebrow("WAIST");
+  const t1 = title("قياس الوسط", 240, 104);
+  const torso = add(el(`<div class="abs" style="left:0;top:0">${SVG(1080, 1920, `<path d="M380,520 C360,640 400,760 410,860 C420,960 380,1080 400,1180 L680,1180 C700,1080 660,960 670,860 C680,760 720,640 700,520 Z" fill="${RAISED}" stroke="${MUTED}" stroke-opacity=".45" stroke-width="6"/>
+      <path id="tape" d="M405,880 C470,920 610,920 675,880" stroke="${BLUE}" stroke-width="26" fill="none" stroke-linecap="round"/>
+      <path id="ticks" d="M405,880 C470,920 610,920 675,880" stroke="${NIGHT}" stroke-width="12" fill="none" stroke-dasharray="3 22"/>`)}</div>`));
+  const cm = add(el(`<div class="abs num" style="left:720px;top:820px;font-size:110px;color:${WHITE}">92</div>`));
+  const unit = add(el(`<div class="abs en" style="left:880px;top:880px;font-size:34px;font-weight:800;color:${MUTED}">CM</div>`));
+  const tape = torso.querySelector("#tape"), ticks = torso.querySelector("#ticks"), L = tape.getTotalLength();
+  seek = (t) => {
+    inUp(eb, t, 0); inUp(t1, t, 0, 70); S(torso, { opacity: clamp01(t * 5) });
+    const k = seg(t, 0.2, 1.0, eOut); [tape, ticks].forEach((p) => { p.setAttribute("stroke-dasharray", p === ticks ? "3 22" : `${L * k} ${L}`); }); S(ticks, { opacity: k });
+    cm.textContent = String(Math.round(92 - 2 * seg(t, 1.0, 2.0, ease))); inUp(cm, t, 0.6, 30); inUp(unit, t, 0.7, 30);
+  };
+}
+
+if (scene === "trend") {            // "if the average is going down you're on track, even if one day went up"
+  const eb = eyebrow("THE TREND");
+  const N = 21, x0 = 110, x1 = 970, ys = Array.from({ length: N }, (_, i) => 82 - i * 0.09 + (rand(i + 7) - 0.5) * 0.9 + (i === 13 ? 0.9 : 0));
+  const Y = (v) => 1060 - (v - 79.6) * 230, X = (i) => x0 + (x1 - x0) * i / (N - 1);
+  const avg = ys.map((_, i) => { const a = ys.slice(Math.max(0, i - 3), i + 4); return a.reduce((p, q) => p + q) / a.length; });
+  const g = add(el(`<div class="abs" style="left:0;top:0">${SVG(1080, 1920, ys.map((v, i) => `<circle class="dt" cx="${X(i)}" cy="${Y(v)}" r="${i === 13 ? 16 : 11}" fill="${i === 13 ? RED : MUTED}"/>`).join("") +
+      `<path id="av" d="${avg.map((v, i) => (i ? "L" : "M") + X(i).toFixed(1) + "," + Y(v).toFixed(1)).join("")}" stroke="${BLUE}" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`)}</div>`));
+  const tag = add(el(`<div class="abs" style="left:${X(13) - 120}px;top:${Y(ys[13]) - 120}px;width:240px;text-align:center"><span class="en" style="font-size:30px;font-weight:800;color:${RED};letter-spacing:.1em">+1 DAY</span></div>`));
+  const lab = add(el(`<div class="abs" style="left:0;width:1080px;top:1170px;text-align:center"><span class="ar" style="font-size:70px;color:${WHITE}">المتوسط بينزل = ماشي صح </span><span style="font:900 70px Inter;color:${BLUE}">✓</span></div>`));
+  const t1 = add(el(`<div class="abs ti" style="left:80px;top:240px;font-size:96px;color:${WHITE}">IGNORE ONE DAY</div>`));
+  const dots = [...g.querySelectorAll(".dt")], av = g.querySelector("#av"), L = av.getTotalLength();
+  seek = (t) => {
+    inUp(eb, t, 0); inUp(t1, t, 0.05, 50);
+    dots.forEach((d, i) => d.setAttribute("opacity", clamp01((t - 0.15 - i * 0.04) * 8)));
+    av.setAttribute("stroke-dasharray", `${L * seg(t, 1.1, 2.3, ease)} ${L}`);
+    pop(tag, t, 1.0, 3); inUp(lab, t, 2.4, 40);
+  };
+}
+
+if (scene === "plateau") {          // "don't change the plan unless the average is stuck 2-3 weeks while you're truly consistent"
+  const eb = eyebrow("WHEN TO CHANGE THE PLAN");
+  const wk = [80.6, 80.6, 80.5];
+  const cards = wk.map((v, i) => add(el(`<div class="abs" style="left:${90 + i * 310}px;top:300px;width:280px;height:270px;background:${SURF};border:2px solid ${LINE};border-radius:26px;text-align:center">
+      <div class="en" style="margin-top:30px;font-size:26px;font-weight:800;letter-spacing:.16em;color:${MUTED}">WEEK ${i + 1}</div>
+      <div class="num" style="margin-top:18px;font-size:110px;color:${WHITE};line-height:1">${v.toFixed(1)}</div></div>`)));
+  const flat = add(el(`<div class="abs" style="left:0;top:0">${SVG(1080, 1920, `<path id="fl" d="M230,660 L540,660 L850,664" stroke="${BLUE}" stroke-width="10" stroke-dasharray="20 16" fill="none"/>`)}</div>`));
+  const chk = ["المتوسط واقف <span dir=\"ltr\">2–3</span> أسابيع", "وانت ملتزم فعلًا"].map((s, i) => add(el(`<div class="abs" style="right:80px;top:${760 + i * 130}px;display:flex;align-items:center;gap:26px;direction:rtl">
+      <div style="width:80px;height:80px;border-radius:20px;background:${BLUE};color:${NIGHT};font:900 54px/84px Inter;text-align:center">✓</div>
+      <div class="ar" style="font-size:62px;color:${WHITE}">${s}</div></div>`)));
+  const then = add(el(`<div class="abs" style="left:0;width:1080px;top:1110px;text-align:center"><span class="ar" style="font-size:72px;color:${BLUE}">وقتها بس نعدّل الخطة</span></div>`));
+  seek = (t) => {
+    inUp(eb, t, 0); cards.forEach((c, i) => inUp(c, t, 0.1 + i * 0.25, 50, 3)); S(flat, { opacity: clamp01((t - 0.9) * 4) });
+    chk.forEach((c, i) => inUp(c, t, 1.4 + i * 0.6, 40, 3)); pop(then, t, 2.8, 3);
+  };
+}
+
+if (scene === "cta") {              // "send me the word 'متابعة'"
+  const eb = eyebrow("DM");
+  const t1 = title("ابعتلي كلمة", 240, 110);
+  const ph = add(el(`<div class="abs" style="left:150px;top:470px;width:780px;height:760px;border-radius:48px;background:${SURF};border:2px solid ${LINE}">
+      <div class="abs" style="left:0;top:0;width:780px;height:120px;border-bottom:2px solid ${LINE}"></div>
+      <div class="abs" style="left:40px;top:30px;width:60px;height:60px;border-radius:30px;background:${BLUE}"></div>
+      <div class="abs en" style="left:122px;top:44px;font-size:32px;font-weight:800;color:${WHITE}">Coach Osama</div>
+      <div class="abs" style="left:40px;top:640px;width:700px;height:76px;border-radius:38px;border:2px solid ${LINE}"></div></div>`));
+  const bub = add(el(`<div class="abs ar" style="right:190px;top:900px;font-size:92px;color:${NIGHT};background:${BLUE};padding:4px 46px 18px;border-radius:44px 44px 12px 44px">متابعة</div>`));
+  seek = (t) => {
+    inUp(eb, t, 0); inUp(t1, t, 0.0, 70); inUp(ph, t, 0.05, 90, 2.6);
+    const bp = sp(t, 0.42, 3.2); S(bub, { opacity: clamp01((t - 0.42) * 8), transform: `translateY(${(1 - bp) * 120}px) scale(${0.7 + 0.3 * bp})`, transformOrigin: "100% 100%" });
+  };
+}
+
+const scenePush = (t) => { const p = seg(t, 0, DUR, (x) => x); root.style.transformOrigin = "50% 38%"; root.style.transform = `scale(${1 + 0.12 * p}) translateY(${-26 * p}px)`; };
+window.seek = (t) => { seek(t); scenePush(t); };
+window.ready = document.fonts.ready;
+</script></body></html>

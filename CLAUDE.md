@@ -23,6 +23,7 @@ brand/            logo files (raster, from the brand book), OFL fonts, tokens.js
 docs/             brand video system + checklist; reference analysis, implementation plan/report
 studio/           Remotion compositor: src/components (brand overlays), src/lib (tokens, fonts, edit schema)
 tools/            transcribe, suggest_callouts, render_edit (render+master+QA), qa_render
+library/broll/    his permanent B-roll library: manifest.json (Drive id, sha256, what each clip shows); files/ git-ignored
 projects/<name>/  one folder per video: project.json, edit.json, analysis/, documentation/
   source/ work/ renders/ exports/   ← git-ignored (footage, transcripts' audio and renders never go in git)
 ```
@@ -259,3 +260,7 @@ projects/<name>/  one folder per video: project.json, edit.json, analysis/, docu
   Lesson: look at every graded clip in the preview, a PASS on the numbers does not catch a broken frame.
 - 2026-11-01 (Coach Osama): **Reel cover = permanent, automatic final step of every video** (`docs/COVER_SYSTEM.md`, `tools/make_cover.py`,
   template `motion/cover/cover.html` from the approved creatine cover). Deliver video + cover together.
+- 2026-11-01 (Coach Osama): his extra training clips are a **permanent B-roll library** (`library/broll/manifest.json`): review it for
+  every new video and use a clip only where it genuinely serves a beat. Add new clips to the manifest with what they show.
+  Voice-over reels (`projects/2026-11-01_voiceover*`) are the established creative standard: his VO untouched as the spine, script
+  screenshot never shown, PubMed-verified research scenes (`motion/pieces/*_science`), stock + his B-roll, #56A0FB captions, cover.

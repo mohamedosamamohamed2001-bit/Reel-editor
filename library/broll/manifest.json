@@ -1,0 +1,22 @@
+{
+ "_about": "Coach Osama's permanent B-roll library (his own training / demo footage). Files are NOT in git: download by Drive id into library/broll/files/ (curl -L \"https://drive.usercontent.google.com/download?id=ID&export=download&confirm=t\"), check sha256, then hard-link into projects/<p>/source/. Reuse whenever a clip genuinely serves a beat.",
+ "clips": [
+  {"file": "IMG_7542.MOV", "drive_id": "1oETemPbZYWjGafbQQ9UtRKtud3fLiD3p", "sha256": "1fc3a25e7e33edbec24bfcca35eff7a3f5de388269f700d4dc8ae0a78b13731e",
+   "added": "2026-11-01", "format": "HEVC HLG 1920x1080 rotated -> 9:16, 30 fps, 8.2 s",
+   "content": "He sits on a gym box in a black tank, smiling and talking/laughing to camera, holding a can; short double-biceps at ~3.4 s.",
+   "good_for": ["coach presence", "online coaching / follow-up", "friendly CTA", "talking about clients"]},
+  {"file": "IMG_7546.MOV", "drive_id": "18cCgZEOOtjcqzkRD21YI7mMwvVKGfFst", "sha256": "23906621214a2c02c5f6a5413d5385ec363265ff96df5c6aaec3bb1baa81e2e4",
+   "added": "2026-11-01", "format": "HEVC HLG 1920x1080 rotated -> 9:16, 30 fps, 18.0 s",
+   "content": "Physique check-in poses in a black tank, dark gym: hands on hips front, front double biceps (~4.5 s), side pose (~7.5 s), side chest (~10-16 s).",
+   "good_for": ["progress photos", "check-in", "results / physique", "consistency"]},
+  {"file": "IMG_7565.MOV", "drive_id": "1c-_DKUGipLZM8EjBejY_MGlyVcIqME63", "sha256": "8f42893abb10543754e8b67aa4ace6fe3e728c335b5fa66fa8100e86abc7bdc2",
+   "added": "2026-11-01", "format": "HEVC HLG 1920x1080 rotated -> 9:16, 29.97 fps, 28.2 s",
+   "content": "Check-in poses in a bright gym, black tank: front relaxed (~2 s), front lat/abs (~7 s), double biceps (~11.8 s), side chest (~16.5 s), side + back (~21-26 s).",
+   "good_for": ["progress photos", "check-in", "front/side/back pose sequence", "transformation talk"]},
+  {"file": "IMG_8385.MOV", "drive_id": "1drKztlcxpb9VqRiClR4kHdL3vWyLxrk8", "sha256": "ae6e400ee5025b24cfc90509f9a33cf6bb7393d46694853306e0cc05869ba39b",
+   "added": "2026-11-01", "format": "HEVC HLG 3840x2160 rotated -> 9:16, 30 fps, 3.2 s",
+   "content": "He stands in a mint long-sleeve top, hands on hips then clasped, looking off to the side (thoughtful / confident).",
+   "good_for": ["question / mid hook", "thinking beat", "confident coach shot", "cover photo (4K)"]}
+ ],
+ "used_in": {"2026-11-01_voiceover3": ["IMG_8385 18.05 s", "IMG_7565 31.9 + 47.0 s", "IMG_7546 37.7 s", "IMG_7542 43.7 s"]}
+}
