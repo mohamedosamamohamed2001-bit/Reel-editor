@@ -3,3 +3,4 @@ deliveries/osm_audioswap_2026-10-25/OSM_Video2_Final.mp4 filter=lfs diff=lfs mer
 deliveries/lifestyle_carousel_2026-10-30/OSM_lifestyle_carousel.zip filter=lfs diff=lfs merge=lfs -text
 deliveries/motion_2026-10-31/*.mp4 filter=lfs diff=lfs merge=lfs -text
 deliveries/grading_2026-10-31/*.mp4 filter=lfs diff=lfs merge=lfs -text
+deliveries/creatine_2026-11-01/*.mp4 filter=lfs diff=lfs merge=lfs -text
