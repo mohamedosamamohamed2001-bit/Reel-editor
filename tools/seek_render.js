@@ -4,6 +4,7 @@
 //   node tools/seek_render.js PIECE.html OUTDIR --stills 0.5,1,1.5        one PNG per time + contact sheet (review first)
 //   node tools/seek_render.js PIECE.html OUTDIR --beats 120 --dur 8         one PNG per beat + contact sheet
 //   node tools/seek_render.js PIECE.html - --determinism --dur 8           same t rendered twice, out of order: hashes must match
+//   --query k=v[&k2=v2]   extra URL parameters for the piece (e.g. scene=dht)
 //
 // The piece is a single HTML file that sets window.ready (a Promise) and window.seek(t): every pixel computed from t,
 // no CSS animations, no timers, no state carried between frames. It is loaded from https://osm.local/piece/<file>
@@ -47,7 +48,8 @@ async function open(browser) {
       return route.fulfill({ status: 200, contentType: MIME[path.extname(file).toLowerCase()] || "application/octet-stream", body: fs.readFileSync(file) });
     } catch (e) { return route.fulfill({ status: 404, body: String(e) }); }
   });
-  await page.goto(`https://osm.local/piece/${encodeURIComponent(path.basename(pieceAbs))}?render`);
+  const q = opt("query") ? "&" + String(opt("query")) : "";  // e.g. --query scene=dht (one piece file, several scenes)
+  await page.goto(`https://osm.local/piece/${encodeURIComponent(path.basename(pieceAbs))}?render${q}`);
   await page.waitForFunction(() => window.ready !== undefined && typeof window.seek === "function", null, { timeout: 60000 });
   await page.evaluate(() => window.ready);
   return page;

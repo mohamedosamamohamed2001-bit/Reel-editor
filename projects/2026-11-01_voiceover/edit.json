@@ -1,0 +1,777 @@
+{
+ "title": "Creatine & hair loss (research reel)",
+ "fps": 30,
+ "width": 1080,
+ "height": 1920,
+ "media": {
+  "s_comb": "source/stock/coverr-combing-a-man-s-hair-2623.mp4",
+  "s_insta": "source/stock/coverr-man-scrolling-through-his-instagram-feed-4477.mp4",
+  "s_social": "source/stock/coverr-social-media-on-a-smartphone-9524.mp4",
+  "s_kettle": "source/stock/coverr-man-lifting-a-kettlebell-240.mp4",
+  "s_calendar": "source/stock/coverr-july-calendar-5192.mp4",
+  "s_vitamins": "source/stock/coverr-taking-vitamins-230.mp4",
+  "s_science": "source/stock/coverr-science-experiment-6978.mp4",
+  "s_equip": "source/stock/coverr-sports-equipment-in-a-gym-7635.mp4",
+  "s_scale": "source/stock/coverr-pouring-flour-on-the-scales-2968.mp4",
+  "s_water": "source/stock/coverr-pouring-water-into-a-glass-749.mp4",
+  "s_fist": "source/stock/coverr-friends-giving-each-other-a-fist-bump-5866.mp4",
+  "s_gloves": "source/stock/coverr-putting-medical-gloves-on-5311.mp4",
+  "o_2253": "source/IMG_2253.mov",
+  "o_2258": "source/IMG_2258.MOV",
+  "o_photo": "work/photo_3324.mp4",
+  "m_rugby": "work/motion/rugby.mp4",
+  "m_study2009": "work/motion/study2009.mp4",
+  "m_dht": "work/motion/dht.mp4",
+  "m_rct2025": "work/motion/rct2025.mp4",
+  "m_hair": "work/motion/hair.mp4",
+  "m_atp": "work/motion/atp.mp4",
+  "m_dose": "work/motion/dose.mp4",
+  "m_water": "work/motion/water.mp4"
+ },
+ "plates": {
+  "grade": "auto",
+  "sharpen": "cas=strength=0.25"
+ },
+ "clips": [
+  {
+   "src": "s_comb",
+   "in": 2.2,
+   "out": 3.46,
+   "zoom": [
+    1.12,
+    1.22
+   ],
+   "focusX": 0.5,
+   "focusY": 0.42
+  },
+  {
+   "src": "m_rugby",
+   "in": 0.0,
+   "out": 3.64,
+   "grade": "format=yuv420p",
+   "tin": {
+    "type": "zoom"
+   }
+  },
+  {
+   "src": "m_study2009",
+   "in": 0.0,
+   "out": 3.54,
+   "grade": "format=yuv420p",
+   "tin": {
+    "type": "whip",
+    "dir": "up"
+   }
+  },
+  {
+   "src": "m_dht",
+   "in": 0.0,
+   "out": 5.54,
+   "grade": "format=yuv420p",
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  },
+  {
+   "src": "s_insta",
+   "in": 6.0,
+   "out": 7.08,
+   "zoom": [
+    1.0,
+    1.08
+   ],
+   "focusX": 0.42,
+   "tin": {
+    "type": "whip",
+    "dir": "right"
+   }
+  },
+  {
+   "src": "s_social",
+   "in": 8.0,
+   "out": 9.1,
+   "zoom": [
+    1.05,
+    1.15
+   ],
+   "focusX": 0.55,
+   "tin": {
+    "type": "zoom"
+   }
+  },
+  {
+   "src": "m_rct2025",
+   "in": 0.0,
+   "out": 4.58,
+   "grade": "format=yuv420p",
+   "tin": {
+    "type": "whip",
+    "dir": "up"
+   }
+  },
+  {
+   "src": "s_kettle",
+   "in": 3.0,
+   "out": 5.08,
+   "zoom": [
+    1.0,
+    1.06
+   ],
+   "focusX": 0.45,
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  },
+  {
+   "src": "s_calendar",
+   "in": 1.5,
+   "out": 2.78,
+   "zoom": [
+    1.0,
+    1.06
+   ],
+   "focusX": 0.4,
+   "tin": {
+    "type": "zoom"
+   }
+  },
+  {
+   "src": "m_hair",
+   "in": 0.0,
+   "out": 3.28,
+   "grade": "format=yuv420p",
+   "tin": {
+    "type": "whip",
+    "dir": "up"
+   }
+  },
+  {
+   "src": "s_vitamins",
+   "in": 3.5,
+   "out": 6.14,
+   "zoom": [
+    1.02,
+    1.1
+   ],
+   "focusX": 0.5,
+   "tin": {
+    "type": "whip",
+    "dir": "right"
+   }
+  },
+  {
+   "src": "s_science",
+   "in": 4.0,
+   "out": 5.26,
+   "zoom": [
+    1.1,
+    1.2
+   ],
+   "focusX": 0.42,
+   "tin": {
+    "type": "zoom"
+   }
+  },
+  {
+   "src": "o_2253",
+   "in": 11.0,
+   "out": 13.58,
+   "zoom": [
+    1.0,
+    1.06
+   ],
+   "focusY": 0.55,
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  },
+  {
+   "src": "m_atp",
+   "in": 0.0,
+   "out": 2.44,
+   "grade": "format=yuv420p",
+   "tin": {
+    "type": "whip",
+    "dir": "up"
+   }
+  },
+  {
+   "src": "s_equip",
+   "in": 2.0,
+   "out": 3.4,
+   "zoom": [
+    1.0,
+    1.08
+   ],
+   "focusX": 0.5,
+   "tin": {
+    "type": "whip",
+    "dir": "right"
+   }
+  },
+  {
+   "src": "o_2258",
+   "in": 1.2,
+   "out": 2.16,
+   "zoom": [
+    1.0,
+    1.05
+   ],
+   "focusY": 0.45,
+   "speed": 0.5,
+   "tin": {
+    "type": "zoom"
+   }
+  },
+  {
+   "src": "m_dose",
+   "in": 0.0,
+   "out": 3.68,
+   "grade": "format=yuv420p",
+   "tin": {
+    "type": "whip",
+    "dir": "up"
+   }
+  },
+  {
+   "src": "s_scale",
+   "in": 2.0,
+   "out": 4.24,
+   "zoom": [
+    1.05,
+    1.12
+   ],
+   "focusX": 0.5,
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  },
+  {
+   "src": "s_water",
+   "in": 4.0,
+   "out": 4.6,
+   "zoom": [
+    1.1,
+    1.18
+   ],
+   "focusX": 0.5,
+   "tin": {
+    "type": "zoom"
+   }
+  },
+  {
+   "src": "m_water",
+   "in": 0.0,
+   "out": 2.08,
+   "grade": "format=yuv420p",
+   "tin": {
+    "type": "zoom"
+   }
+  },
+  {
+   "src": "o_photo",
+   "in": 0.0,
+   "out": 1.64,
+   "zoom": [
+    1.0,
+    1.07
+   ],
+   "focusY": 0.36,
+   "tin": {
+    "type": "whip",
+    "dir": "right"
+   }
+  },
+  {
+   "src": "s_fist",
+   "in": 3.5,
+   "out": 4.36,
+   "zoom": [
+    1.05,
+    1.12
+   ],
+   "focusX": 0.45,
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  },
+  {
+   "src": "s_gloves",
+   "in": 2.0,
+   "out": 5.08,
+   "zoom": [
+    1.0,
+    1.06
+   ],
+   "focusX": 0.4,
+   "tin": {
+    "type": "zoom"
+   }
+  }
+ ],
+ "overlays": [
+  {
+   "type": "kineticTitle",
+   "at": 0.05,
+   "dur": 1.2,
+   "lines": [
+    {
+     "text": "CREATINE",
+     "size": 118
+    },
+    {
+     "text": "= HAIR LOSS?",
+     "accent": true,
+     "size": 92
+    }
+   ],
+   "top": 0.12,
+   "motion": "smooth",
+   "depth": true
+  },
+  {
+   "type": "callout",
+   "at": 21.45,
+   "dur": 1.35,
+   "number": "5g",
+   "unit": "كرياتين يوميًا",
+   "position": "top"
+  },
+  {
+   "type": "callout",
+   "at": 23.2,
+   "dur": 0.9,
+   "number": "12",
+   "unit": "أسبوع",
+   "position": "top"
+  },
+  {
+   "type": "kineticTitle",
+   "at": 30.6,
+   "dur": 0.68,
+   "lines": [
+    {
+     "text": "NOT MAGIC",
+     "size": 120
+    }
+   ],
+   "top": 0.14,
+   "motion": "smooth",
+   "depth": true
+  },
+  {
+   "type": "kineticTitle",
+   "at": 36.35,
+   "dur": 1.3,
+   "lines": [
+    {
+     "text": "NO TRAINING",
+     "size": 104
+    },
+    {
+     "text": "= NO RESULTS",
+     "accent": true,
+     "size": 92
+    }
+   ],
+   "top": 0.14,
+   "motion": "smooth",
+   "depth": true
+  },
+  {
+   "type": "lowerLabel",
+   "at": 43.45,
+   "dur": 2.55,
+   "title": "ميّه، مش دهون",
+   "eyebrow": "WATER WEIGHT",
+   "top": 0.16,
+   "plate": true
+  },
+  {
+   "type": "lowerLabel",
+   "at": 50.85,
+   "dur": 2.9,
+   "title": "مشكلة في الكلى؟ اسأل دكتورك",
+   "eyebrow": "SAFETY FIRST",
+   "top": 0.16,
+   "plate": true
+  },
+  {
+   "type": "endCard",
+   "at": 53.8,
+   "dur": 2.4,
+   "cta": "OSM Coach Osama",
+   "reveal": "wipe",
+   "image": "brand/end/osm-end-photo.jpg",
+   "sub": "Sources: van der Merwe 2009 · Lak et al. 2025 · ISSN 2017"
+  }
+ ],
+ "shakes": [],
+ "sfx": {
+  "cues": [
+   {
+    "at": 0.0,
+    "sound": "impact",
+    "gain_db": -9
+   },
+   {
+    "at": 0.02,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 0.05,
+    "sound": "whoosh_in",
+    "gain_db": -18
+   },
+   {
+    "at": 1.26,
+    "sound": "whoosh_in",
+    "gain_db": -16
+   },
+   {
+    "at": 1.81,
+    "sound": "blip",
+    "gain_db": -24
+   },
+   {
+    "at": 2.09,
+    "sound": "blip",
+    "gain_db": -24
+   },
+   {
+    "at": 2.37,
+    "sound": "blip",
+    "gain_db": -24
+   },
+   {
+    "at": 2.65,
+    "sound": "blip",
+    "gain_db": -24
+   },
+   {
+    "at": 2.93,
+    "sound": "blip",
+    "gain_db": -24
+   },
+   {
+    "at": 4.9,
+    "sound": "whip",
+    "gain_db": -15
+   },
+   {
+    "at": 6.0,
+    "sound": "swell",
+    "gain_db": -20
+   },
+   {
+    "at": 8.44,
+    "sound": "whip",
+    "gain_db": -15
+   },
+   {
+    "at": 8.64,
+    "sound": "thump",
+    "gain_db": -15
+   },
+   {
+    "at": 9.19,
+    "sound": "thump",
+    "gain_db": -15
+   },
+   {
+    "at": 9.74,
+    "sound": "thump",
+    "gain_db": -15
+   },
+   {
+    "at": 12.29,
+    "sound": "click",
+    "gain_db": -16
+   },
+   {
+    "at": 12.57,
+    "sound": "click",
+    "gain_db": -16
+   },
+   {
+    "at": 12.85,
+    "sound": "impact",
+    "gain_db": -11
+   },
+   {
+    "at": 13.98,
+    "sound": "whip",
+    "gain_db": -15
+   },
+   {
+    "at": 15.06,
+    "sound": "whoosh_in",
+    "gain_db": -16
+   },
+   {
+    "at": 16.16,
+    "sound": "whip",
+    "gain_db": -15
+   },
+   {
+    "at": 19.16,
+    "sound": "impact",
+    "gain_db": -12
+   },
+   {
+    "at": 20.74,
+    "sound": "whip",
+    "gain_db": -15
+   },
+   {
+    "at": 21.45,
+    "sound": "accent",
+    "gain_db": -16
+   },
+   {
+    "at": 22.82,
+    "sound": "whoosh_in",
+    "gain_db": -16
+   },
+   {
+    "at": 23.2,
+    "sound": "accent",
+    "gain_db": -16
+   },
+   {
+    "at": 24.1,
+    "sound": "whip",
+    "gain_db": -15
+   },
+   {
+    "at": 25.58,
+    "sound": "whoosh_in",
+    "gain_db": -16
+   },
+   {
+    "at": 26.4,
+    "sound": "impact",
+    "gain_db": -10
+   },
+   {
+    "at": 27.38,
+    "sound": "whip",
+    "gain_db": -15
+   },
+   {
+    "at": 30.02,
+    "sound": "whoosh_in",
+    "gain_db": -16
+   },
+   {
+    "at": 30.6,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 31.28,
+    "sound": "whip",
+    "gain_db": -15
+   },
+   {
+    "at": 33.86,
+    "sound": "whip",
+    "gain_db": -15
+   },
+   {
+    "at": 33.91,
+    "sound": "blip",
+    "gain_db": -22
+   },
+   {
+    "at": 34.31,
+    "sound": "blip",
+    "gain_db": -22
+   },
+   {
+    "at": 34.71,
+    "sound": "blip",
+    "gain_db": -22
+   },
+   {
+    "at": 35.11,
+    "sound": "blip",
+    "gain_db": -22
+   },
+   {
+    "at": 35.51,
+    "sound": "blip",
+    "gain_db": -22
+   },
+   {
+    "at": 36.3,
+    "sound": "whip",
+    "gain_db": -15
+   },
+   {
+    "at": 36.35,
+    "sound": "impact",
+    "gain_db": -12
+   },
+   {
+    "at": 37.7,
+    "sound": "whoosh_in",
+    "gain_db": -16
+   },
+   {
+    "at": 39.62,
+    "sound": "whip",
+    "gain_db": -15
+   },
+   {
+    "at": 39.62,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 42.12,
+    "sound": "click",
+    "gain_db": -22
+   },
+   {
+    "at": 42.24,
+    "sound": "click",
+    "gain_db": -22
+   },
+   {
+    "at": 42.36,
+    "sound": "click",
+    "gain_db": -22
+   },
+   {
+    "at": 42.48,
+    "sound": "click",
+    "gain_db": -22
+   },
+   {
+    "at": 42.6,
+    "sound": "click",
+    "gain_db": -22
+   },
+   {
+    "at": 42.72,
+    "sound": "click",
+    "gain_db": -22
+   },
+   {
+    "at": 42.84,
+    "sound": "click",
+    "gain_db": -22
+   },
+   {
+    "at": 43.3,
+    "sound": "whip",
+    "gain_db": -15
+   },
+   {
+    "at": 43.45,
+    "sound": "accent",
+    "gain_db": -17
+   },
+   {
+    "at": 45.54,
+    "sound": "whoosh_in",
+    "gain_db": -16
+   },
+   {
+    "at": 46.14,
+    "sound": "whoosh_in",
+    "gain_db": -16
+   },
+   {
+    "at": 46.44,
+    "sound": "swell",
+    "gain_db": -20
+   },
+   {
+    "at": 48.22,
+    "sound": "whip",
+    "gain_db": -15
+   },
+   {
+    "at": 48.22,
+    "sound": "chime",
+    "gain_db": -18
+   },
+   {
+    "at": 49.86,
+    "sound": "whip",
+    "gain_db": -15
+   },
+   {
+    "at": 50.72,
+    "sound": "whoosh_in",
+    "gain_db": -16
+   },
+   {
+    "at": 50.85,
+    "sound": "accent",
+    "gain_db": -17
+   },
+   {
+    "at": 53.8,
+    "sound": "reverse_hit",
+    "gain_db": -12,
+    "dur": 0.7
+   },
+   {
+    "at": 53.8,
+    "sound": "boom",
+    "gain_db": -7
+   },
+   {
+    "at": 54.3,
+    "sound": "click",
+    "gain_db": -17
+   }
+  ]
+ },
+ "music": {
+  "src": "work/music/music.wav",
+  "gain_db": -11
+ },
+ "tail": 2.4,
+ "voiceTrack": "work/vo.wav",
+ "dialogueLufs": -16.0,
+ "captions": {
+  "wordsFile": "work/vo.words.json",
+  "outputTime": true,
+  "style": "plate",
+  "karaoke": true,
+  "maxWords": 3,
+  "maxChars": 22,
+  "plateColor": "#56A0FB",
+  "keywordColor": "#FFFFFF",
+  "keywords": [
+   "DHT",
+   "2009",
+   "2025",
+   "الشعر",
+   "سحر",
+   "منتظم",
+   "المياه",
+   "دكتورك",
+   "رجبي",
+   "فرق"
+  ],
+  "zones": [
+   {
+    "at": 0,
+    "dur": 53.81,
+    "top": 0.74
+   }
+  ]
+ },
+ "textPlate": "#56A0FB"
+}

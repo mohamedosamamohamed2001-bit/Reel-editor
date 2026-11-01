@@ -1,0 +1,223 @@
+<!doctype html>
+<!-- Creatine & hair: research / science scenes for projects/2026-11-01_voiceover. 1080x1920, every pixel from t (window.seek).
+     ?scene=rugby|study2009|dht|rct2025|hair|atp|dose|water   window.meta.dur per scene.
+     Facts only from the verified papers (PubMed): van der Merwe et al. 2009 Clin J Sport Med 19(5):399-404 (doi 10.1097/JSM.0b013e3181b8b52f);
+     Lak et al. 2025 J Int Soc Sports Nutr 22(sup1):2495229 (doi 10.1080/15502783.2025.2495229); Kreider et al. 2017 ISSN position stand
+     (doi 10.1186/s12970-017-0173-z). Text stays above y=1330 (caption zone below). Inter / IBM Plex Sans Arabic; Night, white, Core Blue. -->
+<html><head><meta charset="utf-8">
+<style>
+@font-face { font-family: Inter; src: url('/osm/fonts/Inter[opsz,wght].ttf'); font-weight: 100 900; }
+@font-face { font-family: InterI; src: url('/osm/fonts/Inter-Italic[opsz,wght].ttf'); font-weight: 100 900; font-style: italic; }
+@font-face { font-family: Plex; src: url('/osm/fonts/IBMPlexSansArabic-Bold.ttf'); font-weight: 700; }
+@font-face { font-family: Barlow; src: url('/osm/fonts/BarlowCondensed-Bold.ttf'); font-weight: 700; }
+html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #0A0F16; }
+svg { position: absolute; left: 0; top: 0; }
+.ar { font-family: Plex; font-weight: 700; direction: rtl; }
+.en { font-family: Inter; }
+.ti { font-family: InterI; font-style: italic; font-weight: 900; text-transform: uppercase; letter-spacing: -0.02em; }
+.num { font-family: Barlow; font-weight: 700; }
+#root { position: absolute; inset: 0; }
+.abs { position: absolute; }
+</style></head>
+<body><div id="root"></div>
+<script type="module">
+import { seg, spring, expoOut, expoIn, expoInOut, lerp, clamp01, countUp, frameTime, rand } from "/osm/motion-core.js";
+const BLUE = "#56A0FB", NIGHT = "#0A0F16", WHITE = "#FFFFFF", MUTED = "#8C98AA", LINE = "#263244", SURF = "#141B26", RED = "#F26D6D";
+const scene = new URLSearchParams(location.search).get("scene") || "rugby";
+const DUR = { rugby: 3.64, study2009: 3.54, dht: 5.54, rct2025: 4.58, hair: 3.28, atp: 2.44, dose: 3.68, water: 2.08 }[scene];
+window.meta = { dur: DUR, size: [1080, 1920], scene };
+const root = document.getElementById("root");
+const el = (html) => { const d = document.createElement("div"); d.innerHTML = html.trim(); return d.firstElementChild; };
+const add = (node) => (root.appendChild(node), node);
+const S = (n, st) => { for (const k in st) n.style[k] = st[k]; };
+const sp = (t, t0, f = 2.6) => spring(t - t0, { freq: f });
+const inUp = (n, t, t0, dy = 60, f = 2.6) => { const p = sp(t, t0, f); S(n, { opacity: clamp01((t - t0) * 6), transform: `translateY(${(1 - p) * dy}px)` }); return p; };
+const SVG = (w, h, inner) => `<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" xmlns="http://www.w3.org/2000/svg">${inner}</svg>`;
+
+// shared frame: hairline grid (static, no gradient), eyebrow + scene title
+const grid = add(el(`<div class="abs" style="inset:0">${SVG(1080, 1920, Array.from({ length: 13 }, (_, i) =>
+  `<line x1="${i * 90}" y1="0" x2="${i * 90}" y2="1920" stroke="${LINE}" stroke-width="1" opacity=".35"/>`).join("") +
+  Array.from({ length: 22 }, (_, i) => `<line x1="0" y1="${i * 90}" x2="1080" y2="${i * 90}" stroke="${LINE}" stroke-width="1" opacity=".35"/>`).join(""))}</div>`));
+const eyebrow = (txt) => add(el(`<div class="abs en" style="left:80px;top:170px;font-weight:700;font-size:30px;letter-spacing:.22em;color:#7DD2EC">${txt}</div>`));
+const card = (top, h) => add(el(`<div class="abs" style="left:70px;top:${top}px;width:940px;height:${h}px;background:${SURF};border:1px solid ${LINE};border-radius:28px"></div>`));
+
+let seek;
+
+if (scene === "rugby") {                                   // "all the fear comes from ONE study on 20 rugby players"
+  const eb = eyebrow("WHERE THE MYTH STARTED");
+  const t1 = add(el(`<div class="abs ar" style="right:80px;top:250px;font-size:120px;color:${WHITE};line-height:1.25">دراسة واحدة</div>`));
+  const t2 = add(el(`<div class="abs ar" style="right:80px;top:410px;font-size:64px;color:${BLUE};line-height:1.4">على 20 لاعب رجبي</div>`));
+  const figs = [];
+  for (let i = 0; i < 20; i++) {
+    const c = i % 5, r = Math.floor(i / 5), x = 150 + c * 180, y = 640 + r * 165;
+    figs.push(add(el(`<div class="abs" style="left:${x - 50}px;top:${y}px;width:100px;height:140px">${SVG(100, 140,
+      `<circle cx="50" cy="28" r="24" fill="${WHITE}"/><rect x="16" y="60" width="68" height="80" rx="30" fill="${WHITE}"/>`)}</div>`)));
+  }
+  const n = add(el(`<div class="abs num" style="left:80px;top:1335px;font-size:0px"></div>`));
+  seek = (t) => {
+    inUp(eb, t, 0); inUp(t1, t, 0.0, 80); inUp(t2, t, 0.35, 60);
+    figs.forEach((f, i) => { const t0 = 0.55 + i * 0.07, p = sp(t, t0, 3.2); S(f, { opacity: clamp01((t - t0) * 8), transform: `scale(${0.4 + 0.6 * p})` });
+      f.querySelectorAll("circle,rect").forEach((s) => s.setAttribute("fill", t > 2.3 ? (i % 4 === 0 ? BLUE : WHITE) : WHITE)); });
+    S(grid, { opacity: 1 });
+  };
+}
+
+if (scene === "study2009") {                               // "in 2009 a study measured a hormone called DHT"
+  const eb = eyebrow("THE 2009 STUDY");
+  const c = card(250, 470);
+  const yr = add(el(`<div class="abs num" style="left:120px;top:280px;font-size:150px;color:${BLUE};line-height:1">2009</div>`));
+  const au = add(el(`<div class="abs en" style="left:120px;top:450px;font-size:46px;font-weight:800;color:${WHITE}">van der Merwe et al.</div>`));
+  const jn = add(el(`<div class="abs en" style="left:120px;top:518px;font-size:30px;font-weight:500;color:${MUTED}">Clinical Journal of Sport Medicine</div>`));
+  const ds = add(el(`<div class="abs en" style="left:120px;top:580px;font-size:30px;font-weight:600;color:${WHITE};letter-spacing:.02em">20 rugby players · 3 weeks · double-blind</div>`));
+  // DHT: steroid nucleus (rings A-B-C-D) drawn as a skeletal formula, stroke-on
+  const R = 58, hx = (cx, cy) => Array.from({ length: 6 }, (_, k) => [cx + R * Math.cos(Math.PI / 6 + k * Math.PI / 3), cy + R * Math.sin(Math.PI / 6 + k * Math.PI / 3)]);
+  const A = hx(300, 1040), B = hx(300 + R * Math.sqrt(3), 1040), C = hx(300 + 1.5 * R * Math.sqrt(3), 1040 - 1.5 * R);
+  const pen = (pts) => pts.map((p, i) => (i ? "L" : "M") + p[0].toFixed(1) + "," + p[1].toFixed(1)).join("") + "Z";
+  const cxD = 300 + 1.5 * R * Math.sqrt(3) + R * 1.55, cyD = 1040 - 2.05 * R;
+  const D = Array.from({ length: 5 }, (_, k) => [cxD + R * 0.9 * Math.cos(-Math.PI + 0.3 + k * 2 * Math.PI / 5), cyD + R * 0.9 * Math.sin(-Math.PI + 0.3 + k * 2 * Math.PI / 5)]);
+  const paths = [pen(A), pen(B), pen(C), pen(D)];
+  const mol = add(el(`<div class="abs" style="left:0;top:0;width:1080px;height:1920px">${SVG(1080, 1920, paths.map((d, i) =>
+    `<path id="p${i}" d="${d}" fill="none" stroke="${i === 3 ? BLUE : WHITE}" stroke-width="9" stroke-linejoin="round"/>`).join("") +
+    `<path id="oh" d="M${D[2][0].toFixed(1)},${D[2][1].toFixed(1)} l40,-46" stroke="${WHITE}" stroke-width="9" fill="none"/>` +
+    `<text id="oht" x="${(D[2][0] + 52).toFixed(0)}" y="${(D[2][1] - 52).toFixed(0)}" font-family="Inter" font-weight="700" font-size="40" fill="${WHITE}">OH</text>` +
+    `<path id="ko" d="M${A[3][0].toFixed(1)},${A[3][1].toFixed(1)} l-46,26" stroke="${WHITE}" stroke-width="9" fill="none"/>` +
+    `<text id="kot" x="${(A[3][0] - 96).toFixed(0)}" y="${(A[3][1] + 46).toFixed(0)}" font-family="Inter" font-weight="700" font-size="40" fill="${WHITE}">O</text>`)}</div>`));
+  const lab = add(el(`<div class="abs" style="left:80px;top:1190px;width:920px;text-align:right"><span class="ti" style="font-size:96px;color:${WHITE}">DHT</span>
+    <div class="en" style="font-size:32px;font-weight:600;color:${MUTED};margin-top:4px">Dihydrotestosterone</div></div>`));
+  const lens = paths.map((_, i) => mol.querySelector("#p" + i).getTotalLength());
+  seek = (t) => {
+    inUp(eb, t, 0); const pc = sp(t, 0.05, 2.4); S(c, { opacity: clamp01(t * 6), transform: `translateY(${(1 - pc) * 80}px)` });
+    inUp(yr, t, 0.12); inUp(au, t, 0.3); inUp(jn, t, 0.42); inUp(ds, t, 0.55);
+    lens.forEach((L, i) => { const p = seg(t, 1.1 + i * 0.22, 1.55 + i * 0.22, expoOut); const n = mol.querySelector("#p" + i); n.style.strokeDasharray = `${L} ${L}`; n.style.strokeDashoffset = L * (1 - p); });
+    const o = clamp01((t - 2.0) * 5); ["oh", "oht", "ko", "kot"].forEach((id) => mol.querySelector("#" + id).style.opacity = o);
+    inUp(lab, t, 2.1, 50);
+  };
+}
+
+if (scene === "dht") {                                     // "...after 3 weeks of creatine, DHT went up" + "that study didn't measure hair at all"
+  const eb = eyebrow("RESULT · SERUM DHT");
+  const base = 1110, W0 = 210, xs = [120, 435, 750], vals = [100, 156, 140], labs = ["BASELINE", "DAY 7", "DAY 21"], tags = ["", "+56%", "+40%"];
+  const axis = add(el(`<div class="abs" style="left:90px;top:${base}px;width:900px;height:3px;background:${LINE}"></div>`));
+  const bars = xs.map((x, i) => add(el(`<div class="abs" style="left:${x}px;width:${W0}px;bottom:${1920 - base}px;height:0;border-radius:18px 18px 0 0;background:${i ? BLUE : "#3A4558"}"></div>`)));
+  const blabs = xs.map((x, i) => add(el(`<div class="abs en" style="left:${x}px;width:${W0}px;top:${base + 16}px;text-align:center;font-size:28px;font-weight:700;letter-spacing:.1em;color:${MUTED}">${labs[i]}</div>`)));
+  const nums = xs.map((x, i) => add(el(`<div class="abs num" style="left:${x - 30}px;width:${W0 + 60}px;text-align:center;font-size:84px;color:${WHITE}"></div>`)));
+  const tnote = add(el(`<div class="abs en" style="left:90px;top:${base + 70}px;font-size:30px;font-weight:600;color:${WHITE}">Testosterone: <span style="color:${MUTED}">no change</span></div>`));
+  // part 2 (t >= 3.72): what was measured
+  const chk = add(el(`<div class="abs" style="left:70px;top:260px;width:940px;height:420px;background:${SURF};border:1px solid ${LINE};border-radius:28px"></div>`));
+  const rows = [["DHT", "✓", BLUE], ["Testosterone", "✓", BLUE], ["Hair", "✗", RED]].map(([k, m, c], i) => add(el(
+    `<div class="abs en" style="left:120px;top:${300 + i * 120}px;width:840px;display:flex;justify-content:space-between;align-items:center;font-size:58px;font-weight:800;color:${WHITE}">
+     <span>${k}${i === 2 ? `<span class="ar" style="font-size:40px;color:${RED};margin-left:24px">ماتقاسش</span>` : ""}</span><span style="color:${c};font-size:70px">${m}</span></div>`)));
+  seek = (t) => {
+    const p1 = t < 3.72;
+    S(chk, { opacity: p1 ? 0 : clamp01((t - 3.72) * 7), transform: `translateY(${(1 - sp(t, 3.72, 3)) * 60}px)` });
+    rows.forEach((r, i) => p1 ? S(r, { opacity: 0 }) : inUp(r, t, 3.85 + i * 0.28, 40, 3.2));
+    inUp(eb, t, 0); S(eb, { opacity: p1 ? clamp01(t * 6) : 0 });
+    const away = p1 ? 0 : seg(t, 3.72, 4.05, expoIn);           // the chart drops out as the checklist arrives
+    const fadeChart = (n) => { n.style.translate = `0 ${away * 300}px`; if (away > 0) n.style.opacity = String(Math.min(Number(n.style.opacity || 1), 1 - away)); };
+    S(axis, { opacity: clamp01(t * 6) });
+    bars.forEach((b, i) => { const t0 = 0.2 + i * 0.55, p = sp(t, t0, 2.2); S(b, { height: `${(vals[i] / 156) * 520 * p}px` });
+      const v = Math.round(countUp(frameTime(t, 30), t0, t0 + 0.5, i ? 100 : 0, vals[i]));
+      nums[i].textContent = i ? tags[i] : "100%"; S(nums[i], { top: `${base - (vals[i] / 156) * 520 * p - 100}px`, opacity: clamp01((t - t0 - 0.15) * 5) });
+      S(blabs[i], { opacity: clamp01((t - t0) * 5) }); void v; });
+    inUp(tnote, t, 2.0, 30);
+    [axis, tnote, ...bars, ...blabs, ...nums].forEach(fadeChart);
+  };
+}
+
+if (scene === "rct2025") {                                 // "in 2025 a controlled study on 45 trained men..."
+  const eb = eyebrow("THE 2025 TRIAL");
+  const c = card(250, 470);
+  const yr = add(el(`<div class="abs num" style="left:120px;top:280px;font-size:150px;color:${BLUE};line-height:1">2025</div>`));
+  const ty = add(el(`<div class="abs en" style="left:420px;top:300px;font-size:30px;font-weight:800;letter-spacing:.14em;color:${WHITE};background:${BLUE};padding:8px 18px;border-radius:12px">RCT · PLACEBO-CONTROLLED</div>`));
+  const au = add(el(`<div class="abs en" style="left:120px;top:450px;font-size:46px;font-weight:800;color:${WHITE}">Lak et al.</div>`));
+  const jn = add(el(`<div class="abs en" style="left:120px;top:518px;font-size:30px;font-weight:500;color:${MUTED}">J. Int. Society of Sports Nutrition</div>`));
+  const ds = add(el(`<div class="abs en" style="left:120px;top:580px;font-size:30px;font-weight:600;color:${WHITE}">Resistance-trained men · 18–40 y</div>`));
+  const stats = [["45", "رجل بيتمرنوا"]].map(([v, l], i) => add(el(
+    `<div class="abs" style="left:0;top:820px;width:1080px;text-align:center"><div class="num" style="font-size:300px;color:${BLUE};line-height:1">${v}</div>
+     <div class="ar" style="font-size:64px;color:${WHITE};margin-top:10px">${l}</div></div>`)));
+  const at = [0.0, 2.5, 3.3];      // 45 men on "45 راجل" (19.26 - 16.16 = 3.1 s in), 5 g on "5 جرام" (5.34 s, next clip), 12 weeks (7.1 s)
+  seek = (t) => {
+    inUp(eb, t, 0); const pc = sp(t, 0.05, 2.4); S(c, { opacity: clamp01(t * 6), transform: `translateY(${(1 - pc) * 80}px)` });
+    inUp(yr, t, 0.12); inUp(ty, t, 0.3, 30); inUp(au, t, 0.4); inUp(jn, t, 0.52); inUp(ds, t, 0.64);
+    stats.forEach((s, i) => { const t0 = [3.0][i]; const p = sp(t, t0, 3); S(s, { opacity: clamp01((t - t0) * 7), transform: `translateY(${(1 - p) * 50}px) scale(${0.9 + 0.1 * p})` }); });
+    void at;
+  };
+}
+
+if (scene === "hair") {                                    // "...and measured the hair itself" + "no difference at all"
+  const eb = eyebrow("MEASURED: HAIR FOLLICLES");
+  // follicle cross-section: skin layers, follicle sheath, bulb with papilla, hair shaft (simplified anatomical illustration)
+  const ill = add(el(`<div class="abs" style="left:0;top:0;width:1080px;height:1920px">${SVG(1080, 1920, `
+    <rect x="90" y="300" width="900" height="70" rx="10" fill="#C99A82"/>
+    <rect x="90" y="370" width="900" height="300" fill="#7A5A50"/>
+    <rect x="90" y="670" width="900" height="220" fill="#5B4A52"/>
+    <path id="sheath" d="M500,300 L500,760 Q500,820 540,820 Q580,820 580,760 L580,300" fill="none" stroke="${WHITE}" stroke-width="10"/>
+    <ellipse id="bulb" cx="540" cy="790" rx="62" ry="54" fill="${BLUE}"/>
+    <ellipse cx="540" cy="808" rx="24" ry="20" fill="${NIGHT}"/>
+    <path id="shaft" d="M540,760 L540,240" stroke="#1C1C1C" stroke-width="22" stroke-linecap="round"/>
+    <path d="M540,760 L540,240" stroke="#EDE6E0" stroke-width="4" stroke-linecap="round" opacity=".5"/>`)}</div>`));
+  const lbl = [["Hair shaft", 580, 240], ["Follicle", 610, 520], ["Bulb", 625, 790]].map(([s, x, y]) => add(el(`<div class="abs en" style="left:${x}px;top:${y}px;font-size:32px;font-weight:700;color:${WHITE}">${s}</div>`)));
+  const tools = add(el(`<div class="abs en" style="left:90px;top:930px;width:900px;font-size:30px;font-weight:600;color:${MUTED}">Trichogram + FotoFinder: density · follicular units · thickness</div>`));
+  // part 2 (t >= 1.48): creatine vs placebo
+  const pn = add(el(`<div class="abs" style="left:70px;top:260px;width:940px;height:900px;background:${NIGHT}"></div>`));
+  const bb = [["Creatine", BLUE], ["Placebo", "#3A4558"]].map(([k, c], i) => add(el(
+    `<div class="abs" style="left:${210 + i * 380}px;top:420px;width:280px;height:560px"><div class="b" style="position:absolute;bottom:60px;left:0;width:280px;height:0;border-radius:18px 18px 0 0;background:${c}"></div>
+     <div class="en" style="position:absolute;bottom:0;width:280px;text-align:center;font-size:34px;font-weight:800;color:${WHITE}">${k}</div></div>`)));
+  const ax = add(el(`<div class="abs en" style="left:0;width:1080px;top:330px;text-align:center;font-size:34px;font-weight:700;letter-spacing:.12em;color:${MUTED}">12 WEEKS · HAIR & DHT</div>`));
+  const eq = add(el(`<div class="abs ti" style="left:0;width:1080px;top:1030px;text-align:center;font-size:92px;color:${WHITE}">NO DIFFERENCE</div>`));
+  const pv = add(el(`<div class="abs en" style="left:0;width:1080px;top:1140px;text-align:center;font-size:30px;font-weight:600;color:${MUTED}">hair & DHT: creatine = placebo (p &gt; 0.05)</div>`));
+  const shaft = ill.querySelector("#shaft"), L = shaft.getTotalLength();
+  seek = (t) => {
+    const p1 = t < 1.48;
+    inUp(eb, t, 0);
+    S(ill, { opacity: p1 ? 1 : 0 }); shaft.style.strokeDasharray = `${L} ${L}`; shaft.style.strokeDashoffset = L * (1 - seg(t, 0.15, 0.9, expoOut));
+    lbl.forEach((l, i) => { inUp(l, t, 0.4 + i * 0.15, 30); if (!p1) l.style.opacity = 0; }); inUp(tools, t, 0.8, 30); if (!p1) tools.style.opacity = 0;
+    S(pn, { opacity: p1 ? 0 : 1, transform: `translateY(${(1 - sp(t, 1.48, 3)) * 1200}px)` });
+    bb.forEach((b, i) => { const p = p1 ? 0 : sp(t, 1.7 + i * 0.12, 2.4); S(b, { opacity: p1 ? 0 : 1 }); S(b.firstElementChild, { height: `${400 * p}px` }); });
+    S(eq, { opacity: p1 ? 0 : clamp01((t - 2.3) * 6), transform: `scale(${1.25 - 0.25 * seg(t, 2.3, 2.6, expoOut)})` });
+    S(pv, { opacity: p1 ? 0 : clamp01((t - 2.6) * 6) }); S(ax, { opacity: p1 ? 0 : clamp01((t - 1.6) * 6) });
+    S(eb, { opacity: p1 ? 1 : 0 });
+  };
+}
+
+if (scene === "atp") {                                     // "it helps you do more work in training ... strength & muscle over time"
+  const eb = eyebrow("HOW IT ACTUALLY WORKS");
+  const nodes = [["Creatine", BLUE], ["Phosphocreatine", WHITE], ["ATP · fast energy", WHITE], ["+ reps & sets", WHITE], ["+ strength & muscle", BLUE]];
+  const ns = nodes.map(([s, c], i) => add(el(`<div class="abs en" style="left:140px;top:${270 + i * 200}px;width:800px;height:130px;border-radius:24px;
+    background:${i === 0 || i === 4 ? c : SURF};border:2px solid ${i === 0 || i === 4 ? c : LINE};display:flex;align-items:center;justify-content:center;
+    font-size:52px;font-weight:800;color:${i === 0 || i === 4 ? NIGHT : WHITE}">${s}</div>`)));
+  const arr = nodes.slice(1).map((_, i) => add(el(`<div class="abs" style="left:530px;top:${400 + i * 200}px;width:20px;height:70px">${SVG(20, 70, `<path d="M10,0 L10,58 M2,48 L10,62 L18,48" stroke="${BLUE}" stroke-width="5" fill="none"/>`)}</div>`)));
+  seek = (t) => { inUp(eb, t, 0); ns.forEach((n, i) => inUp(n, t, 0.05 + i * 0.4, 50, 3.2)); arr.forEach((a, i) => S(a, { opacity: clamp01((t - 0.3 - i * 0.4) * 6) })); };
+}
+
+if (scene === "dose") {                                    // "take 3 to 5 g of creatine every day - what matters is consistency"
+  const eb = eyebrow("THE DOSE");
+  const big = add(el(`<div class="abs num" style="left:0;width:1080px;top:290px;text-align:center;font-size:330px;color:${WHITE};line-height:1">3–5<span style="font-size:170px;color:${BLUE}">g</span></div>`));
+  const per = add(el(`<div class="abs ar" style="left:0;width:1080px;top:650px;text-align:center;font-size:72px;color:${BLUE}">كل يوم</div>`));
+  const days = Array.from({ length: 7 }, (_, i) => add(el(`<div class="abs" style="left:${105 + i * 130}px;top:900px;width:100px;height:100px;border-radius:50px;border:4px solid ${LINE};
+    display:flex;align-items:center;justify-content:center;font-family:Inter;font-weight:900;font-size:50px;color:${NIGHT}"></div>`)));
+  const cons = add(el(`<div class="abs ar" style="left:0;width:1080px;top:1060px;text-align:center;font-size:64px;color:${WHITE}">الأهم: الانتظام</div>`));
+  const src = add(el(`<div class="abs en" style="left:0;width:1080px;top:1180px;text-align:center;font-size:26px;font-weight:600;color:${MUTED}">ISSN position stand (Kreider et al., 2017)</div>`));
+  seek = (t) => { inUp(eb, t, 0); inUp(big, t, 0.0, 80, 2.4); inUp(per, t, 0.6, 40);
+    days.forEach((d, i) => { const t0 = 2.5 + i * 0.12, on = t >= t0; S(d, { background: on ? BLUE : "transparent", borderColor: on ? BLUE : LINE, transform: `scale(${on ? 0.85 + 0.15 * sp(t, t0, 3.5) : 1})` }); d.textContent = on ? "✓" : ""; });
+    inUp(cons, t, 2.55, 40); inUp(src, t, 2.9, 20); };
+}
+
+if (scene === "water") {                                   // "it's extra water inside the muscles"
+  const eb = eyebrow("WATER, NOT FAT");
+  const fib = add(el(`<div class="abs" style="left:0;top:0;width:1080px;height:1920px">${SVG(1080, 1920, `<rect id="cell" x="140" y="430" width="800" height="300" rx="150" fill="none" stroke="${WHITE}" stroke-width="8"/>
+    ${Array.from({ length: 5 }, (_, i) => `<line x1="${240 + i * 150}" y1="455" x2="${240 + i * 150}" y2="705" stroke="${LINE}" stroke-width="6"/>`).join("")}
+    ${Array.from({ length: 14 }, (_, i) => `<path id="d${i}" d="M0,-26 C16,-6 22,6 22,14 A22,22 0 1,1 -22,14 C-22,6 -16,-6 0,-26Z" fill="${BLUE}"/>`).join("")}`)}</div>`));
+  const lab = add(el(`<div class="abs ar" style="left:0;width:1080px;top:830px;text-align:center;font-size:68px;color:${WHITE}">ميّه جوه العضلة</div>`));
+  const sub = add(el(`<div class="abs en" style="left:0;width:1080px;top:950px;text-align:center;font-size:32px;font-weight:600;color:${MUTED}">intracellular water · not body fat</div>`));
+  seek = (t) => { inUp(eb, t, 0);
+    const sw = sp(t, 0.3, 1.6); const cell = fib.querySelector("#cell"); cell.setAttribute("y", 430 - 40 * sw); cell.setAttribute("height", 300 + 80 * sw);
+    for (let i = 0; i < 14; i++) { const d = fib.querySelector("#d" + i), t0 = 0.1 + i * 0.07, p = seg(t, t0, t0 + 0.55, expoOut);
+      const x0 = 120 + rand(9, i) * 840, y0 = 1250 + rand(11, i) * 120, x1 = 230 + (i % 7) * 105, y1 = 540 + Math.floor(i / 7) * 90;
+      d.setAttribute("transform", `translate(${lerp(x0, x1, p).toFixed(1)},${lerp(y0, y1, p).toFixed(1)}) scale(${0.9 + 0.3 * (1 - p)})`); d.style.opacity = clamp01((t - t0) * 8); }
+    inUp(lab, t, 0.7, 40); inUp(sub, t, 1.0, 20); };
+}
+
+window.seek = seek;
+window.ready = document.fonts.ready.then(() => Promise.all(["700 40px Plex", "900 italic 80px InterI", "700 80px Barlow", "800 40px Inter"].map((f) => document.fonts.load(f)))).then(() => seek(0));
+</script></body></html>

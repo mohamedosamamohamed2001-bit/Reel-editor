@@ -29,9 +29,13 @@ def search(q, pages=1):
             break
         a += len(tag)
         state = json.loads(html[a:html.find("</script>", a)])
-        for v in state.values():
-            if isinstance(v, dict) and v.get("u", "").endswith("public-api.coverr.co/videos"):
+        for k, v in state.items():
+            if not isinstance(v, dict):
+                continue
+            if v.get("u", "").endswith("public-api.coverr.co/videos"):      # page format before 2026-11
                 hits += v["b"]["hits"]
+            elif k == "search_coverr_videos":                                # page format since 2026-11
+                hits += v.get("hits", [])
     out = []
     for h in hits:
         if h.get("isAiGenerated") is not False or h.get("isPremium") is not False:
