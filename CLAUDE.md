@@ -273,4 +273,5 @@ projects/<name>/  one folder per video: project.json, edit.json, analysis/, docu
   difference, phrase-exact caption changes by giving every reference phrase its own caption zone (zone edges break groups; the
   English-run rule otherwise merges whole sentences), look via a per-clip grade chain. Another creator's voice-over/music is used
   only as the internal sync guide: the delivered file is video-only and he adds the original audio in Instagram ("Use audio", 0:00).
-  Cover tool: frame `grade` override (the video's own look) and LTR headlines detected automatically.
+  Cover tool: frame `grade` override (the video's own look) and LTR headlines detected automatically. At his explicit request a
+  second file carries the reference audio stream copied bit-for-bit (`-c:a copy`, last frame held so no audio is cut).
