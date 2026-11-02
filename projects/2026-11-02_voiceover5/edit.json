@@ -1,0 +1,625 @@
+{
+ "title": "One feast meal (research reel)",
+ "fps": 30,
+ "width": 1080,
+ "height": 1920,
+ "media": {
+  "s_turkey": "source/stock/coverr-putting-roast-turkey-on-the-table-275.mp4",
+  "s_friends": "source/stock/coverr-friends-talking-at-a-restaurant-8705.mp4",
+  "s_dinner": "source/stock/coverr-thanksgiving-dinner-9881.mp4",
+  "s_appet": "source/stock/coverr-serving-appetizers-5268.mp4",
+  "s_chicken": "source/stock/coverr-men-grilling-chicken-7212.mp4",
+  "s_steak": "source/stock/coverr-cutting-steak-1062.mp4",
+  "s_salad": "source/stock/coverr-colorful-salad-bowl-1709.mp4",
+  "s_sweets": "source/stock/coverr-eating-sweets-at-a-cafe-5445.mp4",
+  "s_phone": "source/stock/coverr-man-types-on-iphone-15.mp4",
+  "b_8385": "source/IMG_8385.MOV",
+  "b_7542": "source/IMG_7542.MOV",
+  "m_plates": "work/motion/plates.mp4",
+  "m_week": "work/motion/week.mp4",
+  "m_meals": "work/motion/meals.mp4",
+  "m_order": "work/motion/order.mp4",
+  "m_rules": "work/motion/rules.mp4"
+ },
+ "plates": {
+  "grade": "auto",
+  "sharpen": "cas=strength=0.25"
+ },
+ "clips": [
+  {
+   "src": "s_appet",
+   "in": 1.0,
+   "out": 2.1333,
+   "zoom": [
+    1.08,
+    1.0
+   ],
+   "focusX": 0.55
+  },
+  {
+   "src": "m_plates",
+   "in": 0.0,
+   "out": 2.3667,
+   "grade": "format=yuv420p",
+   "tin": {
+    "type": "zoom"
+   }
+  },
+  {
+   "src": "s_friends",
+   "in": 5.5,
+   "out": 7.1,
+   "zoom": [
+    1.0,
+    1.07
+   ],
+   "focusX": 0.42,
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  },
+  {
+   "src": "s_turkey",
+   "in": 13.0,
+   "out": 14.6,
+   "zoom": [
+    1.04,
+    1.12
+   ],
+   "focusX": 0.55,
+   "tin": {
+    "type": "whip",
+    "dir": "right"
+   }
+  },
+  {
+   "src": "s_dinner",
+   "in": 1.0,
+   "out": 2.8667,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "focusX": 0.5,
+   "tin": {
+    "type": "zoom"
+   }
+  },
+  {
+   "src": "m_week",
+   "in": 0.0,
+   "out": 7.2,
+   "grade": "format=yuv420p",
+   "tin": {
+    "type": "whip",
+    "dir": "up"
+   }
+  },
+  {
+   "src": "b_8385",
+   "in": 0.4,
+   "out": 2.6,
+   "zoom": [
+    1.0,
+    1.06
+   ],
+   "focusY": 0.35,
+   "tin": {
+    "type": "flash"
+   }
+  },
+  {
+   "src": "m_meals",
+   "in": 0.0,
+   "out": 2.2333,
+   "grade": "format=yuv420p",
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  },
+  {
+   "src": "s_dinner",
+   "in": 5.0,
+   "out": 6.4667,
+   "zoom": [
+    1.0,
+    1.08
+   ],
+   "focusX": 0.45,
+   "tin": {
+    "type": "whip",
+    "dir": "right"
+   }
+  },
+  {
+   "src": "s_chicken",
+   "in": 7.0,
+   "out": 8.3,
+   "zoom": [
+    1.02,
+    1.1
+   ],
+   "focusX": 0.5,
+   "tin": {
+    "type": "whip",
+    "dir": "up"
+   }
+  },
+  {
+   "src": "s_steak",
+   "in": 6.0,
+   "out": 6.7,
+   "zoom": [
+    1.05,
+    1.12
+   ],
+   "focusX": 0.5,
+   "tin": {
+    "type": "zoom"
+   }
+  },
+  {
+   "src": "s_salad",
+   "in": 3.0,
+   "out": 4.1,
+   "zoom": [
+    1.0,
+    1.08
+   ],
+   "focusX": 0.5,
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  },
+  {
+   "src": "s_sweets",
+   "in": 5.0,
+   "out": 6.5333,
+   "zoom": [
+    1.0,
+    1.06
+   ],
+   "focusX": 0.45,
+   "tin": {
+    "type": "whip",
+    "dir": "right"
+   }
+  },
+  {
+   "src": "m_order",
+   "in": 0.0,
+   "out": 2.0,
+   "grade": "format=yuv420p",
+   "tin": {
+    "type": "whip",
+    "dir": "up"
+   }
+  },
+  {
+   "src": "m_rules",
+   "in": 0.0,
+   "out": 5.2,
+   "grade": "format=yuv420p",
+   "tin": {
+    "type": "zoom"
+   }
+  },
+  {
+   "src": "s_phone",
+   "in": 2.0,
+   "out": 4.0,
+   "zoom": [
+    1.0,
+    1.07
+   ],
+   "focusX": 0.55,
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  },
+  {
+   "src": "b_7542",
+   "in": 4.4,
+   "out": 6.1,
+   "zoom": [
+    1.0,
+    1.05
+   ],
+   "focusY": 0.4,
+   "tin": {
+    "type": "whip",
+    "dir": "up"
+   }
+  }
+ ],
+ "overlays": [
+  {
+   "type": "lowerLabel",
+   "at": 21.72,
+   "dur": 1.9,
+   "title": "بروتين الأول",
+   "eyebrow": "1",
+   "top": 0.56,
+   "plate": true
+  },
+  {
+   "type": "lowerLabel",
+   "at": 23.7,
+   "dur": 1.0,
+   "title": "بعدين خضار",
+   "eyebrow": "2",
+   "top": 0.56,
+   "plate": true
+  },
+  {
+   "type": "lowerLabel",
+   "at": 24.8,
+   "dur": 1.45,
+   "title": "اللي نفسك فيه",
+   "eyebrow": "3",
+   "top": 0.56,
+   "plate": true
+  },
+  {
+   "type": "endCard",
+   "at": 37.2,
+   "dur": 2.4,
+   "cta": "OSM Coach Osama",
+   "reveal": "wipe",
+   "image": "brand/end/osm-end-photo.jpg",
+   "sub": "Sources: Palascha 2015 · Shukla 2018"
+  }
+ ],
+ "shakes": [],
+ "sfx": {
+  "cues": [
+   {
+    "at": 0.0,
+    "sound": "impact",
+    "gain_db": -9
+   },
+   {
+    "at": 0.02,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 0.05,
+    "sound": "whoosh_in",
+    "gain_db": -18
+   },
+   {
+    "at": 1.12,
+    "sound": "whoosh_in",
+    "gain_db": -16
+   },
+   {
+    "at": 1.12,
+    "sound": "accent",
+    "gain_db": -17
+   },
+   {
+    "at": 1.67,
+    "sound": "blip",
+    "gain_db": -18
+   },
+   {
+    "at": 2.02,
+    "sound": "blip",
+    "gain_db": -18
+   },
+   {
+    "at": 2.37,
+    "sound": "thump",
+    "gain_db": -14
+   },
+   {
+    "at": 3.5,
+    "sound": "whip",
+    "gain_db": -15
+   },
+   {
+    "at": 5.1,
+    "sound": "whip",
+    "gain_db": -15
+   },
+   {
+    "at": 6.7,
+    "sound": "whoosh_in",
+    "gain_db": -16
+   },
+   {
+    "at": 8.55,
+    "sound": "whip",
+    "gain_db": -15
+   },
+   {
+    "at": 8.6,
+    "sound": "click",
+    "gain_db": -26
+   },
+   {
+    "at": 8.67,
+    "sound": "click",
+    "gain_db": -26
+   },
+   {
+    "at": 8.74,
+    "sound": "click",
+    "gain_db": -26
+   },
+   {
+    "at": 8.81,
+    "sound": "click",
+    "gain_db": -26
+   },
+   {
+    "at": 8.88,
+    "sound": "click",
+    "gain_db": -26
+   },
+   {
+    "at": 8.95,
+    "sound": "click",
+    "gain_db": -26
+   },
+   {
+    "at": 9.02,
+    "sound": "click",
+    "gain_db": -26
+   },
+   {
+    "at": 9.15,
+    "sound": "accent",
+    "gain_db": -16
+   },
+   {
+    "at": 12.25,
+    "sound": "impact",
+    "gain_db": -10
+   },
+   {
+    "at": 13.9,
+    "sound": "thump",
+    "gain_db": -18
+   },
+   {
+    "at": 14.02,
+    "sound": "thump",
+    "gain_db": -18
+   },
+   {
+    "at": 14.14,
+    "sound": "thump",
+    "gain_db": -18
+   },
+   {
+    "at": 14.15,
+    "sound": "boom",
+    "gain_db": -13
+   },
+   {
+    "at": 14.26,
+    "sound": "thump",
+    "gain_db": -18
+   },
+   {
+    "at": 14.38,
+    "sound": "thump",
+    "gain_db": -18
+   },
+   {
+    "at": 14.5,
+    "sound": "thump",
+    "gain_db": -18
+   },
+   {
+    "at": 15.75,
+    "sound": "click",
+    "gain_db": -10
+   },
+   {
+    "at": 17.95,
+    "sound": "whip",
+    "gain_db": -15
+   },
+   {
+    "at": 18.0,
+    "sound": "blip",
+    "gain_db": -27
+   },
+   {
+    "at": 18.105,
+    "sound": "blip",
+    "gain_db": -27
+   },
+   {
+    "at": 18.21,
+    "sound": "blip",
+    "gain_db": -27
+   },
+   {
+    "at": 18.315,
+    "sound": "blip",
+    "gain_db": -27
+   },
+   {
+    "at": 18.42,
+    "sound": "blip",
+    "gain_db": -27
+   },
+   {
+    "at": 18.525,
+    "sound": "blip",
+    "gain_db": -27
+   },
+   {
+    "at": 18.63,
+    "sound": "blip",
+    "gain_db": -27
+   },
+   {
+    "at": 18.85,
+    "sound": "impact",
+    "gain_db": -11
+   },
+   {
+    "at": 20.2,
+    "sound": "whip",
+    "gain_db": -15
+   },
+   {
+    "at": 21.65,
+    "sound": "whip",
+    "gain_db": -15
+   },
+   {
+    "at": 21.72,
+    "sound": "accent",
+    "gain_db": -17
+   },
+   {
+    "at": 22.95,
+    "sound": "whoosh_in",
+    "gain_db": -16
+   },
+   {
+    "at": 23.65,
+    "sound": "whip",
+    "gain_db": -15
+   },
+   {
+    "at": 23.7,
+    "sound": "accent",
+    "gain_db": -17
+   },
+   {
+    "at": 24.75,
+    "sound": "whip",
+    "gain_db": -15
+   },
+   {
+    "at": 24.8,
+    "sound": "accent",
+    "gain_db": -17
+   },
+   {
+    "at": 26.3,
+    "sound": "whip",
+    "gain_db": -15
+   },
+   {
+    "at": 26.35,
+    "sound": "blip",
+    "gain_db": -19
+   },
+   {
+    "at": 26.57,
+    "sound": "blip",
+    "gain_db": -19
+   },
+   {
+    "at": 26.79,
+    "sound": "blip",
+    "gain_db": -19
+   },
+   {
+    "at": 28.3,
+    "sound": "whoosh_in",
+    "gain_db": -16
+   },
+   {
+    "at": 28.6,
+    "sound": "chime",
+    "gain_db": -18
+   },
+   {
+    "at": 30.5,
+    "sound": "thump",
+    "gain_db": -14
+   },
+   {
+    "at": 31.4,
+    "sound": "thump",
+    "gain_db": -14
+   },
+   {
+    "at": 33.5,
+    "sound": "whip",
+    "gain_db": -15
+   },
+   {
+    "at": 34.1,
+    "sound": "key",
+    "gain_db": -21
+   },
+   {
+    "at": 34.5,
+    "sound": "key",
+    "gain_db": -22
+   },
+   {
+    "at": 35.5,
+    "sound": "whip",
+    "gain_db": -15
+   },
+   {
+    "at": 37.2,
+    "sound": "reverse_hit",
+    "gain_db": -12,
+    "dur": 0.7
+   },
+   {
+    "at": 37.2,
+    "sound": "boom",
+    "gain_db": -7
+   },
+   {
+    "at": 37.7,
+    "sound": "click",
+    "gain_db": -17
+   }
+  ]
+ },
+ "music": {
+  "src": "work/music/music.wav",
+  "gain_db": -11
+ },
+ "tail": 2.4,
+ "voiceTrack": "work/vo.wav",
+ "dialogueLufs": -16.0,
+ "captions": {
+  "wordsFile": "work/vo.words.json",
+  "outputTime": true,
+  "style": "plate",
+  "karaoke": true,
+  "maxWords": 3,
+  "maxChars": 22,
+  "plateColor": "#56A0FB",
+  "keywordColor": "#FFFFFF",
+  "keywords": [
+   "طبقين",
+   "الحقيقة",
+   "باظ",
+   "ذكي",
+   "بالبروتين",
+   "الخضار",
+   "معقولة",
+   "العادي",
+   "صيام",
+   "عزومة"
+  ],
+  "zones": [
+   {
+    "at": 0,
+    "dur": 37.21,
+    "top": 0.74
+   }
+  ]
+ },
+ "textPlate": "#56A0FB"
+}

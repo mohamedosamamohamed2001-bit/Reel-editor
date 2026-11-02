@@ -1,0 +1,114 @@
+<!doctype html>
+<!-- "One feast meal doesn't ruin your diet": scenes for projects/2026-11-02_voiceover5. 1080x1920, every pixel from t.
+     ?scene=plates|week|meals|order|rules
+     Research (PubMed): Palascha et al. 2015, J Health Psychol 20(5):638-48, 241 adults: dichotomous ("black and white") thinking
+     about food linked rigid restraint to weight regain (doi 10.1177/1359105315573440). Shukla et al. 2018, Diabetes Obes Metab
+     21(2):377-381, 15 adults with prediabetes: protein + vegetables before carbs cut the glucose peak by >40 % (doi 10.1111/dom.13503).
+     Text above y=1330. Inter / Barlow / IBM Plex Sans Arabic; Night, white, Core Blue (+ red / copper-free orange for status only). -->
+<html><head><meta charset="utf-8">
+<style>
+@font-face { font-family: Inter; src: url('/osm/fonts/Inter[opsz,wght].ttf'); font-weight: 100 900; }
+@font-face { font-family: InterI; src: url('/osm/fonts/Inter-Italic[opsz,wght].ttf'); font-weight: 100 900; font-style: italic; }
+@font-face { font-family: Plex; src: url('/osm/fonts/IBMPlexSansArabic-Bold.ttf'); font-weight: 700; }
+@font-face { font-family: Barlow; src: url('/osm/fonts/BarlowCondensed-Bold.ttf'); font-weight: 700; }
+html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #0A0F16; }
+svg { position: absolute; left: 0; top: 0; overflow: visible; }
+.ar { font-family: Plex; font-weight: 700; direction: rtl; }
+.en { font-family: Inter; }
+.ti { font-family: InterI; font-style: italic; font-weight: 900; text-transform: uppercase; letter-spacing: -0.02em; }
+.num { font-family: Barlow; font-weight: 700; }
+#root { position: absolute; inset: 0; }
+.abs { position: absolute; }
+</style></head>
+<body><div id="root"></div>
+<script type="module">
+import { seg, spring, clamp01 } from "/osm/motion-core.js";
+const BLUE = "#56A0FB", WHITE = "#FFFFFF", TXT = "#E5EBF1", MUTED = "#8C98AA", LINE = "#263244", SURF = "#141B26", RAISED = "#1C2634", CYAN = "#7DD2EC", NIGHT = "#0A0F16", RED = "#F26D6D", WARN = "#F2B84B", OK = "#6FD58A";
+const scene = new URLSearchParams(location.search).get("scene") || "plates";
+const DUR = { plates: 2.38, week: 7.2, meals: 2.25, order: 2.0, rules: 5.2 }[scene];
+window.meta = { dur: DUR, size: [1080, 1920], scene };
+const root = document.getElementById("root");
+const el = (html) => { const d = document.createElement("div"); d.innerHTML = html.trim(); d.querySelectorAll(".ar").forEach((n) => n.setAttribute("dir", "rtl")); return d.firstElementChild; };
+const add = (node) => (root.appendChild(node), node);
+const S = (n, st) => { for (const k in st) n.style[k] = st[k]; };
+const sp = (t, t0, f = 2.6) => spring(t - t0, { freq: f });
+const inUp = (n, t, t0, dy = 60, f = 2.6) => { const p = sp(t, t0, f); S(n, { opacity: clamp01((t - t0) * 6), transform: `translateY(${(1 - p) * dy}px)` }); return p; };
+const pop = (n, t, t0, f = 3) => { const p = sp(t, t0, f); S(n, { opacity: clamp01((t - t0) * 8), transform: `scale(${0.6 + 0.4 * p})` }); return p; };
+const SVG = (w, h, inner) => `<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" xmlns="http://www.w3.org/2000/svg">${inner}</svg>`;
+add(el(`<div class="abs" style="inset:0">${SVG(1080, 1920, Array.from({ length: 13 }, (_, i) =>
+  `<line x1="${i * 90}" y1="0" x2="${i * 90}" y2="1920" stroke="${LINE}" stroke-width="1" opacity=".35"/>`).join("") +
+  Array.from({ length: 22 }, (_, i) => `<line x1="0" y1="${i * 90}" x2="1080" y2="${i * 90}" stroke="${LINE}" stroke-width="1" opacity=".35"/>`).join(""))}</div>`));
+const eyebrow = (txt) => add(el(`<div class="abs en" style="left:80px;top:170px;font-weight:700;font-size:30px;letter-spacing:.22em;color:${CYAN}">${txt}</div>`));
+const plateSVG = (cx, cy, r, food) => `<circle cx="${cx}" cy="${cy}" r="${r}" fill="${RAISED}" stroke="${MUTED}" stroke-opacity=".5" stroke-width="6"/>
+  <circle cx="${cx}" cy="${cy}" r="${r * 0.72}" fill="none" stroke="${LINE}" stroke-width="4"/>` + (food ? `<circle cx="${cx}" cy="${cy}" r="${r * 0.55}" fill="${MUTED}" opacity=".35"/>` : "");
+let seek;
+
+if (scene === "plates") {           // "'you haven't eaten anything!' ... said to you after two full plates"
+  const eb = eyebrow("AT EVERY FEAST");
+  const q = add(el(`<div class="abs ar" style="left:80px;right:80px;top:250px;text-align:center;font-size:84px;color:${WHITE};background:${SURF};border:2px solid ${LINE};border-radius:40px;padding:26px 30px 40px">«ده انت ماكلتش حاجة!»</div>`));
+  const pl = add(el(`<div class="abs" style="left:0;top:0">${SVG(1080, 1920, plateSVG(330, 820, 190, false) + plateSVG(750, 820, 190, false))}</div>`));
+  const c = add(el(`<div class="abs ar" style="left:0;width:1080px;top:1070px;text-align:center"><span class="num" style="font-size:150px;color:${BLUE}">2</span> <span style="font-size:78px;color:${WHITE}">طبق خلصانين</span></div>`));
+  const ticks = [330, 750].map((x, i) => add(el(`<div class="abs" style="left:${x - 50}px;top:770px;width:100px;height:100px;border-radius:50px;background:${BLUE};color:${NIGHT};font:900 64px/104px Inter;text-align:center">✓</div>`)));
+  seek = (t) => { inUp(eb, t, 0); pop(q, t, 0.0, 2.8); inUp(pl, t, 0.25, 60); ticks.forEach((k, i) => pop(k, t, 0.55 + i * 0.35, 3.2)); pop(c, t, 1.25, 3); };
+}
+
+if (scene === "week") {             // "one meal doesn't ruin it; saying 'the day is ruined' and carrying on to the end of the week does"
+  const eb = eyebrow("ONE MEAL VS THE MINDSET");
+  const days = ["SAT", "SUN", "MON", "TUE", "WED", "THU", "FRI"];
+  const tiles = days.map((d, i) => add(el(`<div class="abs" style="left:${70 + i * 136}px;top:330px;width:120px;height:170px;border-radius:24px;background:${SURF};border:3px solid ${LINE};text-align:center">
+      <div class="en" style="margin-top:22px;font-size:26px;font-weight:800;letter-spacing:.1em;color:${MUTED}">${d}</div>
+      <div class="m" style="margin-top:16px;font:900 64px/1 Inter;color:${OK}">✓</div></div>`)));
+  const feastIdx = 6;
+  const tag = add(el(`<div class="abs ar" style="left:${70 + feastIdx * 136 - 60}px;top:520px;width:240px;text-align:center;font-size:44px;color:${WARN}">عزومة</div>`));
+  const ok = add(el(`<div class="abs ar" style="left:0;width:1080px;top:640px;text-align:center;font-size:70px"><span style="color:${WHITE}">وجبة واحدة؟</span> <span style="color:${BLUE}">مش هي المشكلة</span></div>`));
+  const quote = add(el(`<div class="abs ar" style="left:150px;right:150px;top:800px;text-align:center;font-size:78px;color:${NIGHT};background:${RED};border-radius:36px;padding:16px 20px 30px">«خلاص… اليوم باظ»</div>`));
+  const lab = add(el(`<div class="abs ti" style="left:0;width:1080px;top:1010px;text-align:center;font-size:76px;color:${RED}">ALL-OR-NOTHING</div>`));
+  const ref = add(el(`<div class="abs en" style="left:80px;top:1140px;width:920px;font-size:25px;font-weight:500;color:${MUTED};line-height:1.45">"Black-and-white" thinking about food was linked to weight regain · 241 adults · Palascha et al., J Health Psychol 2015</div>`));
+  const marks = tiles.map((tl) => tl.querySelector(".m"));
+  seek = (t) => {
+    inUp(eb, t, 0);
+    tiles.forEach((tl, i) => inUp(tl, t, 0.05 + i * 0.07, 40, 3));
+    // feast day turns orange at 0.6 s
+    const f = t > 0.6; S(tiles[feastIdx], { borderColor: f ? WARN : LINE }); marks[feastIdx].textContent = f ? "!" : "✓"; S(marks[feastIdx], { color: f ? WARN : OK });
+    pop(tag, t, 0.6, 3); inUp(ok, t, 0.9, 40);
+    S(ok, { opacity: t < 3.6 ? clamp01((t - 0.9) * 6) : clamp01(1 - (t - 3.6) * 5) });
+    pop(quote, t, 3.7, 3);
+    // domino: after "وبتكمل كده لآخر الأسبوع" (5.4 s) the other days flip red one by one
+    days.forEach((_, i) => { if (i === feastIdx) return; const k = t > 5.35 + i * 0.12; S(tiles[i], { borderColor: k ? RED : LINE, transform: `translateY(${k ? -10 * Math.max(0, 1 - (t - 5.35 - i * 0.12) * 6) : 0}px)` }); marks[i].textContent = k ? "✕" : "✓"; S(marks[i], { color: k ? RED : OK }); });
+    pop(lab, t, 5.6, 3); inUp(ref, t, 6.0, 20);
+  };
+}
+
+if (scene === "meals") {            // "one big meal won't ruin a week of effort"
+  const eb = eyebrow("ONE WEEK");
+  const dots = Array.from({ length: 21 }, (_, i) => add(el(`<div class="abs" style="left:${135 + (i % 7) * 120}px;top:${330 + Math.floor(i / 7) * 120}px;width:90px;height:90px;border-radius:45px;background:${i === 20 ? WARN : BLUE}"></div>`)));
+  const n = add(el(`<div class="abs" style="left:0;width:1080px;top:760px;text-align:center"><span class="num" style="font-size:200px;color:${WARN}">1</span><span class="num" style="font-size:120px;color:${MUTED}"> / 21</span></div>`));
+  const lab = add(el(`<div class="abs ar" style="left:0;width:1080px;top:1010px;text-align:center;font-size:66px;color:${WHITE}">وجبة واحدة من أسبوع التزام</div>`));
+  seek = (t) => { inUp(eb, t, 0); dots.forEach((d, i) => pop(d, t, 0.05 + i * 0.035, 3.4)); pop(n, t, 0.9, 3); inUp(lab, t, 1.2, 30); };
+}
+
+if (scene === "order") {            // "start with protein, then vegetables, then what you want, a reasonable amount"
+  const eb = eyebrow("AT THE FEAST");
+  const steps = [["1", "بروتين", "فراخ · لحمة · سمك"], ["2", "خضار", ""], ["3", "اللي نفسك فيه", "بكمية معقولة"]];
+  const rows = steps.map(([k, a, b], i) => add(el(`<div class="abs" style="left:80px;top:${280 + i * 210}px;width:920px;height:180px;background:${SURF};border:2px solid ${i === 0 ? BLUE : LINE};border-radius:28px">
+      <div class="abs num" style="left:30px;top:34px;width:112px;height:112px;border-radius:26px;background:${i === 0 ? BLUE : RAISED};color:${i === 0 ? NIGHT : WHITE};font-size:72px;text-align:center;line-height:118px">${k}</div>
+      <div class="abs ar" style="right:40px;top:${b ? 18 : 48}px;font-size:68px;color:${WHITE}">${a}</div>
+      ${b ? `<div class="abs ar" style="right:40px;top:110px;font-size:40px;color:${MUTED}">${b}</div>` : ""}</div>`)));
+  const ref = add(el(`<div class="abs en" style="left:80px;top:950px;width:920px;font-size:25px;font-weight:500;color:${MUTED};line-height:1.45">Protein &amp; vegetables before carbs: glucose peak −40% · 15 adults with prediabetes · Shukla et al., Diabetes Obes Metab 2018</div>`));
+  seek = (t) => { inUp(eb, t, 0); rows.forEach((r, i) => inUp(r, t, 0.05 + i * 0.22, 50, 3)); inUp(ref, t, 0.9, 20); };
+}
+
+if (scene === "rules") {            // "next day: back to your normal food, no compensating, no fasting to punish yourself"
+  const eb = eyebrow("THE NEXT DAY");
+  const t1 = add(el(`<div class="abs ar" style="right:80px;top:240px;font-size:104px;color:${WHITE}">تاني يوم</div>`));
+  const items = [[OK, "✓", "ارجع لأكلك العادي"], [RED, "✕", "من غير تعويض"], [RED, "✕", "من غير صيام تعاقب بيه نفسك"]];
+  const rows = items.map(([c, m, s], i) => add(el(`<div class="abs" style="right:80px;top:${450 + i * 170}px;display:flex;align-items:center;gap:30px;direction:rtl">
+      <div style="width:110px;height:110px;border-radius:28px;background:${c};color:${NIGHT};font:900 70px/116px Inter;text-align:center">${m}</div>
+      <div class="ar" style="font-size:62px;color:${WHITE}">${s}</div></div>`)));
+  seek = (t) => { inUp(eb, t, 0); inUp(t1, t, 0, 60); rows.forEach((r, i) => inUp(r, t, [0.3, 2.2, 3.1][i], 40, 3)); };
+}
+
+const scenePush = (t) => { const p = seg(t, 0, DUR, (x) => x); root.style.transformOrigin = "50% 38%"; root.style.transform = `scale(${1 + 0.12 * p}) translateY(${-26 * p}px)`; };
+window.seek = (t) => { seek(t); scenePush(t); };
+window.ready = document.fonts.ready;
+</script></body></html>
