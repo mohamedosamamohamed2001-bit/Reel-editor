@@ -1,0 +1,5 @@
+8b3d26fb7d9fcfb68ad564b641d56d0d714a84adff9c917ede66dd5d76a99309  projects/2026-11-02_voiceover4/source/main.mov
+ff030959f9d40246c302ac10ed0a667e38c727743bfe4dd8c08742cf8ebd050b  projects/2026-11-02_voiceover4/source/screen_0030.mp4
+e9c3fc20005855476c92b4162fd108210eb6e747b270afbaac2c5a4ecacff5be  projects/2026-11-02_voiceover4/source/screen_0037.mp4
+1fc3a25e7e33edbec24bfcca35eff7a3f5de388269f700d4dc8ae0a78b13731e  projects/2026-11-02_voiceover4/source/IMG_7542.MOV
+8f42893abb10543754e8b67aa4ace6fe3e728c335b5fa66fa8100e86abc7bdc2  projects/2026-11-02_voiceover4/source/IMG_7565.MOV

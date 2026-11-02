@@ -264,3 +264,8 @@ projects/<name>/  one folder per video: project.json, edit.json, analysis/, docu
   every new video and use a clip only where it genuinely serves a beat. Add new clips to the manifest with what they show.
   Voice-over reels (`projects/2026-11-01_voiceover*`) are the established creative standard: his VO untouched as the spine, script
   screenshot never shown, PubMed-verified research scenes (`motion/pieces/*_science`), stock + his B-roll, #56A0FB captions, cover.
+- 2026-11-02 (`projects/2026-11-02_voiceover4`): cut times that fall between frames (e.g. 1.55 s = 46.5 frames) rounded one way in
+  the build and the other way in the plates, so the end card ended 6 frames before the composition (black tail). Snap every
+  SHOTS time to a frame (`fr()` in that build) and put the end card at the frame-exact clip total. Long Arabic lines in motion
+  pieces must fit the 1080 width (an overflowing RTL line read in the wrong order). App Store / app recordings: skip frames that
+  show other apps' prices or reviewers' names.

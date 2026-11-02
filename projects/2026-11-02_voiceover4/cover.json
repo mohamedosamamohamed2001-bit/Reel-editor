@@ -1,0 +1,22 @@
+{
+ "frame": {
+  "media": "b_7542",
+  "from": 1.9,
+  "to": 2.3
+ },
+ "faceH": 300,
+ "faceTop": 420,
+ "eyebrow": "LOG × PROGRESS",
+ "headline": [
+  "رفعت كام",
+  "من 3 شهور؟"
+ ],
+ "accent": "كام",
+ "chips": [
+  {
+   "text": "8–12",
+   "blue": true
+  }
+ ],
+ "sub": "زوّد عدّة… وبعدين وزن"
+}

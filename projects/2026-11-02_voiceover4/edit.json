@@ -1,0 +1,733 @@
+{
+ "title": "Log your lifts: double progression (research reel)",
+ "fps": 30,
+ "width": 1080,
+ "height": 1920,
+ "media": {
+  "s_bench": "source/stock/coverr-weight-lifting-in-the-gym-7769.mp4",
+  "s_back": "source/stock/coverr-back-training-in-the-gym-9672.mp4",
+  "s_mirror": "source/stock/coverr-looking-in-the-mirror-2261.mp4",
+  "s_note": "source/stock/coverr-close-up-of-handwriting-in-notebook.mp4",
+  "s_adjust": "source/stock/coverr-adjusting-machine-in-the-gym-3815.mp4",
+  "s_row": "source/stock/coverr-woman-lifting-weights-3487.mp4",
+  "b_7565": "source/IMG_7565.MOV",
+  "b_7542": "source/IMG_7542.MOV",
+  "bg": "../_mkt/bg_night.mp4",
+  "app_log": "source/screen_0030.mp4",
+  "app_store": "source/screen_0037.mp4",
+  "m_hook": "work/motion/hook.mp4",
+  "m_same": "work/motion/same.mp4",
+  "m_when": "work/motion/when.mp4",
+  "m_range": "work/motion/range.mp4",
+  "m_ladder": "work/motion/ladder.mp4",
+  "m_bump": "work/motion/bump.mp4",
+  "m_target": "work/motion/target.mp4"
+ },
+ "plates": {
+  "grade": "auto",
+  "sharpen": "cas=strength=0.25"
+ },
+ "clips": [
+  {
+   "src": "s_bench",
+   "in": 3.0,
+   "out": 4.5667,
+   "zoom": [
+    1.08,
+    1.0
+   ],
+   "focusX": 0.45
+  },
+  {
+   "src": "m_hook",
+   "in": 0.0,
+   "out": 2.1,
+   "grade": "format=yuv420p",
+   "tin": {
+    "type": "zoom"
+   }
+  },
+  {
+   "src": "s_row",
+   "in": 2.0,
+   "out": 3.4333,
+   "zoom": [
+    1.0,
+    1.08
+   ],
+   "focusX": 0.85,
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  },
+  {
+   "src": "s_mirror",
+   "in": 2.0,
+   "out": 4.7667,
+   "zoom": [
+    1.0,
+    1.07
+   ],
+   "focusX": 0.5,
+   "tin": {
+    "type": "whip",
+    "dir": "right"
+   }
+  },
+  {
+   "src": "m_same",
+   "in": 0.0,
+   "out": 4.0,
+   "grade": "format=yuv420p",
+   "tin": {
+    "type": "whip",
+    "dir": "up"
+   }
+  },
+  {
+   "src": "s_note",
+   "in": 1.0,
+   "out": 3.8333,
+   "zoom": [
+    1.05,
+    1.14
+   ],
+   "focusX": 0.5,
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  },
+  {
+   "src": "m_when",
+   "in": 0.0,
+   "out": 1.4,
+   "grade": "format=yuv420p",
+   "tin": {
+    "type": "flash"
+   }
+  },
+  {
+   "src": "m_range",
+   "in": 0.0,
+   "out": 3.4,
+   "grade": "format=yuv420p",
+   "tin": {
+    "type": "whip",
+    "dir": "up"
+   }
+  },
+  {
+   "src": "s_adjust",
+   "in": 3.0,
+   "out": 6.0,
+   "zoom": [
+    1.0,
+    1.08
+   ],
+   "focusX": 0.5,
+   "speed": 1.5,
+   "tin": {
+    "type": "whip",
+    "dir": "right"
+   }
+  },
+  {
+   "src": "s_bench",
+   "in": 12.0,
+   "out": 14.7,
+   "zoom": [
+    1.0,
+    1.07
+   ],
+   "focusX": 0.45,
+   "tin": {
+    "type": "zoom"
+   }
+  },
+  {
+   "src": "m_ladder",
+   "in": 0.0,
+   "out": 7.7667,
+   "grade": "format=yuv420p",
+   "tin": {
+    "type": "whip",
+    "dir": "up"
+   }
+  },
+  {
+   "src": "m_bump",
+   "in": 0.0,
+   "out": 3.4333,
+   "grade": "format=yuv420p",
+   "tin": {
+    "type": "flash"
+   }
+  },
+  {
+   "src": "m_target",
+   "in": 0.0,
+   "out": 2.6,
+   "grade": "format=yuv420p",
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  },
+  {
+   "src": "b_7565",
+   "in": 1.6,
+   "out": 4.3667,
+   "zoom": [
+    1.0,
+    1.05
+   ],
+   "focusY": 0.4,
+   "tin": {
+    "type": "whip",
+    "dir": "right"
+   }
+  },
+  {
+   "src": "s_note",
+   "in": 5.0,
+   "out": 6.5333,
+   "zoom": [
+    1.08,
+    1.15
+   ],
+   "focusX": 0.5,
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  },
+  {
+   "src": "bg",
+   "in": 0.0,
+   "out": 5.7,
+   "grade": "format=yuv420p",
+   "freeze": true,
+   "tin": {
+    "type": "zoom"
+   }
+  },
+  {
+   "src": "b_7542",
+   "in": 1.0,
+   "out": 3.5,
+   "zoom": [
+    1.0,
+    1.07
+   ],
+   "focusY": 0.4,
+   "tin": {
+    "type": "whip",
+    "dir": "up"
+   }
+  },
+  {
+   "src": "bg",
+   "in": 0.0,
+   "out": 3.6,
+   "grade": "format=yuv420p",
+   "freeze": true,
+   "tin": {
+    "type": "whip",
+    "dir": "left"
+   }
+  }
+ ],
+ "overlays": [
+  {
+   "type": "screenCard",
+   "at": 42.3,
+   "dur": 5.7,
+   "src": "app_log",
+   "plate": true,
+   "backdrop": "none",
+   "entrance": "tilt",
+   "width": 780,
+   "top": 150,
+   "region": {
+    "x": 0.0,
+    "y": 0.035,
+    "w": 1.0,
+    "h": 0.66
+   },
+   "srcW": 1320,
+   "srcH": 2868,
+   "segments": [
+    {
+     "in": 3.8,
+     "rate": 1,
+     "dur": 2.4
+    },
+    {
+     "in": 10.6,
+     "rate": 1,
+     "dur": 1.6
+    },
+    {
+     "in": 20.4,
+     "rate": 1,
+     "dur": 1.7
+    }
+   ]
+  },
+  {
+   "type": "screenCard",
+   "at": 50.5,
+   "dur": 3.6,
+   "src": "app_store",
+   "plate": true,
+   "backdrop": "none",
+   "entrance": "tilt",
+   "width": 780,
+   "top": 150,
+   "region": {
+    "x": 0.0,
+    "y": 0.03,
+    "w": 1.0,
+    "h": 0.62
+   },
+   "srcW": 1320,
+   "srcH": 2868,
+   "segments": [
+    {
+     "in": 5.75,
+     "rate": 0.45,
+     "dur": 2.1
+    },
+    {
+     "in": 7.85,
+     "rate": 0.36,
+     "dur": 1.5
+    }
+   ]
+  },
+  {
+   "type": "endCard",
+   "at": 54.1,
+   "dur": 2.4,
+   "cta": "OSM Coach Osama",
+   "reveal": "wipe",
+   "image": "brand/end/osm-end-photo.jpg",
+   "sub": "Source: Plotkin et al. 2022 (PeerJ)"
+  }
+ ],
+ "shakes": [],
+ "sfx": {
+  "cues": [
+   {
+    "at": 0.0,
+    "sound": "impact",
+    "gain_db": -9
+   },
+   {
+    "at": 0.02,
+    "sound": "boom",
+    "gain_db": -12
+   },
+   {
+    "at": 0.05,
+    "sound": "whoosh_in",
+    "gain_db": -18
+   },
+   {
+    "at": 1.55,
+    "sound": "whoosh_in",
+    "gain_db": -16
+   },
+   {
+    "at": 1.7,
+    "sound": "key",
+    "gain_db": -24
+   },
+   {
+    "at": 1.81,
+    "sound": "key",
+    "gain_db": -24
+   },
+   {
+    "at": 1.92,
+    "sound": "key",
+    "gain_db": -24
+   },
+   {
+    "at": 2.03,
+    "sound": "key",
+    "gain_db": -24
+   },
+   {
+    "at": 2.14,
+    "sound": "key",
+    "gain_db": -24
+   },
+   {
+    "at": 2.25,
+    "sound": "key",
+    "gain_db": -24
+   },
+   {
+    "at": 2.3,
+    "sound": "thump",
+    "gain_db": -15
+   },
+   {
+    "at": 2.36,
+    "sound": "key",
+    "gain_db": -24
+   },
+   {
+    "at": 2.47,
+    "sound": "key",
+    "gain_db": -24
+   },
+   {
+    "at": 2.8,
+    "sound": "impact",
+    "gain_db": -11
+   },
+   {
+    "at": 3.65,
+    "sound": "whip",
+    "gain_db": -15
+   },
+   {
+    "at": 5.1,
+    "sound": "whip",
+    "gain_db": -15
+   },
+   {
+    "at": 7.85,
+    "sound": "whip",
+    "gain_db": -15
+   },
+   {
+    "at": 7.95,
+    "sound": "click",
+    "gain_db": -26
+   },
+   {
+    "at": 8.2,
+    "sound": "click",
+    "gain_db": -26
+   },
+   {
+    "at": 8.45,
+    "sound": "click",
+    "gain_db": -26
+   },
+   {
+    "at": 8.7,
+    "sound": "click",
+    "gain_db": -26
+   },
+   {
+    "at": 8.85,
+    "sound": "thump",
+    "gain_db": -14
+   },
+   {
+    "at": 8.95,
+    "sound": "click",
+    "gain_db": -26
+   },
+   {
+    "at": 9.2,
+    "sound": "click",
+    "gain_db": -26
+   },
+   {
+    "at": 9.45,
+    "sound": "click",
+    "gain_db": -26
+   },
+   {
+    "at": 9.7,
+    "sound": "click",
+    "gain_db": -26
+   },
+   {
+    "at": 9.95,
+    "sound": "click",
+    "gain_db": -26
+   },
+   {
+    "at": 10.2,
+    "sound": "click",
+    "gain_db": -26
+   },
+   {
+    "at": 10.2,
+    "sound": "thump",
+    "gain_db": -14
+   },
+   {
+    "at": 10.45,
+    "sound": "click",
+    "gain_db": -26
+   },
+   {
+    "at": 10.7,
+    "sound": "click",
+    "gain_db": -26
+   },
+   {
+    "at": 10.95,
+    "sound": "click",
+    "gain_db": -26
+   },
+   {
+    "at": 11.05,
+    "sound": "thump",
+    "gain_db": -14
+   },
+   {
+    "at": 11.85,
+    "sound": "whip",
+    "gain_db": -15
+   },
+   {
+    "at": 14.7,
+    "sound": "click",
+    "gain_db": -10
+   },
+   {
+    "at": 15.05,
+    "sound": "impact",
+    "gain_db": -11
+   },
+   {
+    "at": 16.1,
+    "sound": "whip",
+    "gain_db": -15
+   },
+   {
+    "at": 16.5,
+    "sound": "accent",
+    "gain_db": -17
+   },
+   {
+    "at": 16.6,
+    "sound": "swell",
+    "gain_db": -21
+   },
+   {
+    "at": 17.0,
+    "sound": "accent",
+    "gain_db": -17
+   },
+   {
+    "at": 19.5,
+    "sound": "whip",
+    "gain_db": -15
+   },
+   {
+    "at": 21.5,
+    "sound": "whoosh_in",
+    "gain_db": -16
+   },
+   {
+    "at": 24.2,
+    "sound": "whip",
+    "gain_db": -15
+   },
+   {
+    "at": 24.7,
+    "sound": "whoosh_in",
+    "gain_db": -21
+   },
+   {
+    "at": 25.35,
+    "sound": "blip",
+    "gain_db": -19
+   },
+   {
+    "at": 26.2,
+    "sound": "blip",
+    "gain_db": -19
+   },
+   {
+    "at": 27.0,
+    "sound": "blip",
+    "gain_db": -19
+   },
+   {
+    "at": 27.8,
+    "sound": "blip",
+    "gain_db": -19
+   },
+   {
+    "at": 28.6,
+    "sound": "blip",
+    "gain_db": -19
+   },
+   {
+    "at": 29.0,
+    "sound": "chime",
+    "gain_db": -17
+   },
+   {
+    "at": 29.5,
+    "sound": "accent",
+    "gain_db": -16
+   },
+   {
+    "at": 31.95,
+    "sound": "click",
+    "gain_db": -10
+   },
+   {
+    "at": 32.3,
+    "sound": "impact",
+    "gain_db": -10
+   },
+   {
+    "at": 32.75,
+    "sound": "thump",
+    "gain_db": -13
+   },
+   {
+    "at": 33.45,
+    "sound": "whoosh_out",
+    "gain_db": -20
+   },
+   {
+    "at": 33.95,
+    "sound": "accent",
+    "gain_db": -17
+   },
+   {
+    "at": 35.4,
+    "sound": "whip",
+    "gain_db": -15
+   },
+   {
+    "at": 35.65,
+    "sound": "swell",
+    "gain_db": -21
+   },
+   {
+    "at": 37.0,
+    "sound": "chime",
+    "gain_db": -18
+   },
+   {
+    "at": 38.0,
+    "sound": "whip",
+    "gain_db": -15
+   },
+   {
+    "at": 40.75,
+    "sound": "whip",
+    "gain_db": -15
+   },
+   {
+    "at": 42.3,
+    "sound": "whoosh_in",
+    "gain_db": -16
+   },
+   {
+    "at": 42.9,
+    "sound": "click",
+    "gain_db": -19
+   },
+   {
+    "at": 44.9,
+    "sound": "click",
+    "gain_db": -19
+   },
+   {
+    "at": 46.5,
+    "sound": "click",
+    "gain_db": -19
+   },
+   {
+    "at": 48.0,
+    "sound": "whip",
+    "gain_db": -15
+   },
+   {
+    "at": 50.5,
+    "sound": "whip",
+    "gain_db": -15
+   },
+   {
+    "at": 51.5,
+    "sound": "key",
+    "gain_db": -20
+   },
+   {
+    "at": 53.0,
+    "sound": "chime",
+    "gain_db": -18
+   },
+   {
+    "at": 54.1,
+    "sound": "reverse_hit",
+    "gain_db": -12,
+    "dur": 0.7
+   },
+   {
+    "at": 54.1,
+    "sound": "boom",
+    "gain_db": -7
+   },
+   {
+    "at": 54.6,
+    "sound": "click",
+    "gain_db": -17
+   }
+  ]
+ },
+ "music": {
+  "src": "work/music/music.wav",
+  "gain_db": -11
+ },
+ "tail": 2.4,
+ "voiceTrack": "work/vo.wav",
+ "dialogueLufs": -16.0,
+ "captions": {
+  "wordsFile": "work/vo.words.json",
+  "outputTime": true,
+  "style": "plate",
+  "karaoke": true,
+  "maxWords": 3,
+  "maxChars": 22,
+  "plateColor": "#56A0FB",
+  "keywordColor": "#FFFFFF",
+  "keywords": [
+   "هتعرف؟",
+   "زي",
+   "إمتى",
+   "12",
+   "عدة",
+   "الوزن",
+   "واضح",
+   "بتتقدم",
+   "OSM App",
+   "OSM Coach Osama"
+  ],
+  "zones": [
+   {
+    "at": 42.25,
+    "dur": 5.75,
+    "top": 0.673
+   },
+   {
+    "at": 50.45,
+    "dur": 3.65,
+    "top": 0.637
+   },
+   {
+    "at": 0,
+    "dur": 54.11,
+    "top": 0.74
+   }
+  ]
+ },
+ "textPlate": "#56A0FB"
+}

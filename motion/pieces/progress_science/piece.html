@@ -1,0 +1,153 @@
+<!doctype html>
+<!-- "Do you know what you lifted 3 months ago?": double progression scenes for projects/2026-11-02_voiceover4. 1080x1920, every pixel from t.
+     ?scene=hook|same|when|range|ladder|bump|target   (window.meta.dur per scene)
+     Research (PubMed): Plotkin et al. 2022, PeerJ 10:e14142, RCT, 43 trained adults, 8 weeks: progressing repetitions at a constant load
+     and progressing load at constant reps both improved muscle size and strength (doi 10.7717/peerj.14142).
+     The 8-12 rule and the numbers in the examples are his coaching method, shown as an example.
+     Text stays above y=1330 (captions below). Inter / Barlow / IBM Plex Sans Arabic; Night, white, Core Blue. -->
+<html><head><meta charset="utf-8">
+<style>
+@font-face { font-family: Inter; src: url('/osm/fonts/Inter[opsz,wght].ttf'); font-weight: 100 900; }
+@font-face { font-family: InterI; src: url('/osm/fonts/Inter-Italic[opsz,wght].ttf'); font-weight: 100 900; font-style: italic; }
+@font-face { font-family: Plex; src: url('/osm/fonts/IBMPlexSansArabic-Bold.ttf'); font-weight: 700; }
+@font-face { font-family: Barlow; src: url('/osm/fonts/BarlowCondensed-Bold.ttf'); font-weight: 700; }
+html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #0A0F16; }
+svg { position: absolute; left: 0; top: 0; overflow: visible; }
+.ar { font-family: Plex; font-weight: 700; direction: rtl; }
+.en { font-family: Inter; }
+.ti { font-family: InterI; font-style: italic; font-weight: 900; text-transform: uppercase; letter-spacing: -0.02em; }
+.num { font-family: Barlow; font-weight: 700; }
+#root { position: absolute; inset: 0; }
+.abs { position: absolute; }
+</style></head>
+<body><div id="root"></div>
+<script type="module">
+import { seg, spring, clamp01 } from "/osm/motion-core.js";
+const BLUE = "#56A0FB", WHITE = "#FFFFFF", TXT = "#E5EBF1", MUTED = "#8C98AA", LINE = "#263244", SURF = "#141B26", RAISED = "#1C2634", CYAN = "#7DD2EC", NIGHT = "#0A0F16", RED = "#F26D6D";
+const scene = new URLSearchParams(location.search).get("scene") || "hook";
+const DUR = { hook: 2.1, same: 4.0, when: 1.4, range: 3.4, ladder: 7.75, bump: 3.45, target: 2.6 }[scene];
+window.meta = { dur: DUR, size: [1080, 1920], scene };
+const root = document.getElementById("root");
+const el = (html) => { const d = document.createElement("div"); d.innerHTML = html.trim(); d.querySelectorAll(".ar").forEach((n) => n.setAttribute("dir", "rtl")); return d.firstElementChild; };
+const add = (node) => (root.appendChild(node), node);
+const S = (n, st) => { for (const k in st) n.style[k] = st[k]; };
+const sp = (t, t0, f = 2.6) => spring(t - t0, { freq: f });
+const inUp = (n, t, t0, dy = 60, f = 2.6) => { const p = sp(t, t0, f); S(n, { opacity: clamp01((t - t0) * 6), transform: `translateY(${(1 - p) * dy}px)` }); return p; };
+const pop = (n, t, t0, f = 3, base = "") => { const p = sp(t, t0, f); S(n, { opacity: clamp01((t - t0) * 8), transform: `${base} scale(${0.6 + 0.4 * p})` }); return p; };
+const SVG = (w, h, inner) => `<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" xmlns="http://www.w3.org/2000/svg">${inner}</svg>`;
+const eOut = (x) => 1 - (1 - x) ** 3;
+add(el(`<div class="abs" style="inset:0">${SVG(1080, 1920, Array.from({ length: 13 }, (_, i) =>
+  `<line x1="${i * 90}" y1="0" x2="${i * 90}" y2="1920" stroke="${LINE}" stroke-width="1" opacity=".35"/>`).join("") +
+  Array.from({ length: 22 }, (_, i) => `<line x1="0" y1="${i * 90}" x2="1080" y2="${i * 90}" stroke="${LINE}" stroke-width="1" opacity=".35"/>`).join(""))}</div>`));
+const eyebrow = (txt) => add(el(`<div class="abs en" style="left:80px;top:170px;font-weight:700;font-size:30px;letter-spacing:.22em;color:${CYAN}">${txt}</div>`));
+const title = (txt, top, size = 110, color = WHITE) => add(el(`<div class="abs ar" style="right:80px;top:${top}px;font-size:${size}px;color:${color};line-height:1.2;white-space:nowrap">${txt}</div>`));
+const box = (inner, l, tp, w, h, extra = "") => add(el(`<div class="abs" style="left:${l}px;top:${tp}px;width:${w}px;height:${h}px;background:${SURF};border:2px solid ${LINE};border-radius:26px;${extra}">${inner}</div>`));
+const LTR = (s) => `<span dir="ltr" style="unicode-bidi:isolate">${s}</span>`;
+let seek;
+
+if (scene === "hook") {              // "...3 months ago, would you know?"
+  const eb = eyebrow("3 MONTHS AGO");
+  const months = ["NOV", "OCT", "SEP", "AUG"];
+  const cal = box(`<div class="abs en" style="left:0;right:0;top:0;height:90px;background:${BLUE};border-radius:24px 24px 0 0;color:${NIGHT};font:900 40px/90px Inter;text-align:center" id="m">NOV</div>
+      <div class="abs num" style="left:0;right:0;top:110px;text-align:center;font-size:150px;color:${WHITE}" id="d">02</div>`, 300, 300, 480, 330);
+  const log = box(`<div class="abs en" style="left:40px;top:34px;font-size:34px;font-weight:800;color:${MUTED};letter-spacing:.12em">BENCH PRESS</div>
+      <div class="abs num" style="left:40px;top:90px;font-size:150px;color:${WHITE};line-height:1" id="q">?? KG</div>
+      <div class="abs num" style="right:40px;top:120px;font-size:90px;color:${MUTED};line-height:1">× ??</div>`, 120, 720, 840, 290);
+  const t2 = add(el(`<div class="abs ar" style="left:0;width:1080px;top:1100px;text-align:center;font-size:96px;color:${BLUE}">هتعرف؟</div>`));
+  const m = cal.querySelector("#m"), dd = cal.querySelector("#d"), q = log.querySelector("#q");
+  seek = (t) => {
+    inUp(eb, t, 0); pop(cal, t, 0, 2.6);
+    const k = seg(t, 0.15, 1.05, eOut), i = Math.min(3, Math.floor(k * 3.999)); m.textContent = months[i];
+    dd.textContent = String(2 + Math.floor((k * 90) % 28)).padStart(2, "0"); S(dd, { transform: `translateY(${Math.sin(t * 40) * (1 - k) * 8}px)` });
+    inUp(log, t, 0.75, 60, 3); S(q, { color: Math.floor(t * 4) % 2 ? WHITE : BLUE }); pop(t2, t, 1.25, 3);
+  };
+}
+
+if (scene === "same") {              // "a whole year and they look the same: same exercises, same weights, same reps"
+  const eb = eyebrow("A WHOLE YEAR");
+  const wk = add(el(`<div class="abs ti" style="left:80px;top:240px;font-size:120px;color:${WHITE}">WEEK <span id="n" style="color:${BLUE}">1</span></div>`));
+  const card = box(`<div class="abs en" style="left:40px;top:34px;font-size:34px;font-weight:800;color:${MUTED};letter-spacing:.12em">BENCH PRESS</div>
+      <div class="abs num" style="left:40px;top:90px;font-size:150px;color:${WHITE};line-height:1">60 KG</div>
+      <div class="abs num" style="right:40px;top:120px;font-size:96px;color:${WHITE};line-height:1">× 8</div>`, 120, 430, 840, 290);
+  const tags = ["نفس التمرين", "نفس الأوزان", "نفس العدات"].map((s, i) => add(el(`<div class="abs ar" style="right:${80}px;top:${790 + i * 130}px;font-size:66px;color:${WHITE};display:flex;gap:24px;align-items:center;direction:rtl">
+      <span style="display:inline-block;width:20px;height:20px;border-radius:10px;background:${RED}"></span>${s}</div>`)));
+  const n = wk.querySelector("#n");
+  seek = (t) => {
+    inUp(eb, t, 0); inUp(wk, t, 0, 50); n.textContent = String(1 + Math.round(51 * seg(t, 0.1, 3.4, (x) => x)));
+    inUp(card, t, 0.1, 60); S(card, { transform: `translateY(${Math.sin(t * 3) * 3}px)` });
+    tags.forEach((g, i) => inUp(g, t, [1.0, 2.35, 3.2][i], 40, 3));
+  };
+}
+
+if (scene === "when") {              // "you have to know WHEN to add"
+  const eb = eyebrow("THE KEY");
+  const q = add(el(`<div class="abs ar" style="left:0;width:1080px;top:420px;text-align:center;font-size:150px;color:${WHITE}">إمتى تزوّد؟</div>`));
+  const plus = add(el(`<div class="abs num" style="left:0;width:1080px;top:720px;text-align:center;font-size:260px;color:${BLUE};line-height:1">+</div>`));
+  seek = (t) => { inUp(eb, t, 0); pop(q, t, 0.0, 3); pop(plus, t, 0.35, 3, ""); S(plus, { transform: `rotate(${90 * seg(t, 0.35, 1.2, eOut)}deg) scale(${0.6 + 0.4 * sp(t, 0.35, 3)})` }); };
+}
+
+if (scene === "range") {             // "choose a rep range, e.g. 8 to 12"
+  const eb = eyebrow("REP RANGE");
+  const t1 = title("اختار رينج عدات", 240, 100);
+  const bar = add(el(`<div class="abs" style="left:110px;top:640px;width:860px;height:60px;border-radius:30px;background:${RAISED}"><div id="f" style="position:absolute;left:0;top:0;bottom:0;width:0;border-radius:30px;background:${BLUE}"></div></div>`));
+  const a = add(el(`<div class="abs num" style="left:80px;top:440px;font-size:180px;color:${WHITE};line-height:1">8</div>`));
+  const b = add(el(`<div class="abs num" style="right:80px;top:440px;font-size:180px;color:${BLUE};line-height:1">12</div>`));
+  const ticks = add(el(`<div class="abs" style="left:110px;top:730px;width:860px;display:flex;justify-content:space-between">${[8, 9, 10, 11, 12].map((v) => `<span class="num" style="font-size:56px;color:${MUTED}">${v}</span>`).join("")}</div>`));
+  const lab = add(el(`<div class="abs en" style="left:0;width:1080px;top:900px;text-align:center;font-size:40px;font-weight:800;letter-spacing:.2em;color:${TXT}">REPS PER SET</div>`));
+  const f = bar.querySelector("#f");
+  seek = (t) => { inUp(eb, t, 0); inUp(t1, t, 0, 60); pop(a, t, 0.4, 3); pop(b, t, 0.9, 3); inUp(bar, t, 0.3, 30); S(f, { width: `${100 * seg(t, 0.5, 2.6, eOut)}%` }); inUp(ticks, t, 1.2, 20); inUp(lab, t, 1.6, 20); };
+}
+
+if (scene === "ladder") {            // "underline this: every workout add a rep; once you hit 12 on every set..."
+  const eb = eyebrow("DOUBLE PROGRESSION");
+  const rule = box(`<div class="abs ar" style="right:40px;top:28px;font-size:60px;color:${WHITE}">كل تمرين: زوّد عدّة</div>
+      <div class="abs" id="ul" style="right:40px;top:120px;height:14px;width:0;background:${BLUE};border-radius:5px"></div>`, 120, 240, 840, 170);
+  const rows = [[8, 8, 8], [9, 9, 8], [10, 10, 9], [11, 11, 10], [12, 12, 12]];
+  const hdr = add(el(`<div class="abs en" style="left:120px;top:470px;width:840px;display:flex;font-size:26px;font-weight:800;letter-spacing:.16em;color:${MUTED}">
+      <span style="width:200px">WORKOUT</span><span style="width:200px">KG</span><span>REPS × 3 SETS</span></div>`));
+  const R = rows.map((r, i) => add(el(`<div class="abs" style="left:120px;top:${520 + i * 128}px;width:840px;height:108px;border-radius:22px;background:${SURF};border:2px solid ${LINE};display:flex;align-items:center">
+      <span class="num" style="width:200px;padding-left:30px;font-size:58px;color:${MUTED}">${i + 1}</span>
+      <span class="num" style="width:200px;font-size:58px;color:${WHITE}">50</span>
+      <span class="num" style="font-size:66px;color:${WHITE};letter-spacing:.04em">${r.map((v, j) => `<span style="color:${i > 0 && v > rows[i - 1][j] ? BLUE : WHITE}">${v}</span>`).join(" · ")}</span></div>`)));
+  const done = add(el(`<div class="abs ar" style="left:0;width:1080px;top:1180px;text-align:center;font-size:58px;color:${WHITE}">لما توصل ${LTR("12")} في كل الـSets: <span style="color:${BLUE}">زوّد الوزن</span></div>`));
+  const ul = rule.querySelector("#ul");
+  seek = (t) => {
+    inUp(eb, t, 0); inUp(rule, t, 0, 40); S(ul, { width: `${560 * seg(t, 0.25, 0.95, eOut)}px` });
+    inUp(hdr, t, 0.8, 20);
+    R.forEach((r, i) => { inUp(r, t, [1.15, 2.0, 2.8, 3.6, 4.4][i], 40, 3); if (i === 4) S(r, { borderColor: t > 4.8 ? BLUE : LINE, background: t > 4.8 ? "#12203C" : SURF }); });
+    pop(done, t, 5.3, 3);
+  };
+}
+
+if (scene === "bump") {              // "add a little weight, go back to 8, and so on"
+  const eb = eyebrow("THEN");
+  const w = add(el(`<div class="abs num" style="left:0;width:1080px;top:300px;text-align:center;font-size:230px;color:${WHITE};line-height:1">50 KG</div>`));
+  const plus = add(el(`<div class="abs num" style="left:0;width:1080px;top:560px;text-align:center;font-size:110px;color:${BLUE}">+2.5 KG</div>`));
+  const reps = add(el(`<div class="abs num" style="left:0;width:1080px;top:740px;text-align:center;font-size:120px;color:${WHITE};letter-spacing:.06em">12 · 12 · 12</div>`));
+  const loop = add(el(`<div class="abs ar" style="left:0;width:1080px;top:930px;text-align:center;font-size:80px;color:${BLUE}">وهكذا ↺</div>`));
+  const ref = add(el(`<div class="abs en" style="left:80px;top:1110px;width:920px;font-size:25px;font-weight:500;color:${MUTED};line-height:1.45">Adding reps or adding load: both built muscle and strength · RCT, 43 trained adults, 8 weeks · Plotkin et al., PeerJ 2022</div>`));
+  seek = (t) => {
+    inUp(eb, t, 0); const k = t > 0.8; w.textContent = k ? "52.5 KG" : "50 KG"; pop(w, t, k ? 0.8 : 0, 3); S(w, { color: k ? BLUE : WHITE });
+    pop(plus, t, 0.35, 3); reps.textContent = t > 1.5 ? "8 · 8 · 8" : "12 · 12 · 12"; inUp(reps, t, t > 1.5 ? 1.5 : 0.1, 30, 3);
+    pop(loop, t, 2.0, 3); S(loop, { transform: `rotate(${0}deg) scale(${0.6 + 0.4 * sp(t, 2.0, 3)})` }); inUp(ref, t, 2.3, 20);
+  };
+}
+
+if (scene === "target") {            // "every exercise has a clear target, and you know you're progressing"
+  const eb = eyebrow("CLEAR TARGET");
+  const t1 = title("هدف واضح", 240, 110);
+  const pts = [50, 52.5, 55, 57.5], X = (i) => 180 + i * 240, Y = (v) => 1000 - (v - 50) * 70;
+  const g = add(el(`<div class="abs" style="left:0;top:0">${SVG(1080, 1920, `<path id="ln" d="${pts.map((v, i) => (i ? "L" : "M") + X(i) + "," + Y(v)).join("")}" stroke="${BLUE}" stroke-width="14" fill="none" stroke-linecap="round" stroke-linejoin="round"/>` +
+    pts.map((v, i) => `<circle class="p" cx="${X(i)}" cy="${Y(v)}" r="20" fill="${i === 3 ? BLUE : WHITE}"/><text class="p" x="${X(i)}" y="${Y(v) - 46}" text-anchor="middle" font-family="Barlow" font-weight="700" font-size="54" fill="${WHITE}">${v}</text>`).join(""))}</div>`));
+  const lab = add(el(`<div class="abs ar" style="left:0;width:1080px;top:1120px;text-align:center;font-size:64px;color:${WHITE}">إنت عارف إنك بتتقدم</div>`));
+  const ln = g.querySelector("#ln"), L = ln.getTotalLength(), ps = [...g.querySelectorAll(".p")];
+  seek = (t) => {
+    inUp(eb, t, 0); inUp(t1, t, 0, 60); const k = seg(t, 0.25, 1.6, eOut); ln.setAttribute("stroke-dasharray", `${L * k} ${L}`);
+    ps.forEach((p, j) => p.setAttribute("opacity", clamp01((k * 3.2 - Math.floor(j / 2)) * 3))); inUp(lab, t, 1.4, 40);
+  };
+}
+
+const scenePush = (t) => { const p = seg(t, 0, DUR, (x) => x); root.style.transformOrigin = "50% 38%"; root.style.transform = `scale(${1 + 0.12 * p}) translateY(${-26 * p}px)`; };
+window.seek = (t) => { seek(t); scenePush(t); };
+window.ready = document.fonts.ready;
+</script></body></html>
