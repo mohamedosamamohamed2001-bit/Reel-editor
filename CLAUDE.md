@@ -269,3 +269,8 @@ projects/<name>/  one folder per video: project.json, edit.json, analysis/, docu
   SHOTS time to a frame (`fr()` in that build) and put the end card at the frame-exact clip total. Long Arabic lines in motion
   pieces must fit the 1080 width (an overflowing RTL line read in the wrong order). App Store / app recordings: skip frames that
   show other apps' prices or reviewers' names.
+- 2026-11-02 (`projects/2026-11-02_recreate`, Coach Osama): recreating a reference Reel with his footage. Cut points measured by frame
+  difference, phrase-exact caption changes by giving every reference phrase its own caption zone (zone edges break groups; the
+  English-run rule otherwise merges whole sentences), look via a per-clip grade chain. Another creator's voice-over/music is used
+  only as the internal sync guide: the delivered file is video-only and he adds the original audio in Instagram ("Use audio", 0:00).
+  Cover tool: frame `grade` override (the video's own look) and LTR headlines detected automatically.

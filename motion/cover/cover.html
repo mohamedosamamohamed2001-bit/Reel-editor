@@ -55,7 +55,7 @@ window.ready = (async () => {
     <img class="logo" data-box="logo" style="${L.logo === "bottom" ? "left:450px;width:180px" : `left:${L.logo[0]}px;top:${L.logo[1]}px`}" src="/osm/brand/logo/osm-wordmark-780x264.jpg">
     <div class="slash" style="left:120px;top:${L.eyebrowY - 30}px;width:250px"></div><div class="slash" style="left:710px;top:${L.eyebrowY - 30}px;width:250px"></div>
     <div class="eyebrow" data-box="eyebrow" style="top:${L.eyebrowY}px"><span>${eb}</span></div>
-    <div class="h1" data-box="headline" style="top:${L.eyebrowY + 42}px;font-size:${L.headSize || 134}px"><span>${hl}</span></div>
+    <div class="h1" data-box="headline" style="top:${L.eyebrowY + 42}px;font-size:${L.headSize || 134}px;direction:${/[\u0600-\u06FF]/.test(cfg.headline.join("")) ? "rtl" : "ltr"}"><span>${hl}</span></div>
     <div class="row" data-box="row">${cfg.chipSide === "left" ? chips + subHtml : subHtml + chips}</div>`;
   await document.fonts.ready;
   await Promise.all([...document.images].map((i) => i.decode().catch(() => {})));

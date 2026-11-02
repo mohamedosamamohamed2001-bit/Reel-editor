@@ -12,7 +12,8 @@ cover.json:
   "eyebrow": "TOPIC × TOPIC" (Inter caps, × in Core Blue), "headline": [line, line] (his words / the video's hook),
   "accent": the ONE Core Blue word, "chips": [{"text": "41", "blue": true}], "sub": short Arabic line read after the chips
   ("chipSide": "left" puts the chips after the line instead). The wordmark sits top-left on a dark field, else under the chips.
-  "layout": optional overrides {fadeStart, fadeEnd, eyebrowY, headSize, logo: [x, y]}
+  "layout": optional overrides {fadeStart, fadeEnd, eyebrowY, headSize, logo: [x, y]}; frame "grade": FFmpeg chain that replaces the
+            clip grade lookup (when the video has its own look, e.g. black & white)
 
 Checks (report in work/cover/report.json, exit 1 on a failure):
   1080x1920; every text/logo box inside the profile-grid crop (x 40-1040, y 240-1680); no text box in the column above or
@@ -76,7 +77,7 @@ def grade_for(P, src, t0, t1):
 def frames_from_video(P, spec, edit):
     src = (P / edit["media"][spec["media"]]).resolve()
     t0, t1 = spec.get("time", spec["from"]), spec.get("time", spec.get("to", spec["from"]))
-    g = grade_for(P, src, spec["from"], spec.get("to", spec["from"]))
+    g = spec.get("grade") or grade_for(P, src, spec["from"], spec.get("to", spec["from"]))   # "grade": per-video look override (e.g. black & white)
     vf = (g + "," if g else "") + "format=rgb24"
     pr = json.loads(subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries", "stream=r_frame_rate",
                                     "-of", "json", str(src)], capture_output=True, text=True).stdout)

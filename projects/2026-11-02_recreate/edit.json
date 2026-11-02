@@ -1,0 +1,265 @@
+{
+ "title": "Discipline / Motivation / Obsession (reference recreation)",
+ "fps": 30,
+ "width": 1080,
+ "height": 1920,
+ "media": {
+  "walk": "source/IMG_2254.mov",
+  "mirror": "source/IMG_2258.MOV",
+  "row": "source/IMG_2256.MOV",
+  "box": "source/IMG_2257.MOV",
+  "black": "work/black.mp4"
+ },
+ "plates": {
+  "grade": "auto",
+  "sharpen": "cas=strength=0.3"
+ },
+ "clips": [
+  {
+   "src": "walk",
+   "in": 0.7,
+   "out": 4.2667,
+   "zoom": [
+    1.0,
+    1.1
+   ],
+   "focusX": 0.5,
+   "focusY": 0.42,
+   "grade": "zscale=tin=arib-std-b67:min=bt2020nc:pin=bt2020:rin=tv:t=linear:npl=203,format=gbrpf32le,zscale=p=bt709,tonemap=mobius:param=0.3:desat=0,zscale=t=bt709:m=bt709:r=tv,format=gbrp16le,hue=s=0,curves=master='0/0 0.12/0.02 0.40/0.24 0.70/0.58 0.90/0.80 1/0.90':interp=pchip,vignette=angle=PI/4.5,format=yuv420p"
+  },
+  {
+   "src": "mirror",
+   "in": 1.5667,
+   "out": 3.4667,
+   "zoom": [
+    1.04,
+    1.1
+   ],
+   "focusX": 0.5,
+   "focusY": 0.38,
+   "grade": "zscale=tin=arib-std-b67:min=bt2020nc:pin=bt2020:rin=tv:t=linear:npl=203,format=gbrpf32le,zscale=p=bt709,tonemap=mobius:param=0.3:desat=0,zscale=t=bt709:m=bt709:r=tv,format=gbrp16le,hue=s=0,curves=master='0/0 0.12/0.02 0.40/0.24 0.70/0.58 0.90/0.80 1/0.90':interp=pchip,vignette=angle=PI/4.5,format=yuv420p"
+  },
+  {
+   "src": "row",
+   "in": 3.0,
+   "out": 5.1,
+   "zoom": [
+    1.02,
+    1.09
+   ],
+   "focusX": 0.5,
+   "focusY": 0.45,
+   "grade": "zscale=tin=arib-std-b67:min=bt2020nc:pin=bt2020:rin=tv:t=linear:npl=203,format=gbrpf32le,zscale=p=bt709,tonemap=mobius:param=0.3:desat=0,zscale=t=bt709:m=bt709:r=tv,format=gbrp16le,hue=s=0,curves=master='0/0 0.12/0.02 0.40/0.24 0.70/0.58 0.90/0.80 1/0.90':interp=pchip,vignette=angle=PI/4.5,format=yuv420p"
+  },
+  {
+   "src": "black",
+   "in": 0.0,
+   "out": 0.0667,
+   "grade": "format=yuv420p"
+  },
+  {
+   "src": "box",
+   "in": 11.5667,
+   "out": 12.8333,
+   "zoom": [
+    1.06,
+    1.0
+   ],
+   "focusX": 0.5,
+   "focusY": 0.5,
+   "speed": 0.5,
+   "grade": "zscale=tin=arib-std-b67:min=bt2020nc:pin=bt2020:rin=tv:t=linear:npl=203,format=gbrpf32le,zscale=p=bt709,tonemap=mobius:param=0.3:desat=0,zscale=t=bt709:m=bt709:r=tv,format=gbrp16le,hue=s=0,curves=master='0/0 0.12/0.02 0.40/0.24 0.70/0.58 0.90/0.80 1/0.90':interp=pchip,vignette=angle=PI/4.5,format=yuv420p"
+  },
+  {
+   "src": "box",
+   "in": 7.9,
+   "out": 9.66,
+   "zoom": [
+    1.1,
+    1.02
+   ],
+   "focusX": 0.5,
+   "focusY": 0.48,
+   "speed": 1.6,
+   "grade": "zscale=tin=arib-std-b67:min=bt2020nc:pin=bt2020:rin=tv:t=linear:npl=203,format=gbrpf32le,zscale=p=bt709,tonemap=mobius:param=0.3:desat=0,zscale=t=bt709:m=bt709:r=tv,format=gbrp16le,hue=s=0,curves=master='0/0 0.12/0.02 0.40/0.24 0.70/0.58 0.90/0.80 1/0.90':interp=pchip,vignette=angle=PI/4.5,format=yuv420p"
+  },
+  {
+   "src": "box",
+   "in": 4.3,
+   "out": 5.8,
+   "zoom": [
+    1.0,
+    1.06
+   ],
+   "focusX": 0.5,
+   "focusY": 0.5,
+   "grade": "zscale=tin=arib-std-b67:min=bt2020nc:pin=bt2020:rin=tv:t=linear:npl=203,format=gbrpf32le,zscale=p=bt709,tonemap=mobius:param=0.3:desat=0,zscale=t=bt709:m=bt709:r=tv,format=gbrp16le,hue=s=0,curves=master='0/0 0.12/0.02 0.40/0.24 0.70/0.58 0.90/0.80 1/0.90':interp=pchip,vignette=angle=PI/4.5,format=yuv420p"
+  },
+  {
+   "src": "row",
+   "in": 12.0,
+   "out": 15.0,
+   "zoom": [
+    1.0,
+    1.12
+   ],
+   "focusX": 0.5,
+   "focusY": 0.42,
+   "grade": "zscale=tin=arib-std-b67:min=bt2020nc:pin=bt2020:rin=tv:t=linear:npl=203,format=gbrpf32le,zscale=p=bt709,tonemap=mobius:param=0.3:desat=0,zscale=t=bt709:m=bt709:r=tv,format=gbrp16le,hue=s=0,curves=master='0/0 0.12/0.02 0.40/0.24 0.70/0.58 0.90/0.80 1/0.90':interp=pchip,vignette=angle=PI/4.5,format=yuv420p"
+  },
+  {
+   "src": "mirror",
+   "in": 2.6667,
+   "out": 3.2,
+   "zoom": [
+    1.12,
+    1.16
+   ],
+   "focusX": 0.5,
+   "focusY": 0.3,
+   "grade": "zscale=tin=arib-std-b67:min=bt2020nc:pin=bt2020:rin=tv:t=linear:npl=203,format=gbrpf32le,zscale=p=bt709,tonemap=mobius:param=0.3:desat=0,zscale=t=bt709:m=bt709:r=tv,format=gbrp16le,hue=s=0,curves=master='0/0 0.12/0.02 0.40/0.24 0.70/0.58 0.90/0.80 1/0.90':interp=pchip,vignette=angle=PI/4.5,format=yuv420p"
+  }
+ ],
+ "overlays": [],
+ "shakes": [],
+ "sfx": {
+  "cues": []
+ },
+ "tail": 0,
+ "voiceTrack": "work/ref_audio.wav",
+ "dialogueLufs": -14.0,
+ "captions": {
+  "wordsFile": "work/ref.words.json",
+  "outputTime": true,
+  "style": "plate",
+  "karaoke": false,
+  "maxWords": 3,
+  "maxChars": 18,
+  "plateColor": "#56A0FB",
+  "keywordColor": "#FFFFFF",
+  "keywords": [],
+  "zones": [
+   {
+    "at": 0.0,
+    "dur": 0.99,
+    "top": 0.6
+   },
+   {
+    "at": 0.99,
+    "dur": 0.54,
+    "top": 0.6
+   },
+   {
+    "at": 1.53,
+    "dur": 1.06,
+    "top": 0.6
+   },
+   {
+    "at": 2.59,
+    "dur": 0.7,
+    "top": 0.6
+   },
+   {
+    "at": 3.29,
+    "dur": 0.56,
+    "top": 0.6
+   },
+   {
+    "at": 3.85,
+    "dur": 0.36,
+    "top": 0.6
+   },
+   {
+    "at": 4.21,
+    "dur": 0.44,
+    "top": 0.6
+   },
+   {
+    "at": 4.65,
+    "dur": 0.5,
+    "top": 0.6
+   },
+   {
+    "at": 5.15,
+    "dur": 0.78,
+    "top": 0.6
+   },
+   {
+    "at": 5.93,
+    "dur": 0.42,
+    "top": 0.6
+   },
+   {
+    "at": 6.35,
+    "dur": 0.5,
+    "top": 0.6
+   },
+   {
+    "at": 6.85,
+    "dur": 0.6,
+    "top": 0.6
+   },
+   {
+    "at": 7.45,
+    "dur": 1.4,
+    "top": 0.6
+   },
+   {
+    "at": 8.85,
+    "dur": 0.72,
+    "top": 0.6
+   },
+   {
+    "at": 9.57,
+    "dur": 0.48,
+    "top": 0.6
+   },
+   {
+    "at": 10.05,
+    "dur": 0.48,
+    "top": 0.6
+   },
+   {
+    "at": 10.53,
+    "dur": 0.32,
+    "top": 0.6
+   },
+   {
+    "at": 10.85,
+    "dur": 0.64,
+    "top": 0.6
+   },
+   {
+    "at": 11.49,
+    "dur": 0.56,
+    "top": 0.6
+   },
+   {
+    "at": 12.05,
+    "dur": 0.38,
+    "top": 0.6
+   },
+   {
+    "at": 12.43,
+    "dur": 0.34,
+    "top": 0.6
+   },
+   {
+    "at": 12.77,
+    "dur": 0.76,
+    "top": 0.6
+   },
+   {
+    "at": 13.53,
+    "dur": 0.58,
+    "top": 0.6
+   },
+   {
+    "at": 14.11,
+    "dur": 2.2,
+    "top": 0.6
+   }
+  ]
+ },
+ "textPlate": "#56A0FB"
+}

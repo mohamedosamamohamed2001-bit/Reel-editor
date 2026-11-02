@@ -1,0 +1,23 @@
+{
+  "name": "2026-11-02_voiceover4",
+  "source": {
+    "drive_file_id": "1PLTadF1R265Mj-7aReNLgCFaHqbQPKZf",
+    "filename": "copy_585D6C97-CBBB-4576-9AF9-746C41ED3F0D.mov",
+    "sha256": "8b3d26fb7d9fcfb68ad564b641d56d0d714a84adff9c917ede66dd5d76a99309"
+  },
+  "delivery": {
+    "platform": "instagram_reel",
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "lufs": -14,
+    "true_peak": -1.0
+  },
+  "language": "ar-EG",
+  "captions": true,
+  "status": "delivered",
+  "extra_sources": {
+    "screen_0030.mp4 (OSM App set logging)": "185nAW5ikby_dZ63BDlbeUI_PMEgHuP1-",
+    "screen_0037.mp4 (App Store search)": "1tcXk1t-Qp2Mb8prae6fbBPOYwwmHJUtQ"
+  }
+}

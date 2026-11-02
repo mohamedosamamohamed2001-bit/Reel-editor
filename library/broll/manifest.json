@@ -56,6 +56,59 @@
     "confident coach shot",
     "cover photo (4K)"
    ]
+  },
+  {
+   "file": "IMG_2254.mov",
+   "drive_id": "1RjJzrUd6dyTCZFYVScAPSVMgqcVNUUPs",
+   "sha256": "e695fbbb3f5b02259cfa8dff0a0521bc506708ec97ea5d0ff8a4dee7c17318cb",
+   "added": "2026-11-02",
+   "format": "HEVC HLG 3840x2160 rotated -> 9:16, 60 fps, 4.5 s",
+   "content": "He walks toward the camera down the long sunlit window corridor in a blue shirt (far -> mid shot).",
+   "good_for": [
+    "opening / intro walk",
+    "journey",
+    "cinematic establishing shot"
+   ]
+  },
+  {
+   "file": "IMG_2256.MOV",
+   "drive_id": "14LnPfRbOkSllMkA3udo_lwMlNUIVX0Ex",
+   "sha256": "063f1a1f538fa9b7583ac605a33711105d7bc6cbe1f228df1a783d49b83a921f",
+   "added": "2026-11-02",
+   "format": "HEVC HLG 3840x2160 rotated -> 9:16, 60 fps, 19.9 s",
+   "content": "Rowing on a Concept2 rower, front view, blue shirt; steady strokes throughout.",
+   "good_for": [
+    "effort / discipline",
+    "conditioning",
+    "cardio",
+    "consistency"
+   ]
+  },
+  {
+   "file": "IMG_2257.MOV",
+   "drive_id": "1ffUQPSXGh_8HMZRSGeq5YouPxUxgUS6o",
+   "sha256": "266e80edc81a980220157b1023954e4093ce99e356c1b05371f5cf663cf5b2bb",
+   "added": "2026-11-02",
+   "format": "HEVC HLG 1920x1080 rotated -> 9:16, 120 fps (slow motion), 14.8 s",
+   "content": "Box step-ups / jumps on a 30-inch plyo box: front views (~4-7 s), walk-around back views (~2.8, 8.3 s), jump at ~12 s.",
+   "good_for": [
+    "power / explosiveness",
+    "slow-motion beats",
+    "plyometrics"
+   ]
+  },
+  {
+   "file": "IMG_2258.MOV",
+   "drive_id": "1qP90cczziwUCpaWGE8yKcgUjSQ4i6FpI",
+   "sha256": "6ffa008bc9efa50d4e5145e56a450f83c24a3215e2c7be6205849d8d42d3862f",
+   "added": "2026-11-02",
+   "format": "HEVC HLG 1920x1080 rotated -> 9:16, 120 fps, 6.5 s",
+   "content": "Mirror selfie walk in a blue shirt; close face at ~2-3 s, full body before/after.",
+   "good_for": [
+    "face close-up",
+    "confident coach shot",
+    "cover photo"
+   ]
   }
  ],
  "used_in": {
@@ -68,6 +121,12 @@
   "2026-11-02_voiceover4": [
    "IMG_7565 38.0 s (mirror line)",
    "IMG_7542 48.0 s (program CTA) + cover"
+  ],
+  "2026-11-02_recreate": [
+   "IMG_2254 0-3.55",
+   "IMG_2258 3.55-5.45 + 15.75-16.3",
+   "IMG_2256 5.45-7.57 + 12.75-15.75 + cover",
+   "IMG_2257 7.63-12.75"
   ]
  }
 }
