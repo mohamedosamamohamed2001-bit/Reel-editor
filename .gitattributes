@@ -23,3 +23,5 @@ deliveries/feast_2026-11-02/*.png filter=lfs diff=lfs merge=lfs -text
 deliveries/feast_2026-11-02/*.jpg filter=lfs diff=lfs merge=lfs -text
 deliveries/osm_assessment_2026-11-02/*.pdf filter=lfs diff=lfs merge=lfs -text
 deliveries/osm_assessment_2026-11-02/*.docx filter=lfs diff=lfs merge=lfs -text
+deliveries/osm_assessment_v2_2026-11-03/*.pdf filter=lfs diff=lfs merge=lfs -text
+deliveries/osm_assessment_v2_2026-11-03/*.docx filter=lfs diff=lfs merge=lfs -text
