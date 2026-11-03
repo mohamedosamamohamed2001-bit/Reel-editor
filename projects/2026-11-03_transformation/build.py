@@ -23,8 +23,8 @@ fr = lambda x: math.floor(x * 30 + 0.5) / 30
 SHOTS = [
     (0.00, 7.40, "m_hook", 0.0, dict(grade=GFX)),                                                        # her: doctor visit / "he was shocked"
     (7.40, 11.00, "b_2254", 0.6, dict(zoom=[1.0, 1.06], focusY=0.4, tin={"type": "flash"})),            # coach intro (walk-in)
-    (11.00, 15.32, "m_case", 0.0, dict(grade=GFX, tin={"type": "whip", "dir": "left"})),                # "understand the case ... plan for her"
-    (15.32, 16.32, "b_2257", 4.3, dict(zoom=[1.04, 1.1], focusY=0.45, tin={"type": "zoom"})),           # music-only training montage
+    (11.00, 15.17, "m_case", 0.15, dict(grade=GFX, tin={"type": "whip", "dir": "left"})),                # "understand the case ... plan for her"
+    (15.17, 16.32, "b_2257", 4.15, dict(zoom=[1.04, 1.1], focusY=0.45, tin={"type": "zoom"})),           # music-only training montage
     (16.32, 17.32, "b_8392", 1.2, dict(zoom=[1.02, 1.08], focusX=0.45, tin={"type": "whip", "dir": "right"})),
     (17.32, 18.32, "b_8382", 0.8, dict(zoom=[1.0, 1.06], focusY=0.4, tin={"type": "whip", "dir": "up"})),
     (18.32, 21.25, "m_voice", 0.0, dict(grade=GFX, tin={"type": "zoom"})),                              # her real voice note (anonymous)
@@ -67,7 +67,7 @@ def main():
         t = kw.get("tin", {}).get("type")
         cues.append(cue(fr(a), {"whip": "whip", "flash": "click", "zoom": "whoosh_in"}[t], {"whip": -15, "flash": -12, "zoom": -16}[t]))
     cues += [cue(11.74, "accent", -18), cue(13.68, "accent", -17)]                                  # case steps 01 / 02
-    cues += [cue(15.32, "impact", -10), cue(16.32, "thump", -13), cue(17.32, "thump", -13)]       # montage hits
+    cues += [cue(15.17, "impact", -10), cue(16.32, "thump", -13), cue(17.32, "thump", -13)]       # montage hits
     cues += [cue(18.6, "blip", -20)]                                                                 # voice note play
     cues += [cue(23.25, "swell", -19, dur=1.4), cue(28.15, "chime", -19)]                          # muscle grows / curve improves
     cues += [cue(40.3 + 3.6 + i * 0.25, "thump", -21) for i in range(3)] + [cue(40.3 + 2.5, "accent", -17)]
@@ -75,7 +75,7 @@ def main():
     cues += [cue(52.35 + 0.84, "key", -18), cue(52.35 + 1.0, "blip", -18)]
     cues += end_card_sfx(T)
     mus = make_music(P, {"bpm": 100, "key": "D", "mode": "minor", "style": "trap", "seed": 311, "duration": round(T + END_DUR, 3),
-                         "sections": [{"type": "intro", "until": 7.4}, {"type": "groove", "until": 15.32}, {"type": "drop", "until": 18.32},
+                         "sections": [{"type": "intro", "until": 7.4}, {"type": "groove", "until": 15.17}, {"type": "drop", "until": 18.32},
                                       {"type": "break", "until": 40.3}, {"type": "build", "until": 46.9}, {"type": "drop", "until": round(T, 3)},
                                       {"type": "outro", "until": round(T + END_DUR, 3)}]}, gain_db=-12)
     edit = {"title": "Client transformation (scoliosis, individualized training)", "fps": 30, "width": 1080, "height": 1920, "media": MEDIA,

@@ -1,9 +1,24 @@
 {
- "frame": {"media": "b_8384", "from": 0.4, "to": 3.2},
- "faceH": 300, "faceTop": 420,
+ "frame": {
+  "media": "b_8384",
+  "from": 0.4,
+  "to": 3.2
+ },
+ "faceH": 300,
+ "faceTop": 420,
  "eyebrow": "REAL CLIENT · REAL VOICE",
- "headline": ["الدكتور", "اتصدم من النتيجة"],
+ "headline": [
+  "الدكتور",
+  "اتصدم من النتيجة"
+ ],
  "accent": "اتصدم",
- "chips": [{"text": "SCOLIOSIS", "blue": true}, {"text": "INDIVIDUAL PLAN"}],
- "sub": "خطة تدريب مناسبة ليها"
+ "chips": [
+  {
+   "text": "SCOLIOSIS",
+   "blue": true
+  },
+  {
+   "text": "INDIVIDUAL PLAN"
+  }
+ ]
 }

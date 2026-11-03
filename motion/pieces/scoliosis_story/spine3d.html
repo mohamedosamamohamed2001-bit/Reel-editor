@@ -80,7 +80,7 @@ const discs = Array.from({ length: N - 1 }, (_, i) => {
   const d = new THREE.Mesh(new THREE.CylinderGeometry(0.3 * s, 0.3 * s, 0.11 * s, 32), discMat); S3.add(d); return d;
 });
 // pelvis hint (sacrum wedge) for orientation
-const sac = new THREE.Mesh(new THREE.SphereGeometry(0.5, 32, 20), boneMat.clone()); sac.scale.set(0.95, 0.85, 0.55); sac.position.y = Y0 - 0.62; S3.add(sac);
+const sac = new THREE.Mesh(new THREE.SphereGeometry(0.5, 32, 20), boneMat.clone()); sac.scale.set(0.9, 0.32, 0.6); sac.position.y = Y0 - 0.38; S3.add(sac);
 
 // curve: lateral S (thoracic right, lumbar left) + matching axial rotation; amp 0 = straight
 const curveX = (u, amp) => amp * (0.95 * Math.sin(Math.PI * clamp01((u - 0.30) / 0.70)) - 0.45 * Math.sin(Math.PI * clamp01(u / 0.36)));
