@@ -1,0 +1,188 @@
+<!doctype html>
+<!-- Transformation reel (projects/2026-11-03_transformation): 2D OSM scenes, 1080x1920, every pixel from t.
+     ?scene=case|voice|years|individual|cta   (window.meta.dur per scene)
+     PRIVACY: the client is never identified. No name, no photo, no chat interface, no messages: the voice note is rebuilt
+     as an anonymous OSM card whose waveform follows HER REAL VOICE (voice_env.json = RMS of take B1, 60 fps).
+     No invented numbers: no degrees, no dates, no durations. Labels restate what the voices say.
+     Text stays above y=1330 (captions below). Inter / Barlow / IBM Plex Sans Arabic; Night, white, Core Blue (text on blue = Night). -->
+<html><head><meta charset="utf-8">
+<style>
+@font-face { font-family: Inter; src: url('/osm/fonts/Inter[opsz,wght].ttf'); font-weight: 100 900; }
+@font-face { font-family: InterI; src: url('/osm/fonts/Inter-Italic[opsz,wght].ttf'); font-weight: 100 900; font-style: italic; }
+@font-face { font-family: Plex; src: url('/osm/fonts/IBMPlexSansArabic-Bold.ttf'); font-weight: 700; }
+@font-face { font-family: Barlow; src: url('/osm/fonts/BarlowCondensed-Bold.ttf'); font-weight: 700; }
+html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #0A0F16; }
+svg { position: absolute; left: 0; top: 0; overflow: visible; }
+.ar { font-family: Plex; font-weight: 700; direction: rtl; }
+.en { font-family: Inter; }
+.ti { font-family: InterI; font-style: italic; font-weight: 900; text-transform: uppercase; letter-spacing: -0.02em; }
+.num { font-family: Barlow; font-weight: 700; }
+#root { position: absolute; inset: 0; }
+.abs { position: absolute; }
+</style></head>
+<body><div id="root"></div>
+<script type="module">
+import { seg, spring, lerp, clamp01 } from "/osm/motion-core.js";
+const BLUE = "#56A0FB", WHITE = "#FFFFFF", TXT = "#E5EBF1", MUTED = "#8C98AA", LINE = "#263244", SURF = "#141B26", RAISED = "#1C2634", CYAN = "#7DD2EC", NIGHT = "#0A0F16";
+const scene = new URLSearchParams(location.search).get("scene") || "case";
+const DUR = { case: 4.32, voice: 2.93, years: 6.6, individual: 2.6, cta: 3.55 }[scene];
+window.meta = { dur: DUR, size: [1080, 1920], scene };
+const root = document.getElementById("root");
+const el = (html) => { const d = document.createElement("div"); d.innerHTML = html.trim(); return d.firstElementChild; };
+const add = (node) => (root.appendChild(node), node);
+const S = (n, st) => { for (const k in st) n.style[k] = st[k]; };
+const sp = (t, t0, f = 2.6) => spring(t - t0, { freq: f });
+const inUp = (n, t, t0, dy = 60, f = 2.6, base = "") => { const p = sp(t, t0, f); S(n, { opacity: clamp01((t - t0) * 6), transform: `${base} translateY(${(1 - p) * dy}px)` }); return p; };
+const pop = (n, t, t0, f = 3, base = "") => { const p = sp(t, t0, f); S(n, { opacity: clamp01((t - t0) * 8), transform: `${base} scale(${0.6 + 0.4 * p})` }); return p; };
+const SVG = (w, h, inner) => `<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" xmlns="http://www.w3.org/2000/svg">${inner}</svg>`;
+const ease = (x) => x * x * (3 - 2 * x), eOut = (x) => 1 - (1 - x) ** 3;
+
+add(el(`<div class="abs" style="inset:0">${SVG(1080, 1920, Array.from({ length: 13 }, (_, i) =>
+  `<line x1="${i * 90}" y1="0" x2="${i * 90}" y2="1920" stroke="${LINE}" stroke-width="1" opacity=".3"/>`).join("") +
+  Array.from({ length: 22 }, (_, i) => `<line x1="0" y1="${i * 90}" x2="1080" y2="${i * 90}" stroke="${LINE}" stroke-width="1" opacity=".3"/>`).join(""))}</div>`));
+const eyebrow = (txt) => add(el(`<div class="abs en" style="left:80px;top:170px;font-weight:700;font-size:30px;letter-spacing:.22em;color:${CYAN}">${txt}</div>`));
+const title = (txt, top, size = 92, col = WHITE) => add(el(`<div class="abs ti" style="left:80px;top:${top}px;font-size:${size}px;color:${col};line-height:1.02">${txt}</div>`));
+// anonymous person glyph (no face, no photo): head + shoulders silhouette in a ring
+const anon = (size, ring = BLUE) => SVG(size, size, `<circle cx="${size / 2}" cy="${size / 2}" r="${size / 2 - 4}" fill="${RAISED}" stroke="${ring}" stroke-width="4"/>
+  <circle cx="${size / 2}" cy="${size * 0.40}" r="${size * 0.16}" fill="${MUTED}"/><path d="M${size * 0.22},${size * 0.82} Q${size / 2},${size * 0.50} ${size * 0.78},${size * 0.82}" fill="${MUTED}"/>`);
+const spineIcon = (w, h, col = BLUE) => SVG(w, h, `<path d="M${w / 2},${h * 0.04} C${w * 0.95},${h * 0.32} ${w * 0.05},${h * 0.62} ${w / 2},${h * 0.96}" stroke="${col}" stroke-width="8" fill="none" stroke-linecap="round"/>` +
+  Array.from({ length: 9 }, (_, i) => { const u = 0.08 + i * 0.105, x = w / 2 + Math.sin(u * Math.PI * 2) * w * 0.17; return `<rect x="${x - 14}" y="${h * u - 6}" width="28" height="12" rx="5" fill="${WHITE}"/>`; }).join(""));
+
+let seek;
+
+if (scene === "case") {            // his opening: "a client with scoliosis ... we had to understand the case well and build a training plan that suits her"
+  const eb = eyebrow("THE CASE");
+  const card = add(el(`<div class="abs" style="left:70px;top:250px;width:940px;height:330px;background:${SURF};border:1px solid ${LINE};border-radius:32px"></div>`));
+  const av = add(el(`<div class="abs" style="left:120px;top:300px;width:230px;height:230px">${anon(230)}</div>`));
+  const who = add(el(`<div class="abs en" style="left:390px;top:318px;font-size:34px;font-weight:800;letter-spacing:.2em;color:${MUTED}">CLIENT</div>`));
+  const nm = add(el(`<div class="abs ti" style="left:390px;top:368px;font-size:84px;color:${WHITE}">Scoliosis</div>`));
+  const lock = add(el(`<div class="abs en" style="left:390px;top:478px;font-size:28px;font-weight:600;color:${MUTED}">Identity protected · real case</div>`));
+  const sic = add(el(`<div class="abs" style="left:860px;top:290px;width:120px;height:250px">${spineIcon(120, 250)}</div>`));
+  const steps = [["01", "ASSESS", "understand the case"], ["02", "INDIVIDUAL PLAN", "built for her body"]].map(([n, h, s], i) => add(el(`
+    <div class="abs" style="left:70px;top:${660 + i * 250}px;width:940px;height:210px;background:${i ? BLUE : SURF};border:1px solid ${i ? BLUE : LINE};border-radius:28px">
+      <div class="abs num" style="left:50px;top:30px;font-size:120px;line-height:1;color:${i ? NIGHT : BLUE}">${n}</div>
+      <div class="abs ti" style="left:230px;top:44px;font-size:66px;color:${i ? NIGHT : WHITE}">${h}</div>
+      <div class="abs en" style="left:232px;top:128px;font-size:34px;font-weight:600;color:${i ? NIGHT : MUTED}">${s}</div></div>`)));
+  seek = (t) => {
+    inUp(eb, t, 0); const pc = sp(t, 0.02, 2.4); S(card, { opacity: clamp01(t * 6), transform: `translateY(${(1 - pc) * 80}px)` });
+    pop(av, t, 0.1); inUp(who, t, 0.18, 30); inUp(nm, t, 0.26, 40); inUp(lock, t, 0.4, 20);
+    S(sic, { opacity: clamp01((t - 0.3) * 5), transform: `rotate(${(1 - sp(t, 0.3, 2)) * 20}deg)` });
+    inUp(steps[0], t, 0.74, 90, 2.8); inUp(steps[1], t, 2.68, 90, 2.8);
+  };
+}
+
+if (scene === "voice") {           // her first words: "I want to tell you, Osama, mashallah" -> anonymous voice-note card, waveform = her real voice
+  const env = await (await fetch("voice_env.json")).json();
+  const eb = eyebrow("CLIENT VOICE NOTE");
+  const t1 = title("HER WORDS.<br><span style='color:#56A0FB'>HER VOICE.</span>", 250, 104);
+  const card = add(el(`<div class="abs" style="left:70px;top:720px;width:940px;height:260px;background:${SURF};border:1px solid ${LINE};border-radius:130px 130px 130px 36px"></div>`));
+  const av = add(el(`<div class="abs" style="left:100px;top:750px;width:200px;height:200px">${anon(200)}</div>`));
+  const play = add(el(`<div class="abs" style="left:330px;top:805px;width:90px;height:90px;border-radius:45px;background:${BLUE}">${SVG(90, 90, `<path d="M36,26 L66,45 L36,64 Z" fill="${NIGHT}"/>`)}</div>`));
+  const NB = 34, bars = [];
+  const wave = add(el(`<div class="abs" style="left:450px;top:780px;width:520px;height:140px"></div>`));
+  for (let i = 0; i < NB; i++) { const b = el(`<div class="abs" style="left:${i * 15.3}px;width:9px;border-radius:5px;background:${MUTED}"></div>`); wave.appendChild(b); bars.push(b); }
+  const tm = add(el(`<div class="abs num" style="left:452px;top:930px;font-size:36px;color:${MUTED}">0:00</div>`));
+  const pv = add(el(`<div class="abs en" style="left:80px;top:1060px;font-size:30px;font-weight:600;color:${MUTED};letter-spacing:.04em">Name, photo and chat hidden for privacy</div>`));
+  const E = (k) => env.env[Math.max(0, Math.min(env.env.length - 1, Math.floor(k * env.fps)))] || 0;
+  seek = (t) => {
+    inUp(eb, t, 0); inUp(t1, t, 0.02, 70); const pc = sp(t, 0.12, 2.4); S(card, { opacity: clamp01((t - 0.12) * 6), transform: `translateY(${(1 - pc) * 80}px)` });
+    pop(av, t, 0.2); pop(play, t, 0.28); inUp(wave, t, 0.3, 30); inUp(tm, t, 0.3, 20); inUp(pv, t, 0.5, 20);
+    const prog = clamp01(t / DUR);
+    bars.forEach((b, i) => {
+      const u = i / (NB - 1), played = u <= prog;
+      // static waveform shape = her envelope over the note; live bar near the playhead pulses with the current level
+      const shape = 0.18 + 0.82 * E(u * (env.env.length / env.fps)), live = Math.abs(u - prog) < 0.05 ? E(t) : 0;
+      const h = 14 + 120 * Math.max(shape * 0.75, live);
+      S(b, { top: `${70 - h / 2}px`, height: `${h}px`, background: played ? BLUE : MUTED });
+    });
+    tm.textContent = `0:${String(Math.floor(t)).padStart(2, "0")}`;
+  };
+}
+
+if (scene === "years") {           // "because never in my life did I reach this result ... I spent years trying to reach it and never did"
+  const eb = eyebrow("BEFORE  ·  NOW");
+  const t1 = title("THE RESULT", 240, 118);
+  const t2 = title("she never reached before", 372, 54, BLUE);
+  S(t2, { fontFamily: "Inter", fontStyle: "normal", textTransform: "none", fontWeight: 800 });
+  const chart = add(el(`<div class="abs" style="left:0;top:0">${SVG(1080, 1920, `
+    <rect x="70" y="520" width="940" height="640" rx="32" fill="${SURF}" stroke="${LINE}"/>
+    <line x1="140" y1="1060" x2="940" y2="1060" stroke="${LINE}" stroke-width="4"/>
+    <line x1="560" y1="600" x2="560" y2="1060" stroke="${LINE}" stroke-width="3" stroke-dasharray="10 10"/>
+    <path id="before" d="M150,990 C190,960 210,1010 250,985 S320,950 360,995 S430,1005 470,975 S520,990 545,985" stroke="${MUTED}" stroke-width="9" fill="none" stroke-linecap="round"/>
+    <path id="now" d="M575,985 C650,970 700,900 760,820 S880,660 930,630" stroke="${BLUE}" stroke-width="12" fill="none" stroke-linecap="round"/>
+    <circle id="dot" cx="930" cy="630" r="22" fill="${BLUE}"/>`)}</div>`));
+  const lb = add(el(`<div class="abs en" style="left:120px;top:1090px;font-size:30px;font-weight:800;letter-spacing:.16em;color:${MUTED}">YEARS OF TRYING</div>`));
+  const ln = add(el(`<div class="abs en" style="left:590px;top:1090px;font-size:30px;font-weight:800;letter-spacing:.16em;color:${BLUE}">INDIVIDUAL PLAN</div>`));
+  const xs = add(el(`<div class="abs" style="left:0;top:0">${SVG(1080, 1920, [250, 360, 470].map((x) =>
+    `<g transform="translate(${x} 900)"><path d="M-16,-16 L16,16 M16,-16 L-16,16" stroke="${MUTED}" stroke-width="7" stroke-linecap="round"/></g>`).join(""))}</div>`));
+  const before = chart.querySelector("#before"), now = chart.querySelector("#now"), dot = chart.querySelector("#dot");
+  const Lb = 520, Ln = 560;
+  before.setAttribute("stroke-dasharray", Lb); now.setAttribute("stroke-dasharray", Ln);
+  const xg = [...xs.querySelectorAll("g")];
+  seek = (t) => {
+    inUp(eb, t, 0); inUp(t1, t, 0.02, 70); inUp(t2, t, 0.3, 40);
+    S(chart, { opacity: clamp01((t - 0.15) * 5) });
+    before.setAttribute("stroke-dashoffset", Lb * (1 - seg(t, 3.2, 4.6, ease)));
+    inUp(lb, t, 3.4, 20);
+    xg.forEach((g, i) => { const p = sp(t, 3.6 + i * 0.25, 3.4); g.setAttribute("opacity", clamp01((t - 3.6 - i * 0.25) * 8)); g.setAttribute("transform", `translate(${[250, 360, 470][i]} 900) scale(${0.3 + 0.7 * p})`); });
+    now.setAttribute("stroke-dashoffset", Ln * (1 - seg(t, 0.7, 2.6, eOut)));
+    const dp = sp(t, 2.5, 3.2); dot.setAttribute("opacity", clamp01((t - 2.5) * 8)); dot.setAttribute("r", 22 * (0.4 + 0.6 * dp));
+    inUp(ln, t, 1.0, 20);
+  };
+}
+
+if (scene === "individual") {      // "every client has different needs, and not everyone fits the same program"
+  const eb = eyebrow("INDIVIDUALIZED TRAINING");
+  const t1 = add(el(`<div class="abs ar" style="right:80px;top:230px;font-size:104px;color:${WHITE};line-height:1.25">كل Client</div>`));
+  S(t1, {}); t1.innerHTML = `كل <span class="en" style="font-weight:900">Client</span>`;
+  const t2 = add(el(`<div class="abs ar" style="right:80px;top:370px;font-size:96px;color:${BLUE}">مختلف</div>`));
+  const cards = [];
+  for (let r = 0; r < 3; r++) for (let c = 0; c < 3; c++) {
+    const n = add(el(`<div class="abs" style="left:${95 + c * 310}px;top:${560 + r * 250}px;width:270px;height:210px;background:${SURF};border:2px solid ${LINE};border-radius:22px">
+      <div class="abs en" style="left:24px;top:22px;font-size:24px;font-weight:800;letter-spacing:.16em;color:${MUTED}">PROGRAM</div>
+      <div class="abs" style="left:24px;top:70px;width:200px;height:12px;border-radius:6px;background:${RAISED}"></div>
+      <div class="abs" style="left:24px;top:100px;width:160px;height:12px;border-radius:6px;background:${RAISED}"></div>
+      <div class="abs" style="left:24px;top:130px;width:180px;height:12px;border-radius:6px;background:${RAISED}"></div>
+      <div class="abs" style="left:24px;top:160px;width:120px;height:12px;border-radius:6px;background:${RAISED}"></div></div>`));
+    cards.push(n);
+  }
+  const same = add(el(`<div class="abs en" style="left:0;width:1080px;top:1305px;text-align:center;font-size:34px;font-weight:800;letter-spacing:.18em;color:${MUTED}"></div>`));
+  const plan = add(el(`<div class="abs" style="left:310px;top:690px;width:460px;height:420px;background:${BLUE};border-radius:30px;box-shadow:0 0 0 0 transparent">
+     <div class="abs en" style="left:36px;top:34px;font-size:30px;font-weight:800;letter-spacing:.18em;color:${NIGHT}">YOUR PLAN</div>
+     <div class="abs ti" style="left:36px;top:84px;font-size:64px;color:${NIGHT};line-height:1">BUILT<br>FOR YOU</div>
+     ${["ASSESSMENT", "YOUR BODY", "YOUR GOAL"].map((s, i) => `<div class="abs en" style="left:36px;top:${248 + i * 52}px;font-size:30px;font-weight:700;color:${NIGHT}">✓ ${s}</div>`).join("")}</div>`));
+  seek = (t) => {
+    inUp(eb, t, 0); inUp(t1, t, 0.0, 70); inUp(t2, t, 0.15, 60, 3);
+    cards.forEach((n, i) => {
+      const a = 0.02 + i * 0.03, fade = seg(t, 1.3, 1.65, ease);
+      const p = sp(t, a, 3);
+      S(n, { opacity: clamp01((t - a) * 6) * (1 - 0.75 * fade), transform: `translateY(${(1 - p) * 50}px) scale(${1 - 0.06 * fade})` });
+    });
+    same.textContent = t > 0.5 ? "SAME PROGRAM FOR EVERYONE?  ✕" : "";
+    S(same, { opacity: clamp01((t - 0.5) * 6) * (1 - seg(t, 1.35, 1.6, (x) => x)) });
+    const pp = sp(t, 1.45, 2.8); S(plan, { opacity: clamp01((t - 1.45) * 7), transform: `scale(${0.55 + 0.45 * pp})` });
+  };
+}
+
+if (scene === "cta") {             // "send me the word 'تدريب' (training) and let's start together, the scientific way"
+  const eb = eyebrow("DM");
+  const t1 = add(el(`<div class="abs ar" style="right:80px;top:230px;font-size:110px;color:${WHITE}">ابعتلي كلمة</div>`));
+  const ph = add(el(`<div class="abs" style="left:150px;top:450px;width:780px;height:760px;border-radius:48px;background:${SURF};border:2px solid ${LINE}">
+      <div class="abs" style="left:0;top:0;width:780px;height:120px;border-bottom:2px solid ${LINE}"></div>
+      <div class="abs" style="left:40px;top:30px;width:60px;height:60px;border-radius:30px;background:${BLUE}"></div>
+      <div class="abs en" style="left:122px;top:30px;font-size:32px;font-weight:800;color:${WHITE}">Coach Osama</div>
+      <div class="abs en" style="left:122px;top:70px;font-size:22px;font-weight:700;letter-spacing:.16em;color:${MUTED}">OSM · ONLINE COACHING</div>
+      <div class="abs" style="left:40px;top:640px;width:700px;height:76px;border-radius:38px;border:2px solid ${LINE}"></div></div>`));
+  const bub = add(el(`<div class="abs ar" style="right:190px;top:850px;font-size:96px;color:${NIGHT};background:${BLUE};padding:4px 50px 20px;border-radius:44px 44px 12px 44px">تدريب</div>`));
+  const sci = add(el(`<div class="abs en" style="left:0;width:1080px;top:1250px;text-align:center;font-size:32px;font-weight:800;letter-spacing:.2em;color:${CYAN}">INDIVIDUAL · SCIENCE-BASED</div>`));
+  seek = (t) => {
+    inUp(eb, t, 0); inUp(t1, t, 0.0, 70); inUp(ph, t, 0.05, 90, 2.6);
+    const bp = sp(t, 0.84, 3.2); S(bub, { opacity: clamp01((t - 0.84) * 8), transform: `translateY(${(1 - bp) * 120}px) scale(${0.7 + 0.3 * bp})`, transformOrigin: "100% 100%" });
+    inUp(sci, t, 2.0, 20);
+  };
+}
+
+const scenePush = (t) => { const p = seg(t, 0, DUR, (x) => x); root.style.transformOrigin = "50% 38%"; root.style.transform = `scale(${1 + 0.08 * p}) translateY(${-18 * p}px)`; };
+window.seek = (t) => { seek(t); scenePush(t); };
+window.ready = document.fonts.ready;
+</script></body></html>

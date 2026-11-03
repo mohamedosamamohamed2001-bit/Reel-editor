@@ -1,0 +1,205 @@
+<!doctype html>
+<!-- Transformation reel (projects/2026-11-03_transformation): physically based 3D spine, three.js.
+     ?scene=hook   (7.40 s) cold open under the client's voice: a scoliotic spine in the dark, a Core Blue assessment scan rises,
+                   the curve is traced against a straight reference line (assessment, no numbers).
+     ?scene=muscle (9.10 s) "the spine is now surrounded by muscle ... and the curve itself improved" (her doctor's words):
+                   paraspinal muscle bands grow around the column, then the curve eases (partly, not to straight: honest).
+     Deterministic: every pixel from t (no clocks, no randomness). Text stays above y=1330 (captions below).
+     node tools/seek_render.js motion/pieces/scoliosis_story/spine3d.html OUT.mp4 --query scene=hook --dur 7.4 -->
+<html><head><meta charset="utf-8">
+<style>
+@font-face { font-family: Inter; src: url('/osm/fonts/Inter[opsz,wght].ttf'); font-weight: 100 900; }
+@font-face { font-family: Barlow; src: url('/osm/fonts/BarlowCondensed-Bold.ttf'); font-weight: 700; }
+html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#0A0F16}canvas{display:block;position:absolute;left:0;top:0}
+.abs{position:absolute}.en{font-family:Inter}.num{font-family:Barlow;font-weight:700}
+</style>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+ "three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
+</head><body><div id="ui" class="abs" style="inset:0;z-index:2"></div>
+<script type="module">
+import * as THREE from "three";
+import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
+import { spring, seg, lerp, clamp01 } from "/osm/motion-core.js";
+
+const W = 1080, H = 1920, BLUE = "#56A0FB", CYAN = "#7DD2EC", NIGHT = "#0A0F16";
+const scene = new URLSearchParams(location.search).get("scene") || "hook";
+const DUR = { hook: 7.4, muscle: 9.1 }[scene];
+window.meta = { dur: DUR, size: [W, H], scene };
+const ease = (x) => x * x * (3 - 2 * x), eOut = (x) => 1 - (1 - x) ** 3;
+
+const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
+renderer.setPixelRatio(1); renderer.setSize(W, H);
+renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.0;
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+document.body.appendChild(renderer.domElement);
+const S3 = new THREE.Scene();
+S3.background = new THREE.Color(NIGHT);
+S3.fog = new THREE.Fog(NIGHT, 14, 34);
+const pmrem = new THREE.PMREMGenerator(renderer);
+S3.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+S3.environmentIntensity = 0.35;
+const cam = new THREE.PerspectiveCamera(34, W / H, 0.5, 80);
+const key = new THREE.DirectionalLight("#ffffff", 1.6); key.position.set(-4, 6, 7); S3.add(key);
+const rimL = new THREE.DirectionalLight(BLUE, 3.2); rimL.position.set(5, 2, -6); S3.add(rimL);
+const rimR = new THREE.DirectionalLight(CYAN, 1.4); rimR.position.set(-6, -1, -5); S3.add(rimR);
+S3.add(new THREE.HemisphereLight("#9fb6d6", "#0A0F16", 0.35));
+
+// floor glow disc (depth cue)
+const glow = new THREE.Mesh(new THREE.CircleGeometry(3.2, 64), new THREE.MeshBasicMaterial({ color: BLUE, transparent: true, opacity: 0.05 }));
+glow.rotation.x = -Math.PI / 2; glow.position.y = -3.75; S3.add(glow);
+
+// ---------- spine ----------
+const N = 17, Y0 = -3.2, Y1 = 3.4;                                   // T1..L5 bottom->top = L5..T1
+const boneMat = new THREE.MeshPhysicalMaterial({ color: "#E6EBF1", roughness: 0.42, metalness: 0, clearcoat: 0.35, clearcoatRoughness: 0.35,
+  emissive: new THREE.Color(BLUE), emissiveIntensity: 0 });
+const discMat = new THREE.MeshPhysicalMaterial({ color: BLUE, roughness: 0.3, transmission: 0.25, thickness: 0.3, emissive: new THREE.Color(BLUE),
+  emissiveIntensity: 0.55, transparent: true, opacity: 0.9 });
+function vertebra(i) {
+  const k = i / (N - 1);                                             // 0 lumbar (big) -> 1 upper thoracic (small)
+  const s = lerp(1.0, 0.62, k);
+  const g = new THREE.Group();
+  const prof = [];                                                   // rounded vertebral body (lathe profile)
+  for (let j = 0; j <= 10; j++) { const a = j / 10; prof.push(new THREE.Vector2(0.34 * s * (0.88 + 0.12 * Math.sin(Math.PI * a)), (a - 0.5) * 0.24 * s)); }
+  const mats = [];
+  const body = new THREE.Mesh(new THREE.LatheGeometry(prof, 40), boneMat.clone()); mats.push(body.material); g.add(body);
+  const cap = (y) => { const m = new THREE.Mesh(new THREE.CircleGeometry(0.34 * s * 0.88, 40), body.material); m.rotation.x = y > 0 ? -Math.PI / 2 : Math.PI / 2; m.position.y = y; g.add(m); };
+  cap(0.12 * s); cap(-0.12 * s);
+  const arch = new THREE.Mesh(new THREE.TorusGeometry(0.17 * s, 0.055 * s, 12, 28, Math.PI), body.material);  // posterior arch
+  arch.rotation.x = Math.PI / 2; arch.position.z = -0.36 * s; g.add(arch);
+  const sp = new THREE.Mesh(new THREE.CapsuleGeometry(0.055 * s, 0.34 * s, 6, 12), body.material);            // spinous process
+  sp.rotation.x = Math.PI / 2 + 0.55; sp.position.set(0, -0.08 * s, -0.68 * s); g.add(sp);
+  for (const sx of [-1, 1]) {                                                                                   // transverse processes
+    const tp = new THREE.Mesh(new THREE.CapsuleGeometry(0.045 * s, 0.3 * s, 6, 12), body.material);
+    tp.rotation.z = Math.PI / 2; tp.rotation.y = sx * 0.35; tp.position.set(sx * 0.36 * s, 0.02, -0.38 * s); g.add(tp);
+  }
+  return { g, mat: body.material, s };
+}
+const verts = Array.from({ length: N }, (_, i) => { const v = vertebra(i); S3.add(v.g); return v; });
+const discs = Array.from({ length: N - 1 }, (_, i) => {
+  const s = lerp(1.0, 0.62, (i + 0.5) / (N - 1));
+  const d = new THREE.Mesh(new THREE.CylinderGeometry(0.3 * s, 0.3 * s, 0.11 * s, 32), discMat); S3.add(d); return d;
+});
+// pelvis hint (sacrum wedge) for orientation
+const sac = new THREE.Mesh(new THREE.SphereGeometry(0.5, 32, 20), boneMat.clone()); sac.scale.set(0.95, 0.85, 0.55); sac.position.y = Y0 - 0.62; S3.add(sac);
+
+// curve: lateral S (thoracic right, lumbar left) + matching axial rotation; amp 0 = straight
+const curveX = (u, amp) => amp * (0.95 * Math.sin(Math.PI * clamp01((u - 0.30) / 0.70)) - 0.45 * Math.sin(Math.PI * clamp01(u / 0.36)));
+function layout(amp) {
+  const pts = [];
+  for (let i = 0; i < N; i++) {
+    const u = i / (N - 1), y = lerp(Y0, Y1, u), x = curveX(u, amp);
+    const du = 0.01, dx = (curveX(Math.min(1, u + du), amp) - curveX(Math.max(0, u - du), amp)) / ((Y1 - Y0) * 2 * du);
+    const v = verts[i]; v.g.position.set(x, y, 0); v.g.rotation.set(0, x * 0.55, -Math.atan(dx)); pts.push(new THREE.Vector3(x, y, 0));
+  }
+  for (let i = 0; i < N - 1; i++) {
+    const a = pts[i], b = pts[i + 1], d = discs[i];
+    d.position.copy(a).lerp(b, 0.5); d.rotation.set(0, 0, -Math.atan2(b.x - a.x, b.y - a.y));
+  }
+  return pts;
+}
+
+// traced curve (assessment line) + straight reference (dashed)
+const lineMat = new THREE.LineBasicMaterial({ color: BLUE, transparent: true, opacity: 0, depthTest: false });
+const traceGeo = new THREE.BufferGeometry(); const TR = 120; traceGeo.setAttribute("position", new THREE.BufferAttribute(new Float32Array(TR * 3), 3));
+const trace = new THREE.Line(traceGeo, lineMat); trace.renderOrder = 5; S3.add(trace);
+const refMat = new THREE.LineDashedMaterial({ color: "#C9D3E0", dashSize: 0.12, gapSize: 0.1, transparent: true, opacity: 0, depthTest: false });
+const ref = new THREE.Line(new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0, Y0 - 0.3, 0.55), new THREE.Vector3(0, Y1 + 0.35, 0.55)]), refMat);
+ref.computeLineDistances(); ref.renderOrder = 4; S3.add(ref);
+function setTrace(amp, grow) {
+  const a = traceGeo.attributes.position.array, n = Math.max(2, Math.floor(TR * grow));
+  for (let j = 0; j < TR; j++) { const u = Math.min(j, n - 1) / (TR - 1); a[j * 3] = curveX(u, amp); a[j * 3 + 1] = lerp(Y0, Y1, u); a[j * 3 + 2] = 0.55; }
+  traceGeo.attributes.position.needsUpdate = true; traceGeo.setDrawRange(0, n);
+}
+
+// scan ring (assessment)
+const scan = new THREE.Mesh(new THREE.TorusGeometry(1.05, 0.012, 8, 96), new THREE.MeshBasicMaterial({ color: BLUE, transparent: true, opacity: 0 }));
+scan.rotation.x = Math.PI / 2; S3.add(scan);
+const scanDisc = new THREE.Mesh(new THREE.CircleGeometry(1.05, 64), new THREE.MeshBasicMaterial({ color: BLUE, transparent: true, opacity: 0, side: THREE.DoubleSide, depthWrite: false }));
+scanDisc.rotation.x = -Math.PI / 2; S3.add(scanDisc);
+
+// paraspinal muscle bands (muscle scene): tubes that follow the column, grown bottom -> top
+const muscleMat = new THREE.MeshPhysicalMaterial({ color: "#3E7FD6", roughness: 0.38, clearcoat: 0.6, clearcoatRoughness: 0.25, transmission: 0.15, thickness: 0.4,
+  emissive: new THREE.Color(BLUE), emissiveIntensity: 0.25, transparent: true, opacity: 0.0 });
+const muscles = [];
+if (scene === "muscle") {
+  for (const [ox, oz, r] of [[-0.36, -0.42, 0.17], [0.36, -0.42, 0.17], [-0.62, -0.28, 0.1], [0.62, -0.28, 0.1]]) {
+    const m = new THREE.Mesh(new THREE.BufferGeometry(), muscleMat); S3.add(m); muscles.push({ m, ox, oz, r });
+  }
+}
+function setMuscles(amp, grow) {
+  for (const mu of muscles) {
+    const pts = []; for (let j = 0; j <= 40; j++) { const u = j / 40; pts.push(new THREE.Vector3(curveX(u, amp) + mu.ox, lerp(Y0 + 0.1, Y1 - 0.2, u), mu.oz)); }
+    const curve = new THREE.CatmullRomCurve3(pts);
+    mu.m.geometry.dispose();
+    const g = new THREE.TubeGeometry(curve, 80, mu.r, 16, false);
+    // taper the ends: scale radius by sin
+    const p = g.attributes.position, c = new THREE.Vector3();
+    for (let i = 0; i < p.count; i++) {
+      const ring = Math.floor(i / 17), u = ring / 80; curve.getPointAt(Math.min(1, u), c);
+      const k = 0.35 + 0.65 * Math.sin(Math.PI * u);
+      p.setXYZ(i, c.x + (p.getX(i) - c.x) * k, c.y + (p.getY(i) - c.y) * k, c.z + (p.getZ(i) - c.z) * k);
+    }
+    g.computeVertexNormals();
+    g.setDrawRange(0, Math.floor(g.index.count * clamp01(grow) / 6) * 6);
+    mu.m.geometry = g;
+  }
+}
+
+// ---------- UI (HTML over the canvas) ----------
+const ui = document.getElementById("ui");
+const el = (h) => { const d = document.createElement("div"); d.innerHTML = h.trim(); return ui.appendChild(d.firstElementChild); };
+const S = (n, st) => { for (const k in st) n.style[k] = st[k]; };
+const inUp = (n, t, t0, dy = 40) => { const p = spring(t - t0, { freq: 2.6 }); S(n, { opacity: clamp01((t - t0) * 6), transform: `translateY(${(1 - p) * dy}px)` }); };
+const eyebrow = el(`<div class="abs en" style="left:80px;top:170px;font-weight:700;font-size:30px;letter-spacing:.22em;color:${CYAN}"></div>`);
+const tag = (txt, x, y) => el(`<div class="abs en" style="left:${x}px;top:${y}px;font-weight:800;font-size:32px;letter-spacing:.16em;color:#0A0F16;background:${BLUE};padding:10px 20px 8px;border-radius:12px;opacity:0">${txt}</div>`);
+
+let seek;
+if (scene === "hook") {
+  eyebrow.textContent = "REAL CLIENT · REAL VOICE";
+  const t1 = tag("ASSESSMENT", 80, 228), t2 = tag("FOLLOW-UP", 80, 228);
+  const AMP = 0.78;
+  seek = (t) => {
+    layout(AMP);
+    // camera: close on the apex, slow orbit + dolly back (eased), never through geometry
+    const k = ease(clamp01(t / DUR)), az = lerp(-0.85, 0.55, k), r = lerp(12.5, 21.5, eOut(clamp01(t / 5.4))), cy = lerp(0.2, -1.35, eOut(clamp01(t / 5.4)));
+    cam.position.set(Math.sin(az) * r, cy + lerp(0.8, 2.2, k), Math.cos(az) * r); cam.lookAt(0, cy, 0); S3.fog.near = r - 4; S3.fog.far = r + 10;
+    // scan rises 0.4 -> 3.2 s, lights the vertebrae it passes
+    const sy = lerp(Y0 - 0.5, Y1 + 0.5, seg(t, 0.4, 3.2, ease)), on = t > 0.4 && t < 3.3;
+    scan.position.set(curveX(clamp01((sy - Y0) / (Y1 - Y0)), AMP), sy, 0); scanDisc.position.copy(scan.position);
+    scan.material.opacity = on ? 0.95 : 0; scanDisc.material.opacity = on ? 0.10 : 0;
+    verts.forEach((v) => { const d = Math.abs(v.g.position.y - sy); v.mat.emissiveIntensity = on ? Math.max(0, 0.9 - d * 1.6) : 0.0; });
+    // trace + reference
+    setTrace(AMP, seg(t, 1.0, 3.4, eOut)); lineMat.opacity = clamp01((t - 1.0) * 4); refMat.opacity = 0.55 * clamp01((t - 2.2) * 3);
+    // second half (B2 "he was shocked by the result"): a calm blue pulse along the column
+    const pulse = seg(t, 3.6, 6.6, (x) => x);
+    if (t > 3.6) verts.forEach((v, i) => { v.mat.emissiveIntensity = 0.55 * Math.max(0, 1 - Math.abs(i / (N - 1) - pulse) * 5); });
+    glow.material.opacity = 0.06 + 0.06 * clamp01((t - 3.4) * 2);
+    inUp(eyebrow, t, 0.05);
+    S(t1, { opacity: t < 3.2 ? clamp01((t - 0.6) * 6) : clamp01((3.5 - t) * 6) }); inUp(t1, t, 0.6, 30); if (t >= 3.2) S(t1, { opacity: clamp01((3.5 - t) * 6) });
+    S(t2, { opacity: clamp01((t - 3.7) * 6), transform: `translateY(${(1 - spring(t - 3.7, { freq: 2.6 })) * 30}px)` });
+    renderer.render(S3, cam);
+  };
+}
+if (scene === "muscle") {
+  eyebrow.textContent = "HER DOCTOR'S FOLLOW-UP";
+  const t1 = tag("MUSCLE SUPPORT", 80, 228), t2 = tag("CURVE · IMPROVED", 80, 228);
+  const A0 = 0.78, A1 = 0.38;
+  seek = (t) => {
+    const amp = lerp(A0, A1, seg(t, 6.6, 8.6, ease));
+    layout(amp);
+    const k = ease(clamp01(t / DUR)), az = lerp(0.9, -0.35, k), r = lerp(20.5, 18.0, k);
+    cam.position.set(Math.sin(az) * r, lerp(2.4, 1.2, k), Math.cos(az) * r); cam.lookAt(0, -1.3, 0); S3.fog.near = r - 4; S3.fog.far = r + 10;
+    muscleMat.opacity = 0.92 * clamp01((t - 1.2) * 2.5);
+    setMuscles(amp, seg(t, 1.2, 4.6, eOut));
+    verts.forEach((v) => { v.mat.emissiveIntensity = 0.12 * clamp01((t - 4.6) * 2); });
+    setTrace(amp, 1); lineMat.opacity = 0.9 * clamp01((t - 5.9) * 3); refMat.opacity = 0.55 * clamp01((t - 5.9) * 3);
+    glow.material.opacity = 0.08;
+    inUp(eyebrow, t, 0.05);
+    S(t1, { opacity: t < 6.4 ? clamp01((t - 2.0) * 6) : clamp01((6.7 - t) * 6) }); if (t < 6.4) inUp(t1, t, 2.0, 30);
+    if (t >= 6.5) { S(t2, { opacity: clamp01((t - 6.9) * 6), transform: `translateY(${(1 - spring(t - 6.9, { freq: 2.6 })) * 30}px)` }); } else S(t2, { opacity: 0 });
+    renderer.render(S3, cam);
+  };
+}
+window.seek = seek;
+window.ready = document.fonts.ready;
+</script></body></html>
