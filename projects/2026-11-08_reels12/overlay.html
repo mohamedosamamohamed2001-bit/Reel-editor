@@ -1,0 +1,186 @@
+<!doctype html>
+<!-- OSM overlay layer for the RAMP warm-up and speed Reels (projects/2026-11-08_reels12). Transparent 1080x1920, every pixel from t.
+     Locked OSM caption bar (#56A0FB, white IBM Plex Sans Arabic 66 px), kinetic titles (Inter Black Italic CAPS, hard Night
+     extrusion: no glow / blur / haze), RAMP phase bar, R-A-M-P reveal, speed-curve graph (solid Night card), end card.
+     Layout rule: nothing on or above his head (titles sit between his chin and the caption bar, placed by engine.place_titles). -->
+<html><head><meta charset="utf-8">
+<style>
+@font-face { font-family: Inter; src: url('/osm/fonts/Inter[opsz,wght].ttf'); font-weight: 100 900; }
+@font-face { font-family: InterI; src: url('/osm/fonts/Inter-Italic[opsz,wght].ttf'); font-weight: 100 900; font-style: italic; }
+@font-face { font-family: Plex; src: url('/osm/fonts/IBMPlexSansArabic-Bold.ttf'); font-weight: 700; }
+@font-face { font-family: Barlow; src: url('/osm/fonts/BarlowCondensed-Bold.ttf'); font-weight: 700; }
+@font-face { font-family: BarlowS; src: url('/osm/fonts/BarlowCondensed-SemiBold.ttf'); font-weight: 600; }
+html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: transparent; }
+.abs { position: absolute; }
+#cap { position: absolute; left: 0; right: 0; top: 0; display: flex; justify-content: center; }
+#cap .bar { direction: rtl; font-family: Plex; font-weight: 700; font-size: 66px; line-height: 1.3; color: #fff; background: #56A0FB;
+  border: 1px solid #56A0FB; padding: 6px 30px 10px; border-radius: 20px; white-space: nowrap; max-width: 940px; }
+#cap .en { font-family: Inter; font-weight: 800; font-size: 0.92em; unicode-bidi: isolate; direction: ltr; }
+#cap .kw { position: relative; }
+#cap .kw::after { content: ""; position: absolute; left: 0; right: 0; bottom: 8px; height: 6px; border-radius: 3px; background: #fff; }
+.t { font-family: InterI; font-style: italic; font-weight: 900; text-transform: uppercase; letter-spacing: -0.02em; color: #fff;
+  text-shadow: 0 4px 0 #0A0F16, 0 8px 0 #0A0F16, 0 12px 0 rgba(10,15,22,.85); line-height: .95; white-space: nowrap; }
+.t .k { color: #56A0FB; }
+.eb { font-family: Barlow; font-weight: 700; letter-spacing: .26em; color: #7DD2EC; text-transform: uppercase;
+  text-shadow: 0 3px 0 #0A0F16; }
+.chip { display: inline-block; margin-top: 18px; background: #56A0FB; color: #0A0F16; font-family: Barlow; font-weight: 700; font-size: 40px;
+  letter-spacing: .14em; padding: 6px 22px 4px; border-radius: 12px; }
+/* RAMP phase bar */
+#ramp { position: absolute; left: 54px; right: 54px; top: 1556px; display: flex; gap: 12px; }
+#ramp .ph { flex: 1; height: 84px; border-radius: 16px; background: #0A0F16; display: flex; align-items: center; gap: 10px; padding: 0 14px;
+  box-sizing: border-box; border: 3px solid #263244; }
+#ramp .L { font-family: InterI; font-style: italic; font-weight: 900; font-size: 50px; color: #8C98AA; width: 40px; text-align: center; }
+#ramp .N { font-family: BarlowS; font-weight: 600; font-size: 24px; letter-spacing: .12em; color: #8C98AA; line-height: 1.05; }
+#ramp .ph.on { background: #56A0FB; border-color: #56A0FB; }
+#ramp .ph.on .L, #ramp .ph.on .N { color: #0A0F16; }
+#ramp .ph.done { border-color: #56A0FB; }
+#ramp .ph.done .L { color: #56A0FB; } #ramp .ph.done .N { color: #fff; }
+/* R A M P reveal */
+#rv { position: absolute; left: 0; right: 0; top: 1040px; display: flex; justify-content: center; gap: 26px; }
+#rv .c { width: 210px; text-align: center; }
+#rv .big { font-family: InterI; font-style: italic; font-weight: 900; font-size: 210px; line-height: .9; color: #fff;
+  text-shadow: 0 6px 0 #0A0F16, 0 12px 0 #0A0F16, 0 18px 0 rgba(10,15,22,.85); }
+#rv .c:nth-child(odd) .big { color: #56A0FB; }
+#rv .w { font-family: Barlow; font-weight: 700; font-size: 34px; letter-spacing: .12em; color: #fff; margin-top: 18px;
+  background: #0A0F16; border-radius: 10px; padding: 4px 0 2px; }
+/* speed graph */
+#gr { position: absolute; left: 70px; width: 940px; top: 1000px; height: 380px; background: rgba(10,15,22,.9); border-radius: 28px;
+  border: 3px solid #263244; }
+#gr svg { position: absolute; left: 0; top: 0; }
+#gr .lab { position: absolute; font-family: Barlow; font-weight: 700; font-size: 34px; letter-spacing: .14em; color: #8C98AA; }
+#gr .lab.on { color: #56A0FB; }
+#gr .ax { position: absolute; font-family: BarlowS; font-weight: 600; font-size: 24px; letter-spacing: .2em; color: #8C98AA; }
+#end { position: absolute; inset: 0; background: #0A0F16; }
+#end img { position: absolute; left: 0; top: 260px; width: 1080px; mix-blend-mode: lighten; }
+#end .pill { position: absolute; left: 50%; top: 1500px; transform: translateX(-50%); background: #56A0FB; color: #0A0F16; font-family: Inter;
+  font-weight: 800; font-size: 46px; padding: 22px 44px; border-radius: 60px; white-space: nowrap; }
+#end .sub { position: absolute; left: 0; right: 0; top: 1640px; text-align: center; font-family: Barlow; font-weight: 700; font-size: 34px; letter-spacing: .26em; color: #8C98AA; }
+</style></head>
+<body>
+<div id="cap" style="display:none"><div class="bar"></div></div>
+<div id="titles"></div>
+<div id="ramp" class="layer" style="display:none"></div>
+<div id="rv" class="layer" style="display:none"></div>
+<div id="gr" class="layer" style="display:none">
+  <svg width="940" height="380" viewBox="0 0 940 380">
+    <line x1="80" y1="300" x2="900" y2="300" stroke="#263244" stroke-width="4"/>
+    <line x1="80" y1="40" x2="80" y2="300" stroke="#263244" stroke-width="4"/>
+    <rect id="hlA" x="80" y="40" width="330" height="260" fill="#56A0FB" opacity="0"/>
+    <rect id="hlM" x="410" y="40" width="490" height="260" fill="#56A0FB" opacity="0"/>
+    <path id="curve" d="" fill="none" stroke="#FFFFFF" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle id="dot" r="14" fill="#56A0FB" stroke="#FFFFFF" stroke-width="5"/>
+  </svg>
+  <div class="ax" style="left:30px;top:22px">SPEED</div>
+  <div class="ax" style="right:40px;top:316px">TIME</div>
+  <div class="lab" id="labA" style="left:110px;top:316px">ACCELERATION</div>
+  <div class="lab" id="labM" style="left:520px;top:62px">MAX VELOCITY</div>
+</div>
+<div id="end" style="display:none"><img src="/osm/brand/end/osm-end-photo.jpg"><div class="pill">OSM Coach Osama</div><div class="sub">OSAMA STRENGTH METHOD</div></div>
+<script type="module">
+import { spring, clamp01, lerp } from "/osm/motion-core.js";
+const q = new URLSearchParams(location.search);
+const spec = await (await fetch(q.get("spec"))).json();
+const S = (n, st) => { for (const k in st) n.style[k] = st[k]; };
+const sp = (t, t0, f = 2.6) => spring(t - t0, { freq: f });
+const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+const isLatin = (w) => /^[A-Za-z0-9.,!?%'’\/\-]+$/.test(w);
+const inAny = (arr, t) => (arr || []).some(([a, b]) => t >= a && t < b);
+const cap = document.getElementById("cap"), bar = cap.querySelector(".bar");
+const end = document.getElementById("end"), tbox = document.getElementById("titles");
+// ---------- titles: {at, dur, lines, top, size, eyebrow, chip, hit, align}
+const titles = (spec.titles || []).map((ti) => {
+  const d = document.createElement("div"); d.className = "abs"; d.style.left = "54px"; d.style.right = "54px"; d.style.top = (ti.top || 1100) + "px";
+  d.style.textAlign = ti.align || "center";
+  const eb = ti.eyebrow ? `<div class="eb" style="font-size:36px;margin-bottom:12px">${esc(ti.eyebrow)}</div>` : "";
+  const chip = ti.chip ? `<div><span class="chip">${esc(ti.chip)}</span></div>` : "";
+  d.innerHTML = eb + `<div class="t" style="font-size:${ti.size || 120}px">${ti.lines.map((l) => `<div>${l}</div>`).join("")}</div>` + chip;
+  d.style.display = "none"; tbox.appendChild(d); return { ti, d };
+});
+// ---------- RAMP bar
+const R = spec.ramp;
+const rampEl = document.getElementById("ramp");
+const PH = [["R", "RAISE"], ["A", "ACTIVATE"], ["M", "MOBILIZE"], ["P", "POTEN-<br>TIATE"]];
+if (R) rampEl.innerHTML = PH.map(([l, n]) => `<div class="ph"><div class="L">${l}</div><div class="N">${n}</div></div>`).join("");
+// ---------- RAMP reveal
+const V = spec.reveal, rv = document.getElementById("rv");
+if (V) rv.innerHTML = [["R", "RAISE"], ["A", "ACTIVATE"], ["M", "MOBILIZE"], ["P", "POTENTIATE"]]
+  .map(([l, w]) => `<div class="c"><div class="big">${l}</div><div class="w" style="font-size:${w.length > 8 ? 26 : 32}px">${w}</div></div>`).join("");
+// ---------- speed graph
+const G = spec.graph, gr = document.getElementById("gr");
+const curve = document.getElementById("curve"), dot = document.getElementById("dot");
+const vel = (x) => 1 - Math.exp(-x * 5.2);      // velocity vs time: fast rise (acceleration), then plateau (max velocity)
+const pt = (u) => [80 + u * 800, 300 - vel(u) * 235];
+let lastCap = null;
+window.seek = (t) => {
+  // captions
+  const g = inAny(spec.capsOff, t) ? null : (spec.captions || []).find((c) => t >= c.start && t < c.end);
+  if (g) {
+    if (g !== lastCap) {
+      bar.innerHTML = g.words.map((w) => {
+        let txt;
+        const m = w.w.match(/^(.*?ـ)([A-Za-z].*)$/);               // Arabic prefix + English term: prefix, then one isolated LTR run
+        if (m) txt = esc(m[1]) + `<span class="en">${esc(m[2])}</span>`;
+        else txt = isLatin(w.w) ? `<span class="en">${esc(w.w)}</span>` : esc(w.w);
+        return w.kw ? `<span class="kw">${txt}</span>` : txt;
+      }).join(" ");
+      lastCap = g;
+    }
+    const p = sp(t, g.start, 3.4);
+    S(cap, { display: "flex", top: (g.top || spec.capTop || 1420) + "px", opacity: clamp01((t - g.start) * 16),
+             transform: `translateY(${(1 - p) * 16}px) scale(${0.95 + 0.05 * p})` });
+  } else { S(cap, { display: "none" }); lastCap = null; }
+  // titles
+  for (const { ti, d } of titles) {
+    if (t >= ti.at && t < ti.at + ti.dur) {
+      const p = sp(t, ti.at, ti.hit ? 4.4 : 2.8), out = clamp01((t - (ti.at + ti.dur - 0.16)) / 0.16);
+      const sc = ti.hit ? 1.3 - 0.3 * p : 0.88 + 0.12 * p;
+      S(d, { display: "block", opacity: clamp01((t - ti.at) * (ti.hit ? 22 : 9)) * (1 - out),
+             transform: `translateY(${ti.hit ? 0 : (1 - p) * 46}px) scale(${sc})` });
+    } else S(d, { display: "none" });
+  }
+  // RAMP bar: show windows; phase k active from phases[k]; earlier phases done
+  if (R && inAny(R.show, t)) {
+    const a0 = R.show.find(([a, b]) => t >= a && t < b)[0], p = sp(t, a0, 3);
+    let act = -1; R.phases.forEach((pt0, k) => { if (t >= pt0) act = k; });
+    [...rampEl.children].forEach((el, k) => {
+      el.className = "ph" + (k === act ? " on" : k < act ? " done" : "");
+      const pk = R.phases[k] !== undefined && t >= R.phases[k] ? sp(t, R.phases[k], 4) : 1;
+      el.style.transform = k === act ? `scale(${1 + 0.08 * (1 - pk)})` : "none";
+    });
+    S(rampEl, { display: "flex", opacity: clamp01((t - a0) * 8), transform: `translateY(${(1 - p) * 40}px)` });
+  } else S(rampEl, { display: "none" });
+  // RAMP reveal: letters land one by one (on the beat), then hold
+  if (V && t >= V.at && t < V.at + V.dur) {
+    S(rv, { display: "flex", top: (V.top || 1040) + "px", opacity: 1 - clamp01((t - (V.at + V.dur - 0.15)) / 0.15) });
+    [...rv.children].forEach((c, k) => {
+      const tk = V.at + (V.step || 0.25) * k, p = sp(t, tk, 4.2);
+      S(c, { opacity: clamp01((t - tk) * 20), transform: `translateY(${(1 - p) * 60}px) scale(${1.25 - 0.25 * p})` });
+    });
+  } else S(rv, { display: "none" });
+  // speed graph
+  if (G && inAny(G.show, t)) {
+    const a0 = G.show.find(([a, b]) => t >= a && t < b)[0], p = sp(t, a0, 3);
+    S(gr, { display: "block", top: (G.top || 1000) + "px", opacity: clamp01((t - a0) * 8), transform: `translateY(${(1 - p) * 40}px)` });
+    let u = 0; for (const [ta, tb, u0, u1] of G.draw) { if (t >= ta) u = t >= tb ? u1 : lerp(u0, u1, (t - ta) / (tb - ta)); }
+    const n = 60, pts = []; for (let i = 0; i <= n; i++) { const [x, y] = pt((u * i) / n); pts.push(`${i ? "L" : "M"}${x.toFixed(1)},${y.toFixed(1)}`); }
+    curve.setAttribute("d", pts.join(" "));
+    const [dx, dy] = pt(u); dot.setAttribute("cx", dx); dot.setAttribute("cy", dy);
+    let hl = ""; for (const [th, which] of G.hl || []) if (t >= th) hl = which;
+    document.getElementById("hlA").setAttribute("opacity", hl === "acc" || hl === "both" ? 0.22 : 0);
+    document.getElementById("hlM").setAttribute("opacity", hl === "max" || hl === "both" ? 0.22 : 0);
+    document.getElementById("labA").className = "lab" + (hl === "acc" || hl === "both" ? " on" : "");
+    document.getElementById("labM").className = "lab" + (hl === "max" || hl === "both" ? " on" : "");
+  } else S(gr, { display: "none" });
+  // end card
+  const E = spec.end;
+  if (E && t >= E.at) {
+    const p = sp(t, E.at, 2.6);
+    S(end, { display: "block", opacity: clamp01((t - E.at) / 0.2) });
+    S(end.querySelector("img"), { transform: `scale(${1.06 - 0.06 * p})`, opacity: clamp01((t - E.at) / 0.3) });
+    S(end.querySelector(".pill"), { opacity: clamp01((t - E.at - 0.4) * 6), transform: `translateX(-50%) translateY(${(1 - sp(t, E.at + 0.4, 3)) * 40}px)` });
+    S(end.querySelector(".sub"), { opacity: clamp01((t - E.at - 0.6) * 5) });
+  } else S(end, { display: "none" });
+};
+window.meta = { dur: spec.dur };
+window.ready = document.fonts.ready.then(() => new Promise((r) => { const im = end.querySelector("img"); im.complete ? r() : (im.onload = r, im.onerror = r); }));
+</script></body></html>
