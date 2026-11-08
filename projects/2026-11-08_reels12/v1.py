@@ -48,7 +48,7 @@ PICTURE = [
     dict(sync=True, z=WIDE, until=6.45),
     dict(src="wu", a=12.0, speed=1.2, z=(1.2, 1.25), **B, until=6.8),                              # four phases flash
     dict(src="wu", a=18.5, speed=1.0, z=(1.25, 1.3), **B, until=7.15),
-    dict(src="1_a", a=13.0, speed=1.0, z=(1.3, 1.35), fy=.55, until=7.5),
+    dict(src="wu", a=44.0, speed=1.0, z=(1.25, 1.3), fy=.45, until=7.5),           # standing leg swings (a ground shot put his face behind the letters)
     dict(src="box", a=4.0, speed=0.5, z=(1.05, 1.1), **B, until=7.85),
     dict(sync=True, z=WIDE, until=9.5),
     dict(sync=True, z=PUNCH, tin=("smoothup", 0.22), until=11.6),                                  # RAISE
