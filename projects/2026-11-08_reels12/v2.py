@@ -88,7 +88,7 @@ def build(preview=False):
     (mdir / "music.json").write_text(json.dumps(mspec))
     mwav = mdir / "music.wav"
     subprocess.run([str(E.ROOT / ".venv/bin/python"), str(E.ROOT / "tools/music.py"), str(mdir / "music.json"), str(mwav)], check=True)
-    music = {"path": str(mwav), "gain_db": -9, "duck_ratio": 4, "voice_dip_db": -4}
+    music = {"path": str(mwav), "gain_db": -12, "duck_ratio": 8, "duck_threshold": 0.01, "voice_dip_db": -5}   # measured: music >= 12 dB under his voice in 90% of speech
     W_, tl2, sp2, end_f2, total_f2 = E.render("v2_speed", SPINE, PICTURE, W, KEYWORDS, {"titles": titles, "graph": graph}, breaks=BREAKS)
     return E.encode("v2_speed", W_, tl2, sp2, end_f2, total_f2, cues, music=music, preview=preview)
 
