@@ -50,7 +50,7 @@ def build(preview=False):
     mont0, mont1 = st(1), st(6)
     titles = [
         dict(at=0.15, dur=st(1) - 0.1, lines=["YOUR MIND", "SAYS <span class='k'>STOP</span>"], eyebrow="KM 4", size=124, top=1060),
-        dict(at=mont0 + 0.05, dur=1.4, lines=["8 <span class='k'>KM</span>"], eyebrow="COACH OSAMA · OSM", size=240, top=1000, hit=True),
+        dict(at=mont0 + 0.05, dur=1.25, lines=["8 <span class='k'>KM</span>"], size=200, top=1000, hit=True),      # inside the 4919 shot only (his face is higher there)
         dict(at=st(4), dur=mont1 - st(4), lines=["ME", "<span class='k'>VS</span> MY MIND"], size=120, top=1060, hit=True),
         dict(at=st(8) + 0.1, dur=1.6, lines=["THE <span class='k'>WALL</span>"], eyebrow="KM 4 → 7", size=150, top=1100),
         dict(at=ot("4923", 24.8), dur=1.6, lines=["BUT <span class='k'>NO.</span>"], size=200, top=1070, hit=True),
