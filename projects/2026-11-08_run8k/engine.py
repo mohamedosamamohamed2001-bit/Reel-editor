@@ -316,7 +316,7 @@ def place_titles(tl, titles, cap_top=1545, gap=24):
         ti["size"] = size
         ti["top"] = round(bottom - need(size))
         ti["chin"] = chin
-        ti["skip"] = ti["top"] < chin + gap            # no room under his face at some moment: the caption carries the line
+        ti["skip"] = ti["top"] < chin + gap or size < 100   # no room under his face (or only for tiny type): the caption carries the line
         if ti["skip"]:
             print(f"title skipped (no room under his face): {ti['lines']} at {ti['at']:.2f}s, chin {chin}", flush=True)
     return [t for t in titles if not t["skip"]]

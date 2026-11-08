@@ -55,7 +55,7 @@ def build(preview=False):
         dict(at=st(8) + 0.1, dur=1.6, lines=["THE <span class='k'>WALL</span>"], eyebrow="KM 4 → 7", size=150, top=1100),
         dict(at=ot("4923", 24.8), dur=1.6, lines=["BUT <span class='k'>NO.</span>"], size=200, top=1070, hit=True),
         dict(at=st(12) + 3.6, dur=st(13) - st(12) - 3.6 + 0.6, lines=["8 KM. <span class='k'>DONE.</span>"], size=150, top=1150, hit=True),
-        dict(at=ot("4926", 31.15), dur=end_f / E.FPS - ot("4926", 31.15), lines=["CONTROL", "YOUR <span class='k'>MIND</span>"], eyebrow="THE LESSON", size=128, top=1040),
+        dict(at=ot("4926", 31.15), dur=end_f / E.FPS - ot("4926", 31.15), lines=["CONTROL", "YOUR <span class='k'>MIND</span>"], size=128, top=1040),
     ]
     titles = E.place_titles(tl, titles)
     hud = {"show": [[mont0 + 1.45, st(6)], [st(7) + 0.3, st(8) + 3.6], [st(12) + 0.3, st(12) + 3.55]], "top": 1532,
