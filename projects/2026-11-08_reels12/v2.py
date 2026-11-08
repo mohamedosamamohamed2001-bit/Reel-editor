@@ -24,7 +24,7 @@ SPINE = [
 ]
 PUNCH, WIDE = (1.28, 1.34), (1.0, 1.08)
 PICTURE = [
-    dict(src="wu", a=11.6, ramp=[(0.35, 1.6), (9, 0.4)], z=(1.15, 1.2), fy=.45, until=0.7),     # hook: him running at the lens, ramp into slow motion
+    dict(src="wu", a=13.6, ramp=[(0.35, 1.6), (9, 0.4)], z=(1.12, 1.18), fy=.45, until=0.7),     # hook: him running at the lens, ramp into slow motion
     dict(sync=True, z=PUNCH, until=2.0),
     dict(src="1_d", a=2.2, speed=0.5, z=(1.1, 1.16), fy=.45, until=2.7),
     dict(sync=True, z=WIDE, until=4.0),
@@ -41,7 +41,7 @@ PICTURE = [
     dict(sync=True, z=PUNCH, until=19.1),
     dict(src="wu", a=13.0, speed=0.35, z=(1.2, 1.28), fy=.45, tin=("hblur", 0.12), until=20.5),
     dict(sync=True, z=PUNCH, tin=("zoomin", 0.22), until=22.0),                                   # the lesson
-    dict(src="wu", a=13.6, speed=0.5, z=(1.1, 1.16), fy=.45, until=22.7),
+    dict(src="wu", a=12.6, speed=0.5, z=(1.15, 1.2), fy=.45, until=22.7),
     dict(sync=True, z=WIDE, until=None),
 ]
 MUSIC = {"bpm": 120, "key": "E", "mode": "minor", "style": "phonk", "seed": 12,
@@ -62,7 +62,7 @@ def build(preview=False):
         dict(at=12.0, dur=1.3, lines=["THE MOST", "<span class='k'>IMPORTANT</span>"], eyebrow="03", size=112, hit=True),
         dict(at=ot("2_c", 2.2), dur=1.5, lines=["RUNNING", "<span class='k'>MECHANICS</span>"], eyebrow="03", size=116),
         dict(at=ot("2_e", 2.28), dur=1.3, lines=["RUN <span class='k'>RIGHT.</span>"], size=150, hit=True),
-        dict(at=ot("2_e", 2.62) + 0.3, dur=end - ot("2_e", 2.62) - 0.32, lines=["FOLLOW", "FOR <span class='k'>MORE</span>"], eyebrow="EACH ONE · ITS OWN VIDEO", size=118),
+        dict(at=ot("2_e", 2.28) + 1.36, dur=end - ot("2_e", 2.28) - 1.38, lines=["FOLLOW", "FOR <span class='k'>MORE</span>"], eyebrow="EACH ONE · ITS OWN VIDEO", size=118),
     ]
     graph = {"top": 1000, "show": [[5.2, 7.95], [9.2, 11.95], [ot("2_c", 3.9), 20.45]],
              "draw": [[5.3, 7.2, 0, 0.42], [9.3, 11.0, 0.42, 1.0], [ot("2_c", 3.9), ot("2_c", 3.9) + 0.6, 0, 1.0]],

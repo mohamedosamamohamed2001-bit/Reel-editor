@@ -73,7 +73,7 @@ html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; backgro
   <div class="ax" style="left:30px;top:22px">SPEED</div>
   <div class="ax" style="right:40px;top:316px">TIME</div>
   <div class="lab" id="labA" style="left:110px;top:316px">ACCELERATION</div>
-  <div class="lab" id="labM" style="left:520px;top:62px">MAX VELOCITY</div>
+  <div class="lab" id="labM" style="left:560px;top:150px">MAX VELOCITY</div>
 </div>
 <div id="end" style="display:none"><img src="/osm/brand/end/osm-end-photo.jpg"><div class="pill">OSM Coach Osama</div><div class="sub">OSAMA STRENGTH METHOD</div></div>
 <script type="module">
@@ -116,13 +116,22 @@ window.seek = (t) => {
   const g = inAny(spec.capsOff, t) ? null : (spec.captions || []).find((c) => t >= c.start && t < c.end);
   if (g) {
     if (g !== lastCap) {
-      bar.innerHTML = g.words.map((w) => {
-        let txt;
-        const m = w.w.match(/^(.*?ـ)([A-Za-z].*)$/);               // Arabic prefix + English term: prefix, then one isolated LTR run
-        if (m) txt = esc(m[1]) + `<span class="en">${esc(m[2])}</span>`;
-        else txt = isLatin(w.w) ? `<span class="en">${esc(w.w)}</span>` : esc(w.w);
-        return w.kw ? `<span class="kw">${txt}</span>` : txt;
-      }).join(" ");
+      // tokens: Arabic words, and English words; an Arabic prefix on an English term ("الـAcceleration") is its own Arabic token.
+      // Consecutive English words are ONE isolated LTR run (per-word runs read backwards inside the RTL bar).
+      const tok = [];
+      for (const w of g.words) {
+        const m = w.w.match(/^(.*?ـ)([A-Za-z].*)$/);
+        if (m) { tok.push({ ar: true, t: m[1], kw: w.kw, glue: true }); tok.push({ ar: false, t: m[2], kw: w.kw }); }
+        else tok.push({ ar: !isLatin(w.w), t: w.w, kw: w.kw });
+      }
+      const wrap = (x) => x.kw ? `<span class="kw">${esc(x.t)}</span>` : esc(x.t);
+      let html = "", i = 0;
+      while (i < tok.length) {
+        if (tok[i].ar) { html += wrap(tok[i]) + (tok[i].glue ? "" : " "); i++; continue; }
+        const run = []; while (i < tok.length && !tok[i].ar) run.push(tok[i++]);
+        html += `<span class="en">${run.map(wrap).join(" ")}</span> `;
+      }
+      bar.innerHTML = html.trim();
       lastCap = g;
     }
     const p = sp(t, g.start, 3.4);
