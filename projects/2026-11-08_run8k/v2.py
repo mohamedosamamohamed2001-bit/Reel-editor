@@ -60,7 +60,7 @@ def build(preview=False):
     titles = E.place_titles(tl, titles)
     hud = {"show": [[mont0 + 1.45, st(6)], [st(7) + 0.3, st(8) + 3.6], [st(12) + 0.3, st(12) + 3.55]], "top": 1532,
            "segments": [[mont0 + 1.5, mont1, 0, 3], [st(7) + 1.0, st(7) + 2.0, 3, 4], [st(8) + 0.4, st(8) + 0.9, 4, 7], [st(12) + 0.4, st(12) + 2.2, 7, 8]]}
-    lower = {"at": st(6) + 0.3, "dur": st(7) - st(6) + 0.2, "top": 1532}
+    lower = {"at": st(6) + 0.3, "dur": st(7) - st(6) - 0.35, "top": 1532}       # gone before the slide-up into 4920
     cue = lambda at, s, g, **k: {"at": round(at, 4), "sound": s, "gain_db": g, **k}
     cues = [cue(0.0, "air", -20), cue(0.1, "swell", -18, dur=1.6)]
     cues += [cue(mont0, "impact", -9), cue(mont0 + 0.02, "boom", -12)]
@@ -80,7 +80,7 @@ def build(preview=False):
     cues += [cue(st(14), "thump", -12)]
     cues += [cue(ot("4924", 24.1), "accent", -16), cue(ot("4926", 31.15), "swell", -15, dur=1.2)]
     cues += [cue(end_f / E.FPS, "reverse_hit", -12, dur=0.7), cue(end_f / E.FPS, "boom", -8), cue(end_f / E.FPS + 0.5, "click", -17)]
-    W_, tl2, end_f2, total_f2, spec = E.render("v2_creative", SHOTS, W, KEYWORDS, titles, hud, lower, cues, breaks=BREAKS)
+    W_, tl2, end_f2, total_f2, spec = E.render("v2_creative", SHOTS, W, KEYWORDS, titles, hud, lower, cues, breaks=BREAKS, caps_off=[[st(7), st(7) + 0.3]])
     return E.encode("v2_creative", W_, tl2, end_f2, total_f2, cues, preview=preview)
 
 

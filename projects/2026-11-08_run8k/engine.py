@@ -293,7 +293,7 @@ def chin_y(tl, t_out, samples=None, dur=0.6, step=0.18):
         if faces is None:
             continue
         x, y, w, h = max(faces, key=lambda f: f[2] * f[3])[:4] * 2          # source px (1080x1920)
-        chin = y + h * 1.12                                                   # YuNet box ends near the lips/chin: add beard
+        chin = y + h * 1.22                                                   # beard included (same zone as head_check.py)
         z0, z1 = s.get("z", (1.0, 1.0)); Z = z0 + (z1 - z0) * lt / max(s["len"], 1e-3)
         fy = s.get("fy", .5)
         out = chin * Z - (1920 * Z - 1920) * fy
@@ -301,7 +301,7 @@ def chin_y(tl, t_out, samples=None, dur=0.6, step=0.18):
     return round(worst)
 
 
-def place_titles(tl, titles, cap_top=1545, gap=36):
+def place_titles(tl, titles, cap_top=1545, gap=24):
     """Fit each title between his chin (+gap) and the caption bar; shrink the type when the space is short."""
     for ti in titles:
         chin = chin_y(tl, ti["at"] + 0.03, dur=max(0.1, ti["dur"] - 0.06))
