@@ -188,8 +188,7 @@ def encode(name, W, tl, end_f, total_f, cues, preview=False):
     inputs, graph = video_graph(tl, total_f, ov / "f_%05d.png", files)
     # pass 2a: shots + transitions + end-card padding -> one visually lossless 10-bit file (exactly total_f frames)
     base = W / "base.mkv"
-    gb = ";".join(x for x in graph.split(";") if "[ov]" not in x and "alphamerge" not in x and "alphaextract" not in x and "zscale" not in x
-                  and "[vout]" not in x)
+    gb = ";".join(x for x in graph.split(";") if not any(k in x for k in ("[ov]", "[co]", "[ao]", "alphamerge", "alphaextract", "zscale", "[vout]")))
     ff([*inputs[:4 * len(files)], "-filter_complex", gb, "-map", "[base]", "-frames:v", str(total_f), "-c:v", "libx265", "-pix_fmt", "yuv420p10le",
         "-x265-params", "crf=6:preset=fast:pools=2:frame-threads=1:log-level=error", "-tag:v", "hvc1", *HDR_TAGS, str(base)])
     nb = count_frames(base)
