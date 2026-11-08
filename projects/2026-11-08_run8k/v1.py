@@ -84,7 +84,7 @@ def build(preview=False):
     cues += [cue(st(19) + 2.4 + i * 0.85, "thump", -20, freq=52, dur=0.35) for i in range(5)]                     # heartbeat
     cues += [cue(ot("4926", 31.15), "swell", -16, dur=1.2)]
     cues += [cue(end_f / E.FPS, "reverse_hit", -12, dur=0.7), cue(end_f / E.FPS, "boom", -8), cue(end_f / E.FPS + 0.5, "click", -17)]
-    W_, tl2, end_f2, total_f2, spec = E.render("v1_me_reedit", SHOTS, W, KEYWORDS, titles, hud, lower, cues, breaks=BREAKS)
+    W_, tl2, end_f2, total_f2, spec = E.render("v1_me_reedit", SHOTS, W, KEYWORDS, titles, hud, lower, cues, breaks=BREAKS, caps_off=[[st(4), st(4) + 0.32]])     # no caption while 4920 slides up
     return E.encode("v1_me_reedit", W_, tl2, end_f2, total_f2, cues, preview=preview)
 
 

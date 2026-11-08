@@ -222,7 +222,7 @@ def encode(name, W, tl, end_f, total_f, cues, preview=False):
         *HDR_TAGS, str(raw)])
     nr = count_frames(raw)
     assert nr == total_f, f"video has {nr} frames, expected {total_f}"
-    base.unlink()
+    # base.mkv is kept (overlay-only fixes re-run without re-encoding the footage); deleted by hand after delivery
     dlg = W / "dialogue.wav"
     dialogue(tl, total_f, dlg)
     mix = W / "mix.wav"
@@ -270,13 +270,13 @@ def out_time(tl, src, t):
     raise KeyError((src, t))
 
 
-def chin_y(tl, t_out, samples=None, dur=0.6, step=0.18):
+def chin_y(tl, t_out, samples=None, dur=0.6, step=0.18, cap=14):
     """Lowest chin (output px) of his face over [t_out, t_out+dur]: YuNet on the source frame, mapped through the shot's zoom/crop.
     Used to keep every title clear of his face. Returns 0 when no face is found (e.g. the watch close-up)."""
     import cv2, numpy as np
     det = cv2.FaceDetectorYN.create(str(Path.home() / ".cache/osm-models/yunet.onnx"), "", (540, 960), 0.6, 0.3, 50)
     worst = 0
-    samples = samples or max(2, min(14, int(dur / step) + 1))
+    samples = samples or max(2, min(cap, int(dur / step) + 1))
     for k in range(samples):
         t = t_out + dur * k / max(1, samples - 1)
         s = next((s for s in reversed(tl) if s["start"] / FPS <= t), tl[0])
@@ -304,7 +304,7 @@ def chin_y(tl, t_out, samples=None, dur=0.6, step=0.18):
 def place_titles(tl, titles, cap_top=1545, gap=24):
     """Fit each title between his chin (+gap) and the caption bar; shrink the type when the space is short."""
     for ti in titles:
-        chin = chin_y(tl, ti["at"] + 0.03, dur=max(0.1, ti["dur"] - 0.06))
+        chin = chin_y(tl, ti["at"] + 0.03, dur=max(0.1, ti["dur"] - 0.06), step=0.067, cap=45)   # every 2nd frame: his face moves fast
         n = len(ti["lines"]); eb = 50 if ti.get("eyebrow") else 0
         bottom = cap_top - 24
         top_min = max(chin + gap, 300)
@@ -326,7 +326,7 @@ def place_captions(tl, caps, top=1420, gap=30, low_max=1552):
     """Each phrase sits at the standard height unless his chin comes down past it (close selfie moments): then just under
     his beard, never lower than low_max (the bar must end above the 14% bottom safe zone)."""
     for g in caps:
-        chin = chin_y(tl, g["start"] + 0.02, dur=max(0.1, g["end"] - g["start"] - 0.04), step=0.2)
+        chin = chin_y(tl, g["start"] + 0.02, dur=max(0.1, g["end"] - g["start"] - 0.04), step=0.1, cap=30)
         g["top"] = top if chin + gap <= top else min(low_max, chin + gap)
         g["chin"] = chin
     return caps
