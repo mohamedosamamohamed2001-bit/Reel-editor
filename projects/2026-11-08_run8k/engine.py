@@ -62,7 +62,7 @@ def shot_filter(s, inp="0:v"):
 
 
 def render_segments(tl, W):
-    """Pass 1: every shot alone -> lossless FFV1 10-bit (exact pixels, low memory). Cached by shot parameters."""
+    """Pass 1: every shot alone -> visually lossless 10-bit HEVC (CRF 6, HLG tags, no colour conversion), low memory. Cached."""
     import hashlib
     seg = W / "seg"
     seg.mkdir(exist_ok=True)
@@ -73,7 +73,8 @@ def render_segments(tl, W):
         f = seg / f"s{i:02d}_{key}.mkv"
         if not f.exists():
             ff(["-threads", "2", "-i", str(SRC[s["src"]]), "-filter_complex", shot_filter(s) + "[v]", "-map", "[v]", "-an",
-                "-c:v", "ffv1", "-level", "3", "-pix_fmt", "yuv420p10le", "-r", str(FPS), str(f)])
+                "-c:v", "libx265", "-pix_fmt", "yuv420p10le", "-x265-params", "crf=6:preset=fast:pools=2:frame-threads=1:log-level=error",
+                "-tag:v", "hvc1", *HDR_TAGS, "-r", str(FPS), str(f)])
         files.append(f)
     for old in seg.glob("*.mkv"):
         if old not in files:
