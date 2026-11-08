@@ -189,17 +189,21 @@ def encode(name, W, tl, end_f, total_f, cues, preview=False):
     # pass 2a: shots + transitions + end-card padding -> one visually lossless 10-bit file (exactly total_f frames)
     base = W / "base.mkv"
     gb = ";".join(x for x in graph.split(";") if not any(k in x for k in ("[ov]", "[co]", "[ao]", "alphamerge", "alphaextract", "zscale", "[vout]")))
-    ff([*inputs[:4 * len(files)], "-filter_complex", gb, "-map", "[base]", "-frames:v", str(total_f), "-c:v", "libx265", "-pix_fmt", "yuv420p10le",
-        "-x265-params", "crf=6:preset=fast:pools=2:frame-threads=1:log-level=error", "-tag:v", "hvc1", *HDR_TAGS, str(base)])
+    if not (base.exists() and count_frames(base) == total_f and base.stat().st_mtime > max(f.stat().st_mtime for f in files)):
+        ff([*inputs[:4 * len(files)], "-filter_complex", gb, "-map", "[base]", "-frames:v", str(total_f), "-c:v", "libx265", "-pix_fmt", "yuv420p10le",
+            "-x265-params", "crf=6:preset=fast:pools=2:frame-threads=1:log-level=error", "-tag:v", "hvc1", *HDR_TAGS, str(base)])
     nb = count_frames(base)
     assert nb == total_f, f"base has {nb} frames, expected {total_f}"
     # pass 2b: OSM overlay (sRGB -> HLG/BT.2020, alpha kept full range) on the base, final HEVC Main10 HLG
     raw = W / f"{name}_video.mp4"
     x265 = X265.replace("crf=12", "crf=20").replace("preset=medium", "preset=faster") if preview else X265
-    g2 = (f"[0:v]setpts=N/({FPS}*TB),tpad=stop_mode=clone:stop=3[b];[1:v]setpts=N/({FPS}*TB)," + GFX.format(n="o") + "[ov];"
-          "[b][ov]overlay=format=yuv420p10:eof_action=repeat,setparams=color_primaries=bt2020:color_trc=arib-std-b67:colorspace=bt2020nc:range=tv[vout]")
+    # both streams on one explicit 1/30 s timebase, frame N at N/30 s (renumbering via N/(FPS*TB) gave the PNG input a broken timebase)
+    g2 = (f"[0:v]settb=1/{FPS},setpts=N,tpad=stop_mode=clone:stop=3[b];[1:v]settb=1/{FPS},setpts=N," + GFX.format(n="o") + "[ov];"
+          f"[b][ov]overlay=format=yuv420p10:eof_action=repeat,settb=1/{FPS},setpts=N,"
+          "setparams=color_primaries=bt2020:color_trc=arib-std-b67:colorspace=bt2020nc:range=tv[vout]")
     ff(["-i", str(base), "-thread_queue_size", "64", "-framerate", str(FPS), "-i", str(ov / "f_%05d.png"), "-filter_complex", g2, "-map", "[vout]",
-        "-frames:v", str(total_f), "-c:v", "libx265", "-pix_fmt", "yuv420p10le", "-x265-params", x265, "-tag:v", "hvc1", *HDR_TAGS, str(raw)])
+        "-frames:v", str(total_f), "-fps_mode", "passthrough", "-c:v", "libx265", "-pix_fmt", "yuv420p10le", "-x265-params", x265, "-tag:v", "hvc1",
+        *HDR_TAGS, str(raw)])
     nr = count_frames(raw)
     assert nr == total_f, f"video has {nr} frames, expected {total_f}"
     base.unlink()
