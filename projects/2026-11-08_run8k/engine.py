@@ -184,16 +184,23 @@ def encode(name, W, tl, end_f, total_f, cues, preview=False):
     if not (stamp.exists() and stamp.read_text() == h and (ov / f"f_{total_f - 1:05d}.png").exists()):
         subprocess.run(["node", str(P / "render_overlay.js"), str(W / "overlay_spec.json"), str(ov)], check=True)
         stamp.write_text(h)
-    files = render_segments(tl, W)
-    inputs, graph = video_graph(tl, total_f, ov / "f_%05d.png", files)
-    # pass 2a: shots + transitions + end-card padding -> one visually lossless 10-bit file (exactly total_f frames)
     base = W / "base.mkv"
+    stamp_b = W / "base.plan"
+    plan_key = json.dumps([[s[k] for k in ("src", "a", "b", "n", "d", "start")] + [s.get(k) for k in ("speed", "rev", "z", "fx", "fy", "tin")] for s in tl],
+                          default=str) + str(total_f)
+    base_ok = base.exists() and stamp_b.exists() and stamp_b.read_text() == plan_key and count_frames(base) == total_f
+    files = [] if base_ok else render_segments(tl, W)
+    inputs, graph = video_graph(tl, total_f, ov / "f_%05d.png", files) if files else ([], "")
+    # pass 2a: shots + transitions + end-card padding -> one visually lossless 10-bit file (exactly total_f frames)
     gb = ";".join(x for x in graph.split(";") if not any(k in x for k in ("[ov]", "[co]", "[ao]", "alphamerge", "alphaextract", "zscale", "[vout]")))
-    if not (base.exists() and count_frames(base) == total_f and base.stat().st_mtime > max(f.stat().st_mtime for f in files)):
+    if not base_ok:
         ff([*inputs[:4 * len(files)], "-filter_complex", gb, "-map", "[base]", "-frames:v", str(total_f), "-c:v", "libx265", "-pix_fmt", "yuv420p10le",
             "-x265-params", "crf=6:preset=fast:pools=2:frame-threads=1:log-level=error", "-tag:v", "hvc1", *HDR_TAGS, str(base)])
     nb = count_frames(base)
     assert nb == total_f, f"base has {nb} frames, expected {total_f}"
+    stamp_b.write_text(plan_key)
+    import shutil
+    shutil.rmtree(W / "seg", ignore_errors=True)        # the verified base replaces the shot segments (disk is tight)
     # pass 2b: OSM overlay (sRGB -> HLG/BT.2020, alpha kept full range) on the base, final HEVC Main10 HLG
     raw = W / f"{name}_video.mp4"
     x265 = X265.replace("crf=12", "crf=20").replace("preset=medium", "preset=faster") if preview else X265
