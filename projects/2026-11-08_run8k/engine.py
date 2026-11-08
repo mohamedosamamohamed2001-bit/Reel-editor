@@ -204,13 +204,20 @@ def encode(name, W, tl, end_f, total_f, cues, preview=False):
     # pass 2b: OSM overlay (sRGB -> HLG/BT.2020, alpha kept full range) on the base, final HEVC Main10 HLG
     raw = W / f"{name}_video.mp4"
     x265 = X265.replace("crf=12", "crf=20").replace("preset=medium", "preset=faster") if preview else X265
-    # both streams on one explicit 1/30 s timebase, frame N at N/30 s (renumbering via N/(FPS*TB) gave the PNG input a broken timebase)
-    # both inputs padded with 100 repeated frames: the last ~64 frames before an input's EOF were being lost in this pass
-    g2 = (f"[0:v]settb=1/{FPS},setpts=N,tpad=stop_mode=clone:stop=100[b];[1:v]settb=1/{FPS},setpts=N,tpad=stop_mode=clone:stop=100,"
-          + GFX.format(n="o") + "[ov];"
-          f"[b][ov]overlay=format=yuv420p10:eof_action=repeat,settb=1/{FPS},setpts=N,"
+    # Chromium writes fully opaque frames (the end card) as RGB, not RGBA: that format change re-initialised the filter graph
+    # mid-stream, setpts=N restarted at 0 and exactly those frames were dropped. Normalise every overlay frame to RGBA first.
+    from PIL import Image
+    import os
+    for f in sorted(ov.glob("f_*.png")):
+        with Image.open(f) as im:
+            if im.mode == "RGBA":
+                continue
+            tmp = f.with_suffix(".tmp.png"); im.convert("RGBA").save(tmp)
+        os.replace(tmp, f)                               # new inode: hard-linked empty frames are never touched
+    g2 = (f"[0:v]settb=1/{FPS},setpts=N[b];[1:v]settb=1/{FPS},setpts=N," + GFX.format(n="o") + "[ov];"
+          "[b][ov]overlay=format=yuv420p10:eof_action=repeat,"
           "setparams=color_primaries=bt2020:color_trc=arib-std-b67:colorspace=bt2020nc:range=tv[vout]")
-    ff(["-i", str(base), "-thread_queue_size", "64", "-framerate", str(FPS), "-i", str(ov / "f_%05d.png"), "-filter_complex", g2, "-map", "[vout]",
+    ff(["-i", str(base), "-reinit_filter", "0", "-framerate", str(FPS), "-i", str(ov / "f_%05d.png"), "-filter_complex", g2, "-map", "[vout]",
         "-frames:v", str(total_f), "-r", str(FPS), "-fps_mode", "cfr", "-c:v", "libx265", "-pix_fmt", "yuv420p10le", "-x265-params", x265, "-tag:v", "hvc1",
         *HDR_TAGS, str(raw)])
     nr = count_frames(raw)
