@@ -53,7 +53,7 @@ def build(preview=False):
     st = lambda i: tl[i]["start"] / E.FPS
     rw0, rw1 = st(1), st(2)
     titles = [
-        dict(at=0.12, dur=st(1) - 0.12, lines=["8 <span class='k'>KM</span>"], eyebrow="COACH OSAMA · OSM", size=230, top=1010, hit=True),
+        dict(at=0.12, dur=st(1) - 0.12, lines=["8 <span class='k'>KM</span>"], size=230, top=1010, hit=True),
         dict(at=rw0 + 0.05, dur=rw1 - rw0 + 0.1, lines=["◀◀ KM 0"], size=110, top=1180, hit=True),
         dict(at=ot("4923", 24.8), dur=1.55, lines=["BUT <span class='k'>NO.</span>"], size=190, top=1080, hit=True),
         dict(at=ot("4924", 24.1), dur=2.0, lines=["DON'T LET", "YOUR <span class='k'>MIND</span> WIN"], size=104, top=1080),
@@ -61,7 +61,7 @@ def build(preview=False):
         dict(at=ot("4926", 31.15), dur=end_f / E.FPS - ot("4926", 31.15), lines=["YOU BEAT", "YOUR <span class='k'>MIND</span>"], size=120, top=1050),
     ]
     titles = E.place_titles(tl, titles)
-    hud = {"show": [[st(3) + 0.2, st(5) + 4.0], [st(18) + 0.3, st(18) + 3.55]], "top": 1532,
+    hud = {"show": [[st(3) + 0.2, st(4)], [st(4) + 0.35, st(5) + 4.0], [st(18) + 0.3, st(18) + 3.55]], "top": 1532,      # hidden while 4920 slides up
            "segments": [[st(3) + 0.3, st(3) + 0.31, 0, 0], [st(4) + 1.0, st(4) + 2.0, 0, 4], [ot("4923", 0.7), ot("4923", 1.2), 4, 7],
                         [st(18) + 0.4, st(18) + 2.2, 7, 8]]}
     lower = {"at": st(2) + 0.3, "dur": st(3) - st(2) + 0.4, "top": 1532}
