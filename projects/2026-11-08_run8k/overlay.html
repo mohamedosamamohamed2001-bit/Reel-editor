@@ -86,7 +86,8 @@ window.seek = (t) => {
     }
     const p = sp(t, g.start, 3.2);
     const low = (spec.capLow || []).some(([a, b]) => t >= a && t < b);   // a title is on screen: the bar steps down (still inside the 14% safe zone)
-    S(cap, { display: "flex", top: (low ? 1545 : (spec.capTop || 1420)) + "px", opacity: clamp01((t - g.start) * 14), transform: `translateY(${(1 - p) * 18}px) scale(${0.96 + 0.04 * p})` });
+    const ctop = g.top || spec.capTop || 1420;
+    S(cap, { display: "flex", top: (low ? Math.max(1545, ctop) : ctop) + "px", opacity: clamp01((t - g.start) * 14), transform: `translateY(${(1 - p) * 18}px) scale(${0.96 + 0.04 * p})` });
   } else { S(cap, { display: "none" }); lastCap = null; }
   // km HUD: {segments: [[t0,t1,km0,km1]], show:[[a,b]]}
   const H = spec.hud;

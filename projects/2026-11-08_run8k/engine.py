@@ -166,7 +166,7 @@ def render(name, shots, words, keywords, titles, hud, lower_third, cues, tail=2.
     W = P / "work" / name
     W.mkdir(parents=True, exist_ok=True)
     tl, end_f, total_f = plan(shots, tail)
-    caps = captions(tl, words, keywords, breaks=breaks)
+    caps = place_captions(tl, captions(tl, words, keywords, breaks=breaks))
     spec = {"dur": total_f / FPS, "captions": caps, "capTop": 1420, "capLow": [[t["at"], t["at"] + t["dur"]] for t in titles], "titles": titles, "hud": hud, "lowerThird": lower_third,
             "end": {"at": end_f / FPS}, "capsOff": list(caps_off) + [[end_f / FPS, 999]]}
     (W / "overlay_spec.json").write_text(json.dumps(spec, ensure_ascii=False, indent=1))
@@ -209,7 +209,7 @@ def encode(name, W, tl, end_f, total_f, cues, preview=False):
           f"[b][ov]overlay=format=yuv420p10:eof_action=repeat,settb=1/{FPS},setpts=N,"
           "setparams=color_primaries=bt2020:color_trc=arib-std-b67:colorspace=bt2020nc:range=tv[vout]")
     ff(["-i", str(base), "-thread_queue_size", "64", "-framerate", str(FPS), "-i", str(ov / "f_%05d.png"), "-filter_complex", g2, "-map", "[vout]",
-        "-frames:v", str(total_f), "-fps_mode", "passthrough", "-c:v", "libx265", "-pix_fmt", "yuv420p10le", "-x265-params", x265, "-tag:v", "hvc1",
+        "-frames:v", str(total_f), "-r", str(FPS), "-fps_mode", "cfr", "-c:v", "libx265", "-pix_fmt", "yuv420p10le", "-x265-params", x265, "-tag:v", "hvc1",
         *HDR_TAGS, str(raw)])
     nr = count_frames(raw)
     assert nr == total_f, f"video has {nr} frames, expected {total_f}"
@@ -261,12 +261,13 @@ def out_time(tl, src, t):
     raise KeyError((src, t))
 
 
-def chin_y(tl, t_out, samples=3, dur=0.6):
+def chin_y(tl, t_out, samples=None, dur=0.6, step=0.18):
     """Lowest chin (output px) of his face over [t_out, t_out+dur]: YuNet on the source frame, mapped through the shot's zoom/crop.
     Used to keep every title clear of his face. Returns 0 when no face is found (e.g. the watch close-up)."""
     import cv2, numpy as np
     det = cv2.FaceDetectorYN.create(str(Path.home() / ".cache/osm-models/yunet.onnx"), "", (540, 960), 0.6, 0.3, 50)
     worst = 0
+    samples = samples or max(2, min(14, int(dur / step) + 1))
     for k in range(samples):
         t = t_out + dur * k / max(1, samples - 1)
         s = next((s for s in reversed(tl) if s["start"] / FPS <= t), tl[0])
@@ -294,7 +295,7 @@ def chin_y(tl, t_out, samples=3, dur=0.6):
 def place_titles(tl, titles, cap_top=1545, gap=36):
     """Fit each title between his chin (+gap) and the caption bar; shrink the type when the space is short."""
     for ti in titles:
-        chin = chin_y(tl, ti["at"] + 0.05, dur=min(ti["dur"], 1.5))
+        chin = chin_y(tl, ti["at"] + 0.03, dur=max(0.1, ti["dur"] - 0.06))
         n = len(ti["lines"]); eb = 50 if ti.get("eyebrow") else 0
         bottom = cap_top - 24
         top_min = max(chin + gap, 300)
@@ -306,7 +307,20 @@ def place_titles(tl, titles, cap_top=1545, gap=36):
         ti["size"] = size
         ti["top"] = round(bottom - need(size))
         ti["chin"] = chin
-    return titles
+        ti["skip"] = ti["top"] < chin + gap            # no room under his face at some moment: the caption carries the line
+        if ti["skip"]:
+            print(f"title skipped (no room under his face): {ti['lines']} at {ti['at']:.2f}s, chin {chin}", flush=True)
+    return [t for t in titles if not t["skip"]]
+
+
+def place_captions(tl, caps, top=1420, gap=30, low_max=1552):
+    """Each phrase sits at the standard height unless his chin comes down past it (close selfie moments): then just under
+    his beard, never lower than low_max (the bar must end above the 14% bottom safe zone)."""
+    for g in caps:
+        chin = chin_y(tl, g["start"] + 0.02, dur=max(0.1, g["end"] - g["start"] - 0.04), step=0.2)
+        g["top"] = top if chin + gap <= top else min(low_max, chin + gap)
+        g["chin"] = chin
+    return caps
 
 
 def count_frames(path):
