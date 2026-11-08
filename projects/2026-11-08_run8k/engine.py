@@ -205,7 +205,9 @@ def encode(name, W, tl, end_f, total_f, cues, preview=False):
     raw = W / f"{name}_video.mp4"
     x265 = X265.replace("crf=12", "crf=20").replace("preset=medium", "preset=faster") if preview else X265
     # both streams on one explicit 1/30 s timebase, frame N at N/30 s (renumbering via N/(FPS*TB) gave the PNG input a broken timebase)
-    g2 = (f"[0:v]settb=1/{FPS},setpts=N,tpad=stop_mode=clone:stop=3[b];[1:v]settb=1/{FPS},setpts=N," + GFX.format(n="o") + "[ov];"
+    # both inputs padded with 100 repeated frames: the last ~64 frames before an input's EOF were being lost in this pass
+    g2 = (f"[0:v]settb=1/{FPS},setpts=N,tpad=stop_mode=clone:stop=100[b];[1:v]settb=1/{FPS},setpts=N,tpad=stop_mode=clone:stop=100,"
+          + GFX.format(n="o") + "[ov];"
           f"[b][ov]overlay=format=yuv420p10:eof_action=repeat,settb=1/{FPS},setpts=N,"
           "setparams=color_primaries=bt2020:color_trc=arib-std-b67:colorspace=bt2020nc:range=tv[vout]")
     ff(["-i", str(base), "-thread_queue_size", "64", "-framerate", str(FPS), "-i", str(ov / "f_%05d.png"), "-filter_complex", g2, "-map", "[vout]",
