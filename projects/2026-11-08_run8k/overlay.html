@@ -1,0 +1,128 @@
+<!doctype html>
+<!-- OSM overlay layer for the 8 KM run edits (projects/2026-11-08_run8k). Transparent 1080x1920; every pixel from t.
+     Loaded with ?spec=<file>.json (written by engine.py). Components: captions (locked OSM bar #56A0FB, white text, IBM Plex
+     Sans Arabic 66 px), km HUD, kinetic titles (Inter Black Italic CAPS, hard Night extrusion: no glow / blur / haze),
+     lower third, impact title, end card (his end artwork + CTA pill). No text on or above his head: captions sit at 0.74 H,
+     HUD bottom-left above the captions, titles in the lower third. Rendered by render_overlay.js (Playwright, omitBackground). -->
+<html><head><meta charset="utf-8">
+<style>
+@font-face { font-family: Inter; src: url('/osm/fonts/Inter[opsz,wght].ttf'); font-weight: 100 900; }
+@font-face { font-family: InterI; src: url('/osm/fonts/Inter-Italic[opsz,wght].ttf'); font-weight: 100 900; font-style: italic; }
+@font-face { font-family: Plex; src: url('/osm/fonts/IBMPlexSansArabic-Bold.ttf'); font-weight: 700; }
+@font-face { font-family: Barlow; src: url('/osm/fonts/BarlowCondensed-Bold.ttf'); font-weight: 700; }
+@font-face { font-family: BarlowS; src: url('/osm/fonts/BarlowCondensed-SemiBold.ttf'); font-weight: 600; }
+html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: transparent; }
+.abs { position: absolute; }
+#cap { position: absolute; left: 0; right: 0; top: 0; display: flex; justify-content: center; }
+#cap .bar { direction: rtl; font-family: Plex; font-weight: 700; font-size: 66px; line-height: 1.3; color: #fff; background: #56A0FB;
+  border: 1px solid #56A0FB; padding: 6px 30px 10px; border-radius: 20px; white-space: nowrap; max-width: 940px; }
+#cap .en { font-family: Inter; font-weight: 800; font-size: 0.92em; unicode-bidi: isolate; direction: ltr; }
+#cap .kw { position: relative; }
+#cap .kw::after { content: ""; position: absolute; left: 0; right: 0; bottom: 8px; height: 6px; border-radius: 3px; background: #fff; }
+.t { font-family: InterI; font-style: italic; font-weight: 900; text-transform: uppercase; letter-spacing: -0.02em; color: #fff;
+  text-shadow: 0 4px 0 #0A0F16, 0 8px 0 #0A0F16, 0 12px 0 rgba(10,15,22,.85); line-height: .95; white-space: nowrap; }
+.t .k { color: #56A0FB; }
+.ar { font-family: Plex; font-weight: 700; direction: rtl; }
+.eb { font-family: Barlow; font-weight: 700; letter-spacing: .26em; color: #7DD2EC; text-transform: uppercase; }
+#hud { position: absolute; left: 54px; top: 1180px; display: flex; align-items: center; gap: 18px; background: #0A0F16; border-radius: 20px; padding: 14px 22px 14px 18px; }
+#hud .km { font-family: Barlow; font-weight: 700; font-size: 74px; line-height: .9; color: #fff; min-width: 74px; text-align: right; }
+#hud .km small { font-size: 34px; color: #8C98AA; margin-left: 6px; }
+#hud .lab { font-family: BarlowS; font-weight: 600; font-size: 26px; letter-spacing: .22em; color: #7DD2EC; }
+#hud .track { width: 230px; height: 12px; border-radius: 6px; background: #263244; overflow: hidden; margin-top: 10px; }
+#hud .fill { height: 100%; background: #56A0FB; width: 0; }
+#lt { position: absolute; left: 54px; top: 1180px; }
+#lt .name { font-family: InterI; font-style: italic; font-weight: 900; font-size: 64px; text-transform: uppercase; color: #fff; letter-spacing: -.01em;
+  text-shadow: 0 3px 0 #0A0F16, 0 6px 0 #0A0F16; }
+#lt .tag { display: inline-block; margin-top: 10px; background: #56A0FB; color: #0A0F16; font-family: Barlow; font-weight: 700; font-size: 32px;
+  letter-spacing: .18em; padding: 6px 16px 4px; border-radius: 10px; }
+#end { position: absolute; inset: 0; background: #0A0F16; }
+#end img { position: absolute; left: 0; top: 260px; width: 1080px; mix-blend-mode: lighten; }
+#end .pill { position: absolute; left: 50%; top: 1500px; transform: translateX(-50%); background: #56A0FB; color: #0A0F16; font-family: Inter;
+  font-weight: 800; font-size: 46px; padding: 22px 44px; border-radius: 60px; white-space: nowrap; }
+#end .sub { position: absolute; left: 0; right: 0; top: 1640px; text-align: center; font-family: Barlow; font-weight: 700; font-size: 34px; letter-spacing: .26em; color: #8C98AA; }
+</style></head>
+<body>
+<div id="cap" style="display:none"><div class="bar"></div></div>
+<div id="hud" style="display:none"><div class="km">0<small>KM</small></div><div><div class="lab">8 KM RUN</div><div class="track"><div class="fill"></div></div></div></div>
+<div id="lt" style="display:none"><div class="name">Coach Osama</div><div><span class="tag">OSM · 8 KM RUN</span></div></div>
+<div id="titles"></div>
+<div id="end" style="display:none"><img src="/osm/brand/end/osm-end-photo.jpg"><div class="pill">OSM Coach Osama</div><div class="sub">OSAMA STRENGTH METHOD</div></div>
+<script type="module">
+import { spring, seg, clamp01, lerp } from "/osm/motion-core.js";
+const q = new URLSearchParams(location.search);
+const spec = await (await fetch(q.get("spec"))).json();
+const S = (n, st) => { for (const k in st) n.style[k] = st[k]; };
+const sp = (t, t0, f = 2.6) => spring(t - t0, { freq: f });
+const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+const isLatin = (w) => /^[A-Za-z0-9.,!?'’\-]+$/.test(w);
+const cap = document.getElementById("cap"), bar = cap.querySelector(".bar");
+const hud = document.getElementById("hud"), km = hud.querySelector(".km"), fill = hud.querySelector(".fill");
+const lt = document.getElementById("lt"), end = document.getElementById("end");
+const tbox = document.getElementById("titles");
+// titles: {at, dur, lines:[...], k:[indices of blue words], top, size, align, eyebrow, ar}
+const titles = (spec.titles || []).map((ti) => {
+  const d = document.createElement("div"); d.className = "abs"; d.style.left = "54px"; d.style.right = "54px"; d.style.top = (ti.top || 1200) + "px";
+  d.style.textAlign = ti.align || "center";
+  const eb = ti.eyebrow ? `<div class="eb" style="font-size:34px;margin-bottom:14px">${esc(ti.eyebrow)}</div>` : "";
+  const body = ti.ar ? `<div class="t ar" style="font-family:Plex;font-style:normal;text-transform:none;font-size:${ti.size || 92}px;line-height:1.25">${ti.lines.map((l) => `<div>${l}</div>`).join("")}</div>`
+                     : `<div class="t" style="font-size:${ti.size || 120}px">${ti.lines.map((l) => `<div>${l}</div>`).join("")}</div>`;
+  d.innerHTML = eb + body; d.style.display = "none"; tbox.appendChild(d); return { ti, d };
+});
+function captionAt(t) {
+  for (const g of spec.captions || []) if (t >= g.start && t < g.end) return g;
+  return null;
+}
+let lastCap = null;
+window.seek = (t) => {
+  // captions: one phrase on the bar; quick settle on entry (no blur, no glow)
+  const g = spec.capsOff && spec.capsOff.some(([a, b]) => t >= a && t < b) ? null : captionAt(t);
+  if (g) {
+    if (g !== lastCap) {
+      bar.innerHTML = g.words.map((w) => {
+        const txt = isLatin(w.w) ? `<span class="en">${esc(w.w)}</span>` : esc(w.w);
+        return w.kw ? `<span class="kw">${txt}</span>` : txt;
+      }).join(" ");
+      lastCap = g;
+    }
+    const p = sp(t, g.start, 3.2);
+    S(cap, { display: "flex", top: (spec.capTop || 1420) + "px", opacity: clamp01((t - g.start) * 14), transform: `translateY(${(1 - p) * 18}px) scale(${0.96 + 0.04 * p})` });
+  } else { S(cap, { display: "none" }); lastCap = null; }
+  // km HUD: {segments: [[t0,t1,km0,km1]], show:[[a,b]]}
+  const H = spec.hud;
+  const on = H && H.show.some(([a, b]) => t >= a && t < b);
+  if (on) {
+    let v = 0; for (const [a, b, k0, k1] of H.segments) { if (t >= a) v = t >= b ? k1 : lerp(k0, k1, (t - a) / (b - a)); }
+    const shown = Math.min(8, Math.round(v * 10) / 10);
+    km.innerHTML = `${Number.isInteger(shown) ? shown : shown.toFixed(1)}<small>KM</small>`;
+    S(fill, { width: `${(v / 8) * 100}%` });
+    const a0 = H.show.find(([a, b]) => t >= a && t < b)[0], p = sp(t, a0, 3);
+    S(hud, { display: "flex", top: (H.top || 1240) + "px", opacity: clamp01((t - a0) * 8), transform: `translateX(${(1 - p) * -60}px)` });
+    if (v >= 8) S(fill, { background: "#7DD2EC" });
+  } else S(hud, { display: "none" });
+  // lower third
+  const L = spec.lowerThird;
+  if (L && t >= L.at && t < L.at + L.dur) {
+    const p = sp(t, L.at, 2.8), out = clamp01((t - (L.at + L.dur - 0.25)) / 0.25);
+    S(lt, { display: "block", top: (L.top || 1230) + "px", opacity: clamp01((t - L.at) * 7) * (1 - out), transform: `translateX(${(1 - p) * -70}px)` });
+  } else S(lt, { display: "none" });
+  // titles: spring in (scale + rise), hold, quick fade out; "hit" titles slam (scale 1.25 -> 1)
+  for (const { ti, d } of titles) {
+    if (t >= ti.at && t < ti.at + ti.dur) {
+      const p = sp(t, ti.at, ti.hit ? 4.2 : 2.6), out = clamp01((t - (ti.at + ti.dur - 0.2)) / 0.2);
+      const sc = ti.hit ? 1.28 - 0.28 * p : 0.9 + 0.1 * p;
+      S(d, { display: "block", opacity: clamp01((t - ti.at) * (ti.hit ? 20 : 8)) * (1 - out), transform: `translateY(${ti.hit ? 0 : (1 - p) * 50}px) scale(${sc})` });
+    } else S(d, { display: "none" });
+  }
+  // end card
+  const E = spec.end;
+  if (E && t >= E.at) {
+    const p = sp(t, E.at, 2.6);
+    S(end, { display: "block", opacity: clamp01((t - E.at) / 0.25) });
+    S(end.querySelector("img"), { transform: `scale(${1.06 - 0.06 * p})`, opacity: clamp01((t - E.at) / 0.35) });
+    S(end.querySelector(".pill"), { opacity: clamp01((t - E.at - 0.45) * 6), transform: `translateX(-50%) translateY(${(1 - sp(t, E.at + 0.45, 3)) * 40}px)` });
+    S(end.querySelector(".sub"), { opacity: clamp01((t - E.at - 0.7) * 5) });
+  } else S(end, { display: "none" });
+};
+window.meta = { dur: spec.dur };
+window.ready = document.fonts.ready.then(() => new Promise((r) => { const im = end.querySelector("img"); im.complete ? r() : (im.onload = r, im.onerror = r); }));
+</script></body></html>
