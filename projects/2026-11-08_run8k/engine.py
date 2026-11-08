@@ -22,7 +22,7 @@ AIDX = {k: (2 if k == "4920" else 1) for k in SRC}          # AAC stream index (
 GFX = ("format=rgba,split[c{n}][a{n}];[c{n}]format=gbrpf32le,zscale=tin=iec61966-2-1:pin=bt709:min=gbr:t=arib-std-b67:p=bt2020:m=bt2020nc:r=tv:npl=203,"
        "format=yuv420p10le[cy{n}];[a{n}]alphaextract,format=gray10le[al{n}];[cy{n}][al{n}]alphamerge")
 HDR_TAGS = ["-color_primaries", "bt2020", "-color_trc", "arib-std-b67", "-colorspace", "bt2020nc", "-color_range", "tv"]
-X265 = "crf=12:preset=medium:colorprim=bt2020:transfer=arib-std-b67:colormatrix=bt2020nc:range=limited:log-level=error"
+X265 = "crf=12:preset=medium:pools=2:frame-threads=2:colorprim=bt2020:transfer=arib-std-b67:colormatrix=bt2020nc:range=limited:log-level=error"
 DIALOGUE_FX = "highpass=f=85,afftdn=nf=-32:nr=8:tn=1,equalizer=f=3000:t=q:w=1.2:g=1.5,acompressor=threshold=-22dB:ratio=2.5:attack=8:release=120:makeup=1.5"
 fr = lambda x: round(x * FPS)                                  # seconds -> frames
 
@@ -44,25 +44,49 @@ def plan(shots, tail):
     return out, L, L + fr(tail)
 
 
-def video_graph(tl, total_frames, ov_input):
-    g, inputs, idx = [], [], {}
-    for k in sorted({s["src"] for s in tl}):
-        idx[k] = len(inputs) // 2; inputs += ["-i", str(SRC[k])]
+def shot_filter(s, inp="0:v"):
+    sp, n = s.get("speed", 1.0), s["n"]
+    f = [f"[{inp}]trim=start={s['a']:.4f}:end={s['a'] + n * sp / FPS + 0.2:.4f},setpts=PTS-STARTPTS"]
+    if sp != 1:
+        f.append(f"setpts=PTS/{sp}")
+    f.append(f"fps={FPS},trim=end_frame={n},setpts=PTS-STARTPTS")
+    if s.get("rev"):
+        f.append("reverse,setpts=PTS-STARTPTS")          # after fps: only n frames are buffered
+    z0, z1 = s.get("z", (1.0, 1.0))
+    if z0 != 1 or z1 != 1:
+        Z = f"({z0}+({z1}-{z0})*t/{max(s['len'], 1e-3):.4f})"
+        f.append(f"scale=w='2*trunc(540*{Z})':h='2*trunc(960*{Z})':eval=frame:flags=lanczos,"
+                 f"crop=1080:1920:x='(iw-1080)*{s.get('fx', .5)}':y='(ih-1920)*{s.get('fy', .5)}'")
+    f.append("format=yuv420p10le,setsar=1")
+    return ",".join(f)
+
+
+def render_segments(tl, W):
+    """Pass 1: every shot alone -> lossless FFV1 10-bit (exact pixels, low memory). Cached by shot parameters."""
+    import hashlib
+    seg = W / "seg"
+    seg.mkdir(exist_ok=True)
+    files = []
     for i, s in enumerate(tl):
-        sp, n = s.get("speed", 1.0), s["n"]
-        f = [f"[{idx[s['src']]}:v]trim=start={s['a']:.4f}:end={s['a'] + n * sp / FPS + 0.2:.4f},setpts=PTS-STARTPTS"]
-        if s.get("rev"):
-            f.append("reverse")
-        if sp != 1:
-            f.append(f"setpts=PTS/{sp}")
-        f.append(f"fps={FPS},trim=end_frame={n},setpts=PTS-STARTPTS")
-        z0, z1 = s.get("z", (1.0, 1.0))
-        if z0 != 1 or z1 != 1:
-            Z = f"({z0}+({z1}-{z0})*t/{max(s['len'], 1e-3):.4f})"
-            f.append(f"scale=w='2*trunc(540*{Z})':h='2*trunc(960*{Z})':eval=frame:flags=lanczos,"
-                     f"crop=1080:1920:x='(iw-1080)*{s.get('fx', .5)}':y='(ih-1920)*{s.get('fy', .5)}'")
-        f.append("format=yuv420p10le,setsar=1,settb=AVTB")
-        g.append(",".join(f) + f"[v{i}]")
+        key = hashlib.sha1(json.dumps({k: s[k] for k in ("src", "a", "b", "n") if k in s} | {k: s.get(k) for k in ("speed", "rev", "z", "fx", "fy")},
+                                      sort_keys=True, default=str).encode()).hexdigest()[:12]
+        f = seg / f"s{i:02d}_{key}.mkv"
+        if not f.exists():
+            ff(["-threads", "2", "-i", str(SRC[s["src"]]), "-filter_complex", shot_filter(s) + "[v]", "-map", "[v]", "-an",
+                "-c:v", "ffv1", "-level", "3", "-pix_fmt", "yuv420p10le", "-r", str(FPS), str(f)])
+        files.append(f)
+    for old in seg.glob("*.mkv"):
+        if old not in files:
+            old.unlink()
+    return files
+
+
+def video_graph(tl, total_frames, ov_input, files):
+    """Pass 2: join the lossless shots with transitions, then the OSM overlay (converted into HLG)."""
+    g, inputs = [], []
+    for i, f in enumerate(files):
+        inputs += ["-threads", "1", "-i", str(f)]
+        g.append(f"[{i}:v]settb=AVTB,setpts=PTS-STARTPTS[v{i}]")
     acc = "v0"
     for i in range(1, len(tl)):
         s = tl[i]
@@ -73,8 +97,8 @@ def video_graph(tl, total_frames, ov_input):
         acc = f"x{i}"
     end = tl[-1]["start"] + tl[-1]["n"]
     g.append(f"[{acc}]tpad=stop_mode=clone:stop={total_frames - end},trim=end_frame={total_frames}[base]")
-    oi = len(inputs) // 2
-    inputs += ["-framerate", str(FPS), "-i", str(ov_input)]
+    oi = len(files)
+    inputs += ["-thread_queue_size", "64", "-framerate", str(FPS), "-i", str(ov_input)]
     g.append(f"[{oi}:v]" + GFX.format(n="o") + "[ov]")
     g.append("[base][ov]overlay=format=yuv420p10:shortest=1,setparams=color_primaries=bt2020:color_trc=arib-std-b67:colorspace=bt2020nc:range=tv[vout]")
     return inputs, ";".join(g)
@@ -157,9 +181,10 @@ def encode(name, W, tl, end_f, total_f, cues, preview=False):
     if not (stamp.exists() and stamp.read_text() == h and (ov / f"f_{total_f - 1:05d}.png").exists()):
         subprocess.run(["node", str(P / "render_overlay.js"), str(W / "overlay_spec.json"), str(ov)], check=True)
         stamp.write_text(h)
-    inputs, graph = video_graph(tl, total_f, ov / "f_%05d.png")
+    files = render_segments(tl, W)
+    inputs, graph = video_graph(tl, total_f, ov / "f_%05d.png", files)
     raw = W / f"{name}_video.mp4"
-    x265 = X265.replace("crf=12", "crf=20").replace("preset=medium", "preset=fast") if preview else X265
+    x265 = X265.replace("crf=12", "crf=20").replace("preset=medium", "preset=faster") if preview else X265
     ff([*inputs, "-filter_complex", graph, "-map", "[vout]", "-frames:v", str(total_f), "-r", str(FPS), "-c:v", "libx265", "-pix_fmt", "yuv420p10le",
         "-x265-params", x265, "-tag:v", "hvc1", *HDR_TAGS, str(raw)])
     dlg = W / "dialogue.wav"

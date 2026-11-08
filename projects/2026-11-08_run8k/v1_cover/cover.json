@@ -1,0 +1,8 @@
+{
+ "frame": {"image": "/home/user/Reel-editor/projects/2026-11-08_run8k/work/cover/c_4915_1.6.png"},
+ "faceH": 300, "faceTop": 420,
+ "eyebrow": "8 KM × RUN",
+ "headline": ["8 كيلو", "موت"],
+ "accent": "موت",
+ "chips": [{"text": "8 KM", "blue": true}, {"text": "MIND OVER BODY"}]
+}
