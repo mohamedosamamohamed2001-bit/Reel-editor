@@ -85,7 +85,8 @@ window.seek = (t) => {
       lastCap = g;
     }
     const p = sp(t, g.start, 3.2);
-    S(cap, { display: "flex", top: (spec.capTop || 1420) + "px", opacity: clamp01((t - g.start) * 14), transform: `translateY(${(1 - p) * 18}px) scale(${0.96 + 0.04 * p})` });
+    const low = (spec.capLow || []).some(([a, b]) => t >= a && t < b);   // a title is on screen: the bar steps down (still inside the 14% safe zone)
+    S(cap, { display: "flex", top: (low ? 1545 : (spec.capTop || 1420)) + "px", opacity: clamp01((t - g.start) * 14), transform: `translateY(${(1 - p) * 18}px) scale(${0.96 + 0.04 * p})` });
   } else { S(cap, { display: "none" }); lastCap = null; }
   // km HUD: {segments: [[t0,t1,km0,km1]], show:[[a,b]]}
   const H = spec.hud;
@@ -96,7 +97,7 @@ window.seek = (t) => {
     km.innerHTML = `${Number.isInteger(shown) ? shown : shown.toFixed(1)}<small>KM</small>`;
     S(fill, { width: `${(v / 8) * 100}%` });
     const a0 = H.show.find(([a, b]) => t >= a && t < b)[0], p = sp(t, a0, 3);
-    S(hud, { display: "flex", top: (H.top || 1240) + "px", opacity: clamp01((t - a0) * 8), transform: `translateX(${(1 - p) * -60}px)` });
+    S(hud, { display: "flex", top: (H.top || 1532) + "px", opacity: clamp01((t - a0) * 8), transform: `translateX(${(1 - p) * -60}px)` });
     if (v >= 8) S(fill, { background: "#7DD2EC" });
   } else S(hud, { display: "none" });
   // lower third

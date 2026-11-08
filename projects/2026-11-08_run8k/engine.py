@@ -97,10 +97,11 @@ def video_graph(tl, total_frames, ov_input, files):
             g.append(f"[{acc}][v{i}]concat=n=2:v=1:a=0[x{i}]")
         acc = f"x{i}"
     end = tl[-1]["start"] + tl[-1]["n"]
-    g.append(f"[{acc}]tpad=stop_mode=clone:stop={total_frames - end},trim=end_frame={total_frames}[base]")
+    # renumber timestamps continuously: xfade leaves gaps in the PTS, and the overlay syncs by time (that cut 2.2 s off the end)
+    g.append(f"[{acc}]tpad=stop_mode=clone:stop={total_frames - end},trim=end_frame={total_frames},setpts=N/({FPS}*TB)[base]")
     oi = len(files)
     inputs += ["-thread_queue_size", "64", "-framerate", str(FPS), "-i", str(ov_input)]
-    g.append(f"[{oi}:v]" + GFX.format(n="o") + "[ov]")
+    g.append(f"[{oi}:v]setpts=N/({FPS}*TB)," + GFX.format(n="o") + "[ov]")
     g.append("[base][ov]overlay=format=yuv420p10:shortest=1,setparams=color_primaries=bt2020:color_trc=arib-std-b67:colorspace=bt2020nc:range=tv[vout]")
     return inputs, ";".join(g)
 
@@ -131,7 +132,7 @@ def dialogue(tl, total_frames, dst):
     raw.unlink()
 
 
-def captions(tl, words, keywords, max_words=3, max_chars=22):
+def captions(tl, words, keywords, max_words=3, max_chars=22, breaks=None):
     """Words of each un-muted, real-speed shot mapped to output time, grouped into 1-3 word phrases (break at gaps and cuts)."""
     groups = []
     for s in tl:
@@ -146,7 +147,8 @@ def captions(tl, words, keywords, max_words=3, max_chars=22):
             spoken = 0.2 + 0.075 * len(w)                       # estimated spoken length: lets real pauses break phrases
             en = min(s["start"] / FPS + s["len"], s["start"] / FPS + (min(nx, t + spoken) - s["a"]))
             item = {"w": w, "start": round(st, 3), "end": round(en, 3), "kw": w in keywords}
-            if cur and (len(cur) >= max_words or sum(len(x["w"]) + 1 for x in cur) + len(w) > max_chars or st - cur[-1]["end"] > 0.35):
+            forced = breaks and any(abs(t - bt) < 0.02 for bt in breaks.get(s["src"], ()))
+            if cur and (forced or len(cur) >= max_words or sum(len(x["w"]) + 1 for x in cur) + len(w) > max_chars or st - cur[-1]["end"] > 0.35):
                 groups.append(cur); cur = []
             cur.append(item)
         if cur:
@@ -160,12 +162,12 @@ def captions(tl, words, keywords, max_words=3, max_chars=22):
     return out
 
 
-def render(name, shots, words, keywords, titles, hud, lower_third, cues, tail=2.4, caps_off=()):
+def render(name, shots, words, keywords, titles, hud, lower_third, cues, tail=2.4, caps_off=(), breaks=None):
     W = P / "work" / name
     W.mkdir(parents=True, exist_ok=True)
     tl, end_f, total_f = plan(shots, tail)
-    caps = captions(tl, words, keywords)
-    spec = {"dur": total_f / FPS, "captions": caps, "capTop": 1420, "titles": titles, "hud": hud, "lowerThird": lower_third,
+    caps = captions(tl, words, keywords, breaks=breaks)
+    spec = {"dur": total_f / FPS, "captions": caps, "capTop": 1420, "capLow": [[t["at"], t["at"] + t["dur"]] for t in titles], "titles": titles, "hud": hud, "lowerThird": lower_third,
             "end": {"at": end_f / FPS}, "capsOff": list(caps_off) + [[end_f / FPS, 999]]}
     (W / "overlay_spec.json").write_text(json.dumps(spec, ensure_ascii=False, indent=1))
     (W / "timeline.json").write_text(json.dumps({"total": total_f / FPS, "end_card": end_f / FPS,
@@ -233,3 +235,51 @@ def out_time(tl, src, t):
         if s["src"] == src and not s.get("rev") and s["a"] <= t < s["a"] + s["len"] * s.get("speed", 1):
             return round(s["start"] / FPS + (t - s["a"]) / s.get("speed", 1), 3)
     raise KeyError((src, t))
+
+
+def chin_y(tl, t_out, samples=3, dur=0.6):
+    """Lowest chin (output px) of his face over [t_out, t_out+dur]: YuNet on the source frame, mapped through the shot's zoom/crop.
+    Used to keep every title clear of his face. Returns 0 when no face is found (e.g. the watch close-up)."""
+    import cv2, numpy as np
+    det = cv2.FaceDetectorYN.create(str(Path.home() / ".cache/osm-models/yunet.onnx"), "", (540, 960), 0.6, 0.3, 50)
+    worst = 0
+    for k in range(samples):
+        t = t_out + dur * k / max(1, samples - 1)
+        s = next((s for s in reversed(tl) if s["start"] / FPS <= t), tl[0])
+        lt = min(max(0.0, t - s["start"] / FPS), s["len"] - 0.01)
+        sp = s.get("speed", 1.0)
+        src_t = (s["a"] + (s["len"] - lt) * sp) if s.get("rev") else (s["a"] + lt * sp)
+        raw = subprocess.run(["ffmpeg", "-v", "error", "-ss", f"{src_t:.3f}", "-i", str(SRC[s["src"]]), "-frames:v", "1", "-vf",
+                              "zscale=t=linear:npl=203,format=gbrpf32le,zscale=p=bt709,tonemap=mobius:param=0.3:desat=0,zscale=t=bt709:m=bt709:r=tv,"
+                              "format=bgr24,scale=540:960", "-f", "rawvideo", "-"], capture_output=True).stdout
+        if len(raw) != 540 * 960 * 3:
+            continue
+        img = np.frombuffer(raw, np.uint8).reshape(960, 540, 3)
+        _, faces = det.detect(img)
+        if faces is None:
+            continue
+        x, y, w, h = max(faces, key=lambda f: f[2] * f[3])[:4] * 2          # source px (1080x1920)
+        chin = y + h * 1.12                                                   # YuNet box ends near the lips/chin: add beard
+        z0, z1 = s.get("z", (1.0, 1.0)); Z = z0 + (z1 - z0) * lt / max(s["len"], 1e-3)
+        fy = s.get("fy", .5)
+        out = chin * Z - (1920 * Z - 1920) * fy
+        worst = max(worst, out)
+    return round(worst)
+
+
+def place_titles(tl, titles, cap_top=1545, gap=36):
+    """Fit each title between his chin (+gap) and the caption bar; shrink the type when the space is short."""
+    for ti in titles:
+        chin = chin_y(tl, ti["at"] + 0.05, dur=min(ti["dur"], 1.5))
+        n = len(ti["lines"]); eb = 50 if ti.get("eyebrow") else 0
+        bottom = cap_top - 24
+        top_min = max(chin + gap, 300)
+        avail = bottom - top_min
+        size = ti.get("size", 120)
+        need = lambda sz: n * sz * 0.98 + eb + (12 if ti.get("hit") else 0)
+        while need(size) > avail and size > 60:
+            size -= 4
+        ti["size"] = size
+        ti["top"] = round(bottom - need(size))
+        ti["chin"] = chin
+    return titles

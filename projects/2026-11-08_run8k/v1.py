@@ -10,7 +10,7 @@ import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import engine as E  # noqa: E402
-from script_words import W, KEYWORDS  # noqa: E402
+from script_words import W, KEYWORDS, BREAKS  # noqa: E402
 
 S = E.snap
 P1, P2 = 1.0, 1.12      # alternating framing for jump cuts inside a take
@@ -60,10 +60,11 @@ def build(preview=False):
         dict(at=st(18) + 3.6, dur=1.9, lines=["8 KM. <span class='k'>DONE.</span>"], size=150, top=1150, hit=True),
         dict(at=ot("4926", 31.15), dur=end_f / E.FPS - ot("4926", 31.15), lines=["YOU BEAT", "YOUR <span class='k'>MIND</span>"], size=120, top=1050),
     ]
-    hud = {"show": [[st(3) + 0.2, st(5) + 4.0], [st(18) + 0.3, st(18) + 3.55]], "top": 1240,
+    titles = E.place_titles(tl, titles)
+    hud = {"show": [[st(3) + 0.2, st(5) + 4.0], [st(18) + 0.3, st(18) + 3.55]], "top": 1532,
            "segments": [[st(3) + 0.3, st(3) + 0.31, 0, 0], [st(4) + 1.0, st(4) + 2.0, 0, 4], [ot("4923", 0.7), ot("4923", 1.2), 4, 7],
                         [st(18) + 0.4, st(18) + 2.2, 7, 8]]}
-    lower = {"at": st(2) + 0.3, "dur": st(3) - st(2) + 0.4, "top": 1190}
+    lower = {"at": st(2) + 0.3, "dur": st(3) - st(2) + 0.4, "top": 1532}
     C = E.R.__dict__.get("cue") or (lambda at, s, g, **k: {"at": round(at, 4), "sound": s, "gain_db": g, **k})
     cue = lambda at, s, g, **k: {"at": round(at, 4), "sound": s, "gain_db": g, **k}
     cues = [cue(0.0, "boom", -10), cue(0.1, "impact", -12), cue(rw0, "reverse_hit", -14, dur=0.7), cue(rw0 + 0.05, "whoosh_out", -16)]
@@ -83,7 +84,7 @@ def build(preview=False):
     cues += [cue(st(19) + 2.4 + i * 0.85, "thump", -20, freq=52, dur=0.35) for i in range(5)]                     # heartbeat
     cues += [cue(ot("4926", 31.15), "swell", -16, dur=1.2)]
     cues += [cue(end_f / E.FPS, "reverse_hit", -12, dur=0.7), cue(end_f / E.FPS, "boom", -8), cue(end_f / E.FPS + 0.5, "click", -17)]
-    W_, tl2, end_f2, total_f2, spec = E.render("v1_me_reedit", SHOTS, W, KEYWORDS, titles, hud, lower, cues)
+    W_, tl2, end_f2, total_f2, spec = E.render("v1_me_reedit", SHOTS, W, KEYWORDS, titles, hud, lower, cues, breaks=BREAKS)
     return E.encode("v1_me_reedit", W_, tl2, end_f2, total_f2, cues, preview=preview)
 
 
