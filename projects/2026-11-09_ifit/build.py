@@ -34,7 +34,7 @@ fr = lambda x: round(x * FPS)
 # website card on a white stage: crop the phone status bar (recording dot) and the floating Safari bar, keep the whole page width
 CROP = (0, 130, 1320, 2480)            # x, y, w, h in the 1320x2868 recording
 CARD = (82, 100, 916, 1720)            # x, y, w, h on the 1080x1920 frame
-SCREEN_FRAMES = 533                    # 17.768 s at 30 fps = every frame pair of the 60 fps recording
+SCREEN_FRAMES = 534                    # 1067 frames at 60 fps (17.78 s) -> every 2nd frame = 534 at 30 fps: the whole recording
 HIS_CARD_Y = CARD[1] + CARD[3] * ((0.53 * 2868 - CROP[1]) / CROP[3])   # his athlete card centre on the frame (measured at 16 s)
 
 # shots: (src, start in source s, output seconds, options). t9e / ms1 carry burned-in labels bottom-left ("Me to Me", "POV"):
@@ -65,7 +65,7 @@ SHOTS = [
     ("t9e", 13.4, B, dict(z=(1.42, 1.48), fx=1.0, fy=.55)),
     ("ms1", 12.0, B, dict(z=(1.42, 1.48), fx=1.0, fy=.2)),
     # WEBSITE - complete, uninterrupted, then held on him to the bar (push-in on his card while it settles)
-    ("screen", 0, (SCREEN_FRAMES + 7) / FPS, dict(tin=("fadewhite", 0.0))),
+    ("screen", 0, (SCREEN_FRAMES + 6) / FPS, dict(tin=("fadewhite", 0.0))),
     ("white", 0, 4.5, {}),                                                      # 30.0 s: WHITE FRIDAY IS HERE! -> iFit logo
 ]
 
@@ -117,12 +117,12 @@ def seg(s, W, i):
     if s["src"] == "screen":
         x, y, w, h = CARD
         z_end, t0 = 1.22, (SCREEN_FRAMES / FPS) - 5.0          # push-in during the last 5 s (his card is on screen and settling)
-        Z = f"(1+({z_end}-1)*pow(min(1,max(0,(t-{t0})/{5.0 + 7 / FPS})),1.6))"
+        Z = f"(1+({z_end}-1)*pow(min(1,max(0,(t-{t0})/{5.0 + 6 / FPS})),1.6))"
         cy = HIS_CARD_Y
         g = (f"[0:v]fps={FPS},trim=end_frame={SCREEN_FRAMES},setpts=PTS-STARTPTS,crop={CROP[2]}:{CROP[3]}:{CROP[0]}:{CROP[1]},"
              f"scale={w}:{h}:flags=lanczos:in_color_matrix=bt709:in_range=tv:out_range=full,format=rgba[pg];[2:v]format=gray[mk];[pg][mk]alphamerge[card];"
              f"[1:v]loop=loop=-1:size=1,format=rgb24[bg];[bg][card]overlay={x}:{y}:shortest=1,"
-             f"tpad=stop_mode=clone:stop=7,"
+             f"tpad=stop_mode=clone:stop=6,"
              f"scale=w='2*trunc(540*{Z})':h='2*trunc(960*{Z})':eval=frame:flags=lanczos,"
              f"crop=1080:1920:x='(iw-1080)/2':y='max(0,min(ih-1920,{cy}*ih/1920-960))',format=rgb24,{SDR2HLG}[v]")
         ff(["-i", str(path), "-i", str(W / "stage.png"), "-i", str(W / "mask.png"), "-filter_complex", g, "-map", "[v]", "-an", *enc])
