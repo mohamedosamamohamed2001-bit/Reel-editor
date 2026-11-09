@@ -49,7 +49,7 @@ window.seek = (t) => {
   const [s0, s1] = spec.screen, [b0, b1] = spec.broll, te = spec.end;
   // WHITE FRIDAY label in the white margin above the page, for the whole website shot (lands with the page on beat 1)
   const lb = $("#lbl");
-  const lEnd = s1 - 4.5;                         // gone before the push-in on his card grows the page into the margin
+  const lEnd = s0 + 8.7;                         // gone before the Athletes section scrolls in (never text above anyone's head)
   if (t >= s0 && t < lEnd) {
     S(lb, { display: "flex" });
     const p = sp(t, s0 + 0.05, 4.2);
