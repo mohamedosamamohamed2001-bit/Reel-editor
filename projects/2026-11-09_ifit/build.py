@@ -37,31 +37,33 @@ CARD = (82, 100, 916, 1720)            # x, y, w, h on the 1080x1920 frame
 SCREEN_FRAMES = 533                    # 17.768 s at 30 fps = every frame pair of the 60 fps recording
 HIS_CARD_Y = CARD[1] + CARD[3] * ((0.53 * 2868 - CROP[1]) / CROP[3])   # his athlete card centre on the frame (measured at 16 s)
 
-# shots: (src, start in source s, output seconds, options). Cuts on the 120 bpm grid (0.5 s = a beat).
+# shots: (src, start in source s, output seconds, options). t9e / ms1 carry burned-in labels bottom-left ("Me to Me", "POV"):
+# those shots are punched in >= 1.42x and framed fully right (fx=1.0) so the labels stay outside the frame.
+# Cuts on the 120 bpm grid (0.5 s = a beat).
 B = 0.5
 SHOTS = [
     # HOOK - dark: BLACK FRIDAY?   (faces high in these takes: the hook type sits in the lower third)
     ("t7d", 4.4, B, dict(z=(1.18, 1.25), fy=.35)),
-    ("ms1", 7.4, B, dict(z=(1.3, 1.35), fx=.7, fy=.2)),
-    ("t9e", 5.0, B, dict(z=(1.3, 1.38), fx=.85, fy=.25)),
+    ("ms1", 7.4, B, dict(z=(1.42, 1.48), fx=1.0, fy=.2)),
+    ("t9e", 5.0, B, dict(z=(1.42, 1.48), fx=1.0, fy=.25)),
     ("t7d", 9.0, B, dict(z=(1.3, 1.36), fy=.35)),
-    ("ms1", 9.6, B, dict(z=(1.35, 1.42), fx=.65, fy=.2)),
-    ("t9e", 6.6, B, dict(z=(1.4, 1.48), fx=.85, fy=.25)),
+    ("ms1", 9.6, B, dict(z=(1.42, 1.48), fx=1.0, fy=.2)),
+    ("t9e", 6.6, B, dict(z=(1.42, 1.48), fx=1.0, fy=.25)),
     ("t7d", 13.4, B, dict(z=(1.2, 1.3), fy=.35, speed=0.5)),
     ("black", 0, B, {}),                                                        # 3.5 s: music stops - "NO..."
     ("white", 0, 1.5, {}),                                                      # 4.0 s: WHITE FRIDAY (graphics on white)
     # MONTAGE - on the drop
-    ("t9e", 8.2, B, dict(z=(1.3, 1.36), fx=.85, fy=.4)),
-    ("ms1", 7.0, B, dict(z=(1.25, 1.32), fx=.6, fy=.2)),
+    ("t9e", 8.2, B, dict(z=(1.42, 1.48), fx=1.0, fy=.4)),
+    ("ms1", 7.0, B, dict(z=(1.42, 1.48), fx=1.0, fy=.2)),
     ("t7d", 1.0, B, dict(z=(1.25, 1.3), fy=.35)),
-    ("t9e", 10.6, B, dict(z=(1.35, 1.42), fx=.85, fy=.45)),
-    ("ms1", 11.0, B, dict(z=(1.2, 1.26), fx=.7, fy=.2)),
-    ("t9e", 11.6, 1.0, dict(z=(1.3, 1.4), fx=.85, fy=.5, ramp=[(0.3, 1.0), (9, 0.35)])),
+    ("t9e", 10.6, B, dict(z=(1.42, 1.48), fx=1.0, fy=.45)),
+    ("ms1", 11.0, B, dict(z=(1.42, 1.48), fx=1.0, fy=.2)),
+    ("t9e", 11.6, 1.0, dict(z=(1.42, 1.48), fx=1.0, fy=.5, ramp=[(0.3, 1.0), (9, 0.35)])),
     ("t7d", 5.0, B, dict(z=(1.3, 1.36), fy=.35)),
-    ("ms1", 8.6, B, dict(z=(1.3, 1.36), fx=.6, fy=.2)),
+    ("ms1", 8.6, B, dict(z=(1.42, 1.48), fx=1.0, fy=.2)),
     ("t7d", 14.6, 1.0, dict(z=(1.2, 1.3), fy=.35, ramp=[(0.3, 1.2), (9, 0.35)])),
-    ("t9e", 13.4, B, dict(z=(1.25, 1.32), fx=.85, fy=.55)),
-    ("ms1", 12.0, B, dict(z=(1.2, 1.28), fx=.75, fy=.2)),
+    ("t9e", 13.4, B, dict(z=(1.42, 1.48), fx=1.0, fy=.55)),
+    ("ms1", 12.0, B, dict(z=(1.42, 1.48), fx=1.0, fy=.2)),
     # WEBSITE - complete, uninterrupted, then held on him to the bar (push-in on his card while it settles)
     ("screen", 0, (SCREEN_FRAMES + 7) / FPS, dict(tin=("fadewhite", 0.0))),
     ("white", 0, 4.5, {}),                                                      # 30.0 s: WHITE FRIDAY IS HERE! -> iFit logo
