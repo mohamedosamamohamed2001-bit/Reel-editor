@@ -34,7 +34,7 @@ fr = lambda x: round(x * FPS)
 # website card on a white stage: crop the phone status bar (recording dot) and the floating Safari bar, keep the whole page width
 CROP = (0, 130, 1320, 2480)            # x, y, w, h in the 1320x2868 recording
 CARD = (82, 100, 916, 1720)            # x, y, w, h on the 1080x1920 frame
-SCREEN_FRAMES = 534                    # 1067 frames at 60 fps (17.78 s) -> every 2nd frame = 534 at 30 fps: the whole recording
+SCREEN_FRAMES = 534                    # 1066 decoded frames at 60 fps: every 2nd (0..1064) + the final frame 1065 = 534 at 30 fps, start to end
 HIS_CARD_Y = CARD[1] + CARD[3] * ((0.53 * 2868 - CROP[1]) / CROP[3])   # his athlete card centre on the frame (measured at 16 s)
 
 # shots: (src, start in source s, output seconds, options). t9e / ms1 carry burned-in labels bottom-left ("Me to Me", "POV"):
@@ -119,7 +119,8 @@ def seg(s, W, i):
         z_end, t0 = 1.22, (SCREEN_FRAMES / FPS) - 5.0          # push-in during the last 5 s (his card is on screen and settling)
         Z = f"(1+({z_end}-1)*pow(min(1,max(0,(t-{t0})/{5.0 + 6 / FPS})),1.6))"
         cy = HIS_CARD_Y
-        g = (f"[0:v]fps={FPS},trim=end_frame={SCREEN_FRAMES},setpts=PTS-STARTPTS,crop={CROP[2]}:{CROP[3]}:{CROP[0]}:{CROP[1]},"
+        # every 2nd of the 1066 decoded frames + the very last one = 534; fps=30 dropped the final frame
+        g = (f"[0:v]select='not(mod(n,2))+eq(n,1065)',setpts=N/({FPS}*TB),trim=end_frame={SCREEN_FRAMES},setpts=PTS-STARTPTS,crop={CROP[2]}:{CROP[3]}:{CROP[0]}:{CROP[1]},"
              f"scale={w}:{h}:flags=lanczos:in_color_matrix=bt709:in_range=tv:out_range=full,format=rgba[pg];[2:v]format=gray[mk];[pg][mk]alphamerge[card];"
              f"[1:v]loop=loop=-1:size=1,format=rgb24[bg];[bg][card]overlay={x}:{y}:shortest=1,"
              f"tpad=stop_mode=clone:stop=6,"
