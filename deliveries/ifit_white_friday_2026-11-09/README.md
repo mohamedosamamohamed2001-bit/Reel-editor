@@ -1,38 +1,37 @@
-# iFit · White Friday · Instagram Reel (2026-11-09)
+# iFit · White Friday · Instagram Reel (2026-11-09, revised)
 
 | File | What |
 |---|---|
-| `iFit_White_Friday_Reel.mp4` | The Reel: 1080 × 1920 (9:16), 30 fps, 34.5 s, HEVC 10-bit HDR (HLG), AAC −14 LUFS |
+| `iFit_White_Friday_Reel.mp4` | The Reel: 1080 × 1920 (9:16), 30 fps, about 24.5 s, HEVC 10-bit HDR (HLG), AAC −14 LUFS |
 | `iFit_White_Friday_Cover.jpg / .png` | Reel cover in iFit identity: your training frame, WHITE FRIDAY, the official iFit logo |
+
+## What changed in this revision
+1. **The website opens the Reel.** The iFit screen recording is now the hook. The page lands on beat 1 with a quick settle, the music drops on the first frame, and a "WHITE FRIDAY 🤍" label sits in the white margin above the page. Nothing covers the page.
+2. **Much less workout footage.** The training is now one quick burst of four 0.5 s cuts (about 2 s) after the website, used as the transition into the ending.
+3. **White Friday only.** The words "Black Friday" no longer appear anywhere in the video or the graphics. The "BLACK FRIDAY?" and "NO…" opening is removed.
+4. **Unchanged:** the website shot and its white stage, the push-in on your card, the iFit end card and logo, the type style, the colours and the cover.
 
 ## Structure (cut on a 120 BPM beat)
 | Time | Moment |
 |---|---|
-| 0.0–3.5 s | **BLACK FRIDAY?** Fast dark gym cuts of your training: lateral raises, dips, cable crossovers. Heavy white type in the lower third, below your face. |
-| 3.5–4.0 s | The music stops. Black frame: **NO…** |
-| 4.0–5.5 s | White floods the frame on the drop: **WHITE FRIDAY 🤍** |
-| 5.5–12.0 s | Training montage on the beat, with speed ramps from your clips. No text. |
-| 12.0–30.0 s | White flash into the **iFit website recording**, on a clean white stage (see below). |
-| 30.0 s | **WHITE FRIDAY IS HERE!** on the second drop |
-| 32.0–34.5 s | The **iFit logo**, "WHITE FRIDAY" and the "SHOP NOW · ifit-eg.com" call to action |
+| 0.0–17.8 s | **The iFit website**, every recorded frame in its original order, with no cuts, no speed change and no cutaways. The Athletes section scrolls past everyone and stops on you. |
+| 13–18 s | Slow push-in on your card while it settles. The music builds, then stops on the moment it lands on you. |
+| 18–20 s | White flash, then a burst of your training on the drop: four 0.5 s cuts with **WHITE** / **FRIDAY** slammed in on the beats. |
+| 20 s | White floods out from the centre: **WHITE FRIDAY IS HERE!** |
+| 22–24.5 s | The **iFit logo**, "WHITE FRIDAY" and "SHOP NOW · ifit-eg.com" |
 
-## The website recording: complete and uninterrupted
-- **Every frame, in order.** All 17.78 s are used: 1,067 frames at 60 fps become 534 frames at 30 fps. No cut, no speed change, no cutaway, nothing on top.
-- **The Athletes scroll plays exactly as you recorded it.** It passes every athlete and stops on you. Once it settles, a slow push-in moves toward your card, and the shot holds on you before the end card.
-- **Cropping:** only the phone's status bar (clock and red recording dot) and Safari's floating address bar are cropped out. The full page width is visible on the card.
+## The website recording: complete
+- The recording decodes to 1,066 frames at 60 fps. Every second frame plus the very last one gives 534 frames at 30 fps, from the first recorded frame to the last.
+- **Cropping:** only the phone's status bar and Dynamic Island, and Safari's floating address bar, are cropped out. The full page width is visible.
 
 ## Brand and footage
 - **iFit identity:** black and white, clean heavy sans-serif type.
-- **Logo:** iFit's own vector file from ifit-eg.com, shown in its original colour (#4C4C4C), never cropped or distorted.
-- **Footage colours:** your camera clips keep their original colours (no grading or filters), in their own HDR format. The website and the 720p clip are converted into the same HDR space, so the website's white matches the graphics.
-- **Burned-in labels:** your clips carried labels ("Me to Me", "POV"). They're framed out of every shot.
+- **Logo:** iFit's own vector file from ifit-eg.com, shown in its original grey (#4C4C4C), never cropped or distorted.
+- **Footage colours:** your camera clips keep their original colours (no grading or filters).
+- **Burned-in labels:** the labels on your clips ("Me to Me", "POV") are framed out of every shot.
 - **No AI and no stock:** only your supplied footage and the iFit website.
-
-## Sound
-- **Music:** an original phonk track made for this Reel (no licence issues). It builds under BLACK FRIDAY?, stops on "NO…", drops on WHITE FRIDAY, grooves under the website, builds as the scroll settles on you, then drops on WHITE FRIDAY IS HERE!
-- **Sound effects:** synthesised in-house. Impacts on every title, whooshes on every cut, swipes timed to the measured moments the athlete cards slide, and a boom on the end card.
-- **Want an Instagram song instead?** I can export a version with sound effects only.
+- **Sound:** an original phonk track made for this Reel (no licence issues) and in-house sound effects. The swipes are timed to the moments the athlete cards actually slide.
 
 ## Please check before posting
-- The end card says **"SHOP NOW · ifit-eg.com"**. I didn't add any discount figure, because the brief didn't state the offer terms. The website itself shows iFit's "UP TO 50% OFF" banner.
-- The video is HDR (HLG), the format your iPhone filmed in. Instagram accepts it from an iPhone. If iFit's team needs an SDR version for other platforms, I can export one.
+- **No discount number:** the end card says "SHOP NOW · ifit-eg.com" with no discount figure. The website itself shows iFit's "UP TO 50% OFF" banner.
+- **HDR format:** the video is HDR (HLG), the format your iPhone filmed in. Instagram accepts it from an iPhone. If iFit's team needs an SDR version for other platforms, I can export one.

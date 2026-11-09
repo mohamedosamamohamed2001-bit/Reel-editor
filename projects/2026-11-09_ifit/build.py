@@ -1,9 +1,9 @@
-"""iFit - White Friday campaign Reel (Coach Osama 2026-11-09).
+"""iFit - White Friday campaign Reel (Coach Osama 2026-11-09, revised: website first, little B-roll, White Friday only).
 
-BLACK -> WHITE: dark gym cuts under "BLACK FRIDAY?" -> the music stops on "NO..." -> a white flash: "WHITE FRIDAY" -> a fast
-beat-cut training montage (speed ramps from his clips) -> a white flash into the iFit website screen recording, shown COMPLETE and
-uninterrupted (all 17.77 s / 533 frames at 30 fps, original order; the Athletes scroll is untouched and the shot settles on him with
-a slow push-in on his card) -> "WHITE FRIDAY IS HERE!" -> iFit logo end card.
+The iFit website screen recording OPENS the Reel and is shown COMPLETE and uninterrupted (every recorded frame, original order; the
+Athletes scroll is untouched and the shot settles on him with a slow push-in on his card while the music builds and stops) -> a white
+flash into a short burst of his training (four 0.5 s cuts on the drop, "WHITE" / "FRIDAY") -> "WHITE FRIDAY IS HERE!" -> iFit logo.
+The term "Black Friday" is not used anywhere.
 
 Colour: his HLG camera clips stay in their own 10-bit HLG (no grade); the SDR website recording and the SDR clip are converted
 SDR -> HLG at 203-nit graphics white (BT.2408), the same conversion as the graphics, so the website white = the graphics white.
@@ -42,31 +42,14 @@ HIS_CARD_Y = CARD[1] + CARD[3] * ((0.53 * 2868 - CROP[1]) / CROP[3])   # his ath
 # Cuts on the 120 bpm grid (0.5 s = a beat).
 B = 0.5
 SHOTS = [
-    # HOOK - dark: BLACK FRIDAY?   (faces high in these takes: the hook type sits in the lower third)
-    ("t7d", 4.4, B, dict(z=(1.18, 1.25), fy=.35)),
+    # WEBSITE first (the hook): complete, uninterrupted, then held on him while the build stops (push-in on his card as it settles)
+    ("screen", 0, (SCREEN_FRAMES + 6) / FPS, {}),
+    # B-roll burst on the drop: four quick cuts (faces high in these takes: the words sit in the lower third)
+    ("t7d", 4.4, B, dict(z=(1.25, 1.32), fy=.35)),
     ("ms1", 7.4, B, dict(z=(1.42, 1.48), fx=1.0, fy=.2)),
     ("t9e", 5.0, B, dict(z=(1.42, 1.48), fx=1.0, fy=.08)),
-    ("t7d", 9.0, B, dict(z=(1.3, 1.36), fy=.35)),
-    ("ms1", 9.6, B, dict(z=(1.42, 1.48), fx=1.0, fy=.2)),
-    ("t9e", 6.6, B, dict(z=(1.42, 1.48), fx=1.0, fy=.08)),
-    ("t7d", 13.4, B, dict(z=(1.2, 1.3), fy=.35, speed=0.5)),
-    ("black", 0, B, {}),                                                        # 3.5 s: music stops - "NO..."
-    ("white", 0, 1.5, {}),                                                      # 4.0 s: WHITE FRIDAY (graphics on white)
-    # MONTAGE - on the drop
-    ("t9e", 8.2, B, dict(z=(1.42, 1.48), fx=1.0, fy=.4)),
-    ("ms1", 7.0, B, dict(z=(1.42, 1.48), fx=1.0, fy=.2)),
-    ("t7d", 1.0, B, dict(z=(1.25, 1.3), fy=.35)),
-    ("t9e", 10.6, B, dict(z=(1.42, 1.48), fx=1.0, fy=.45)),
-    ("ms1", 11.0, B, dict(z=(1.42, 1.48), fx=1.0, fy=.2)),
-    ("t9e", 11.6, 1.0, dict(z=(1.42, 1.48), fx=1.0, fy=.5, ramp=[(0.3, 1.0), (9, 0.35)])),
-    ("t7d", 5.0, B, dict(z=(1.3, 1.36), fy=.35)),
-    ("ms1", 8.6, B, dict(z=(1.42, 1.48), fx=1.0, fy=.2)),
-    ("t7d", 14.6, 1.0, dict(z=(1.2, 1.3), fy=.35, ramp=[(0.3, 1.2), (9, 0.35)])),
-    ("t9e", 13.4, B, dict(z=(1.42, 1.48), fx=1.0, fy=.55)),
-    ("ms1", 12.0, B, dict(z=(1.42, 1.48), fx=1.0, fy=.2)),
-    # WEBSITE - complete, uninterrupted, then held on him to the bar (push-in on his card while it settles)
-    ("screen", 0, (SCREEN_FRAMES + 6) / FPS, dict(tin=("fadewhite", 0.0))),
-    ("white", 0, 4.5, {}),                                                      # 30.0 s: WHITE FRIDAY IS HERE! -> iFit logo
+    ("t7d", 13.4, B, dict(z=(1.2, 1.3), fy=.35, ramp=[(0.2, 1.2), (9, 0.4)])),
+    ("white", 0, 4.5, {}),                                                      # WHITE FRIDAY IS HERE! -> iFit logo
 ]
 
 
@@ -117,7 +100,8 @@ def seg(s, W, i):
     if s["src"] == "screen":
         x, y, w, h = CARD
         z_end, t0 = 1.22, (SCREEN_FRAMES / FPS) - 5.0          # push-in during the last 5 s (his card is on screen and settling)
-        Z = f"(1+({z_end}-1)*pow(min(1,max(0,(t-{t0})/{5.0 + 6 / FPS})),1.6))"
+        # opening: the page lands on beat 1 (1.10x -> 1.0 in 0.4 s); closing: slow push-in on his card while the scroll settles
+        Z = f"((1+0.10*pow(max(0,1-t/0.4),3))*(1+({z_end}-1)*pow(min(1,max(0,(t-{t0})/{5.0 + 6 / FPS})),1.6)))"
         cy = HIS_CARD_Y
         # every 2nd of the 1066 decoded frames + the very last one = 534; fps=30 dropped the final frame
         g = (f"[0:v]select='not(mod(n,2))+eq(n,1065)',setpts=N/({FPS}*TB),trim=end_frame={SCREEN_FRAMES},setpts=PTS-STARTPTS,crop={CROP[2]}:{CROP[3]}:{CROP[0]}:{CROP[1]},"
@@ -156,7 +140,7 @@ def build(preview=False):
     print(f"{len(tl)} shots, {T:.2f}s; website {t_screen:.2f}-{t_screen + SCREEN_FRAMES / FPS:.2f}s, end card {t_end:.2f}s", flush=True)
     stage_images(W)
     # graphics
-    spec = {"dur": T, "screen": [t_screen, t_screen + SCREEN_FRAMES / FPS], "end": t_end}
+    spec = {"dur": T, "screen": [t_screen, t_screen + SCREEN_FRAMES / FPS], "broll": [next(s for s in tl if s["src"] == "t7d")["start"] / FPS, t_end], "end": t_end}
     (W / "overlay_spec.json").write_text(json.dumps(spec))
     ov = W / "ov"
     subprocess.run(["node", str(P / "render_overlay.js"), str(W / "overlay_spec.json"), str(ov)], check=True)
@@ -186,26 +170,25 @@ def build(preview=False):
     assert count_frames(raw) == total
     # sound: original track + hits
     music = {"bpm": 120, "key": "F", "mode": "minor", "style": "phonk", "seed": 21, "duration": round(T, 3),
-             "sections": [{"type": "build", "bars": 2, "stop": True}, {"type": "drop", "bars": 4}, {"type": "groove", "bars": 8},
-                          {"type": "build", "bars": 1, "stop": True}, {"type": "drop", "bars": 1}, {"type": "outro", "bars": 2}]}
+             "sections": [{"type": "drop", "bars": 2}, {"type": "groove", "bars": 6}, {"type": "build", "bars": 1, "stop": True},
+                          {"type": "drop", "bars": 2}, {"type": "outro", "bars": 2}]}
     (W / "music.json").write_text(json.dumps(music))
     subprocess.run([str(ROOT / ".venv/bin/python"), str(ROOT / "tools/music.py"), str(W / "music.json"), str(W / "music.wav")], check=True)
     cue = lambda at, snd, g, **k: {"at": round(at, 4), "sound": snd, "gain_db": g, **k}
-    cues = [cue(0.0, "impact", -8), cue(0.12, "slam", -9), cue(0.62, "slam", -12)]
-    cues += [cue(s["start"] / FPS, "whoosh_in", -18) for s in tl[1:7]]
-    cues += [cue(3.5, "reverse_hit", -14, dur=0.5), cue(3.52, "click", -14)]                    # NO...
-    cues += [cue(4.0, "impact", -7), cue(4.0, "whoosh_out", -12), cue(4.02, "chime", -15)]     # WHITE FRIDAY
+    cues = [cue(0.0, "impact", -8), cue(0.0, "whoosh_out", -12), cue(0.08, "slam", -13)]          # the page lands on beat 1
+    for t in SWIPES:                                                                             # athlete cards sliding by
+        cues.append(cue(t_screen + t, "whoosh_in", -19))
+    t_set = t_screen + SCREEN_FRAMES / FPS
+    cues += [cue(t_set - 4.8, "swell", -17, dur=4.6)]
+    t_b = next(s for s in tl if s["src"] == "t7d")["start"] / FPS
+    cues += [cue(t_b, "impact", -8), cue(t_b, "whoosh_out", -12)]
     for s in tl:
         t = s["start"] / FPS
-        if 5.5 <= t < t_screen:
-            cues.append(cue(t, "whip" if s.get("speed", 1) > 1 else "whoosh_in", -15))
-            if s.get("speed", 1) < 1:
-                cues.append(cue(t, "thump", -12))
-    cues += [cue(t_screen, "impact", -10), cue(t_screen, "whoosh_out", -13)]
-    for t in SWIPES:                                                                             # athlete cards sliding by
-        cues.append(cue(t_screen + t, "whoosh_in", -20))
-    cues += [cue(t_screen + SCREEN_FRAMES / FPS - 4.8, "swell", -17, dur=4.6)]
-    cues += [cue(t_end, "boom", -7), cue(t_end, "impact", -9), cue(t_end + 2.0, "whoosh_in", -14), cue(t_end + 2.02, "thump", -12)]
+        if t_b < t < t_end:
+            cues.append(cue(t, "whip" if s.get("speed", 1) >= 1 else "thump", -14))
+    cues += [cue(t_b, "slam", -11), cue(t_b + 1.0, "slam", -11)]                                 # WHITE / FRIDAY
+    cues += [cue(t_end, "boom", -7), cue(t_end, "impact", -9), cue(t_end + 0.27, "slam", -13), cue(t_end + 0.52, "slam", -12),
+             cue(t_end + 2.0, "whoosh_in", -14), cue(t_end + 2.02, "thump", -12)]
     silent = W / "silence.wav"
     ff(["-f", "lavfi", "-i", f"anullsrc=r=48000:cl=stereo", "-t", f"{T:.3f}", "-c:a", "pcm_s24le", str(silent)])
     mix = W / "mix.wav"
