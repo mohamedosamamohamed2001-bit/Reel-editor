@@ -45,10 +45,10 @@ SHOTS = [
     # HOOK - dark: BLACK FRIDAY?   (faces high in these takes: the hook type sits in the lower third)
     ("t7d", 4.4, B, dict(z=(1.18, 1.25), fy=.35)),
     ("ms1", 7.4, B, dict(z=(1.42, 1.48), fx=1.0, fy=.2)),
-    ("t9e", 5.0, B, dict(z=(1.42, 1.48), fx=1.0, fy=.25)),
+    ("t9e", 5.0, B, dict(z=(1.42, 1.48), fx=1.0, fy=.08)),
     ("t7d", 9.0, B, dict(z=(1.3, 1.36), fy=.35)),
     ("ms1", 9.6, B, dict(z=(1.42, 1.48), fx=1.0, fy=.2)),
-    ("t9e", 6.6, B, dict(z=(1.42, 1.48), fx=1.0, fy=.25)),
+    ("t9e", 6.6, B, dict(z=(1.42, 1.48), fx=1.0, fy=.08)),
     ("t7d", 13.4, B, dict(z=(1.2, 1.3), fy=.35, speed=0.5)),
     ("black", 0, B, {}),                                                        # 3.5 s: music stops - "NO..."
     ("white", 0, 1.5, {}),                                                      # 4.0 s: WHITE FRIDAY (graphics on white)
