@@ -37,3 +37,6 @@ deliveries/run8k_2026-11-08/*.png filter=lfs diff=lfs merge=lfs -text
 deliveries/ramp_speed_2026-11-08/*.mp4 filter=lfs diff=lfs merge=lfs -text
 deliveries/ramp_speed_2026-11-08/*.jpg filter=lfs diff=lfs merge=lfs -text
 deliveries/ramp_speed_2026-11-08/*.png filter=lfs diff=lfs merge=lfs -text
+deliveries/ifit_white_friday_2026-11-09/*.mp4 filter=lfs diff=lfs merge=lfs -text
+deliveries/ifit_white_friday_2026-11-09/*.jpg filter=lfs diff=lfs merge=lfs -text
+deliveries/ifit_white_friday_2026-11-09/*.png filter=lfs diff=lfs merge=lfs -text
