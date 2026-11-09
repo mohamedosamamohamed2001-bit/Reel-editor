@@ -1,0 +1,98 @@
+<!doctype html>
+<!-- iFit White Friday Reel: graphics layer (transparent 1080x1920, every pixel from t). iFit identity: monochrome, the official
+     iFit wordmark (ifit-eg.com/wp-content/uploads/2026/10/ifit-logo.svg, #4C4C4C, never cropped or recoloured), heavy clean
+     sans-serif caps. Story: BLACK FRIDAY? (white on dark footage) -> NO... (black) -> WHITE FRIDAY (black on white) -> website ->
+     WHITE FRIDAY IS HERE! -> logo. No glow, no blur, no haze. Type over footage stays in the lower third (his face is above). -->
+<html><head><meta charset="utf-8">
+<style>
+@font-face { font-family: Inter; src: url('/osm/fonts/Inter[opsz,wght].ttf'); font-weight: 100 900; }
+html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: transparent; }
+.layer { position: absolute; inset: 0; }
+.H { font-family: Inter; font-weight: 900; text-transform: uppercase; letter-spacing: -0.045em; line-height: .86; white-space: nowrap; }
+#hook .w1 { position: absolute; left: 0; right: 0; top: 1190px; text-align: center; font-size: 250px; color: #fff; }
+#hook .w2 { position: absolute; left: 0; right: 0; top: 1418px; text-align: center; font-size: 160px; color: #fff; font-weight: 300; letter-spacing: -0.02em; }
+#no { background: #000; }
+#no .t { position: absolute; left: 0; right: 0; top: 860px; text-align: center; font-size: 170px; color: #fff; }
+#wf { background: #fff; }
+#wf .w1 { position: absolute; left: 0; right: 0; top: 720px; text-align: center; font-size: 250px; color: #111; }
+#wf .w2 { position: absolute; left: 0; right: 0; top: 950px; text-align: center; font-size: 200px; color: #111; }
+#wf svg { position: absolute; left: 50%; top: 1170px; width: 150px; margin-left: -75px; }
+#flash { background: #fff; }
+#end { background: #fff; }
+#end .a { position: absolute; left: 0; right: 0; top: 690px; text-align: center; }
+#end .a .l1 { font-size: 220px; color: #111; }
+#end .a .l2 { font-size: 220px; color: #111; margin-top: 10px; }
+#end .a .l3 { display: inline-block; font-size: 140px; color: #fff; background: #111; padding: 18px 34px 22px; border-radius: 18px; margin-top: 34px; letter-spacing: -0.03em; }
+#end .b { position: absolute; left: 0; right: 0; top: 760px; text-align: center; }
+#end .b img { width: 640px; }
+#end .b .cap { font-family: Inter; font-weight: 800; font-size: 40px; letter-spacing: .42em; color: #4C4C4C; margin: 70px 0 0 .42em; }
+#end .b .pill { display: inline-block; margin-top: 70px; background: #111; color: #fff; font-family: Inter; font-weight: 800; font-size: 44px;
+  letter-spacing: .04em; padding: 24px 50px; border-radius: 60px; }
+</style></head>
+<body>
+<div id="hook" class="layer" style="display:none"><div class="H w1">BLACK</div><div class="H w2">FRIDAY?</div></div>
+<div id="no" class="layer" style="display:none"><div class="H t">NO…</div></div>
+<div id="wf" class="layer" style="display:none"><div class="H w1">WHITE</div><div class="H w2">FRIDAY</div>
+  <svg viewBox="0 0 100 92"><path d="M50 88 C20 66 4 50 4 30 C4 15 15 4 29 4 C38 4 46 9 50 17 C54 9 62 4 71 4 C85 4 96 15 96 30 C96 50 80 66 50 88 Z"
+   fill="#fff" stroke="#111" stroke-width="6" stroke-linejoin="round"/></svg></div>
+<div id="flash" class="layer" style="display:none"></div>
+<div id="end" class="layer" style="display:none">
+  <div class="a"><div class="H l1">WHITE</div><div class="H l2">FRIDAY</div><div class="H l3">IS HERE!</div></div>
+  <div class="b"><img src="/proj/brand/ifit-logo.svg"><div class="cap">WHITE FRIDAY</div><div><span class="pill">SHOP NOW · ifit-eg.com</span></div></div>
+</div>
+<script type="module">
+import { spring, clamp01 } from "/osm/motion-core.js";
+const q = new URLSearchParams(location.search);
+const spec = await (await fetch(q.get("spec"))).json();
+const S = (n, st) => { for (const k in st) n.style[k] = st[k]; };
+const sp = (t, t0, f = 3) => spring(t - t0, { freq: f });
+const $ = (s) => document.querySelector(s);
+const slam = (el, t, t0, f = 4.4, from = 1.35) => { const p = sp(t, t0, f); S(el, { opacity: clamp01((t - t0) * 24), transform: `scale(${from - (from - 1) * p})` }); };
+const show = (el, on) => S(el, { display: on ? "block" : "none" });
+window.seek = (t) => {
+  // HOOK 0.1 - 3.48: BLACK / FRIDAY? slam in, a 3% pulse on every beat
+  const hk = $("#hook"), H0 = 0.12;
+  if (t >= H0 && t < 3.48) {
+    show(hk, true);
+    const beat = (t % 0.5) / 0.5, pulse = 1 + 0.03 * Math.exp(-beat * 8);
+    slam(hk.querySelector(".w1"), t, H0); slam(hk.querySelector(".w2"), t, 0.62, 4.4, 1.5);
+    S(hk, { transform: `scale(${pulse})`, transformOrigin: "50% 75%" });
+  } else show(hk, false);
+  // NO... 3.5 - 4.0 on black
+  const no = $("#no");
+  if (t >= 3.5 && t < 4.0) { show(no, true); slam(no.querySelector(".t"), t, 3.52, 5, 1.2); } else show(no, false);
+  // WHITE FRIDAY 4.0 - 5.6: white floods out from the centre, the words land on the beats, then the card lifts away
+  const wf = $("#wf");
+  if (t >= 4.0 && t < 5.62) {
+    show(wf, true);
+    const r = 1150 * Math.min(1, Math.pow(clamp01((t - 4.0) / 0.2), 0.7));
+    const out = clamp01((t - 5.45) / 0.17);
+    S(wf, { clipPath: `circle(${r}px at 50% 50%)`, opacity: 1 - out, transform: `scale(${1 + 0.12 * out})` });
+    slam(wf.querySelector(".w1"), t, 4.08); slam(wf.querySelector(".w2"), t, 4.5);
+    const hp = sp(t, 5.0, 4.6); S(wf.querySelector("svg"), { opacity: clamp01((t - 5.0) * 20), transform: `scale(${0.4 + 0.6 * hp})` });
+  } else show(wf, false);
+  // white flash into the website (hides the cut; peaks on the cut, gone 0.25 s later)
+  const fl = $("#flash"), ts = spec.screen[0];
+  if (t >= ts - 0.12 && t < ts + 0.26) { show(fl, true); S(fl, { opacity: t < ts ? (t - (ts - 0.12)) / 0.12 : 1 - (t - ts) / 0.26 }); } else show(fl, false);
+  // END: WHITE FRIDAY IS HERE!  then the iFit logo
+  const en = $("#end"), te = spec.end;
+  if (t >= te) {
+    show(en, true);
+    S(en, { opacity: clamp01((t - te) / 0.08) });
+    const a = en.querySelector(".a"), b = en.querySelector(".b");
+    const ax = clamp01((t - (te + 2.0)) / 0.22);
+    S(a, { opacity: 1 - ax, transform: `translateY(${-120 * ax}px)` });
+    slam(a.querySelector(".l1"), t, te + 0.02); slam(a.querySelector(".l2"), t, te + 0.27); slam(a.querySelector(".l3"), t, te + 0.52, 4.4, 1.6);
+    if (t >= te + 2.0) {
+      S(b, { display: "block" });
+      const p = sp(t, te + 2.05, 2.8);
+      S(b.querySelector("img"), { opacity: clamp01((t - te - 2.05) * 8), transform: `scale(${0.86 + 0.14 * p})` });
+      S(b.querySelector(".cap"), { opacity: clamp01((t - te - 2.4) * 6) });
+      const pp = sp(t, te + 2.6, 3.2);
+      S(b.querySelector(".pill"), { opacity: clamp01((t - te - 2.6) * 7), transform: `translateY(${(1 - pp) * 40}px)` });
+    } else S(b, { display: "none" });
+  } else show(en, false);
+};
+window.meta = { dur: spec.dur };
+window.ready = document.fonts.ready.then(() => new Promise((r) => { const im = document.querySelector("#end img"); im.complete ? r() : (im.onload = r, im.onerror = r); }));
+</script></body></html>
