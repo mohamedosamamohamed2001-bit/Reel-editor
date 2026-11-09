@@ -32,8 +32,8 @@ X265 = "crf=12:preset=medium:pools=2:frame-threads=2:colorprim=bt2020:transfer=a
 fr = lambda x: round(x * FPS)
 
 # website card on a white stage: crop the phone status bar (recording dot) and the floating Safari bar, keep the whole page width
-CROP = (0, 130, 1320, 2480)            # x, y, w, h in the 1320x2868 recording
-CARD = (82, 100, 916, 1720)            # x, y, w, h on the 1080x1920 frame
+CROP = (0, 155, 1320, 2455)            # x, y, w, h in the 1320x2868 recording (below the Dynamic Island, above the Safari bar)
+CARD = (82, 108, 916, 1704)            # x, y, w, h on the 1080x1920 frame (same aspect as CROP)
 SCREEN_FRAMES = 534                    # 1066 decoded frames at 60 fps: every 2nd (0..1064) + the final frame 1065 = 534 at 30 fps, start to end
 HIS_CARD_Y = CARD[1] + CARD[3] * ((0.53 * 2868 - CROP[1]) / CROP[3])   # his athlete card centre on the frame (measured at 16 s)
 
