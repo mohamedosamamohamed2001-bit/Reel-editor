@@ -1,0 +1,190 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>OSM · 8-Week HYROX Preparation</title>
+<style>
+@font-face { font-family: Inter; src: url('file:///home/user/Reel-editor/brand/fonts/Inter[opsz,wght].ttf'); font-weight: 100 900; }
+@font-face { font-family: InterI; src: url('file:///home/user/Reel-editor/brand/fonts/Inter-Italic[opsz,wght].ttf'); font-weight: 100 900; font-style: italic; }
+@font-face { font-family: Plex; src: url('file:///home/user/Reel-editor/brand/fonts/IBMPlexSansArabic-Bold.ttf'); font-weight: 700; }
+@font-face { font-family: Barlow; src: url('file:///home/user/Reel-editor/brand/fonts/BarlowCondensed-Bold.ttf'); font-weight: 700; }
+@page { size: A4; margin: 14mm 13mm 16mm; }
+* { box-sizing: border-box; }
+body { font-family: Inter; font-size: 9.6pt; line-height: 1.45; color: #0A0F16; margin: 0; }
+.cover { background: #0A0F16; color: #fff; border-radius: 6mm; padding: 11mm 11mm 10mm; margin-bottom: 7mm; }
+.cover img { height: 11mm; mix-blend-mode: lighten; }
+.cover .k { font-family: Barlow; letter-spacing: .24em; color: #7DD2EC; font-size: 11pt; margin-top: 8mm; }
+.cover h1 { font-family: InterI; font-style: italic; font-weight: 900; text-transform: uppercase; font-size: 34pt; line-height: .98; margin: 2mm 0 0; letter-spacing: -.02em; }
+.cover h1 b { color: #56A0FB; }
+.cover .meta { display: flex; gap: 4mm; margin-top: 7mm; flex-wrap: wrap; }
+.cover .meta div { background: #172131; border-radius: 3mm; padding: 2.4mm 4mm; font-weight: 700; font-size: 9.5pt; }
+.cover .meta div span { display: block; font-family: Barlow; font-weight: 700; letter-spacing: .18em; color: #8C98AA; font-size: 8pt; }
+.cover .meta .race { background: #56A0FB; color: #0A0F16; } .cover .meta .race span { color: #0A0F16; }
+h2 { font-family: InterI; font-style: italic; font-weight: 900; text-transform: uppercase; font-size: 15pt; letter-spacing: -.01em; margin: 8mm 0 3mm;
+     padding-bottom: 1.5mm; border-bottom: 2px solid #56A0FB; break-after: avoid; }
+h3 { font-size: 10.5pt; font-weight: 800; margin: 5mm 0 1.5mm; break-after: avoid; }
+p { margin: 0 0 2.2mm; } ul { margin: 0 0 2.5mm; padding-left: 5mm; } li { margin-bottom: 1mm; }
+.ar { font-family: Plex; direction: rtl; text-align: right; font-size: 10.5pt; }
+.box { border: 1.5px solid #D5DCE6; border-radius: 3mm; padding: 3.5mm 4.5mm; margin: 2.5mm 0 3.5mm; break-inside: avoid; }
+.box.blue { background: #EEF5FF; border-color: #56A0FB; }
+.box.night { background: #0A0F16; color: #fff; border-color: #0A0F16; }
+.box h4 { margin: 0 0 1.5mm; font-family: Barlow; letter-spacing: .14em; font-size: 10pt; color: #2C6FD0; text-transform: uppercase; }
+.box.night h4 { color: #7DD2EC; }
+table { width: 100%; border-collapse: collapse; font-size: 8.9pt; }
+th { text-align: left; font-family: Barlow; letter-spacing: .1em; font-size: 8.6pt; text-transform: uppercase; color: #fff; background: #0A0F16; padding: 1.6mm 2mm; }
+td { padding: 1.5mm 2mm; border-bottom: 1px solid #E3E8EF; vertical-align: top; }
+td.r, th.r { text-align: right; white-space: nowrap; }
+.ov td:first-child { font-weight: 800; white-space: nowrap; }
+.tag { display: inline-block; font-family: Barlow; letter-spacing: .1em; font-size: 8pt; padding: .3mm 2mm; border-radius: 2mm; background: #E3E8EF; }
+.wk { break-inside: avoid; border: 1.5px solid #D5DCE6; border-radius: 3mm; margin: 0 0 3.5mm; overflow: hidden; }
+.wkh { display: flex; align-items: center; gap: 3mm; background: #0A0F16; color: #fff; padding: 2mm 3.5mm; }
+.wkh .no { font-family: InterI; font-style: italic; font-weight: 900; font-size: 13pt; }
+.wkh .dt { font-weight: 700; color: #7DD2EC; }
+.wkh .ph { flex: 1; font-weight: 600; color: #C9D3E0; }
+.wkh .th { font-family: Barlow; letter-spacing: .14em; font-size: 8.5pt; color: #0A0F16; padding: .5mm 2.5mm; border-radius: 2mm; }
+.wk .fo { padding: 1.8mm 3.5mm; background: #F3F6FA; font-weight: 600; font-size: 8.9pt; }
+.days td.d { width: 11mm; font-weight: 800; color: #2C6FD0; }
+.days td { padding: 1.3mm 3.5mm; }
+.gs { break-inside: avoid; margin-bottom: 3mm; } .gsh { font-weight: 800; margin: 2mm 0 1mm; }
+.note { color: #3A4658; font-size: 8.9pt; }
+.cols { display: flex; gap: 5mm; } .cols > div { flex: 1; }
+.foot { margin-top: 8mm; font-size: 8pt; color: #5B6778; }
+.pb { break-before: page; }
+.gp { break-inside: avoid; }
+table { break-inside: avoid; }
+</style></head><body>
+
+<div class="cover">
+  <img src="file:///home/user/Reel-editor/brand/logo/osm-wordmark-780x264.jpg">
+  <div class="k">OSAMA STRENGTH METHOD · PERFORMANCE PLAN</div>
+  <h1>8-Week <b>HYROX</b><br>Preparation</h1>
+  <div class="meta">
+    <div><span>ATHLETE</span>Coach Osama</div>
+    <div><span>START</span>Mon 16 Nov 2026</div>
+    <div class="race"><span>RACE</span>Friday 8 January 2027</div>
+    <div><span>MODEL</span>EPI · conjugate, 3+1 waves</div>
+  </div>
+</div>
+
+<div class="box blue">
+  <h4>Read first: what this plan is built on</h4>
+  <ul>
+    <li><b>Your numbers, not guesses.</b> I don't have your current running or HYROX results, so every pace comes from your <b>1.5 km time trial</b> (EPI linear MAS test) and every load from your <b>week-1 5RM tests</b>. Week 4 retests MAS and updates all paces.</li>
+    <li><b>Assumed:</b> 6 training days a week, sessions of 60–75 min, Sunday off. Days can move; keep at least 24 h between the two hardest run sessions. If your legs are still sore from Gym A on Tuesday, swap Tuesday and Wednesday.</li>
+    <li><b>Send me</b> your division (Open or Pro), last HYROX time (if any), recent 5 km time, body weight, available days and any current pain, and I'll fine-tune the volumes and race-pace targets.</li>
+  </ul>
+  <p class="ar">وكمان مش هتخسر عضلاتك: الجيم موجود في البرنامج كله (مرتين في الأسبوع لحد الأسبوع 6)، والأوزان التقيلة فاضلة لحد أسبوع السباق. اللي بيقل هو الحجم، مش الشدة.</p>
+</div>
+
+<h2>How it follows EPI programming</h2>
+<ul>
+  <li><b>EPI training system:</b> consultation → needs analysis → screening → testing → profile → periodization → program design. Your OHS screen (4/12, average) and ROM sheet from the NCSC course decide the correctives in Phase 1: hip extension 25° (target 30–45°), hip internal rotation 15° (target 30–45°), SLR 70° (target 90°), left ER 40° (target 60°).</li>
+  <li><b>Needs analysis (HYROX):</b> 8 × 1 km of running between 8 stations. Primary: aerobic power and threshold (MAS, MLSS), compromised running, lactate capacity and strength endurance on the stations. Secondary: max strength and strength-speed (sleds, lunges, carries), plus muscle retention. Injury focus: calves and Achilles, hamstrings and lower back under fatigue.</li>
+  <li><b>Model: conjugate</b> (EPI Phase 2 for trained athletes). Several qualities are trained in parallel, with one emphasis per block and wave-like loading: <b>3 weeks of overload, then a de-load</b>. Your phases are kept, and week 4 becomes the EPI de-load and retest week. Weeks 7–8 replace the next de-load with a sharpen-and-taper.</li>
+  <li><b>Themes:</b> <span class="tag" style="background:#F4C542">EXTENSIVE</span> volume (aerobic, hypertrophy, correctives) → <span class="tag" style="background:#56A0FB">INTENSIVE</span> intensity (threshold and VO₂max intervals, max strength, strength-speed, specific work) → sharpen → taper.</li>
+</ul>
+
+<h3>The 8 weeks at a glance</h3>
+<table class="ov">
+  <tr><th>Week</th><th>Dates</th><th>Running</th><th>Gym</th><th>HYROX</th></tr>
+  <tr><td>1–2</td><td>16–29 Nov</td><td>Aerobic base, long intervals @ 95 % MAS, drills, Z2 long run</td><td>Hypertrophy + correctives (2×/wk)</td><td>Station technique at race weight, RPE 6</td></tr>
+  <tr><td>3</td><td>30 Nov–6 Dec</td><td>Threshold 1 km reps @ 88–90 % MAS, 15:15 @ 110 % MAS</td><td>Max strength + hypertrophy assistance</td><td>Sled work at race weight</td></tr>
+  <tr><td>4</td><td>7–13 Dec</td><td>De-load −30–40 % volume · <b>MAS retest</b></td><td>Same loads, fewer sets</td><td>—</td></tr>
+  <tr><td>5–6</td><td>14–27 Dec</td><td>Compromised running, 15:15 @ 110–115 % MAS, threshold</td><td>Strength-speed + power (contrast)</td><td><b>Half sim</b> (19 Dec), <b>full sim</b> (26 Dec)</td></tr>
+  <tr><td>7</td><td>28 Dec–3 Jan</td><td>Race-pace rehearsal, 400 m sharpening, −30 % volume</td><td>Maintenance: heavy, low volume (1×)</td><td>Station and transition rehearsal</td></tr>
+  <tr><td>8</td><td>4–8 Jan</td><td>Openers, activation, −50–60 % volume</td><td>Monday primer only</td><td><b>RACE · Fri 8 Jan</b></td></tr>
+</table>
+
+<h2 class="pb">Testing and training zones</h2>
+<div class="cols">
+<div>
+<h3>1.5 km time trial (week 1 Mon · retest week 4 Thu)</h3>
+<ul>
+  <li>15 min warm-up: easy jog, drills, 3 × 80 m building strides.</li>
+  <li>Run 1.5 km flat-out on a track or flat route. Record the time in seconds.</li>
+  <li><b>MAS (m/s) = 1500 ÷ time.</b> Example: 5:30 = 330 s → 4.55 m/s (16.4 km/h).</li>
+  <li>Pace for a % of MAS: <b>seconds per km = 1000 ÷ (MAS × %)</b>.</li>
+</ul>
+<h3>Strength tests (week 1)</h3>
+<ul>
+  <li>Work up to a clean <b>5RM</b> in trap-bar deadlift, back squat, bench press and pull-up (add weight if you can do more than 10).</li>
+  <li>Estimated 1RM ≈ 5RM × 1.13. All % loads use this number.</li>
+  <li>If a lift moves slower than planned on the day, use the RIR target and drop the load. Don't chase the %.</li>
+</ul>
+</div>
+<div>
+<h3>Zones used in this plan</h3>
+<table>
+  <tr><th>Zone</th><th>How to run it</th></tr>
+  <tr><td><b>Z2 easy</b></td><td>Conversational, RPE 3–4. Go by feel or heart rate, not pace.</td></tr>
+  <tr><td><b>Threshold</b></td><td>88–90 % MAS (EPI: MLSS ≈ 90 % vVO₂max), RPE 7</td></tr>
+  <tr><td><b>Race pace</b></td><td>Your target 1 km split in HYROX. Start at ~85 % MAS and set it from the half sim (19 Dec).</td></tr>
+  <tr><td><b>Long intervals</b></td><td>95–100 % MAS (EPI HIIT Phase 1)</td></tr>
+  <tr><td><b>Short 15:15</b></td><td>110–120 % MAS (EPI HIIT Phase 2)</td></tr>
+  <tr><td><b>Strides</b></td><td>15–20 s fast and relaxed, full recovery</td></tr>
+</table>
+</div>
+</div>
+<h3>Pace calculator (min:s per km): find your 1.5 km time</h3>
+<table>
+  <tr><th>1.5 km time</th><th>MAS</th><th>≈70 % (easy guide)</th><th>88–90 % threshold</th><th>95 % long intervals</th><th>110 % short 15:15</th></tr>
+  <tr><td>6:15</td><td>4.00 m/s · 14.4 km/h</td><td>5:57</td><td>4:44–4:38</td><td>4:23</td><td>3:47</td></tr><tr><td>5:53</td><td>4.25 m/s · 15.3 km/h</td><td>5:36</td><td>4:27–4:21</td><td>4:08</td><td>3:34</td></tr><tr><td>5:33</td><td>4.50 m/s · 16.2 km/h</td><td>5:17</td><td>4:13–4:07</td><td>3:54</td><td>3:22</td></tr><tr><td>5:16</td><td>4.75 m/s · 17.1 km/h</td><td>5:01</td><td>3:59–3:54</td><td>3:42</td><td>3:11</td></tr><tr><td>5:00</td><td>5.00 m/s · 18.0 km/h</td><td>4:46</td><td>3:47–3:42</td><td>3:31</td><td>3:02</td></tr>
+</table>
+<p class="note">For 15:15 on a track: distance per 15 s rep = MAS × % × 15 (e.g. 4.5 m/s × 1.1 × 15 = 74 m).</p>
+
+<h2 class="pb">Week by week</h2>
+<p class="note">Every hard run starts with 15 min easy plus running drills (A-march, A-skip, B-skip, high knees, 3 × 80 m strides). Technique cues: tall posture, light quick steps (around 170–180 per minute), foot landing under the hips, relaxed arms.</p>
+<section class="wk"><div class="wkh"><div class="no">WEEK 1</div><div class="dt">16–22 Nov</div><div class="ph">Phase 1 · Foundation</div><div class="th" style="background:#F4C542">EXTENSIVE</div></div><div class="fo">Aerobic base · running technique · hypertrophy + correctives · baseline tests</div><table class="days"><tr><td class="d">Mon</td><td><b>TEST</b> AM: 1.5 km time trial (→ MAS) · PM (6 h+ later): <b>Gym A</b>, working up to a 5RM in trap-bar deadlift and back squat, then the rest of Gym A</td></tr><tr><td class="d">Tue</td><td><b>Run · Long intervals</b> 5 × 3 min @ 95 % MAS, 2 min jog · drills 15 min before</td></tr><tr><td class="d">Wed</td><td><b>Gym B</b> (upper body + posterior chain): work up to a 5RM in bench press and pull-up (weighted if &gt; 10 reps)</td></tr><tr><td class="d">Thu</td><td><b>HYROX technique</b> at race weight, RPE 6: 4 rounds · SkiErg 250 m · sled push 12.5 m · sled pull 12.5 m · 10 burpee broad jumps · row 250 m · 20 m farmers · 10 lunges · 15 wall balls</td></tr><tr><td class="d">Fri</td><td><b>Easy run</b> 40 min Z2 + 6 × 15 s strides</td></tr><tr><td class="d">Sat</td><td><b>Long aerobic</b> 60 min Z2 (run, or 40 min run + 20 min row)</td></tr><tr><td class="d">Sun</td><td>Rest</td></tr></table></section><section class="wk"><div class="wkh"><div class="no">WEEK 2</div><div class="dt">23–29 Nov</div><div class="ph">Phase 1 · Foundation</div><div class="th" style="background:#F4C542">EXTENSIVE</div></div><div class="fo">Same layout, more volume (EPI progression)</div><table class="days"><tr><td class="d">Mon</td><td><b>Gym A</b> (sets 3 → 4) + 20 min Z2 bike</td></tr><tr><td class="d">Tue</td><td><b>Run · Long intervals</b> 2 × (3 × 3 min @ 95 % MAS), 2 min jog, 4 min between sets</td></tr><tr><td class="d">Wed</td><td><b>Gym B</b> (sets 3 → 4)</td></tr><tr><td class="d">Thu</td><td><b>HYROX technique</b> 5 rounds of the week-1 circuit, RPE 6–7</td></tr><tr><td class="d">Fri</td><td><b>Easy run</b> 45 min Z2 + 6 × 15 s strides</td></tr><tr><td class="d">Sat</td><td><b>Long aerobic</b> 70 min Z2</td></tr><tr><td class="d">Sun</td><td>Rest</td></tr></table></section><section class="wk"><div class="wkh"><div class="no">WEEK 3</div><div class="dt">30 Nov–6 Dec</div><div class="ph">Phase 2 · Threshold + strength</div><div class="th" style="background:#56A0FB">INTENSIVE</div></div><div class="fo">Running performance · threshold · max strength (hypertrophy kept as assistance)</div><table class="days"><tr><td class="d">Mon</td><td><b>Gym A</b> max strength (lower body)</td></tr><tr><td class="d">Tue</td><td><b>Run · Threshold</b> 4 × 1 km @ 88–90 % MAS, 90 s jog</td></tr><tr><td class="d">Wed</td><td><b>Gym B</b> max strength (upper body) + hypertrophy assistance</td></tr><tr><td class="d">Thu</td><td><b>Run · Short intervals</b> 2 × 5 min of 15 s on / 15 s off @ 110 % MAS, 3 min between · then 4 × 25 m sled push at race weight</td></tr><tr><td class="d">Fri</td><td><b>Easy run</b> 45 min Z2 + strides</td></tr><tr><td class="d">Sat</td><td><b>Long run</b> 75 min Z2, last 10 min @ 88 % MAS</td></tr><tr><td class="d">Sun</td><td>Rest</td></tr></table></section><section class="wk"><div class="wkh"><div class="no">WEEK 4</div><div class="dt">7–13 Dec</div><div class="ph">Phase 2 · Threshold + strength</div><div class="th" style="background:#9AA6B6">DE-LOAD</div></div><div class="fo">EPI de-load: volume −30–40 %, intensity kept · retest</div><table class="days"><tr><td class="d">Mon</td><td><b>Gym A</b> same loads as week 3, one set fewer per exercise</td></tr><tr><td class="d">Tue</td><td><b>Run · Threshold</b> 3 × 1 km @ 88–90 % MAS, 90 s jog</td></tr><tr><td class="d">Wed</td><td><b>Gym B</b> same loads, one set fewer</td></tr><tr><td class="d">Thu</td><td><b>RETEST</b> 1.5 km time trial → update MAS and every pace from here on</td></tr><tr><td class="d">Fri</td><td><b>Easy run</b> 35 min Z2 + strides</td></tr><tr><td class="d">Sat</td><td><b>Long run</b> 60 min Z2</td></tr><tr><td class="d">Sun</td><td>Rest</td></tr></table></section><section class="wk"><div class="wkh"><div class="no">WEEK 5</div><div class="dt">14–20 Dec</div><div class="ph">Phase 3 · HYROX-specific</div><div class="th" style="background:#56A0FB">INTENSIVE</div></div><div class="fo">Compromised running · lactate capacity · strength-speed (contrast) · power</div><table class="days"><tr><td class="d">Mon</td><td><b>Gym A</b> strength-speed + power (contrast)</td></tr><tr><td class="d">Tue</td><td><b>Compromised run</b> 4 × [1 km @ race pace → station] , 2 min between rounds · stations in order: SkiErg 500 m · sled push 2 × 12.5 m · row 500 m · 30 wall balls</td></tr><tr><td class="d">Wed</td><td><b>Gym B</b> upper-body strength + hypertrophy · 20 min easy bike</td></tr><tr><td class="d">Thu</td><td><b>Run · Short intervals</b> 3 × 5 min of 15:15 @ 110–115 % MAS, 3 min between</td></tr><tr><td class="d">Fri</td><td><b>Easy run</b> 40 min Z2 + strides · mobility</td></tr><tr><td class="d">Sat</td><td><b>HALF SIMULATION</b> runs 5–8 + stations 5–8 (row, farmers carry, sandbag lunges, wall balls) at race weight and race effort</td></tr><tr><td class="d">Sun</td><td>Rest</td></tr></table></section><section class="wk"><div class="wkh"><div class="no">WEEK 6</div><div class="dt">21–27 Dec</div><div class="ph">Phase 3 · HYROX-specific</div><div class="th" style="background:#56A0FB">INTENSIVE</div></div><div class="fo">Peak specific load · full simulation 13 days out</div><table class="days"><tr><td class="d">Mon</td><td><b>Gym A</b> strength-speed + power (contrast)</td></tr><tr><td class="d">Tue</td><td><b>Compromised run</b> 5 × [1 km @ race pace → station] , 90 s between · stations: sled pull 2 × 12.5 m · 20 burpee broad jumps · 50 m farmers · 25 m lunges · 30 wall balls</td></tr><tr><td class="d">Wed</td><td><b>Gym B</b> upper-body strength + hypertrophy</td></tr><tr><td class="d">Thu</td><td><b>Run · Threshold</b> 5 × 1 km @ 90 % MAS, 60 s jog</td></tr><tr><td class="d">Fri</td><td><b>Easy run</b> 35 min Z2 + strides</td></tr><tr><td class="d">Sat</td><td><b>FULL SIMULATION</b> (26 Dec) · 8 × 1 km + all 8 stations at race weight · practise pacing, transitions, fuelling, kit</td></tr><tr><td class="d">Sun</td><td>Rest</td></tr></table></section><section class="wk"><div class="wkh"><div class="no">WEEK 7</div><div class="dt">28 Dec–3 Jan</div><div class="ph">Phase 4 · Competition-specific</div><div class="th" style="background:#7DD2EC">SHARPEN</div></div><div class="fo">Race-specific quality, volume −30 %, no new stress</div><table class="days"><tr><td class="d">Mon</td><td><b>Gym</b> maintenance (full body, heavy, low volume)</td></tr><tr><td class="d">Tue</td><td><b>Race-pace rehearsal</b> 4 × [1 km @ race pace → half-volume station + Roxzone transition], 2 min between</td></tr><tr><td class="d">Wed</td><td><b>Easy run</b> 35 min Z2 · mobility</td></tr><tr><td class="d">Thu</td><td><b>Sharpening</b> 6 × 400 m @ ~95 % MAS, 90 s jog · then 3 × 20 unbroken wall balls</td></tr><tr><td class="d">Fri</td><td>Rest</td></tr><tr><td class="d">Sat</td><td><b>Station rehearsal</b> race weight, low volume: sled push 25 m · sled pull 25 m · 20 m burpee broad jumps · 25 m lunges · 30 wall balls · 20 min easy run</td></tr><tr><td class="d">Sun</td><td>Rest or 30 min easy</td></tr></table></section><section class="wk"><div class="wkh"><div class="no">WEEK 8</div><div class="dt">4–8 Jan</div><div class="ph">Phase 5 · Taper + race</div><div class="th" style="background:#FFFFFF">TAPER</div></div><div class="fo">Freshness: volume −50–60 %, keep a little intensity · RACE FRIDAY 8 JAN</div><table class="days"><tr><td class="d">Mon</td><td><b>Gym</b> short primer: trap-bar DL 2 × 3 @ 75 %, 2 × 3 box jumps, push-ups 2 × 10 · 20 min easy run</td></tr><tr><td class="d">Tue</td><td><b>Openers</b> 15 min easy + 2 × 1 km @ race pace (2 min jog) + 4 × 20 s strides</td></tr><tr><td class="d">Wed</td><td>Rest · 20 min mobility · check race kit and start time</td></tr><tr><td class="d">Thu</td><td><b>Activation</b> 15 min easy + 3 × 20 s strides + 30 s SkiErg + 10 wall balls · higher-carb meals · early night</td></tr><tr><td class="d">Fri</td><td><b>RACE DAY</b> · warm up 25–30 min before your wave (RAMP: raise, activate, mobilize, potentiate)</td></tr><tr><td class="d">Sat</td><td>Recovery walk + easy mobility</td></tr><tr><td class="d">Sun</td><td>Rest</td></tr></table></section>
+
+<h2 class="pb">Gym sessions by phase</h2>
+<p class="note">Warm-up every session (EPI): 1 mobility · 2 activation · 3 movement preparation. Order: power → main bilateral lift → assistance → core/prehab. Never to failure on the main lifts.</p>
+<section class="gp"><h3>Phase 1 · Weeks 1–2 · HYPERTROPHY + CORRECTIVES (extensive)</h3><p class="note">EPI hypertrophy variables: 3–4 sets · 6–12 reps · 70–85 % 1RM · 60 s–2 min rest. Stop 2–3 reps short of failure (RIR 2–3).</p><div class="gs"><div class="gsh">Gym A · lower-body emphasis</div><table class="ex"><tr><th>Exercise</th><th>Sets × reps · load</th><th class="r">Rest</th></tr><tr><td>Back squat</td><td>3×8 @ 70–75 % (week 2: 4×8)</td><td class='r'>2 min</td></tr><tr><td>DB Romanian deadlift</td><td>3×10</td><td class='r'>90 s</td></tr><tr><td>DB walking lunge</td><td>3×10 / leg</td><td class='r'>90 s</td></tr><tr><td>Hip thrust</td><td>3×10</td><td class='r'>90 s</td></tr><tr><td>Seated cable row</td><td>3×10</td><td class='r'>60 s</td></tr><tr><td>DB shoulder press</td><td>3×10</td><td class='r'>60 s</td></tr><tr><td>Correctives (your MCS)</td><td>90/90 hip IR 2×8/side · couch stretch 2×45 s/side · SL glute bridge 2×12</td><td class='r'>—</td></tr><tr><td>Core</td><td>Copenhagen side plank 3×20 s/side</td><td class='r'>45 s</td></tr></table></div><div class="gs"><div class="gsh">Gym B · upper-body emphasis</div><table class="ex"><tr><th>Exercise</th><th>Sets × reps · load</th><th class="r">Rest</th></tr><tr><td>Bench press</td><td>3×8 @ 70–75 % (week 2: 4×8)</td><td class='r'>2 min</td></tr><tr><td>Pull-up</td><td>4×6–10</td><td class='r'>90 s</td></tr><tr><td>Incline DB press</td><td>3×10</td><td class='r'>90 s</td></tr><tr><td>Chest-supported row</td><td>3×10</td><td class='r'>90 s</td></tr><tr><td>Lateral raise</td><td>3×12–15</td><td class='r'>60 s</td></tr><tr><td>Biceps curl + triceps pushdown</td><td>3×12 superset</td><td class='r'>60 s</td></tr><tr><td>Nordic curl (eccentric)</td><td>3×5</td><td class='r'>90 s</td></tr><tr><td>Soleus / calf raise</td><td>3×15</td><td class='r'>60 s</td></tr><tr><td>Core</td><td>Pallof press 3×10/side</td><td class='r'>45 s</td></tr></table></div></section><section class="gp"><h3>Phase 2 · Weeks 3–4 · MAX STRENGTH (intensive) + hypertrophy assistance</h3><p class="note">EPI max strength: 3–5 sets · 1–5 reps · 85 %+ · 3 min rest. Two main lifts per quality; the rest is assistance (keeps muscle). Week 4: same loads, one set fewer.</p><div class="gs"><div class="gsh">Gym A · lower body</div><table class="ex"><tr><th>Exercise</th><th>Sets × reps · load</th><th class="r">Rest</th></tr><tr><td>Trap-bar deadlift</td><td>4×5 @ 80–85 % (wk 4: 3×5)</td><td class='r'>3 min</td></tr><tr><td>Front squat</td><td>3×5 @ 75–80 %</td><td class='r'>3 min</td></tr><tr><td>Bulgarian split squat</td><td>3×8 / leg</td><td class='r'>90 s</td></tr><tr><td>Nordic curl</td><td>3×5</td><td class='r'>90 s</td></tr><tr><td>Weighted pull-up</td><td>3×6</td><td class='r'>2 min</td></tr><tr><td>Core</td><td>Hanging leg raise 3×10</td><td class='r'>60 s</td></tr></table></div><div class="gs"><div class="gsh">Gym B · upper body</div><table class="ex"><tr><th>Exercise</th><th>Sets × reps · load</th><th class="r">Rest</th></tr><tr><td>Bench press</td><td>4×5 @ 80–85 % (wk 4: 3×5)</td><td class='r'>3 min</td></tr><tr><td>Weighted pull-up</td><td>4×5</td><td class='r'>3 min</td></tr><tr><td>DB shoulder press</td><td>3×8</td><td class='r'>90 s</td></tr><tr><td>Lat pulldown or row</td><td>3×10</td><td class='r'>60 s</td></tr><tr><td>Lateral raise</td><td>3×15</td><td class='r'>60 s</td></tr><tr><td>Arms superset</td><td>2×12</td><td class='r'>60 s</td></tr><tr><td>Heavy soleus raise</td><td>3×12</td><td class='r'>60 s</td></tr></table></div></section><section class="gp"><h3>Phase 3 · Weeks 5–6 · STRENGTH-SPEED + POWER (contrast) · upper-body hypertrophy kept</h3><p class="note">EPI Intensive 2 / contrast: heavy set, then an explosive movement of the same pattern. PCr power: efforts of 6–8 s, rest 5–10× the work.</p><div class="gs"><div class="gsh">Gym A · lower body + power</div><table class="ex"><tr><th>Exercise</th><th>Sets × reps · load</th><th class="r">Rest</th></tr><tr><td>Trap-bar deadlift → CMJ</td><td>4 × (3 @ 85 % → 4 jumps)</td><td class='r'>2–3 min</td></tr><tr><td>Heavy sled sprint (push)</td><td>4 × 10 m, max intent</td><td class='r'>90 s</td></tr><tr><td>Bulgarian split squat</td><td>3×6 / leg, heavy</td><td class='r'>2 min</td></tr><tr><td>Single-leg RDL</td><td>3×8 / leg</td><td class='r'>90 s</td></tr><tr><td>Core</td><td>Pallof press 3×10/side</td><td class='r'>45 s</td></tr></table></div><div class="gs"><div class="gsh">Gym B · upper body</div><table class="ex"><tr><th>Exercise</th><th>Sets × reps · load</th><th class="r">Rest</th></tr><tr><td>Push press → MB chest throw</td><td>4 × (3 @ 75–80 % → 4 throws)</td><td class='r'>2–3 min</td></tr><tr><td>Bench press</td><td>3×5 @ 80 %</td><td class='r'>2–3 min</td></tr><tr><td>Weighted pull-up</td><td>3×5</td><td class='r'>2–3 min</td></tr><tr><td>Row</td><td>3×10</td><td class='r'>60 s</td></tr><tr><td>Lateral raise</td><td>3×15</td><td class='r'>60 s</td></tr><tr><td>Arms superset</td><td>2×12</td><td class='r'>60 s</td></tr></table></div></section><section class="gp"><h3>Phase 4–5 · Weeks 7–8 · MAINTENANCE → PRIMER</h3><p class="note">Keep the intensity, cut the volume: this keeps strength and muscle while fatigue drops for race day. Nothing to failure.</p><div class="gs"><div class="gsh">Week 7 · full body (1 session)</div><table class="ex"><tr><th>Exercise</th><th>Sets × reps · load</th><th class="r">Rest</th></tr><tr><td>Trap-bar deadlift</td><td>3×3 @ 80 %</td><td class='r'>2–3 min</td></tr><tr><td>Bench press</td><td>3×4 @ 80 %</td><td class='r'>2–3 min</td></tr><tr><td>Pull-up</td><td>3×6</td><td class='r'>2 min</td></tr><tr><td>Box jump</td><td>3×3</td><td class='r'>90 s</td></tr><tr><td>Row + arms</td><td>2×10 each</td><td class='r'>60 s</td></tr></table></div><div class="gs"><div class="gsh">Week 8 · Monday primer</div><table class="ex"><tr><th>Exercise</th><th>Sets × reps · load</th><th class="r">Rest</th></tr><tr><td>Trap-bar deadlift</td><td>2×3 @ 75 %</td><td class='r'>2 min</td></tr><tr><td>Box jump</td><td>2×3</td><td class='r'>90 s</td></tr><tr><td>Push-up</td><td>2×10</td><td class='r'>60 s</td></tr></table></div></section>
+
+<h2 class="pb">Keep your muscle (مش عايز أخسر عضلات)</h2>
+<div class="box night">
+  <h4>The rules that protect muscle during a running block</h4>
+  <ul>
+    <li><b>Keep lifting heavy, cut the volume.</b> Strength and muscle are kept with much less volume as long as intensity stays high. That's why the main lifts stay at 75–85 % right up to week 8, while the sets come down.</li>
+    <li><b>2 gym sessions a week until week 6</b>, one in week 7, a short primer in race week. Upper-body hypertrophy assistance (rows, presses, laterals, arms) stays in every phase, because running doesn't train it.</li>
+    <li><b>Manage the interference effect:</b> put hard lower-body gym and hard running on the same day (run first, gym 6 h or more later), or put gym after an easy run. Keep easy days easy.</li>
+    <li><b>Protein:</b> 1.6–2.2 g per kg of body weight a day, spread over 4–5 meals of about 0.4 g/kg each (including one before bed).</li>
+    <li><b>Don't diet during the prep.</b> Eat at maintenance, or a very small deficit at most. A big deficit plus high running volume is the main way to lose muscle. Put most of your carbs around the key sessions.</li>
+    <li><b>Sleep 7–9 h.</b> Watch your weight trend weekly. If your weight keeps falling and gym performance drops, add food before you cut training.</li>
+  </ul>
+</div>
+<p class="note"><b>Evidence vs coaching judgment:</b> the protein range, keeping intensity to maintain strength, and spacing strength and endurance work are research-based. The exact session order, the station circuits and the simulation dates are coaching judgment for this calendar, and should be adjusted to how you respond.</p>
+
+<h2>Race week and race day (Friday 8 January)</h2>
+<div class="cols">
+<div>
+<h3>Race week</h3>
+<ul>
+  <li>Volume −50–60 %, keep short bits of race pace (Tue openers), and nothing new: same shoes, kit and food.</li>
+  <li><b>Wed–Thu:</b> carb-focused meals (rice, pasta, bread, fruit), normal protein, less fibre and fat on Thursday evening. Drink to thirst plus electrolytes.</li>
+  <li>Check your wave time, division weights and Roxzone layout. Plan breakfast 3 h before your start.</li>
+</ul>
+<h3>Warm-up (25–30 min before your wave)</h3>
+<ul>
+  <li><b>Raise:</b> 6–8 min easy jog. <b>Activate:</b> glute bridges, band walks, calf raises. <b>Mobilize:</b> leg swings, hip openers, 90/90. <b>Potentiate:</b> 3 × 15 s strides, 5 wall balls, 10 s SkiErg pulls.</li>
+</ul>
+</div>
+<div>
+<h3>Pacing</h3>
+<ul>
+  <li><b>Run 1:</b> controlled, about 5–10 s per km slower than your target race pace. Most of the time lost in a HYROX goes in the second half.</li>
+  <li><b>Runs 2–7:</b> steady at race pace. Use the first 200 m after a station to settle your breathing before you speed up.</li>
+  <li><b>Sleds:</b> low body angle, short fast steps, don't stop mid-lane. <b>Wall balls:</b> break early in planned sets (e.g. 15-15-10…) rather than going to failure.</li>
+  <li><b>Run 8:</b> everything left.</li>
+</ul>
+<h3>Station standards (verify for your division)</h3>
+<table><tr><th>Station</th><th>Distance</th><th>Men Open / Men Pro</th></tr><tr><td>SkiErg</td><td>1,000 m</td><td>—</td></tr><tr><td>Sled push</td><td>50 m</td><td>152 kg incl. sled / Pro 202 kg</td></tr><tr><td>Sled pull</td><td>50 m</td><td>103 kg incl. sled / Pro 153 kg</td></tr><tr><td>Burpee broad jumps</td><td>80 m</td><td>—</td></tr><tr><td>Row</td><td>1,000 m</td><td>—</td></tr><tr><td>Farmers carry</td><td>200 m</td><td>2 × 24 kg / Pro 2 × 32 kg</td></tr><tr><td>Sandbag lunges</td><td>100 m</td><td>20 kg / Pro 30 kg</td></tr><tr><td>Wall balls</td><td>100 reps</td><td>6 kg to 3 m / Pro 9 kg to 3 m</td></tr></table>
+<p class="note">Standards from the HYROX rulebook as I know them. Confirm the current weights for your division before race week.</p>
+</div>
+</div>
+
+<h2>Monitoring and adjusting</h2>
+<ul>
+  <li>Each morning, check four signals: <b>sleep</b>, <b>resting heart rate</b> (vs your normal), <b>soreness</b> and <b>motivation</b>. If 2 or more are clearly off, swap that day's hard session for an easy one and move on. Don't make it up later.</li>
+  <li>Log RPE (1–10) after each session. If an "RPE 7" session feels like a 9 two weeks running, cut that week's volume by 20–30 %.</li>
+  <li><b>Pain rule:</b> pain above 3/10, or pain that changes how you run, stops running that day. Calf or Achilles pain gets attention immediately.</li>
+  <li><b>Missed a session?</b> Skip it. Never double up. In weeks 7–8, less is always the safer choice.</li>
+</ul>
+<p class="foot">OSM · Osama Strength Method · Plan designed with EPI NCSC programming principles (testing → profile → periodization, extensive/intensive themes, MAS-based intervals, conjugate loading). Generated 13 Nov 2026.</p>
+</body></html>
