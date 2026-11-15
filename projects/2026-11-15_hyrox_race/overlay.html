@@ -1,0 +1,107 @@
+<!doctype html>
+<!-- HYROX race film: graphics layer (transparent 1080x1920, every pixel from t). Typography and effects follow his reference:
+     tall condensed caps title with echo entrance + giant fly-in letters settling into wide-tracked small caps, light leaks,
+     white flashes into photos, station names in wide-tracked caps, closing white iris with a shrinking black hole. -->
+<html><head><meta charset="utf-8">
+<style>
+@font-face { font-family: Barlow; src: url('/osm/fonts/BarlowCondensed-Bold.ttf'); font-weight: 700; }
+@font-face { font-family: BarlowS; src: url('/osm/fonts/BarlowCondensed-SemiBold.ttf'); font-weight: 600; }
+html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: transparent; }
+.layer { position: absolute; inset: 0; }
+.T { position: absolute; left: 0; right: 0; text-align: center; font-family: Barlow; font-weight: 700; color: #fff; white-space: nowrap; }
+#title .main { top: 1150px; font-size: 250px; line-height: 1; letter-spacing: -0.005em; transform-origin: 50% 50%; text-shadow: 0 3px 0 rgba(0,0,0,.35); }
+#title .echo { top: 1150px; font-size: 250px; line-height: 1; color: rgba(255,255,255,.55); }
+#title .sub { top: 1418px; font-size: 54px; letter-spacing: .62em; padding-left: .62em; text-shadow: 0 2px 0 rgba(0,0,0,.35); }
+#title .eb { top: 1112px; font-family: BarlowS; font-weight: 600; font-size: 30px; letter-spacing: .5em; padding-left: .5em; text-shadow: 0 2px 0 rgba(0,0,0,.35); }
+#title .fly { position: absolute; font-family: Barlow; font-weight: 700; color: #fff; font-size: 420px; line-height: 1; }
+#label .t { top: 1420px; font-size: 92px; letter-spacing: .3em; padding-left: .3em; text-shadow: 0 3px 0 rgba(0,0,0,.4); }
+#label .t span { display: inline-block; }
+#label .rule { position: absolute; left: 50%; top: 1400px; height: 5px; background: #fff; transform: translateX(-50%); box-shadow: 0 2px 0 rgba(0,0,0,.35); }
+#leak { mix-blend-mode: normal; }
+#flash { background: #fff; }
+#iris { background: #fff; }
+#iris .hole { position: absolute; left: 50%; top: 50%; border-radius: 50%; transform: translate(-50%, -50%);
+  background: radial-gradient(circle, #000 0 58%, rgba(0,0,0,.85) 64%, rgba(0,0,0,0) 100%); }
+</style></head>
+<body>
+<div id="title" class="layer" style="display:none">
+  <div class="T echo e1">HYROX</div><div class="T echo e2">HYROX</div>
+  <div class="T main">HYROX</div><div class="T sub"></div><div class="T eb">RACE DAY</div>
+</div>
+<div id="label" class="layer" style="display:none"><div class="rule"></div><div class="T t"></div></div>
+<div id="leak" class="layer" style="display:none"></div>
+<div id="flash" class="layer" style="display:none"></div>
+<div id="iris" class="layer" style="display:none"><div class="hole"></div></div>
+<script type="module">
+import { spring, clamp01, lerp } from "/osm/motion-core.js";
+const q = new URLSearchParams(location.search);
+const spec = await (await fetch(q.get("spec"))).json();
+const S = (n, st) => { for (const k in st) n.style[k] = st[k]; };
+const sp = (t, t0, f = 3) => spring(t - t0, { freq: f });
+const $ = (s) => document.querySelector(s);
+const show = (el, on, d = "block") => S(el, { display: on ? d : "none" });
+const ease = (x) => 1 - Math.pow(1 - clamp01(x), 3);
+// title fly-in letters: CAIRO, giant, from scattered positions into the tracked line
+const SUB = "CAIRO";
+const title = $("#title"), subEl = title.querySelector(".sub");
+const fly = [...SUB].map((ch, i) => { const d = document.createElement("div"); d.className = "fly"; d.textContent = ch; title.appendChild(d); return d; });
+const START = [[-60, 900], [520, 1500], [880, 700], [140, 1600], [700, 1250]];
+window.seek = (t) => {
+  const T = spec.title;
+  if (t >= T.at && t < T.until) {
+    show(title, true);
+    const p = sp(t, T.at, 4.2), out = clamp01((t - (T.until - 0.12)) / 0.12);
+    S(title, { opacity: 1 - out, transform: `scale(${1 + 0.15 * out})` });
+    const main = title.querySelector(".main");
+    S(main, { opacity: clamp01((t - T.at) * 18), transform: `scaleY(1.12) scale(${1.25 - 0.25 * p})` });
+    const e = clamp01(1 - (t - T.at) / 0.38);                       // echo copies converge onto the word
+    S(title.querySelector(".e1"), { opacity: e * 0.6, transform: `scaleY(1.12) translateY(${-150 * e}px) scale(${1.25 - 0.25 * p})` });
+    S(title.querySelector(".e2"), { opacity: e * 0.6, transform: `scaleY(1.12) translateY(${150 * e}px) scale(${1.25 - 0.25 * p})` });
+    // CAIRO: giant letters fly in one by one, then the tracked line takes over
+    const tf = T.at + 0.2, done = tf + 0.12 * SUB.length + 0.25;
+    if (t < done) {
+      subEl.textContent = "";
+      fly.forEach((d, i) => {
+        const ti = tf + 0.12 * i, k = ease((t - ti) / 0.3);
+        const [x0, y0] = START[i];
+        const x1 = 540 + (i - 2) * 70 - 20, y1 = 1418;
+        S(d, { display: t >= ti ? "block" : "none", left: lerp(x0, x1, k) + "px", top: lerp(y0, y1, k) + "px",
+               fontSize: lerp(420, 54, k) + "px", opacity: clamp01((t - ti) * 10) * (1 - clamp01((t - (done - 0.1)) / 0.1)) });
+      });
+    } else { fly.forEach((d) => S(d, { display: "none" })); subEl.textContent = SUB; }
+    S(title.querySelector(".eb"), { opacity: clamp01((t - done) * 6) });
+  } else show(title, false);
+  // station labels: thin rule grows, letters land left to right
+  const L = (spec.labels || []).find((l) => t >= l.at && t < l.at + l.dur);
+  const lab = $("#label"), lt = lab.querySelector(".t");
+  if (L) {
+    show(lab, true);
+    if (lt.dataset.txt !== L.text) { lt.innerHTML = [...L.text].map((c) => `<span>${c === " " ? "&nbsp;" : c}</span>`).join(""); lt.dataset.txt = L.text; }
+    const out = clamp01((t - (L.at + L.dur - 0.15)) / 0.15);
+    [...lt.children].forEach((c, i) => { const k = sp(t, L.at + 0.03 * i, 4.6); S(c, { opacity: clamp01((t - L.at - 0.03 * i) * 14), transform: `translateY(${(1 - k) * 40}px)` }); });
+    S(lt, { opacity: 1 - out }); S(lab.querySelector(".rule"), { width: 220 * ease((t - L.at) / 0.25) + "px", opacity: 1 - out });
+  } else show(lab, false);
+  // light leaks: warm burst from a corner, 0.4 s
+  const lk = (spec.leaks || []).find((a) => t >= a - 0.05 && t < a + 0.4), le = $("#leak");
+  if (lk !== undefined) {
+    const u = (t - (lk - 0.05)) / 0.45, a = Math.sin(Math.PI * clamp01(u));
+    const side = (spec.leaks.indexOf(lk) % 2) ? "100% 10%" : "0% 85%";
+    show(le, true);
+    S(le, { background: `radial-gradient(ellipse at ${side}, rgba(255,140,50,${0.85 * a}) 0%, rgba(255,70,110,${0.45 * a}) 35%, rgba(255,200,120,${0.18 * a}) 60%, rgba(0,0,0,0) 80%)` });
+  } else show(le, false);
+  // white flash into photos (peak on the cut)
+  const fl = (spec.flashes || []).find((a) => t >= a - 0.06 && t < a + 0.16), fe = $("#flash");
+  if (fl !== undefined) { show(fe, true); S(fe, { opacity: t < fl ? 0.9 * (t - (fl - 0.06)) / 0.06 : 0.9 * (1 - (t - fl) / 0.16) }); } else show(fe, false);
+  // closing iris: white floods in around a black hole that shrinks to nothing
+  const I = spec.iris, ir = $("#iris");
+  if (t >= I.at) {
+    show(ir, true);
+    const k = clamp01((t - I.at) / (I.full - I.at));
+    S(ir, { opacity: clamp01((t - I.at) / 0.1) });
+    const r = lerp(760, 0, ease(k));
+    S(ir.querySelector(".hole"), { width: r + "px", height: r + "px", display: r > 1 ? "block" : "none" });
+  } else show(ir, false);
+};
+window.meta = { dur: spec.dur };
+window.ready = document.fonts.ready;
+</script></body></html>
