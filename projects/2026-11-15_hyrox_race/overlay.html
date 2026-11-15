@@ -76,7 +76,7 @@ window.seek = (t) => {
   const lab = $("#label"), lt = lab.querySelector(".t");
   if (L) {
     show(lab, true);
-    if (lt.dataset.txt !== L.text) { lt.innerHTML = [...L.text].map((c) => `<span>${c === " " ? "&nbsp;" : c}</span>`).join(""); lt.dataset.txt = L.text; }
+    if (lt.dataset.txt !== L.text) { lt.innerHTML = [...L.text].map((c) => `<span>${c === " " ? "&nbsp;" : c}</span>`).join(""); lt.dataset.txt = L.text; lt.style.fontSize = "92px"; const w = lt.scrollWidth; if (w > 1000) lt.style.fontSize = (92 * 1000 / w) + "px"; }
     const out = clamp01((t - (L.at + L.dur - 0.15)) / 0.15);
     [...lt.children].forEach((c, i) => { const k = sp(t, L.at + 0.03 * i, 4.6); S(c, { opacity: clamp01((t - L.at - 0.03 * i) * 14), transform: `translateY(${(1 - k) * 40}px)` }); });
     S(lt, { opacity: 1 - out }); S(lab.querySelector(".rule"), { width: 220 * ease((t - L.at) / 0.25) + "px", opacity: 1 - out });

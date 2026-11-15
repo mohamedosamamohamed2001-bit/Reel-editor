@@ -40,7 +40,7 @@ SHOTS = [
     ("5032", 0.0, 2, dict(z=(1.15, 1.25), prism=True)),
     ("5025", 2.6, 2, dict(z=(1.0, 1.1))),
     ("5026", 0.3, 2, dict(z=(1.1, 1.2))),
-    ("5029", 1.5, 2, dict(z=(1.05, 1.15))),
+    ("5038", 27.6, 2, dict(z=(1.05, 1.15))),                                   # HYROX CAIRO arena
     # SKIERG (drop)
     ("5024", 0.8, 2, dict(z=(1.15, 1.2), prism=True, label="SKIERG")),
     ("5024", 3.0, 2, dict(z=(1.25, 1.35), ramp=[(0.25, 1.0), (9, 0.4)])),
@@ -48,10 +48,13 @@ SHOTS = [
     ("5025", 4.4, 2, dict(z=(1.1, 1.2))),                                      # run
     # SLED PUSH
     ("5026", 9.6, 2, dict(z=(1.3, 1.4), fy=.6, label="SLED PUSH")),
-    ("5029", 13.0, 2, dict(z=(1.15, 1.25), fy=.55)),
+    ("5026", 7.0, 2, dict(z=(1.2, 1.3), fy=.6)),
     ("5026", 11.4, 2, dict(z=(1.35, 1.45), fy=.6, speed=0.5)),
     ("5032", 2.2, 2, dict(z=(1.1, 1.2))),                                      # run
-    ("2149", 5.4, 2, dict(z=(1.05, 1.12))),                                    # Roxzone
+    # BURPEE BROAD JUMPS (IMG_5038, added 2026-11-15; IMG_5029 was removed from the folder: not his footage, never used)
+    ("5038", 1.0, 2, dict(z=(1.15, 1.22), prism=True, label="BURPEE BROAD JUMPS")),
+    ("5038", 7.6, 2, dict(z=(1.2, 1.3), ramp=[(0.2, 1.0), (9, 0.35)])),
+    ("5038", 14.3, 2, dict(z=(1.15, 1.25))),
     # ROW
     ("5041", 1.5, 2, dict(z=(1.2, 1.3), fy=.6, prism=True, label="ROW")),
     ("5041", 4.0, 2, dict(z=(1.3, 1.38), fy=.65)),
@@ -185,9 +188,9 @@ def build(preview=False):
     spec = {"dur": T, "beat": BEAT,
             "title": {"at": beat_s(2), "until": beat_s(8)},
             "labels": [{"at": beat_s(k) + 0.03, "dur": 2 * BEAT, "text": t} for k, t in labels()],
-            "leaks": [beat_s(k) for k in (2, 8, 24, 38, 44, 52)],
+            "leaks": [beat_s(k) for k in (2, 8, 24, 42, 48, 56)],
             "flashes": [round(s["start"] / FPS, 4) for s in tl if s["src"].startswith("p:")],
-            "iris": {"at": beat_s(57.3), "full": beat_s(58)}}
+            "iris": {"at": beat_s(61.3), "full": beat_s(62)}}
     (W / "overlay_spec.json").write_text(json.dumps(spec, indent=1))
     ov = W / "ov"
     subprocess.run(["node", str(P / "render_overlay.js"), str(W / "overlay_spec.json"), str(ov)], check=True)
@@ -216,9 +219,9 @@ def build(preview=False):
     assert count_frames(raw) == total
     # sound: original 105 bpm track on the reference's shape (build -> drop on the first station), SFX on every cut
     music = {"bpm": BPM, "key": "E", "mode": "minor", "style": "trap", "seed": 33, "duration": round(T + 0.6, 3),
-             "sections": [{"type": "build", "until": beat_s(8), "stop": True}, {"type": "drop", "until": beat_s(32)},
-                          {"type": "break", "until": beat_s(36)}, {"type": "build", "until": beat_s(38), "stop": True},
-                          {"type": "drop", "until": beat_s(52)}, {"type": "groove", "until": beat_s(58)}, {"type": "outro", "bars": 1}]}
+             "sections": [{"type": "build", "until": beat_s(8), "stop": True}, {"type": "drop", "until": beat_s(36)},
+                          {"type": "break", "until": beat_s(40)}, {"type": "build", "until": beat_s(42), "stop": True},
+                          {"type": "drop", "until": beat_s(56)}, {"type": "groove", "until": beat_s(62)}, {"type": "outro", "bars": 1}]}
     (W / "music.json").write_text(json.dumps(music))
     subprocess.run([str(ROOT / ".venv/bin/python"), str(ROOT / "tools/music.py"), str(W / "music.json"), str(W / "music.wav")], check=True)
     cue = lambda at, snd, g, **k: {"at": round(at, 4), "sound": snd, "gain_db": g, **k}
@@ -239,8 +242,8 @@ def build(preview=False):
             cues.append(cue(t + (s["o"]["ramp"][0][0] if s["o"].get("ramp") else 0), "thump", -12, freq=48, dur=0.5))
     for k, _ in labels():
         cues.append(cue(beat_s(k) + 0.03, "slam", -15))
-    cues += [cue(beat_s(8), "boom", -8), cue(beat_s(38), "boom", -9), cue(beat_s(36.2), "swell", -15, dur=1.0)]
-    cues += [cue(beat_s(57.3), "reverse_hit", -11, dur=0.4), cue(beat_s(58), "impact", -8), cue(beat_s(58), "chime", -16)]
+    cues += [cue(beat_s(8), "boom", -8), cue(beat_s(42), "boom", -9), cue(beat_s(40.2), "swell", -15, dur=1.0)]
+    cues += [cue(beat_s(61.3), "reverse_hit", -11, dur=0.4), cue(beat_s(62), "impact", -8), cue(beat_s(62), "chime", -16)]
     silent = W / "silence.wav"
     ff(["-f", "lavfi", "-i", "anullsrc=r=48000:cl=stereo", "-t", f"{T:.3f}", "-c:a", "pcm_s24le", str(silent)])
     mix0 = W / "mix0.wav"
