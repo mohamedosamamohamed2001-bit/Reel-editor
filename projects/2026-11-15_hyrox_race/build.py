@@ -256,6 +256,12 @@ def build(preview=False):
     final = P / "renders" / ("hyrox_race_preview.mp4" if preview else "hyrox_race.mp4")
     final.parent.mkdir(exist_ok=True)
     R.master_audio(mix, final, -14.0, -1.0, video=raw)
+    # alternative: same picture, SFX + race sound only (no music) - for adding the reference's song in Instagram instead
+    mixn0, mixn = W / "mixn0.wav", W / "mixn.wav"
+    R.build_mix(silent, cues, T, FPS, mixn0, None)
+    ff(["-i", str(mixn0), "-i", str(amb), "-filter_complex", "[1:a]volume=-10dB[b];[0:a][b]amix=inputs=2:normalize=0:duration=first[o]",
+        "-map", "[o]", "-c:a", "pcm_s24le", str(mixn)])
+    R.master_audio(mixn, final.with_name(final.stem + "_no_music.mp4"), -16.0, -1.0, video=raw)
     raw.unlink()
     print("output", final, flush=True)
     return final
