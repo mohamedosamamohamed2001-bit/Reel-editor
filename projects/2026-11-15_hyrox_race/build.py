@@ -38,18 +38,18 @@ X265 = "crf=12:preset=medium:pools=2:frame-threads=2:colorprim=bt2020:transfer=a
 SHOTS = [
     # INTRO (build): race atmosphere under the title
     ("5032", 0.0, 2, dict(z=(1.15, 1.25), prism=True)),
-    ("5025", 2.6, 2, dict(z=(1.0, 1.1))),
-    ("5026", 0.3, 2, dict(z=(1.1, 1.2))),
+    ("5026", 0.3, 2, dict(z=(1.1, 1.2))),                                      # dark floor under the title
     ("5038", 27.6, 2, dict(z=(1.05, 1.15))),                                   # HYROX CAIRO arena
+    ("5025", 2.6, 2, dict(z=(1.0, 1.1))),
     # SKIERG (drop)
     ("5024", 0.8, 2, dict(z=(1.15, 1.2), prism=True, label="SKIERG")),
     ("5024", 3.0, 2, dict(z=(1.25, 1.35), ramp=[(0.25, 1.0), (9, 0.4)])),
     ("5024", 6.6, 2, dict(z=(1.1, 1.18))),
     ("5025", 4.4, 2, dict(z=(1.1, 1.2))),                                      # run
     # SLED PUSH
-    ("5026", 9.6, 2, dict(z=(1.3, 1.4), fy=.6, label="SLED PUSH")),
-    ("5026", 7.0, 2, dict(z=(1.2, 1.3), fy=.6)),
-    ("5026", 11.4, 2, dict(z=(1.35, 1.45), fy=.6, speed=0.5)),
+    ("5026", 9.2, 2, dict(z=(1.5, 1.58), fx=.42, fy=.55, label="SLED PUSH")),   # his push toward the lens, judge beside
+    ("5026", 10.35, 2, dict(z=(1.65, 1.75), fx=.42, fy=.56, ramp=[(0.2, 1.0), (9, 0.4)])),
+    ("5026", 11.6, 2, dict(z=(1.45, 1.55), fx=.5, fy=.52)),
     ("5032", 2.2, 2, dict(z=(1.1, 1.2))),                                      # run
     # BURPEE BROAD JUMPS (IMG_5038, added 2026-11-15; IMG_5029 was removed from the folder: not his footage, never used)
     ("5038", 1.0, 2, dict(z=(1.15, 1.22), prism=True, label="BURPEE BROAD JUMPS")),
@@ -64,14 +64,14 @@ SHOTS = [
     ("2149", 0.0, 2, dict(z=(1.0, 1.1), speed=0.55, label="FARMERS CARRY")),
     ("5050", 1.8, 2, dict(z=(1.0, 1.08))),                                     # water station
     # SANDBAG LUNGES (second drop)
-    ("5050", 13.2, 2, dict(z=(1.15, 1.22), prism=True, label="SANDBAG LUNGES")),
-    ("5050", 16.6, 2, dict(z=(1.2, 1.3), ramp=[(0.2, 1.0), (9, 0.45)])),
-    ("5050", 20.4, 2, dict(z=(1.1, 1.18))),
+    ("5050", 15.0, 2, dict(z=(1.15, 1.22), prism=True, label="SANDBAG LUNGES")),
+    ("5050", 17.4, 2, dict(z=(1.2, 1.3), ramp=[(0.2, 1.0), (9, 0.45)])),
+    ("5050", 21.0, 2, dict(z=(1.1, 1.18))),
     # WALL BALLS
     ("5057", 0.6, 2, dict(z=(1.05, 1.12), label="WALL BALLS")),
-    ("5058", 2.0, 0.5, dict(z=(1.1, 1.1), mirror=True)),
-    ("5058", 2.3, 1.5, dict(z=(1.2, 1.28))),
-    ("5058", 8.4, 2, dict(z=(1.3, 1.4), speed=0.5)),
+    ("5058", 2.0, 0.5, dict(z=(1.3, 1.3), fx=.6, fy=.45, mirror=True)),
+    ("5058", 2.3, 1.5, dict(z=(1.55, 1.65), fx=.62, fy=.45)),
+    ("5058", 8.4, 2, dict(z=(1.6, 1.7), fx=.62, fy=.45, speed=0.5)),
     ("5032", 3.2, 2, dict(z=(1.1, 1.2), prism=True)),                         # final run
     # FINISH
     ("5071", 0.0, 3, dict(z=(1.0, 1.08), label="FINISH")),
