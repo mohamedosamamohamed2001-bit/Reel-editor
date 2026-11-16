@@ -1,0 +1,9 @@
+{
+ "name": "Back LOVE trend",
+ "date": "2026-11-16",
+ "platform": "Instagram Reels 1080x1920 30 fps",
+ "drive_folder": "148UiNbYMG2weDkr-PkMNvIfPvqBFGzdt",
+ "sources": {"pose.mp4": "1S3cCHTnhW860-UPfaCUv-z6V6t8KkMqV (his footage, Clip 2)", "Trent1.mp4": "1oXerdBwfuIpvyB6xdVzdAoVFdujhFBSF (reference trend, Clip 1, never in the output)"},
+ "audio": "video only; the trend's song (JMSN - Love Me) is added in Instagram with Use audio, starting at 0:00",
+ "deliverables": ["deliveries/back_love_2026-11-16/Back_LOVE_Trend.mp4", "Back_LOVE_Trend_Cover.jpg/.png"]
+}
