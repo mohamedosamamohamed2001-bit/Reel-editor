@@ -1,14 +1,14 @@
 """HYROX CAIRO race film (Coach Osama 2026-11-15): his own race footage, edited in the style of his reference (Vedio1.mov).
 
 Reference analysis (analysis/ref_*.jpg): music ~105 bpm (beat 0.571 s), quiet build to a drop at ~5.7 s, cuts on beats every 1-2
-beats with a few holds; intro title "HYROX" (tall condensed caps, echo/double-exposure entrance + light-leak flash, a second word
+beats with a few holds; intro title "HYROX" (replaced 2026-11-16 by a cut-out HYROX with the race inside the letters + a dive through the X; reference: echo entrance + light-leak flash, a second word
 flying in as giant letters then settling as wide-tracked small caps, tiny eyebrow above) held while footage cuts underneath;
 light leaks, prism/chromatic hits, one mirrored-kaleidoscope glitch, slow-motion holds, and a closing white iris "black hole".
 His brief: same editing approach, but footage natural (no stylised grade), every station clear, story = the whole race.
 
 Footage: iPhone HLG (most clips 120 fps -> real slow motion) kept in its own 10-bit HLG; his photos (sRGB) converted SDR -> HLG at
-203-nit graphics white like the graphics. Picture cuts snap to the 105 bpm beat grid. Music: original track (tools/music.py, 105 bpm,
-trap) built on the same section plan; SFX (tools/sfx.py) on every cut / hit; the race's own crowd sound under it, low.
+203-nit graphics white like the graphics. Picture cuts snap to the 105 bpm beat grid. Music (2026-11-16, his explicit request): the
+reference video's own song, fitted to the grid by song.py; SFX (tools/sfx.py) on every cut / hit; the race's own crowd sound, low.
 
     python3 projects/2026-11-15_hyrox_race/build.py [--preview]
 """
@@ -36,11 +36,14 @@ X265 = "crf=12:preset=medium:pools=2:frame-threads=2:colorprim=bt2020:transfer=a
 # (source, start s, beats, options). source = clip number, or "p:NNNN" for a photo. Options: z=(from,to) zoom, fx/fy framing,
 # speed, ramp=[(output s, speed), ...], prism (chromatic hit on the first frames), mirror (kaleidoscope glitch), kb (photo push-in)
 SHOTS = [
-    # INTRO (build): race atmosphere under the title
-    ("5032", 0.0, 2, dict(z=(1.15, 1.25), prism=True)),
-    ("5026", 0.3, 2, dict(z=(1.1, 1.2))),                                      # dark floor under the title
-    ("5038", 27.6, 2, dict(z=(1.05, 1.15))),                                   # HYROX CAIRO arena
-    ("5025", 2.6, 2, dict(z=(1.0, 1.1))),
+    # INTRO (2026-11-16): one shot per beat inside the HYROX cut-out letters, then the dive through the X (beats 6-8)
+    ("5032", 0.0, 1, dict(z=(1.15, 1.2))),                                     # crowd + runners
+    ("5026", 0.3, 1, dict(z=(1.1, 1.15))),                                     # HYROX turf
+    ("5038", 27.6, 1, dict(z=(1.05, 1.1))),                                    # HYROX CAIRO wall
+    ("5041", 9.0, 1, dict(z=(1.05, 1.1))),                                     # rowing hall
+    ("5050", 12.0, 1, dict(z=(1.05, 1.1))),                                    # lunge zone
+    ("5058", 5.0, 1, dict(z=(1.1, 1.15))),                                     # wall-ball arena
+    ("5025", 2.6, 2, dict(z=(1.0, 1.12))),                                     # runners: the dive lands here
     # SKIERG (drop)
     ("5024", 0.8, 2, dict(z=(1.15, 1.2), prism=True, label="SKIERG")),
     ("5024", 3.0, 2, dict(z=(1.25, 1.35), ramp=[(0.25, 1.0), (9, 0.4)])),
@@ -186,9 +189,9 @@ def build(preview=False):
     # graphics
     beat_s = lambda k: round(bt(k) / FPS, 4)
     spec = {"dur": T, "beat": BEAT,
-            "title": {"at": beat_s(2), "until": beat_s(8)},
+            "intro": {"zoom": beat_s(6), "until": beat_s(8)},
             "labels": [{"at": beat_s(k) + 0.03, "dur": 2 * BEAT, "text": t} for k, t in labels()],
-            "leaks": [beat_s(k) for k in (2, 8, 24, 42, 48, 56)],
+            "leaks": [beat_s(k) for k in (8, 24, 42, 48, 56)],
             "flashes": [round(s["start"] / FPS, 4) for s in tl if s["src"].startswith("p:")],
             "iris": {"at": beat_s(61.3), "full": beat_s(62)}}
     (W / "overlay_spec.json").write_text(json.dumps(spec, indent=1))
@@ -217,17 +220,16 @@ def build(preview=False):
         "-frames:v", str(total), "-r", str(FPS), "-fps_mode", "cfr", "-c:v", "libx265", "-pix_fmt", "yuv420p10le", "-x265-params", x265, "-tag:v", "hvc1",
         *HDR_TAGS, str(raw)])
     assert count_frames(raw) == total
-    # sound: original 105 bpm track on the reference's shape (build -> drop on the first station), SFX on every cut
-    music = {"bpm": BPM, "key": "E", "mode": "minor", "style": "trap", "seed": 33, "duration": round(T + 0.6, 3),
-             "sections": [{"type": "build", "until": beat_s(8), "stop": True}, {"type": "drop", "until": beat_s(36)},
-                          {"type": "break", "until": beat_s(40)}, {"type": "build", "until": beat_s(42), "stop": True},
-                          {"type": "drop", "until": beat_s(56)}, {"type": "groove", "until": beat_s(62)}, {"type": "outro", "bars": 1}]}
-    (W / "music.json").write_text(json.dumps(music))
-    subprocess.run([str(ROOT / ".venv/bin/python"), str(ROOT / "tools/music.py"), str(W / "music.json"), str(W / "music.wav")], check=True)
+    # sound: the reference video's own song (his explicit request 2026-11-16), fitted to the beat grid by song.py
+    import song
+    song_wav = song.main(T, beat_s(62))
     cue = lambda at, snd, g, **k: {"at": round(at, 4), "sound": snd, "gain_db": g, **k}
-    cues = [cue(0.0, "whoosh_in", -12), cue(beat_s(2), "impact", -9), cue(beat_s(2), "reverse_hit", -14, dur=0.5), cue(beat_s(5.5), "swell", -15, dur=1.4)]
+    # intro: hit as the word lands, a tick on every cut inside the letters, rising suck into the dive (hit = last sample, at the cut)
+    cues = [cue(0.0, "impact", -12), cue(0.0, "thump", -14, freq=45, dur=0.6)]
+    cues += [cue(beat_s(k), "click", -20) for k in range(1, 6)]
+    cues += [cue(beat_s(2), "key", -19), cue(beat_s(6), "whoosh_out", -16), cue(beat_s(8), "reverse_hit", -12, dur=1.1)]
     for s in tl:
-        if not s["first"] or s["start"] == 0:
+        if not s["first"] or s["start"] < bt(8):
             continue
         t = s["start"] / FPS
         if s["src"].startswith("p:"):
@@ -247,16 +249,17 @@ def build(preview=False):
     silent = W / "silence.wav"
     ff(["-f", "lavfi", "-i", "anullsrc=r=48000:cl=stereo", "-t", f"{T:.3f}", "-c:a", "pcm_s24le", str(silent)])
     mix0 = W / "mix0.wav"
-    R.build_mix(silent, cues, T, FPS, mix0, {"path": str(W / "music.wav"), "gain_db": -2, "voice_dip_db": 0})
+    loud = [dict(c, gain_db=c["gain_db"] - 3) for c in cues]          # the song leads: SFX 3 dB under the no-music mix
+    R.build_mix(silent, loud, T, FPS, mix0, {"path": str(song_wav), "gain_db": 0, "voice_dip_db": 0})
     amb = W / "ambience.wav"
     ambience(tl, T, amb)
     mix = W / "mix.wav"
-    ff(["-i", str(mix0), "-i", str(amb), "-filter_complex", "[1:a]volume=-17dB[b];[0:a][b]amix=inputs=2:normalize=0:duration=first[o]",
+    ff(["-i", str(mix0), "-i", str(amb), "-filter_complex", "[1:a]volume=-20dB[b];[0:a][b]amix=inputs=2:normalize=0:duration=first[o]",
         "-map", "[o]", "-c:a", "pcm_s24le", str(mix)])
     final = P / "renders" / ("hyrox_race_preview.mp4" if preview else "hyrox_race.mp4")
     final.parent.mkdir(exist_ok=True)
     R.master_audio(mix, final, -14.0, -1.0, video=raw)
-    # alternative: same picture, SFX + race sound only (no music) - for adding the reference's song in Instagram instead
+    # alternative: same picture, SFX + race sound only (no music) - for adding the song from Instagram's library instead
     mixn0, mixn = W / "mixn0.wav", W / "mixn.wav"
     R.build_mix(silent, cues, T, FPS, mixn0, None)
     ff(["-i", str(mixn0), "-i", str(amb), "-filter_complex", "[1:a]volume=-10dB[b];[0:a][b]amix=inputs=2:normalize=0:duration=first[o]",

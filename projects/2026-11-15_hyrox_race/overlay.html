@@ -1,6 +1,6 @@
 <!doctype html>
-<!-- HYROX race film: graphics layer (transparent 1080x1920, every pixel from t). Typography and effects follow his reference:
-     tall condensed caps title with echo entrance + giant fly-in letters settling into wide-tracked small caps, light leaks,
+<!-- HYROX race film: graphics layer (transparent 1080x1920, every pixel from t). Intro (2026-11-16): HYROX knockout title with
+     the race cutting inside the letters and a dive through the X. Then, following his reference: light leaks,
      white flashes into photos, station names in wide-tracked caps, closing white iris with a shrinking black hole. -->
 <html><head><meta charset="utf-8">
 <style>
@@ -9,11 +9,8 @@
 html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: transparent; }
 .layer { position: absolute; inset: 0; }
 .T { position: absolute; left: 0; right: 0; text-align: center; font-family: Barlow; font-weight: 700; color: #fff; white-space: nowrap; }
-#title .main { top: 1150px; font-size: 250px; line-height: 1; letter-spacing: -0.005em; transform-origin: 50% 50%; text-shadow: 0 4px 0 rgba(0,0,0,.55), 0 8px 0 rgba(0,0,0,.3); }
-#title .echo { top: 1150px; font-size: 250px; line-height: 1; color: rgba(255,255,255,.55); }
-#title .sub { top: 1418px; font-size: 58px; letter-spacing: .62em; padding-left: .62em; text-shadow: 0 3px 0 rgba(0,0,0,.6); }
-#title .eb { top: 1108px; font-family: BarlowS; font-weight: 600; font-size: 34px; letter-spacing: .5em; padding-left: .5em; text-shadow: 0 3px 0 rgba(0,0,0,.6); }
-#title .fly { position: absolute; font-family: Barlow; font-weight: 700; color: #fff; font-size: 420px; line-height: 1; }
+#intro svg { position: absolute; inset: 0; overflow: visible; }
+#intro .sm { font-family: Barlow; font-weight: 700; fill: #fff; }
 #label .t { top: 1400px; font-size: 120px; letter-spacing: .26em; padding-left: .26em; text-shadow: 0 4px 0 rgba(0,0,0,.6), 0 8px 0 rgba(0,0,0,.3); }
 #label .t span { display: inline-block; }
 #label .rule { position: absolute; left: 50%; top: 1376px; height: 5px; background: #fff; transform: translateX(-50%); box-shadow: 0 2px 0 rgba(0,0,0,.35); }
@@ -24,9 +21,14 @@ html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; backgro
   background: radial-gradient(circle, #000 0 58%, rgba(0,0,0,.85) 64%, rgba(0,0,0,0) 100%); }
 </style></head>
 <body>
-<div id="title" class="layer" style="display:none">
-  <div class="T echo e1">HYROX</div><div class="T echo e2">HYROX</div>
-  <div class="T main">HYROX</div><div class="T sub"></div><div class="T eb">RACE DAY</div>
+<div id="intro" class="layer" style="display:none">
+  <svg width="1080" height="1920" viewBox="0 0 1080 1920">
+    <defs><mask id="m" maskUnits="userSpaceOnUse" x="-100000" y="-100000" width="200000" height="200000">
+      <rect x="-100000" y="-100000" width="200000" height="200000" fill="#fff"/><g id="cut"></g></mask></defs>
+    <g id="zoom"><rect x="-100000" y="-100000" width="200000" height="200000" fill="#000" mask="url(#m)"/><g id="edge"></g></g>
+    <g id="smalls"><rect id="rl" x="540" y="0" height="4" fill="#fff"/><text id="eb" class="sm" x="540" text-anchor="middle"></text>
+      <text id="sub" class="sm" x="540" text-anchor="middle"></text></g>
+  </svg>
 </div>
 <div id="label" class="layer" style="display:none"><div class="rule"></div><div class="T t"></div></div>
 <div id="leak" class="layer" style="display:none"></div>
@@ -41,36 +43,58 @@ const sp = (t, t0, f = 3) => spring(t - t0, { freq: f });
 const $ = (s) => document.querySelector(s);
 const show = (el, on, d = "block") => S(el, { display: on ? d : "none" });
 const ease = (x) => 1 - Math.pow(1 - clamp01(x), 3);
-// title fly-in letters: CAIRO, giant, from scattered positions into the tracked line
-const SUB = "CAIRO";
-const title = $("#title"), subEl = title.querySelector(".sub");
-const fly = [...SUB].map((ch, i) => { const d = document.createElement("div"); d.className = "fly"; d.textContent = ch; title.appendChild(d); return d; });
-const START = [[-60, 900], [520, 1500], [880, 700], [140, 1600], [700, 1250]];
+// INTRO (2026-11-16): giant HYROX cut out of black, his race cutting on every beat inside the letters; CAIRO / RACE DAY in
+// wide-tracked small caps; then the camera dives through the crossing of the X into the race (fully open on the SkiErg cut).
+const NS = "http://www.w3.org/2000/svg", WORD = "HYROX", FS = 720, BASE = 1210, W0 = 1000;
+const mk = (tag, at, par) => { const e = document.createElementNS(NS, tag); for (const k in at) e.setAttribute(k, at[k]); par.appendChild(e); return e; };
+const svg = $("#intro svg");
+const probe = mk("text", { x: 40, y: BASE, "font-size": FS, "font-family": "Barlow", "font-weight": 700, textLength: W0, lengthAdjust: "spacingAndGlyphs" }, svg);
+probe.textContent = WORD;
+let letters = [], edges = [], X = null;
+function layout() {
+  const ext = [...WORD].map((_, i) => probe.getExtentOfChar(i));
+  probe.remove();
+  letters = ext.map((r, i) => mk("text", { x: r.x, y: BASE, "font-size": FS, "font-family": "Barlow", "font-weight": 700, textLength: r.width,
+    lengthAdjust: "spacingAndGlyphs", fill: "#000" }, $("#cut")));
+  edges = ext.map((r, i) => mk("text", { x: r.x, y: BASE, "font-size": FS, "font-family": "Barlow", "font-weight": 700, textLength: r.width,
+    lengthAdjust: "spacingAndGlyphs", fill: "none", stroke: "#fff", "stroke-width": 3 }, $("#edge")));
+  letters.forEach((e, i) => { e.textContent = WORD[i]; edges[i].textContent = WORD[i]; });
+  const bx = letters[4].getBBox();                       // X: the strokes cross at its centre
+  X = { x: bx.x + bx.width / 2, y: bx.y + bx.height * 0.5, top: Math.min(...letters.map((l) => l.getBBox().y)), bot: bx.y + bx.height };
+  const eb = $("#eb"), sub = $("#sub");
+  S(eb, {}); eb.setAttribute("y", X.top - 52); eb.setAttribute("font-size", 46); eb.setAttribute("letter-spacing", "0.55em");
+  sub.setAttribute("y", X.bot + 110); sub.setAttribute("font-size", 78); sub.setAttribute("letter-spacing", "0.62em");
+  $("#rl").setAttribute("y", X.bot + 36);
+}
+const easeIn = (x) => Math.pow(clamp01(x), 3.2);
 window.seek = (t) => {
-  const T = spec.title;
-  if (t >= T.at && t < T.until) {
-    show(title, true);
-    const p = sp(t, T.at, 4.2), out = clamp01((t - (T.until - 0.12)) / 0.12);
-    S(title, { opacity: 1 - out, transform: `scale(${1 + 0.15 * out})` });
-    const main = title.querySelector(".main");
-    S(main, { opacity: clamp01((t - T.at) * 18), transform: `scaleY(1.12) scale(${1.25 - 0.25 * p})` });
-    const e = clamp01(1 - (t - T.at) / 0.38);                       // echo copies converge onto the word
-    S(title.querySelector(".e1"), { opacity: e * 0.6, transform: `scaleY(1.12) translateY(${-150 * e}px) scale(${1.25 - 0.25 * p})` });
-    S(title.querySelector(".e2"), { opacity: e * 0.6, transform: `scaleY(1.12) translateY(${150 * e}px) scale(${1.25 - 0.25 * p})` });
-    // CAIRO: giant letters fly in one by one, then the tracked line takes over
-    const tf = T.at + 0.2, done = tf + 0.12 * SUB.length + 0.25;
-    if (t < done) {
-      subEl.textContent = "";
-      fly.forEach((d, i) => {
-        const ti = tf + 0.12 * i, k = ease((t - ti) / 0.3);
-        const [x0, y0] = START[i];
-        const x1 = 540 + (i - 2) * 70 - 20, y1 = 1418;
-        S(d, { display: t >= ti ? "block" : "none", left: lerp(x0, x1, k) + "px", top: lerp(y0, y1, k) + "px",
-               fontSize: lerp(420, 54, k) + "px", opacity: clamp01((t - ti) * 10) * (1 - clamp01((t - (done - 0.1)) / 0.1)) });
-      });
-    } else { fly.forEach((d) => S(d, { display: "none" })); subEl.textContent = SUB; }
-    S(title.querySelector(".eb"), { opacity: clamp01((t - done) * 6) });
-  } else show(title, false);
+  const I0 = spec.intro, it = $("#intro");
+  if (t < I0.until) {
+    show(it, true);
+    if (!X) layout();
+    // letters land one after another (rise + settle), then pump on every beat cut
+    const pump = 1 + 0.035 * Math.exp(-((t % spec.beat)) * 12) * (t > 0.6 ? 1 : 0);
+    letters.forEach((e, i) => {
+      const t0 = 0.06 * i, k = sp(t, t0, 3.6), a = clamp01((t - t0) * 12);
+      const tr = `translate(0 ${(1 - k) * 140}) translate(${X.x} ${BASE - 250}) scale(${pump}) translate(${-X.x} ${-(BASE - 250)})`;
+      e.setAttribute("transform", tr); e.setAttribute("fill-opacity", a);
+      edges[i].setAttribute("transform", tr); edges[i].setAttribute("stroke-opacity", a * 0.9);
+    });
+    // small caps: RACE DAY eyebrow (beat 1.5), CAIRO typed on (beat 2), rule grows; all leave before the dive
+    const bs = (k) => k * spec.beat, gone = 1 - clamp01((t - (I0.zoom - 0.12)) / 0.12);
+    const ebt = "RACE DAY", sbt = "CAIRO";
+    const ne = Math.floor(clamp01((t - bs(1.5)) / 0.35) * ebt.length + 0.001), ns = Math.floor(clamp01((t - bs(2)) / 0.4) * sbt.length + 0.001);
+    $("#eb").textContent = ebt.slice(0, ne); $("#sub").textContent = sbt.slice(0, ns);
+    S($("#smalls"), { opacity: gone });
+    const rw = 260 * ease((t - bs(2)) / 0.35); $("#rl").setAttribute("x", 540 - rw / 2); $("#rl").setAttribute("width", rw);
+    // the dive: exponential zoom about the X crossing, slow then fast, word fully gone at the cut
+    const u = clamp01((t - I0.zoom) / (I0.until - I0.zoom));
+    const z = Math.exp(Math.log(90) * easeIn(u));
+    const dx = (540 - X.x) * ease(u * 1.6), dy = (960 - X.y) * ease(u * 1.6);  // bring the X to the centre as we dive
+    $("#zoom").setAttribute("transform", `translate(${X.x + dx} ${X.y + dy}) scale(${z}) translate(${-X.x} ${-X.y})`);
+    $("#edge").setAttribute("opacity", 1 - clamp01((u - 0.5) / 0.3));
+    S(it, { opacity: 1 - clamp01((t - (I0.until - 2 / 30)) / (2 / 30)) });
+  } else show(it, false);
   // station labels: thin rule grows, letters land left to right
   const L = (spec.labels || []).find((l) => t >= l.at && t < l.at + l.dur);
   const lab = $("#label"), lt = lab.querySelector(".t");
