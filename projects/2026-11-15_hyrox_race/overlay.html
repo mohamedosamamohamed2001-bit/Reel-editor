@@ -62,7 +62,7 @@ function layout() {
   const bx = letters[4].getBBox();                       // X: the strokes cross at its centre
   X = { x: bx.x + bx.width / 2, y: bx.y + bx.height * 0.5, top: Math.min(...letters.map((l) => l.getBBox().y)), bot: bx.y + bx.height };
   const eb = $("#eb"), sub = $("#sub");
-  S(eb, {}); eb.setAttribute("y", X.top - 52); eb.setAttribute("font-size", 46); eb.setAttribute("letter-spacing", "0.55em");
+  S(eb, {}); eb.setAttribute("y", X.bot + 190); eb.setAttribute("font-size", 40); eb.setAttribute("letter-spacing", "0.55em");
   sub.setAttribute("y", X.bot + 110); sub.setAttribute("font-size", 78); sub.setAttribute("letter-spacing", "0.62em");
   $("#rl").setAttribute("y", X.bot + 36);
 }
