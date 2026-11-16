@@ -1,0 +1,9 @@
+{
+ "frame": {"image": "work/photos/IMG_2085.png"},
+ "faceH": 141,
+ "faceTop": 420,
+ "eyebrow": "HYROX CAIRO × RACE DAY",
+ "headline": ["سباق HYROX", "من جوه"],
+ "accent": "HYROX",
+ "chips": [{"text": "8 STATIONS", "blue": true}, {"text": "8 × 1 KM RUN"}]
+}

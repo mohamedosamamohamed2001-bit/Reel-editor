@@ -101,7 +101,7 @@ def frames_from_video(P, spec, edit):
 def main():
     P = Path(sys.argv[1]).resolve()
     cfg = json.loads((P / "cover.json").read_text())
-    edit = json.loads((P / "edit.json").read_text())
+    edit = json.loads((P / "edit.json").read_text()) if (P / "edit.json").exists() else {}   # photo covers need no edit.json
     work = P / "work/cover"
     work.mkdir(parents=True, exist_ok=True)
     fr = cfg["frame"]
