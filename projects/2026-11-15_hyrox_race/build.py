@@ -41,7 +41,7 @@ SHOTS = [
     ("5026", 0.3, 1, dict(z=(1.1, 1.15))),                                     # HYROX turf
     ("5038", 27.6, 1, dict(z=(1.05, 1.1))),                                    # HYROX CAIRO wall
     ("5041", 9.0, 1, dict(z=(1.05, 1.1))),                                     # rowing hall
-    ("5050", 12.0, 1, dict(z=(1.05, 1.1))),                                    # lunge zone
+    ("5057", 3.0, 1, dict(z=(1.05, 1.1))),                                     # wall-ball arena, wide (5050 had his face cut by the letters)
     ("5058", 5.0, 1, dict(z=(1.1, 1.15))),                                     # wall-ball arena
     ("5025", 2.6, 2, dict(z=(1.0, 1.12))),                                     # runners: the dive lands here
     # SKIERG (drop)
