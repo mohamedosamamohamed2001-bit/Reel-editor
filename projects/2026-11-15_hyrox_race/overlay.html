@@ -109,7 +109,7 @@ window.seek = (t) => {
   const lk = (spec.leaks || []).find((a) => t >= a - 0.05 && t < a + 0.4), le = $("#leak");
   if (lk !== undefined) {
     const u = (t - (lk - 0.05)) / 0.45, a = Math.sin(Math.PI * clamp01(u));
-    const side = (spec.leaks.indexOf(lk) % 2) ? "100% 10%" : "0% 85%";
+    const side = ((spec.leaks.indexOf(lk) + (spec.leakPhase || 0)) % 2) ? "100% 10%" : "0% 85%";
     show(le, true);
     S(le, { background: `radial-gradient(ellipse at ${side}, rgba(255,140,50,${0.85 * a}) 0%, rgba(255,70,110,${0.45 * a}) 35%, rgba(255,200,120,${0.18 * a}) 60%, rgba(0,0,0,0) 80%)` });
   } else show(le, false);

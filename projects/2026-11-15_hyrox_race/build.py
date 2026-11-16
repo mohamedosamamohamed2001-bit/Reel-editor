@@ -191,7 +191,7 @@ def build(preview=False):
     spec = {"dur": T, "beat": BEAT,
             "intro": {"zoom": beat_s(6), "until": beat_s(8)},
             "labels": [{"at": beat_s(k) + 0.03, "dur": 2 * BEAT, "text": t} for k, t in labels()],
-            "leaks": [beat_s(k) for k in (8, 24, 42, 48, 56)],
+            "leaks": [beat_s(k) for k in (8, 24, 42, 48, 56)], "leakPhase": 1,   # same corners as the approved edit (its beat-2 leak was index 0)
             "flashes": [round(s["start"] / FPS, 4) for s in tl if s["src"].startswith("p:")],
             "iris": {"at": beat_s(61.3), "full": beat_s(62)}}
     (W / "overlay_spec.json").write_text(json.dumps(spec, indent=1))
