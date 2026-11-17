@@ -56,9 +56,9 @@ def main():
     out = P / "renders/collab_captions.mp4"
     g = f"[1:v]{GFX}[ov];[0:v][ov]overlay=format=yuv420p10:eof_action=pass,setparams=color_primaries=bt2020:color_trc=arib-std-b67:colorspace=bt2020nc:range=tv[v]"
     subprocess.run(["ffmpeg", "-hide_banner", "-v", "error", "-y", "-i", str(SRC), "-f", "concat", "-safe", "0", "-i", str(W / "cap_list.txt"),
-                    "-filter_complex", g, "-map", "[v]", "-map", "0:2", "-fps_mode", "passthrough", "-c:v", "libx265", "-pix_fmt", "yuv420p10le",
+                    "-filter_complex", g, "-map", "[v]", "-map", "0:2", "-fps_mode", "passthrough", "-enc_time_base:v", "1/600", "-c:v", "libx265", "-pix_fmt", "yuv420p10le",
                     "-x265-params", "crf=14:preset=medium:pools=4:colorprim=bt2020:transfer=arib-std-b67:colormatrix=bt2020nc:range=limited:log-level=error",
-                    "-tag:v", "hvc1", *HDR, "-c:a", "copy", "-movflags", "+faststart", str(out)], check=True)
+                    "-tag:v", "hvc1", *HDR, "-c:a", "copy", "-video_track_timescale", "600", "-movflags", "+faststart", str(out)], check=True)
     print("output", out)
 
 
