@@ -1,0 +1,37 @@
+<!doctype html>
+<!-- Captions only (Coach Osama 2026-11-17, collaboration video): the studio caption style (studio/src/components/Captions.tsx) with
+     the locked bar colour #56A0FB, brand-white text, Inter 700 62 px for English, padding 14/30, radius 20, top edge at 0.72 of
+     the height, max 80 % wide; entrance = 4 frames (at 30 fps) ease-out rise 10 px + scale 0.95 -> 1, exit 3 frames ease-in.
+     Laid out at 1080x1920 and captured at 2x for his 2160x3840 original. Transparent everywhere else. -->
+<html><head><meta charset="utf-8">
+<style>
+@font-face { font-family: OSMInter; src: url('/osm/fonts/Inter[opsz,wght].ttf'); font-weight: 100 900; }
+html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: transparent; }
+#cap { position: absolute; left: 0; right: 0; display: flex; justify-content: center; }
+#cap .bar { max-width: 80%; text-align: center; font-family: OSMInter; font-weight: 700; font-size: 62px; line-height: 1.25;
+  color: #E5EBF1; background: #56A0FB; border: 1px solid #56A0FB; padding: 14px 30px; border-radius: 20px; box-sizing: border-box;
+  transform-origin: 50% 50%; }
+</style></head>
+<body><div id="cap" class="layer" style="display:none"><div class="bar"></div></div>
+<script>
+const q = new URLSearchParams(location.search);
+const ready = (async () => {
+  const spec = await (await fetch(q.get("spec"))).json();
+  const cap = document.getElementById("cap"), bar = cap.querySelector(".bar");
+  cap.style.top = Math.round(1920 * spec.top) + "px";
+  const outCubic = (x) => 1 - Math.pow(1 - x, 3), inCubic = (x) => x * x * x, cl = (x) => Math.max(0, Math.min(1, x));
+  window.seek = (t) => {
+    const g = spec.groups.find((x) => t >= x.start && t < x.end);
+    if (!g) { cap.style.display = "none"; return; }
+    cap.style.display = "flex";
+    if (bar.textContent !== g.text) bar.textContent = g.text;
+    const enter = 4 / 30, exit = 3 / 30;                       // studio presence(local, dur, 4, 3) at 30 fps, in seconds
+    const p = Math.min(outCubic(cl((t - g.start) / enter)), 1 - inCubic(cl((t - (g.end - exit)) / exit)));
+    bar.style.opacity = p;
+    bar.style.transform = `translateY(${10 * (1 - p)}px) scale(${0.95 + 0.05 * p})`;
+  };
+  await document.fonts.load("700 62px OSMInter");
+  await document.fonts.ready;
+})();
+window.ready = ready;
+</script></body></html>
