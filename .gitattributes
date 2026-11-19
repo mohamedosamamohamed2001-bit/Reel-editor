@@ -51,3 +51,6 @@ deliveries/back_love_2026-11-16/*.mp4 filter=lfs diff=lfs merge=lfs -text
 deliveries/back_love_2026-11-16/*.png filter=lfs diff=lfs merge=lfs -text
 deliveries/back_love_2026-11-16/*.jpg filter=lfs diff=lfs merge=lfs -text
 deliveries/collab_captions_2026-11-17/*.mp4 filter=lfs diff=lfs merge=lfs -text
+deliveries/trend_two_2026-11-19/*.mp4 filter=lfs diff=lfs merge=lfs -text
+deliveries/trend_two_2026-11-19/*.png filter=lfs diff=lfs merge=lfs -text
+deliveries/trend_two_2026-11-19/*.jpg filter=lfs diff=lfs merge=lfs -text

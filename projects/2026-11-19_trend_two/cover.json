@@ -1,0 +1,21 @@
+{
+ "frame": {
+  "image": "work/cover_v1.png"
+ },
+ "faceH": 94,
+ "faceTop": 420,
+ "eyebrow": "TRAINER LIFE \u00d7 TREND",
+ "headline": [
+  "Client is",
+  "10 minutes late"
+ ],
+ "accent": "late",
+ "chips": [],
+ "layout": {
+  "fadeStart": 920,
+  "fadeEnd": 1180,
+  "eyebrowY": 1130,
+  "headSize": 134,
+  "logo": "bottom"
+ }
+}

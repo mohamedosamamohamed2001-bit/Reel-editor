@@ -43,13 +43,14 @@ def detector(w, h):
     return cv2.FaceDetectorYN.create(str(Path.home() / ".cache/osm-models/yunet.onnx"), "", (w, h), 0.75, 0.3, 50)
 
 
-def face_of(rgb):
+def face_of(rgb, full=False):
     h, w = rgb.shape[:2]
-    s = min(1.0, 1280 / max(w, h))
+    s = 1.0 if full else min(1.0, 1280 / max(w, h))
     small = cv2.resize(rgb, (int(w * s), int(h * s)), interpolation=cv2.INTER_AREA)
     n, faces = detector(small.shape[1], small.shape[0]).detect(cv2.cvtColor(small, cv2.COLOR_RGB2BGR))
     if faces is None or not len(faces):
-        return None
+        # a small, distant face can vanish in the 1280 px pass: retry once at full resolution
+        return None if full or s == 1.0 else face_of(rgb, full=True)
     f = max(faces, key=lambda r: r[2] * r[3])
     x, y, fw, fh = (f[:4] / s).tolist()
     return {"x": x, "y": y, "w": fw, "h": fh, "score": float(f[-1])}
