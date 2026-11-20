@@ -57,3 +57,6 @@ deliveries/trend_two_2026-11-19/*.jpg filter=lfs diff=lfs merge=lfs -text
 deliveries/hyrox_carousel_2026-11-19/*.jpg filter=lfs diff=lfs merge=lfs -text
 deliveries/hyrox_carousel_2026-11-19/*.png filter=lfs diff=lfs merge=lfs -text
 deliveries/hyrox_carousel_2026-11-19/*.zip filter=lfs diff=lfs merge=lfs -text
+deliveries/run_trend_2026-11-20/*.mp4 filter=lfs diff=lfs merge=lfs -text
+deliveries/run_trend_2026-11-20/*.jpg filter=lfs diff=lfs merge=lfs -text
+deliveries/run_trend_2026-11-20/*.png filter=lfs diff=lfs merge=lfs -text

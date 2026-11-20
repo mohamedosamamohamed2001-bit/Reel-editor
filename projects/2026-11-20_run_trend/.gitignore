@@ -1,0 +1,6 @@
+ref/
+source/
+work/
+renders/
+analysis/ref_*
+analysis/*.png

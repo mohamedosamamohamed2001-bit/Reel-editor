@@ -1,0 +1,10 @@
+{
+ "frame": {"image": "analysis/cover_frame.png"},
+ "faceH": 120,
+ "faceTop": 430,
+ "eyebrow": "HYROX × RUN",
+ "headline": ["Problem!", "Engine Kaput"],
+ "accent": "Kaput",
+ "chips": [],
+ "layout": {"fadeStart": 960, "fadeEnd": 1230, "eyebrowY": 1180, "headSize": 134, "logo": "bottom"}
+}
