@@ -1,9 +1,23 @@
 {
- "frame": {"media": "t5616", "from": 0.4, "to": 3.0},
+ "frame": {
+  "media": "t5623",
+  "from": 3.4,
+  "time": 3.4
+ },
  "faceH": 300,
  "faceTop": 420,
  "eyebrow": "HYROX × RUNNING",
- "headline": ["ليه بتبطّأ", "في آخر السباق؟"],
+ "headline": [
+  "ليه بتبطّأ",
+  "في آخر السباق؟"
+ ],
  "accent": "بتبطّأ",
- "chips": [{"text": "KM 1 · 5:00", "blue": true}, {"text": "KM 5 · 7:00"}]
+ "chips": [],
+ "layout": {
+  "fadeStart": 1010,
+  "fadeEnd": 1240,
+  "eyebrowY": 1180,
+  "headSize": 124,
+  "logo": "bottom"
+ }
 }
