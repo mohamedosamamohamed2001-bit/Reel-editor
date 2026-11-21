@@ -1,0 +1,9 @@
+{
+ "frame": {"media": "t5616", "from": 0.4, "to": 3.0},
+ "faceH": 300,
+ "faceTop": 420,
+ "eyebrow": "HYROX × RUNNING",
+ "headline": ["ليه بتبطّأ", "في آخر السباق؟"],
+ "accent": "بتبطّأ",
+ "chips": [{"text": "KM 1 · 5:00", "blue": true}, {"text": "KM 5 · 7:00"}]
+}

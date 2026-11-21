@@ -1,0 +1,476 @@
+{
+ "title": "HYROX pacing",
+ "fps": 30,
+ "width": 1080,
+ "height": 1920,
+ "media": {
+  "t5614": "source/IMG_5614.MOV",
+  "t5616": "source/IMG_5616.MOV",
+  "t5623": "source/IMG_5623.MOV",
+  "t5625": "source/IMG_5625.MOV",
+  "t5603": "source/IMG_5603.MOV",
+  "t5601": "source/IMG_5601.MOV",
+  "t5607": "source/IMG_5607.MOV",
+  "r5025": "source/r_IMG_5025.MOV",
+  "r5032": "source/r_IMG_5032.MOV",
+  "r2149": "source/r_IMG_2149.mov",
+  "r5026": "source/r_IMG_5026.mov",
+  "r5058": "source/r_IMG_5058.mov",
+  "r5038": "source/r_IMG_5038.MOV",
+  "r5071": "source/r_IMG_5071.mov",
+  "rrun": "source/r_run5050.mov"
+ },
+ "plates": {
+  "grade": "auto",
+  "sharpen": "cas=strength=0.25"
+ },
+ "clips": [
+  {
+   "src": "t5614",
+   "in": 0.2,
+   "out": 1.4666666666666666,
+   "zoom": [
+    1.04,
+    1.0
+   ],
+   "focusY": 0.4
+  },
+  {
+   "src": "r5025",
+   "in": 2.4,
+   "out": 3.4,
+   "zoom": [
+    1.05,
+    1.12
+   ],
+   "focusY": 0.5,
+   "tin": {
+    "type": "whip",
+    "dir": "left",
+    "frames": 4
+   }
+  },
+  {
+   "src": "r2149",
+   "in": 3.9,
+   "out": 5.1833,
+   "speed": 0.55,
+   "zoom": [
+    1.0,
+    1.08
+   ],
+   "focusY": 0.5,
+   "tin": {
+    "type": "whip",
+    "dir": "right",
+    "frames": 4
+   }
+  },
+  {
+   "src": "t5616",
+   "in": 0.13333333333333333,
+   "out": 3.1333333333333333,
+   "zoom": [
+    1.05,
+    1.0
+   ],
+   "focusY": 0.4,
+   "tin": {
+    "type": "zoom",
+    "frames": 4
+   }
+  },
+  {
+   "src": "t5623",
+   "in": 0.0,
+   "out": 1.8,
+   "zoom": [
+    1.04,
+    1.0
+   ],
+   "focusY": 0.4
+  },
+  {
+   "src": "r5026",
+   "in": 9.4,
+   "out": 10.8333,
+   "zoom": [
+    1.45,
+    1.55
+   ],
+   "focusY": 0.55,
+   "tin": {
+    "type": "whip",
+    "dir": "left",
+    "frames": 4
+   }
+  },
+  {
+   "src": "r5058",
+   "in": 8.4,
+   "out": 8.8833,
+   "speed": 0.5,
+   "zoom": [
+    1.55,
+    1.65
+   ],
+   "focusY": 0.45,
+   "tin": {
+    "type": "whip",
+    "dir": "right",
+    "frames": 4
+   }
+  },
+  {
+   "src": "t5625",
+   "in": 0.6,
+   "out": 1.9666666666666666,
+   "zoom": [
+    1.0,
+    1.04
+   ],
+   "focusY": 0.4,
+   "tin": {
+    "type": "zoom",
+    "frames": 4
+   }
+  },
+  {
+   "src": "r5032",
+   "in": 0.4,
+   "out": 1.3667,
+   "zoom": [
+    1.1,
+    1.18
+   ],
+   "focusY": 0.5,
+   "tin": {
+    "type": "whip",
+    "dir": "left",
+    "frames": 4
+   }
+  },
+  {
+   "src": "t5625",
+   "in": 2.933333333333333,
+   "out": 4.3,
+   "zoom": [
+    1.0,
+    1.04
+   ],
+   "focusY": 0.4,
+   "tin": {
+    "type": "zoom",
+    "frames": 4
+   }
+  },
+  {
+   "src": "r5025",
+   "in": 4.4,
+   "out": 4.9,
+   "zoom": [
+    1.1,
+    1.15
+   ],
+   "focusY": 0.5,
+   "tin": {
+    "type": "whip",
+    "dir": "right",
+    "frames": 4
+   }
+  },
+  {
+   "src": "r5032",
+   "in": 2.2,
+   "out": 2.8,
+   "zoom": [
+    1.1,
+    1.15
+   ],
+   "focusY": 0.5,
+   "tin": {
+    "type": "whip",
+    "dir": "left",
+    "frames": 4
+   }
+  },
+  {
+   "src": "t5625",
+   "in": 5.4,
+   "out": 6.666666666666667,
+   "zoom": [
+    1.05,
+    1.0
+   ],
+   "focusY": 0.4,
+   "tin": {
+    "type": "zoom",
+    "frames": 4
+   }
+  },
+  {
+   "src": "t5603",
+   "in": 0.23333333333333334,
+   "out": 3.2333333333333334,
+   "zoom": [
+    1.04,
+    1.0
+   ],
+   "focusY": 0.4
+  },
+  {
+   "src": "rrun",
+   "in": 0.3,
+   "out": 1.25,
+   "speed": 0.5,
+   "zoom": [
+    1.0,
+    1.06
+   ],
+   "focusY": 0.5,
+   "tin": {
+    "type": "whip",
+    "dir": "left",
+    "frames": 4
+   }
+  },
+  {
+   "src": "t5601",
+   "in": 0.0,
+   "out": 1.3333333333333333,
+   "zoom": [
+    1.0,
+    1.04
+   ],
+   "focusY": 0.4,
+   "tin": {
+    "type": "zoom",
+    "frames": 4
+   }
+  },
+  {
+   "src": "r5038",
+   "in": 27.6,
+   "out": 29.0333,
+   "zoom": [
+    1.05,
+    1.12
+   ],
+   "focusY": 0.5,
+   "tin": {
+    "type": "whip",
+    "dir": "left",
+    "frames": 4
+   }
+  },
+  {
+   "src": "t5607",
+   "in": 0.0,
+   "out": 4.566666666666666,
+   "zoom": [
+    1.0,
+    1.05
+   ],
+   "focusY": 0.4,
+   "tin": {
+    "type": "zoom",
+    "frames": 4
+   }
+  }
+ ],
+ "overlays": [
+  {
+   "type": "callout",
+   "at": 1.616,
+   "dur": 1.1,
+   "number": "5:00",
+   "unit": "KM 1",
+   "position": "top"
+  },
+  {
+   "type": "callout",
+   "at": 3.772,
+   "dur": 1.2,
+   "number": "7:00",
+   "unit": "KM 5",
+   "position": "top"
+  },
+  {
+   "type": "kineticTitle",
+   "at": 22.767,
+   "dur": 1.5,
+   "eyebrow": "THE GOAL",
+   "lines": [
+    {
+     "text": "HOLD YOUR"
+    },
+    {
+     "text": "PACE",
+     "accent": true
+    }
+   ],
+   "backdrop": true,
+   "motion": "smooth",
+   "depth": true
+  },
+  {
+   "type": "endCard",
+   "at": 30.1,
+   "dur": 2.4,
+   "cta": "OSM Coach Osama",
+   "reveal": "wipe",
+   "image": "brand/end/osm-end-photo.jpg"
+  }
+ ],
+ "captions": {
+  "wordsFile": "work/vo.words.json",
+  "outputTime": true,
+  "style": "plate",
+  "plateColor": "#56A0FB",
+  "keywordColor": "#FFFFFF",
+  "karaoke": true,
+  "maxWords": 3,
+  "maxChars": 22,
+  "keywords": [
+   "البيس",
+   "التعب",
+   "الكفاءة",
+   "السباق"
+  ],
+  "replace": {
+   "البيس": "الـPace",
+   "هايروكس.": "HYROX.",
+   "الهايروكس": "الـHYROX",
+   "الهايروكس.": "الـHYROX."
+  },
+  "zones": [
+   {
+    "at": 0,
+    "dur": 30.11,
+    "top": 0.62
+   }
+  ]
+ },
+ "sfx": {
+  "cues": [
+   {
+    "at": 1.2667,
+    "sound": "whoosh_in",
+    "gain_db": -16
+   },
+   {
+    "at": 1.616,
+    "sound": "impact",
+    "gain_db": -13
+   },
+   {
+    "at": 2.2667,
+    "sound": "whoosh_in",
+    "gain_db": -16
+   },
+   {
+    "at": 2.3167,
+    "sound": "thump",
+    "gain_db": -14,
+    "freq": 48,
+    "dur": 0.5
+   },
+   {
+    "at": 3.772,
+    "sound": "impact",
+    "gain_db": -11
+   },
+   {
+    "at": 4.6,
+    "sound": "click",
+    "gain_db": -20
+   },
+   {
+    "at": 9.4,
+    "sound": "whoosh_in",
+    "gain_db": -16
+   },
+   {
+    "at": 10.8333,
+    "sound": "whoosh_in",
+    "gain_db": -16
+   },
+   {
+    "at": 10.8833,
+    "sound": "thump",
+    "gain_db": -14,
+    "freq": 48,
+    "dur": 0.5
+   },
+   {
+    "at": 13.1667,
+    "sound": "whoosh_in",
+    "gain_db": -16
+   },
+   {
+    "at": 15.5,
+    "sound": "whoosh_in",
+    "gain_db": -16
+   },
+   {
+    "at": 16.0,
+    "sound": "whoosh_in",
+    "gain_db": -16
+   },
+   {
+    "at": 20.8667,
+    "sound": "whoosh_in",
+    "gain_db": -16
+   },
+   {
+    "at": 20.9167,
+    "sound": "thump",
+    "gain_db": -14,
+    "freq": 48,
+    "dur": 0.5
+   },
+   {
+    "at": 22.517,
+    "sound": "swell",
+    "gain_db": -16,
+    "dur": 0.5
+   },
+   {
+    "at": 22.767,
+    "sound": "slam",
+    "gain_db": -14
+   },
+   {
+    "at": 24.1,
+    "sound": "whoosh_in",
+    "gain_db": -16
+   },
+   {
+    "at": 25.5333,
+    "sound": "click",
+    "gain_db": -20
+   },
+   {
+    "at": 30.1,
+    "sound": "reverse_hit",
+    "gain_db": -12,
+    "dur": 0.7
+   },
+   {
+    "at": 30.1,
+    "sound": "boom",
+    "gain_db": -7
+   },
+   {
+    "at": 30.6,
+    "sound": "click",
+    "gain_db": -17
+   }
+  ]
+ },
+ "tail": 2.4,
+ "voiceTrack": "work/vo.wav",
+ "dialogueFx": "highpass=f=70,acompressor=threshold=0.1:ratio=2.5:attack=8:release=120:makeup=1.5",
+ "dialogueLufs": -16.0,
+ "textPlate": "#56A0FB"
+}
