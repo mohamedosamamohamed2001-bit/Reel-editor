@@ -109,8 +109,8 @@ def main():
         T = fr(T + L)
     # motion graphics on the hook's numbers, on the spoken word
     hook = [w for w in words if w["w"] in ("بخمس", "بسبع")]
-    overlays.append({"type": "callout", "at": round(hook[0]["start"], 3), "dur": 1.1, "number": "5:00", "unit": "KM 1", "position": "top"})
-    overlays.append({"type": "callout", "at": round(hook[1]["start"], 3), "dur": 1.2, "number": "7:00", "unit": "KM 5", "position": "top"})
+    overlays.append({"type": "callout", "at": round(hook[0]["start"], 3), "dur": 1.1, "number": "5:00", "unit": "KM 1", "position": "center"})
+    overlays.append({"type": "callout", "at": round(hook[1]["start"], 3), "dur": 1.2, "number": "7:00", "unit": "KM 5", "position": "center"})
     cues += [cue(hook[0]["start"], "impact", -13), cue(hook[1]["start"], "impact", -11)]
     # the lesson, as a title card on "بالظبط اللي لازم تشتغل عليه"
     t5601 = next(w for w in words if w["w"] == "بالظبط")["start"]

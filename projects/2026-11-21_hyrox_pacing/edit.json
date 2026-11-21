@@ -285,7 +285,7 @@
    "dur": 1.1,
    "number": "5:00",
    "unit": "KM 1",
-   "position": "top"
+   "position": "center"
   },
   {
    "type": "callout",
@@ -293,7 +293,7 @@
    "dur": 1.2,
    "number": "7:00",
    "unit": "KM 5",
-   "position": "top"
+   "position": "center"
   },
   {
    "type": "kineticTitle",
