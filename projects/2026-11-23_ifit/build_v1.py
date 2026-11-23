@@ -85,7 +85,7 @@ def main():
     cues += [cue(at("سحب"), "chime", -15), cue(at("سحب"), "impact", -14)]
     for n, w in (("01", "أولاً،"), ("02", "ثانياً"), ("03", "ثالثاً")):
         t = at(w)
-        lab = {"01": "THE OFFER", "02": "BLACK FRIDAY DEALS", "03": "DISCOUNT CODE"}[n]
+        lab = {"01": "THE OFFER", "02": "BIG DEALS", "03": "DISCOUNT CODE"}[n]
         ov.append({"type": "stepBadge", "at": t, "dur": 1.3 if n != "03" else 1.1, "mark": n, "label": lab, "top": 0.78, "plate": True})
         cues.append(cue(t, "click", -15))
     tc = at("OSAMA10")
