@@ -53,8 +53,11 @@ def main():
         t = fr(t + (b - a))
     o = lambda src_t: next(ot + (src_t - a) for k, (ot, a) in out_at.items() if CUTS[k][0] <= src_t < CUTS[k][1])
     T = t
-    ov = [{"type": "callout", "at": round(o(23.48), 3), "dur": 1.2, "number": "5,000", "unit": "EGP", "position": "center"},
-          {"type": "callout", "at": round(o(24.30), 3), "dur": 1.8, "text": "GOLD DRAW", "earned": True, "position": "center"}]
+    # handheld framing puts his face mid-frame: the numbers sit low, on the box (top 0.76), never on his face
+    ov = [{"type": "kineticTitle", "at": round(o(23.48), 3), "dur": 0.8, "lines": [{"text": "5,000 EGP", "size": 120}],
+           "top": 0.76, "motion": "smooth", "depth": True},
+          {"type": "kineticTitle", "at": round(o(24.30), 3), "dur": 1.8, "eyebrow": "iFit", "lines": [{"text": "GOLD DRAW", "accent": True, "size": 120}],
+           "top": 0.76, "motion": "smooth", "depth": True}]
     cues += [cue(o(23.48), "impact", -13), cue(o(24.30), "chime", -15)]
     tc = o(33.40)
     ov.append({"type": "kineticTitle", "at": round(tc, 3), "dur": round(T - tc, 3), "eyebrow": "iFit DISCOUNT CODE",

@@ -114,20 +114,34 @@
  ],
  "overlays": [
   {
-   "type": "callout",
+   "type": "kineticTitle",
    "at": 10.68,
-   "dur": 1.2,
-   "number": "5,000",
-   "unit": "EGP",
-   "position": "center"
+   "dur": 0.8,
+   "lines": [
+    {
+     "text": "5,000 EGP",
+     "size": 120
+    }
+   ],
+   "top": 0.76,
+   "motion": "smooth",
+   "depth": true
   },
   {
-   "type": "callout",
+   "type": "kineticTitle",
    "at": 11.493,
    "dur": 1.8,
-   "text": "GOLD DRAW",
-   "earned": true,
-   "position": "center"
+   "eyebrow": "iFit",
+   "lines": [
+    {
+     "text": "GOLD DRAW",
+     "accent": true,
+     "size": 120
+    }
+   ],
+   "top": 0.76,
+   "motion": "smooth",
+   "depth": true
   },
   {
    "type": "kineticTitle",
