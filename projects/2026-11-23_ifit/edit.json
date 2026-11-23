@@ -7,7 +7,8 @@
   "main": "source/main.MOV",
   "fun": "source/fun.MOV",
   "ifit": "work/derived/ifit_clean.mp4",
-  "t54": "source/IMG_5654.MOV"
+  "t54": "source/IMG_5654.MOV",
+  "t56": "source/IMG_5656.MOV"
  },
  "plates": {
   "grade": "auto",
@@ -24,14 +25,14 @@
    ]
   },
   {
-   "src": "fun",
-   "in": 17.75,
-   "out": 19.2167,
+   "src": "t56",
+   "in": 0.0,
+   "out": 1.4667,
    "zoom": [
-    1.05,
-    1.0
+    1.25,
+    1.18
    ],
-   "focusY": 0.35,
+   "focusY": 0.45,
    "tin": {
     "type": "whip",
     "dir": "left",
@@ -78,14 +79,14 @@
    }
   },
   {
-   "src": "fun",
-   "in": 5.2,
-   "out": 7.1,
+   "src": "t54",
+   "in": 1.0,
+   "out": 2.9,
    "zoom": [
-    1.0,
-    1.05
+    1.2,
+    1.26
    ],
-   "focusY": 0.4,
+   "focusY": 0.45,
    "tin": {
     "type": "whip",
     "dir": "left",
@@ -107,13 +108,14 @@
    }
   },
   {
-   "src": "fun",
-   "in": 11.6,
-   "out": 12.8,
+   "src": "t54",
+   "in": 5.0,
+   "out": 6.2,
    "zoom": [
-    1.0,
-    1.05
+    1.35,
+    1.4
    ],
+   "focusY": 0.4,
    "tin": {
     "type": "whip",
     "dir": "left",

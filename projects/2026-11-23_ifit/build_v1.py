@@ -26,17 +26,17 @@ TAIL = 1.6                       # the code card holds after his last word
 # his words (one per Whisper large-v3 word, same count) -> times carry over
 SPOKEN = ("iFit عاملين حاجة جامدة جداً، عاملين لو انت اشتريت بـ 5000 جنيه، بتدخل على سحب نص جنيه دهب، فادخلوا على العرض ده "
           "أولاً، ثانياً فيه عروض جامدة جداً بسبب Black Friday، ثالثاً ما تنساش كود خصم OSAMA10.")
-MEDIA = {"main": "source/main.MOV", "fun": "source/fun.MOV", "ifit": "work/derived/ifit_clean.mp4", "t54": "source/IMG_5654.MOV"}
+MEDIA = {"main": "source/main.MOV", "fun": "source/fun.MOV", "ifit": "work/derived/ifit_clean.mp4", "t54": "source/IMG_5654.MOV", "t56": "source/IMG_5656.MOV"}
 # picture plan on the OUTPUT timeline (= main time): (from, to, src, src_in, options)
 PLAN = [
     (0.00, 1.05, "fun", 16.05, dict(zoom=[1.0, 1.06])),                          # iFit "OPEN UP" box: "iFit"
-    (1.05, 2.55, "fun", 17.75, dict(zoom=[1.05, 1.0], focusY=.35)),              # his reaction: "حاجة جامدة جداً"
+    (1.05, 2.55, "t56", 0.00, dict(zoom=[1.25, 1.18], focusY=.45)),             # him leaning into the iFit box (no friend in frame)
     (2.55, 7.40, "main", 2.55, dict(zoom=[1.0, 1.05], focusY=.42)),              # "عاملين لو انت اشتريت بـ5000 جنيه"
     (7.40, 9.40, "ifit", 0.50, dict(grade="null")),                              # "بتدخل على سحب": iFit slot machine
     (9.40, 10.40, "main", 9.40, dict(zoom=[1.06, 1.1], focusY=.4)),              # "نص جنيه دهب"
-    (10.40, 12.30, "fun", 5.20, dict(zoom=[1.0, 1.05], focusY=.4)),              # pause: the products to camera
+    (10.40, 12.30, "t54", 1.00, dict(zoom=[1.2, 1.26], focusY=.45)),             # pause: him opening the box
     (12.30, 13.80, "main", 12.30, dict(zoom=[1.0, 1.04], focusY=.42)),           # "العرض ده أولاً"
-    (13.80, 15.00, "fun", 11.60, dict(zoom=[1.0, 1.05])),                        # "فيه عروض جامدة": product close-up
+    (13.80, 15.00, "t54", 5.00, dict(zoom=[1.35, 1.4], focusY=.4)),              # "فيه عروض جامدة": him smiling over the box
     (15.00, VOICE_END + TAIL, "main", 15.00, dict(zoom=[1.0, 1.06], focusY=.42)),  # "بسبب Black Friday ... OSAMA10"
 ]
 
