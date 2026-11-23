@@ -1,0 +1,28 @@
+{
+ "frame": {
+  "media": "main",
+  "from": 2.6,
+  "to": 7.0
+ },
+ "faceH": 260,
+ "faceTop": 430,
+ "eyebrow": "iFit × OSM",
+ "headline": [
+  "عرض iFit",
+  "وسحب على الدهب"
+ ],
+ "accent": "الدهب",
+ "chips": [
+  {
+   "text": "OSAMA10",
+   "blue": true
+  }
+ ],
+ "layout": {
+  "fadeStart": 960,
+  "fadeEnd": 1190,
+  "eyebrowY": 1120,
+  "headSize": 118,
+  "logo": "bottom"
+ }
+}
