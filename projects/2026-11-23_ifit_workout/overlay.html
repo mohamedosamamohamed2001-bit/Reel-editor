@@ -1,0 +1,59 @@
+<!doctype html>
+<!-- iFit workout campaign: graphics layer (transparent 1080x1920, every pixel from t).
+     iFit wordmark = the official file (ifit-eg.com, #4C4C4C), never cropped or recoloured, so it only sits on light surfaces:
+     a small white chip mid-video and the white end card. Words: Inter 900 caps, white, hard Night-free black extrusion (no glow/blur). -->
+<html><head><meta charset="utf-8">
+<style>
+@font-face { font-family: Inter; src: url('/osm/fonts/Inter[opsz,wght].ttf'); font-weight: 100 900; }
+html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: transparent; }
+.layer { position: absolute; inset: 0; }
+#word .w { position: absolute; left: 0; right: 0; top: 1330px; text-align: center; font-family: Inter; font-weight: 900; font-size: 220px;
+  letter-spacing: -0.045em; color: #fff; text-transform: uppercase; line-height: .9;
+  text-shadow: 0 4px 0 #111, 0 8px 0 #111, 0 12px 0 rgba(17,17,17,.75); }
+#chip { inset: auto; left: 60px; top: 1640px; width: 300px; height: 96px; background: #fff; border-radius: 18px; display: flex; align-items: center; justify-content: center; }
+#chip img { width: 230px; }
+#flash { background: #fff; }
+#end { background: #fff; }
+#end img { position: absolute; left: 190px; top: 820px; width: 700px; }
+#end .tag { position: absolute; left: 0; right: 0; top: 1040px; text-align: center; font-family: Inter; font-weight: 800; font-size: 34px; letter-spacing: .42em; color: #4C4C4C; padding-left: .42em; }
+#end .rule { position: absolute; left: 50%; top: 1005px; height: 4px; background: #4C4C4C; transform: translateX(-50%); }
+</style></head>
+<body>
+<div id="word" class="layer" style="display:none"><div class="w"></div></div>
+<div id="chip" class="layer" style="display:none"><img src="/proj/brand/ifit-logo.svg"></div>
+<div id="flash" class="layer" style="display:none"></div>
+<div id="end" class="layer" style="display:none"><img src="/proj/brand/ifit-logo.svg"><div class="rule"></div><div class="tag">THE MARK OF AUTHENTICITY</div></div>
+<script type="module">
+const q = new URLSearchParams(location.search);
+const spec = await (await fetch(q.get("spec"))).json();
+const $ = (s) => document.querySelector(s);
+const cl = (x) => Math.max(0, Math.min(1, x)), out3 = (x) => 1 - Math.pow(1 - cl(x), 3);
+const show = (el, on, d = "block") => { el.style.display = on ? d : "none"; };
+window.seek = (t) => {
+  const w = spec.words.find((x) => t >= x.at && t < x.at + x.dur), we = $("#word"), wt = we.querySelector(".w");
+  if (w) {
+    show(we, true); wt.textContent = w.text; wt.style.top = (w.top || 1330) + "px";
+    const k = out3((t - w.at) / (5 / 30)), o = 1 - cl((t - (w.at + w.dur - 3 / 30)) / (3 / 30));
+    wt.style.opacity = Math.min(cl((t - w.at) * 30 / 2), o);
+    wt.style.transform = `scale(${1.35 - 0.35 * k})`;                     // slams in: scale settle, no blur
+  } else show(we, false);
+  const c = spec.chip, ce = $("#chip");
+  if (t >= c.at && t < c.at + c.dur) {
+    show(ce, true, "flex");
+    const k = out3((t - c.at) / (8 / 30)), o = 1 - cl((t - (c.at + c.dur - 6 / 30)) / (6 / 30));
+    ce.style.opacity = o; ce.style.transform = `translateX(${(1 - k) * -420}px)`;
+  } else show(ce, false);
+  const f = spec.flashes.find((a) => t >= a - 2 / 30 && t < a + 5 / 30), fe = $("#flash");
+  if (f !== undefined) { show(fe, true); fe.style.opacity = t < f ? 0.85 * (t - (f - 2 / 30)) * 15 : 0.85 * (1 - (t - f) / (5 / 30)); } else show(fe, false);
+  const e = spec.end, ee = $("#end");
+  if (t >= e) {
+    show(ee, true);
+    const img = ee.querySelector("img"), k = out3((t - e) / 0.45);
+    img.style.opacity = cl((t - e) / 0.25); img.style.transform = `scale(${1.08 - 0.08 * k})`;   // fade + uniform scale only (logo never masked)
+    const r = ee.querySelector(".rule"); r.style.width = 520 * out3((t - e - 0.35) / 0.4) + "px";
+    ee.querySelector(".tag").style.opacity = cl((t - e - 0.55) / 0.3);
+  } else show(ee, false);
+};
+window.meta = { dur: spec.dur };
+window.ready = document.fonts.ready.then(() => Promise.all([...document.images].map((i) => i.decode().catch(() => {}))));
+</script></body></html>

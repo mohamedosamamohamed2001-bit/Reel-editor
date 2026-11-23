@@ -65,3 +65,5 @@ deliveries/hyrox_pacing_2026-11-21/*.jpg filter=lfs diff=lfs merge=lfs -text
 deliveries/hyrox_pacing_2026-11-21/*.png filter=lfs diff=lfs merge=lfs -text
 deliveries/ifit_2026-11-23/*.mp4 filter=lfs diff=lfs merge=lfs -text
 deliveries/ifit_2026-11-23/*.jpg filter=lfs diff=lfs merge=lfs -text
+deliveries/ifit_workout_2026-11-23/*.mp4 filter=lfs diff=lfs merge=lfs -text
+deliveries/ifit_workout_2026-11-23/*.jpg filter=lfs diff=lfs merge=lfs -text
