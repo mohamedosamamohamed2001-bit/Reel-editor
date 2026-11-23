@@ -1,0 +1,244 @@
+{
+ "title": "iFit fun",
+ "fps": 30,
+ "width": 1080,
+ "height": 1920,
+ "media": {
+  "fun": "source/fun.MOV"
+ },
+ "plates": {
+  "grade": "auto",
+  "sharpen": "cas=strength=0.2"
+ },
+ "clips": [
+  {
+   "src": "fun",
+   "in": 12.8,
+   "out": 15.96,
+   "zoom": [
+    1.0,
+    1.04
+   ],
+   "focusY": 0.45
+  },
+  {
+   "src": "fun",
+   "in": 15.96,
+   "out": 17.2,
+   "zoom": [
+    1.12,
+    1.16
+   ],
+   "focusY": 0.5
+  },
+  {
+   "src": "fun",
+   "in": 17.2,
+   "out": 20.06,
+   "zoom": [
+    1.0,
+    1.05
+   ],
+   "focusY": 0.42
+  },
+  {
+   "src": "fun",
+   "in": 20.06,
+   "out": 22.0,
+   "zoom": [
+    1.14,
+    1.18
+   ],
+   "focusY": 0.4
+  },
+  {
+   "src": "fun",
+   "in": 22.0,
+   "out": 24.24,
+   "zoom": [
+    1.0,
+    1.04
+   ],
+   "focusY": 0.42
+  },
+  {
+   "src": "fun",
+   "in": 24.24,
+   "out": 26.2,
+   "zoom": [
+    1.12,
+    1.16
+   ],
+   "focusY": 0.42
+  },
+  {
+   "src": "fun",
+   "in": 26.45,
+   "out": 29.4,
+   "zoom": [
+    1.0,
+    1.06
+   ],
+   "focusY": 0.45,
+   "tin": {
+    "type": "whip",
+    "dir": "right",
+    "frames": 4
+   }
+  },
+  {
+   "src": "fun",
+   "in": 31.55,
+   "out": 33.4,
+   "zoom": [
+    1.0,
+    1.08
+   ],
+   "focusY": 0.45,
+   "tin": {
+    "type": "whip",
+    "dir": "left",
+    "frames": 4
+   }
+  },
+  {
+   "src": "fun",
+   "in": 33.4,
+   "out": 35.2,
+   "zoom": [
+    1.0,
+    1.0
+   ],
+   "focusY": 0.5
+  }
+ ],
+ "overlays": [
+  {
+   "type": "callout",
+   "at": 10.68,
+   "dur": 1.2,
+   "number": "5,000",
+   "unit": "EGP",
+   "position": "center"
+  },
+  {
+   "type": "callout",
+   "at": 11.493,
+   "dur": 1.8,
+   "text": "GOLD DRAW",
+   "earned": true,
+   "position": "center"
+  },
+  {
+   "type": "kineticTitle",
+   "at": 18.2,
+   "dur": 1.8,
+   "eyebrow": "iFit DISCOUNT CODE",
+   "lines": [
+    {
+     "text": "OSAMA10",
+     "accent": true,
+     "size": 200
+    }
+   ],
+   "top": 0.36,
+   "backdrop": true,
+   "motion": "smooth",
+   "depth": true
+  }
+ ],
+ "captions": {
+  "wordsFile": "work/fun.words.json",
+  "style": "plate",
+  "plateColor": "#56A0FB",
+  "keywordColor": "#FFFFFF",
+  "karaoke": true,
+  "maxWords": 3,
+  "maxChars": 22,
+  "keywords": [
+   "سحب",
+   "دهب"
+  ],
+  "zones": [
+   {
+    "at": 0,
+    "dur": 20.01,
+    "top": 0.64
+   }
+  ]
+ },
+ "sfx": {
+  "cues": [
+   {
+    "at": 3.1667,
+    "sound": "click",
+    "gain_db": -22
+   },
+   {
+    "at": 4.4,
+    "sound": "click",
+    "gain_db": -22
+   },
+   {
+    "at": 7.2667,
+    "sound": "click",
+    "gain_db": -22
+   },
+   {
+    "at": 9.2,
+    "sound": "click",
+    "gain_db": -22
+   },
+   {
+    "at": 10.68,
+    "sound": "impact",
+    "gain_db": -13
+   },
+   {
+    "at": 11.4333,
+    "sound": "click",
+    "gain_db": -22
+   },
+   {
+    "at": 11.4933,
+    "sound": "chime",
+    "gain_db": -15
+   },
+   {
+    "at": 13.4,
+    "sound": "whoosh_in",
+    "gain_db": -15
+   },
+   {
+    "at": 16.3667,
+    "sound": "whoosh_in",
+    "gain_db": -15
+   },
+   {
+    "at": 16.5567,
+    "sound": "blip",
+    "gain_db": -14
+   },
+   {
+    "at": 17.9,
+    "sound": "swell",
+    "gain_db": -16,
+    "dur": 0.4
+   },
+   {
+    "at": 18.2,
+    "sound": "click",
+    "gain_db": -22
+   },
+   {
+    "at": 18.2,
+    "sound": "slam",
+    "gain_db": -12
+   }
+  ]
+ },
+ "tail": 0,
+ "dialogueFx": "highpass=f=70,acompressor=threshold=0.1:ratio=2.5:attack=8:release=120:makeup=1.5",
+ "dialogueLufs": -16.0,
+ "textPlate": "#56A0FB"
+}
