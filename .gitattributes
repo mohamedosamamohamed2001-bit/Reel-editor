@@ -70,3 +70,4 @@ deliveries/ifit_workout_2026-11-23/*.jpg filter=lfs diff=lfs merge=lfs -text
 deliveries/lifestyle_carousel_2026-11-23/*.jpg filter=lfs diff=lfs merge=lfs -text
 deliveries/lifestyle_carousel_2026-11-23/*.png filter=lfs diff=lfs merge=lfs -text
 deliveries/lifestyle_carousel_2026-11-23/*.zip filter=lfs diff=lfs merge=lfs -text
+deliveries/hyrox_backpain_2026-11-25/*.mp4 filter=lfs diff=lfs merge=lfs -text
