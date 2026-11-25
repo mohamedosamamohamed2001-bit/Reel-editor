@@ -2,7 +2,7 @@
 
 Reference (ref/screen.mp4, screen recording, reference only): one continuous shot, the athlete repeatedly heaving a heavy load on an
 exam table while a doctor watches; caption at the top; the Reel plays 0.28-7.33 s of the recording (7.05 s) then loops.
-His version: HIS HYROX Cairo sandbag lunges (IMG_5050, 120 fps: 20.25-23.25 s at 0.42x = real slow motion), cut out with MODNet
+His version (2026-11-25, his request: the video he sent): HIS HYROX Cairo burpee broad jumps (IMG_5038, 120 fps, 11.0-14.6 s at 0.51x), cut out with MODNet
 (largest person only) and composited on the desk of a REAL doctor's office (Mixkit #12913, free Mixkit licence, no AI): stock
 cropped to a 9:16 window and mirrored so the doctor sits on the right like the reference, slowed 1.16x to the Reel length.
 Contact shadow under his feet. Caption = the reference's line, Instagram-classic look (bold white, dark outline). HYROX only, no
@@ -25,10 +25,10 @@ from cutout import MODEL, matte  # noqa: E402
 FPS = 30
 REF_IN, REF_OUT = 0.28, 7.33
 N = round((REF_OUT - REF_IN) * FPS)              # 212 frames
-LUNGE_IN, LUNGE_SPEED = 20.95, 0.33            # 20.95-23.28 s: nobody beside him; 0.33x of 120 fps = real frames
+LUNGE_IN, LUNGE_SPEED = 11.0, 0.51             # IMG_5038 11.0-14.6 s: down, up, broad jump, land, down again (120 fps: real slow motion)
 STOCK = P / "source/stock/mixkit-12913-720.mp4"
 STOCK_X = 380                                     # 405x720 window of the 1280x720 stock: doctor's face, laptop, desk (mirrored: doctor on the right)
-FEET_Y, HEIGHT, FEET_X = 1515, 820, 300           # on the desk top (left half after the mirror), standing height, centre x (px)
+FEET_Y, HEIGHT, FEET_X = 1515, 700, 380           # on the desk top (left half after the mirror), standing height, centre x (px)
 TM = "zscale=t=linear:npl=203,format=gbrpf32le,zscale=p=bt709,tonemap=mobius:param=0.3:desat=0,zscale=t=bt709:m=bt709:r=tv,format=rgb24"
 TEXT = ["Doctor: Can you show", "me what you were doing", "when your lower", "back pain started"]
 
@@ -62,12 +62,12 @@ def main():
     if len(bg) < N:
         bg = np.concatenate([bg, np.repeat(bg[-1:], N - len(bg), 0)])
     # him: HYROX sandbag lunges, real 120 fps slow motion, BT.709
-    fg = frames(["ffmpeg", "-v", "error", "-i", str(P / "source/IMG_5050_lunges.mov"), "-vf",
+    fg = frames(["ffmpeg", "-v", "error", "-i", str(P / "source/IMG_5038.MOV"), "-vf",
                  f"trim=start={LUNGE_IN},setpts=(PTS-STARTPTS)/{LUNGE_SPEED},fps={FPS},{TM}", "-frames:v", str(N), "-f", "rawvideo", "-"],
                 1080, 1920)
     sess = ort.InferenceSession(str(MODEL), providers=["CPUExecutionProvider"])
     det = cv2.FaceDetectorYN.create(str(Path.home() / ".cache/osm-models/yunet.onnx"), "", (1080, 1920), 0.35, 0.3, 50)
-    mats, boxes = [], []
+    mats, boxes, ref_w = [], [], [None]
     for i, f in enumerate(fg):
         m = matte(sess, f)                                                      # 0..1 at frame size
         # him only: strict core, eroded so people touching him split off, largest core = him, grown back inside the soft matte
@@ -84,18 +84,18 @@ def main():
         if F is not None:
             ys_, xs_ = np.where(m > 0.5)
             top, x0b, x1b = ys_.min(), xs_.min(), xs_.max()
-            # his face = a face whose centre lies inside his own cut-out, in the upper part of it
-            own = [r for r in F if x0b <= r[0] + r[2] / 2 <= x1b and r[1] < top + 0.35 * (ys_.max() - top)
-                   and m[int(min(1919, r[1] + r[3] / 2)), int(min(1079, r[0] + r[2] / 2))] > 0.5]
+            # his face = the largest face whose centre lies inside his own cut-out
+            own = [r for r in F if m[int(min(1919, r[1] + r[3] / 2)), int(min(1079, r[0] + r[2] / 2))] > 0.5]
             if own:
                 x, y, w, h = max(own, key=lambda r: r[2] * r[3])[:4]
-                m[:max(0, int(y - 0.6 * h))] = 0
-                # distant spectators (behind the barrier, face < 0.65x his): remove their head + shoulders
+                ref_w[0] = w if ref_w[0] is None else 0.8 * ref_w[0] + 0.2 * w
+            # judges / spectators (clearly smaller faces than his): remove their head + body column
+            if ref_w[0] is not None:
                 for r in F:
                     sx, sy, sw, shh = r[:4]
-                    if sw > 0.65 * w or (abs(sx - x) < w and abs(sy - y) < h):
+                    if sw > 0.7 * ref_w[0] or (own and abs(sx - x) < w and abs(sy - y) < h):
                         continue
-                    m[max(0, int(sy - 0.7 * shh)):int(sy + 4.0 * shh), max(0, int(sx - 1.3 * sw)):int(sx + 2.3 * sw)] = 0
+                    m[max(0, int(sy - 0.7 * shh)):int(sy + 8.0 * shh), max(0, int(sx - 1.5 * sw)):int(sx + 2.5 * sw)] = 0
         # final: only the largest connected piece (spectators' hands / phones left loose after the face boxes)
         nn, lab2, st2, _ = cv2.connectedComponentsWithStats((m > 0.25).astype(np.uint8), connectivity=8)
         if nn > 2:
@@ -107,7 +107,7 @@ def main():
             print("matte", i, flush=True)
     bx = np.array(boxes, float)
     sm = lambda a: np.convolve(np.pad(a, 7, mode="edge"), np.ones(15) / 15, "valid")     # steady placement (no jitter)
-    cx, bot, hgt = sm((bx[:, 0] + bx[:, 2]) / 2), sm(bx[:, 3]), np.median(bx[:, 3] - bx[:, 1])
+    cx, bot, hgt = sm((bx[:, 0] + bx[:, 2]) / 2), sm(bx[:, 3]), np.percentile(bx[:, 3] - bx[:, 1], 90)   # his STANDING height (burpees lie down)
     s = HEIGHT / hgt
     caption_png(W / "caption.png")
     cap = np.asarray(Image.open(W / "caption.png")).astype(np.float32) / 255
@@ -129,13 +129,13 @@ def main():
         ca = cap[..., 3:4]
         canvas = canvas * (1 - ca) + cap[..., :3] * 255 * ca
         cv2.imwrite(str(out / f"f_{i:04d}.png"), cv2.cvtColor(np.clip(canvas, 0, 255).astype(np.uint8), cv2.COLOR_RGB2BGR))
-    silent = P / "renders/hyrox_backpain_silent.mp4"
+    silent = P / "renders/hyrox_backpain_v2_silent.mp4"
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-framerate", str(FPS), "-i", str(out / "f_%04d.png"), "-c:v", "libx264", "-crf", "15",
                     "-preset", "slow", "-pix_fmt", "yuv420p", "-color_primaries", "bt709", "-color_trc", "bt709", "-colorspace", "bt709",
                     "-movflags", "+faststart", str(silent)], check=True)
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(silent), "-ss", str(REF_IN), "-to", str(REF_OUT), "-i", str(P / "ref/screen.mp4"),
                     "-map", "0:v", "-map", "1:a", "-c:v", "copy", "-c:a", "aac", "-b:a", "256k", "-shortest", "-movflags", "+faststart",
-                    str(P / "renders/hyrox_backpain.mp4")], check=True)
+                    str(P / "renders/hyrox_backpain_v2.mp4")], check=True)
     (W / "place.json").write_text(json.dumps({"scale": s, "height_src": float(hgt)}))
     print("done", N, "frames")
 
